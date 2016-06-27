@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import {join} from 'path';
 import {app, BrowserWindow} from 'electron'; // eslint-disable-line import/no-extraneous-dependencies
 import Store from './store';
