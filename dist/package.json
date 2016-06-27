@@ -1,0 +1,11 @@
+{
+  "name": "foxiv",
+  "version": "0.0.1",
+  "description": "pixiv client for desktop",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "akameco <akameco.t@gmail.com>",
+  "license": "MIT"
+}
