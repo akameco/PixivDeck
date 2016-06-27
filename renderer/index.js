@@ -1,14 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {render} from 'react-dom';
+import {Provider} from 'react-redux';
+import App from './container/app';
+import store from './store';
 
-class App extends Component {
-	render() {
-		return (
-			<div>
-				hello world
-			</div>
-		);
-	}
-}
-
-render(<App/>, document.querySelector('.root'));
+render(
+	<Provider store={store}>
+		<App/>
+	</Provider>
+, document.querySelector('.root'));
