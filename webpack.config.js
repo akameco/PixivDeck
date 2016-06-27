@@ -31,6 +31,7 @@ module.exports = {
 		'./renderer/index.js'
 	],
 	debug: env === 'development',
+	target: 'electron',
 	devtool,
 	output: {
 		path: `${__dirname}/dist`,
