@@ -1,24 +1,36 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {ipcRenderer} from 'electron';
+import {ranking} from '../actions';
 
-export default class App extends Component {
-	constructor(props) {
-		super(props);
-		ipcRenderer.on('RANKING', (ev, res) => {
-			console.log(res.response[0].works);
-		});
-	}
+class App extends Component {
+	static propTypes = {
+		dispatch: PropTypes.func
+	};
 
-	componentDidMount() {
-		ipcRenderer.send('RANKING', {mode: 'daily'});
+	onClick() {
+		this.props.dispatch(ranking());
 	}
 
 	render() {
+		const List = this.props.works.map(({id, title, image_urls}) => (
+			<div key={id}>
+				{title}
+				<img src={image_urls.px_480mw}/>
+			</div>
+		));
+
 		return (
 			<div>
-				hello electron
+				<a onClick={::this.onClick}>reload</a>
+				<br/>
+				{List}
 			</div>
 		);
 	}
 }
+
+function mapStateToProps(state) {
+	return {works: state.pixiv.works};
+}
+
+export default connect(mapStateToProps)(App);

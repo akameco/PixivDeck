@@ -51,8 +51,8 @@ app.on('ready', () => {
 	const {NAME, PASS} = process.env;
 	const pixiv = new Pixiv(NAME, PASS);
 	mainWindow = createMainWindow();
-	ipcMain.on('RANKING', async () => {
+	ipcMain.on('ranking', async () => {
 		const res = await pixiv.ranking('all', Object.assign({page: 1}));
-		mainWindow.webContents.send('RANKING', res);
+		mainWindow.webContents.send('ranking', res);
 	});
 });
