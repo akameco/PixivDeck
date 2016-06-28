@@ -7,6 +7,7 @@ import {
 	toggleModal,
 	closeModal
 } from '../actions';
+import ImageModal from '../components/image-modal';
 import styles from './app.css';
 
 @CSSModules(styles)
@@ -18,23 +19,6 @@ class ImageBox extends Component {
 				<div>
 					{this.props.title}
 				</div>
-				<img src={this.props.img}/>
-			</div>
-		);
-	}
-}
-
-@CSSModules(styles)
-class ImageModal extends Component {
-	static propTypes = {
-		title: PropTypes.string,
-		img: PropTypes.string
-	}
-
-	render() {
-		const style = this.props.show ? {display: 'flex'} : {display: 'none'};
-		return (
-			<div styleName="image-modal" style={style} onClick={this.props.onClose}>
 				<img src={this.props.img}/>
 			</div>
 		);
