@@ -7,6 +7,25 @@ export function ranking(mode = 'daily') {
 	};
 }
 
+export function currentWork(id) {
+	return {
+		type: 'currentWork',
+		id
+	};
+}
+
+export function toggleModal() {
+	return {
+		type: 'toggleModal'
+	};
+}
+
+export function closeModal() {
+	return {
+		type: 'closeModal'
+	};
+}
+
 export function receiveWorks(res) {
 	return {
 		type: 'receive:works',
