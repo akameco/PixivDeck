@@ -1,4 +1,5 @@
 'use strict';
+const path = require('path');
 const webpack = require('webpack');
 
 const env = process.env.NODE_ENV || 'development';
@@ -30,12 +31,13 @@ module.exports = {
 		'babel-polyfill',
 		'./renderer/index.js'
 	],
-	debug: env === 'development',
-	target: 'electron',
+	debug: isDev,
+	target: 'electron-renderer',
 	devtool,
 	output: {
-		path: `${__dirname}/dist`,
-		filename: 'bundle.js'
+		path: path.join(__dirname, '/dist'),
+		filename: 'bundle.js',
+		publicPath: '/'
 	},
 	plugins,
 	module: {
