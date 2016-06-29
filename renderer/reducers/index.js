@@ -5,7 +5,7 @@ const initState = {
 	currentWork: null
 };
 
-export function pixiv(state=initState, action) {
+export function pixiv(state = initState, action) {
 	switch (action.type) {
 		case 'receive:works':
 			return {...state, works: action.works};
@@ -20,7 +20,7 @@ const manageState = {
 	isModal: false
 };
 
-export function manage(state=manageState, action) {
+export function manage(state = manageState, action) {
 	switch (action.type) {
 		case 'openModal':
 			return {...state, isModal: true};
