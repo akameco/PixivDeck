@@ -1,6 +1,8 @@
+import {combineReducers} from 'redux';
+
 const initState = {
 	works: [],
-	currentWork: 57592236
+	currentWork: null
 };
 
 export function pixiv(state=initState, action) {
@@ -30,3 +32,10 @@ export function manage(state=manageState, action) {
 			return state;
 	}
 }
+
+const rootReducer = combineReducers({
+	pixiv,
+	manage
+});
+
+export default rootReducer;
