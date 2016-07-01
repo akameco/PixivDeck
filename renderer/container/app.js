@@ -5,6 +5,7 @@ import {bindActionCreators} from 'redux';
 import type {State} from 'redux';
 import {connect} from 'react-redux';
 import cssModules from 'react-css-modules';
+import {Link} from 'react-router';
 import type {RankingModeType} from '../actions';
 import {ranking, currentWork} from '../actions';
 import {toggleModal, closeModal} from '../actions/modal';
