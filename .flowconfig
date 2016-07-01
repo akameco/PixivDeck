@@ -1,0 +1,13 @@
+[ignore]
+.*/node_modules/.*
+.*/dist/.*
+
+[include]
+
+[libs]
+flow-typed/.*
+interface/.*
+
+[options]
+esproposal.class_instance_fields=enable
+module.name_mapper.extension='css' -> '<PROJECT_ROOT>/interface/css-modules.js' 

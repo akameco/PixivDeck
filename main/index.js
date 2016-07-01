@@ -1,5 +1,8 @@
+/* eslint-disable camelcase */
+import 'babel-polyfill';
 import {join} from 'path';
-import {app, BrowserWindow} from 'electron'; // eslint-disable-line import/no-extraneous-dependencies
+import {app, BrowserWindow, ipcMain} from 'electron'; // eslint-disable-line import/no-extraneous-dependencies
+import Pixiv from 'pixiv.js';
 import Store from './store';
 
 let mainWindow;
@@ -46,5 +49,11 @@ app.on('activate', () => {
 });
 
 app.on('ready', () => {
+	const {NAME, PASS} = process.env;
+	const pixiv = new Pixiv(NAME, PASS);
 	mainWindow = createMainWindow();
+	ipcMain.on('ranking', async (ev, opts = {}) => {
+		const res = await pixiv.ranking('all', Object.assign({page: 1, per_page: 50}, opts));
+		mainWindow.webContents.send('ranking', res);
+	});
 });
