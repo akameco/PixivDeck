@@ -1,66 +1,77 @@
-import React, {Component, PropTypes} from 'react';
+// @flow
+/* eslint-disable camelcase */
+import React, {Component} from 'react';
+import {bindActionCreators} from 'redux';
+import type {State} from 'redux';
 import {connect} from 'react-redux';
-import CSSModules from 'react-css-modules';
-import {
-	ranking,
-	currentWork,
-	toggleModal,
-	closeModal
-} from '../actions';
+import cssModules from 'react-css-modules';
+import type {RankingModeType} from '../actions';
+import {ranking, currentWork} from '../actions';
+import {toggleModal, closeModal} from '../actions/modal';
 import ImageModal from '../components/image-modal';
+import ImageBox from '../components/image-box';
+import Infinite from '../components/infinite';
 import styles from './app.css';
 
-@CSSModules(styles)
-class ImageBox extends Component {
-	render() {
-		const {id, title, img} = this.props;
-		return (
-			<div onClick={() => this.props.handleClick(id)} styleName="image-box">
-				<div>
-					{this.props.title}
-				</div>
-				<img src={this.props.img}/>
-			</div>
-		);
-	}
-}
+type Props = {
+	works: Array<Object>,
+	currentWorkId: null | number | string,
+	manage: Object,
+	ranking: typeof ranking,
+	toggleModal: typeof toggleModal,
+	closeModal: typeof closeModal,
+	currentWork: (id: string) => Object
+};
 
-@CSSModules(styles)
+type AppState = {
+	img: ?string,
+	page: number
+};
+
 class App extends Component {
-	static propTypes = {
-		works: PropTypes.array,
-		currentWork: PropTypes.number,
-		manage: PropTypes.object,
-		dispatch: PropTypes.func
-	};
+	props: Props;
+	state: AppState;
+	sentinel: Component;
 
-	constructor(props) {
+	constructor(props: Props) {
 		super(props);
+		this.state = {
+			work: null,
+			img: null,
+			page: 1
+		};
+	}
+
+	onNextPage() {
+		this.props.ranking('daily', this.state.page);
+		this.setState({page: this.state.page + 1});
 	}
 
 	componentDidMount() {
-		this.props.dispatch(ranking());
 	}
 
-	onClickWork(id) {
-		this.props.dispatch(toggleModal());
-		this.props.dispatch(currentWork(id));
+	onRanking(mode: RankingModeType) {
+		this.props.ranking(mode);
+	}
+
+	onClickWork(id :string) {
+		this.props.currentWork(id);
+		this.selectWork();
+		this.props.toggleModal();
 		this.scrollStop();
 	}
 
-	selectWork() {
-		const work = this.props.works.filter(work => work.id === this.props.currentWork);
-		if (!work) {
-			return;
+	selectWork(works, currentWorkId) {
+		if (works && currentWorkId) {
+			return works.filter(work => work.id === currentWorkId)[0];
 		}
-		return work[0];
 	}
 
-	handleCloseModal() {
-		this.props.dispatch(closeModal());
+	handleCloseModal = () => {
+		this.props.closeModal();
 		const body = document.querySelector('body');
 		body.style.overflow = 'auto';
-	}
+	};
 
 	scrollStop() {
 		const body = document.querySelector('body');
@@ -68,43 +79,53 @@ class App extends Component {
 	}
 
 	render() {
-		const {works, currentWork, manage, dispatch} = this.props;
+		const {works, currentWorkId, manage} = this.props;
 		const List = works.map(({id, title, image_urls}) => (
 			<ImageBox
 				key={id}
 				id={id}
 				img={image_urls.px_128x128}
 				title={title}
-				handleClick={::this.onClickWork}
+				handleClick={() => this.onClickWork(id)}
 				/>
 		));
 
-		// const style = this.fixedPosition() || {};
-		const style = {};
-
 		return (
-			<div style={style}>
-				<div>
+			<div>
+				<a onClick={() => this.props.ranking('daily')}>デイリー</a>
+				<a onClick={() => this.props.ranking('weekly')}>ウィークリー</a>
+				<a onClick={() => this.props.ranking('monthly')}>マンスリー</a>
+				<Infinite onIntersect={() => this.onNextPage()}>
 					{List}
-				</div>
-				{works.length > 0 &&
+				</Infinite>
+				{works.length > 0 && currentWorkId && manage.isModal &&
 					<ImageModal
-					show={manage.isModal}
-					img={this.selectWork().image_urls.px_480mw}
-					onClose={::this.handleCloseModal}
-					/>
+						show={manage.isModal}
+						img={this.selectWork(works, currentWorkId).image_urls.px_480mw}
+						onClose={() => this.handleCloseModal()}
+						/>
 				}
 			</div>
 		);
 	}
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: State) {
 	return {
 		works: state.pixiv.works,
-		currentWork: state.pixiv.currentWork,
-		manage: state.manage
+		currentWorkId: state.pixiv.currentWorkId,
+		manage: state.manage,
+		currentWork: state.pixiv.currentWork
 	};
 }
 
-export default connect(mapStateToProps)(App);
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators({
+		ranking,
+		currentWork,
+		toggleModal,
+		closeModal
+	}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(cssModules(styles)(App));
