@@ -1,14 +1,16 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {render} from 'react-dom';
+import {Provider} from 'react-redux';
+import {Router, Route, browserHistory} from 'react-router';
+import App from './container/app';
+import configureStore from './store';
 
-class App extends Component {
-	render() {
-		return (
-			<div>
-				hello world
-			</div>
-		);
-	}
-}
+const store = configureStore();
 
-render(<App/>, document.querySelector('.root'));
+render((
+	<Provider store={store}>
+		<Router history={browserHistory}>
+			<Route path="/" component={App}/>
+		</Router>
+	</Provider>
+), document.querySelector('.root'));

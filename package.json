@@ -23,14 +23,20 @@
   "author": "akameco <akameco.t@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "pixiv.js": "^0.11.0",
     "react": "^15.1.0",
+    "react-css-modules": "^3.7.6",
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.5",
-    "redux": "^3.5.2"
+    "react-router": "^2.5.2",
+    "redux": "^3.5.2",
+    "redux-saga": "^0.10.5"
   },
   "devDependencies": {
+    "babel-core": "^6.10.4",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-flow-strip-types": "^6.8.0",
     "babel-polyfill": "^6.9.1",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.11.0",
@@ -38,11 +44,16 @@
     "babel-preset-stage-0": "^6.5.0",
     "babelify": "^7.3.0",
     "browserify": "^13.0.1",
+    "css-loader": "^0.23.1",
     "electron-packager": "^7.1.0",
     "electron-prebuilt": "^1.2.5",
     "eslint-config-xo-react": "^0.8.0",
     "eslint-plugin-react": "^5.2.2",
     "nodemon": "^1.9.2",
+    "postcss-cssnext": "^2.7.0",
+    "postcss-loader": "^0.9.1",
+    "redux-logger": "^2.6.1",
+    "style-loader": "^0.13.1",
     "watchify": "^3.7.0",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1",
@@ -55,6 +66,13 @@
     ],
     "extends": [
       "xo-react"
+    ],
+    "rules": {
+      "no-duplicate-imports": 0,
+      "react/jsx-no-bind": 0
+    },
+    "ignores": [
+      "flow-typed/npm/*.js"
     ]
   }
 }
