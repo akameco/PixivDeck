@@ -1,5 +1,5 @@
 .image-modal {
-	display: none;
+	display: flex;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -18,4 +18,18 @@
 	max-height: 100vh;
 	margin: auto;
 	user-select: none;
+	opacity: 0;
+}
+
+.loaded {
+	animation: fade-in 500ms both;
+}
+
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
