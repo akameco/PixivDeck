@@ -5,7 +5,7 @@ type Props = {
 	id: string,
 	title: string,
 	img: string,
-	handleClick: (id: string) => void
+	onClick: (id: string) => void
 };
 
 class ImageBox extends Component {
@@ -14,11 +14,10 @@ class ImageBox extends Component {
 	render() {
 		const {id, title, img} = this.props;
 		return (
-			<div onClick={() => this.props.handleClick(id)} styleName="image-box">
-				<div>
-					{title}
-				</div>
+			<div onClick={() => this.props.onClick(id)} styleName="image-box">
 				<img src={img}/>
+				<br/>
+				{title}
 			</div>
 		);
 	}
