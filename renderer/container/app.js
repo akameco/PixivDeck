@@ -10,6 +10,7 @@ import {ranking, currentWork} from '../actions';
 import {toggleModal, closeModal} from '../actions/modal';
 import ImageModal from '../components/image-modal';
 import ImageBox from '../components/image-box';
+import RankingList from '../components/ranking-list';
 import Infinite from '../components/infinite';
 import styles from './app.css';
 
@@ -54,12 +55,12 @@ class App extends Component {
 		this.props.ranking(mode);
 	}
 
-	onClickWork(id :string) {
+	handleClickWork = (id :string) => {
 		this.props.currentWork(id);
 		this.selectWork();
 		this.props.toggleModal();
 		this.scrollStop();
-	}
+	};
 
 	selectWork(works, currentWorkId) {
 		if (works && currentWorkId) {
@@ -80,23 +81,14 @@ class App extends Component {
 
 	render() {
 		const {works, currentWorkId, manage} = this.props;
-		const List = works.map(({id, title, image_urls}) => (
-			<ImageBox
-				key={id}
-				id={id}
-				img={image_urls.px_128x128}
-				title={title}
-				handleClick={() => this.onClickWork(id)}
-				/>
-		));
-
 		return (
 			<div>
-				<a onClick={() => this.props.ranking('daily')}>デイリー</a>
-				<a onClick={() => this.props.ranking('weekly')}>ウィークリー</a>
-				<a onClick={() => this.props.ranking('monthly')}>マンスリー</a>
+				<Link to={"/"}>foxiv</Link>
+				<a onClick={() => this.onRanking('daily')}>デイリー</a>
+				<a onClick={() => this.onRanking('weekly')}>ウィークリー</a>
+				<a onClick={() => this.onRanking('monthly')}>マンスリー</a>
 				<Infinite onIntersect={() => this.onNextPage()}>
-					{List}
+					<RankingList works={works} onClick={this.handleClickWork}/>;
 				</Infinite>
 				{works.length > 0 && currentWorkId && manage.isModal &&
 					<ImageModal
