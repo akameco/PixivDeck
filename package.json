@@ -52,6 +52,7 @@
     "nodemon": "^1.9.2",
     "postcss-cssnext": "^2.7.0",
     "postcss-loader": "^0.9.1",
+    "react-router-redux": "^4.0.5",
     "redux-logger": "^2.6.1",
     "style-loader": "^0.13.1",
     "watchify": "^3.7.0",

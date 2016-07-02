@@ -1,5 +1,6 @@
 // @flow
 import {combineReducers} from 'redux';
+import { routerReducer as routing } from 'react-router-redux';
 import type {PixivActionType} from '../actions/';
 
 const initState = {
@@ -45,6 +46,7 @@ export function manage(state: manageStateType = manageState, action) {
 }
 
 const rootReducer = combineReducers({
+	routing,
 	pixiv,
 	manage
 });
