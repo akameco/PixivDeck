@@ -13,3 +13,7 @@ declare module 'electron' {
 declare module 'react-router-redux' {
 	declare var exports: any;
 }
+
+declare module 'humps' {
+	declare var exports: any;
+}
