@@ -1,6 +1,7 @@
 import {createStore, applyMiddleware, compose} from 'redux';
 import createLogger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
+import thunk from 'redux-thunk';
 import {hashHistory} from 'react-router';
 import {routerMiddleware} from 'react-router-redux';
 import reducer from '../reducers';
@@ -13,7 +14,7 @@ export default function configureStore() {
 	const router = routerMiddleware(hashHistory);
 
 	const enhancer = compose(
-		applyMiddleware(sagaMiddleware, router, logger),
+		applyMiddleware(thunk, sagaMiddleware, router, logger),
 		window.devToolsExtension ? window.devToolsExtension() : f => f
 	);
 
