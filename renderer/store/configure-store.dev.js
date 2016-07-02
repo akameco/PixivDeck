@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import {hashHistory} from 'react-router';
 import {routerMiddleware} from 'react-router-redux';
 import reducer from '../reducers';
-import rootSaga from '../sagas';
+import startIpc from '../middleware/ipc';
 
 export default function configureStore() {
 	const logger = createLogger();
@@ -19,8 +19,7 @@ export default function configureStore() {
 	);
 
 	const store = createStore(reducer, enhancer);
-
-	sagaMiddleware.run(rootSaga);
+	startIpc(store);
 
 	if (module.hot) {
 		// Enable Webpack hot module replacement for reducers

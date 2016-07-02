@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import {hashHistory} from 'react-router';
 import {routerMiddleware} from 'react-router-redux';
 import reducer from '../reducers';
-import rootSaga from '../sagas';
+import startIpc from '../middleware/ipc';
 
 export default function configureStore() {
 	const sagaMiddleware = createSagaMiddleware();
@@ -12,7 +12,6 @@ export default function configureStore() {
 	const router = routerMiddleware(hashHistory);
 	const enhancer = compose(applyMiddleware(thunk, sagaMiddleware, router));
 	const store = createStore(reducer, enhancer);
-
-	sagaMiddleware.run(rootSaga);
+	startIpc(store);
 	return store;
 }
