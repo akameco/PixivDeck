@@ -23,6 +23,7 @@
   "author": "akameco <akameco.t@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "humps": "^1.1.0",
     "pixiv.js": "^0.11.0",
     "react": "^15.1.0",
     "react-css-modules": "^3.7.6",

@@ -1,5 +1,4 @@
 // @flow
-/* eslint-disable camelcase */
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import type {State} from 'redux';
@@ -98,7 +97,7 @@ class App extends Component {
 				{works.length > 0 && currentWorkId && manage.isModal &&
 					<ImageModal
 						show={manage.isModal}
-						img={this.selectWork(works, currentWorkId).image_urls.px_480mw}
+						img={this.selectWork(works, currentWorkId).imageUrls.px480mw}
 						onClose={() => this.handleCloseModal()}
 						/>
 				}

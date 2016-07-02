@@ -11,11 +11,11 @@ export default class RankingList extends Component {
 	props: Props;
 
 	render() {
-		const List = this.props.works.map(({id, title, image_urls}) => (
+		const List = this.props.works.map(({id, title, imageUrls}) => (
 			<ImageBox
 				key={id}
 				id={id}
-				img={image_urls.px_128x128}
+				img={imageUrls.px128x128}
 				title={title}
 				onClick={this.props.onClick}
 				/>

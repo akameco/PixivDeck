@@ -1,13 +1,15 @@
 import {ipcRenderer} from 'electron';
 import {eventChannel} from 'redux-saga';
 import {take, fork, put, call} from 'redux-saga/effects';
+import {camelizeKeys} from 'humps';
 import {receiveWorks} from '../actions';
 
 function subscribe() {
 	return eventChannel(emit => {
 		ipcRenderer.on('ranking', (ev, data) => {
 			const res = data.response[0].works.map(v => v.work);
-			emit(receiveWorks(res));
+			const camelizedJson = camelizeKeys(res);
+			emit(receiveWorks(camelizedJson));
 		});
 		return () => {};
 	});
