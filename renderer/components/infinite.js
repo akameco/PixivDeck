@@ -3,9 +3,9 @@ import React, {Component} from 'react';
 import {findDOMNode} from 'react-dom';
 
 type Props = {
-	rootMargin: ?string,
-	children: any,
-	onIntersect: () => void
+	rootMargin?: string,
+	onIntersect: () => void,
+	children?: any
 };
 
 export default class Infinite extends Component {
@@ -20,7 +20,9 @@ export default class Infinite extends Component {
 				return;
 			}
 			this.props.onIntersect();
-		}, {rootMargin: this.props.rootMargin || '300%'});
+		}, {
+			rootMargin: this.props.rootMargin || '300%'
+		});
 		this.io.observe(findDOMNode(sentinel));
 	}
 
