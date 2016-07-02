@@ -3,12 +3,12 @@ import {ipcRenderer} from 'electron';
 import type {Dispatch} from 'redux';
 
 export type RankingModeType = | 'daily' | 'weekly' | 'monthly';
-export type LoadingType = {type: 'loading'};
+export type LoadingType = {type: 'LOADING'};
 
 export function ranking(mode: RankingModeType = 'daily', page: number = 1): LoadingType {
 	ipcRenderer.send('ranking', {mode, page});
 	return {
-		type: 'loading'
+		type: 'LOADING'
 	};
 }
 
@@ -26,7 +26,7 @@ export function currentWork(id: string): currentWorkType {
 
 export function receiveWorks(res: Array<Object>) {
 	return {
-		type: 'receive:works',
+		type: 'RECEIVE_WORKS',
 		works: res
 	};
 }

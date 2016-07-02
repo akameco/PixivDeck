@@ -1,12 +1,12 @@
 // @flow
 export type modalAction = {
-	type: 'toggleModal' | 'closeModal'
+	type: 'TOGGLE_MODAL' | 'CLOSE_MODAL'
 };
 
 export function toggleModal(): modalAction {
-	return {type: 'toggleModal'};
+	return {type: 'TOGGLE_MODAL'};
 }
 
 export function closeModal(): modalAction {
-	return {type: 'closeModal'};
+	return {type: 'CLOSE_MODAL'};
 }
