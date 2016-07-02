@@ -13,6 +13,7 @@ import ImageModal from '../components/image-modal';
 import ImageBox from '../components/image-box';
 import RankingList from '../components/ranking-list';
 import Infinite from '../components/infinite';
+import RankingPage from '../components/ranking-page';
 import styles from './app.css';
 
 type Props = {
@@ -44,17 +45,14 @@ class App extends Component {
 		};
 	}
 
-	onNextPage() {
+	handleOnNextPage = () => {
 		this.props.ranking('daily', this.state.page);
 		this.setState({page: this.state.page + 1});
-	}
+	};
 
-	componentDidMount() {
-	}
-
-	onRanking(mode: RankingModeType) {
+	handleOnRanking = (mode: RankingModeType) => {
 		this.props.ranking(mode);
-	}
+	};
 
 	handleClickWork = (id :string) => {
 		this.props.currentWork(id);
@@ -84,13 +82,12 @@ class App extends Component {
 		const {works, currentWorkId, manage} = this.props;
 		return (
 			<div>
-				<Link to={"/"}>foxiv</Link>
-				<a onClick={() => this.onRanking('daily')}>デイリー</a>
-				<a onClick={() => this.onRanking('weekly')}>ウィークリー</a>
-				<a onClick={() => this.onRanking('monthly')}>マンスリー</a>
-				<Infinite onIntersect={() => this.onNextPage()}>
-					<RankingList works={works} onClick={this.handleClickWork}/>;
-				</Infinite>
+				<RankingPage
+					works={works}
+					onRanking={this.handleOnRanking}
+					onNextPage={this.handleOnNextPage}
+					onClickWork={this.handleClickWork}
+					/>
 				{works.length > 0 && currentWorkId && manage.isModal &&
 					<ImageModal
 						show={manage.isModal}
