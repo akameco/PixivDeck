@@ -15,12 +15,12 @@ export type PixivStateType = {
 
 export type PixivActionType =
 	| {type: 'currentWork', id: number | string}
-	| {type: 'receive:works', works: Array<Object>}
+	| {type: 'RECEIVE_WORKS', works: Array<Object>}
 	| {type: 'CLEAR_WORKS'};
 
 export function pixiv(state: PixivStateType = initState, action: PixivActionType): PixivStateType {
 	switch (action.type) {
-		case 'receive:works':
+		case 'RECEIVE_WORKS':
 			return {...state, works: [...state.works, ...action.works]};
 		case 'CLEAR_WORKS':
 			return {...state, works: []};
@@ -33,8 +33,8 @@ export function pixiv(state: PixivStateType = initState, action: PixivActionType
 
 type RankingModeType = 'daily' | 'weekly' | 'monthly'
 type ManageActionType =
-	| {type: 'toggleModal'}
-	| {type: 'closeModal'}
+	| {type: 'TOGGLE_MODAL'}
+	| {type: 'CLOSE_MODAL'}
 	| {type: 'CHANGE_RANKING_MODE', mode: RankingModeType};
 
 export type ManageStateType = {
@@ -53,9 +53,9 @@ export function manage(state: ManageStateType = initManageState, action: ManageA
 	switch (action.type) {
 		case 'openModal':
 			return {...state, isModal: true};
-		case 'closeModal':
+		case 'CLOSE_MODAL':
 			return {...state, isModal: false};
-		case 'toggleModal':
+		case 'TOGGLE_MODAL':
 			return {...state, isModal: !state.isModal};
 		case 'CHANGE_RANKING_MODE':
 			return {...state, rankingMode: action.mode, rankingPage: 1};
