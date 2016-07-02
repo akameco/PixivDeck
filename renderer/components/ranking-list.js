@@ -4,7 +4,7 @@ import ImageBox from './image-box';
 
 type Props = {
 	works: Array<Object>,
-	onClick: () => void
+	onClick: (id: string) => void
 };
 
 export default class RankingList extends Component {
