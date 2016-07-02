@@ -6,24 +6,23 @@ import type {State} from 'redux';
 import {connect} from 'react-redux';
 import cssModules from 'react-css-modules';
 import {Link} from 'react-router';
-import type {RankingModeType} from '../actions';
-import {ranking, currentWork} from '../actions';
+import type {RankingModeType, ManageStateType} from '../actions/type';
+import {ranking, currentWork, changeRankingMode, nextRankingPage} from '../actions';
 import {toggleModal, closeModal} from '../actions/modal';
 import ImageModal from '../components/image-modal';
-import ImageBox from '../components/image-box';
-import RankingList from '../components/ranking-list';
-import Infinite from '../components/infinite';
 import RankingPage from '../components/ranking-page';
 import styles from './app.css';
 
 type Props = {
 	works: Array<Object>,
 	currentWorkId: null | number | string,
-	manage: Object,
+	manage: ManageStateType,
 	ranking: typeof ranking,
 	toggleModal: typeof toggleModal,
 	closeModal: typeof closeModal,
-	currentWork: (id: string) => Object
+	currentWork: (id: string) => Object,
+	changeRankingMode: (mode: RankingModeType) => void,
+	nextRankingPage: (page: number) => void
 };
 
 type AppState = {
@@ -46,8 +45,9 @@ class App extends Component {
 	}
 
 	handleOnNextPage = () => {
-		this.props.ranking('daily', this.state.page);
-		this.setState({page: this.state.page + 1});
+		const {rankingMode, rankingPage} = this.props.manage;
+		this.props.ranking(rankingMode, rankingPage);
+		this.props.nextRankingPage(rankingPage);
 	};
 
 	handleOnRanking = (mode: RankingModeType) => {
@@ -59,6 +59,13 @@ class App extends Component {
 		this.selectWork();
 		this.props.toggleModal();
 		this.scrollStop();
+	};
+
+	handleChangeRankingMode = (mode: RankingModeType) => {
+		if (mode === this.props.manage.rankingMode) {
+			return;
+		}
+		this.props.changeRankingMode(mode);
 	};
 
 	selectWork(works, currentWorkId) {
@@ -84,7 +91,8 @@ class App extends Component {
 			<div>
 				<RankingPage
 					works={works}
-					onRanking={this.handleOnRanking}
+					mode={manage.rankingMode}
+					onRanking={this.handleChangeRankingMode}
 					onNextPage={this.handleOnNextPage}
 					onClickWork={this.handleClickWork}
 					/>
@@ -114,7 +122,9 @@ function mapDispatchToProps(dispatch) {
 		ranking,
 		currentWork,
 		toggleModal,
-		closeModal
+		closeModal,
+		changeRankingMode,
+		nextRankingPage
 	}, dispatch);
 }
 
