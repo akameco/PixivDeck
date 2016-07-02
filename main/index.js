@@ -1,11 +1,20 @@
 /* eslint-disable camelcase */
 import 'babel-polyfill';
-import {join} from 'path';
+import os from 'os';
+import fs from 'fs';
+import {join, resolve} from 'path';
 import {app, BrowserWindow, ipcMain} from 'electron'; // eslint-disable-line import/no-extraneous-dependencies
 import Pixiv from 'pixiv.js';
 import Store from './store';
 
 let mainWindow;
+
+function loadExtension(id: string) {
+	const extensionDir = resolve(os.homedir(), 'Library/Application Support/Google/Chrome/Default/Extensions/');
+	const versions = fs.readdirSync(`${extensionDir}/${id}`).sort();
+	const version = versions.pop();
+	BrowserWindow.addDevToolsExtension(`${extensionDir}/${id}/${version}`);
+}
 
 function createMainWindow() {
 	const bounds = new Store('bounds');
@@ -16,6 +25,10 @@ function createMainWindow() {
 	}, bounds.get()));
 
 	if (process.env.NODE_ENV === 'development') {
+		const extensionIds = ['lmhkpmbekcpmknklioeibfkpmmfibljd', 'fmkadmapgofadopljbjfkapdkoienihi'];
+		for (const id of extensionIds) {
+			loadExtension(id);
+		}
 		win.openDevTools();
 
 		win.loadURL('http://localhost:8080');
