@@ -4,25 +4,27 @@ const webpack = require('webpack');
 
 const plugins = [
 	new webpack.DefinePlugin({
-		'process.env': {
-			NODE_ENV: 'development'
+		'process.env.NODE_ENV': JSON.stringify('production')
+	}),
+	new webpack.optimize.UglifyJsPlugin({
+		output: {
+			comments: false
+		},
+		compress: {
+			warnings: false
 		}
 	})
 ];
 
 module.exports = {
-	cache: true,
 	entry: [
 		'babel-polyfill',
 		'./renderer/index.js'
 	],
-	debug: true,
 	target: 'electron-renderer',
-	devtool: '#inline-source-map',
 	output: {
 		path: path.join(__dirname, '/dist'),
-		filename: 'bundle.js',
-		publicPath: '/'
+		filename: 'bundle.js'
 	},
 	plugins,
 	module: {
