@@ -55,13 +55,7 @@ class RankingPage extends Component {
 	handleOnClickWork = (id :string) => {
 		this.props.currentWork(id);
 		this.props.openModal();
-		this.scrollStop();
 	};
-
-	scrollStop() {
-		const body = document.querySelector('body');
-		body.style.overflow = 'hidden';
-	}
 
 	render() {
 		const {works, mode, manage} = this.props;

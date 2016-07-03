@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import cssModules from 'react-css-modules';
 import {Link} from 'react-router';
 import type {RankingModeType, ManageStateType} from '../actions/type';
-import {ranking, currentWork, changeRankingMode, nextRankingPage} from '../actions';
+import {currentWork} from '../actions';
 import {openModal, closeModal} from '../actions/modal';
 import ImageModal from '../components/image-modal';
 import styles from './app.css';
@@ -18,7 +18,6 @@ type Props = {
 	worksArray: Array<Object>,
 	manage: ManageStateType,
 	currentWorkId: number | null,
-	ranking: typeof ranking,
 	openModal: typeof openModal,
 	closeModal: typeof closeModal,
 	currentWork: (id: string) => Object,
@@ -47,14 +46,7 @@ class App extends Component {
 
 	handleCloseModal = () => {
 		this.props.closeModal();
-		const body = document.querySelector('body');
-		body.style.overflow = 'auto';
 	};
-
-	scrollStop() {
-		const body = document.querySelector('body');
-		body.style.overflow = 'hidden';
-	}
 
 	render() {
 		const {works, manage, currentWorkId} = this.props;
@@ -69,7 +61,7 @@ class App extends Component {
 					<ImageModal
 						show={manage.isModal}
 						img={works[currentWorkId].imageUrls.px480mw}
-						onClose={() => this.handleCloseModal()}
+						onClose={this.handleCloseModal}
 						/>
 				}
 			</div>
@@ -95,12 +87,9 @@ function mapStateToProps(state: State) {
 
 function mapDispatchToProps(dispatch) {
 	return bindActionCreators({
-		ranking,
 		currentWork,
 		openModal,
-		closeModal,
-		changeRankingMode,
-		nextRankingPage
+		closeModal
 	}, dispatch);
 }
 
