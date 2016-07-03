@@ -14,10 +14,10 @@ export function ranking(mode: RankingModeType = 'daily', page: number = 1): Load
 
 export type currentWorkType = {
 	type: 'currentWork',
-	id: string | number
+	id: number
 };
 
-export function currentWork(id: string): currentWorkType {
+export function currentWork(id: number): currentWorkType {
 	return {
 		type: 'currentWork',
 		id
