@@ -1,5 +1,6 @@
 // @flow
 import React, {Component} from 'react';
+import {Link} from 'react-router';
 
 type Props = {
 	id: string,
@@ -14,10 +15,15 @@ class ImageBox extends Component {
 	render() {
 		const {id, title, img} = this.props;
 		return (
-			<div onClick={() => this.props.onClick(id)} styleName="image-box">
-				<img src={img}/>
+			<div styleName="image-box">
+				<img
+					src={img}
+					onClick={() => this.props.onClick(id)}
+					/>
 				<br/>
-				{title}
+				<Link to={`work/${id}`}>
+					{title}
+				</Link>
 			</div>
 		);
 	}
