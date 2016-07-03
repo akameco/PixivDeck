@@ -11,8 +11,9 @@ export type PixivStateType = {
 };
 
 export type ManageActionType =
-	| {type: 'toggleModal'}
-	| {type: 'closeModal'}
+	| {type: 'TOGGLE_MODAL'}
+	| {type: 'OPEN_MODAL'}
+	| {type: 'CLOSE_MODAL'}
 	| {type: 'CHANGE_RANKING_MODE', mode: RankingModeType};
 
 export type ranking = {
