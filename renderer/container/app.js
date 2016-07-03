@@ -25,24 +25,9 @@ type Props = {
 	nextRankingPage: (page: number) => void
 };
 
-type AppState = {
-	img: ?string,
-	page: number
-};
-
 class App extends Component {
 	props: Props;
-	state: AppState;
 	sentinel: Component;
-
-	constructor(props: Props) {
-		super(props);
-		this.state = {
-			work: null,
-			img: null,
-			page: 1
-		};
-	}
 
 	handleCloseModal = () => {
 		this.props.closeModal();
