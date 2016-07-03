@@ -31,7 +31,7 @@ export function pixiv(state: PixivStateType = initState, action: PixivActionType
 	}
 }
 
-type RankingModeType = 'daily' | 'weekly' | 'monthly'
+type RankingModeType = 'daily' | 'weekly' | 'monthly';
 type ManageActionType =
 	| {type: 'TOGGLE_MODAL'}
 	| {type: 'CLOSE_MODAL'}
@@ -51,7 +51,7 @@ const initManageState = {
 
 export function manage(state: ManageStateType = initManageState, action: ManageActionType): ManageStateType {
 	switch (action.type) {
-		case 'openModal':
+		case 'OPEN_MODAL':
 			return {...state, isModal: true};
 		case 'CLOSE_MODAL':
 			return {...state, isModal: false};

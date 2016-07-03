@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import cssModules from 'react-css-modules';
 import type {RankingModeType, ManageStateType} from '../actions/type';
 import {ranking, currentWork, changeRankingMode, nextRankingPage} from '../actions';
-import {toggleModal, closeModal} from '../actions/modal';
+import {openModal, closeModal} from '../actions/modal';
 import ImageModal from '../components/image-modal';
 import RankingPage from '../components/ranking-page';
 import styles from './app.css';
@@ -16,7 +16,7 @@ type Props = {
 	currentWorkId: null | number | string,
 	manage: ManageStateType,
 	ranking: typeof ranking,
-	toggleModal: typeof toggleModal,
+	openModal: typeof openModal,
 	closeModal: typeof closeModal,
 	currentWork: (id: string) => Object,
 	changeRankingMode: (mode: RankingModeType) => void,
@@ -55,7 +55,7 @@ class App extends Component {
 	handleClickWork = (id :string) => {
 		this.props.currentWork(id);
 		this.selectWork();
-		this.props.toggleModal();
+		this.props.openModal();
 		this.scrollStop();
 	};
 
@@ -119,7 +119,7 @@ function mapDispatchToProps(dispatch) {
 	return bindActionCreators({
 		ranking,
 		currentWork,
-		toggleModal,
+		openModal,
 		closeModal,
 		changeRankingMode,
 		nextRankingPage
