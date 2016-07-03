@@ -19,7 +19,7 @@ export default (store: Store) => {
 		const camelizedJson = camelizeKeys(res);
 		const normalizedJson = normalize(camelizedJson, Schemas.WORK_ARRAY);
 		const action = {
-			type: 'SUCCESS_TYPE',
+			type: 'SUCCESS_RANKING',
 			response: normalizedJson
 		};
 

@@ -1,30 +1,10 @@
 // @flow
 import {combineReducers} from 'redux';
-import {routerReducer as routing} from 'react-router-redux';
 import merge from 'lodash/merge';
-// import type {RankingModeType} from '../actions/type';
-
-const initState = {
-	works: [],
-	currentWorkId: null
-};
-
-export type PixivStateType = {
-	works: Array<Object>,
-	currentWorkId: string | number | null
-};
-
-export type PixivActionType =
-	| {type: 'currentWork', id: number | string}
-	| {type: 'RECEIVE_WORKS', works: Array<Object>}
-	| {type: 'CLEAR_WORKS'};
 
 function entities(state = {works: {}}, action) {
 	if (action.response && action.response.entities) {
 		return merge({}, state, action.response.entities);
-	}
-	if (action.type === 'CLEAR_WORKS') {
-		return {...state, works: {}};
 	}
 	return state;
 }
@@ -36,12 +16,21 @@ function result(state = [], action) {
 	return state;
 }
 
+export type PixivStateType = {
+	currentWorkId: string | number | null
+};
+
+export type PixivActionType =
+	| {type: 'currentWork', id: number | string}
+	| {type: 'RECEIVE_WORKS', works: Array<Object>}
+	| {type: 'CLEAR_WORKS'};
+
+const initState = {
+	currentWorkId: null
+};
+
 export function pixiv(state: PixivStateType = initState, action: PixivActionType): PixivStateType {
 	switch (action.type) {
-		case 'RECEIVE_WORKS':
-			return {...state, works: [...state.works, ...action.works]};
-		case 'CLEAR_WORKS':
-			return {...state, works: []};
 		case 'currentWork':
 			return {...state, currentWorkId: action.id};
 		default:
@@ -78,11 +67,14 @@ export function manage(state: ManageStateType = initManageState, action: ManageA
 		case 'TOGGLE_MODAL':
 			return {...state, isModal: !state.isModal};
 		case 'CHANGE_RANKING_MODE':
-			return {...state, rankingMode: action.mode, rankingPage: 1};
+			return {
+				...state,
+				rankingMode: action.mode,
+				rankingPage: 1,
+				rankingIds: []
+			};
 		case 'NEXT_RANKING_PAGE':
 			return {...state, rankingPage: action.page};
-		case 'CLEAR_WORKS':
-			return {...state, rankingIds: []};
 		case 'ADD_RANKING_IDS':
 			return {...state, rankingIds: [...state.rankingIds, ...action.ids]};
 		default:
@@ -91,7 +83,6 @@ export function manage(state: ManageStateType = initManageState, action: ManageA
 }
 
 const rootReducer = combineReducers({
-	routing,
 	pixiv,
 	manage,
 	entities,
