@@ -18,15 +18,23 @@ export default (store: Store) => {
 		const res = data.response[0].works.map(v => v.work);
 		const camelizedJson = camelizeKeys(res);
 		const normalizedJson = normalize(camelizedJson, Schemas.WORK_ARRAY);
-		const action = {
+		dispatch({
 			type: 'SUCCESS_RANKING',
 			response: normalizedJson
-		};
-
-		dispatch(action);
+		});
 		dispatch({
 			type: 'ADD_RANKING_IDS',
 			ids: normalizedJson.result
+		});
+	});
+
+	ipcRenderer.on('work', (ev, data) => {
+		const res = data.response[0];
+		const camelizedJson = camelizeKeys(res);
+		const normalizedJson = normalize(camelizedJson, Schemas.WORK);
+		dispatch({
+			type: 'SUCCESS_RANKING',
+			response: normalizedJson
 		});
 	});
 };
