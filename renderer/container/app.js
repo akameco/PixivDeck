@@ -12,9 +12,11 @@ import RankingPage from '../components/ranking-page';
 import styles from './app.css';
 
 type Props = {
-	works: Array<Object>,
-	currentWorkId: null | number | string,
+	work: Object,
+	works: Object,
+	worksArray: Array<Object>,
 	manage: ManageStateType,
+	currentWorkId: number | null,
 	ranking: typeof ranking,
 	openModal: typeof openModal,
 	closeModal: typeof closeModal,
@@ -84,20 +86,20 @@ class App extends Component {
 	}
 
 	render() {
-		const {works, currentWorkId, manage} = this.props;
+		const {works, manage, currentWorkId, worksArray} = this.props;
 		return (
 			<div>
 				<RankingPage
-					works={works}
+					works={worksArray}
 					mode={manage.rankingMode}
 					onRanking={this.handleChangeRankingMode}
 					onNextPage={this.handleOnNextPage}
 					onClickWork={this.handleClickWork}
 					/>
-				{works.length > 0 && currentWorkId && manage.isModal &&
+				{currentWorkId && works[currentWorkId] && manage.isModal &&
 					<ImageModal
 						show={manage.isModal}
-						img={this.selectWork(works, currentWorkId).imageUrls.px480mw}
+						img={works[currentWorkId].imageUrls.px480mw}
 						onClose={() => this.handleCloseModal()}
 						/>
 				}
@@ -107,11 +109,18 @@ class App extends Component {
 }
 
 function mapStateToProps(state: State) {
+	const {entities, pixiv, result, manage} = state;
+	const {works} = entities;
+	const work = works[pixiv.currentWorkId] || null;
+	const worksArray = manage.rankingIds.map(v => works[v]);
+
 	return {
-		works: state.pixiv.works,
-		currentWorkId: state.pixiv.currentWorkId,
-		manage: state.manage,
-		currentWork: state.pixiv.currentWork
+		work,
+		works,
+		result,
+		worksArray,
+		currentWorkId: pixiv.currentWorkId,
+		manage
 	};
 }
 

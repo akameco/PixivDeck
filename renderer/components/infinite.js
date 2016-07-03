@@ -19,11 +19,15 @@ export default class Infinite extends Component {
 			if (entries[0].intersectionRatio <= 0) {
 				return;
 			}
-			this.props.onIntersect();
+			this.handleOnIntersect();
 		}, {
 			rootMargin: this.props.rootMargin || '300%'
 		});
 		this.io.observe(findDOMNode(sentinel));
+	}
+
+	handleOnIntersect() {
+		this.props.onIntersect();
 	}
 
 	handleRefs(c: Component) {
