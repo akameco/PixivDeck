@@ -76,7 +76,7 @@
       "react/jsx-no-bind": 0
     },
     "ignores": [
-      "flow-typed/npm/*.js"
+      "flow-typed/**/*.js"
     ]
   }
 }
