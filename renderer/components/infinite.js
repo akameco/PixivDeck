@@ -11,11 +11,11 @@ type Props = {
 export default class Infinite extends Component {
 	props: Props;
 	sentinel: Component;
-	io: () => Object;
+	io: Object;
 
 	componentDidMount() {
 		const sentinel = this.sentinel;
-		this.io = new IntersectionObserver(entries => {
+		this.io = new IntersectionObserver(entries => { // eslint-disable-line no-undef
 			if (entries[0].intersectionRatio <= 0) {
 				return;
 			}

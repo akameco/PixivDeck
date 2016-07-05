@@ -1,6 +1,6 @@
 // @flow
 import {combineReducers} from 'redux';
-import merge from 'lodash/merge';
+import {merge} from 'lodash';
 
 function entities(state = {works: {}}, action) {
 	if (action.response && action.response.entities) {
