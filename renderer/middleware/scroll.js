@@ -1,4 +1,5 @@
 // @flow
+import type {Store, Dispatch, Action} from 'redux';
 function scrollStop(): void {
 	const body = document.querySelector('body');
 	body.style.overflow = 'hidden';
@@ -9,7 +10,7 @@ function scrollStart(): void {
 	body.style.overflow = 'auto';
 }
 
-export default store => next => action => {
+export default (store: Store) => (next: Dispatch) => (action: Action) => {
 	if (action.type === 'OPEN_MODAL') {
 		scrollStop();
 	} else if (action.type === 'CLOSE_MODAL') {
