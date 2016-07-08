@@ -45,7 +45,7 @@ class App extends Component {
 				{currentWorkId && works[currentWorkId] && manage.isModal &&
 					<ImageModal
 						show={manage.isModal}
-						img={works[currentWorkId].imageUrls.px480mw}
+						img={works[currentWorkId].imageUrls.large}
 						onClose={this.handleCloseModal}
 						/>
 				}
