@@ -36,6 +36,18 @@ function createMainWindow() {
 		win.loadURL(`file://${join(__dirname, 'index.html')}`);
 	}
 
+	const ses = win.webContents.session;
+	ses.webRequest.onBeforeSendHeaders((detail, cb) => {
+		let {requestHeaders} = detail;
+		requestHeaders = Object.assign({}, requestHeaders, {
+			Referer: 'http://www.pixiv.net/'
+		});
+		cb({requestHeaders});
+	}, {
+		urls: ['<all_urls>'],
+		types: ['xmlhttprequest']
+	});
+
 	win.on('closed', () => {
 		mainWindow = null;
 	});
