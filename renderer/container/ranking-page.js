@@ -5,16 +5,17 @@ import type {State} from 'redux';
 import {connect} from 'react-redux';
 import cssModules from 'react-css-modules';
 import type {RankingModeType} from '../actions/';
-import type {ManageStateType} from '../actions/type';
-import {changeRankingMode, nextRankingPage, fetchRanking} from '../actions/ranking';
+import type {ManageStateType} from '../reducers/manage';
+import {changeRankingMode, nextRankingPage} from '../actions/ranking';
 import {currentWork} from '../actions';
 import {openModal} from '../actions/modal';
 import RankingList from '../components/ranking-list';
-import Infinite from '../components//infinite';
+import Infinite from '../components/infinite';
 import styles from './ranking-page.css';
 
 type Props = {
 	works: Array<Object>,
+	users: Array<Object>,
 	mode: RankingModeType,
 	manage: ManageStateType,
 	ranking: () => void,
@@ -58,14 +59,14 @@ class RankingPage extends Component {
 	};
 
 	render() {
-		const {works, mode, manage} = this.props;
+		const {works, mode, manage, users} = this.props;
 		const arr = manage.rankingIds.map(v => works[v]);
 		return (
-			<div>
+			<div styleName="wrap">
 				<h1>{t(mode)}ランキング</h1>
 				{arr.length > 0 &&
 					<Infinite onIntersect={this.handleOnNextPage}>
-						<RankingList works={arr} onClick={this.handleOnClickWork}/>
+						<RankingList works={arr} users={users} onClick={this.handleOnClickWork}/>
 					</Infinite>
 					}
 			</div>
@@ -76,11 +77,12 @@ class RankingPage extends Component {
 function mapStateToProps(state: State, ownProps: Props) {
 	const {mode} = ownProps.params;
 	const {entities, manage} = state;
-	const {works} = entities;
+	const {works, users} = entities;
 
 	return {
 		mode,
 		works,
+		users,
 		manage
 	};
 }
@@ -88,7 +90,6 @@ function mapStateToProps(state: State, ownProps: Props) {
 function mapDispatchToProps(dispatch) {
 	return bindActionCreators({
 		openModal,
-		ranking: fetchRanking,
 		currentWork,
 		changeRankingMode,
 		nextRankingPage

@@ -9,6 +9,7 @@ import type {RankingModeType, ManageStateType} from '../actions/type';
 import {currentWork} from '../actions';
 import {openModal, closeModal} from '../actions/modal';
 import ImageModal from '../components/image-modal';
+import RankingPage from './ranking-page';
 import styles from './app.css';
 
 type Props = {
@@ -25,9 +26,22 @@ type Props = {
 	nextRankingPage: (page: number) => void
 };
 
+class Header extends Component {
+	render() {
+		const rankingLinks = ['daily', 'weekly', 'monthly'].map(mode => (
+			<Link key={mode} to={{pathname: `/ranking/${mode}`, state: {restoreScroll: true}}}>{mode}</Link>
+		));
+
+		return (
+			<div style={{position: 'fixed'}}>
+				{rankingLinks}
+			</div>
+		);
+	}
+}
+
 class App extends Component {
 	props: Props;
-	sentinel: Component;
 
 	handleCloseModal = () => {
 		this.props.closeModal();
@@ -35,13 +49,13 @@ class App extends Component {
 
 	render() {
 		const {works, manage, currentWorkId} = this.props;
-		const rankingLinks = ['daily', 'weekly', 'monthly'].map(mode => (
-			<Link key={mode} to={`/ranking/${mode}`}>{mode}</Link>
-		));
+
 		return (
-			<div>
-				{rankingLinks}
-				{this.props.children}
+			<div styleName="wrap">
+				<Header/>
+				<RankingPage params={{mode: 'daily'}}/>
+				<RankingPage params={{mode: 'weekly'}}/>
+				<RankingPage params={{mode: 'monthly'}}/>
 				{currentWorkId && works[currentWorkId] && manage.isModal &&
 					<ImageModal
 						show={manage.isModal}
