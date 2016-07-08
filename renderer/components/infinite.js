@@ -19,7 +19,9 @@ export default class Infinite extends Component {
 			if (entries[0].intersectionRatio <= 0) {
 				return;
 			}
-			this.handleOnIntersect();
+			setImmediate(() => {
+				this.handleOnIntersect();
+			});
 		}, {
 			rootMargin: this.props.rootMargin || '300%'
 		});
