@@ -15,7 +15,7 @@ export default class RankingList extends Component {
 			<ImageBox
 				key={id}
 				id={id}
-				img={imageUrls.px128x128}
+				img={imageUrls.medium}
 				title={title}
 				onClick={this.props.onClick}
 				/>
