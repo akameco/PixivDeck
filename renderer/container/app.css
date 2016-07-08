@@ -1,2 +1,6 @@
 .image-box {
 }
+
+.wrap {
+	display: flex;
+}

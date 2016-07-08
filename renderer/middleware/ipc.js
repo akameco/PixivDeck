@@ -6,6 +6,11 @@ import type {Store, Dispatch} from 'redux';
 import {receiveWorks} from '../actions';
 
 const workSchema = new Schema('works', {idAttribute: 'id'});
+const userSchema = new Schema('users', {idAttribute: 'id'});
+workSchema.define({
+	user: userSchema
+});
+
 export const Schemas = {
 	WORK: workSchema,
 	WORK_ARRAY: arrayOf(workSchema)

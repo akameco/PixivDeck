@@ -1,6 +1,7 @@
 // @flow
 import {combineReducers} from 'redux';
 import {merge} from 'lodash';
+import manage from './manage';
 
 function entities(state = {works: {}}, action) {
 	if (action.response && action.response.entities) {
@@ -33,50 +34,6 @@ export function pixiv(state: PixivStateType = initState, action: PixivActionType
 	switch (action.type) {
 		case 'currentWork':
 			return {...state, currentWorkId: action.id};
-		default:
-			return state;
-	}
-}
-
-type RankingModeType = 'daily' | 'weekly' | 'monthly';
-type ManageActionType =
-	| {type: 'TOGGLE_MODAL'}
-	| {type: 'CLOSE_MODAL'}
-	| {type: 'CHANGE_RANKING_MODE', mode: RankingModeType};
-
-export type ManageStateType = {
-	isModal: bool,
-	rankingMode: RankingModeType,
-	rankingPage: number,
-	rankingIds: Array<number>
-};
-
-const initManageState = {
-	isModal: false,
-	rankingMode: 'daily',
-	rankingPage: 1,
-	rankingIds: []
-};
-
-export function manage(state: ManageStateType = initManageState, action: ManageActionType): ManageStateType {
-	switch (action.type) {
-		case 'OPEN_MODAL':
-			return {...state, isModal: true};
-		case 'CLOSE_MODAL':
-			return {...state, isModal: false};
-		case 'TOGGLE_MODAL':
-			return {...state, isModal: !state.isModal};
-		case 'CHANGE_RANKING_MODE':
-			return {
-				...state,
-				rankingMode: action.mode,
-				rankingPage: 1,
-				rankingIds: []
-			};
-		case 'NEXT_RANKING_PAGE':
-			return {...state, rankingPage: action.page};
-		case 'ADD_RANKING_IDS':
-			return {...state, rankingIds: [...state.rankingIds, ...action.ids]};
 		default:
 			return state;
 	}
