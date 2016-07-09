@@ -9,7 +9,7 @@ import styles from './image-box.css';
 type Props = {
 	work: WorkType,
 	user: UserType,
-	onClick: (id: string) => void
+	onClick: (id: number) => void
 };
 
 class ImageBox extends Component {

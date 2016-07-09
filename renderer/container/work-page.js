@@ -62,7 +62,7 @@ class DetailPage extends Component {
 function mapStateToProps(state: State, ownProps: Props) {
 	const {id} = ownProps;
 	const {entities, manage, result} = state;
-	const {works, users} = entities;
+	const {works} = entities;
 	const work = works[result];
 
 	return {
