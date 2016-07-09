@@ -1,35 +1,29 @@
 // @flow
 import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
-import type {State} from 'redux';
+import type {Dispatch, State} from 'redux';
 import {connect} from 'react-redux';
 import cssModules from 'react-css-modules';
-import type {RankingModeType, ManageStateType} from '../actions/type';
-import {currentWork} from '../actions';
-import {openModal, closeModal} from '../actions/modal';
+import type {ManageStateType, WorkType} from '../actions/type';
+import {closeModal} from '../actions/modal';
 import ImageModal from '../components/image-modal';
 import RankingPage from './ranking-page';
 import styles from './app.css';
 
 type Props = {
 	children: any,
-	work: Object,
+	work: WorkType,
 	works: Object,
-	worksArray: Array<Object>,
+	worksArray: Array<WorkType>,
 	manage: ManageStateType,
 	currentWorkId: number | null,
-	openModal: typeof openModal,
-	closeModal: typeof closeModal,
-	currentWork: (id: string) => Object,
-	changeRankingMode: (mode: RankingModeType) => void,
-	nextRankingPage: (page: number) => void
+	dispatch: Dispatch
 };
 
 class App extends Component {
 	props: Props;
 
 	handleCloseModal = () => {
-		this.props.closeModal();
+		this.props.dispatch(closeModal());
 	};
 
 	render() {
@@ -68,12 +62,4 @@ function mapStateToProps(state: State) {
 	};
 }
 
-function mapDispatchToProps(dispatch) {
-	return bindActionCreators({
-		currentWork,
-		openModal,
-		closeModal
-	}, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(cssModules(styles)(App));
+export default connect(mapStateToProps)(cssModules(styles)(App));
