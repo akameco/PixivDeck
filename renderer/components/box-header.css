@@ -1,0 +1,21 @@
+.base {
+	display: flex;
+}
+
+.area {
+	display: inline-flex;
+	margin-top: 0.5rem;
+}
+
+.name {
+	font-size: 1rem;
+	font-weight: bold;
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+}
+
+.account {
+	line-height: 1;
+	font-size: 0.85rem;
+	color: darkgray;
+}
