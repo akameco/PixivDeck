@@ -69,12 +69,13 @@
     "extends": [
       "xo-react"
     ],
+    "ignores": [
+      "flow-typed/**",
+      "flow-typed/npm/**"
+    ],
     "rules": {
       "no-duplicate-imports": 0,
       "react/jsx-no-bind": 0
-    },
-    "ignores": [
-      "flow-typed/**/*.js"
-    ]
+    }
   }
 }

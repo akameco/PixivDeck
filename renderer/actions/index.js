@@ -1,5 +1,6 @@
 // @flow
-import {ipcRenderer} from 'electron';
+import {ipcRenderer} from 'electron'; // eslint-disable-line import/no-extraneous-dependencies
+
 export type RankingModeType = | 'daily' | 'weekly' | 'monthly';
 export type LoadingType = {type: 'LOADING'};
 

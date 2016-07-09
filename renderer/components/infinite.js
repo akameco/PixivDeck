@@ -10,7 +10,7 @@ type Props = {
 
 export default class Infinite extends Component {
 	props: Props;
-	sentinel: Component;
+	sentinel: Component<*, *, *>;
 	io: Object;
 
 	componentDidMount() {
@@ -32,7 +32,7 @@ export default class Infinite extends Component {
 		this.props.onIntersect();
 	}
 
-	handleRefs(c: Component) {
+	handleRefs(c: Component<*, *, *>) {
 		this.sentinel = c;
 	}
 

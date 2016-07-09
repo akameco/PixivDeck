@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs';
-import {app} from 'electron';
+import {app} from 'electron'; // eslint-disable-line import/no-extraneous-dependencies
 
 export default class Store {
 	constructor(name) {
@@ -11,7 +11,7 @@ export default class Store {
 		let value;
 		try {
 			value = JSON.parse(fs.readFileSync(this.path, 'utf8'));
-		} catch (e) {
+		} catch (err) {
 			value = null;
 		}
 		return value;

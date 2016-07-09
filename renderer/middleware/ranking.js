@@ -1,6 +1,6 @@
-import {ipcRenderer} from 'electron';
+import {ipcRenderer} from 'electron'; // eslint-disable-line import/no-extraneous-dependencies
 
-export default store => next => action => {
+export default () => next => action => {
 	if (action.type !== 'RANKING_REQUEST') {
 		return next(action);
 	}

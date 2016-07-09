@@ -1,5 +1,6 @@
 // @flow
 import type {Dispatch} from 'redux';
+
 type RankingModeType = | 'daily' | 'weekly' | 'monthly';
 
 export function fetchRanking(mode: RankingModeType = 'daily', page: number = 1) {
