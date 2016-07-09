@@ -1,7 +1,9 @@
 // @flow
 import React, {Component} from 'react';
+import cssModules from 'react-css-modules';
 import BoxHeader from './box-header';
 import BoxFooter from './box-footer';
+import styles from './image-box.css';
 
 type Props = {
 	work: {
@@ -26,7 +28,7 @@ class ImageBox extends Component {
 		const {work, user} = this.props;
 		const {id, title, imageUrls, caption, tags} = work;
 		return (
-			<div styleName="image-box">
+			<div styleName="base">
 				<BoxHeader
 					name={user.name}
 					account={user.account}
@@ -45,4 +47,4 @@ class ImageBox extends Component {
 	}
 }
 
-export default ImageBox;
+export default cssModules(ImageBox, styles);

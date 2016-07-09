@@ -62,8 +62,8 @@ class RankingPage extends Component {
 		const {works, mode, manage, users} = this.props;
 		const arr = manage.rankingIds.map(v => works[v]);
 		return (
-			<div styleName="wrap">
 				<h1>{t(mode)}ランキング</h1>
+			<div styleName="base">
 				{arr.length > 0 &&
 					<Infinite onIntersect={this.handleOnNextPage}>
 						<RankingList works={arr} users={users} onClick={this.handleOnClickWork}/>

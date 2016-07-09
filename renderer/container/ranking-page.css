@@ -7,10 +7,12 @@ img {
 	max-height: 100%;
 }
 
-.wrap {
+.base {
 	display: flex;
-	margin: 2rem 1rem 0;
+	margin: 5px 2px 0;
 	width: 400px;
+	height: 100vh;
+	overflow-y: scroll;
 
 	& h1 {
 		display: inline-flex;
