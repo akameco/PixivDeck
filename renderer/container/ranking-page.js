@@ -5,6 +5,7 @@ import type {State} from 'redux';
 import {connect} from 'react-redux';
 import cssModules from 'react-css-modules';
 import type {RankingModeType} from '../actions/';
+import type {WorkType, UserType} from '../actions/type';
 import type {ManageStateType} from '../reducers/manage';
 import {changeRankingMode, nextRankingPage} from '../actions/ranking';
 import {currentWork} from '../actions';
@@ -14,8 +15,8 @@ import Infinite from '../components/infinite';
 import styles from './ranking-page.css';
 
 type Props = {
-	works: Array<Object>,
-	users: Array<Object>,
+	works: Array<WorkType>,
+	users: Array<UserType>,
 	mode: RankingModeType,
 	manage: ManageStateType,
 	ranking: () => void,

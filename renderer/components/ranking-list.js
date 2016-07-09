@@ -1,10 +1,11 @@
 // @flow
 import React, {Component} from 'react';
+import type {WorkType, UserType} from '../actions/type';
 import ImageBox from './image-box';
 
 type Props = {
-	works: Array<Object>,
-	users: Array<Object>,
+	works: Array<WorkType>,
+	users: Array<UserType>,
 	onClick: (id: string) => void
 };
 

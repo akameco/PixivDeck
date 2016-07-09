@@ -1,23 +1,14 @@
 // @flow
 import React, {Component} from 'react';
 import cssModules from 'react-css-modules';
+import type {WorkType, UserType} from '../actions/type';
 import BoxHeader from './box-header';
 import BoxFooter from './box-footer';
 import styles from './image-box.css';
 
 type Props = {
-	work: {
-		id: number,
-		title: string,
-		caption: string,
-		tags: Array<string>,
-		imageUrls: Object
-	},
-	user: {
-		name: string,
-		account: string,
-		profileImageUrls: Object
-	},
+	work: WorkType,
+	user: UserType,
 	onClick: (id: string) => void
 };
 

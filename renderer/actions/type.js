@@ -1,4 +1,20 @@
+// @flow
 export type RankingModeType = 'daily' | 'weekly' | 'monthly';
+
+export type WorkType = {
+	id: number,
+	title: string,
+	caption: string,
+	tags: Array<string>,
+	user: number,
+	imageUrls: Object
+}
+
+export type UserType = {
+	name: string,
+	account: string,
+	profileImageUrls: Object
+}
 
 export type PixivActionType =
 	| {type: 'currentWork', id: number | string}
