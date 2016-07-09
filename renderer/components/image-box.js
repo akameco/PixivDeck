@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
 import BoxHeader from './box-header';
+import BoxFooter from './box-footer';
 
 type Props = {
 	work: {
@@ -41,7 +42,7 @@ class ImageBox extends Component {
 					/>
 				<br/>
 				{caption}
-				{tags}
+				<BoxFooter tags={tags}/>
 			</div>
 		);
 	}
