@@ -1,6 +1,5 @@
 // @flow
 import React, {Component} from 'react';
-import {Link} from 'react-router';
 import BoxHeader from './box-header';
 import BoxFooter from './box-footer';
 
@@ -33,15 +32,13 @@ class ImageBox extends Component {
 					account={user.account}
 					img={user.profileImageUrls.px50x50}
 					/>
-				<Link to={`work/${id}`}>
-					{title}
-				</Link>
+				{title}
+				{caption}
 				<img
 					src={imageUrls.medium}
 					onClick={() => this.props.onClick(id)}
 					/>
 				<br/>
-				{caption}
 				<BoxFooter tags={tags}/>
 			</div>
 		);

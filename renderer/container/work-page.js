@@ -4,7 +4,6 @@ import type {State} from 'redux';
 import {connect} from 'react-redux';
 import {openModal} from '../actions/modal';
 import {fetchWork} from '../actions/';
-// import {Link} from 'react-router';
 
 type Props = {
 	id: number,
