@@ -4,7 +4,6 @@ import {bindActionCreators} from 'redux';
 import type {State} from 'redux';
 import {connect} from 'react-redux';
 import cssModules from 'react-css-modules';
-import {Link} from 'react-router';
 import type {RankingModeType, ManageStateType} from '../actions/type';
 import {currentWork} from '../actions';
 import {openModal, closeModal} from '../actions/modal';
@@ -26,20 +25,6 @@ type Props = {
 	nextRankingPage: (page: number) => void
 };
 
-class Header extends Component {
-	render() {
-		const rankingLinks = ['daily', 'weekly', 'monthly'].map(mode => (
-			<Link key={mode} to={{pathname: `/ranking/${mode}`, state: {restoreScroll: true}}}>{mode}</Link>
-		));
-
-		return (
-			<div style={{position: 'fixed'}}>
-				{rankingLinks}
-			</div>
-		);
-	}
-}
-
 class App extends Component {
 	props: Props;
 
@@ -52,7 +37,6 @@ class App extends Component {
 
 		return (
 			<div styleName="wrap">
-				<Header/>
 				<RankingPage params={{mode: 'daily'}}/>
 				<RankingPage params={{mode: 'weekly'}}/>
 				<RankingPage params={{mode: 'monthly'}}/>

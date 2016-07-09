@@ -31,7 +31,6 @@
     "react-css-modules": "^3.7.6",
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.5",
-    "react-router": "^2.5.2",
     "redux": "^3.5.2",
     "redux-thunk": "^2.1.0"
   },
@@ -55,7 +54,6 @@
     "nodemon": "^1.9.2",
     "postcss-cssnext": "^2.7.0",
     "postcss-loader": "^0.9.1",
-    "react-router-redux": "^4.0.5",
     "redux-logger": "^2.6.1",
     "style-loader": "^0.13.1",
     "watchify": "^3.7.0",
