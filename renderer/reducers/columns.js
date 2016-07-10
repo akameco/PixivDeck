@@ -1,20 +1,9 @@
 // @flow
 import {merge, set, union} from 'lodash';
+import type {ColumnType} from '../actions/type';
 import type {Action} from '../actions/column';
 
-type Column = {
-	id: number,
-	title: string,
-	works?: Array<number>,
-	query: {
-		type: string,
-		opts: {
-			mode?: string,
-			page: number
-		}
-	}
-}
-
+type Column = ColumnType;
 type State = Array<Column>;
 
 function column(state: Column, action: Action): Column {
@@ -29,7 +18,7 @@ function column(state: Column, action: Action): Column {
 			if (state.works) {
 				return merge({}, state, {works: union(state.works, action.works)});
 			}
-			return merge({}, state, {works: [...action.works]});
+			return {...state, works: [...action.works]};
 		default:
 			return state;
 	}
