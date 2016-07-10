@@ -6,6 +6,7 @@ import styles from './modal.css';
 type Props = {
 	children: typeof Component,
 	onClose: () => void,
+	title: string,
 	img: string
 };
 
@@ -44,20 +45,14 @@ class Modal extends Component {
 					}}
 					>
 					<header>
-						<span>title</span>
+						<h2>{this.props.title}</h2>
 						<a styleName="close" onClick={this.handleCloseClick}>
 							<i></i>
 						</a>
 					</header>
-					<h1>hello</h1>
-					<p>
-						hollo
-						hollo
-						hollo
-						hollo
-						hollo
-						hollo
-					</p>
+					<div styleName="body">
+						{this.props.children}
+					</div>
 				</div>
 			</div>
 		);
