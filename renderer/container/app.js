@@ -103,7 +103,9 @@ class App extends Component {
 				<Header
 					onOpenModal={this.handleOpenModal}
 					/>
-				{this.renderColumns()}
+				<div styleName="content">
+					{this.renderColumns()}
+				</div>
 				{this.renderImageView()}
 				{this.renderModal()}
 			</div>
