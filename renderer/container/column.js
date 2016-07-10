@@ -3,9 +3,9 @@ import React, {Component} from 'react';
 import type {State, Dispatch} from 'redux';
 import {connect} from 'react-redux';
 import cssModules from 'react-css-modules';
-import type {ColumnType, WorkType} from '../actions/type';
+import type {ColumnType, WorkType, UsersType} from '../actions/type';
 import {currentWork} from '../actions';
-import {openModal} from '../actions/modal';
+import {openImageView} from '../actions/manage';
 import {nextPage} from '../actions/column';
 import List from '../components/list';
 import Infinite from '../components/infinite';
@@ -15,7 +15,7 @@ type Props = {
 	id: number,
 	column: ColumnType,
 	works: Array<WorkType>,
-	users: Object,
+	users: UsersType,
 	dispatch: Dispatch
 }
 
@@ -28,7 +28,7 @@ class Column extends Component {
 
 	handleOnClickWork = (id :number) => {
 		this.props.dispatch(currentWork(id));
-		this.props.dispatch(openModal());
+		this.props.dispatch(openImageView());
 	};
 
 	render() {
