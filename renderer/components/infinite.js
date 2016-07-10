@@ -11,6 +11,7 @@ type Props = {
 export default class Infinite extends Component {
 	props: Props;
 	sentinel: Component<*, *, *>;
+	root: Component<*, *, *>;
 	io: Object;
 
 	componentDidMount() {
@@ -23,7 +24,8 @@ export default class Infinite extends Component {
 				this.handleOnIntersect();
 			});
 		}, {
-			rootMargin: this.props.rootMargin || '300%'
+			root: this.root,
+			rootMargin: this.props.rootMargin || '1000%'
 		});
 		this.io.observe(findDOMNode(sentinel));
 	}
@@ -32,15 +34,19 @@ export default class Infinite extends Component {
 		this.props.onIntersect();
 	}
 
-	handleRefs(c: Component<*, *, *>) {
+	handleRefs = (c: Component<*, *, *>) => {
 		this.sentinel = c;
-	}
+	};
+
+	handleRootRefs = (c: Component<*, *, *>) => {
+		this.root = c;
+	};
 
 	render() {
 		return (
-			<div>
+			<div ref={this.handleRootRefs}>
 				{this.props.children}
-				<div ref={c => this.handleRefs(c)} style={{height: 1}}></div>
+				<div ref={this.handleRefs} style={{height: 100}}></div>
 			</div>
 		);
 	}
