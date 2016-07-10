@@ -1,31 +1,25 @@
 // @flow
-type ManageActionType =
-	| {type: 'CLOSE_MODAL'}
-	| {type: 'SELECT_WORK', id: number}
-;
-
-export type ManageStateType = {
-	isModal: bool,
-	currentWorkId: ?number
-};
+import type {ManageAction} from '../actions/manage';
+import type {Manage} from '../actions/type';
 
 const initManageState = {
-	isModal: false,
+	isImageView: false,
+	isModal: true,
 	currentWorkId: null
 };
 
-export default function (state: ManageStateType = initManageState, action: ManageActionType): ManageStateType {
+export default function (state: Manage = initManageState, action: ManageAction): Manage {
 	switch (action.type) {
+		case 'OPEN_IMAGE_VIEW':
+			return {...state, isImageView: true};
+		case 'CLOSE_IMAGE_VIEW':
+			return {...state, isImageView: false};
 		case 'OPEN_MODAL':
 			return {...state, isModal: true};
 		case 'CLOSE_MODAL':
 			return {...state, isModal: false};
 		case 'SELECT_WORK':
 			return {...state, currentWorkId: action.id};
-		// case 'NEXT_RANKING_PAGE':
-		// 	return {...state, rankingPage: action.page};
-		// case 'ADD_RANKING_IDS':
-		// 	return {...state, rankingIds: [...state.rankingIds, ...action.ids]};
 		default:
 			return state;
 	}

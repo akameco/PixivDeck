@@ -3,18 +3,19 @@ import React, {Component} from 'react';
 import type {Dispatch, State} from 'redux';
 import {connect} from 'react-redux';
 import cssModules from 'react-css-modules';
-import type {ManageStateType, WorkType} from '../actions/type';
-import {closeModal} from '../actions/modal';
+import type {Manage, WorkType, WorksType} from '../actions/type';
+import {closeModal, closeImageView} from '../actions/manage';
 import {addColumn} from '../actions/column';
 import ImageModal from '../components/image-modal';
+import Modal from '../components/modal';
 import Column from './column';
 import styles from './app.css';
 
 type Props = {
 	children: any,
 	work: WorkType,
-	works: Object,
-	manage: ManageStateType,
+	works: WorksType,
+	manage: Manage,
 	dispatch: Dispatch
 };
 
@@ -28,23 +29,45 @@ class App extends Component {
 	}
 
 	handleCloseModal = () => {
+		this.props.dispatch(closeImageView());
+	};
+
+	isImageModal(): bool {
+		const {currentWorkId, isImageView} = this.props.manage;
+		if (isImageView && currentWorkId && this.props.works[currentWorkId]) {
+			return true;
+		}
+		return false;
+	}
+
+	handleOnCloseModal = () => {
 		this.props.dispatch(closeModal());
 	};
 
-	render() {
+	renderImageView() {
 		const {works, manage} = this.props;
+		const {currentWorkId, isImageView} = manage;
+		if (isImageView && currentWorkId && this.props.works[currentWorkId]) {
+			return (
+				<ImageModal
+					show={isImageView}
+					img={works[currentWorkId].imageUrls.large}
+					onClose={this.handleCloseModal}
+					/>
+			);
+		}
+		return null;
+	}
 
+	render() {
 		return (
 			<div styleName="wrap">
 				<Column id={1}/>
 				<Column id={2}/>
 				<Column id={3}/>
-				{manage.currentWorkId && works[manage.currentWorkId] && manage.isModal &&
-					<ImageModal
-						show={manage.isModal}
-						img={works[manage.currentWorkId].imageUrls.large}
-						onClose={this.handleCloseModal}
-						/>
+				{this.renderImageView()}
+				{this.props.manage.isModal &&
+					<Modal onClose={this.handleOnCloseModal}/>
 				}
 			</div>
 		);

@@ -10,11 +10,15 @@ export type WorkType = {
 	imageUrls: Object
 }
 
+export type WorksType = {[key: number]: WorkType}
+
 export type UserType = {
 	name: string,
 	account: string,
 	profileImageUrls: Object
 }
+
+export type UsersType = {[key: number]: UserType}
 
 export type ColumnType = {
 	id: number,
@@ -26,17 +30,8 @@ export type ColumnType = {
 	}
 }
 
-export type ManageActionType =
-	| {type: 'TOGGLE_MODAL'}
-	| {type: 'OPEN_MODAL'}
-	| {type: 'CLOSE_MODAL'}
-	| {type: 'CHANGE_RANKING_MODE', mode: RankingModeType};
-
-export type ranking = {
-	mode: RankingModeType
-};
-
-export type ManageStateType = {
+export type Manage = {
 	isModal: bool,
-	ranking: ranking
+	isImageView: bool,
+	currentWorkId: ?number
 };
