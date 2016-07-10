@@ -5,39 +5,44 @@ import {connect} from 'react-redux';
 import cssModules from 'react-css-modules';
 import type {ManageStateType, WorkType} from '../actions/type';
 import {closeModal} from '../actions/modal';
+import {addColumn} from '../actions/column';
 import ImageModal from '../components/image-modal';
-import RankingPage from './ranking-page';
+import Column from './column';
 import styles from './app.css';
 
 type Props = {
 	children: any,
 	work: WorkType,
 	works: Object,
-	worksArray: Array<WorkType>,
 	manage: ManageStateType,
-	currentWorkId: number | null,
 	dispatch: Dispatch
 };
 
 class App extends Component {
 	props: Props;
 
+	componentWillMount() {
+		this.props.dispatch(addColumn(1, {type: 'ranking', opts: {mode: 'daily', page: 1}}, 'ranking/daily'));
+		this.props.dispatch(addColumn(2, {type: 'ranking', opts: {mode: 'weekly', page: 1}}, 'ranking/weekly'));
+		this.props.dispatch(addColumn(3, {type: 'ranking', opts: {mode: 'monthly', page: 1}}, 'ranking/monthly'));
+	}
+
 	handleCloseModal = () => {
 		this.props.dispatch(closeModal());
 	};
 
 	render() {
-		const {works, manage, currentWorkId} = this.props;
+		const {works, manage} = this.props;
 
 		return (
 			<div styleName="wrap">
-				<RankingPage params={{mode: 'daily'}}/>
-				<RankingPage params={{mode: 'weekly'}}/>
-				<RankingPage params={{mode: 'monthly'}}/>
-				{currentWorkId && works[currentWorkId] && manage.isModal &&
+				<Column id={1}/>
+				<Column id={2}/>
+				<Column id={3}/>
+				{manage.currentWorkId && works[manage.currentWorkId] && manage.isModal &&
 					<ImageModal
 						show={manage.isModal}
-						img={works[currentWorkId].imageUrls.large}
+						img={works[manage.currentWorkId].imageUrls.large}
 						onClose={this.handleCloseModal}
 						/>
 				}
@@ -47,17 +52,13 @@ class App extends Component {
 }
 
 function mapStateToProps(state: State) {
-	const {entities, pixiv, result, manage} = state;
+	const {entities, manage} = state;
 	const {works} = entities;
-	const work = works[pixiv.currentWorkId] || null;
-	const worksArray = manage.rankingIds.map(v => works[v]);
+	const work = works[manage.currentWorkId] || null;
 
 	return {
 		work,
 		works,
-		result,
-		worksArray,
-		currentWorkId: pixiv.currentWorkId,
 		manage
 	};
 }

@@ -19,16 +19,19 @@ export default (store: Store) => {
 	const dispatch: Dispatch = store.dispatch;
 
 	ipcRenderer.on('ranking', (ev, data) => {
-		const res = data.response[0].works.map(v => v.work);
+		const res = data.res.works.map(v => v.work);
 		const camelizedJson = camelizeKeys(res);
 		const normalizedJson = normalize(camelizedJson, Schemas.WORK_ARRAY);
+
 		dispatch({
-			type: 'SUCCESS_RANKING',
+			type: 'SUCCESS_IPC_REQUEST',
 			response: normalizedJson
 		});
+
 		dispatch({
-			type: 'ADD_RANKING_IDS',
-			ids: normalizedJson.result
+			type: 'RECIEVE_WORKS',
+			id: data.id,
+			works: normalizedJson.result
 		});
 	});
 
