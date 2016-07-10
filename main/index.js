@@ -78,9 +78,12 @@ app.on('ready', () => {
 	const pixiv = new Pixiv(NAME, PASS);
 	mainWindow = createMainWindow();
 
-	ipcMain.on('ranking', async (ev, opts = {}) => {
+	ipcMain.on('ranking', async (ev, {id, opts}) => {
 		const res = await pixiv.ranking('all', Object.assign({page: 1, per_page: 50}, opts));
-		mainWindow.webContents.send('ranking', res);
+		mainWindow.webContents.send('ranking', {
+			id,
+			res: res.response[0]
+		});
 	});
 
 	ipcMain.on('work', async (ev, id) => {
