@@ -4,12 +4,6 @@ import {ipcRenderer} from 'electron'; // eslint-disable-line import/no-extraneou
 export type RankingModeType = | 'daily' | 'weekly' | 'monthly';
 export type LoadingType = {type: 'LOADING'};
 
-export type currentWorkType = {
-	type: 'currentWork',
-	id: number
-};
-
-export function currentWork(id: number): currentWorkType {
 	return {
 		type: 'currentWork',
 		id
