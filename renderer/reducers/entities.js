@@ -1,10 +1,11 @@
 // @flow
 import {merge} from 'lodash';
 import type {Action} from 'redux';
+import type {WorkType, UserType} from '../actions/type';
 
 type State = {
-	works: Object,
-	users: Object
+	works: {[key: number]: WorkType},
+	users: {[key: number]: UserType}
 }
 
 const initialState: State = {
