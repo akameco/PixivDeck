@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import cssModules from 'react-css-modules';
+import {rankingModes} from '../../contains';
 import styles from './select-column-modal.css';
 
 type Props = {
@@ -31,7 +32,7 @@ class SelectColumnModal extends Component {
 	};
 
 	render() {
-		const links = ['daily', 'weekly', 'monthly'].map(v =>
+		const links = rankingModes.map(v =>
 			<Link
 				mode={v}
 				key={v}
