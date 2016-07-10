@@ -4,3 +4,9 @@
 .wrap {
 	display: flex;
 }
+
+.content {
+	display: flex;
+	position: absolute;
+	left: 50px;
+}
