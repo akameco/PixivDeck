@@ -8,6 +8,7 @@ import {openModal, closeModal, closeImageView} from '../actions/manage';
 import {addColumn} from '../actions/column';
 import ImageModal from '../components/image-modal';
 import Modal from '../components/modal';
+import SelectColumnModal from '../components/modal/select-column-modal';
 import Header from '../components/header';
 import Column from './column';
 import styles from './app.css';
@@ -30,10 +31,13 @@ class App extends Component {
 		this.props.dispatch(addColumn(3, {type: 'ranking', opts: {mode: 'monthly', page: 1}}, 'ranking/monthly'));
 	}
 
-	addColumn(query: {type: string, opts: Object}, title: string = '') {
+	handleAddColumn = (
+		query: {type: string, opts: Object},
+		title : string = ''
+	) => {
 		const id = this.props.columns.length;
-		this.props.dispatch(addColumn(id, query, title));
-	}
+		this.props.dispatch(addColumn(id + 1, query, title));
+	};
 
 	handleCloseModal = () => {
 		this.props.dispatch(closeImageView());
@@ -86,7 +90,9 @@ class App extends Component {
 				title={'ランキング'}
 				onClose={this.handleOnCloseModal}
 				>
-				<div>hello</div>
+				<SelectColumnModal
+					onSelect={this.handleAddColumn}
+					/>
 			</Modal>
 		);
 	}

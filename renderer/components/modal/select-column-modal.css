@@ -1,0 +1,26 @@
+.list {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 14px;
+	background-color: #eaeaea;
+	text-align: center;
+	color: #666;
+	height: 100%;
+}
+
+.list li {
+	margin: 10px;
+	display: inline-flex;
+	line-height: 1.2rem;
+	list-style: none;
+	border: 1px solid #ccd6dd;
+	padding-top: 8px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.list li a {
+	font-size: 1.2rem;
+	width: 250px;
+	height: 30px;
+}

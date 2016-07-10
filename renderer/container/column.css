@@ -13,11 +13,12 @@ img {
 .base {
 	display: flex;
 	margin: 0 2px 0;
+	min-width: 300px;
 	width: 400px;
 	height: 100vh;
 	overflow-y: scroll;
+}
 
-	& h1 {
-		display: inline-flex;
-	}
+.base h1 {
+	display: inline-flex;
 }
