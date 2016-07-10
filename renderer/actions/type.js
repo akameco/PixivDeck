@@ -16,6 +16,16 @@ export type UserType = {
 	profileImageUrls: Object
 }
 
+export type ColumnType = {
+	id: number,
+	title: ?string,
+	works: Array<number>,
+	query: {
+		type: string,
+		opts: ?Object
+	}
+}
+
 export type PixivActionType =
 	| {type: 'currentWork', id: number | string}
 	| {type: 'receive:works', works: Array<Object>}
