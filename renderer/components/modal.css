@@ -42,3 +42,7 @@
 	font-size: 1.25rem;
 	content: "×";
 }
+
+.body {
+	padding: 0 15px 15px 15px;
+}
