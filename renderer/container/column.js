@@ -6,7 +6,7 @@ import cssModules from 'react-css-modules';
 import type {ColumnType, WorkType} from '../actions/type';
 import {currentWork} from '../actions';
 import {openModal} from '../actions/modal';
-import {addColumn, nextPage} from '../actions/column';
+import {nextPage} from '../actions/column';
 import List from '../components/list';
 import Infinite from '../components/infinite';
 import styles from './column.css';
