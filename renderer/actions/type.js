@@ -22,14 +22,16 @@ export type UsersType = {[key: number]: UserType}
 
 export type ColumnType = {
 	id: number,
-	title: ?string,
-	works: Array<number>,
+	title: string,
+	works?: Array<number>,
 	query: {
 		type: string,
-		opts: ?Object
+		opts: {
+			mode?: string,
+			page: number
+		}
 	}
 }
-
 export type Manage = {
 	isModal: bool,
 	isImageView: bool,

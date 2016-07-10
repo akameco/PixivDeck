@@ -3,11 +3,12 @@ import React, {Component} from 'react';
 import type {Dispatch, State} from 'redux';
 import {connect} from 'react-redux';
 import cssModules from 'react-css-modules';
-import type {Manage, WorkType, WorksType} from '../actions/type';
-import {closeModal, closeImageView} from '../actions/manage';
+import type {Manage, WorkType, WorksType, ColumnType} from '../actions/type';
+import {openModal, closeModal, closeImageView} from '../actions/manage';
 import {addColumn} from '../actions/column';
 import ImageModal from '../components/image-modal';
 import Modal from '../components/modal';
+import Header from '../components/header';
 import Column from './column';
 import styles from './app.css';
 
@@ -15,6 +16,7 @@ type Props = {
 	children: any,
 	work: WorkType,
 	works: WorksType,
+	columns: Array<ColumnType>,
 	manage: Manage,
 	dispatch: Dispatch
 };
@@ -28,8 +30,17 @@ class App extends Component {
 		this.props.dispatch(addColumn(3, {type: 'ranking', opts: {mode: 'monthly', page: 1}}, 'ranking/monthly'));
 	}
 
+	addColumn(query: {type: string, opts: Object}, title: string = '') {
+		const id = this.props.columns.length;
+		this.props.dispatch(addColumn(id, query, title));
+	}
+
 	handleCloseModal = () => {
 		this.props.dispatch(closeImageView());
+	};
+
+	handleOpenModal = () => {
+		this.props.dispatch(openModal());
 	};
 
 	isImageModal(): bool {
@@ -59,30 +70,51 @@ class App extends Component {
 		return null;
 	}
 
+	renderColumns() {
+		const columns = this.props.columns.map(v =>
+			<Column key={v.id} id={v.id}/>
+		);
+		return columns;
+	}
+
+	renderModal() {
+		if (!this.props.manage.isModal) {
+			return;
+		}
+		return (
+			<Modal
+				title={'ランキング'}
+				onClose={this.handleOnCloseModal}
+				>
+				<div>hello</div>
+			</Modal>
+		);
+	}
+
 	render() {
 		return (
 			<div styleName="wrap">
-				<Column id={1}/>
-				<Column id={2}/>
-				<Column id={3}/>
+				<Header
+					onOpenModal={this.handleOpenModal}
+					/>
+				{this.renderColumns()}
 				{this.renderImageView()}
-				{this.props.manage.isModal &&
-					<Modal onClose={this.handleOnCloseModal}/>
-				}
+				{this.renderModal()}
 			</div>
 		);
 	}
 }
 
 function mapStateToProps(state: State) {
-	const {entities, manage} = state;
+	const {entities, manage, columns} = state;
 	const {works} = entities;
 	const work = works[manage.currentWorkId] || null;
 
 	return {
 		work,
 		works,
-		manage
+		manage,
+		columns
 	};
 }
 
