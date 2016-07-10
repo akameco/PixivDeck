@@ -26,16 +26,6 @@ export type ColumnType = {
 	}
 }
 
-export type PixivActionType =
-	| {type: 'currentWork', id: number | string}
-	| {type: 'receive:works', works: Array<Object>}
-	| {type: 'CLEAR_WORKS'};
-
-export type PixivStateType = {
-	works: Array<Object>,
-	currentWorkId: string | number | null
-};
-
 export type ManageActionType =
 	| {type: 'TOGGLE_MODAL'}
 	| {type: 'OPEN_MODAL'}
