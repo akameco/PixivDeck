@@ -4,7 +4,7 @@ import type {Manage} from '../actions/type';
 
 const initManageState = {
 	isImageView: false,
-	isModal: true,
+	isModal: false,
 	currentWorkId: null
 };
 
