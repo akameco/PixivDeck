@@ -3,7 +3,7 @@ import createLogger from 'redux-logger';
 import thunk from 'redux-thunk';
 import reducer from '../reducers';
 import startIpc from '../middleware/ipc';
-import rankingMiddleware from '../middleware/ranking';
+import api from '../middleware/api';
 import scroll from '../middleware/scroll';
 
 export default function configureStore() {
@@ -11,7 +11,7 @@ export default function configureStore() {
 
 	const enhancer = compose(
 		applyMiddleware(thunk,
-			rankingMiddleware,
+			api,
 			scroll,
 			logger
 		), window.devToolsExtension ? window.devToolsExtension() : f => f
