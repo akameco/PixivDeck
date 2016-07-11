@@ -30,6 +30,10 @@ type Props = {
 class App extends Component {
 	props: Props;
 
+	componentWillMount() {
+		this.props.dispatch({type: 'INIT'});
+	}
+
 	handleAddColumn = (
 		query: query,
 		title : string = ''
