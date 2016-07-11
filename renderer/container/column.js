@@ -8,7 +8,6 @@ import {currentWork} from '../actions';
 import {openImageView} from '../actions/manage';
 import {nextPage} from '../actions/column';
 import List from '../components/list';
-// import Infinite from '../components/infinite';
 import styles from './column.css';
 
 type Props = {
