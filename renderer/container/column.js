@@ -8,7 +8,7 @@ import {currentWork} from '../actions';
 import {openImageView} from '../actions/manage';
 import {nextPage} from '../actions/column';
 import List from '../components/list';
-import Infinite from '../components/infinite';
+// import Infinite from '../components/infinite';
 import styles from './column.css';
 
 type Props = {
@@ -38,9 +38,13 @@ class Column extends Component {
 		return (
 			<div styleName="base">
 				{arr.length > 0 &&
-					<Infinite onIntersect={this.handleOnNextPage}>
-						<List title={column.title} works={arr} users={users} onClick={this.handleOnClickWork}/>
-					</Infinite>
+					<List
+						title={column.title}
+						works={arr}
+						users={users}
+						onClick={this.handleOnClickWork}
+						onNextPage={this.handleOnNextPage}
+						/>
 					}
 			</div>
 		);

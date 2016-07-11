@@ -1,5 +1,5 @@
 // @flow
-import {merge, set, union} from 'lodash';
+import {merge, union} from 'lodash';
 import type {ColumnType} from '../actions/type';
 import type {Action} from '../actions/column';
 
@@ -12,8 +12,10 @@ function column(state: Column, action: Action): Column {
 	}
 
 	switch (action.type) {
-		case 'NEXT_PAGE':
-			return set(state, 'query.opts.page', state.query.opts.page + 1);
+		case 'NEXT_PAGE': {
+			const page = state.query.opts.page + 1;
+			return merge({}, state, {query: {opts: {page}}});
+		}
 		case 'RECIEVE_WORKS':
 			if (state.works) {
 				return merge({}, state, {works: union(state.works, action.works)});

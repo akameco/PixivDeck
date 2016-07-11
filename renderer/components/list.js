@@ -1,22 +1,25 @@
 // @flow
 import React, {Component} from 'react';
+import cssModules from 'react-css-modules';
 import type {WorkType, UserType} from '../actions/type';
+import Infinite from './infinite';
 import ImageBox from './image-box';
+import styles from './list.css';
 
 type Props = {
 	works: Array<WorkType>,
 	users: Array<UserType>,
 	title: string,
-	onClick: (id: string) => void
+	onClick: (id: string) => void,
+	onNextPage: () => void
 };
 
-export default class List extends Component {
+class List extends Component {
 	props: Props;
 
 	render() {
 		const List = this.props.works.map(work => {
 			const user = this.props.users[work.user];
-
 			return (
 				<ImageBox
 					key={work.id}
@@ -28,10 +31,18 @@ export default class List extends Component {
 		});
 
 		return (
-			<div>
-				<h1>{this.props.title}</h1>
-				{List}
-			</div>
+			<section styleName="wrap">
+				<header>
+					<span styleName="title">{this.props.title}</span>
+				</header>
+				<div styleName="content">
+					<Infinite onIntersect={() => this.props.onNextPage()}>
+						{List}
+					</Infinite>
+				</div>
+			</section>
 		);
 	}
 }
+
+export default cssModules(List, styles);
