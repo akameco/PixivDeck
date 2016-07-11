@@ -47,6 +47,11 @@ export default (store: Store) => {
 		send(data.id, format(res));
 	});
 
+	ipcRenderer.on('search', (ev, data) => {
+		const res = data.res.response;
+		send(data.id, format(res));
+	});
+
 	ipcRenderer.on('work', (ev, data) => {
 		const res = data.response[0];
 		const camelizedJson = camelizeKeys(res);

@@ -10,6 +10,7 @@ export type Action =
 	title: string,
 	query: {
 		type: string,
+		q?: string,
 		opts: Object
 	}
 } | {
@@ -21,20 +22,21 @@ export type Action =
 }
 ;
 
-export function nextPage(id: number): Action {
-	return {
-		type: 'NEXT_PAGE',
-		id
-	};
-}
-
-type query = {
+export type query = {
 	type: string,
+	q?: string,
 	opts: {
 		mode?: string,
 		publicity?: 'public' | 'private',
 		page: number
 	}
+}
+
+export function nextPage(id: number): Action {
+	return {
+		type: 'NEXT_PAGE',
+		id
+	};
 }
 
 export function addColumn(query: query, title: string = ''): Action {

@@ -94,6 +94,15 @@ app.on('ready', () => {
 		});
 	});
 
+	ipcMain.on('search', async (ev, {id, q, opts}) => {
+		const res = await pixiv.search(q, Object.assign({}, {mode: 'tag'}, opts));
+		console.log(res);
+		mainWindow.webContents.send('search', {
+			id,
+			res
+		});
+	});
+
 	ipcMain.on('work', async (ev, id) => {
 		const res = await pixiv.works(id);
 		mainWindow.webContents.send('work', res);

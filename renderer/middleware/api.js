@@ -16,8 +16,12 @@ export default (store: Store) => (next: Dispatch) => (action: Action) => {
 
 	if (action.type === 'ADD_COLUMN' && action.id && action.query) {
 		next(action);
-		const {type, opts} = action.query;
-		ipcRenderer.send(type, {id: action.id, opts});
+		const {type, opts, q} = action.query;
+		if (action.query.type === 'search') {
+			ipcRenderer.send(type, {id: action.id, q, opts});
+		} else {
+			ipcRenderer.send(type, {id: action.id, opts});
+		}
 	}
 
 	return next({type: 'IPC_REQUEST'});

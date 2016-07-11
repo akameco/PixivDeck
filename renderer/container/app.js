@@ -7,6 +7,7 @@ import type {Manage, WorkType, WorksType, ColumnType, UserType} from '../actions
 import {openModal, closeModal, closeImageView} from '../actions/manage';
 import {currentWork} from '../actions';
 import {addColumn, nextPage, closeColumn} from '../actions/column';
+import type {query} from '../actions/column';
 import {openImageView} from '../actions/manage';
 import ImageModal from '../components/image-modal';
 import Modal from '../components/modal';
@@ -33,10 +34,11 @@ class App extends Component {
 		this.props.dispatch(addColumn({type: 'ranking', opts: {mode: 'weekly', page: 1}}, 'ranking/weekly'));
 		this.props.dispatch(addColumn({type: 'ranking', opts: {mode: 'monthly', page: 1}}, 'ranking/monthly'));
 		this.props.dispatch(addColumn({type: 'favoriteWorks', opts: {publicity: 'public', page: 1}}, 'お気に入り'));
+		this.props.dispatch(addColumn({type: 'search', q: 'リゼロ5000users入り', opts: {publicity: 'public', page: 1}}, '検索/リゼロ5000users入り'));
 	}
 
 	handleAddColumn = (
-		query: {type: string, opts: Object},
+		query: query,
 		title : string = ''
 	) => {
 		this.props.dispatch(addColumn(query, title));
