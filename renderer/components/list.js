@@ -5,6 +5,7 @@ import cssModules from 'react-css-modules';
 import type {WorkType, UserType} from '../actions/type';
 import Infinite from './infinite';
 import ImageBox from './image-box';
+import CloseButton from './close-button';
 import styles from './list.css';
 
 type Props = {
@@ -25,6 +26,9 @@ class List extends Component {
 		node.scrollTop = 0;
 	};
 
+	handleClose = () => {
+	}
+
 	render() {
 		const List = this.props.works.map(work => {
 			const user = this.props.users[work.user];
@@ -44,6 +48,7 @@ class List extends Component {
 					<a styleName="title" onClick={this.handleScrollTop}>
 						{this.props.title}
 					</a>
+					<CloseButton onClose={this.handleClose}/>
 				</header>
 				<div styleName="content">
 					<Infinite
