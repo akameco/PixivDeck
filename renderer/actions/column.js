@@ -25,7 +25,16 @@ export function nextPage(id: number): Action {
 	};
 }
 
-export function addColumn(id: number, query: {type: string, opts: Object}, title: string = ''): Action {
+type query = {
+	type: string,
+	opts: {
+		mode?: string,
+		publicity?: 'public' | 'private',
+		page: number
+	}
+}
+
+export function addColumn(id: number, query: query, title: string = ''): Action {
 	return {
 		type: 'ADD_COLUMN',
 		id,

@@ -18,21 +18,33 @@ export const Schemas = {
 export default (store: Store) => {
 	const dispatch: Dispatch = store.dispatch;
 
-	ipcRenderer.on('ranking', (ev, data) => {
-		const res = data.res.works.map(v => v.work);
+	function format(res) {
 		const camelizedJson = camelizeKeys(res);
 		const normalizedJson = normalize(camelizedJson, Schemas.WORK_ARRAY);
+		return normalizedJson;
+	}
 
+	function send(id, response) {
 		dispatch({
 			type: 'SUCCESS_IPC_REQUEST',
-			response: normalizedJson
+			response
 		});
 
 		dispatch({
 			type: 'RECIEVE_WORKS',
-			id: data.id,
-			works: normalizedJson.result
+			id,
+			works: response.result
 		});
+	}
+
+	ipcRenderer.on('ranking', (ev, data) => {
+		const res = data.res.works.map(v => v.work);
+		send(data.id, format(res));
+	});
+
+	ipcRenderer.on('favoriteWorks', (ev, data) => {
+		const res = data.res.response.map(v => v.work);
+		send(data.id, format(res));
 	});
 
 	ipcRenderer.on('work', (ev, data) => {

@@ -29,6 +29,7 @@ class App extends Component {
 		this.props.dispatch(addColumn(1, {type: 'ranking', opts: {mode: 'daily', page: 1}}, 'ranking/daily'));
 		this.props.dispatch(addColumn(2, {type: 'ranking', opts: {mode: 'weekly', page: 1}}, 'ranking/weekly'));
 		this.props.dispatch(addColumn(3, {type: 'ranking', opts: {mode: 'monthly', page: 1}}, 'ranking/monthly'));
+		this.props.dispatch(addColumn(4, {type: 'favoriteWorks', opts: {publicity: 'public', page: 1}}, 'お気に入り'));
 	}
 
 	handleAddColumn = (
