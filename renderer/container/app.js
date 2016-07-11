@@ -3,9 +3,11 @@ import React, {Component} from 'react';
 import type {Dispatch, State} from 'redux';
 import {connect} from 'react-redux';
 import cssModules from 'react-css-modules';
-import type {Manage, WorkType, WorksType, ColumnType} from '../actions/type';
+import type {Manage, WorkType, WorksType, ColumnType, UserType} from '../actions/type';
 import {openModal, closeModal, closeImageView} from '../actions/manage';
-import {addColumn} from '../actions/column';
+import {currentWork} from '../actions';
+import {addColumn, nextPage} from '../actions/column';
+import {openImageView} from '../actions/manage';
 import ImageModal from '../components/image-modal';
 import Modal from '../components/modal';
 import SelectColumnModal from '../components/modal/select-column-modal';
@@ -17,6 +19,7 @@ type Props = {
 	children: any,
 	work: WorkType,
 	works: WorksType,
+	users: UserType,
 	columns: Array<ColumnType>,
 	manage: Manage,
 	dispatch: Dispatch
@@ -46,7 +49,16 @@ class App extends Component {
 
 	handleOpenModal = () => {
 		this.props.dispatch(openModal());
-	};
+	}
+
+	handleOnClickWork = (id: number) => {
+		this.props.dispatch(currentWork(id));
+		this.props.dispatch(openImageView());
+	}
+
+	handleOnNextPage = (id: number) => {
+		this.props.dispatch(nextPage(id));
+	}
 
 	isImageModal(): bool {
 		const {currentWorkId, isImageView} = this.props.manage;
@@ -76,10 +88,21 @@ class App extends Component {
 	}
 
 	renderColumns() {
-		const columns = this.props.columns.map(v =>
-			<Column key={v.id} id={v.id}/>
-		);
-		return columns;
+		const {columns, works, users} = this.props;
+		return columns.map(column => {
+			const workList = column.works && column.works.length > 0 ? column.works.map(i => works[i]) : [];
+			return (
+				<Column
+					key={column.id}
+					id={column.id}
+					column={column}
+					users={users}
+					works={workList}
+					onNextPage={this.handleOnNextPage}
+					onClickWork={this.handleOnClickWork}
+					/>
+			);
+		});
 	}
 
 	renderModal() {
@@ -116,12 +139,13 @@ class App extends Component {
 
 function mapStateToProps(state: State) {
 	const {entities, manage, columns} = state;
-	const {works} = entities;
+	const {works, users} = entities;
 	const work = works[manage.currentWorkId] || null;
 
 	return {
 		work,
 		works,
+		users,
 		manage,
 		columns
 	};
