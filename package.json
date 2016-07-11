@@ -4,7 +4,7 @@
   "description": "pixiv client for desktop",
   "main": "./dist/index.js",
   "scripts": {
-    "start": "NODE_ENV=development nodemon --watch main --exec 'electron' .",
+    "start": "NODE_ENV=development nodemon --delay 3 --watch main --exec 'electron' .",
     "clean": "rm -fr release && mkdir dist",
     "watch:m": "NODE_ENV=development watchify ./main/index.js -t [ babelify ] --im --no-detect-globals --node -d -v -o ./dist/index.js",
     "watch:r": "NODE_ENV=development webpack-dev-server --hot --inline --progress --colors",
