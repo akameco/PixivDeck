@@ -1,6 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import cssModules from 'react-css-modules';
+import CloseButton from './close-button';
 import styles from './modal.css';
 
 type Props = {
@@ -27,8 +28,7 @@ class Modal extends Component {
 		this.props.onClose();
 	}
 
-	handleCloseClick = (event: Event) => {
-		event.preventDefault();
+	handleCloseClick = () => {
 		this.props.onClose();
 	};
 
@@ -46,9 +46,7 @@ class Modal extends Component {
 					>
 					<header>
 						<h2>{this.props.title}</h2>
-						<a styleName="close" onClick={this.handleCloseClick}>
-							<i></i>
-						</a>
+						<CloseButton onClick={this.handleCloseClick}/>
 					</header>
 					<div styleName="body">
 						{this.props.children}
