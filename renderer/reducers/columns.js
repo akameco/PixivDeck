@@ -30,6 +30,8 @@ export default function columns(state: State = [], action: Action): State {
 	switch (action.type) {
 		case 'ADD_COLUMN':
 			return [...state, {id: action.id, query: action.query, title: action.title}];
+		case 'CLOSE_COLUMN':
+			return state.filter(t => t.id !== action.id);
 		case 'NEXT_PAGE':
 			return state.map((t: Column) => column(t, action));
 		case 'RECIEVE_WORKS':

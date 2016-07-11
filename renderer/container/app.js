@@ -6,13 +6,13 @@ import cssModules from 'react-css-modules';
 import type {Manage, WorkType, WorksType, ColumnType, UserType} from '../actions/type';
 import {openModal, closeModal, closeImageView} from '../actions/manage';
 import {currentWork} from '../actions';
-import {addColumn, nextPage} from '../actions/column';
+import {addColumn, nextPage, closeColumn} from '../actions/column';
 import {openImageView} from '../actions/manage';
 import ImageModal from '../components/image-modal';
 import Modal from '../components/modal';
 import SelectColumnModal from '../components/modal/select-column-modal';
 import Header from '../components/header';
-import Column from './column';
+import Column from '../components/column';
 import styles from './app.css';
 
 type Props = {
@@ -29,18 +29,17 @@ class App extends Component {
 	props: Props;
 
 	componentWillMount() {
-		this.props.dispatch(addColumn(1, {type: 'ranking', opts: {mode: 'daily', page: 1}}, 'ranking/daily'));
-		this.props.dispatch(addColumn(2, {type: 'ranking', opts: {mode: 'weekly', page: 1}}, 'ranking/weekly'));
-		this.props.dispatch(addColumn(3, {type: 'ranking', opts: {mode: 'monthly', page: 1}}, 'ranking/monthly'));
-		this.props.dispatch(addColumn(4, {type: 'favoriteWorks', opts: {publicity: 'public', page: 1}}, 'お気に入り'));
+		this.props.dispatch(addColumn({type: 'ranking', opts: {mode: 'daily', page: 1}}, 'ranking/daily'));
+		this.props.dispatch(addColumn({type: 'ranking', opts: {mode: 'weekly', page: 1}}, 'ranking/weekly'));
+		this.props.dispatch(addColumn({type: 'ranking', opts: {mode: 'monthly', page: 1}}, 'ranking/monthly'));
+		this.props.dispatch(addColumn({type: 'favoriteWorks', opts: {publicity: 'public', page: 1}}, 'お気に入り'));
 	}
 
 	handleAddColumn = (
 		query: {type: string, opts: Object},
 		title : string = ''
 	) => {
-		const id = this.props.columns.length;
-		this.props.dispatch(addColumn(id + 1, query, title));
+		this.props.dispatch(addColumn(query, title));
 	};
 
 	handleCloseModal = () => {
@@ -72,6 +71,10 @@ class App extends Component {
 		this.props.dispatch(closeModal());
 	};
 
+	handleCloseColumn = (id: number) => {
+		this.props.dispatch(closeColumn(id));
+	}
+
 	renderImageView() {
 		const {works, manage} = this.props;
 		const {currentWorkId, isImageView} = manage;
@@ -98,6 +101,7 @@ class App extends Component {
 					column={column}
 					users={users}
 					works={workList}
+					onClose={this.handleCloseColumn}
 					onNextPage={this.handleOnNextPage}
 					onClickWork={this.handleOnClickWork}
 					/>

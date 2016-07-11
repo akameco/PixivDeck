@@ -15,6 +15,9 @@ export type Action =
 } | {
 	type: 'NEXT_PAGE',
 	id: number
+} | {
+	type: 'CLOSE_COLUMN',
+	id: number
 }
 ;
 
@@ -34,11 +37,19 @@ type query = {
 	}
 }
 
-export function addColumn(id: number, query: query, title: string = ''): Action {
+export function addColumn(query: query, title: string = ''): Action {
+	const id = Date.now();
 	return {
 		type: 'ADD_COLUMN',
 		id,
 		title,
 		query
+	};
+}
+
+export function closeColumn(id: number): Action {
+	return {
+		type: 'CLOSE_COLUMN',
+		id
 	};
 }
