@@ -1,14 +1,17 @@
 // @flow
 import React, {Component} from 'react';
 import {findDOMNode} from 'react-dom';
+import cssModules from 'react-css-modules';
+import styles from './infinite.css';
 
 type Props = {
 	rootMargin?: string,
 	onIntersect: () => void,
-	children?: any
+	children?: any,
+	style?: Object
 };
 
-export default class Infinite extends Component {
+class Infinite extends Component {
 	props: Props;
 	sentinel: Component<*, *, *>;
 	root: Component<*, *, *>;
@@ -25,7 +28,7 @@ export default class Infinite extends Component {
 			});
 		}, {
 			root: this.root,
-			rootMargin: this.props.rootMargin || '1000%'
+			rootMargin: this.props.rootMargin || '500%'
 		});
 		this.io.observe(findDOMNode(sentinel));
 	}
@@ -44,10 +47,16 @@ export default class Infinite extends Component {
 
 	render() {
 		return (
-			<div ref={this.handleRootRefs}>
+			<div
+				ref={this.handleRootRefs}
+				style={this.props.style}
+				styleName="base"
+				>
 				{this.props.children}
 				<div ref={this.handleRefs} style={{height: 100}}></div>
 			</div>
 		);
 	}
 }
+
+export default cssModules(Infinite, styles);
