@@ -10,6 +10,7 @@ type Props = {
 	column: ColumnType,
 	works: Array<WorkType>,
 	users: UsersType,
+	onClickTag: (tag: string) => void,
 	onNextPage: (id: number) => void,
 	onClickWork: (id: number) => void,
 	onClose: () => void
@@ -41,6 +42,7 @@ class Column extends Component {
 						users={users}
 						onClose={this.handleClose}
 						onClick={this.handleOnClickWork}
+						onClickTag={this.props.onClickTag}
 						onNextPage={this.handleOnNextPage}
 						/>
 					}

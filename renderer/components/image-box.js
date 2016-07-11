@@ -9,6 +9,7 @@ import styles from './image-box.css';
 type Props = {
 	work: WorkType,
 	user: UserType,
+	onClickTag: (tag: string) => void,
 	onClick: (id: number) => void
 };
 
@@ -34,7 +35,7 @@ class ImageBox extends Component {
 						/>
 				</div>
 				<br/>
-				<BoxFooter tags={tags}/>
+				<BoxFooter tags={tags} onClickTag={this.props.onClickTag}/>
 			</div>
 		);
 	}
