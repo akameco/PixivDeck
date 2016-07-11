@@ -88,7 +88,7 @@ class App extends Component {
 		}
 		return (
 			<Modal
-				title={'ランキング'}
+				title={'カラムの追加'}
 				onClose={this.handleOnCloseModal}
 				>
 				<SelectColumnModal
