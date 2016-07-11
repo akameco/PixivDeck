@@ -3,6 +3,7 @@ import createLogger from 'redux-logger';
 import thunk from 'redux-thunk';
 import reducer from '../reducers';
 import startIpc from '../middleware/ipc';
+import auth from '../middleware/auth';
 import api from '../middleware/api';
 import scroll from '../middleware/scroll';
 
@@ -10,7 +11,9 @@ export default function configureStore() {
 	const logger = createLogger();
 
 	const enhancer = compose(
-		applyMiddleware(thunk,
+		applyMiddleware(
+			thunk,
+			auth,
 			api,
 			scroll,
 			logger

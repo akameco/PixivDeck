@@ -15,6 +15,14 @@ export const Schemas = {
 	WORK_ARRAY: arrayOf(workSchema)
 };
 
+function auth(dispatch: Dispatch) {
+	ipcRenderer.on('SUCCESS_LOGINED', () => {
+		dispatch({
+			type: 'SUCCESS_LOGINED'
+		});
+	});
+}
+
 export default (store: Store) => {
 	const dispatch: Dispatch = store.dispatch;
 
@@ -36,6 +44,8 @@ export default (store: Store) => {
 			works: response.result
 		});
 	}
+
+	auth(dispatch);
 
 	ipcRenderer.on('ranking', (ev, data) => {
 		const res = data.res.works.map(v => v.work);

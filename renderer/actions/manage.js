@@ -5,7 +5,21 @@ export type ManageAction =
 	| {type: 'OPEN_MODAL'}
 	| {type: 'CLOSE_MODAL'}
 	| {type: 'SELECT_WORK', id: number}
+	| {type: 'LOGIN', name: string, password: string}
+	| {type: 'LOGOUT'}
 ;
+
+export function login(name: string, password: string): ManageAction {
+	return {
+		type: 'LOGIN',
+		name,
+		password
+	};
+}
+
+export function logout(): ManageAction {
+	return {type: 'LOGOUT'};
+}
 
 export function openModal(): ManageAction {
 	return {type: 'OPEN_MODAL'};

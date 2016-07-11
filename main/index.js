@@ -74,9 +74,13 @@ app.on('activate', () => {
 });
 
 app.on('ready', () => {
-	const {NAME, PASS} = process.env;
-	const pixiv = new Pixiv(NAME, PASS);
 	mainWindow = createMainWindow();
+	let pixiv;
+
+	ipcMain.on('LOGIN', (ev, data) => {
+		pixiv = new Pixiv(data.name, data.password);
+		mainWindow.webContents.send('SUCCESS_LOGINED');
+	});
 
 	ipcMain.on('ranking', async (ev, {id, opts}) => {
 		const res = await pixiv.ranking('all', Object.assign({page: 1, per_page: 50}, opts));
