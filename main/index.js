@@ -86,6 +86,14 @@ app.on('ready', () => {
 		});
 	});
 
+	ipcMain.on('favoriteWorks', async (ev, {id, opts}) => {
+		const res = await pixiv.favoriteWorks(Object.assign({}, {per_page: 50}, opts));
+		mainWindow.webContents.send('favoriteWorks', {
+			id,
+			res
+		});
+	});
+
 	ipcMain.on('work', async (ev, id) => {
 		const res = await pixiv.works(id);
 		mainWindow.webContents.send('work', res);

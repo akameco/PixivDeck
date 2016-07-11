@@ -29,6 +29,7 @@ export type ColumnType = {
 		type: string,
 		opts: {
 			mode?: string,
+			publicity?: 'public' | 'private',
 			page: number
 		}
 	}
