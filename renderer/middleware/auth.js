@@ -4,6 +4,9 @@ import type {Action, Dispatch} from 'redux';
 import {addColumn} from '../actions/column';
 
 export default () => (next: Dispatch) => (action: Action) => {
+	if (action.type === 'INIT') {
+		ipcRenderer.send('INIT');
+	}
 	if (action.type === 'LOGIN') {
 		ipcRenderer.send('LOGIN', {name: action.name, password: action.password});
 	}
@@ -19,5 +22,5 @@ export default () => (next: Dispatch) => (action: Action) => {
 		next(addColumn({type: 'search', q: 'リゼロ5000users入り', opts: {page: 1}}, '検索/リゼロ5000users入り'));
 	}
 
-	next(action);
+	return next(action);
 };

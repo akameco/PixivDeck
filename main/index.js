@@ -75,11 +75,22 @@ app.on('activate', () => {
 
 app.on('ready', () => {
 	mainWindow = createMainWindow();
+	const authStore = new Store('auth');
 	let pixiv;
 
-	ipcMain.on('LOGIN', (ev, data) => {
-		pixiv = new Pixiv(data.name, data.password);
+	ipcMain.on('INIT', () => {
+		const auth = authStore.get();
+		if (auth && auth.remember) {
+			const {name, password} = auth;
+			pixiv = new Pixiv(name, password);
+			mainWindow.webContents.send('SUCCESS_LOGINED');
+		}
+	});
+
+	ipcMain.on('LOGIN', (ev, {name, password}) => {
+		pixiv = new Pixiv(name, password);
 		mainWindow.webContents.send('SUCCESS_LOGINED');
+		authStore.set({name, password, remember: true});
 	});
 
 	ipcMain.on('ranking', async (ev, {id, opts}) => {
