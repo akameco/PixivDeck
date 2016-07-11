@@ -3,6 +3,7 @@ import type {ManageAction} from '../actions/manage';
 import type {Manage} from '../actions/type';
 
 const initManageState = {
+	isLogin: false,
 	isImageView: false,
 	isModal: false,
 	currentWorkId: null
@@ -10,6 +11,10 @@ const initManageState = {
 
 export default function (state: Manage = initManageState, action: ManageAction): Manage {
 	switch (action.type) {
+		case 'SUCCESS_LOGINED':
+			return {...state, isLogin: true};
+		case 'LOGOUT':
+			return {...state, isLogin: false};
 		case 'OPEN_IMAGE_VIEW':
 			return {...state, isImageView: true};
 		case 'CLOSE_IMAGE_VIEW':
