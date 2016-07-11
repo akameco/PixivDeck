@@ -1,0 +1,29 @@
+.wrap {
+	width: 100%;
+}
+
+.base {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+}
+
+.wrap header {
+	position: relative;;
+	height: 50px;
+	z-index: 200;
+	text-align: center;
+	color: #e1e8ed;
+	background: #222426;
+	width: 100%;
+}
+
+.content {
+	overflow-y: auto;
+	height: calc(100% - 50px);
+}
+
+.title {
+	font-size: 1.5rem;
+}
