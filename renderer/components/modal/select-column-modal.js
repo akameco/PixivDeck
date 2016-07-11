@@ -31,8 +31,12 @@ class SelectColumnModal extends Component {
 		this.props.onSelect({type: 'ranking', opts: {mode, page: 1}}, `ranking/${mode}`);
 	};
 
+	handleAddFavorite = (publicity: string) => {
+		this.props.onSelect({type: 'favoriteWorks', opts: {publicity, page: 1}}, `favorite/${publicity}`);
+	};
+
 	render() {
-		const links = rankingModes.map(v =>
+		const rankingLinks = rankingModes.map(v =>
 			<Link
 				mode={v}
 				key={v}
@@ -42,7 +46,17 @@ class SelectColumnModal extends Component {
 
 		return (
 			<ul styleName="list">
-				{links}
+				{rankingLinks}
+				<li >
+					<a onClick={() => this.handleAddFavorite('public')}>
+						お気に入り
+					</a>
+				</li>
+				<li >
+					<a onClick={() => this.handleAddFavorite('private')}>
+						お気に入り/非公開
+					</a>
+				</li>
 			</ul>
 		);
 	}
