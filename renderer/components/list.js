@@ -1,5 +1,6 @@
 // @flow
 import React, {Component} from 'react';
+import {findDOMNode} from 'react-dom';
 import cssModules from 'react-css-modules';
 import type {WorkType, UserType} from '../actions/type';
 import Infinite from './infinite';
@@ -16,6 +17,13 @@ type Props = {
 
 class List extends Component {
 	props: Props;
+	target: Component<*, *, *>
+
+	handleScrollTop = (e: Event) => {
+		e.preventDefault();
+		const node = findDOMNode(this.target);
+		node.scrollTop = 0;
+	};
 
 	render() {
 		const List = this.props.works.map(work => {
@@ -33,10 +41,17 @@ class List extends Component {
 		return (
 			<section styleName="wrap">
 				<header>
-					<span styleName="title">{this.props.title}</span>
+					<a styleName="title" onClick={this.handleScrollTop}>
+						{this.props.title}
+					</a>
 				</header>
 				<div styleName="content">
-					<Infinite onIntersect={() => this.props.onNextPage()}>
+					<Infinite
+						ref={c => {
+							this.target = c;
+						}}
+						onIntersect={() => this.props.onNextPage()}
+						>
 						{List}
 					</Infinite>
 				</div>
