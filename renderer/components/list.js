@@ -13,6 +13,7 @@ type Props = {
 	users: Array<UserType>,
 	title: string,
 	onClick: (id: string) => void,
+	onClickTag: (tag: string) => void,
 	onNextPage: () => void,
 	onClose: () => void
 };
@@ -39,6 +40,7 @@ class List extends Component {
 					key={work.id}
 					work={work}
 					user={user}
+					onClickTag={this.props.onClickTag}
 					onClick={this.props.onClick}
 					/>
 			);

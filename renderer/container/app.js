@@ -34,7 +34,7 @@ class App extends Component {
 		this.props.dispatch(addColumn({type: 'ranking', opts: {mode: 'weekly', page: 1}}, 'ranking/weekly'));
 		this.props.dispatch(addColumn({type: 'ranking', opts: {mode: 'monthly', page: 1}}, 'ranking/monthly'));
 		this.props.dispatch(addColumn({type: 'favoriteWorks', opts: {publicity: 'public', page: 1}}, 'お気に入り'));
-		this.props.dispatch(addColumn({type: 'search', q: 'リゼロ5000users入り', opts: {publicity: 'public', page: 1}}, '検索/リゼロ5000users入り'));
+		this.props.dispatch(addColumn({type: 'search', q: 'リゼロ5000users入り', opts: {page: 1}}, '検索/リゼロ5000users入り'));
 	}
 
 	handleAddColumn = (
@@ -77,6 +77,10 @@ class App extends Component {
 		this.props.dispatch(closeColumn(id));
 	}
 
+	handleTagClick = (tag: string) => {
+		this.props.dispatch(addColumn({type: 'search', q: tag, opts: {page: 1}}, tag));
+	}
+
 	renderImageView() {
 		const {works, manage} = this.props;
 		const {currentWorkId, isImageView} = manage;
@@ -105,6 +109,7 @@ class App extends Component {
 					works={workList}
 					onClose={this.handleCloseColumn}
 					onNextPage={this.handleOnNextPage}
+					onClickTag={this.handleTagClick}
 					onClickWork={this.handleOnClickWork}
 					/>
 			);
