@@ -6,6 +6,6 @@
 	display: flex;
 	position: absolute;
 	left: 50px;
-	width: 100%;
+	width: calc(100% - 50px);
 	height: 100%;
 }
