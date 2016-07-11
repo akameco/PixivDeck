@@ -27,6 +27,7 @@ export type ColumnType = {
 	works?: Array<number>,
 	query: {
 		type: string,
+		q?: string,
 		opts: {
 			mode?: string,
 			publicity?: 'public' | 'private',
