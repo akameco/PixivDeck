@@ -28,21 +28,6 @@
 	padding: 15px;
 }
 
-.close {
-	position: absolute;
-	text-align: center;
-	width: 24px;
-	height: 24px;
-	cursor: pointer;
-	top: 15px;
-	right: 15px;
-}
-
-.close i::before {
-	font-size: 1.25rem;
-	content: "×";
-}
-
 .body {
 	padding: 0 15px 15px 15px;
 }
