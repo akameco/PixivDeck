@@ -27,10 +27,12 @@ class ImageBox extends Component {
 					/>
 				{title}
 				{caption}
-				<img
-					src={imageUrls.medium}
-					onClick={() => this.props.onClick(id)}
-					/>
+				<div styleName="image-wrap">
+					<img
+						src={imageUrls.medium}
+						onClick={() => this.props.onClick(id)}
+						/>
+				</div>
 				<br/>
 				<BoxFooter tags={tags}/>
 			</div>

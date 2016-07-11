@@ -18,6 +18,7 @@
 	margin: auto;
 	user-select: none;
 	opacity: 0;
+	cursor: zoom-out;
 }
 
 .loaded {

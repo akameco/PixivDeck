@@ -11,11 +11,14 @@
 
 .wrap header {
 	position: relative;;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	height: 50px;
 	z-index: 200;
 	text-align: center;
 	color: #e1e8ed;
-	background: #222426;
+	background: #292f33;
 	width: 100%;
 }
 
