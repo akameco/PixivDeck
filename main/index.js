@@ -96,7 +96,6 @@ app.on('ready', () => {
 
 	ipcMain.on('search', async (ev, {id, q, opts}) => {
 		const res = await pixiv.search(q, Object.assign({}, {mode: 'tag'}, opts));
-		console.log(res);
 		mainWindow.webContents.send('search', {
 			id,
 			res
