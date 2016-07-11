@@ -13,7 +13,8 @@ type Props = {
 	users: Array<UserType>,
 	title: string,
 	onClick: (id: string) => void,
-	onNextPage: () => void
+	onNextPage: () => void,
+	onClose: () => void
 };
 
 class List extends Component {
@@ -27,6 +28,7 @@ class List extends Component {
 	};
 
 	handleClose = () => {
+		this.props.onClose();
 	}
 
 	render() {
@@ -48,7 +50,7 @@ class List extends Component {
 					<a styleName="title" onClick={this.handleScrollTop}>
 						{this.props.title}
 					</a>
-					<CloseButton onClose={this.handleClose}/>
+					<CloseButton onClick={this.handleClose}/>
 				</header>
 				<div styleName="content">
 					<Infinite
