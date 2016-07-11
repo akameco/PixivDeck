@@ -1,6 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import cssModules from 'react-css-modules';
+import {union} from 'lodash';
 import styles from './box-footer.css';
 
 type Props = {
@@ -12,7 +13,7 @@ class BoxFooter extends Component {
 
 	render() {
 		const {tags} = this.props;
-		const Tags = tags.map(item =>
+		const Tags = union(tags).map(item =>
 			<a key={item}>#{item}</a>
 		);
 		return (
