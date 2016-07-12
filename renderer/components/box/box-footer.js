@@ -13,8 +13,8 @@ type Props = {
 class BoxFooter extends Component {
 	props: Props;
 
-	handleTagClick = (tag: string) => {
-		console.log(tag);
+	shouldComponentUpdate(nextProps) {
+		return nextProps.tags.length !== this.props.tags.length;
 	}
 
 	render() {

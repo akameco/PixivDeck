@@ -16,9 +16,17 @@ type Props = {
 class ImageBox extends Component {
 	props: Props;
 
+	handleClick = () => {
+		this.props.onClick(this.props.work.id);
+	}
+
+	shouldComponentUpdate(nextProps) {
+		return this.props.work.id !== nextProps.work.id;
+	}
+
 	render() {
 		const {work, user} = this.props;
-		const {id, title, imageUrls, caption, tags} = work;
+		const {title, imageUrls, caption, tags} = work;
 		return (
 			<div styleName="base">
 				<BoxHeader
@@ -31,7 +39,7 @@ class ImageBox extends Component {
 				<div styleName="image-wrap">
 					<img
 						src={imageUrls.medium}
-						onClick={() => this.props.onClick(id)}
+						onClick={this.handleClick}
 						/>
 				</div>
 				<br/>
