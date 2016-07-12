@@ -1,8 +1,8 @@
 // @flow
 import React, {Component} from 'react';
 import cssModules from 'react-css-modules';
+import {SettingsIcon} from '../icon';
 import styles from './header.css';
-import {SettingsIcon} from './icon';
 
 type Props = {
 	onOpenModal: () => void
