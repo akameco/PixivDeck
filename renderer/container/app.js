@@ -9,7 +9,7 @@ import {currentWork} from '../actions';
 import {addColumn, nextPage, closeColumn} from '../actions/column';
 import type {query} from '../actions/column';
 import {openImageView, login, logout} from '../actions/manage';
-import LoginForm from '../components/login-form';
+import Auth from '../components/auth/';
 import ImageModal from '../components/image-modal';
 import Modal from '../components/modal/';
 import SelectColumnModal from '../components/modal/select-column-modal';
@@ -139,7 +139,7 @@ class App extends Component {
 
 	render() {
 		if (!this.props.manage.isLogin) {
-			return <LoginForm onClick={this.handleAuth}/>;
+			return <Auth onClick={this.handleAuth}/>;
 		}
 
 		return (
