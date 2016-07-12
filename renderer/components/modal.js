@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import cssModules from 'react-css-modules';
-import CloseButton from './close-button';
+import {CloseButton} from './button';
 import styles from './modal.css';
 
 type Props = {

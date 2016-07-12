@@ -13,7 +13,7 @@ import LoginForm from '../components/login-form';
 import ImageModal from '../components/image-modal';
 import Modal from '../components/modal';
 import SelectColumnModal from '../components/modal/select-column-modal';
-import Header from '../components/header';
+import Header from '../components/header/';
 import Column from '../components/column';
 import styles from './app.css';
 
