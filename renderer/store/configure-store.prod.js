@@ -2,14 +2,16 @@ import {createStore, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
 import reducer from '../reducers';
 import startIpc from '../middleware/ipc';
-import rankingMiddleware from '../middleware/ranking';
 import scroll from '../middleware/scroll';
+import auth from '../middleware/auth';
+import api from '../middleware/api';
 
 export default function configureStore() {
 	const enhancer = compose(
 		applyMiddleware(
 			thunk,
-			rankingMiddleware,
+			auth,
+			api,
 			scroll
 		)
 	);
