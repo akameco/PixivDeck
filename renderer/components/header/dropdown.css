@@ -1,0 +1,18 @@
+.base {
+	position: absolute;
+	background-color: white;
+	bottom: 20px;
+	left: 50px;
+	width: 200px;
+	padding: 12px 0;
+}
+
+.base li {
+	font-size: 0.8rem;
+	color: #666;
+	list-style: none;
+}
+
+.base li a {
+	cursor: pointer;
+}
