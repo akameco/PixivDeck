@@ -7,7 +7,8 @@
 	right: 0;
 	bottom: 0;
 	text-align: center;
-	justify-content: center;
+	flex-direction: column;
+	flex-flow: nowrap;
 	width: 50px;
 	height: 100%;
 	background-color: #292f33;
@@ -23,4 +24,25 @@
 	font-size: 2.5rem;
 	color: gray;
 	content: '+';
+}
+
+.bottom {
+	position: absolute;
+	width: 100%;
+	left: 0;
+	bottom: 20px;
+}
+
+.bottom svg {
+	fill: gray;
+	width: 35px;
+	height: 35px;
+	margin: 0 auto;
+}
+
+.setting {
+	color: white;
+	width: 45px;
+	height: 45px;
+	cursor: pointer;
 }
