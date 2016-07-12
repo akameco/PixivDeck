@@ -11,7 +11,7 @@ import type {query} from '../actions/column';
 import {openImageView, login} from '../actions/manage';
 import LoginForm from '../components/login-form';
 import ImageModal from '../components/image-modal';
-import Modal from '../components/modal';
+import Modal from '../components/modal/';
 import SelectColumnModal from '../components/modal/select-column-modal';
 import Header from '../components/header/';
 import Column from '../components/column';
