@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import cssModules from 'react-css-modules';
-import styles from './login-form.css';
+import styles from './auth.css';
 
 type Props = {
 	onClick: (name: string, password: string) => void,
@@ -12,7 +12,7 @@ type State = {
 	password: string
 };
 
-class LoginForm extends Component {
+class Auth extends Component {
 	props: Props;
 	state: State;
 
@@ -58,4 +58,4 @@ class LoginForm extends Component {
 	}
 }
 
-export default cssModules(LoginForm, styles);
+export default cssModules(Auth, styles);
