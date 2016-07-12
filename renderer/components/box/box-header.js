@@ -13,6 +13,10 @@ type Props = {
 class BoxHeader extends Component {
 	props: Props;
 
+	shouldComponentUpdate(nextProps) {
+		return this.props.name !== nextProps.name;
+	}
+
 	render() {
 		const {name, account, img} = this.props;
 		return (
