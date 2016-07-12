@@ -1,3 +1,43 @@
-.base {
+.wrap {
+	width: 100vw;
+	height: 100vh;
+	background: #eee;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 
+.base {
+	display: flex;
+	max-width: 80%;
+	width: 400px;
+	height: auto;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 20px;
+	background-color: white;
+	box-shadow: 0 0 10px rgba(17,17,17,0.5);
+}
+
+.title {
+	color: #555;
+	font-size: 1.5rem;
+	margin: 30px 0;
+}
+
+.base input {
+	display: block;
+	margin: 5px auto;
+}
+
+.base button {
+	padding: 9px 13px;
+	margin-top: 20px;
+	color: white;
+	background-color: #1da1f2;
+	background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.05));
+	border: 1px solid #3b88c3;
+	border-radius: 4px;
+	cursor: pointer;
 }

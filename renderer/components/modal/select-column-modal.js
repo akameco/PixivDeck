@@ -15,7 +15,7 @@ class Link extends Component {
 
 	render() {
 		return (
-			<li >
+			<li>
 				<a onClick={() => this.props.onSelect(this.props.mode)}>
 					{`ranking/${this.props.mode}`}
 				</a>
