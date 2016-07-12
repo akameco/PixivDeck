@@ -38,21 +38,28 @@ class Auth extends Component {
 
 	render() {
 		return (
-			<div>
-				<input
-					type="text"
-					value={this.state.name}
-					onChange={this.handleChangeName}
-					/>
-				<input
-					type="password"
-					value={this.state.password}
-					onChange={this.handleChangePassword}
-					/>
+			<div styleName="wrap">
+				<div styleName="base">
+					<div styleName="title">
+						PixivDeckにログイン
+					</div>
+					<input
+						placeholder="ユーザー名"
+						type="text"
+						value={this.state.name}
+						onChange={this.handleChangeName}
+						/>
+					<input
+						placeholder="パスワード"
+						type="password"
+						value={this.state.password}
+						onChange={this.handleChangePassword}
+						/>
 
-				<button onClick={this.handleClick}>
-					ログイン
-				</button>
+					<button onClick={this.handleClick}>
+						ログイン
+					</button>
+				</div>
 			</div>
 		);
 	}
