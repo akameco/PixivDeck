@@ -102,9 +102,16 @@ class App extends Component {
 	}
 
 	renderColumns() {
-		const {columns, works, users} = this.props;
+		const {columns, works, users, manage} = this.props;
 		return columns.map(column => {
-			const workList = column.works && column.works.length > 0 ? column.works.map(i => works[i]) : [];
+			if (!column.works) {
+				return null;
+			}
+			const {tags} = manage.filter;
+			const workList = column.works
+				.map(i => works[i])
+				.filter(work => work.tags.every(tag => tags.every(t => t !== tag)));
+
 			return (
 				<Column
 					key={column.id}

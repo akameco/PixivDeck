@@ -7,6 +7,7 @@ export type ManageAction =
 	| {type: 'SELECT_WORK', id: number}
 	| {type: 'LOGIN', name: string, password: string}
 	| {type: 'LOGOUT'}
+	| {type: 'ADD_TAG_FILTER', tag: string}
 ;
 
 export function login(name: string, password: string): ManageAction {
@@ -35,4 +36,8 @@ export function openImageView(): ManageAction {
 
 export function closeImageView(): ManageAction {
 	return {type: 'CLOSE_IMAGE_VIEW'};
+}
+
+export function addTagFilter(tag: string): ManageAction {
+	return {type: 'ADD_TAG_FILTER', tag};
 }
