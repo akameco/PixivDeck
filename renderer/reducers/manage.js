@@ -6,7 +6,10 @@ const initManageState = {
 	isLogin: false,
 	isImageView: false,
 	isModal: false,
-	currentWorkId: null
+	currentWorkId: null,
+	filter: {
+		tags: []
+	}
 };
 
 export default function (state: Manage = initManageState, action: ManageAction): Manage {
@@ -25,6 +28,8 @@ export default function (state: Manage = initManageState, action: ManageAction):
 			return {...state, isModal: false};
 		case 'SELECT_WORK':
 			return {...state, currentWorkId: action.id};
+		case 'ADD_TAG_FILTER':
+			return {...state, filter: {tags: [...state.filter.tags, action.tag]}};
 		default:
 			return state;
 	}
