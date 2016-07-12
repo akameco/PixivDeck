@@ -1,10 +1,10 @@
 // @flow
 import React, {Component} from 'react';
 import cssModules from 'react-css-modules';
-import type {WorkType, UserType} from '../actions/type';
+import type {WorkType, UserType} from '../../actions/type';
 import BoxHeader from './box-header';
 import BoxFooter from './box-footer';
-import styles from './image-box.css';
+import styles from './box.css';
 
 type Props = {
 	work: WorkType,

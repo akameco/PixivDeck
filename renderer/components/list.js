@@ -4,7 +4,7 @@ import {findDOMNode} from 'react-dom';
 import cssModules from 'react-css-modules';
 import type {WorkType, UserType} from '../actions/type';
 import Infinite from './infinite';
-import ImageBox from './image-box';
+import ImageBox from './box';
 import {CloseButton} from './button';
 import styles from './list.css';
 
