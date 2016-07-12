@@ -8,7 +8,7 @@ import {openModal, closeModal, closeImageView} from '../actions/manage';
 import {currentWork} from '../actions';
 import {addColumn, nextPage, closeColumn} from '../actions/column';
 import type {query} from '../actions/column';
-import {openImageView, login} from '../actions/manage';
+import {openImageView, login, logout} from '../actions/manage';
 import LoginForm from '../components/login-form';
 import ImageModal from '../components/image-modal';
 import Modal from '../components/modal/';
@@ -82,6 +82,10 @@ class App extends Component {
 		this.props.dispatch(login(name, password));
 	}
 
+	handleLogout = () => {
+		this.props.dispatch(logout());
+	}
+
 	renderImageView() {
 		const {works, manage} = this.props;
 		const {currentWorkId, isImageView} = manage;
@@ -141,6 +145,7 @@ class App extends Component {
 		return (
 			<div styleName="wrap">
 				<Header
+					onLogout={this.handleLogout}
 					onOpenModal={this.handleOpenModal}
 					/>
 				<div styleName="content">
