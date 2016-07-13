@@ -56,3 +56,10 @@ export function closeImageView(): ManageAction {
 export function addTagFilter(tag: string): ManageAction {
 	return {type: 'ADD_TAG_FILTER', tag};
 }
+
+export function currentWork(id: number): ManageAction {
+	return {
+		type: 'SELECT_WORK',
+		id
+	};
+}

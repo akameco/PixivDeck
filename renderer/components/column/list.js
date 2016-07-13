@@ -54,16 +54,19 @@ class List extends Component {
 					</a>
 					<CloseButton onClick={this.handleClose}/>
 				</header>
-				<div styleName="content">
-					<Infinite
-						ref={c => {
-							this.target = c;
-						}}
-						onIntersect={() => this.props.onNextPage()}
-						>
-						{List}
-					</Infinite>
-				</div>
+				{this.props.works.length > 0 ?
+					<div styleName="content">
+						<Infinite
+							ref={c => {
+								this.target = c;
+							}}
+							onIntersect={() => this.props.onNextPage()}
+							>
+							{List}
+						</Infinite>
+					</div> :
+					<div>loading</div>
+				}
 			</section>
 		);
 	}
