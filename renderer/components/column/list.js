@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {findDOMNode} from 'react-dom';
 import cssModules from 'react-css-modules';
 import type {WorkType, UserType} from '../../actions/type';
-import ImageBox from '../box';
+import Box from '../box';
 import {CloseButton} from '../button';
 import Infinite from './infinite';
 import styles from './list.css';
@@ -35,15 +35,7 @@ class List extends Component {
 	render() {
 		const List = this.props.works.map(work => {
 			const user = this.props.users[work.user];
-			return (
-				<ImageBox
-					key={work.id}
-					work={work}
-					user={user}
-					onClickTag={this.props.onClickTag}
-					onClick={this.props.onClick}
-					/>
-			);
+			return <Box key={work.id} work={work} user={user}/>;
 		});
 
 		return (

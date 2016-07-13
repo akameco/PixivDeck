@@ -3,12 +3,13 @@ import React, {Component} from 'react';
 import type {Dispatch, State} from 'redux';
 import {connect} from 'react-redux';
 import cssModules from 'react-css-modules';
-import type {Manage, WorksType, ColumnType} from '../actions/type';
+import type {Manage, ColumnType} from '../actions/type';
 import {closeModal, login} from '../actions/manage';
 import {addColumn} from '../actions/column';
 import type {query} from '../actions/column';
 import Auth from '../components/auth/';
 import IllustPreview from '../components/illust-preview/';
+import MangaPreview from '../components/manga-preview/';
 import Modal from '../components/modal/';
 import SelectColumnModal from '../components/modal/select-column-modal';
 import Header from '../components/header/';
@@ -76,6 +77,7 @@ class App extends Component {
 					{Columns}
 				</div>
 				{this.props.manage.isImageView && <IllustPreview/>}
+				{this.props.manage.isMangaView && <MangaPreview/>}
 				{this.renderModal()}
 			</div>
 		);

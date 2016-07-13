@@ -2,6 +2,8 @@
 export type ManageAction =
 	| {type: 'OPEN_IMAGE_VIEW'}
 	| {type: 'CLOSE_IMAGE_VIEW'}
+	| {type: 'OPEN_MANGA_PREVIEW'}
+	| {type: 'CLOSE_MANGA_PREVIEW'}
 	| {type: 'OPEN_MODAL'}
 	| {type: 'CLOSE_MODAL'}
 	| {type: 'OPEN_DROPDOWN'}
@@ -51,6 +53,14 @@ export function openImageView(): ManageAction {
 
 export function closeImageView(): ManageAction {
 	return {type: 'CLOSE_IMAGE_VIEW'};
+}
+
+export function openMangaPreview(): ManageAction {
+	return {type: 'OPEN_MANGA_PREVIEW'};
+}
+
+export function closeMnagaPreview(): ManageAction {
+	return {type: 'CLOSE_MANGA_PREVIEW'};
 }
 
 export function addTagFilter(tag: string): ManageAction {

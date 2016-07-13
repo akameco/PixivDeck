@@ -6,6 +6,7 @@ import type {Manage} from '../actions/type';
 const initManageState = {
 	isLogin: false,
 	isImageView: false,
+	isMangaView: false,
 	isModal: false,
 	isDropdown: false,
 	currentWorkId: null,
@@ -24,6 +25,10 @@ export default function (state: Manage = initManageState, action: ManageAction):
 			return {...state, isImageView: Boolean(state.currentWorkId)};
 		case 'CLOSE_IMAGE_VIEW':
 			return {...state, isImageView: false};
+		case 'OPEN_MANGA_PREVIEW':
+			return {...state, isMangaView: Boolean(state.currentWorkId)};
+		case 'CLOSE_MANGA_PREVIEW':
+			return {...state, isMangaView: false};
 		case 'OPEN_MODAL':
 			return {...state, isModal: true};
 		case 'CLOSE_MODAL':
