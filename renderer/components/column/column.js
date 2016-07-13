@@ -13,6 +13,7 @@ type Props = {
 	onClickTag: (tag: string) => void,
 	onNextPage: (id: number) => void,
 	onClickWork: (id: number) => void,
+	onMangaClick: (id: number) => void,
 	onClose: () => void
 }
 
@@ -50,6 +51,7 @@ class Column extends Component {
 					onClick={this.handleOnClickWork}
 					onClickTag={this.props.onClickTag}
 					onNextPage={this.handleOnNextPage}
+					onMangaClick={this.props.onMangaClick}
 					/>
 			</div>
 		);

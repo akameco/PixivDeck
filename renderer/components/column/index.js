@@ -2,18 +2,13 @@ import React, {Component} from 'react';
 import type {Dispatch, State} from 'redux';
 import {connect} from 'react-redux';
 import type {WorksType, ColumnType, UserType} from '../actions/type';
-import {
-	addColumn,
-	nextPage,
-	closeColumn
-} from '../../actions/column';
-import {openImageView, currentWork} from '../../actions/manage';
+import {nextPage, closeColumn} from '../../actions/column';
 import ColumnBase from './column';
 
 type Props = {
 	works: WorksType,
 	column: ColumnType,
-	users: UserType,
+	users: Array<UserType>,
 	dispatch: Dispatch;
 }
 
@@ -27,21 +22,12 @@ class Column extends Component {
 		return false;
 	}
 
-	handleOnClickWork = (id: number) => {
-		this.props.dispatch(currentWork(id));
-		this.props.dispatch(openImageView());
-	}
-
 	handleCloseColumn = (id: number) => {
 		this.props.dispatch(closeColumn(id));
 	}
 
 	handleOnNextPage = (id: number) => {
 		this.props.dispatch(nextPage(id));
-	}
-
-	handleTagClick = (tag: string) => {
-		this.props.dispatch(addColumn({type: 'search', q: tag, opts: {page: 1}}, tag));
 	}
 
 	render() {
@@ -54,8 +40,6 @@ class Column extends Component {
 				works={works}
 				onClose={this.handleCloseColumn}
 				onNextPage={this.handleOnNextPage}
-				onClickTag={this.handleTagClick}
-				onClickWork={this.handleOnClickWork}
 				/>
 		);
 	}
