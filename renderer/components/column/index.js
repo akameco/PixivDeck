@@ -20,6 +20,13 @@ type Props = {
 class Column extends Component {
 	props: Props;
 
+	shouldComponentUpdate(nextProps) {
+		if (this.props.works.length !== nextProps.works.length) {
+			return true;
+		}
+		return false;
+	}
+
 	handleOnClickWork = (id: number) => {
 		this.props.dispatch(currentWork(id));
 		this.props.dispatch(openImageView());

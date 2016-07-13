@@ -25,16 +25,16 @@ class IllustPreview extends Component {
 		};
 	}
 
+	shouldComponentUpdate(nextProps, nextState) {
+		return this.state.isLoad !== nextState.isLoad;
+	}
+
 	handleOnClose = () => {
 		this.props.onClose();
 	};
 
 	handleImgLoad = () => {
 		this.setState({isLoad: true});
-	};
-
-	handleImgUnload = () => {
-		this.setState({isLoad: false});
 	};
 
 	render() {
@@ -44,7 +44,6 @@ class IllustPreview extends Component {
 				<img
 					src={this.props.img}
 					onLoad={this.handleImgLoad}
-					onUnLoad={this.handleImgUnload}
 					styleName={imgStyle}
 					/>
 			</div>
