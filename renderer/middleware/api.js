@@ -24,5 +24,10 @@ export default (store: Store) => (next: Dispatch) => (action: Action) => {
 		return next({type: 'IPC_REQUEST'});
 	}
 
+	if (action.type === 'OPEN_MANGA_PREVIEW') {
+		const id = store.getState().manage.currentWorkId;
+		ipcRenderer.send('work', id);
+	}
+
 	return next(action);
 };
