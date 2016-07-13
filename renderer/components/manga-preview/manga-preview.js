@@ -1,21 +1,22 @@
 // @flow
 import React, {Component} from 'react';
-import cssModules from 'react-css-modules';
+import CSSModules from 'react-css-modules';
 import styles from './manga-preview.css';
 
 type Props = {
-	title: string,
 	img: string,
 	show: bool,
-	styles: Object,
 	onClose: () => void
 };
 
-class MangaPreview extends Component {
+type State = {
+	isLoad: bool
+}
+
+@CSSModules(styles)
+export default class MangaPreview extends Component {
 	props: Props;
-	state: {
-		isLoad: bool
-	};
+	state: State;
 
 	constructor(props: Props) {
 		super(props);
@@ -24,7 +25,7 @@ class MangaPreview extends Component {
 		};
 	}
 
-	shouldComponentUpdate(nextProps, nextState) {
+	shouldComponentUpdate(nextProps: Props, nextState: State) {
 		return this.state.isLoad !== nextState.isLoad;
 	}
 
@@ -40,7 +41,6 @@ class MangaPreview extends Component {
 		const imgStyle = this.state.isLoad ? 'loaded' : '';
 		return (
 			<div styleName="base" onClick={this.handleClose}>
-				まんがだよ
 				<img
 					src={this.props.img}
 					onLoad={this.handleImgLoad}
@@ -50,5 +50,3 @@ class MangaPreview extends Component {
 		);
 	}
 }
-
-export default cssModules(MangaPreview, styles);

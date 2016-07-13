@@ -1,13 +1,14 @@
 // @flow
 import React, {Component} from 'react';
-import cssModules from 'react-css-modules';
+import CSSModules from 'react-css-modules';
 import styles from './avater.css';
 
 type Props = {
 	img: string
 };
 
-class Avater extends Component {
+@CSSModules(styles)
+export default class Avater extends Component {
 	props: Props;
 
 	render() {
@@ -18,5 +19,3 @@ class Avater extends Component {
 		);
 	}
 }
-
-export default cssModules(Avater, styles);

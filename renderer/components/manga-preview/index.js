@@ -4,7 +4,7 @@ import type {State, Dispatch} from 'redux';
 import {connect} from 'react-redux';
 import type {WorkType} from '../../actions/type';
 import {closeMnagaPreview} from '../../actions/manage';
-import MangaPreview from './manga-preview';
+import Preview from './manga-preview';
 
 type Props = {
 	work: WorkType,
@@ -22,7 +22,7 @@ class MangaPreviewContainer extends Component {
 	render() {
 		const {work, show} = this.props;
 		return (
-			<MangaPreview
+			<Preview
 				show={show}
 				img={work.imageUrls.large}
 				onClose={this.handleClose}

@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import {findDOMNode} from 'react-dom';
-import cssModules from 'react-css-modules';
+import CSSModules from 'react-css-modules';
 import styles from './infinite.css';
 
 type Props = {
@@ -11,7 +11,8 @@ type Props = {
 	style?: Object
 };
 
-class Infinite extends Component {
+@CSSModules(styles)
+export default class Infinite extends Component {
 	props: Props;
 	sentinel: Component<*, *, *>;
 	root: Component<*, *, *>;
@@ -58,5 +59,3 @@ class Infinite extends Component {
 		);
 	}
 }
-
-export default cssModules(Infinite, styles);

@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import type {Dispatch} from 'redux';
 import {connect} from 'react-redux';
-import cssModules from 'react-css-modules';
+import CSSModules from 'react-css-modules';
 import type {Manage} from '../../actions/type';
 import {
 	closeDropdown,
@@ -19,6 +19,7 @@ type Props = {
 	dispatch: Dispatch
 };
 
+@CSSModules(styles)
 class Header extends Component {
 	props: Props;
 
@@ -68,4 +69,4 @@ function mapStateToProps(state) {
 	return {manage: state.manage};
 }
 
-export default connect(mapStateToProps)(cssModules(Header, styles));
+export default connect(mapStateToProps)(Header);

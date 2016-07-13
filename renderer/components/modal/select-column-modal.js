@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import cssModules from 'react-css-modules';
+import CSSModules from 'react-css-modules';
 import {rankingModes} from '../../contains';
 import styles from './select-column-modal.css';
 
@@ -28,7 +28,8 @@ class Link extends Component {
 	}
 }
 
-class SelectColumnModal extends Component {
+@CSSModules(styles)
+export default class SelectColumnModal extends Component {
 	props: Props;
 
 	handleAddRanking = (mode: string) => {
@@ -65,5 +66,3 @@ class SelectColumnModal extends Component {
 		);
 	}
 }
-
-export default cssModules(SelectColumnModal, styles);

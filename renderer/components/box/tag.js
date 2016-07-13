@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import cssModules from 'react-css-modules';
+import CSSModules from 'react-css-modules';
 import styles from './tag.css';
 
 type Props = {
@@ -7,7 +7,8 @@ type Props = {
 	name: string
 };
 
-class Tag extends Component {
+@CSSModules(styles)
+export default class Tag extends Component {
 	props: Props;
 
 	shouldComponentUpdate() {
@@ -26,5 +27,3 @@ class Tag extends Component {
 		);
 	}
 }
-
-export default cssModules(Tag, styles);

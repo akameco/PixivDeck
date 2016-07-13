@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import type {Dispatch, State} from 'redux';
 import {connect} from 'react-redux';
-import cssModules from 'react-css-modules';
+import CSSModules from 'react-css-modules';
 import type {Manage, ColumnType} from '../actions/type';
 import {closeModal, login} from '../actions/manage';
 import {addColumn} from '../actions/column';
@@ -23,6 +23,7 @@ type Props = {
 	dispatch: Dispatch
 };
 
+@CSSModules(styles)
 class App extends Component {
 	props: Props;
 
@@ -93,4 +94,4 @@ function mapStateToProps(state: State) {
 	};
 }
 
-export default connect(mapStateToProps)(cssModules(styles)(App));
+export default connect(mapStateToProps)(App);

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import type {Dispatch} from 'redux';
 import {connect} from 'react-redux';
-import cssModules from 'react-css-modules';
+import CSSModules from 'react-css-modules';
 import type {WorkType, UserType} from '../../actions/type';
 import {addColumn} from '../../actions/column';
 import {openImageView, openMangaPreview, currentWork} from '../../actions/manage';
@@ -16,6 +16,7 @@ type Props = {
 	dispatch: Dispatch
 }
 
+@CSSModules(styles)
 class Box extends Component {
 	props: Props;
 
@@ -59,4 +60,4 @@ function mapStateToProps(state, ownProps) {
 	};
 }
 
-export default connect(mapStateToProps)(cssModules(Box, styles));
+export default connect(mapStateToProps)(Box);

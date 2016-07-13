@@ -1,20 +1,21 @@
 // @flow
 import React, {Component} from 'react';
-import cssModules from 'react-css-modules';
+import CSSModules from 'react-css-modules';
 import {CloseButton} from '../button/';
 import styles from './modal.css';
 
 type Props = {
-	children: typeof Component,
+	children?: any,
 	onClose: () => void,
 	title: string
 };
 
-class Modal extends Component {
+@CSSModules(styles)
+export default class Modal extends Component {
 	props: Props;
 	_content: Component<*, *, *>;
 
-	handleOverlayClick = event => {
+	handleOverlayClick = (event: any) => {
 		let node = event.target;
 
 		while (node) {
@@ -55,5 +56,3 @@ class Modal extends Component {
 		);
 	}
 }
-
-export default cssModules(Modal, styles);

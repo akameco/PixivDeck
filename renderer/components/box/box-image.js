@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react';
-import cssModules from 'react-css-modules';
+import CSSModules from 'react-css-modules';
 import type {WorkType} from '../../actions/type';
 import {MangaIcon} from '../icon/';
 import styles from './box-image.css';
@@ -10,7 +10,8 @@ type Props = {
 	onClick: () => void
 };
 
-class BoxImage extends Component {
+@CSSModules(styles)
+export default class BoxImage extends Component {
 	props: Props;
 
 	render() {
@@ -28,5 +29,3 @@ class BoxImage extends Component {
 		);
 	}
 }
-
-export default cssModules(BoxImage, styles);

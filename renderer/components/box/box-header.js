@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react';
-import cssModules from 'react-css-modules';
+import CSSModules from 'react-css-modules';
 import Avater from './avater';
 import styles from './box-header.css';
 
@@ -10,10 +10,11 @@ type Props = {
 	img: string
 };
 
-class BoxHeader extends Component {
+@CSSModules(styles)
+export default class BoxHeader extends Component {
 	props: Props;
 
-	shouldComponentUpdate(nextProps) {
+	shouldComponentUpdate(nextProps: Props) {
 		return this.props.name !== nextProps.name;
 	}
 
@@ -30,5 +31,3 @@ class BoxHeader extends Component {
 		);
 	}
 }
-
-export default cssModules(BoxHeader, styles);

@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react';
-import cssModules from 'react-css-modules';
+import CSSModules from 'react-css-modules';
 import styles from './auth.css';
 
 type Props = {
@@ -12,7 +12,8 @@ type State = {
 	password: string
 };
 
-class Auth extends Component {
+@CSSModules(styles)
+export default class Auth extends Component {
 	props: Props;
 	state: State;
 
@@ -24,11 +25,11 @@ class Auth extends Component {
 		};
 	}
 
-	handleChangeName = event => {
+	handleChangeName = (event: any) => {
 		this.setState({name: event.target.value});
 	}
 
-	handleChangePassword = event => {
+	handleChangePassword = (event: any) => {
 		this.setState({password: event.target.value});
 	}
 
@@ -64,5 +65,3 @@ class Auth extends Component {
 		);
 	}
 }
-
-export default cssModules(Auth, styles);

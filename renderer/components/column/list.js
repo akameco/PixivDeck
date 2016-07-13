@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import {findDOMNode} from 'react-dom';
-import cssModules from 'react-css-modules';
+import CSSModules from 'react-css-modules';
 import type {WorkType} from '../../actions/type';
 import Box from '../box';
 import {CloseButton} from '../button';
@@ -17,11 +17,12 @@ type Props = {
 	onClose: () => void
 };
 
-class List extends Component {
+@CSSModules(styles)
+export default class List extends Component {
 	props: Props;
 	target: Component<*, *, *>
 
-	shouldComponentUpdate(nextProps) {
+	shouldComponentUpdate(nextProps: Props) {
 		if (this.props.works.length !== nextProps.works.length) {
 			return true;
 		}
@@ -68,5 +69,3 @@ class List extends Component {
 		);
 	}
 }
-
-export default cssModules(List, styles);
