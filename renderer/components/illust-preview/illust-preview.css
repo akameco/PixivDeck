@@ -17,24 +17,3 @@
 		cursor: zoom-out;
 	}
 }
-
-.from {
-	width: auto;
-	height: auto;
-	/*filter: blur(10px);*/
-}
-
-.loaded {
-	width: auto;
-	height: auto;
-	animation: fade-in 600ms both;
-}
-
-@keyframes fade-in {
-	0% {
-		filter: blur(1px);
-	}
-	100% {
-		filter: none;
-	}
-}
