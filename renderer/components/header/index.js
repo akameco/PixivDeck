@@ -1,41 +1,45 @@
 // @flow
 import React, {Component} from 'react';
+import type {Dispatch} from 'redux';
+import {connect} from 'react-redux';
 import cssModules from 'react-css-modules';
+import type {Manage} from '../../actions/type';
+import {
+	closeDropdown,
+	toggleDropdown,
+	openModal,
+	logout
+} from '../../actions/manage';
 import {SettingsIcon} from '../icon';
 import Dropdwon from './dropdown';
 import styles from './header.css';
 
 type Props = {
-	onOpenModal: () => void,
-	onLogout: () => void
+	manage: Manage,
+	dispatch: Dispatch
 };
 
 class Header extends Component {
 	props: Props;
-	state: {
-		isDropdown: bool
+
+	shouldComponentUpdate(nextProps) {
+		return this.props.manage.isDropdown !== nextProps.manage.isDropdown;
 	}
 
-	constructor(props: Props) {
-		super(props);
-		this.state = {isDropdown: false};
-	}
-
-	handleAddClick = (event: Event) => {
-		event.preventDefault();
-		this.props.onOpenModal();
+	handleAddClick = () => {
+		this.props.dispatch(openModal());
 	}
 
 	handleDropdown = () => {
-		this.setState({isDropdown: !this.state.isDropdown});
+		this.props.dispatch(toggleDropdown());
 	}
 
 	handleClose = () => {
-		this.setState({isDropdown: false});
+		this.props.dispatch(closeDropdown());
 	}
 
 	handleLogout = () => {
-		this.props.onLogout();
+		this.props.dispatch(logout());
 	}
 
 	render() {
@@ -49,10 +53,10 @@ class Header extends Component {
 						<SettingsIcon/>
 					</a>
 				</div>
-				{this.state.isDropdown &&
+				{this.props.manage.isDropdown &&
 					<Dropdwon
 						onClose={this.handleClose}
-						onLogout={this.props.onLogout}
+						onLogout={this.handleLogout}
 						/>
 				}
 			</header>
@@ -60,4 +64,8 @@ class Header extends Component {
 	}
 }
 
-export default cssModules(Header, styles);
+function mapStateToProps(state) {
+	return {manage: state.manage};
+}
+
+export default connect(mapStateToProps)(cssModules(Header, styles));

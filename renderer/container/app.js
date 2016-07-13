@@ -4,11 +4,15 @@ import type {Dispatch, State} from 'redux';
 import {connect} from 'react-redux';
 import cssModules from 'react-css-modules';
 import type {Manage, WorkType, WorksType, ColumnType, UserType} from '../actions/type';
-import {openModal, closeModal, closeImageView} from '../actions/manage';
 import {currentWork} from '../actions';
+import {
+	closeModal,
+	closeImageView,
+	openImageView,
+	login
+} from '../actions/manage';
 import {addColumn, nextPage, closeColumn} from '../actions/column';
 import type {query} from '../actions/column';
-import {openImageView, login, logout} from '../actions/manage';
 import Auth from '../components/auth/';
 import ImageModal from '../components/image-modal';
 import Modal from '../components/modal/';
@@ -45,10 +49,6 @@ class App extends Component {
 		this.props.dispatch(closeImageView());
 	};
 
-	handleOpenModal = () => {
-		this.props.dispatch(openModal());
-	}
-
 	handleOnClickWork = (id: number) => {
 		this.props.dispatch(currentWork(id));
 		this.props.dispatch(openImageView());
@@ -80,10 +80,6 @@ class App extends Component {
 
 	handleAuth = (name: string, password: string) => {
 		this.props.dispatch(login(name, password));
-	}
-
-	handleLogout = () => {
-		this.props.dispatch(logout());
 	}
 
 	renderImageView() {
@@ -151,10 +147,7 @@ class App extends Component {
 
 		return (
 			<div styleName="wrap">
-				<Header
-					onLogout={this.handleLogout}
-					onOpenModal={this.handleOpenModal}
-					/>
+				<Header/>
 				<div styleName="content">
 					{this.renderColumns()}
 				</div>

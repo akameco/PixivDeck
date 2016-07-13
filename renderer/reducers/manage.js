@@ -7,6 +7,7 @@ const initManageState = {
 	isLogin: false,
 	isImageView: false,
 	isModal: false,
+	isDropdown: false,
 	currentWorkId: null,
 	filter: {
 		tags: []
@@ -27,6 +28,12 @@ export default function (state: Manage = initManageState, action: ManageAction):
 			return {...state, isModal: true};
 		case 'CLOSE_MODAL':
 			return {...state, isModal: false};
+		case 'OPEN_DROPDOWN':
+			return {...state, isDropdown: true};
+		case 'CLOSE_DROPDOWN':
+			return {...state, isDropdown: false};
+		case 'TOGGLE_DROPDOWN':
+			return {...state, isDropdown: !state.isDropdown};
 		case 'SELECT_WORK':
 			return {...state, currentWorkId: action.id};
 		case 'ADD_TAG_FILTER':
