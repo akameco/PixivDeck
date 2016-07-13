@@ -1,24 +1,28 @@
 .wrap {
 	width: 100%;
+
+	& header {
+		position: relative;;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 50px;
+		z-index: 200;
+		text-align: center;
+		color: #e1e8ed;
+		background: #292f33;
+		width: 100%;
+
+		& a {
+			cursor: pointer;
+		}
+	}
 }
 
 .base {
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	width: 100%;
-}
-
-.wrap header {
-	position: relative;;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 50px;
-	z-index: 200;
-	text-align: center;
-	color: #e1e8ed;
-	background: #292f33;
 	width: 100%;
 }
 
