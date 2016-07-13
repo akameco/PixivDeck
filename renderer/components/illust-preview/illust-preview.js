@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react';
-import cssModules from 'react-css-modules';
+import CSSModules from 'react-css-modules';
 import LazyImg from './lazy-img';
 import styles from './illust-preview.css';
 
@@ -15,10 +15,11 @@ type Props = {
 	onClose: () => void
 };
 
-class IllustPreview extends Component {
+@CSSModules(styles)
+export default class IllustPreview extends Component {
 	props: Props;
 
-	shouldComponentUpdate(nextProps) {
+	shouldComponentUpdate(nextProps: Props) {
 		return this.props.isLoaded !== nextProps.isLoaded;
 	}
 
@@ -47,5 +48,3 @@ class IllustPreview extends Component {
 		);
 	}
 }
-
-export default cssModules(IllustPreview, styles);

@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import type {Dispatch, State} from 'redux';
 import type {WorkType} from '../../actions/type';
 import {closeImageView, finishImgLoaded, startImgLoading} from '../../actions/manage';
-import IllustPreviewBase from './illust-preview';
+import Preview from './illust-preview';
 
 type Props = {
 	work: WorkType,
@@ -31,7 +31,7 @@ class IllustPreview extends Component {
 	render() {
 		const {work, show} = this.props;
 		return (
-			<IllustPreviewBase
+			<Preview
 				show={show}
 				from={work.imageUrls.medium}
 				width={work.width}

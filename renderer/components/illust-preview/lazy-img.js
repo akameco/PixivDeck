@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react';
-import cssModules from 'react-css-modules';
+import CSSModules from 'react-css-modules';
 import styles from './lazy-img.css';
 
 function createStyle(width: number, height: number): {
@@ -32,7 +32,8 @@ type Props = {
 	onLoad: () => void
 };
 
-class LazyImg extends Component {
+@CSSModules(styles)
+export default class LazyImg extends Component {
 	props: Props;
 
 	handleLoad = () => {
@@ -62,5 +63,3 @@ class LazyImg extends Component {
 		);
 	}
 }
-
-export default cssModules(LazyImg, styles);

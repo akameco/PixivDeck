@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import type {Dispatch, State} from 'redux';
-import cssModules from 'react-css-modules';
+import CSSModules from 'react-css-modules';
 import {connect} from 'react-redux';
 import type {WorkType, WorksType, ColumnType} from '../actions/type';
 import {nextPage, closeColumn} from '../../actions/column';
@@ -13,6 +13,7 @@ type Props = {
 	dispatch: Dispatch;
 }
 
+@CSSModules(styles)
 class Column extends Component {
 	props: Props;
 
@@ -63,4 +64,4 @@ function mapStateToProps(state: State, ownProps) {
 	};
 }
 
-export default connect(mapStateToProps)(cssModules(Column, styles));
+export default connect(mapStateToProps)(Column);

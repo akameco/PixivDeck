@@ -1,13 +1,14 @@
 // @flow
 import React, {Component} from 'react';
-import cssModules from 'react-css-modules';
+import CSSModules from 'react-css-modules';
 import styles from './close-button.css';
 
 type Props = {
 	onClick: () => void
 };
 
-class CloseButton extends Component {
+@CSSModules(styles)
+export default class CloseButton extends Component {
 	props: Props;
 
 	shouldComponentUpdate() {
@@ -26,5 +27,3 @@ class CloseButton extends Component {
 		);
 	}
 }
-
-export default cssModules(CloseButton, styles);
