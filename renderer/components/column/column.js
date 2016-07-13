@@ -1,7 +1,7 @@
 // @flor
 import React, {Component} from 'react';
 import cssModules from 'react-css-modules';
-import type {ColumnType, WorkType, UsersType} from '../actions/type';
+import type {ColumnType, WorkType, UsersType} from '../../actions/type';
 import List from './list';
 import styles from './column.css';
 
@@ -19,6 +19,10 @@ type Props = {
 class Column extends Component {
 	props: Props;
 
+	shouldComponentUpdate(nextProps) {
+		return this.props.works.length !== nextProps.works.length;
+	}
+
 	handleOnNextPage = () => {
 		this.props.onNextPage(this.props.id);
 	};
@@ -29,10 +33,6 @@ class Column extends Component {
 
 	handleClose = () => {
 		this.props.onClose(this.props.column.id);
-	}
-
-	shouldComponentUpdate(nextProps) {
-		return this.props.works.length !== nextProps.works.length;
 	}
 
 	render() {

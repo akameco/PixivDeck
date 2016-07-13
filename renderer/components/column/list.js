@@ -2,10 +2,10 @@
 import React, {Component} from 'react';
 import {findDOMNode} from 'react-dom';
 import cssModules from 'react-css-modules';
-import type {WorkType, UserType} from '../actions/type';
+import type {WorkType, UserType} from '../../actions/type';
+import ImageBox from '../box';
+import {CloseButton} from '../button';
 import Infinite from './infinite';
-import ImageBox from './box';
-import {CloseButton} from './button';
 import styles from './list.css';
 
 type Props = {
@@ -30,10 +30,6 @@ class List extends Component {
 
 	handleClose = () => {
 		this.props.onClose();
-	}
-
-	shouldComponentUpdate(nextProps) {
-		return this.props.works.length !== nextProps.works.length;
 	}
 
 	render() {
