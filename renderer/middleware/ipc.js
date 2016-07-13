@@ -52,9 +52,6 @@ export default (store: Store) => {
 		const res = data.response[0];
 		const camelizedJson = camelizeKeys(res);
 		const normalizedJson = normalize(camelizedJson, Schemas.WORK);
-		dispatch({
-			type: 'SUCCESS_RANKING',
-			response: normalizedJson
-		});
+		dispatch({type: 'SUCCESS_IPC_REQUEST', response: normalizedJson});
 	});
 };
