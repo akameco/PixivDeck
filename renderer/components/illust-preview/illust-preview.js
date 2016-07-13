@@ -10,9 +10,28 @@ type Props = {
 	width: number,
 	height: number,
 	show: bool,
-	styles: Object,
 	onClose: () => void
 };
+
+function createStyle(width: number, height: number): {
+	width: number | 'auto',
+	height: number | 'auto'
+} {
+	const {innerWidth, innerHeight} = window;
+	if (height > innerHeight && width > innerWidth) {
+		return (width * innerHeight < height * innerWidth) ?
+			{width: 'auto', height: innerHeight} :
+			{width: innerWidth, height: 'auto'};
+	}
+	if (height > innerHeight) {
+		return {width: 'auto', height: innerHeight};
+	}
+	if (width > innerWidth) {
+		return {width: innerWidth, height: 'auto'};
+	}
+
+	return {width, height};
+}
 
 class IllustPreview extends Component {
 	props: Props;
@@ -52,14 +71,7 @@ class IllustPreview extends Component {
 		const imgStyle = this.state.isLoad ? 'loaded' : 'loading';
 		const {width, height} = this.props;
 
-		let fromStyle = {};
-		if (height > window.innerHeight) {
-			fromStyle = {width: 'auto', height: window.innerHeight};
-		} else if (width > window.innerWidth) {
-			fromStyle = {width: window.innerWidth, height: 'auto'};
-		} else {
-			fromStyle = {width, height};
-		}
+		const fromStyle = createStyle(width, height);
 
 		return (
 			<div styleName="base" onClick={this.handleOnClose}>
