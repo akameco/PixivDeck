@@ -9,6 +9,12 @@ const initialState = storage ? JSON.parse(storage) : {};
 
 const store = configureStore(initialState);
 
+if (process.env.NODE_ENV !== 'production') {
+	const {whyDidYouUpdate} = require('why-did-you-update');
+
+	whyDidYouUpdate(React);
+}
+
 render((
 	<Provider store={store}>
 		<App/>
