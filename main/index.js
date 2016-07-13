@@ -1,3 +1,4 @@
+// @flow
 /* eslint-disable camelcase */
 import 'babel-polyfill';
 import os from 'os';
@@ -83,19 +84,19 @@ app.on('ready', () => {
 		if (auth && auth.remember) {
 			const {name, password} = auth;
 			pixiv = new Pixiv(name, password);
-			mainWindow.webContents.send('SUCCESS_LOGINED');
+			ev.sender.send('SUCCESS_LOGINED');
 		}
 	});
 
 	ipcMain.on('LOGIN', (ev, {name, password}) => {
 		pixiv = new Pixiv(name, password);
-		mainWindow.webContents.send('SUCCESS_LOGINED');
+		ev.sender.send('SUCCESS_LOGINED');
 		authStore.set({name, password, remember: true});
 	});
 
 	ipcMain.on('ranking', async (ev, {id, opts}) => {
 		const res = await pixiv.ranking('all', Object.assign({page: 1, per_page: 50}, opts));
-		mainWindow.webContents.send('ranking', {
+		ev.sender.send('ranking', {
 			id,
 			res: res.response[0]
 		});
@@ -103,7 +104,7 @@ app.on('ready', () => {
 
 	ipcMain.on('favoriteWorks', async (ev, {id, opts}) => {
 		const res = await pixiv.favoriteWorks(Object.assign({}, {per_page: 50}, opts));
-		mainWindow.webContents.send('favoriteWorks', {
+		ev.sender.send('favoriteWorks', {
 			id,
 			res
 		});
@@ -111,7 +112,7 @@ app.on('ready', () => {
 
 	ipcMain.on('search', async (ev, {id, q, opts}) => {
 		const res = await pixiv.search(q, Object.assign({}, {mode: 'tag'}, opts));
-		mainWindow.webContents.send('search', {
+		ev.sender.send('search', {
 			id,
 			res
 		});
@@ -119,6 +120,6 @@ app.on('ready', () => {
 
 	ipcMain.on('work', async (ev, id) => {
 		const res = await pixiv.works(id);
-		mainWindow.webContents.send('work', res);
+		ev.sender.send('work', res);
 	});
 });
