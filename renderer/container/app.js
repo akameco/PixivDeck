@@ -4,14 +4,12 @@ import type {Dispatch, State} from 'redux';
 import {connect} from 'react-redux';
 import cssModules from 'react-css-modules';
 import type {Manage, WorkType, WorksType, ColumnType, UserType} from '../actions/type';
-import {currentWork} from '../actions';
 import {
 	closeModal,
 	closeImageView,
-	openImageView,
 	login
 } from '../actions/manage';
-import {addColumn, nextPage, closeColumn} from '../actions/column';
+import {addColumn} from '../actions/column';
 import type {query} from '../actions/column';
 import Auth from '../components/auth/';
 import ImageModal from '../components/image-modal';
@@ -49,15 +47,6 @@ class App extends Component {
 		this.props.dispatch(closeImageView());
 	};
 
-	handleOnClickWork = (id: number) => {
-		this.props.dispatch(currentWork(id));
-		this.props.dispatch(openImageView());
-	}
-
-	handleOnNextPage = (id: number) => {
-		this.props.dispatch(nextPage(id));
-	}
-
 	isImageModal(): bool {
 		const {currentWorkId, isImageView} = this.props.manage;
 		if (isImageView && currentWorkId && this.props.works[currentWorkId]) {
@@ -69,14 +58,6 @@ class App extends Component {
 	handleOnCloseModal = () => {
 		this.props.dispatch(closeModal());
 	};
-
-	handleCloseColumn = (id: number) => {
-		this.props.dispatch(closeColumn(id));
-	}
-
-	handleTagClick = (tag: string) => {
-		this.props.dispatch(addColumn({type: 'search', q: tag, opts: {page: 1}}, tag));
-	}
 
 	handleAuth = (name: string, password: string) => {
 		this.props.dispatch(login(name, password));
@@ -95,33 +76,6 @@ class App extends Component {
 			);
 		}
 		return null;
-	}
-
-	renderColumns() {
-		const {columns, works, users, manage} = this.props;
-		return columns.map(column => {
-			if (!column.works) {
-				return null;
-			}
-			const {tags} = manage.filter;
-			const workList = column.works
-				.map(i => works[i])
-				.filter(work => work.tags.every(tag => tags.every(t => t !== tag)));
-
-			return (
-				<Column
-					key={column.id}
-					id={column.id}
-					column={column}
-					users={users}
-					works={workList}
-					onClose={this.handleCloseColumn}
-					onNextPage={this.handleOnNextPage}
-					onClickTag={this.handleTagClick}
-					onClickWork={this.handleOnClickWork}
-					/>
-			);
-		});
 	}
 
 	renderModal() {
@@ -145,11 +99,15 @@ class App extends Component {
 			return <Auth onClick={this.handleAuth}/>;
 		}
 
+		const Columns = this.props.columns.map(column => (
+			<Column key={column.id} column={column}/>
+		));
+
 		return (
 			<div styleName="wrap">
 				<Header/>
 				<div styleName="content">
-					{this.renderColumns()}
+					{Columns}
 				</div>
 				{this.renderImageView()}
 				{this.renderModal()}

@@ -17,12 +17,12 @@ type Props = {
 class ImageBox extends Component {
 	props: Props;
 
-	handleClick = () => {
-		this.props.onClick(this.props.work.id);
-	}
-
 	shouldComponentUpdate(nextProps) {
 		return this.props.work.id !== nextProps.work.id;
+	}
+
+	handleClick = () => {
+		this.props.onClick(this.props.work.id);
 	}
 
 	render() {

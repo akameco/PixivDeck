@@ -20,7 +20,10 @@ class Column extends Component {
 	props: Props;
 
 	shouldComponentUpdate(nextProps) {
-		return this.props.works.length !== nextProps.works.length;
+		if (this.props.works.length !== nextProps.works.length) {
+			return true;
+		}
+		return false;
 	}
 
 	handleOnNextPage = () => {
@@ -39,17 +42,15 @@ class Column extends Component {
 		const {users, works, column} = this.props;
 		return (
 			<div styleName="base">
-				{works.length > 0 &&
-					<List
-						title={column.title}
-						works={works}
-						users={users}
-						onClose={this.handleClose}
-						onClick={this.handleOnClickWork}
-						onClickTag={this.props.onClickTag}
-						onNextPage={this.handleOnNextPage}
-						/>
-					}
+				<List
+					title={column.title}
+					works={works}
+					users={users}
+					onClose={this.handleClose}
+					onClick={this.handleOnClickWork}
+					onClickTag={this.props.onClickTag}
+					onNextPage={this.handleOnNextPage}
+					/>
 			</div>
 		);
 	}

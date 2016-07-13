@@ -10,6 +10,10 @@ type Props = {
 class Tag extends Component {
 	props: Props;
 
+	shouldComponentUpdate() {
+		return false;
+	}
+
 	handleClick = () => {
 		this.props.onClick(this.props.name);
 	}

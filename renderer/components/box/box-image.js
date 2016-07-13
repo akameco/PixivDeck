@@ -7,19 +7,14 @@ import styles from './box-image.css';
 
 type Props = {
 	work: WorkType,
-	onClick: (id: number) => void
+	onClick: () => void
 };
 
 class BoxImage extends Component {
 	props: Props;
 
-	handleClick = () => {
-		this.props.onClick(this.props.work.id);
-	}
-
 	render() {
-		const {work} = this.props;
-		const {imageUrls, pageCount} = work;
+		const {imageUrls, pageCount} = this.props.work;
 		return (
 			<div styleName="base">
 				{pageCount > 1 &&
@@ -27,7 +22,7 @@ class BoxImage extends Component {
 				}
 				<img
 					src={imageUrls.medium}
-					onClick={this.handleClick}
+					onClick={this.props.onClick}
 					/>
 			</div>
 		);
