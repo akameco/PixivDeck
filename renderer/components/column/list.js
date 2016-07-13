@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import {findDOMNode} from 'react-dom';
 import cssModules from 'react-css-modules';
-import type {WorkType, UserType} from '../../actions/type';
+import type {WorkType} from '../../actions/type';
 import Box from '../box';
 import {CloseButton} from '../button';
 import Infinite from './infinite';
@@ -10,7 +10,6 @@ import styles from './list.css';
 
 type Props = {
 	works: Array<WorkType>,
-	users: Array<UserType>,
 	title: string,
 	onClick: (id: string) => void,
 	onClickTag: (tag: string) => void,
@@ -21,6 +20,13 @@ type Props = {
 class List extends Component {
 	props: Props;
 	target: Component<*, *, *>
+
+	shouldComponentUpdate(nextProps) {
+		if (this.props.works.length !== nextProps.works.length) {
+			return true;
+		}
+		return false;
+	}
 
 	handleScrollTop = (e: Event) => {
 		e.preventDefault();
@@ -34,8 +40,7 @@ class List extends Component {
 
 	render() {
 		const List = this.props.works.map(work => {
-			const user = this.props.users[work.user];
-			return <Box key={work.id} work={work} user={user}/>;
+			return <Box key={work.id} work={work}/>;
 		});
 
 		return (

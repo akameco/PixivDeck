@@ -6,6 +6,7 @@ import type {Manage} from '../actions/type';
 const initManageState = {
 	isLogin: false,
 	isImageView: false,
+	isImgLoaded: false,
 	isMangaView: false,
 	isModal: false,
 	isDropdown: false,
@@ -39,6 +40,10 @@ export default function (state: Manage = initManageState, action: ManageAction):
 			return {...state, isDropdown: false};
 		case 'TOGGLE_DROPDOWN':
 			return {...state, isDropdown: !state.isDropdown};
+		case 'START_IMG_LOADING':
+			return {...state, isImgLoaded: false};
+		case 'SET_IMG_LOADED':
+			return {...state, isImgLoaded: true};
 		case 'SELECT_WORK':
 			return {...state, currentWorkId: action.id};
 		case 'ADD_TAG_FILTER':

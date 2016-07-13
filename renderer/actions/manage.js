@@ -13,6 +13,8 @@ export type ManageAction =
 	| {type: 'LOGIN', name: string, password: string}
 	| {type: 'LOGOUT'}
 	| {type: 'ADD_TAG_FILTER', tag: string}
+	| {type: 'START_IMG_LOADING'}
+	| {type: 'SET_IMG_LOADED'}
 ;
 
 export function login(name: string, password: string): ManageAction {
@@ -72,4 +74,12 @@ export function currentWork(id: number): ManageAction {
 		type: 'SELECT_WORK',
 		id
 	};
+}
+
+export function startImgLoading(): ManageAction {
+	return {type: 'START_IMG_LOADING'};
+}
+
+export function finishImgLoaded(): ManageAction {
+	return {type: 'SET_IMG_LOADED'};
 }

@@ -51,6 +51,7 @@ export type ColumnType = {
 export type Manage = {
 	isModal: bool,
 	isImageView: bool,
+	isImgLoaded: bool,
 	isMangaView: bool,
 	isDropdown: bool,
 	currentWorkId: ?number,
