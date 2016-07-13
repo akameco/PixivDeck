@@ -6,6 +6,7 @@ import type {Store, Dispatch} from 'redux';
 
 const workSchema = new Schema('works', {idAttribute: 'id'});
 const userSchema = new Schema('users', {idAttribute: 'id'});
+
 workSchema.define({
 	user: userSchema
 });
@@ -15,37 +16,22 @@ export const Schemas = {
 	WORK_ARRAY: arrayOf(workSchema)
 };
 
-function auth(dispatch: Dispatch) {
-	ipcRenderer.on('SUCCESS_LOGINED', () => {
-		dispatch({
-			type: 'SUCCESS_LOGINED'
-		});
-	});
+function format(res) {
+	const camelizedJson = camelizeKeys(res);
+	return normalize(camelizedJson, Schemas.WORK_ARRAY);
 }
 
 export default (store: Store) => {
 	const dispatch: Dispatch = store.dispatch;
 
-	function format(res) {
-		const camelizedJson = camelizeKeys(res);
-		const normalizedJson = normalize(camelizedJson, Schemas.WORK_ARRAY);
-		return normalizedJson;
+	function send(id: number, response: Object) {
+		dispatch({type: 'SUCCESS_IPC_REQUEST', response});
+		dispatch({type: 'RECIEVE_WORKS', id, works: response.result});
 	}
 
-	function send(id, response) {
-		dispatch({
-			type: 'SUCCESS_IPC_REQUEST',
-			response
-		});
-
-		dispatch({
-			type: 'RECIEVE_WORKS',
-			id,
-			works: response.result
-		});
-	}
-
-	auth(dispatch);
+	ipcRenderer.on('SUCCESS_LOGINED', () => {
+		dispatch({type: 'SUCCESS_LOGINED'});
+	});
 
 	ipcRenderer.on('ranking', (ev, data) => {
 		const res = data.res.works.map(v => v.work);
