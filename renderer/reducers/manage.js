@@ -21,7 +21,7 @@ export default function (state: Manage = initManageState, action: ManageAction):
 		case 'LOGOUT':
 			return {...state, isLogin: false};
 		case 'OPEN_IMAGE_VIEW':
-			return {...state, isImageView: true};
+			return {...state, isImageView: Boolean(state.currentWorkId)};
 		case 'CLOSE_IMAGE_VIEW':
 			return {...state, isImageView: false};
 		case 'OPEN_MODAL':

@@ -1,55 +1,45 @@
 // @flow
 import React, {Component} from 'react';
-import cssModules from 'react-css-modules';
-import styles from './illust-preview.css';
+import {connect} from 'react-redux';
+import type {Dispatch, State} from 'redux';
+import type {WorkType} from '../../actions/type';
+import {closeImageView} from '../../actions/manage';
+import IllustPreviewBase from './illust-preview';
 
 type Props = {
-	title: string,
-	img: string,
+	work: WorkType,
 	show: bool,
-	styles: Object,
-	onClose: () => void
+	dispatch: Dispatch
 };
 
 class IllustPreview extends Component {
 	props: Props;
 
-	state: {
-		isLoad: bool
-	};
-
-	constructor(props: Props) {
-		super(props);
-		this.state = {
-			isLoad: false
-		};
+	handleClose = () => {
+		this.props.dispatch(closeImageView());
 	}
 
-	handleOnClose = () => {
-		this.props.onClose();
-	};
-
-	handleImgLoad = () => {
-		this.setState({isLoad: true});
-	};
-
-	handleImgUnload = () => {
-		this.setState({isLoad: false});
-	};
-
 	render() {
-		const imgStyle = this.state.isLoad ? 'loaded' : '';
+		const {work, show} = this.props;
 		return (
-			<div styleName="base" onClick={this.handleOnClose}>
-				<img
-					src={this.props.img}
-					onLoad={this.handleImgLoad}
-					onUnLoad={this.handleImgUnload}
-					styleName={imgStyle}
-					/>
-			</div>
+			<IllustPreviewBase
+				show={show}
+				img={work.imageUrls.large}
+				onClose={this.handleClose}
+				/>
 		);
 	}
 }
 
-export default cssModules(IllustPreview, styles);
+function mapStateToProps(state: State) {
+	const {entities, manage} = state;
+	const {currentWorkId, isImageView} = manage;
+	const work = entities.works[currentWorkId];
+
+	return {
+		work,
+		show: isImageView
+	};
+}
+
+export default connect(mapStateToProps)(IllustPreview);

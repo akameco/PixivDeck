@@ -3,12 +3,8 @@ import React, {Component} from 'react';
 import type {Dispatch, State} from 'redux';
 import {connect} from 'react-redux';
 import cssModules from 'react-css-modules';
-import type {Manage, WorkType, WorksType, ColumnType, UserType} from '../actions/type';
-import {
-	closeModal,
-	closeImageView,
-	login
-} from '../actions/manage';
+import type {Manage, WorksType, ColumnType} from '../actions/type';
+import {closeModal, login} from '../actions/manage';
 import {addColumn} from '../actions/column';
 import type {query} from '../actions/column';
 import Auth from '../components/auth/';
@@ -21,9 +17,7 @@ import styles from './app.css';
 
 type Props = {
 	children: any,
-	work: WorkType,
 	works: WorksType,
-	users: UserType,
 	columns: Array<ColumnType>,
 	manage: Manage,
 	dispatch: Dispatch
@@ -43,10 +37,6 @@ class App extends Component {
 		this.props.dispatch(addColumn(query, title));
 	};
 
-	handleCloseModal = () => {
-		this.props.dispatch(closeImageView());
-	};
-
 	isImageModal(): bool {
 		const {currentWorkId, isImageView} = this.props.manage;
 		if (isImageView && currentWorkId && this.props.works[currentWorkId]) {
@@ -61,21 +51,6 @@ class App extends Component {
 
 	handleAuth = (name: string, password: string) => {
 		this.props.dispatch(login(name, password));
-	}
-
-	renderImageView() {
-		const {works, manage} = this.props;
-		const {currentWorkId, isImageView} = manage;
-		if (isImageView && currentWorkId && this.props.works[currentWorkId]) {
-			return (
-				<IllustPreview
-					show={isImageView}
-					img={works[currentWorkId].imageUrls.large}
-					onClose={this.handleCloseModal}
-					/>
-			);
-		}
-		return null;
 	}
 
 	renderModal() {
@@ -109,7 +84,7 @@ class App extends Component {
 				<div styleName="content">
 					{Columns}
 				</div>
-				{this.renderImageView()}
+				{this.props.manage.isImageView && <IllustPreview/>}
 				{this.renderModal()}
 			</div>
 		);
@@ -118,13 +93,10 @@ class App extends Component {
 
 function mapStateToProps(state: State) {
 	const {entities, manage, columns} = state;
-	const {works, users} = entities;
-	const work = works[manage.currentWorkId] || null;
+	const {works} = entities;
 
 	return {
-		work,
 		works,
-		users,
 		manage,
 		columns
 	};
