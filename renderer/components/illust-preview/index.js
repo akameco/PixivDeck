@@ -24,7 +24,10 @@ class IllustPreview extends Component {
 		return (
 			<IllustPreviewBase
 				show={show}
-				img={work.imageUrls.large}
+				from={work.imageUrls.medium}
+				width={work.width}
+				height={work.height}
+				to={work.imageUrls.large}
 				onClose={this.handleClose}
 				/>
 		);

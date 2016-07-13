@@ -10,26 +10,31 @@
 	height: 100%;
 
 	& img {
-		width: auto;
-		height: auto;
 		max-width: 100vw;
 		max-height: 100vh;
 		margin: auto;
 		user-select: none;
-		opacity: 0;
 		cursor: zoom-out;
 	}
 }
 
+.from {
+	width: auto;
+	height: auto;
+	/*filter: blur(10px);*/
+}
+
 .loaded {
-	animation: fade-in 500ms both;
+	width: auto;
+	height: auto;
+	animation: fade-in 600ms both;
 }
 
 @keyframes fade-in {
 	0% {
-		opacity: 0;
+		filter: blur(1px);
 	}
 	100% {
-		opacity: 1;
+		filter: none;
 	}
 }
