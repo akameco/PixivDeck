@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import cssModules from 'react-css-modules';
 import type {WorkType, UserType} from '../../actions/type';
+import {MangaIcon} from '../icon/';
 import BoxHeader from './box-header';
 import BoxFooter from './box-footer';
 import styles from './box.css';
@@ -26,7 +27,7 @@ class ImageBox extends Component {
 
 	render() {
 		const {work, user} = this.props;
-		const {title, imageUrls, caption, tags} = work;
+		const {title, imageUrls, caption, tags, pageCount} = work;
 		return (
 			<div styleName="base">
 				<BoxHeader
@@ -37,6 +38,9 @@ class ImageBox extends Component {
 				{title}
 				{caption}
 				<div styleName="image-wrap">
+					{pageCount > 1 &&
+						<MangaIcon/>
+					}
 					<img
 						src={imageUrls.medium}
 						onClick={this.handleClick}
