@@ -1,6 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import cssModules from 'react-css-modules';
+import LazyImg from './lazy-img';
 import styles from './illust-preview.css';
 
 type Props = {
@@ -12,26 +13,6 @@ type Props = {
 	show: bool,
 	onClose: () => void
 };
-
-function createStyle(width: number, height: number): {
-	width: number | 'auto',
-	height: number | 'auto'
-} {
-	const {innerWidth, innerHeight} = window;
-	if (height > innerHeight && width > innerWidth) {
-		return (width * innerHeight < height * innerWidth) ?
-			{width: 'auto', height: innerHeight} :
-			{width: innerWidth, height: 'auto'};
-	}
-	if (height > innerHeight) {
-		return {width: 'auto', height: innerHeight};
-	}
-	if (width > innerWidth) {
-		return {width: innerWidth, height: 'auto'};
-	}
-
-	return {width, height};
-}
 
 class IllustPreview extends Component {
 	props: Props;
@@ -55,38 +36,22 @@ class IllustPreview extends Component {
 		this.props.onClose();
 	};
 
-	handleImgLoad = () => {
-		this.setState({isLoad: true});
-	};
-
 	handleLoad = () => {
-		const img = new Image();
-		img.onload = () => {
-			this.setState({isLoad: true});
-		};
-		img.src = this.props.to;
+		this.setState({isLoad: true});
 	}
 
 	render() {
-		const imgStyle = this.state.isLoad ? 'loaded' : 'loading';
-		const {width, height} = this.props;
-
-		const fromStyle = createStyle(width, height);
-
+		const {width, height, from, to} = this.props;
 		return (
 			<div styleName="base" onClick={this.handleOnClose}>
-				{this.state.isLoad ?
-					<img
-						src={this.props.to}
-						styleName={imgStyle}
-						/> :
-					<img
-						src={this.props.from}
-						styleName="from"
-						style={fromStyle}
-						onLoad={this.handleLoad}
-						/>
-				}
+				<LazyImg
+					from={from}
+					to={to}
+					width={width}
+					height={height}
+					isLoaded={this.state.isLoad}
+					onLoad={this.handleLoad}
+					/>
 			</div>
 		);
 	}
