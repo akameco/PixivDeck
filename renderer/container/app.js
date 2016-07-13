@@ -18,7 +18,7 @@ import ImageModal from '../components/image-modal';
 import Modal from '../components/modal/';
 import SelectColumnModal from '../components/modal/select-column-modal';
 import Header from '../components/header/';
-import Column from '../components/column';
+import Column from '../components/column/';
 import styles from './app.css';
 
 type Props = {
