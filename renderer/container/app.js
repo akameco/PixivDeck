@@ -17,7 +17,6 @@ import styles from './app.css';
 
 type Props = {
 	children: any,
-	works: WorksType,
 	columns: Array<ColumnType>,
 	manage: Manage,
 	dispatch: Dispatch
@@ -36,14 +35,6 @@ class App extends Component {
 	) => {
 		this.props.dispatch(addColumn(query, title));
 	};
-
-	isImageModal(): bool {
-		const {currentWorkId, isImageView} = this.props.manage;
-		if (isImageView && currentWorkId && this.props.works[currentWorkId]) {
-			return true;
-		}
-		return false;
-	}
 
 	handleOnCloseModal = () => {
 		this.props.dispatch(closeModal());
@@ -92,11 +83,9 @@ class App extends Component {
 }
 
 function mapStateToProps(state: State) {
-	const {entities, manage, columns} = state;
-	const {works} = entities;
+	const {manage, columns} = state;
 
 	return {
-		works,
 		manage,
 		columns
 	};
