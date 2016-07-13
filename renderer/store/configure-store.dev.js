@@ -7,7 +7,7 @@ import auth from '../middleware/auth';
 import api from '../middleware/api';
 import scroll from '../middleware/scroll';
 
-export default function configureStore() {
+export default function configureStore(initialState) {
 	const logger = createLogger();
 
 	const enhancer = compose(
@@ -20,7 +20,7 @@ export default function configureStore() {
 		), window.devToolsExtension ? window.devToolsExtension() : f => f
 	);
 
-	const store = createStore(reducer, enhancer);
+	const store = createStore(reducer, initialState, enhancer);
 	startIpc(store);
 
 	if (module.hot) {

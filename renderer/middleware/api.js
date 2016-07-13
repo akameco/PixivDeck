@@ -3,6 +3,10 @@ import {ipcRenderer} from 'electron'; // eslint-disable-line import/no-extraneou
 import type {Store, Action, Dispatch} from 'redux';
 
 export default (store: Store) => (next: Dispatch) => (action: Action) => {
+	setImmediate(() => {
+		localStorage.setItem('store', JSON.stringify(store.getState()));
+	});
+
 	if (action.type !== 'NEXT_PAGE' && action.type !== 'ADD_COLUMN') {
 		return next(action);
 	}
