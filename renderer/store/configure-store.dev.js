@@ -8,7 +8,9 @@ import api from '../middleware/api';
 import scroll from '../middleware/scroll';
 
 export default function configureStore(initialState) {
-	const logger = createLogger();
+	const logger = createLogger({
+		collapsed: () => true
+	});
 
 	const enhancer = compose(
 		applyMiddleware(
