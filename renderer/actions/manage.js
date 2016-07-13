@@ -4,6 +4,9 @@ export type ManageAction =
 	| {type: 'CLOSE_IMAGE_VIEW'}
 	| {type: 'OPEN_MODAL'}
 	| {type: 'CLOSE_MODAL'}
+	| {type: 'OPEN_DROPDOWN'}
+	| {type: 'CLOSE_DROPDOWN'}
+	| {type: 'TOGGLE_DROPDOWN'}
 	| {type: 'SELECT_WORK', id: number}
 	| {type: 'LOGIN', name: string, password: string}
 	| {type: 'LOGOUT'}
@@ -28,6 +31,18 @@ export function openModal(): ManageAction {
 
 export function closeModal(): ManageAction {
 	return {type: 'CLOSE_MODAL'};
+}
+
+export function openDropdown(): ManageAction {
+	return {type: 'OPEN_DROPDOWN'};
+}
+
+export function toggleDropdown(): ManageAction {
+	return {type: 'TOGGLE_DROPDOWN'};
+}
+
+export function closeDropdown(): ManageAction {
+	return {type: 'CLOSE_DROPDOWN'};
 }
 
 export function openImageView(): ManageAction {

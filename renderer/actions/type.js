@@ -44,6 +44,7 @@ export type ColumnType = {
 export type Manage = {
 	isModal: bool,
 	isImageView: bool,
+	isDropdown: bool,
 	currentWorkId: ?number,
 	filter: {
 		tags: Array<string>
