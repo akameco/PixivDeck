@@ -8,6 +8,11 @@ export type WorkType = {
 	caption: string,
 	tags: Array<string>,
 	user: number,
+	isManga: bool,
+	width: number,
+	height: number,
+	pageCount: number,
+	ageLimit: 'all-age' | 'r18',
 	imageUrls: Object
 }
 
