@@ -79,7 +79,7 @@ app.on('ready', () => {
 	const authStore = new Store('auth');
 	let pixiv;
 
-	ipcMain.on('INIT', () => {
+	ipcMain.on('INIT', ev => {
 		const auth = authStore.get();
 		if (auth && auth.remember) {
 			const {name, password} = auth;
@@ -95,7 +95,7 @@ app.on('ready', () => {
 	});
 
 	ipcMain.on('ranking', async (ev, {id, opts}) => {
-		const res = await pixiv.ranking('all', Object.assign({page: 1, per_page: 50}, opts));
+		const res = await pixiv.ranking('all', Object.assign({page: 1, per_page: 50, include_sanity_level: true}, opts));
 		ev.sender.send('ranking', {
 			id,
 			res: res.response[0]
