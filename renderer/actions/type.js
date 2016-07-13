@@ -14,7 +14,13 @@ export type WorkType = {
 	pageCount: number,
 	ageLimit: 'all-age' | 'r18',
 	type: 'illustration' | 'manga',
-	imageUrls: Object
+	imageUrls: {
+		large: string,
+		medium: string,
+		small: string,
+		px128x128: string,
+		px480mw: string
+	}
 }
 
 export type WorksType = {[key: number]: WorkType}
