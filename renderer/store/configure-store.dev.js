@@ -1,7 +1,7 @@
 import {createStore, applyMiddleware, compose} from 'redux';
 import createLogger from 'redux-logger';
-import thunk from 'redux-thunk';
 import reducer from '../reducers';
+import {save} from '../middleware/';
 import startIpc from '../middleware/ipc';
 import auth from '../middleware/auth';
 import api from '../middleware/api';
@@ -14,10 +14,10 @@ export default function configureStore(initialState) {
 
 	const enhancer = compose(
 		applyMiddleware(
-			thunk,
 			auth,
 			api,
 			scroll,
+			save,
 			logger
 		), window.devToolsExtension ? window.devToolsExtension() : f => f
 	);
