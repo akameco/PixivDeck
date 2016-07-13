@@ -12,7 +12,7 @@ import {
 import {addColumn} from '../actions/column';
 import type {query} from '../actions/column';
 import Auth from '../components/auth/';
-import ImageModal from '../components/image-modal';
+import IllustPreview from '../components/illust-preview/';
 import Modal from '../components/modal/';
 import SelectColumnModal from '../components/modal/select-column-modal';
 import Header from '../components/header/';
@@ -68,7 +68,7 @@ class App extends Component {
 		const {currentWorkId, isImageView} = manage;
 		if (isImageView && currentWorkId && this.props.works[currentWorkId]) {
 			return (
-				<ImageModal
+				<IllustPreview
 					show={isImageView}
 					img={works[currentWorkId].imageUrls.large}
 					onClose={this.handleCloseModal}

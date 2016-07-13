@@ -1,4 +1,4 @@
-.image-modal {
+.base {
 	display: flex;
 	position: fixed;
 	top: 0;
@@ -8,17 +8,17 @@
 	z-index: 300;
 	width: 100%;
 	height: 100%;
-}
 
-.image-modal img {
-	width: auto;
-	height: auto;
-	max-width: 100vw;
-	max-height: 100vh;
-	margin: auto;
-	user-select: none;
-	opacity: 0;
-	cursor: zoom-out;
+	& img {
+		width: auto;
+		height: auto;
+		max-width: 100vw;
+		max-height: 100vh;
+		margin: auto;
+		user-select: none;
+		opacity: 0;
+		cursor: zoom-out;
+	}
 }
 
 .loaded {
