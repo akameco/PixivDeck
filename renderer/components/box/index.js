@@ -52,4 +52,11 @@ class Box extends Component {
 	}
 }
 
-export default connect(null)(cssModules(Box, styles));
+function mapStateToProps(state, ownProps) {
+	const user = state.entities.users[ownProps.work.user];
+	return {
+		user
+	};
+}
+
+export default connect(mapStateToProps)(cssModules(Box, styles));

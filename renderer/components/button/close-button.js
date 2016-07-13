@@ -10,6 +10,10 @@ type Props = {
 class CloseButton extends Component {
 	props: Props;
 
+	shouldComponentUpdate() {
+		return false;
+	}
+
 	handleCloseClick = () => {
 		this.props.onClick();
 	}

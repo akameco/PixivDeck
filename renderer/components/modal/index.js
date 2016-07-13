@@ -7,8 +7,7 @@ import styles from './modal.css';
 type Props = {
 	children: typeof Component,
 	onClose: () => void,
-	title: string,
-	img: string
+	title: string
 };
 
 class Modal extends Component {

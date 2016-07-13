@@ -13,6 +13,10 @@ class Link extends Component {
 		mode: string
 	};
 
+	shouldComponentUpdate() {
+		return false;
+	}
+
 	render() {
 		return (
 			<li>

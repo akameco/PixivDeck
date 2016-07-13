@@ -5,43 +5,34 @@ import LazyImg from './lazy-img';
 import styles from './illust-preview.css';
 
 type Props = {
-	title: string,
 	from: string,
 	to: string,
 	width: number,
 	height: number,
-	show: bool,
+	isLoaded: bool,
+	onLoad: () => void,
+	onUnLoad: () => void,
 	onClose: () => void
 };
 
 class IllustPreview extends Component {
 	props: Props;
 
-	state: {
-		isLoad: bool
-	};
-
-	constructor(props: Props) {
-		super(props);
-		this.state = {
-			isLoad: false
-		};
+	shouldComponentUpdate(nextProps) {
+		return this.props.isLoaded !== nextProps.isLoaded;
 	}
 
-	shouldComponentUpdate(nextProps, nextState) {
-		return this.state.isLoad !== nextState.isLoad;
+	componentWillUnmount() {
+		this.props.onUnLoad();
 	}
 
 	handleOnClose = () => {
 		this.props.onClose();
 	};
 
-	handleLoad = () => {
-		this.setState({isLoad: true});
-	}
-
 	render() {
 		const {width, height, from, to} = this.props;
+
 		return (
 			<div styleName="base" onClick={this.handleOnClose}>
 				<LazyImg
@@ -49,8 +40,8 @@ class IllustPreview extends Component {
 					to={to}
 					width={width}
 					height={height}
-					isLoaded={this.state.isLoad}
-					onLoad={this.handleLoad}
+					isLoaded={this.props.isLoaded}
+					onLoad={this.props.onLoad}
 					/>
 			</div>
 		);

@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import type {Dispatch, State} from 'redux';
+import cssModules from 'react-css-modules';
 import {connect} from 'react-redux';
-import type {WorksType, ColumnType, UserType} from '../actions/type';
+import type {WorkType, WorksType, ColumnType} from '../actions/type';
 import {nextPage, closeColumn} from '../../actions/column';
-import ColumnBase from './column';
+import List from './list';
+import styles from './column.css';
 
 type Props = {
-	works: WorksType,
+	works: Array<WorkType>,
 	column: ColumnType,
-	users: Array<UserType>,
 	dispatch: Dispatch;
 }
 
@@ -22,25 +23,25 @@ class Column extends Component {
 		return false;
 	}
 
-	handleCloseColumn = (id: number) => {
-		this.props.dispatch(closeColumn(id));
+	handleClose = () => {
+		this.props.dispatch(closeColumn(this.props.column.id));
 	}
 
-	handleOnNextPage = (id: number) => {
-		this.props.dispatch(nextPage(id));
+	handleOnNextPage = () => {
+		this.props.dispatch(nextPage(this.props.column.id));
 	}
 
 	render() {
-		const {column, users, works} = this.props;
+		const {column, works} = this.props;
 		return (
-			<ColumnBase
-				id={column.id}
-				column={column}
-				users={users}
-				works={works}
-				onClose={this.handleCloseColumn}
-				onNextPage={this.handleOnNextPage}
-				/>
+			<div styleName="base">
+				<List
+					title={column.title}
+					works={works}
+					onClose={this.handleClose}
+					onNextPage={this.handleOnNextPage}
+					/>
+			</div>
 		);
 	}
 }
@@ -53,14 +54,13 @@ function filter(nums: Array<number>, works: WorksType, tags: Array<string>) {
 
 function mapStateToProps(state: State, ownProps) {
 	const {entities, manage} = state;
-	const {works, users} = entities;
+	const {works} = entities;
 	const {column} = ownProps;
 	const workList = column.works ? filter(column.works, works, manage.filter.tags) : [];
 
 	return {
-		works: workList,
-		users
+		works: workList
 	};
 }
 
-export default connect(mapStateToProps)(Column);
+export default connect(mapStateToProps)(cssModules(Column, styles));
