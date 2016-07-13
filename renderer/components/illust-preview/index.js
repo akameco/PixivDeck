@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import cssModules from 'react-css-modules';
-import styles from './image-modal.css';
+import styles from './illust-preview.css';
 
 type Props = {
 	title: string,
@@ -11,7 +11,7 @@ type Props = {
 	onClose: () => void
 };
 
-class ImageModal extends Component {
+class IllustPreview extends Component {
 	props: Props;
 
 	state: {
@@ -40,7 +40,7 @@ class ImageModal extends Component {
 	render() {
 		const imgStyle = this.state.isLoad ? 'loaded' : '';
 		return (
-			<div styleName="image-modal" onClick={this.handleOnClose}>
+			<div styleName="base" onClick={this.handleOnClose}>
 				<img
 					src={this.props.img}
 					onLoad={this.handleImgLoad}
@@ -52,4 +52,4 @@ class ImageModal extends Component {
 	}
 }
 
-export default cssModules(styles)(ImageModal);
+export default cssModules(IllustPreview, styles);
