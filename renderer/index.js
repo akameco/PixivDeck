@@ -4,7 +4,10 @@ import {Provider} from 'react-redux';
 import configureStore from './store';
 import App from './container/app';
 
-const store = configureStore();
+const storage = localStorage.getItem('store');
+const initialState = storage ? JSON.parse(storage) : {};
+
+const store = configureStore(initialState);
 
 render((
 	<Provider store={store}>

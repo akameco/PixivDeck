@@ -6,7 +6,7 @@ import scroll from '../middleware/scroll';
 import auth from '../middleware/auth';
 import api from '../middleware/api';
 
-export default function configureStore() {
+export default function configureStore(initialState) {
 	const enhancer = compose(
 		applyMiddleware(
 			thunk,
@@ -15,7 +15,7 @@ export default function configureStore() {
 			scroll
 		)
 	);
-	const store = createStore(reducer, enhancer);
+	const store = createStore(reducer, initialState, enhancer);
 	startIpc(store);
 	return store;
 }
