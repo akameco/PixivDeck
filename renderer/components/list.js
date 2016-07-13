@@ -32,6 +32,10 @@ class List extends Component {
 		this.props.onClose();
 	}
 
+	shouldComponentUpdate(nextProps) {
+		return this.props.works.length !== nextProps.works.length;
+	}
+
 	render() {
 		const List = this.props.works.map(work => {
 			const user = this.props.users[work.user];

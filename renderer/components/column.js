@@ -31,6 +31,10 @@ class Column extends Component {
 		this.props.onClose(this.props.column.id);
 	}
 
+	shouldComponentUpdate(nextProps) {
+		return this.props.works.length !== nextProps.works.length;
+	}
+
 	render() {
 		const {users, works, column} = this.props;
 		return (
