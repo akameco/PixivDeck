@@ -1,4 +1,5 @@
 // @flow
+import {union} from 'lodash';
 import type {ManageAction} from '../actions/manage';
 import type {Manage} from '../actions/type';
 
@@ -29,7 +30,7 @@ export default function (state: Manage = initManageState, action: ManageAction):
 		case 'SELECT_WORK':
 			return {...state, currentWorkId: action.id};
 		case 'ADD_TAG_FILTER':
-			return {...state, filter: {tags: [...state.filter.tags, action.tag]}};
+			return {...state, filter: {tags: union([...state.filter.tags, action.tag])}};
 		default:
 			return state;
 	}
