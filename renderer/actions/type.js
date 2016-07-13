@@ -47,6 +47,7 @@ export type ColumnType = {
 		}
 	}
 }
+
 export type Manage = {
 	isModal: bool,
 	isImageView: bool,
