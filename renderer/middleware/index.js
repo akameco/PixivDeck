@@ -1,5 +1,5 @@
 // @flow
-import type {Store, Dispatch, Action} from 'redux';
+import type {Store, Action, Dispatch} from '../actions/type';
 
 export const save = (store: Store) => (next: Dispatch) => (action: Action) => {
 	if (action.id) {

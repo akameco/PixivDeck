@@ -1,12 +1,12 @@
 // @flow
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import type {Dispatch, State} from 'redux';
-import type {WorkType} from '../../actions/type';
+import type {Dispatch, State, WorkType} from '../../actions/type';
 import {closeImageView, finishImgLoaded, startImgLoading} from '../../actions/manage';
 import Preview from './illust-preview';
 
 type Props = {
+	id: number,
 	work: WorkType,
 	show: bool,
 	isLoaded: bool,
@@ -15,6 +15,12 @@ type Props = {
 
 class IllustPreview extends Component {
 	props: Props;
+
+	componentWillMount() {
+		if (!this.props.work) {
+			this.props.dispatch(closeImageView());
+		}
+	}
 
 	handleClose = () => {
 		this.props.dispatch(closeImageView());
@@ -46,10 +52,10 @@ class IllustPreview extends Component {
 	}
 }
 
-function mapStateToProps(state: State) {
+function mapStateToProps(state: State, ownProps) {
 	const {entities, manage} = state;
-	const {currentWorkId, isImageView, isImgLoaded} = manage;
-	const work = entities.works[currentWorkId];
+	const {isImageView, isImgLoaded} = manage;
+	const work = entities.works[ownProps.id];
 
 	return {
 		work,

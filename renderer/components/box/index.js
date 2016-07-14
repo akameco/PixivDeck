@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import type {Dispatch} from 'redux';
 import {connect} from 'react-redux';
 import CSSModules from 'react-css-modules';
-import type {WorkType, UserType} from '../../actions/type';
+import type {Dispatch, State, WorkType, UserType} from '../../actions/type';
 import {addColumn} from '../../actions/column';
 import {openImageView, openMangaPreview, currentWork} from '../../actions/manage';
 import BoxHeader from './box-header';
@@ -53,7 +52,7 @@ class Box extends Component {
 	}
 }
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state: State, ownProps) {
 	const user = state.entities.users[ownProps.work.user];
 	return {
 		user

@@ -1,19 +1,13 @@
 // @flow
 import {merge} from 'lodash';
-import type {Action} from 'redux';
-import type {WorkType, UserType} from '../actions/type';
+import type {Action, Entities} from '../actions/type';
 
-type State = {
-	works: {[key: number]: WorkType},
-	users: {[key: number]: UserType}
-}
-
-const initialState: State = {
+const initialState = {
 	works: {},
 	users: {}
 };
 
-export default function (state: State = initialState, action: Action) {
+export default function (state: Entities = initialState, action: Action) {
 	if (action.response && action.response.entities) {
 		return merge({}, state, action.response.entities);
 	}
