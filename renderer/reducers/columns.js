@@ -1,12 +1,12 @@
 // @flow
 import {merge, union} from 'lodash';
 import type {ColumnType} from '../actions/type';
-import type {Action} from '../actions/column';
+import type {ColumnAction} from '../actions/column';
 
 type Column = ColumnType;
 type State = Array<Column>;
 
-function column(state: Column, action: Action): Column {
+function column(state: Column, action: ColumnAction): Column {
 	if (state.id !== action.id) {
 		return state;
 	}
@@ -26,7 +26,7 @@ function column(state: Column, action: Action): Column {
 	}
 }
 
-export default function columns(state: State = [], action: Action): State {
+export default function columns(state: State = [], action: ColumnAction): State {
 	switch (action.type) {
 		case 'ADD_COLUMN':
 			return [...state, {id: action.id, query: action.query, title: action.title}];

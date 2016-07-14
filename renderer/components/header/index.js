@@ -1,14 +1,12 @@
 // @flow
 import React, {Component} from 'react';
-import type {Dispatch} from 'redux';
 import {connect} from 'react-redux';
 import CSSModules from 'react-css-modules';
-import type {Manage} from '../../actions/type';
+import type {Dispatch, State, Manage} from '../../actions/type';
 import {
 	closeDropdown,
 	toggleDropdown,
-	openModal,
-	logout
+	openModal
 } from '../../actions/manage';
 import {SettingsIcon} from '../icon';
 import Dropdwon from '../dorpdown';
@@ -39,10 +37,6 @@ class Header extends Component {
 		this.props.dispatch(closeDropdown());
 	}
 
-	handleLogout = () => {
-		this.props.dispatch(logout());
-	}
-
 	render() {
 		return (
 			<header styleName="base">
@@ -55,17 +49,14 @@ class Header extends Component {
 					</a>
 				</div>
 				{this.props.manage.isDropdown &&
-					<Dropdwon
-						onClose={this.handleClose}
-						onLogout={this.handleLogout}
-						/>
+					<Dropdwon/>
 				}
 			</header>
 		);
 	}
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: State) {
 	return {manage: state.manage};
 }
 

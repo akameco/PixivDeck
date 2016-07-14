@@ -1,11 +1,12 @@
 // @flow
 import {ipcRenderer} from 'electron'; // eslint-disable-line import/no-extraneous-dependencies
-import type {Store, Action, Dispatch} from 'redux';
+import type {Store, Action, Dispatch} from '../actions/type';
 
 export default (store: Store) => (next: Dispatch) => (action: Action) => {
 	if (action.type === 'NEXT_PAGE') {
 		next(action);
-		const column = store.getState().columns.filter(v => v.id === action.id)[0];
+		const {id} = action;
+		const column = store.getState().columns.filter(v => v.id === id)[0];
 		const {type, opts} = column.query;
 		ipcRenderer.send(type, {id: action.id, opts});
 

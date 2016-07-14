@@ -2,7 +2,7 @@
 import {ipcRenderer} from 'electron'; // eslint-disable-line import/no-extraneous-dependencies
 import {camelizeKeys} from 'humps';
 import {Schema, arrayOf, normalize} from 'normalizr';
-import type {Store, Dispatch} from 'redux';
+import type {Store, Dispatch} from '../actions/type';
 
 const workSchema = new Schema('works', {idAttribute: 'id'});
 const userSchema = new Schema('users', {idAttribute: 'id'});

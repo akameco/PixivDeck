@@ -1,13 +1,13 @@
 // @flow
 import React, {Component} from 'react';
-import type {State, Dispatch} from 'redux';
 import {connect} from 'react-redux';
-import type {WorkType} from '../../actions/type';
+import type {State, Dispatch, WorkType} from '../../actions/type';
 import {closeMnagaPreview} from '../../actions/manage';
 import Preview from './manga-preview';
 import MultiPreview from './multi-preview';
 
 type Props = {
+	id: number,
 	work: WorkType,
 	show: bool,
 	dispatch: Dispatch
@@ -36,10 +36,10 @@ class MangaPreviewContainer extends Component {
 	}
 }
 
-function mapStateToProps(state: State) {
+function mapStateToProps(state: State, ownProps) {
 	const {entities, manage} = state;
-	const {currentWorkId, isMangaView} = manage;
-	const work: WorkType = entities.works[currentWorkId];
+	const {isMangaView} = manage;
+	const work: WorkType = entities.works[ownProps.id];
 
 	return {
 		work,

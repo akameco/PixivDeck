@@ -1,5 +1,5 @@
 // @flow
-import type {Dispatch, Action} from 'redux';
+import type {Action, Dispatch} from '../actions/type';
 
 function scrollStop(): void {
 	const body = document.querySelector('body');

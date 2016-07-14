@@ -1,6 +1,9 @@
 // @flow
-export type RankingModeType =
-'daily' | 'weekly' | 'monthly' | 'rookie' | 'original' | 'male' | 'female' | 'daily_r18' | 'weekly_r18' | 'male_r18' | 'female_r18' | 'r18g';
+import type {ColumnAction} from './column';
+import type {ManageAction} from './manage';
+import type {IpcAction} from './ipc';
+
+export type RankingModeType = 'daily' | 'weekly' | 'monthly' | 'rookie' | 'original' | 'male' | 'female' | 'daily_r18' | 'weekly_r18' | 'male_r18' | 'female_r18' | 'r18g';
 
 export type ImageUrls = {
 	large: string,
@@ -46,7 +49,7 @@ export type WorkType = {
 	}
 }
 
-export type WorksType = {[key: number]: WorkType}
+export type WorksType = {[key: number]: WorkType} | Object;
 
 export type UserType = {
 	name: string,
@@ -54,7 +57,7 @@ export type UserType = {
 	profileImageUrls: Object
 }
 
-export type UsersType = {[key: number]: UserType}
+export type UsersType = {[key: number]: UserType} | Object;
 
 export type ColumnType = {
 	id: number,
@@ -69,9 +72,10 @@ export type ColumnType = {
 			page: number
 		}
 	}
-}
+};
 
 export type Manage = {
+	isLogin: bool,
 	isModal: bool,
 	isImageView: bool,
 	isImgLoaded: bool,
@@ -81,4 +85,27 @@ export type Manage = {
 	filter: {
 		tags: Array<string>
 	}
+};
+
+export type Entities = {
+	users: UsersType,
+	works: WorksType
+};
+
+export type Action = ColumnAction | ManageAction | IpcAction | {type: 'INIT'};
+
+export type Dispatch = (action: Action) => any;
+
+export type State = {
+	columns: Array<ColumnType>,
+	entities: {
+		users: UsersType,
+		works: WorksType
+	},
+	manage: Manage
+};
+
+export type Store = {
+	dispatch: Dispatch,
+	getState: () => State,
 };

@@ -3,7 +3,7 @@ import {union} from 'lodash';
 import type {ManageAction} from '../actions/manage';
 import type {Manage} from '../actions/type';
 
-const initManageState = {
+const initManageState: Manage = {
 	isLogin: false,
 	isImageView: false,
 	isImgLoaded: false,

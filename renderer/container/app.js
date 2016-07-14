@@ -1,9 +1,8 @@
 // @flow
 import React, {Component} from 'react';
-import type {Dispatch, State} from 'redux';
 import {connect} from 'react-redux';
 import CSSModules from 'react-css-modules';
-import type {Manage, ColumnType} from '../actions/type';
+import type {Dispatch, State, Manage, ColumnType} from '../actions/type';
 import {closeModal, login} from '../actions/manage';
 import {addColumn} from '../actions/column';
 import type {query} from '../actions/column';
@@ -63,7 +62,8 @@ class App extends Component {
 	}
 
 	render() {
-		if (!this.props.manage.isLogin) {
+		const {isLogin, currentWorkId} = this.props.manage;
+		if (!isLogin) {
 			return <Auth onClick={this.handleAuth}/>;
 		}
 
@@ -77,8 +77,8 @@ class App extends Component {
 				<div styleName="content">
 					{Columns}
 				</div>
-				{this.props.manage.isImageView && <IllustPreview/>}
-				{this.props.manage.isMangaView && <MangaPreview/>}
+				{this.props.manage.isImageView && <IllustPreview id={currentWorkId}/>}
+				{this.props.manage.isMangaView && <MangaPreview id={currentWorkId}/>}
 				{this.renderModal()}
 			</div>
 		);
