@@ -5,7 +5,6 @@ import {rankingModes} from '../../contains';
 import type {query} from '../../actions/column';
 import styles from './select-column-modal.css';
 
-
 class Link extends Component {
 	props: {
 		onSelect: (mode: string) => void,
