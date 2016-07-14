@@ -9,3 +9,13 @@ export const save = (store: Store) => (next: Dispatch) => (action: Action) => {
 	}
 	next(action);
 };
+
+export const close = () => (next: Dispatch) => (action: Action) => {
+	if (/^OPEN/.test(action.type)) {
+		next({type: 'CLOSE_MODAL'});
+		next({type: 'CLOSE_DROPDOWN'});
+		next({type: 'CLOSE_IMAGE_VIEW'});
+		next({type: 'CLOSE_MANGA_PREVIEW'});
+	}
+	next(action);
+};
