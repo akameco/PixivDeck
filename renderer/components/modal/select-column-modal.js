@@ -1,11 +1,10 @@
+// @flow
 import React, {Component} from 'react';
 import CSSModules from 'react-css-modules';
 import {rankingModes} from '../../contains';
+import type {query} from '../../actions/column';
 import styles from './select-column-modal.css';
 
-type Props = {
-	onSelect: (query: {type: string, opts: Object}, title: string) => void
-};
 
 class Link extends Component {
 	props: {
@@ -28,13 +27,17 @@ class Link extends Component {
 	}
 }
 
+type Props = {
+	onSelect: (query: query, title: string) => void
+};
+
 @CSSModules(styles)
 export default class SelectColumnModal extends Component {
 	props: Props;
 
 	handleAddRanking = (mode: string) => {
 		this.props.onSelect({type: 'ranking', opts: {mode, page: 1}}, `ranking/${mode}`);
-	};
+	}
 
 	handleAddFavorite = (publicity: string) => {
 		this.props.onSelect({type: 'favoriteWorks', opts: {publicity, page: 1}}, `favorite/${publicity}`);

@@ -1,3 +1,4 @@
+// @flow
 import React, {Component} from 'react';
 import type {Dispatch, State} from 'redux';
 import CSSModules from 'react-css-modules';
