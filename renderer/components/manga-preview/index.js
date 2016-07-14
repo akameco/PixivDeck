@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import type {WorkType} from '../../actions/type';
 import {closeMnagaPreview} from '../../actions/manage';
 import Preview from './manga-preview';
+import MultiPreview from './multi-preview';
 
 type Props = {
 	work: WorkType,
@@ -21,6 +22,10 @@ class MangaPreviewContainer extends Component {
 
 	render() {
 		const {work, show} = this.props;
+		if (work.metadata && work.metadata.pages) {
+			return <MultiPreview pages={work.metadata.pages} onClose={this.handleClose}/>;
+		}
+
 		return (
 			<Preview
 				show={show}
@@ -34,7 +39,7 @@ class MangaPreviewContainer extends Component {
 function mapStateToProps(state: State) {
 	const {entities, manage} = state;
 	const {currentWorkId, isMangaView} = manage;
-	const work = entities.works[currentWorkId];
+	const work: WorkType = entities.works[currentWorkId];
 
 	return {
 		work,

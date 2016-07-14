@@ -2,11 +2,16 @@
 export type RankingModeType =
 'daily' | 'weekly' | 'monthly' | 'rookie' | 'original' | 'male' | 'female' | 'daily_r18' | 'weekly_r18' | 'male_r18' | 'female_r18' | 'r18g';
 
-type MetadataImageUrls = {
+export type ImageUrls = {
 	large: string,
 	medium: string,
+	small: string,
 	px128x128: string,
 	px480mw: string
+}
+
+export type Page = {
+	imageUrls: ImageUrls
 }
 
 export type WorkType = {
@@ -29,7 +34,7 @@ export type WorkType = {
 		px480mw: string
 	},
 	metadata: ?{
-		pages: Array<MetadataImageUrls>
+		pages: Array<Page>
 	},
 	stats: ?{
 		favoritedCount: {
