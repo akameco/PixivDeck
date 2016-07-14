@@ -14,11 +14,19 @@ export default class Dropdwon extends Component {
 	render() {
 		return (
 			<div styleName="base">
-				<li>
-					<a onClick={this.props.onLogout}>
-						ログアウト
-					</a>
-				</li>
+				<ul>
+					<li>
+						<a onClick={this.props.onLogout}>
+							設定
+						</a>
+					</li>
+					<li styleName="h"></li>
+					<li>
+						<a onClick={this.props.onLogout}>
+							ログアウト
+						</a>
+					</li>
+				</ul>
 			</div>
 		);
 	}
