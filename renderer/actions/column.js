@@ -1,5 +1,5 @@
 // @flow
-export type Action =
+export type ColumnAction =
 {
 	type: 'RECEIVE_WORKS',
 	id: number,
@@ -22,6 +22,8 @@ export type Action =
 }
 ;
 
+type Action = ColumnAction;
+
 export type query = {
 	type: string,
 	q?: string,
@@ -30,7 +32,7 @@ export type query = {
 		publicity?: 'public' | 'private',
 		page: number
 	}
-}
+};
 
 export function nextPage(id: number): Action {
 	return {
