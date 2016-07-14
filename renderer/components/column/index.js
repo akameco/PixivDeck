@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import type {Dispatch, State} from 'redux';
 import CSSModules from 'react-css-modules';
 import {connect} from 'react-redux';
-import type {WorkType, WorksType, ColumnType} from '../actions/type';
+import type {WorkType, WorksType, ColumnType} from '../../actions/type';
 import {nextPage, closeColumn} from '../../actions/column';
 import List from './list';
 import styles from './column.css';
