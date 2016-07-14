@@ -39,9 +39,9 @@ export default class SelectColumnModal extends Component {
 		this.props.onSelect({type: 'ranking', opts: {mode, page: 1}}, `ranking/${mode}`);
 	}
 
-	handleAddFavorite = (publicity: string) => {
+	handleAddFavorite = (publicity: 'private' | 'public') => {
 		this.props.onSelect({type: 'favoriteWorks', opts: {publicity, page: 1}}, `favorite/${publicity}`);
-	};
+	}
 
 	render() {
 		const rankingLinks = rankingModes.map(v =>
