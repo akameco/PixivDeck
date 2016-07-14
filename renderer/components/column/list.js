@@ -11,8 +11,6 @@ import styles from './list.css';
 type Props = {
 	works: Array<WorkType>,
 	title: string,
-	onClick: (id: string) => void,
-	onClickTag: (tag: string) => void,
 	onNextPage: () => void,
 	onClose: () => void
 };
@@ -31,7 +29,7 @@ export default class List extends Component {
 
 	handleScrollTop = (e: Event) => {
 		e.preventDefault();
-		const node = findDOMNode(this.target);
+		const node: HTMLElement = findDOMNode(this.target);
 		node.scrollTop = 0;
 	};
 
@@ -55,7 +53,7 @@ export default class List extends Component {
 				{this.props.works.length > 0 ?
 					<div styleName="content">
 						<Infinite
-							ref={c => {
+							ref={(c: Component<*, *, *>) => {
 								this.target = c;
 							}}
 							onIntersect={() => this.props.onNextPage()}
