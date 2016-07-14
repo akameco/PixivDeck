@@ -11,7 +11,7 @@ import {
 	logout
 } from '../../actions/manage';
 import {SettingsIcon} from '../icon';
-import Dropdwon from './dropdown';
+import Dropdwon from '../dorpdown';
 import styles from './header.css';
 
 type Props = {
