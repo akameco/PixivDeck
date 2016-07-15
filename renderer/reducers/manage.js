@@ -50,6 +50,14 @@ export default function (state: Manage = initManageState, action: Action): Manag
 			return {...state, currentWorkId: action.id};
 		case 'ADD_TAG_FILTER':
 			return {...state, filter: {tags: union([...state.filter.tags, action.tag])}};
+		case 'REMOVE_TAG_FILTER': {
+			// maybe flowtype bug...
+			const tag = action.tag;
+			return {
+				...state,
+				filter: {tags: state.filter.tags.filter(t => tag !== t)}
+			};
+		}
 		default:
 			return state;
 	}

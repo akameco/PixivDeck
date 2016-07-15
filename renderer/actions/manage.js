@@ -55,6 +55,10 @@ export function addTagFilter(tag: string): Action {
 	return {type: 'ADD_TAG_FILTER', tag};
 }
 
+export function removeTagFilter(tag: string): Action {
+	return {type: 'REMOVE_TAG_FILTER', tag};
+}
+
 export function currentWork(id: number): Action {
 	return {
 		type: 'SELECT_WORK',
