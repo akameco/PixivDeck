@@ -9,6 +9,13 @@ export type Query = {
 	}
 };
 
+export type ColumnType = {
+	id: number,
+	title: string,
+	works?: Array<number>,
+	query: Query
+};
+
 export type ColumnAction =
 {
 	type: 'RECEIVE_WORKS',
