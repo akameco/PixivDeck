@@ -17,20 +17,8 @@ export type ColumnType = {
 };
 
 export type ColumnAction =
-{
-	type: 'RECEIVE_WORKS',
-	id: number,
-	works?: Array<number>
-} | {
-	type: 'ADD_COLUMN',
-	id: number,
-	title: string,
-	query: Query
-} | {
-	type: 'NEXT_PAGE',
-	id: number
-} | {
-	type: 'CLOSE_COLUMN',
-	id: number
-}
+	| {type: 'RECEIVE_WORKS', id: number, works?: Array<number>}
+	| {type: 'ADD_COLUMN', id: number, title: string, query: Query }
+	| {type: 'NEXT_PAGE', id: number }
+	| {type: 'CLOSE_COLUMN', id: number }
 ;
