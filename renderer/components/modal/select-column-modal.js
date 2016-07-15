@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import CSSModules from 'react-css-modules';
-import {rankingModes} from '../../contains';
+import {RANKING_MODES} from '../../contains';
 import type {Query} from '../../types/column';
 import styles from './select-column-modal.css';
 
@@ -43,7 +43,7 @@ export default class SelectColumnModal extends Component {
 	}
 
 	render() {
-		const rankingLinks = rankingModes.map(v =>
+		const rankingLinks = RANKING_MODES.map(v =>
 			<Link
 				mode={v}
 				key={v}
