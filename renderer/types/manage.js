@@ -1,4 +1,17 @@
 // @flow
+export type Manage = {
+	isLogin: bool,
+	isModal: bool,
+	isImageView: bool,
+	isImgLoaded: bool,
+	isMangaView: bool,
+	isDropdown: bool,
+	currentWorkId: ?number,
+	filter: {
+		tags: Array<string>
+	}
+};
+
 export type ManageAction =
 	| {type: 'OPEN_IMAGE_VIEW'}
 	| {type: 'CLOSE_IMAGE_VIEW'}
