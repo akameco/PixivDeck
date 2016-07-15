@@ -34,8 +34,11 @@ export default class SettingFilterModal extends Component {
 		return false;
 	}
 
-	handleCangeInput = (event: any) => {
-		this.setState({value: event.target.value});
+	handleCangeInput = (event: SyntheticEvent) => { // eslint-disable-line no-undef
+		const target = event.target;
+		if (target instanceof HTMLInputElement) {
+			this.setState({value: target.value});
+		}
 	}
 
 	handleSubmit = (event: SyntheticKeyboardEvent) => { // eslint-disable-line no-undef
