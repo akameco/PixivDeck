@@ -33,9 +33,9 @@ export default function columns(state: State = [], action: ColumnAction): State 
 		case 'CLOSE_COLUMN':
 			return state.filter(t => t.id !== action.id);
 		case 'NEXT_PAGE':
-			return state.map((t: Column) => column(t, action));
+			return state.map(t => column(t, action));
 		case 'RECIEVE_WORKS':
-			return state.map((t: Column) => column(t, action));
+			return state.map(t => column(t, action));
 		default:
 			return state;
 	}
