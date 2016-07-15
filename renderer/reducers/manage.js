@@ -18,6 +18,8 @@ const initManageState: Manage = {
 
 export default function (state: Manage = initManageState, action: Action): Manage {
 	switch (action.type) {
+		case 'INIT':
+			return {...state, isModal: false, isDropdown: false, isMangaView: false, isImageView: false};
 		case 'SUCCESS_LOGINED':
 			return {...state, isLogin: true};
 		case 'LOGOUT':
