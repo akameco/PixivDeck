@@ -1,4 +1,6 @@
 // @flow
+export type ModalType = | 'DEFAULT' | 'ADD_COLUMN' | 'FILTER_TAG';
+
 export type Manage = {
 	isLogin: bool,
 	isModal: bool,
@@ -9,7 +11,8 @@ export type Manage = {
 	currentWorkId: ?number,
 	filter: {
 		tags: Array<string>
-	}
+	},
+	modalType: ModalType
 };
 
 export type ManageAction =
@@ -17,7 +20,7 @@ export type ManageAction =
 	| {type: 'CLOSE_IMAGE_VIEW'}
 	| {type: 'OPEN_MANGA_PREVIEW'}
 	| {type: 'CLOSE_MANGA_PREVIEW'}
-	| {type: 'OPEN_MODAL'}
+	| {type: 'OPEN_MODAL', modal?: ModalType}
 	| {type: 'CLOSE_MODAL'}
 	| {type: 'OPEN_DROPDOWN'}
 	| {type: 'CLOSE_DROPDOWN'}

@@ -1,58 +1,73 @@
 // @flow
 import React, {Component} from 'react';
-import CSSModules from 'react-css-modules';
-import {CloseButton} from '../button/';
-import styles from './modal.css';
+import {connect} from 'react-redux';
+import type {State, Dispatch, Manage, ModalType, Query} from '../../types';
+import {closeModal, addTagFilter} from '../../actions/manage';
+import {addColumn} from '../../actions/column';
+import ModalWrapper from './modal-wrapper';
+import SelectColumnModal from './select-column-modal';
+import SettingFilterModal from './setting-filter-modal';
 
 type Props = {
-	children?: any,
-	onClose: () => void,
-	title: string
+	manage: Manage,
+	modalType: ModalType,
+	dispatch: Dispatch
 };
 
-@CSSModules(styles)
-export default class Modal extends Component {
+class Modal extends Component {
 	props: Props;
-	_content: Component<*, *, *>;
 
-	handleOverlayClick = (event: any) => {
-		let node = event.target;
-
-		while (node) {
-			if (node === this._content) {
-				return;
-			}
-			node = node.parentNode;
-		}
-
-		this.props.onClose();
+	handleOnCloseModal = () => {
+		this.props.dispatch(closeModal());
 	}
 
-	handleCloseClick = () => {
-		this.props.onClose();
+	handleAddColumn = (
+		query: Query,
+		title : string = ''
+	) => {
+		this.props.dispatch(addColumn(query, title));
 	};
+
+	handleAddTagFilter = (tag: string) => {
+		this.props.dispatch(addTagFilter(tag));
+	}
+
+	renderModal(type: ModalType) {
+		if (type === 'ADD_COLUMN') {
+			return (
+				<SelectColumnModal
+					onSelect={this.handleAddColumn}
+					/>
+			);
+		} else if (type === 'FILTER_TAG') {
+			return (
+				<SettingFilterModal
+					tags={this.props.manage.filter.tags}
+					onSubmit={this.handleAddTagFilter}
+					/>
+			);
+		}
+		return (
+			<SelectColumnModal
+				onSelect={this.handleAddColumn}
+				/>
+		);
+	}
 
 	render() {
 		return (
-			<div
-				styleName="wrap"
-				onClick={this.handleOverlayClick}
-				>
-				<div
-					styleName="base"
-					ref={c => {
-						this._content = c;
-					}}
-					>
-					<header>
-						<h2>{this.props.title}</h2>
-						<CloseButton onClick={this.handleCloseClick}/>
-					</header>
-					<div styleName="body">
-						{this.props.children}
-					</div>
-				</div>
-			</div>
+			<ModalWrapper onClose={this.handleOnCloseModal} title={"select"}>
+				{this.renderModal(this.props.modalType)}
+			</ModalWrapper>
 		);
 	}
 }
+
+function mapStateToProps(state: State) {
+	return {
+		manage: state.manage,
+		modalType: state.manage.modalType
+	};
+}
+
+export default connect(mapStateToProps)(Modal);

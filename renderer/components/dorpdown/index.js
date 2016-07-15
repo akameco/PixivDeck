@@ -19,7 +19,7 @@ class Dropdwon extends Component {
 	}
 
 	handleOpenModal = () => {
-		this.props.dispatch(openModal());
+		this.props.dispatch(openModal('FILTER_TAG'));
 	}
 
 	render() {
