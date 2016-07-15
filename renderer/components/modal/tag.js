@@ -18,9 +18,9 @@ export default class Tag extends Component {
 
 	render() {
 		return (
-			<li>
+			<li styleName="base">
 				{this.props.tag}
-				<a onClick={this.handleRemoveTagFilter}>remove</a>
+				<a onClick={this.handleRemoveTagFilter}>削除</a>
 			</li>
 		);
 	}

@@ -1,3 +1,26 @@
 .base {
-	
+	display: block;
+	padding: 15px 14px;
+	position: relative;
+}
+
+.base a {
+	margin: 0;
+	display: inline-block;
+	font-size: 0.9rem;
+	text-align: center;
+	vertical-align: middle;
+	position: absolute;
+	width: auto;
+	height: auto;
+	right: 15px;
+	top: 10px;
+	cursor: pointer;
+	background-color: #bc1931;
+	color: #fff;
+	padding: 4px 10px;
+	min-height: 20px;
+	border-radius: 2px;
+	border: 1px solid #e1ebed;
+	text-shadow: none;
 }
