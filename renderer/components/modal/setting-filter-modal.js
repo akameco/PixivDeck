@@ -8,6 +8,10 @@ type Props = {
 	tags: Array<string>
 };
 
+type State = {
+	value: string
+};
+
 @CSSModules(styles)
 export default class SettingFilterModal extends Component {
 	props: Props;
@@ -18,6 +22,16 @@ export default class SettingFilterModal extends Component {
 	constructor(props: Props) {
 		super(props);
 		this.state = {value: ''};
+	}
+
+	shouldComponentUpdate(nextProps: Props, nextState: State) {
+		if (nextProps.tags.length !== this.props.tags.length) {
+			return true;
+		}
+		if (this.state.value !== nextState.value) {
+			return true;
+		}
+		return false;
 	}
 
 	handleCangeInput = (event: any) => {
