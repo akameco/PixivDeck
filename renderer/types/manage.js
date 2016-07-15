@@ -28,6 +28,7 @@ export type ManageAction =
 	| {type: 'SELECT_WORK', id: number}
 	| {type: 'LOGIN', name: string, password: string}
 	| {type: 'LOGOUT'}
+	| {type: 'REMOVE_TAG_FILTER', tag: string}
 	| {type: 'ADD_TAG_FILTER', tag: string}
 	| {type: 'START_IMG_LOADING'}
 	| {type: 'SET_IMG_LOADED'}
