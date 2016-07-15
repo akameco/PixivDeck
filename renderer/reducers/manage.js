@@ -12,7 +12,8 @@ const initManageState: Manage = {
 	currentWorkId: null,
 	filter: {
 		tags: []
-	}
+	},
+	modalType: 'DEFAULT'
 };
 
 export default function (state: Manage = initManageState, action: Action): Manage {

@@ -1,6 +1,6 @@
 // @flow
 import type {ColumnType, ColumnAction, Query} from './column';
-import type {Manage, ManageAction} from './manage';
+import type {Manage, ManageAction, ModalType} from './manage';
 import type {IpcAction} from './ipc';
 import type {Work, Works, Page} from './work';
 import type {Users} from './user';
@@ -15,7 +15,8 @@ export type {
 	Work,
 	Works,
 	Users,
-	Page
+	Page,
+	ModalType
 };
 
 export type Entities = {

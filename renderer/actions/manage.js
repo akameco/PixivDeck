@@ -1,5 +1,5 @@
 // @flow
-import type {ManageAction} from '../types/manage';
+import type {ManageAction, ModalType} from '../types/manage';
 
 type Action = ManageAction;
 
@@ -15,8 +15,8 @@ export function logout(): Action {
 	return {type: 'LOGOUT'};
 }
 
-export function openModal(): Action {
-	return {type: 'OPEN_MODAL'};
+export function openModal(modal: ModalType = 'DEFAULT'): Action {
+	return {type: 'OPEN_MODAL', modal};
 }
 
 export function closeModal(): Action {
