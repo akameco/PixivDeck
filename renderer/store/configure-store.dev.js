@@ -1,7 +1,7 @@
 import {createStore, applyMiddleware, compose} from 'redux';
 import createLogger from 'redux-logger';
 import reducer from '../reducers';
-import {save, close} from '../middleware/';
+import {save} from '../middleware/';
 import startIpc from '../middleware/ipc';
 import auth from '../middleware/auth';
 import api from '../middleware/api';
@@ -18,7 +18,6 @@ export default function configureStore(initialState) {
 			api,
 			scroll,
 			save,
-			close,
 			logger
 		), window.devToolsExtension ? window.devToolsExtension() : f => f
 	);
