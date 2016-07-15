@@ -1,9 +1,11 @@
 // @flow
 import React, {Component} from 'react';
 import CSSModules from 'react-css-modules';
+import Tag from './tag';
 import styles from './setting-filter-modal.css';
 
 type Props = {
+	onDelete: (tag: string) => void,
 	onSubmit: (tag: string) => void,
 	tags: Array<string>
 };
@@ -15,9 +17,7 @@ type State = {
 @CSSModules(styles)
 export default class SettingFilterModal extends Component {
 	props: Props;
-	state: {
-		value: string
-	}
+	state: State;
 
 	constructor(props: Props) {
 		super(props);
@@ -50,11 +50,9 @@ export default class SettingFilterModal extends Component {
 	}
 
 	render() {
-		const tags = this.props.tags.map(tag => {
-			return (
-				<li key={tag}>{tag}</li>
-			);
-		});
+		const tags = this.props.tags.map(tag =>
+			<Tag key={tag} tag={tag} onClick={this.props.onDelete}/>
+		);
 
 		return (
 			<div styleName="base">

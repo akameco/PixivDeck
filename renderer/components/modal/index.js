@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import type {State, Dispatch, Manage, ModalType, Query} from '../../types';
-import {closeModal, addTagFilter} from '../../actions/manage';
+import {closeModal, addTagFilter, removeTagFilter} from '../../actions/manage';
 import {addColumn} from '../../actions/column';
 import ModalWrapper from './modal-wrapper';
 import SelectColumnModal from './select-column-modal';
@@ -32,6 +32,10 @@ class Modal extends Component {
 		this.props.dispatch(addTagFilter(tag));
 	}
 
+	handleRemoveTagFilter = (tag: string) => {
+		this.props.dispatch(removeTagFilter(tag));
+	}
+
 	renderModal(type: ModalType) {
 		if (type === 'ADD_COLUMN') {
 			return (
@@ -43,6 +47,7 @@ class Modal extends Component {
 			return (
 				<SettingFilterModal
 					tags={this.props.manage.filter.tags}
+					onDelete={this.handleRemoveTagFilter}
 					onSubmit={this.handleAddTagFilter}
 					/>
 			);
