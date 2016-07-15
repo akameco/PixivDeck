@@ -1,6 +1,6 @@
 // @flow
 import {merge} from 'lodash';
-import type {Action, Entities} from '../actions/type';
+import type {Action, Entities} from '../types';
 
 const initialState = {
 	works: {},

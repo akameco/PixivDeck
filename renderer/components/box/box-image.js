@@ -1,12 +1,12 @@
 // @flow
 import React, {Component} from 'react';
 import CSSModules from 'react-css-modules';
-import type {WorkType} from '../../actions/type';
+import type {Work} from '../../types';
 import {MangaIcon} from '../icon/';
 import styles from './box-image.css';
 
 type Props = {
-	work: WorkType,
+	work: Work,
 	onClick: () => void
 };
 

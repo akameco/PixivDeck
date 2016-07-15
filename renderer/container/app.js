@@ -2,10 +2,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import CSSModules from 'react-css-modules';
-import type {Dispatch, State, Manage, ColumnType} from '../actions/type';
+import type {Dispatch, State, Manage, ColumnType} from '../types';
 import {closeModal, login} from '../actions/manage';
 import {addColumn} from '../actions/column';
-import type {query} from '../actions/column';
+import type {Query} from '../types/column';
 import Auth from '../components/auth/';
 import IllustPreview from '../components/illust-preview/';
 import MangaPreview from '../components/manga-preview/';
@@ -31,7 +31,7 @@ class App extends Component {
 	}
 
 	handleAddColumn = (
-		query: query,
+		query: Query,
 		title : string = ''
 	) => {
 		this.props.dispatch(addColumn(query, title));

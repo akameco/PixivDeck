@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import CSSModules from 'react-css-modules';
 import {rankingModes} from '../../contains';
-import type {query} from '../../actions/column';
+import type {Query} from '../../types/column';
 import styles from './select-column-modal.css';
 
 class Link extends Component {
@@ -27,7 +27,7 @@ class Link extends Component {
 }
 
 type Props = {
-	onSelect: (query: query, title: string) => void
+	onSelect: (query: Query, title: string) => void
 };
 
 @CSSModules(styles)

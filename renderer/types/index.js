@@ -1,5 +1,5 @@
 // @flow
-import type {ColumnAction} from './column';
+import type {ColumnAction, Query} from './column';
 import type {ManageAction} from './manage';
 import type {IpcAction} from './ipc';
 
@@ -17,7 +17,7 @@ export type Page = {
 	imageUrls: ImageUrls
 }
 
-export type WorkType = {
+export type Work = {
 	id: number,
 	title: string,
 	caption: string,
@@ -49,29 +49,21 @@ export type WorkType = {
 	}
 }
 
-export type WorksType = {[key: number]: WorkType} | Object;
+export type Works = {[key: number]: Work} | Object;
 
-export type UserType = {
+export type User = {
 	name: string,
 	account: string,
 	profileImageUrls: Object
 }
 
-export type UsersType = {[key: number]: UserType} | Object;
+export type Users = {[key: number]: User} | Object;
 
 export type ColumnType = {
 	id: number,
 	title: string,
 	works?: Array<number>,
-	query: {
-		type: string,
-		q?: string,
-		opts: {
-			mode?: string,
-			publicity?: 'public' | 'private',
-			page: number
-		}
-	}
+	query: Query
 };
 
 export type Manage = {
@@ -88,8 +80,8 @@ export type Manage = {
 };
 
 export type Entities = {
-	users: UsersType,
-	works: WorksType
+	users: Users,
+	works: Works
 };
 
 export type Action = ColumnAction | ManageAction | IpcAction | {type: 'INIT'};
@@ -99,8 +91,8 @@ export type Dispatch = (action: Action) => any;
 export type State = {
 	columns: Array<ColumnType>,
 	entities: {
-		users: UsersType,
-		works: WorksType
+		users: Users,
+		works: Works
 	},
 	manage: Manage
 };

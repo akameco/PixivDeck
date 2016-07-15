@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import CSSModules from 'react-css-modules';
-import type {Page} from '../../actions/type';
+import type {Page} from '../../types';
 import styles from './multi-preview.css';
 
 type Props = {

@@ -1,5 +1,5 @@
 // @flow
-import type {Action, Dispatch} from '../actions/type';
+import type {Action, Dispatch} from '../types';
 
 function scrollStop(): void {
 	const body = document.querySelector('body');
