@@ -28,6 +28,8 @@ function column(state: Column, action: ColumnAction): Column {
 
 export default function columns(state: State = [], action: ColumnAction): State {
 	switch (action.type) {
+		case 'INIT':
+			return state.map(t => ({...t, works: []}));
 		case 'ADD_COLUMN':
 			return [...state, {id: action.id, query: action.query, title: action.title}];
 		case 'CLOSE_COLUMN':

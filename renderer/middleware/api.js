@@ -1,6 +1,15 @@
 // @flow
 import {ipcRenderer} from 'electron'; // eslint-disable-line import/no-extraneous-dependencies
-import type {Store, Action, Dispatch} from '../types';
+import type {Store, Action, Dispatch, Query} from '../types';
+
+function ipcSend(id: number, query: Query) {
+	const {type, opts, q} = query;
+	if (query.type === 'search') {
+		ipcRenderer.send(type, {id, q, opts});
+	} else {
+		ipcRenderer.send(type, {id, opts});
+	}
+}
 
 export default (store: Store) => (next: Dispatch) => (action: Action) => {
 	if (action.type === 'NEXT_PAGE') {
@@ -15,12 +24,7 @@ export default (store: Store) => (next: Dispatch) => (action: Action) => {
 
 	if (action.type === 'ADD_COLUMN' && action.id && action.query) {
 		next(action);
-		const {type, opts, q} = action.query;
-		if (action.query.type === 'search') {
-			ipcRenderer.send(type, {id: action.id, q, opts});
-		} else {
-			ipcRenderer.send(type, {id: action.id, opts});
-		}
+		ipcSend(action.id, action.query);
 
 		return next({type: 'IPC_REQUEST'});
 	}
@@ -28,6 +32,13 @@ export default (store: Store) => (next: Dispatch) => (action: Action) => {
 	if (action.type === 'OPEN_MANGA_PREVIEW') {
 		const id = store.getState().manage.currentWorkId;
 		ipcRenderer.send('work', id);
+	}
+
+	if (action.type === 'SUCCESS_LOGINED') {
+		const {columns} = store.getState();
+		for (const column of columns) {
+			ipcSend(column.id, column.query);
+		}
 	}
 
 	return next(action);
