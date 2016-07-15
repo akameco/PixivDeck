@@ -2,14 +2,14 @@
 import React, {Component} from 'react';
 import {findDOMNode} from 'react-dom';
 import CSSModules from 'react-css-modules';
-import type {WorkType} from '../../actions/type';
+import type {Work} from '../../types';
 import Box from '../box';
 import {CloseButton} from '../button';
 import Infinite from './infinite';
 import styles from './list.css';
 
 type Props = {
-	works: Array<WorkType>,
+	works: Array<Work>,
 	title: string,
 	onNextPage: () => void,
 	onClose: () => void

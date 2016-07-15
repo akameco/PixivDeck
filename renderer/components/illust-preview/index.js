@@ -1,13 +1,13 @@
 // @flow
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import type {Dispatch, State, WorkType} from '../../actions/type';
+import type {Dispatch, State, Work} from '../../types';
 import {closeImageView, finishImgLoaded, startImgLoading} from '../../actions/manage';
 import Preview from './illust-preview';
 
 type Props = {
 	id: number,
-	work: WorkType,
+	work: Work,
 	show: bool,
 	isLoaded: bool,
 	dispatch: Dispatch

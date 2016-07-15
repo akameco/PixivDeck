@@ -1,23 +1,9 @@
 // @flow
-export type ManageAction =
-	| {type: 'OPEN_IMAGE_VIEW'}
-	| {type: 'CLOSE_IMAGE_VIEW'}
-	| {type: 'OPEN_MANGA_PREVIEW'}
-	| {type: 'CLOSE_MANGA_PREVIEW'}
-	| {type: 'OPEN_MODAL'}
-	| {type: 'CLOSE_MODAL'}
-	| {type: 'OPEN_DROPDOWN'}
-	| {type: 'CLOSE_DROPDOWN'}
-	| {type: 'TOGGLE_DROPDOWN'}
-	| {type: 'SELECT_WORK', id: number}
-	| {type: 'LOGIN', name: string, password: string}
-	| {type: 'LOGOUT'}
-	| {type: 'ADD_TAG_FILTER', tag: string}
-	| {type: 'START_IMG_LOADING'}
-	| {type: 'SET_IMG_LOADED'}
-;
+import type {ManageAction} from '../types/manage';
 
-export function login(name: string, password: string): ManageAction {
+type Action = ManageAction;
+
+export function login(name: string, password: string): Action {
 	return {
 		type: 'LOGIN',
 		name,
@@ -25,61 +11,61 @@ export function login(name: string, password: string): ManageAction {
 	};
 }
 
-export function logout(): ManageAction {
+export function logout(): Action {
 	return {type: 'LOGOUT'};
 }
 
-export function openModal(): ManageAction {
+export function openModal(): Action {
 	return {type: 'OPEN_MODAL'};
 }
 
-export function closeModal(): ManageAction {
+export function closeModal(): Action {
 	return {type: 'CLOSE_MODAL'};
 }
 
-export function openDropdown(): ManageAction {
+export function openDropdown(): Action {
 	return {type: 'OPEN_DROPDOWN'};
 }
 
-export function toggleDropdown(): ManageAction {
+export function toggleDropdown(): Action {
 	return {type: 'TOGGLE_DROPDOWN'};
 }
 
-export function closeDropdown(): ManageAction {
+export function closeDropdown(): Action {
 	return {type: 'CLOSE_DROPDOWN'};
 }
 
-export function openImageView(): ManageAction {
+export function openImageView(): Action {
 	return {type: 'OPEN_IMAGE_VIEW'};
 }
 
-export function closeImageView(): ManageAction {
+export function closeImageView(): Action {
 	return {type: 'CLOSE_IMAGE_VIEW'};
 }
 
-export function openMangaPreview(): ManageAction {
+export function openMangaPreview(): Action {
 	return {type: 'OPEN_MANGA_PREVIEW'};
 }
 
-export function closeMnagaPreview(): ManageAction {
+export function closeMnagaPreview(): Action {
 	return {type: 'CLOSE_MANGA_PREVIEW'};
 }
 
-export function addTagFilter(tag: string): ManageAction {
+export function addTagFilter(tag: string): Action {
 	return {type: 'ADD_TAG_FILTER', tag};
 }
 
-export function currentWork(id: number): ManageAction {
+export function currentWork(id: number): Action {
 	return {
 		type: 'SELECT_WORK',
 		id
 	};
 }
 
-export function startImgLoading(): ManageAction {
+export function startImgLoading(): Action {
 	return {type: 'START_IMG_LOADING'};
 }
 
-export function finishImgLoaded(): ManageAction {
+export function finishImgLoaded(): Action {
 	return {type: 'SET_IMG_LOADED'};
 }

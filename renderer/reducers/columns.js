@@ -1,7 +1,7 @@
 // @flow
 import {merge, union} from 'lodash';
-import type {ColumnType} from '../actions/type';
-import type {ColumnAction} from '../actions/column';
+import type {ColumnType} from '../types';
+import type {ColumnAction} from '../types/column';
 
 type Column = ColumnType;
 type State = Array<Column>;

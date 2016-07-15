@@ -2,13 +2,13 @@
 import React, {Component} from 'react';
 import CSSModules from 'react-css-modules';
 import {connect} from 'react-redux';
-import type {Dispatch, State, WorkType, WorksType, ColumnType} from '../../actions/type';
+import type {Dispatch, State, Work, Works, ColumnType} from '../../types';
 import {nextPage, closeColumn} from '../../actions/column';
 import List from './list';
 import styles from './column.css';
 
 type Props = {
-	works: Array<WorkType>,
+	works: Array<Work>,
 	column: ColumnType,
 	dispatch: Dispatch;
 }
@@ -47,7 +47,7 @@ class Column extends Component {
 	}
 }
 
-function filter(nums: Array<number>, works: WorksType, tags: Array<string>) {
+function filter(nums: Array<number>, works: Works, tags: Array<string>) {
 	return nums
 		.map(i => works[i])
 		.filter(work => work.tags.every(tag => tags.every(t => t !== tag)));

@@ -1,6 +1,6 @@
 // @flow
 import {ipcRenderer} from 'electron'; // eslint-disable-line import/no-extraneous-dependencies
-import type {Store, Action, Dispatch} from '../actions/type';
+import type {Store, Action, Dispatch} from '../types';
 
 export default (store: Store) => (next: Dispatch) => (action: Action) => {
 	if (action.type === 'NEXT_PAGE') {

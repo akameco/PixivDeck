@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import CSSModules from 'react-css-modules';
-import type {Dispatch, State, Manage} from '../../actions/type';
+import type {Dispatch, State, Manage} from '../../types';
 import {
 	closeDropdown,
 	toggleDropdown,

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import CSSModules from 'react-css-modules';
-import type {Dispatch, State, WorkType, UserType} from '../../actions/type';
+import type {Dispatch, State, Work, User} from '../../types';
 import {addColumn} from '../../actions/column';
 import {openImageView, openMangaPreview, currentWork} from '../../actions/manage';
 import BoxHeader from './box-header';
@@ -10,8 +10,8 @@ import BoxImage from './box-image';
 import styles from './box.css';
 
 type Props = {
-	work: WorkType,
-	user: UserType,
+	work: Work,
+	user: User,
 	dispatch: Dispatch
 }
 

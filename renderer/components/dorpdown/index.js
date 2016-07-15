@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import CSSModules from 'react-css-modules';
 import {logout, openModal} from '../../actions/manage';
-import type {Dispatch} from '../../actions/type';
+import type {Dispatch} from '../../types';
 import styles from './dropdown.css';
 
 type Props = {

@@ -1,7 +1,6 @@
 // @flow
 import {union} from 'lodash';
-import type {ManageAction} from '../actions/manage';
-import type {Manage} from '../actions/type';
+import type {Manage, Action} from '../types';
 
 const initManageState: Manage = {
 	isLogin: false,
@@ -16,7 +15,7 @@ const initManageState: Manage = {
 	}
 };
 
-export default function (state: Manage = initManageState, action: ManageAction): Manage {
+export default function (state: Manage = initManageState, action: Action): Manage {
 	switch (action.type) {
 		case 'SUCCESS_LOGINED':
 			return {...state, isLogin: true};

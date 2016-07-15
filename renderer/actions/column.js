@@ -1,38 +1,7 @@
 // @flow
-export type ColumnAction =
-{
-	type: 'RECEIVE_WORKS',
-	id: number,
-	works?: Array<number>
-} | {
-	type: 'ADD_COLUMN',
-	id: number,
-	title: string,
-	query: {
-		type: string,
-		q?: string,
-		opts: Object
-	}
-} | {
-	type: 'NEXT_PAGE',
-	id: number
-} | {
-	type: 'CLOSE_COLUMN',
-	id: number
-}
-;
+import type {ColumnAction, Query} from '../types/column';
 
 type Action = ColumnAction;
-
-export type query = {
-	type: string,
-	q?: string,
-	opts: {
-		mode?: string,
-		publicity?: 'public' | 'private',
-		page: number
-	}
-};
 
 export function nextPage(id: number): Action {
 	return {
@@ -41,7 +10,7 @@ export function nextPage(id: number): Action {
 	};
 }
 
-export function addColumn(query: query, title: string = ''): Action {
+export function addColumn(query: Query, title: string = ''): Action {
 	const id = Date.now();
 	return {
 		type: 'ADD_COLUMN',
