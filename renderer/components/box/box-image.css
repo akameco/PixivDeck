@@ -1,6 +1,7 @@
 .base {
 	position: relative;
 	width: 100%;
+	min-height: 20px;
 	text-align: center;
 	cursor: zoom-in;
 }
@@ -15,4 +16,27 @@
 	border-radius: 4px;
 	margin-top: 5px;
 	margin-left: 5px;
+	z-index: 100;
+}
+
+.base img {
+	max-width: 100%;
+	min-height: 100px;
+	background: #eeffee;
+	overflow: hidden;
+}
+
+.loaded {
+	animation: fade-in 300ms both;
+}
+
+@keyframes fade-in {
+	0% {
+		filter: blur(50px);
+		opacity: 0;
+	}
+	100% {
+		filter: none;
+		opacity: 1;
+	}
 }
