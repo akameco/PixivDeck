@@ -1,7 +1,8 @@
+// @flow
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import CSSModules from 'react-css-modules';
-import type {Dispatch, State, Work, User} from '../../types';
+import type {Dispatch, State, Work, User} from '../../types/';
 import {addColumn} from '../../actions/column';
 import {openImageView, openMangaPreview, currentWork} from '../../actions/manage';
 import BoxHeader from './box-header';
@@ -13,7 +14,7 @@ type Props = {
 	work: Work,
 	user: User,
 	dispatch: Dispatch
-}
+};
 
 @CSSModules(styles)
 class Box extends Component {
@@ -52,7 +53,7 @@ class Box extends Component {
 	}
 }
 
-function mapStateToProps(state: State, ownProps) {
+function mapStateToProps(state: State, ownProps: Props) {
 	const user = state.entities.users[ownProps.work.user];
 	return {
 		user
