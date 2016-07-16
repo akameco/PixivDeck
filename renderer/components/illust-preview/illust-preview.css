@@ -3,17 +3,12 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	text-align: center;
 	background: rgba(244, 244, 244, 0.97);
 	z-index: 300;
 	width: 100%;
 	height: 100%;
-
-	& img {
-		max-width: 100vw;
-		max-height: 100vh;
-		margin: auto;
-		user-select: none;
-		cursor: zoom-out;
-	}
+	cursor: pointer;
+	margin: 0;
+	padding: 0;
+	overflow: auto;
 }

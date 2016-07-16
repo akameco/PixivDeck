@@ -1,3 +1,13 @@
+.wrap {
+	width: auto;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	overflow: auto;
+	text-align: center;
+}
+
 .from {
 	width: auto;
 	height: auto;
@@ -5,7 +15,8 @@
 	max-height: 100vh;
 	margin: auto;
 	user-select: none;
-	cursor: zoom-out;
+
+	cursor: wait;
 }
 
 .loaded {
@@ -15,8 +26,18 @@
 	max-height: 100vh;
 	margin: auto;
 	user-select: none;
+
+	cursor: zoom-in;
+	animation: fade-in 600ms forwards;
+}
+
+.isClick {
+	margin: auto;
+	user-select: none;
+
+	max-width: none;
+	max-height: none;
 	cursor: zoom-out;
-	animation: fade-in 600ms both;
 }
 
 @keyframes fade-in {

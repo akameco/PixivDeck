@@ -1,8 +1,3 @@
-img {
-	max-width: 100%;
-	max-height: 100%;
-}
-
 .base {
 	display: flex;
 	margin: 0 2px 0;
