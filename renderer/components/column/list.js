@@ -27,7 +27,7 @@ export default class List extends Component {
 		return false;
 	}
 
-	handleScrollTop = (e: Event) => {
+	handleTopClick = (e: Event) => {
 		e.preventDefault();
 		const node: HTMLElement = findDOMNode(this.target);
 		node.scrollTop = 0;
@@ -45,7 +45,7 @@ export default class List extends Component {
 		return (
 			<section styleName="wrap">
 				<header>
-					<a styleName="title" onClick={this.handleScrollTop}>
+					<a styleName="title" onClick={this.handleTopClick}>
 						{this.props.title}
 					</a>
 					<CloseButton onClick={this.handleClose}/>
