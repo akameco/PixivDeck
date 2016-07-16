@@ -43,6 +43,7 @@ export default class IllustPreview extends Component {
 					height={height}
 					isLoaded={this.props.isLoaded}
 					onLoad={this.props.onLoad}
+					onClose={this.props.onClose}
 					/>
 			</div>
 		);

@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import CSSModules from 'react-css-modules';
 import {findDOMNode} from 'react-dom';
+import {CloseButton} from '../button';
 import styles from './lazy-img.css';
 
 type Size = {
@@ -35,7 +36,8 @@ type Props = {
 	width: number,
 	height: number,
 	isLoaded: bool,
-	onLoad: () => void
+	onLoad: () => void,
+	onClose: () => void
 };
 
 type State = {
@@ -120,6 +122,12 @@ export default class LazyImg extends Component {
 		this.setState({isClicked: !this.state.isClicked});
 	}
 
+	renderCloseButton() {
+		return (
+			<CloseButton onClick={this.props.onClose}/>
+		);
+	}
+
 	render() {
 		const {width, height, isLoaded} = this.props;
 		const style = this.selectStyle(isLoaded, this.state.isClicked);
@@ -133,6 +141,7 @@ export default class LazyImg extends Component {
 		if (this.props.isLoaded) {
 			return (
 				<div styleName="wrap">
+					<CloseButton onClick={this.props.onClose}/>
 					<img
 						src={this.props.to}
 						width={width}
@@ -150,6 +159,7 @@ export default class LazyImg extends Component {
 
 		return (
 			<div styleName="wrap">
+				<CloseButton onClick={this.props.onClose}/>
 				<img
 					src={this.props.from}
 					styleName="from"
