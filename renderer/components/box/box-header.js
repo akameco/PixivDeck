@@ -23,9 +23,11 @@ export default class BoxHeader extends Component {
 		return (
 			<div styleName="base">
 				<Avater img={img}/>
-				<div styleName="area">
-					<span styleName="name">{name}</span>
-					<span styleName="account">{account}</span>
+				<div styleName="profile-area">
+					<p>
+						<span styleName="name">{name}</span>
+						<span styleName="account">{account}</span>
+					</p>
 				</div>
 			</div>
 		);
