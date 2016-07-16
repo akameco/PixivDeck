@@ -30,10 +30,12 @@ export default class List extends Component {
 	}
 
 	handleTopClick = (e: Event) => {
+		this.props.onReload(this.props.id);
 		e.preventDefault();
 		const node: HTMLElement = findDOMNode(this.target);
-		node.scrollTop = 0;
-		this.props.onReload(this.props.id);
+		if (node) {
+			node.scrollTop = 0;
+		}
 	};
 
 	handleClose = () => {
