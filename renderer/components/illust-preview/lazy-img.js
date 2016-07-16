@@ -141,7 +141,10 @@ export default class LazyImg extends Component {
 		if (this.props.isLoaded) {
 			return (
 				<div styleName="wrap">
-					<CloseButton onClick={this.props.onClose}/>
+					<CloseButton
+						style={{color: '#676767', fontSize: '2rem', top: '0px', right: '10px'}}
+						onClick={this.props.onClose}
+						/>
 					<img
 						src={this.props.to}
 						width={width}
