@@ -24,6 +24,7 @@
 	max-width: 100%;
 	min-height: 100px;
 	background: #eeffee;
+	margin: -10px;
 	overflow: hidden;
 }
 
@@ -33,12 +34,12 @@
 
 @keyframes fade-in {
 	0% {
-		filter: blur(50px);
-		margin: -50px;
+		filter: blur(10px);
+		margin: -10px;
 		opacity: 0;
 	}
 	100% {
-		filter: none;
+		filter: blur(0);
 		margin: 0;
 		opacity: 1;
 	}
