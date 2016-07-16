@@ -4,6 +4,7 @@ import CSSModules from 'react-css-modules';
 import styles from './close-button.css';
 
 type Props = {
+	style?: Object,
 	onClick: () => void
 };
 
@@ -21,7 +22,11 @@ export default class CloseButton extends Component {
 
 	render() {
 		return (
-			<a styleName="close" onClick={this.handleCloseClick}>
+			<a
+				styleName="close"
+				onClick={this.handleCloseClick}
+				style={this.props.style}
+				>
 				<i></i>
 			</a>
 		);
