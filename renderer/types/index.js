@@ -3,7 +3,7 @@ import type {ColumnType, ColumnAction, Query} from './column';
 import type {Manage, ManageAction, ModalType} from './manage';
 import type {IpcAction} from './ipc';
 import type {Work, Works, Page} from './work';
-import type {Users} from './user';
+import type {User, Users} from './user';
 
 export type {
 	Manage,
@@ -14,6 +14,7 @@ export type {
 	Query,
 	Work,
 	Works,
+	User,
 	Users,
 	Page,
 	ModalType
@@ -26,7 +27,7 @@ export type Entities = {
 
 export type Action = ColumnAction | ManageAction | IpcAction | {type: 'INIT'};
 
-export type Dispatch = (action: Action) => any;
+export type Dispatch = (action: Action) => Action;
 
 export type State = {
 	columns: Array<ColumnType>,
