@@ -23,6 +23,26 @@ function ipcRequest(): Action {
 	return {type: 'IPC_REQUEST'};
 }
 
+function asyncIpcSend(id: number, query: Query) {
+	return new Promise(resolve => {
+		ipcSend(id, query);
+		resolve(true);
+	});
+}
+
+function delay(ms: number = 200) {
+	return new Promise(resolve => {
+		setTimeout(() => resolve(true), ms);
+	});
+}
+
+async function orderSend(columns: Array<ColumnType>) {
+	for (const c of columns) {
+		await asyncIpcSend(c.id, c.query).then(() => delay(500)); // eslint-disable-line babel/no-await-in-loop
+		await delay(100); // eslint-disable-line babel/no-await-in-loop
+	}
+}
+
 export default (store: Store) => (next: Dispatch) => (action: Action) => {
 	if (action.type === 'NEXT_PAGE' || action.type === 'RELOAD_COLUMN') {
 		next(action);
@@ -44,9 +64,7 @@ export default (store: Store) => (next: Dispatch) => (action: Action) => {
 
 	if (action.type === 'SUCCESS_LOGINED') {
 		const {columns} = store.getState();
-		for (const column of columns) {
-			ipcSend(column.id, column.query);
-		}
+		orderSend(columns);
 	}
 
 	return next(action);
