@@ -1,4 +1,4 @@
-# foxiv
+# Pixiv Deck
 
 > pixiv client for desktop
 

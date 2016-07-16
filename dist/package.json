@@ -1,5 +1,5 @@
 {
-  "name": "foxiv",
+  "name": "PixivDeck",
   "version": "0.0.1",
   "description": "pixiv client for desktop",
   "main": "index.js",
