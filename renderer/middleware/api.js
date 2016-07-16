@@ -5,9 +5,13 @@ import type {Store, Action, Dispatch, Query, ColumnType} from '../types';
 function ipcSend(id: number, query: Query): void {
 	const {type, opts, q} = query;
 	if (query.type === 'search') {
-		ipcRenderer.send(type, {id, q, opts});
+		setImmediate(() => {
+			ipcRenderer.send(type, {id, q, opts});
+		});
 	} else {
-		ipcRenderer.send(type, {id, opts});
+		setImmediate(() => {
+			ipcRenderer.send(type, {id, opts});
+		});
 	}
 }
 
