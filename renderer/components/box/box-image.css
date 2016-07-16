@@ -4,6 +4,7 @@
 	min-height: 20px;
 	text-align: center;
 	cursor: zoom-in;
+	overflow: hidden;
 }
 
 .base svg {
@@ -33,10 +34,12 @@
 @keyframes fade-in {
 	0% {
 		filter: blur(50px);
+		margin: -50px;
 		opacity: 0;
 	}
 	100% {
 		filter: none;
+		margin: 0;
 		opacity: 1;
 	}
 }
