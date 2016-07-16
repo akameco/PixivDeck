@@ -1,5 +1,5 @@
 {
-  "name": "foxiv",
+  "name": "PixivDeck",
   "version": "0.0.1",
   "description": "pixiv client for desktop",
   "main": "./dist/index.js",
@@ -12,7 +12,7 @@
     "build:m": "NODE_ENV=production browserify ./main/index.js -t [ babelify ] --im --no-detect-globals --node -o ./dist/index.js",
     "build:r": "NODE_ENV=production webpack --config webpack.config.prod.js --progress",
     "build": "npm run build:m && npm run build:r",
-    "pack:osx": "electron-packager ./dist foxiv --out=./release --platform=darwin --arch=x64 --version=1.2.7 --overwrite --asar",
+    "pack:osx": "electron-packager ./dist PixivDeck --out=./release --platform=darwin --arch=x64 --version=1.2.7 --overwrite --asar",
     "pack": "npm run build && npm run pack:osx",
     "test": "xo"
   },

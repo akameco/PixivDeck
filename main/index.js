@@ -20,7 +20,7 @@ function loadExtension(id: string) {
 function createMainWindow() {
 	const bounds = new Store('bounds');
 	const win = new BrowserWindow(Object.assign({
-		title: 'foxiv',
+		title: 'PixivDeck',
 		width: 500,
 		height: 500
 	}, bounds.get()));
