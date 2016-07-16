@@ -2,7 +2,7 @@
 import {ipcRenderer} from 'electron'; // eslint-disable-line import/no-extraneous-dependencies
 import type {Store, Action, Dispatch, Query, ColumnType} from '../types';
 
-function ipcSend(id: number, query: Query) {
+function ipcSend(id: number, query: Query): void {
 	const {type, opts, q} = query;
 	if (query.type === 'search') {
 		ipcRenderer.send(type, {id, q, opts});
@@ -12,28 +12,25 @@ function ipcSend(id: number, query: Query) {
 }
 
 function selectColumn(store: Store, id: number): ColumnType {
-	const column = store.getState().columns.filter(v => v.id === id)[0];
-	return column;
+	return store.getState().columns.filter(v => v.id === id)[0];
 }
 
-function ipcRequest() {
+function ipcRequest(): Action {
 	return {type: 'IPC_REQUEST'};
 }
 
 export default (store: Store) => (next: Dispatch) => (action: Action) => {
-	if (action.type === 'NEXT_PAGE') {
+	if (action.type === 'NEXT_PAGE' || action.type === 'RELOAD_COLUMN') {
 		next(action);
 		const column = selectColumn(store, action.id);
 		ipcSend(action.id, column.query);
 		return next(ipcRequest());
 	}
 
-	if (action.type === 'ADD_COLUMN' && action.id && action.query) {
+	if (action.type === 'ADD_COLUMN' && action.query) {
 		next(action);
 		ipcSend(action.id, action.query);
 		return next(ipcRequest());
-	}
-
 	}
 
 	if (action.type === 'OPEN_MANGA_PREVIEW') {
