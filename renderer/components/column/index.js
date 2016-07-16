@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import CSSModules from 'react-css-modules';
 import {connect} from 'react-redux';
 import type {Dispatch, State, Work, Works, ColumnType} from '../../types';
-import {nextPage, closeColumn} from '../../actions/column';
+import {nextPage, closeColumn, reloadColumn} from '../../actions/column';
 import List from './list';
 import styles from './column.css';
 
@@ -32,13 +32,19 @@ class Column extends Component {
 		this.props.dispatch(nextPage(this.props.column.id));
 	}
 
+	handleTopClick = (id: number) => {
+		this.props.dispatch(reloadColumn(id));
+	}
+
 	render() {
 		const {column, works} = this.props;
 		return (
 			<div styleName="base">
 				<List
+					id={column.id}
 					title={column.title}
 					works={works}
+					onReload={this.handleTopClick}
 					onClose={this.handleClose}
 					onNextPage={this.handleOnNextPage}
 					/>

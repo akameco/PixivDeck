@@ -17,6 +17,10 @@ export function nextPage(id: number): Action {
 	return {type: 'NEXT_PAGE', id};
 }
 
+export function reloadColumn(id: number): Action {
+	return {type: 'RELOAD_COLUMN', id};
+}
+
 export function closeColumn(id: number): Action {
 	return {type: 'CLOSE_COLUMN', id};
 }

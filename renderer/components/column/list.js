@@ -9,9 +9,11 @@ import Infinite from './infinite';
 import styles from './list.css';
 
 type Props = {
+	id: number,
 	works: Array<Work>,
 	title: string,
 	onNextPage: () => void,
+	onReload: (id: number) => void,
 	onClose: () => void
 };
 
@@ -31,6 +33,7 @@ export default class List extends Component {
 		e.preventDefault();
 		const node: HTMLElement = findDOMNode(this.target);
 		node.scrollTop = 0;
+		this.props.onReload(this.props.id);
 	};
 
 	handleClose = () => {
