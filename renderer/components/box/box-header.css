@@ -1,5 +1,20 @@
 .base {
 	display: flex;
+	width: 100%;
+	height: 100%;
+}
+
+.wrap {
+	width: 100%;
+}
+
+.title {
+	width: calc(100% - 20px);
+	padding-top: 5px;
+	padding-bottom: 2px;
+	padding-left: 5px;
+	font-size: 1.09rem;
+	margin: 0;
 }
 
 .profile-area {
@@ -8,11 +23,16 @@
 	white-space: nowrap;
 	word-wrap: break-word;
 	overflow: hidden;
+	margin-top: 2px;
+	margin-bottom: 10px;
+}
+
+.profile-area p {
+	margin: 0;
 }
 
 .name {
 	font-size: 1rem;
-	font-weight: bold;
 	margin-left: 0.5rem;
 	margin-right: 5px;
 }
@@ -21,4 +41,11 @@
 	line-height: 1;
 	font-size: 0.85rem;
 	color: darkgray;
+}
+
+.body {
+	width: 100%;
+	font-size: 0.9rem;
+	color: #444444;
+	margin-bottom: 10px;
 }
