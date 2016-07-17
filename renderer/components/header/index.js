@@ -8,7 +8,7 @@ import {
 	toggleDropdown,
 	openModal
 } from '../../actions/manage';
-import {SettingsIcon} from '../icon';
+import {AddIcon, SearchIcon, SettingsIcon} from '../icon';
 import Dropdwon from '../dorpdown';
 import styles from './header.css';
 
@@ -40,11 +40,16 @@ class Header extends Component {
 	render() {
 		return (
 			<header styleName="base">
-				<a styleName="add" onClick={this.handleAddClick}>
-					<i></i>
-				</a>
+				<div styleName="top">
+					<a styleName="add" onClick={this.handleAddClick}>
+						<AddIcon/>
+					</a>
+					<a styleName="search" onClick={this.handleAddClick}>
+						<SearchIcon/>
+					</a>
+				</div>
 				<div styleName="bottom">
-					<a styleName="setting" onClick={this.handleDropdown}>
+					<a onClick={this.handleDropdown}>
 						<SettingsIcon/>
 					</a>
 				</div>

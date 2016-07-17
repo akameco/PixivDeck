@@ -14,35 +14,41 @@
 	background-color: #292f33;
 }
 
-.add {
-	width: 45px;
+.top {
+	width: 100%;
+	text-align: center;
+}
+
+.button {
+	display: block;
+	width: 80%;
 	height: 45px;
+	margin: 0 auto;
 	cursor: pointer;
 }
 
-.add i::before {
-	font-size: 2.5rem;
-	color: gray;
-	content: '+';
+.headerIconColor {
+	fill: gray;
+}
+
+.add {
+	composes: button;
+	composes: headerIconColor;
+}
+
+.search {
+	composes: button;
+	composes: headerIconColor;
 }
 
 .bottom {
-	position: absolute;
 	width: 100%;
+	composes: headerIconColor;
+	position: absolute;
 	left: 0;
 	bottom: 20px;
-}
-
-.bottom svg {
-	fill: gray;
-	width: 35px;
-	height: 35px;
-	margin: 0 auto;
-}
-
-.setting {
-	color: white;
-	width: 45px;
-	height: 45px;
-	cursor: pointer;
+	& svg {
+		margin: 0 auto;
+		width: 75%;
+	}
 }
