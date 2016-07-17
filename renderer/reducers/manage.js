@@ -24,6 +24,14 @@ export default function (state: Manage = initManageState, action: Action): Manag
 			return {...state, isLogin: true};
 		case 'LOGOUT':
 			return {...state, isLogin: false};
+		case 'CLOSE_ALL':
+			return {
+				...state,
+				isImageView: false,
+				isMangaView: false,
+				isModal: false,
+				isDropdown: false
+			};
 		case 'OPEN_IMAGE_VIEW':
 			return {...state, isImageView: Boolean(state.currentWorkId), isMangaView: false, isDropdown: false};
 		case 'CLOSE_IMAGE_VIEW':

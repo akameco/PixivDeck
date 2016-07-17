@@ -15,6 +15,10 @@ export function logout(): Action {
 	return {type: 'LOGOUT'};
 }
 
+export function close(): Action {
+	return {type: 'CLOSE_ALL'};
+}
+
 export function openModal(modal: ModalType = 'DEFAULT'): Action {
 	return {type: 'OPEN_MODAL', modal};
 }
