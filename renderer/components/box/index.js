@@ -43,9 +43,13 @@ class Box extends Component {
 		const {title, caption, tags} = work;
 		return (
 			<div styleName="base">
-				<BoxHeader name={user.name} account={user.account} img={user.profileImageUrls.px50x50}/>
-				{title}
-				{caption}
+				<BoxHeader
+					name={user.name}
+					account={user.account}
+					img={user.profileImageUrls.px50x50}
+					title={title}
+					caption={caption}
+					/>
 				<BoxImage work={work} onClick={this.handleClick}/>
 				<BoxFooter tags={tags} onClickTag={this.handleTagClick}/>
 			</div>
