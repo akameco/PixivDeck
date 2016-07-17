@@ -5,6 +5,7 @@ import CSSModules from 'react-css-modules';
 import type {Work} from '../../types';
 import Box from '../box';
 import {CloseButton} from '../button';
+import {LoadingIcon} from '../icon';
 import Infinite from './infinite';
 import styles from './list.css';
 
@@ -66,7 +67,9 @@ export default class List extends Component {
 							{List}
 						</Infinite>
 					</div> :
-					<div>loading</div>
+					<div styleName="loading">
+						<LoadingIcon/>
+					</div>
 				}
 			</section>
 		);

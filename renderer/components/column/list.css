@@ -35,3 +35,18 @@
 .title {
 	font-size: 1.5rem;
 }
+
+.loading {
+	display: flex;
+	justify-content: center;
+	height: 100%;
+
+	& svg {
+		margin-top: 40%;
+		width: 30px;
+		height: 40px;
+		& path, & rect {
+			fill: #2c8a6b;
+		}
+	}
+}
