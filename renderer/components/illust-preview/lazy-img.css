@@ -1,3 +1,12 @@
+.base {
+	width: auto;
+	height: auto;
+	max-width: 100vw;
+	max-height: 100vh;
+	margin: auto;
+	user-select: none;
+}
+
 .wrap {
 	width: auto;
 	height: auto;
@@ -9,35 +18,14 @@
 }
 
 .from {
-	width: auto;
-	height: auto;
-	max-width: 100vw;
-	max-height: 100vh;
-	margin: auto;
-	user-select: none;
-
+	composes: base;
 	cursor: wait;
 }
 
 .loaded {
-	width: auto;
-	height: auto;
-	max-width: 100vw;
-	max-height: 100vh;
-	margin: auto;
-	user-select: none;
-
+	composes: base;
 	cursor: zoom-in;
 	animation: fade-in 600ms forwards;
-}
-
-.isClick {
-	margin: auto;
-	user-select: none;
-
-	max-width: none;
-	max-height: none;
-	cursor: zoom-out;
 }
 
 @keyframes fade-in {
@@ -47,4 +35,12 @@
 	100% {
 		filter: none;
 	}
+}
+
+.isClick {
+	margin: auto;
+	user-select: none;
+	max-width: none;
+	max-height: none;
+	cursor: zoom-out;
 }
