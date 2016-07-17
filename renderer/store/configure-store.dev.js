@@ -6,6 +6,7 @@ import startIpc from '../middleware/ipc';
 import auth from '../middleware/auth';
 import api from '../middleware/api';
 import scroll from '../middleware/scroll';
+import startKeyEvent from '../middleware/key-event';
 
 export default function configureStore(initialState: Object) {
 	const logger = createLogger({
@@ -24,6 +25,7 @@ export default function configureStore(initialState: Object) {
 
 	const store = createStore(reducer, initialState, enhancer);
 	startIpc(store);
+	startKeyEvent(store);
 
 	if (module.hot) {
 		// Enable Webpack hot module replacement for reducers
