@@ -34,9 +34,7 @@ export default class BoxHeader extends Component {
 						</p>
 					</div>
 					<div styleName="body">
-						<div>
-							{caption}
-						</div>
+						{caption}
 					</div>
 				</div>
 			</div>
