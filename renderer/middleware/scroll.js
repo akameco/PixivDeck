@@ -14,7 +14,7 @@ function scrollStart(): void {
 export default () => (next: Dispatch) => (action: Action) => {
 	if (action.type === 'OPEN_MODAL') {
 		scrollStop();
-	} else if (action.type === 'CLOSE_MODAL') {
+	} else if (action.type === 'CLOSE_MODAL' || action.type === 'CLOSE_ALL') {
 		scrollStart();
 	}
 	return next(action);
