@@ -5,8 +5,9 @@ import startIpc from '../middleware/ipc';
 import scroll from '../middleware/scroll';
 import auth from '../middleware/auth';
 import api from '../middleware/api';
+import startKeyEvent from '../middleware/key-event';
 
-export default function configureStore(initialState) {
+export default function configureStore(initialState: Object) {
 	const enhancer = compose(
 		applyMiddleware(
 			auth,
@@ -17,5 +18,6 @@ export default function configureStore(initialState) {
 	);
 	const store = createStore(reducer, initialState, enhancer);
 	startIpc(store);
+	startKeyEvent(store);
 	return store;
 }
