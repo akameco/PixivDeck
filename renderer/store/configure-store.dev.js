@@ -7,7 +7,7 @@ import auth from '../middleware/auth';
 import api from '../middleware/api';
 import scroll from '../middleware/scroll';
 
-export default function configureStore(initialState) {
+export default function configureStore(initialState: Object) {
 	const logger = createLogger({
 		collapsed: () => true
 	});
