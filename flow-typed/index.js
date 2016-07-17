@@ -96,7 +96,7 @@ declare module 'electron' {
 }
 
 declare module 'humps' {
-	declare var exports: any;
+	declare function camelizeKeys(target: Object): Object;
 }
 
 declare class IntersectionObserver {
