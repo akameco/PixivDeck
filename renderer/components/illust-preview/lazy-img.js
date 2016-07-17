@@ -167,7 +167,7 @@ export default class LazyImg extends Component {
 					styleName="from"
 					style={fromStyle}
 					onLoad={this.handleLoad}
-					ref={c => {
+					ref={(c: Component<*, *, *>) => {
 						this.from = c;
 					}}
 					/>
