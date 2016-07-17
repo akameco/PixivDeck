@@ -5,7 +5,7 @@
 }
 
 .wrap {
-	width: 100%;
+	width: calc(100% - 56px);
 }
 
 .title {
@@ -44,7 +44,7 @@
 }
 
 .body {
-	width: calc(100% - 30px);
+	width: calc(100% - 10px);
 	font-size: 0.9rem;
 	color: #444444;
 	margin-bottom: 10px;
