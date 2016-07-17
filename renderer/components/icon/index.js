@@ -12,3 +12,9 @@ export const MangaIcon = () => (
 		<g><path d="M10 18h5v-6h-5v6zm-6 0h5v-13h-5v13zm12 0h5v-6h-5v6zm-6-13v6h11v-6h-11z"></path></g>
 	</svg>
 );
+
+export const CloseIcon = () => (
+	<svg viewBox="0 0 24 24">
+		<g><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"></path></g>
+	</svg>
+);
