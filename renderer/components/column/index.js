@@ -59,7 +59,7 @@ function filter(nums: Array<number>, works: Works, tags: Array<string>) {
 		.filter(work => work.tags.every(tag => tags.every(t => t !== tag)));
 }
 
-function mapStateToProps(state: State, ownProps) {
+function mapStateToProps(state: State, ownProps: Props) {
 	const {entities, manage} = state;
 	const {works} = entities;
 	const {column} = ownProps;
