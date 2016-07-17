@@ -1,4 +1,4 @@
-.close {
+.closeButton {
 	position: absolute;
 	text-align: center;
 	margin: 0;
@@ -9,8 +9,4 @@
 	top: 15px;
 	right: 15px;
 	font-size: 24px;
-}
-
-.close i::before {
-	content: "×";
 }
