@@ -7,7 +7,9 @@ import styles from './box-header.css';
 type Props = {
 	name: string,
 	account: string,
-	img: string
+	img: string,
+	title: string,
+	caption?: string
 };
 
 @CSSModules(styles)
@@ -19,13 +21,23 @@ export default class BoxHeader extends Component {
 	}
 
 	render() {
-		const {name, account, img} = this.props;
+		const {name, account, img, title, caption} = this.props;
 		return (
 			<div styleName="base">
 				<Avater img={img}/>
-				<div styleName="area">
-					<span styleName="name">{name}</span>
-					<span styleName="account">{account}</span>
+				<div styleName="wrap">
+					<div styleName="title">{title}</div>
+					<div styleName="profile-area">
+						<p>
+							<span styleName="name">{name}</span>
+							<span styleName="account">{account}</span>
+						</p>
+					</div>
+					<div styleName="body">
+						<div>
+							{caption}
+						</div>
+					</div>
 				</div>
 			</div>
 		);

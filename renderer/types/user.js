@@ -2,7 +2,9 @@
 export type User = {
 	name: string,
 	account: string,
-	profileImageUrls: Object
+	profileImageUrls: {
+		px50x50: string
+	}
 }
 
 export type Users = {[key: number]: User} | Object;

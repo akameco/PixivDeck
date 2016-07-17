@@ -1,11 +1,9 @@
 .avater {
-
+	width: 48px;
+	height: 48px;
+	margin: 5px 4px;
 }
 
 .avater img {
-	width: 48px;
-	height: 48px;
-	border-radius: 3px;
-	margin-top: 2px;
-	margin-bottom: 2px;
+	border-radius: 4px;
 }
