@@ -44,8 +44,9 @@
 }
 
 .body {
-	width: 100%;
+	width: calc(100% - 30px);
 	font-size: 0.9rem;
 	color: #444444;
 	margin-bottom: 10px;
+	padding: 0 5px;
 }
