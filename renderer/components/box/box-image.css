@@ -5,6 +5,8 @@
 	text-align: center;
 	cursor: zoom-in;
 	overflow: hidden;
+	box-shadow: 0 0 4px 1px rgba(209, 209, 209, 0.5);
+	border-radius: 3px;
 }
 
 .base svg {
