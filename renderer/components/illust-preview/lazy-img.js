@@ -80,7 +80,6 @@ export default class LazyImg extends Component {
 			nextState.fromMarginTop !== from ||
 			nextState.toMarginTop !== to
 		) {
-			console.log(from, to);
 			this.setState({
 				toMarginTop: to,
 				fromMarginTop: from
