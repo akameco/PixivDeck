@@ -29,6 +29,10 @@ class Header extends Component {
 		this.props.dispatch(openModal());
 	}
 
+	handleOpenSearchModal = () => {
+		this.props.dispatch(openModal('SEARCH'));
+	}
+
 	handleDropdown = () => {
 		this.props.dispatch(toggleDropdown());
 	}
@@ -44,7 +48,7 @@ class Header extends Component {
 					<a styleName="add" onClick={this.handleAddClick}>
 						<AddIcon/>
 					</a>
-					<a styleName="search" onClick={this.handleAddClick}>
+					<a styleName="search" onClick={this.handleOpenSearchModal}>
 						<SearchIcon/>
 					</a>
 				</div>

@@ -7,6 +7,7 @@ import {addColumn} from '../../actions/column';
 import ModalWrapper from './modal-wrapper';
 import SelectColumnModal from './select-column-modal';
 import SettingFilterModal from './setting-filter-modal';
+import SearchModal from './search-modal';
 
 type Props = {
 	manage: Manage,
@@ -36,6 +37,10 @@ class Modal extends Component {
 		this.props.dispatch(removeTagFilter(tag));
 	}
 
+	handleSearchSubmit = (tag: string) => {
+		this.props.dispatch(addColumn({type: 'search', q: tag, opts: {page: 1}}, tag));
+	}
+
 	renderModal(type: ModalType) {
 		if (type === 'ADD_COLUMN') {
 			return (
@@ -50,6 +55,10 @@ class Modal extends Component {
 					onDelete={this.handleRemoveTagFilter}
 					onSubmit={this.handleAddTagFilter}
 					/>
+			);
+		} else if (type === 'SEARCH') {
+			return (
+				<SearchModal onSubmit={this.handleSearchSubmit}/>
 			);
 		}
 		return (
