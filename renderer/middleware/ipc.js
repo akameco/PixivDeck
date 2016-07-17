@@ -1,22 +1,11 @@
 // @flow
 import {ipcRenderer} from 'electron'; // eslint-disable-line import/no-extraneous-dependencies
 import {camelizeKeys} from 'humps';
-import {Schema, arrayOf, normalize} from 'normalizr';
+import {normalize} from 'normalizr';
 import type {Store, Dispatch} from '../types';
+import Schemas from '../schemas';
 
-const workSchema = new Schema('works', {idAttribute: 'id'});
-const userSchema = new Schema('users', {idAttribute: 'id'});
-
-workSchema.define({
-	user: userSchema
-});
-
-export const Schemas = {
-	WORK: workSchema,
-	WORK_ARRAY: arrayOf(workSchema)
-};
-
-function format(res) {
+function format(res: Object) {
 	const camelizedJson = camelizeKeys(res);
 	return normalize(camelizedJson, Schemas.WORK_ARRAY);
 }
