@@ -1,35 +1,39 @@
 // @flow
-import {merge, union} from 'lodash';
-import type {ColumnType} from '../types';
-import type {ColumnAction} from '../types/column';
+import {union} from 'lodash';
+import type {Action, ColumnType, Query} from '../types';
 
 type Column = ColumnType;
 type State = Array<Column>;
 
-function column(state: Column, action: ColumnAction): Column {
-	if (state.id !== action.id) {
+function query(state: Query, action: Action): Query {
+	if (action.type === 'INIT') {
+		return {...state, opts: {...state.opts, page: 1}};
+	} else if (action.type === 'NEXT_PAGE') {
+		return {...state, opts: {...state.opts, page: state.opts.page + 1}};
+	}
+	return state;
+}
+
+function column(state: Column, action: Action): Column {
+	if (action.id && state.id !== action.id) {
 		return state;
 	}
 
 	switch (action.type) {
 		case 'NEXT_PAGE': {
-			const page = state.query.opts.page + 1;
-			return merge({}, state, {query: {opts: {page}}});
+			return {...state, query: query(state.query, action)};
 		}
 		case 'RECIEVE_WORKS':
-			if (state.works) {
-				return merge({}, state, {works: union(state.works, action.works)});
-			}
-			return {...state, works: [...action.works]};
+			return {...state, works: union(state.works, action.works)};
 		default:
 			return state;
 	}
 }
 
-export default function columns(state: State = [], action: ColumnAction): State {
+export default function columns(state: State = [], action: Action): State {
 	switch (action.type) {
 		case 'INIT':
-			return state.map(t => ({...t, works: []}));
+			return state.map(t => ({...t, works: [], query: query(t.query, action)}));
 		case 'ADD_COLUMN': {
 			const {id, query, title} = action;
 			return [
@@ -37,8 +41,11 @@ export default function columns(state: State = [], action: ColumnAction): State 
 				{id, query, title, works: []}
 			];
 		}
-		case 'CLOSE_COLUMN':
-			return state.filter(t => t.id !== action.id);
+		case 'CLOSE_COLUMN': {
+			// ...flowtype?
+			const id = action.id;
+			return state.filter(t => t.id !== id);
+		}
 		case 'NEXT_PAGE':
 			return state.map(t => column(t, action));
 		case 'RECIEVE_WORKS':
