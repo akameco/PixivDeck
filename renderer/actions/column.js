@@ -3,7 +3,7 @@ import type {ColumnAction, Query} from '../types/column';
 
 type Action = ColumnAction;
 
-export function addColumn(query: Query, title: string = ''): Action {
+export function addColumn(query: Query, title: string): Action {
 	const id = Date.now();
 	return {
 		type: 'ADD_COLUMN',
