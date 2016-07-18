@@ -1,14 +1,17 @@
+// @flow
 import path from 'path';
 import fs from 'fs';
 import {app} from 'electron'; // eslint-disable-line import/no-extraneous-dependencies
 
 export default class Store {
-	constructor(name) {
+	path: string;
+
+	constructor(name: string) {
 		this.path = path.join(app.getPath('userData'), `${name}.json`);
 	}
 
 	get() {
-		let value;
+		let value: any;
 		try {
 			value = JSON.parse(fs.readFileSync(this.path, 'utf8'));
 		} catch (err) {
@@ -17,7 +20,7 @@ export default class Store {
 		return value;
 	}
 
-	set(data) {
+	set(data: Object) {
 		fs.writeFileSync(this.path, JSON.stringify(data));
 	}
 }
