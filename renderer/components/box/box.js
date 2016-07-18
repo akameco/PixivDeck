@@ -11,6 +11,7 @@ type Props = {
 	work: Work,
 	user: User,
 	onClick: () => void,
+	onClickUser: () => void,
 	onClickTag: (tag: string) => void
 };
 
@@ -19,7 +20,7 @@ export default class Box extends Component {
 	props: Props;
 
 	render() {
-		const {work, user, onClick, onClickTag} = this.props;
+		const {work, user, onClick, onClickTag, onClickUser} = this.props;
 		const {title, caption, tags} = work;
 		return (
 			<div styleName="base">
@@ -29,6 +30,7 @@ export default class Box extends Component {
 					img={user.profileImageUrls.px50x50}
 					title={title}
 					caption={caption}
+					onClick={onClickUser}
 					/>
 				<BoxImage work={work} onClick={onClick}/>
 				<BoxFooter tags={tags} onClickTag={onClickTag}/>

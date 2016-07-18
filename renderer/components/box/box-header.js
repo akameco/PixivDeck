@@ -9,7 +9,8 @@ type Props = {
 	account: string,
 	img: string,
 	title: string,
-	caption?: string
+	caption?: string,
+	onClick: () => void
 };
 
 @CSSModules(styles)
@@ -29,7 +30,7 @@ export default class BoxHeader extends Component {
 					<div styleName="title">{title}</div>
 					<div styleName="profile-area">
 						<p>
-							<span styleName="name">{name}</span>
+							<a styleName="name" onClick={this.props.onClick}>{name}</a>
 							<span styleName="account">{account}</span>
 						</p>
 					</div>

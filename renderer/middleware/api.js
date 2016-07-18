@@ -8,6 +8,10 @@ function ipcSend(id: number, query: Query): void {
 		setImmediate(() => {
 			ipcRenderer.send(type, {id, q, opts});
 		});
+	} else if (query.type === 'userWorks') {
+		setImmediate(() => {
+			ipcRenderer.send(type, {id, userID: query.id, opts});
+		});
 	} else {
 		setImmediate(() => {
 			ipcRenderer.send(type, {id, opts});

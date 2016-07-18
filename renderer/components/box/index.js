@@ -23,6 +23,11 @@ class SmartBox extends Component {
 		this.props.dispatch(addColumn({type: 'search', q: tag, opts: {page: 1}}, tag));
 	}
 
+	handleClickUser = () => {
+		const {user} = this.props;
+		this.props.dispatch(addColumn({type: 'userWorks', id: user.id, opts: {page: 1}}, `${user.name}(${user.account})`));
+	}
+
 	handleClick = () => {
 		const {id, pageCount} = this.props.work;
 		this.props.dispatch(currentWork(id));
@@ -39,6 +44,7 @@ class SmartBox extends Component {
 				user={this.props.user}
 				work={this.props.work}
 				onClick={this.handleClick}
+				onClickUser={this.handleClickUser}
 				onClickTag={this.handleTagClick}
 				/>
 		);
