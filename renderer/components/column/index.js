@@ -1,20 +1,17 @@
 // @flow
 import React, {Component} from 'react';
-import CSSModules from 'react-css-modules';
 import {connect} from 'react-redux';
 import type {Dispatch, State, Work, Works, ColumnType} from '../../types';
 import {nextPage, closeColumn, reloadColumn} from '../../actions/column';
-import List from './list';
-import styles from './column.css';
+import Column from './column';
 
 type Props = {
 	works: Array<Work>,
 	column: ColumnType,
-	dispatch: Dispatch;
+	dispatch: Dispatch
 }
 
-@CSSModules(styles)
-class Column extends Component {
+class SmartColumn extends Component {
 	props: Props;
 
 	shouldComponentUpdate(nextProps) {
@@ -39,16 +36,13 @@ class Column extends Component {
 	render() {
 		const {column, works} = this.props;
 		return (
-			<div styleName="base">
-				<List
-					id={column.id}
-					title={column.title}
-					works={works}
-					onReload={this.handleTopClick}
-					onClose={this.handleClose}
-					onNextPage={this.handleOnNextPage}
-					/>
-			</div>
+			<Column
+				works={works}
+				column={column}
+				onClickTop={this.handleTopClick}
+				onClose={this.handleClose}
+				onNextPage={this.handleOnNextPage}
+				/>
 		);
 	}
 }
@@ -70,4 +64,4 @@ function mapStateToProps(state: State, ownProps: Props) {
 	};
 }
 
-export default connect(mapStateToProps)(Column);
+export default connect(mapStateToProps)(SmartColumn);
