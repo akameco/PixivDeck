@@ -19,7 +19,7 @@ function loadExtension(id: string) {
 
 function createMainWindow() {
 	const bounds = new Store('bounds');
-	const win = new BrowserWindow(Object.assign({
+	const win = new BrowserWindow(Object.assign({}, {
 		title: 'PixivDeck',
 		width: 500,
 		height: 500
@@ -40,9 +40,7 @@ function createMainWindow() {
 	const ses = win.webContents.session;
 	ses.webRequest.onBeforeSendHeaders((detail, cb) => {
 		let {requestHeaders} = detail;
-		requestHeaders = Object.assign({}, requestHeaders, {
-			Referer: 'http://www.pixiv.net/'
-		});
+		requestHeaders = {...requestHeaders, Referer: 'http://www.pixiv.net/'};
 		cb({requestHeaders});
 	}, {
 		urls: ['<all_urls>'],
