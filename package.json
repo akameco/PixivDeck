@@ -14,7 +14,7 @@
     "build": "npm run build:m && npm run build:r",
     "pack:osx": "electron-packager ./dist PixivDeck --out=./release --platform=darwin --arch=x64 --version=1.2.7 --overwrite --asar",
     "pack": "npm run build && npm run pack:osx",
-    "test": "xo"
+    "test": "xo && flow"
   },
   "keywords": [
     "electron",
