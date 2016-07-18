@@ -1,14 +1,10 @@
 // @flow
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import CSSModules from 'react-css-modules';
 import type {Dispatch, State, Work, User} from '../../types/';
 import {addColumn} from '../../actions/column';
 import {openImageView, openMangaPreview, currentWork} from '../../actions/manage';
-import BoxHeader from './box-header';
-import BoxFooter from './box-footer';
-import BoxImage from './box-image';
-import styles from './box.css';
+import Box from './box';
 
 type Props = {
 	work: Work,
@@ -16,8 +12,7 @@ type Props = {
 	dispatch: Dispatch
 };
 
-@CSSModules(styles)
-class Box extends Component {
+class SmartBox extends Component {
 	props: Props;
 
 	shouldComponentUpdate(nextProps) {
@@ -39,20 +34,13 @@ class Box extends Component {
 	}
 
 	render() {
-		const {work, user} = this.props;
-		const {title, caption, tags} = work;
 		return (
-			<div styleName="base">
-				<BoxHeader
-					name={user.name}
-					account={user.account}
-					img={user.profileImageUrls.px50x50}
-					title={title}
-					caption={caption}
-					/>
-				<BoxImage work={work} onClick={this.handleClick}/>
-				<BoxFooter tags={tags} onClickTag={this.handleTagClick}/>
-			</div>
+			<Box
+				user={this.props.user}
+				work={this.props.work}
+				onClick={this.handleClick}
+				onClickTag={this.handleTagClick}
+				/>
 		);
 	}
 }
@@ -64,4 +52,4 @@ function mapStateToProps(state: State, ownProps: Props) {
 	};
 }
 
-export default connect(mapStateToProps)(Box);
+export default connect(mapStateToProps)(SmartBox);
