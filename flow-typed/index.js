@@ -7,7 +7,7 @@ declare module 'babel-polyfill' {
 }
 
 declare module 'pixiv.js' {
-	}
+	declare var exports: any;
 }
 
 declare module 'humps' {
