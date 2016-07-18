@@ -47,20 +47,27 @@ class SmartColumn extends Component {
 	}
 }
 
-function filter(nums: Array<number>, works: Works, tags: Array<string>) {
-	return nums
-		.map(i => works[i])
-		.filter(work => work.tags.every(tag => tags.every(t => t !== tag)));
+function selectWorks(nums: Array<number>, works: Works) {
+	return nums.map(i => works[i]);
+}
+
+function filter(works: Array<Work>, tags: Array<string>) {
+	return works.filter(work => {
+		return work.tags.every(tag =>
+			tags.every(t => t !== tag)
+		);
+	});
 }
 
 function mapStateToProps(state: State, ownProps: Props) {
 	const {entities, manage} = state;
 	const {works} = entities;
 	const {column} = ownProps;
-	const workList = column.works ? filter(column.works, works, manage.filter.tags) : [];
+	const selectedWorks = selectWorks(column.works, works);
+	const filterdWorks = filter(selectedWorks, manage.filter.tags);
 
 	return {
-		works: workList
+		works: filterdWorks
 	};
 }
 
