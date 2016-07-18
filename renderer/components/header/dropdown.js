@@ -4,6 +4,7 @@ import CSSModules from 'react-css-modules';
 import styles from './dropdown.css';
 
 type Props = {
+	onOpenFilterModal: () => void,
 	onLogout: () => void
 };
 
@@ -16,7 +17,7 @@ export default class Dropdwon extends Component {
 			<div styleName="base">
 				<ul>
 					<li>
-						<a onClick={this.props.onLogout}>
+						<a onClick={this.props.onOpenFilterModal}>
 							設定
 						</a>
 					</li>
