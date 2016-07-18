@@ -25,8 +25,8 @@
   "dependencies": {
     "humps": "^1.1.0",
     "lodash": "^4.13.1",
-    "normalizr": "^2.1.0",
-    "pixiv.js": "^0.12.0",
+    "normalizr": "^2.2.0",
+    "pixiv.js": "^0.13.0",
     "react": "^15.2.1",
     "react-css-modules": "^3.7.7",
     "react-dom": "^15.2.1",
