@@ -14,7 +14,6 @@ export type Manage = {
 	isMangaView: bool,
 	isDropdown: bool,
 	currentWorkId: ?number,
-	currentColumn: number,
 	filter: ManageFilter,
 	modalType: ModalType
 };
