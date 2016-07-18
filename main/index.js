@@ -96,26 +96,17 @@ app.on('ready', () => {
 
 	ipcMain.on('ranking', async (ev, {id, opts}) => {
 		const res = await pixiv.ranking('all', Object.assign({page: 1, per_page: 50, include_sanity_level: true}, opts));
-		ev.sender.send('ranking', {
-			id,
-			res: res.response[0]
-		});
+		ev.sender.send('ranking', {id, res: res.response[0]});
 	});
 
 	ipcMain.on('favoriteWorks', async (ev, {id, opts}) => {
 		const res = await pixiv.favoriteWorks(Object.assign({}, {per_page: 50}, opts));
-		ev.sender.send('favoriteWorks', {
-			id,
-			res
-		});
+		ev.sender.send('favoriteWorks', {id, res});
 	});
 
 	ipcMain.on('search', async (ev, {id, q, opts}) => {
 		const res = await pixiv.search(q, Object.assign({}, {mode: 'tag', per_page: 20}, opts));
-		ev.sender.send('search', {
-			id,
-			res
-		});
+		ev.sender.send('search', {id, res});
 	});
 
 	ipcMain.on('work', async (ev, id) => {
