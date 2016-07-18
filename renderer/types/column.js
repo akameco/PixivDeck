@@ -12,7 +12,7 @@ export type Query = {
 export type ColumnType = {
 	id: number,
 	title: string,
-	works?: Array<number>,
+	works: Array<number>,
 	query: Query
 };
 
