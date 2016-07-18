@@ -107,6 +107,11 @@ app.on('ready', () => {
 		ev.sender.send('search', {id, res});
 	});
 
+	ipcMain.on('userWorks', async (ev, {id, userID, opts}) => {
+		const res = await pixiv.userWorks(userID, opts);
+		ev.sender.send('userWorks', {id, res});
+	});
+
 	ipcMain.on('work', async (ev, id) => {
 		const res = await pixiv.works(id);
 		ev.sender.send('work', res);

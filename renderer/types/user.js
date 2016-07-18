@@ -1,5 +1,6 @@
 // @flow
 export type User = {
+	id: number,
 	name: string,
 	account: string,
 	profileImageUrls: {

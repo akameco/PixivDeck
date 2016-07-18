@@ -1,6 +1,7 @@
 // @flow
 export type Query = {
-	type: 'search' | 'ranking' | 'favoriteWorks',
+	type: 'search' | 'ranking' | 'favoriteWorks' | 'userWorks',
+	id?: number,
 	q?: string,
 	opts: {
 		mode?: string,
