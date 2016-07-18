@@ -51,7 +51,7 @@ function selectWorks(nums: Array<number>, works: Works) {
 	return nums.map(i => works[i]);
 }
 
-function filter(works: Array<Work>, tags: Array<string>) {
+function filterTag(works: Array<Work>, tags: Array<string>) {
 	return works.filter(work => {
 		return work.tags.every(tag =>
 			tags.every(t => t !== tag)
@@ -59,15 +59,19 @@ function filter(works: Array<Work>, tags: Array<string>) {
 	});
 }
 
+function filterR18(works: Array<Work>) {
+	return works.filter(work => work.ageLimit !== 'r18');
+}
+
 function mapStateToProps(state: State, ownProps: Props) {
 	const {entities, manage} = state;
 	const {works} = entities;
-	const {column} = ownProps;
-	const selectedWorks = selectWorks(column.works, works);
-	const filterdWorks = filter(selectedWorks, manage.filter.tags);
+	const selectedWorks = selectWorks(ownProps.column.works, works);
+	const filterdWorks = filterTag(selectedWorks, manage.filter.tags);
+	const list = manage.filter.r18 ? filterdWorks : filterR18(filterdWorks);
 
 	return {
-		works: filterdWorks
+		works: list
 	};
 }
 

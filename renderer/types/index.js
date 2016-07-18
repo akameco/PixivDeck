@@ -1,12 +1,13 @@
 // @flow
 import type {ColumnType, ColumnAction, Query} from './column';
-import type {Manage, ManageAction, ModalType} from './manage';
+import type {Manage, ManageAction, ModalType, ManageFilter} from './manage';
 import type {IpcAction} from './ipc';
 import type {Work, Works, Page} from './work';
 import type {User, Users} from './user';
 
 export type {
 	Manage,
+	ManageFilter,
 	ManageAction,
 	ColumnAction,
 	IpcAction,

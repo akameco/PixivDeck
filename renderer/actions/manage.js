@@ -77,3 +77,7 @@ export function startImgLoading(): Action {
 export function finishImgLoaded(): Action {
 	return {type: 'SET_IMG_LOADED'};
 }
+
+export function setR18(show: bool): Action {
+	return {type: 'SET_R18', show};
+}

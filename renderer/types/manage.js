@@ -1,6 +1,11 @@
 // @flow
 export type ModalType = | 'DEFAULT' | 'ADD_COLUMN' | 'FILTER_TAG' | 'SEARCH';
 
+export type ManageFilter = {
+	r18: bool,
+	tags: Array<string>
+};
+
 export type Manage = {
 	isLogin: bool,
 	isModal: bool,
@@ -9,9 +14,8 @@ export type Manage = {
 	isMangaView: bool,
 	isDropdown: bool,
 	currentWorkId: ?number,
-	filter: {
-		tags: Array<string>
-	},
+	currentColumn: number,
+	filter: ManageFilter,
 	modalType: ModalType
 };
 
@@ -31,6 +35,7 @@ export type ManageAction =
 	| {type: 'CLOSE_ALL'}
 	| {type: 'REMOVE_TAG_FILTER', tag: string}
 	| {type: 'ADD_TAG_FILTER', tag: string}
+	| {type: 'SET_R18', show: bool}
 	| {type: 'START_IMG_LOADING'}
 	| {type: 'SET_IMG_LOADED'}
 ;
