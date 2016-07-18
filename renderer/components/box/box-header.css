@@ -45,6 +45,7 @@
 
 .body {
 	width: calc(100% - 10px);
+	line-height: 1.2rem;
 	font-size: 0.9rem;
 	color: #444444;
 	margin-bottom: 10px;
