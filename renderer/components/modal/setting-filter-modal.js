@@ -7,7 +7,9 @@ import styles from './setting-filter-modal.css';
 type Props = {
 	onDelete: (tag: string) => void,
 	onSubmit: (tag: string) => void,
-	tags: Array<string>
+	onSelectR18: (show: bool) => void,
+	tags: Array<string>,
+	r18: bool
 };
 
 type State = {
@@ -31,6 +33,9 @@ export default class SettingFilterModal extends Component {
 		if (this.state.value !== nextState.value) {
 			return true;
 		}
+		if (this.props.r18 !== nextProps.r18) {
+			return true;
+		}
 		return false;
 	}
 
@@ -49,6 +54,11 @@ export default class SettingFilterModal extends Component {
 		}
 	}
 
+	handleSelectR18 = (event: any) => {
+		console.log(event.target.checked);
+		this.props.onSelectR18(event.target.checked);
+	}
+
 	render() {
 		const tags = this.props.tags.map(tag =>
 			<Tag key={tag} tag={tag} onClick={this.props.onDelete}/>
@@ -56,6 +66,17 @@ export default class SettingFilterModal extends Component {
 
 		return (
 			<div styleName="base">
+				<div>
+					<label>
+						<input
+							type="checkbox"
+							defaultChecked={this.props.r18}
+							value={this.props.r18}
+							onChange={this.handleSelectR18}
+							/>
+							R18を表示する
+					</label>
+				</div>
 				フィルター
 				<input
 					type="text"

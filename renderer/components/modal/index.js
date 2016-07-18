@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import type {State, Dispatch, Manage, ModalType, Query} from '../../types';
-import {closeModal, addTagFilter, removeTagFilter} from '../../actions/manage';
+import {closeModal, addTagFilter, removeTagFilter, setR18} from '../../actions/manage';
 import {addColumn} from '../../actions/column';
 import ModalWrapper from './modal-wrapper';
 import SelectColumnModal from './select-column-modal';
@@ -41,6 +41,10 @@ class Modal extends Component {
 		this.props.dispatch(addColumn({type: 'search', q: tag, opts: {page: 1}}, tag));
 	}
 
+	handleSetR18 = (show: bool) => {
+		this.props.dispatch(setR18(show));
+	}
+
 	renderModal(type: ModalType) {
 		if (type === 'ADD_COLUMN') {
 			return (
@@ -52,8 +56,10 @@ class Modal extends Component {
 			return (
 				<SettingFilterModal
 					tags={this.props.manage.filter.tags}
+					r18={this.props.manage.filter.r18}
 					onDelete={this.handleRemoveTagFilter}
 					onSubmit={this.handleAddTagFilter}
+					onSelectR18={this.handleSetR18}
 					/>
 			);
 		} else if (type === 'SEARCH') {
