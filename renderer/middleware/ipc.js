@@ -14,8 +14,12 @@ export default (store: Store) => {
 	const dispatch: Dispatch = store.dispatch;
 
 	function send(id: number, response: Object) {
-		dispatch({type: 'SUCCESS_IPC_REQUEST', response});
-		dispatch({type: 'RECIEVE_WORKS', id, works: response.result});
+		setImmediate(() => {
+			dispatch({type: 'SUCCESS_IPC_REQUEST', response});
+		});
+		setImmediate(() => {
+			dispatch({type: 'RECIEVE_WORKS', id, works: response.result});
+		});
 	}
 
 	ipcRenderer.on('SUCCESS_LOGINED', () => {
