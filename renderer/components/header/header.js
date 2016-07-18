@@ -3,14 +3,16 @@ import React, {Component} from 'react';
 import CSSModules from 'react-css-modules';
 import type {Manage} from '../../types';
 import {AddIcon, SearchIcon, SettingsIcon} from '../icon';
-import Dropdwon from '../../container/smart-dropdown';
+import Dropdwon from './dropdown';
 import styles from './header.css';
 
 type Props = {
 	manage: Manage,
 	onClickAdd: () => void,
 	onToggleDropdown: () => void,
-	onOpenSearchModal: () => void
+	onOpenSearchModal: () => void,
+	onOpenFilterModal: () => void,
+	onLogout: () => void
 };
 
 @CSSModules(styles)
@@ -38,7 +40,10 @@ export default class Header extends Component {
 					</a>
 				</div>
 				{this.props.manage.isDropdown &&
-					<Dropdwon/>
+					<Dropdwon
+						onLogout={this.props.onLogout}
+						onOpenFilterModal={this.props.onOpenFilterModal}
+						/>
 				}
 			</header>
 		);

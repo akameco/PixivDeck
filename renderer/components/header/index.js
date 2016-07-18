@@ -1,7 +1,11 @@
 // @flow
 import {connect} from 'react-redux';
 import type {Dispatch, State} from '../../types';
-import {toggleDropdown, openModal} from '../../actions/manage';
+import {
+	logout,
+	toggleDropdown,
+	openModal
+ } from '../../actions/manage';
 import Header from './header';
 
 function mapStateToProps(state: State) {
@@ -10,9 +14,11 @@ function mapStateToProps(state: State) {
 
 function mapDispatchToProps(dispatch: Dispatch) {
 	return {
+		onLogout: () => dispatch(logout()),
 		onClickAdd: () => dispatch(openModal()),
 		onToggleDropdown: () => dispatch(toggleDropdown()),
-		onOpenSearchModal: () => dispatch(openModal('SEARCH'))
+		onOpenSearchModal: () => dispatch(openModal('SEARCH')),
+		onOpenFilterModal: () => dispatch(openModal('FILTER_TAG'))
 	};
 }
 
