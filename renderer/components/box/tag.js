@@ -22,7 +22,7 @@ export default class Tag extends Component {
 
 	render() {
 		return (
-			<a onClick={this.handleClick} styleName="base">
+			<a onClick={this.handleClick} styleName="tag">
 				#{this.props.name}
 			</a>
 		);
