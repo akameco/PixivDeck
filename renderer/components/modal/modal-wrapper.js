@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react';
-import CSSModules from 'react-css-modules';
+import css from 'react-css-modules';
 import {CloseButton} from '../button/';
 import styles from './modal.css';
 
@@ -10,7 +10,7 @@ type Props = {
 	onClose: () => void,
 };
 
-@CSSModules(styles)
+@css(styles)
 export default class ModalWrapper extends Component {
 	props: Props;
 	_content: Component<*, *, *>;

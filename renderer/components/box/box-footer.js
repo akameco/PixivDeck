@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react';
-import CSSModules from 'react-css-modules';
+import css from 'react-css-modules';
 import {union} from 'lodash';
 import Tag from './tag';
 import styles from './box-footer.css';
@@ -10,7 +10,7 @@ type Props = {
 	tags: Array<string>
 };
 
-@CSSModules(styles)
+@css(styles)
 export default class BoxFooter extends Component {
 	props: Props;
 

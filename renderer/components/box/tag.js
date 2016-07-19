@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react';
-import CSSModules from 'react-css-modules';
+import css from 'react-css-modules';
 import styles from './tag.css';
 
 type Props = {
@@ -8,7 +8,7 @@ type Props = {
 	name: string
 };
 
-@CSSModules(styles)
+@css(styles)
 export default class Tag extends Component {
 	props: Props;
 

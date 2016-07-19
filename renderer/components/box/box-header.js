@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react';
-import CSSModules from 'react-css-modules';
+import css from 'react-css-modules';
 import Avater from './avater';
 import styles from './box-header.css';
 
@@ -13,7 +13,7 @@ type Props = {
 	onClick: () => void
 };
 
-@CSSModules(styles)
+@css(styles)
 export default class BoxHeader extends Component {
 	props: Props;
 

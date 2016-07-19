@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react';
-import CSSModules from 'react-css-modules';
+import css from 'react-css-modules';
 import styles from './manga-preview.css';
 
 type Props = {
@@ -13,7 +13,7 @@ type State = {
 	isLoad: bool
 }
 
-@CSSModules(styles)
+@css(styles)
 export default class MangaPreview extends Component {
 	props: Props;
 	state: State;

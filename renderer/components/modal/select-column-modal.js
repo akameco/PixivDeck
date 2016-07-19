@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react';
-import CSSModules from 'react-css-modules';
+import css from 'react-css-modules';
 import {RANKING_MODES} from '../../contains';
 import type {Query} from '../../types/column';
 import styles from './select-column-modal.css';
@@ -31,7 +31,7 @@ type Props = {
 	onClickHistory: () => void,
 };
 
-@CSSModules(styles)
+@css(styles)
 export default class SelectColumnModal extends Component {
 	props: Props;
 

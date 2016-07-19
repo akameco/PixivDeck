@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import {findDOMNode} from 'react-dom';
-import CSSModules from 'react-css-modules';
+import css from 'react-css-modules';
 import type {Work} from '../../types';
 import Box from '../box';
 import {CloseButton} from '../button';
@@ -18,7 +18,7 @@ type Props = {
 	onClose: () => void
 };
 
-@CSSModules(styles)
+@css(styles)
 export default class List extends Component {
 	props: Props;
 	target: Component<*, *, *>

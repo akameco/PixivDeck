@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react';
-import CSSModules from 'react-css-modules';
+import css from 'react-css-modules';
 import Tag from './tag';
 import styles from './setting-filter-modal.css';
 
@@ -16,7 +16,7 @@ type State = {
 	value: string
 };
 
-@CSSModules(styles)
+@css(styles)
 export default class SettingFilterModal extends Component {
 	props: Props;
 	state: State;

@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react';
-import CSSModules from 'react-css-modules';
+import css from 'react-css-modules';
 import styles from './auth.css';
 
 type Props = {
@@ -12,7 +12,7 @@ type State = {
 	password: string
 };
 
-@CSSModules(styles)
+@css(styles)
 export default class Auth extends Component {
 	props: Props;
 	state: State;
