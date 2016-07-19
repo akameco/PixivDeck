@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import type {State, Dispatch, Work} from '../../types';
-import {closeMnagaPreview} from '../../actions/manage';
+import {closeMnagaPreview} from '../../actions';
 import Preview from './manga-preview';
 import MultiPreview from './multi-preview';
 

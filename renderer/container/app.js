@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import CSSModules from 'react-css-modules';
 import type {Dispatch, State, Manage, ColumnType} from '../types';
-import {login} from '../actions/manage';
+import {login} from '../actions';
 import Auth from '../components/auth/';
 import IllustPreview from '../components/illust-preview/';
 import MangaPreview from '../components/manga-preview/';

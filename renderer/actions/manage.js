@@ -55,14 +55,6 @@ export function closeMnagaPreview(): Action {
 	return {type: 'CLOSE_MANGA_PREVIEW'};
 }
 
-export function addTagFilter(tag: string): Action {
-	return {type: 'ADD_TAG_FILTER', tag};
-}
-
-export function removeTagFilter(tag: string): Action {
-	return {type: 'REMOVE_TAG_FILTER', tag};
-}
-
 export function currentWork(id: number): Action {
 	return {
 		type: 'SELECT_WORK',
@@ -78,6 +70,6 @@ export function finishImgLoaded(): Action {
 	return {type: 'SET_IMG_LOADED'};
 }
 
-export function setR18(show: bool): Action {
-	return {type: 'SET_R18', show};
+export function addHistory(id: number): Action {
+	return {type: 'ADD_HISTORY', id};
 }

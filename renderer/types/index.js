@@ -29,7 +29,6 @@ export type Entities = {
 	works: Works
 };
 
-export type Action = ColumnAction | ManageAction | IpcAction | {type: 'INIT'};
 export type Action = ColumnAction | ManageAction | IpcAction | FilterAction | {type: 'INIT'};
 
 export type Dispatch = (action: Action) => Action;

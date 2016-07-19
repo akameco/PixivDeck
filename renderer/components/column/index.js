@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import type {Dispatch, State, Work, Works, ColumnType} from '../../types';
-import {nextPage, closeColumn, reloadColumn} from '../../actions/column';
+import {nextPage, closeColumn, reloadColumn} from '../../actions';
 import Column from './column';
 
 type Props = {
@@ -64,11 +64,11 @@ function filterR18(works: Array<Work>) {
 }
 
 function mapStateToProps(state: State, ownProps: Props) {
-	const {entities, manage} = state;
+	const {entities, filter} = state;
 	const {works} = entities;
 	const selectedWorks = selectWorks(ownProps.column.works, works);
-	const filterdWorks = filterTag(selectedWorks, manage.filter.tags);
-	const list = manage.filter.r18 ? filterdWorks : filterR18(filterdWorks);
+	const filterdWorks = filterTag(selectedWorks, filter.tags);
+	const list = filter.r18 ? filterdWorks : filterR18(filterdWorks);
 
 	return {
 		works: list
