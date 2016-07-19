@@ -2,7 +2,7 @@ import React from 'react';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux';
 import configureStore from './store';
-import App from './container/app';
+import App from './components';
 
 const storage = localStorage.getItem('store');
 const initialState = storage ? JSON.parse(storage) : {};

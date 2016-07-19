@@ -1,16 +1,14 @@
 // @flow
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import CSSModules from 'react-css-modules';
 import type {Dispatch, State, Manage, ColumnType} from '../types';
 import {login} from '../actions';
-import Auth from '../components/auth/';
-import IllustPreview from '../components/illust-preview/';
-import MangaPreview from '../components/manga-preview/';
-import Modal from '../components/modal';
-import Header from '../components/header/';
-import Column from '../components/column/';
-import styles from './app.css';
+import Auth from './auth';
+import IllustPreview from './illust-preview';
+import MangaPreview from './manga-preview';
+import Modal from './modal';
+import Header from './header';
+import Columns from './app/columns';
 
 type Props = {
 	children: any,
@@ -19,7 +17,6 @@ type Props = {
 	dispatch: Dispatch
 };
 
-@CSSModules(styles)
 class App extends Component {
 	props: Props;
 
@@ -37,16 +34,10 @@ class App extends Component {
 			return <Auth onClick={this.handleAuth}/>;
 		}
 
-		const Columns = this.props.columns.map(column => (
-			<Column key={column.id} column={column}/>
-		));
-
 		return (
-			<div styleName="wrap">
+			<div>
 				<Header/>
-				<div styleName="content">
-					{Columns}
-				</div>
+				<Columns columns={this.props.columns}/>
 				{this.props.manage.isImageView && <IllustPreview id={currentWorkId}/>}
 				{this.props.manage.isMangaView && <MangaPreview id={currentWorkId}/>}
 				{this.props.manage.isModal && <Modal/>}
