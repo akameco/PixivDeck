@@ -10,6 +10,8 @@ import Store from './store';
 
 let mainWindow;
 
+require('electron-context-menu')();
+
 function loadExtension(id: string) {
 	const extensionDir = resolve(os.homedir(), 'Library/Application Support/Google/Chrome/Default/Extensions/');
 	const versions = fs.readdirSync(`${extensionDir}/${id}`).sort();
