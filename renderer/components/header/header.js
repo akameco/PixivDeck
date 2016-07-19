@@ -25,7 +25,7 @@ export default class Header extends Component {
 
 	render() {
 		return (
-			<header styleName="base">
+			<header styleName="header">
 				<div styleName="top">
 					<a styleName="add" onClick={this.props.onClickAdd}>
 						<AddIcon/>
