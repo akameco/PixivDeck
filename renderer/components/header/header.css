@@ -1,4 +1,4 @@
-.base {
+.header {
 	display: flex;
 	position: fixed;
 	z-index: 300;
@@ -50,5 +50,8 @@
 	& svg {
 		margin: 0 auto;
 		width: 75%;
+	}
+	& a {
+		cursor: pointer;
 	}
 }
