@@ -9,7 +9,7 @@ const initialState = storage ? JSON.parse(storage) : {};
 
 const store = configureStore(initialState);
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.WHY_DID_YOU_UPDATE === 'enable') {
 	const {whyDidYouUpdate} = require('why-did-you-update');
 
 	whyDidYouUpdate(React);
