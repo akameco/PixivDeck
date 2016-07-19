@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import type {State, Dispatch, Manage, ModalType, Query} from '../../types';
+import type {State, Dispatch, Manage, ModalType, Query, Filter} from '../../types';
 import {closeModal, addTagFilter, removeTagFilter, setR18, addColumn} from '../../actions';
 import ModalWrapper from './modal-wrapper';
 import SelectColumnModal from './select-column-modal';
@@ -10,6 +10,7 @@ import SearchModal from './search-modal';
 
 type Props = {
 	manage: Manage,
+	filter: Filter,
 	modalType: ModalType,
 	dispatch: Dispatch
 };
@@ -54,8 +55,8 @@ class Modal extends Component {
 		} else if (type === 'FILTER_TAG') {
 			return (
 				<SettingFilterModal
-					tags={this.props.manage.filter.tags}
-					r18={this.props.manage.filter.r18}
+					tags={this.props.filter.tags}
+					r18={this.props.filter.r18}
 					onDelete={this.handleRemoveTagFilter}
 					onSubmit={this.handleAddTagFilter}
 					onSelectR18={this.handleSetR18}
@@ -85,6 +86,7 @@ class Modal extends Component {
 function mapStateToProps(state: State) {
 	return {
 		manage: state.manage,
+		filter: state.filter,
 		modalType: state.manage.modalType
 	};
 }
