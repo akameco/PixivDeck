@@ -54,12 +54,12 @@ export default class SelectColumnModal extends Component {
 		return (
 			<ul styleName="list">
 				{rankingLinks}
-				<li >
+				<li>
 					<a onClick={() => this.handleAddFavorite('public')}>
 						お気に入り
 					</a>
 				</li>
-				<li >
+				<li>
 					<a onClick={() => this.handleAddFavorite('private')}>
 						お気に入り/非公開
 					</a>
