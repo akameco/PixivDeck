@@ -1,11 +1,6 @@
 // @flow
 export type ModalType = | 'DEFAULT' | 'ADD_COLUMN' | 'FILTER_TAG' | 'SEARCH';
 
-export type ManageFilter = {
-	r18: bool,
-	tags: Array<string>
-};
-
 export type Manage = {
 	isLogin: bool,
 	isModal: bool,
@@ -14,7 +9,6 @@ export type Manage = {
 	isMangaView: bool,
 	isDropdown: bool,
 	currentWorkId: ?number,
-	filter: ManageFilter,
 	modalType: ModalType
 };
 

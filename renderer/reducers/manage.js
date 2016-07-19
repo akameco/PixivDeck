@@ -1,6 +1,5 @@
 // @flow
-import {union} from 'lodash';
-import type {Manage, Action, ManageFilter} from '../types';
+import type {Manage, Action} from '../types';
 
 const initManageState: Manage = {
 	isLogin: false,
@@ -10,34 +9,8 @@ const initManageState: Manage = {
 	isModal: false,
 	isDropdown: false,
 	currentWorkId: null,
-	filter: {
-		r18: false,
-		tags: []
-	},
 	modalType: 'DEFAULT'
 };
-
-function filter(state: ManageFilter, action: Action): ManageFilter {
-	if (action.type === 'ADD_TAG_FILTER') {
-		return {
-			tags: union([...state.tags, action.tag]),
-			r18: state.r18
-		};
-	} else if (action.type === 'REMOVE_TAG_FILTER') {
-		// maybe flowtype bug...
-		const tag = action.tag;
-		return {
-			tags: state.tags.filter(t => tag !== t),
-			r18: state.r18
-		};
-	} else if (action.type === 'SET_R18') {
-		return {
-			tags: state.tags,
-			r18: action.show
-		};
-	}
-	return state;
-}
 
 export default function (state: Manage = initManageState, action: Action): Manage {
 	switch (action.type) {
@@ -79,12 +52,6 @@ export default function (state: Manage = initManageState, action: Action): Manag
 			return {...state, isImgLoaded: true};
 		case 'SELECT_WORK':
 			return {...state, currentWorkId: action.id};
-		case 'ADD_TAG_FILTER':
-			return {...state, filter: filter(state.filter, action)};
-		case 'REMOVE_TAG_FILTER':
-			return {...state, filter: filter(state.filter, action)};
-		case 'SET_R18':
-			return {...state, filter: filter(state.filter, action)};
 		default:
 			return state;
 	}
