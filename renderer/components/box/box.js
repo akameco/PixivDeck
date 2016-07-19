@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react';
-import CSSModules from 'react-css-modules';
+import css from 'react-css-modules';
 import type {Work, User} from '../../types/';
 import BoxHeader from './box-header';
 import BoxFooter from './box-footer';
@@ -15,7 +15,7 @@ type Props = {
 	onClickTag: (tag: string) => void
 };
 
-@CSSModules(styles)
+@css(styles)
 export default class Box extends Component {
 	props: Props;
 

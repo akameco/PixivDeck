@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react';
-import CSSModules from 'react-css-modules';
+import css from 'react-css-modules';
 import styles from './dropdown.css';
 
 type Props = {
@@ -8,7 +8,7 @@ type Props = {
 	onLogout: () => void
 };
 
-@CSSModules(styles)
+@css(styles)
 export default class Dropdwon extends Component {
 	props: Props;
 

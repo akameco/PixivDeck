@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react';
-import CSSModules from 'react-css-modules';
+import css from 'react-css-modules';
 import type {Manage} from '../../types';
 import {AddIcon, SearchIcon, SettingsIcon} from '../icon';
 import Dropdwon from './dropdown';
@@ -15,7 +15,7 @@ type Props = {
 	onLogout: () => void
 };
 
-@CSSModules(styles)
+@css(styles)
 export default class Header extends Component {
 	props: Props;
 

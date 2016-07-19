@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react';
-import CSSModules from 'react-css-modules';
+import css from 'react-css-modules';
 import type {ColumnType} from '../../types';
 import Column from '../column';
 import styles from './columns.css';
@@ -9,7 +9,7 @@ type Props = {
 	columns: Array<ColumnType>
 };
 
-@CSSModules(styles)
+@css(styles)
 export default class Columns extends Component {
 	props: Props;
 

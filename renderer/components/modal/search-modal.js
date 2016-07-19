@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react';
-import CSSModules from 'react-css-modules';
+import css from 'react-css-modules';
 import styles from './search-modal.css';
 
 type Props = {
@@ -11,7 +11,7 @@ type State = {
 	value: string
 };
 
-@CSSModules(styles)
+@css(styles)
 export default class SearchModal extends Component {
 	props: Props;
 	state: State;

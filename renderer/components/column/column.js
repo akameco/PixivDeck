@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react';
-import CSSModules from 'react-css-modules';
+import css from 'react-css-modules';
 import type {Work, ColumnType} from '../../types';
 import List from './list';
 import styles from './column.css';
@@ -13,7 +13,7 @@ type Props = {
 	onNextPage: () => void
 }
 
-@CSSModules(styles)
+@css(styles)
 export default class Column extends Component {
 	props: Props;
 

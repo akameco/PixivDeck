@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import {findDOMNode} from 'react-dom';
-import CSSModules from 'react-css-modules';
+import css from 'react-css-modules';
 import type {Work} from '../../types';
 import {MangaIcon} from '../icon/';
 import styles from './box-image.css';
@@ -16,7 +16,7 @@ type State = {
 	isLoaded: bool
 };
 
-@CSSModules(styles)
+@css(styles)
 export default class BoxImage extends Component {
 	props: Props;
 	state: State;

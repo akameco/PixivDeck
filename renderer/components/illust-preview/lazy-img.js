@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react';
-import CSSModules from 'react-css-modules';
+import css from 'react-css-modules';
 import {findDOMNode} from 'react-dom';
 import {CloseButton} from '../button';
 import styles from './lazy-img.css';
@@ -46,7 +46,7 @@ type State = {
 	toMarginTop: number
 };
 
-@CSSModules(styles)
+@css(styles)
 export default class LazyImg extends Component {
 	props: Props;
 	state: State;
