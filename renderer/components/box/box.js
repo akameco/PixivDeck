@@ -23,7 +23,7 @@ export default class Box extends Component {
 		const {work, user, onClick, onClickTag, onClickUser} = this.props;
 		const {title, caption, tags} = work;
 		return (
-			<div styleName="base">
+			<div styleName="box">
 				<BoxHeader
 					name={user.name}
 					account={user.account}

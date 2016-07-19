@@ -57,7 +57,7 @@ export default class Auth extends Component {
 						onChange={this.handleChangePassword}
 						/>
 
-					<button onClick={this.handleClick}>
+					<button onClick={this.handleClick} styleName="submit">
 						ログイン
 					</button>
 				</div>

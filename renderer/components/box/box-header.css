@@ -2,6 +2,7 @@
 	display: flex;
 	width: 100%;
 	height: 100%;
+	color: #e1e8ed;
 }
 
 .wrap {
@@ -15,6 +16,7 @@
 	padding-left: 5px;
 	font-size: 1.09rem;
 	margin: 0;
+	color: #e1e8ed;
 }
 
 .profile-area {
@@ -27,11 +29,12 @@
 	margin-bottom: 10px;
 }
 
-.profile-area p {
+.profile-area-line {
 	margin: 0;
 }
 
 .name {
+	color: #e1e8ed;
 	font-size: 1rem;
 	margin-left: 0.5rem;
 	margin-right: 5px;
@@ -47,7 +50,7 @@
 	width: calc(100% - 10px);
 	line-height: 1.2rem;
 	font-size: 0.9rem;
-	color: #444444;
+	color: #9ea6ac;
 	margin-bottom: 10px;
 	padding: 0 5px;
 }

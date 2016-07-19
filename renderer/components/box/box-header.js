@@ -29,7 +29,7 @@ export default class BoxHeader extends Component {
 				<div styleName="wrap">
 					<div styleName="title">{title}</div>
 					<div styleName="profile-area">
-						<p>
+						<p styleName="profile-area-line">
 							<a styleName="name" onClick={this.props.onClick}>{name}</a>
 							<span styleName="account">{account}</span>
 						</p>

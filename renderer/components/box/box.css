@@ -1,3 +1,4 @@
-.base {
-	border-bottom: 1px solid rgb(225, 232, 237);
+.box {
+	background-color: #222426;
+	border-bottom: 1px solid #292F33;
 }
