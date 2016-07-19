@@ -32,9 +32,6 @@ export type ManageAction =
 	| {type: 'LOGIN', name: string, password: string}
 	| {type: 'LOGOUT'}
 	| {type: 'CLOSE_ALL'}
-	| {type: 'REMOVE_TAG_FILTER', tag: string}
-	| {type: 'ADD_TAG_FILTER', tag: string}
-	| {type: 'SET_R18', show: bool}
 	| {type: 'START_IMG_LOADING'}
 	| {type: 'SET_IMG_LOADED'}
 ;
