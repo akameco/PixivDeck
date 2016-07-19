@@ -55,7 +55,7 @@ export default (store: Store) => (next: Dispatch) => (action: Action) => {
 		return next(ipcRequest());
 	}
 
-	if (action.type === 'ADD_COLUMN' && action.query) {
+	if (action.type === 'ADD_COLUMN' && action.query && action.query.type !== 'history') {
 		next(action);
 		ipcSend(action.id, action.query);
 		return next(ipcRequest());

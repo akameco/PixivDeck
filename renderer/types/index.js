@@ -1,6 +1,7 @@
 // @flow
 import type {ColumnType, ColumnAction, Query} from './column';
 import type {Manage, ManageAction, ModalType} from './manage';
+import type {History, HistoryAction} from './history';
 import type {Filter, FilterAction} from './filter';
 import type {IpcAction} from './ipc';
 import type {Work, Works, Page} from './work';
@@ -9,9 +10,7 @@ import type {User, Users} from './user';
 export type {
 	Manage,
 	Filter,
-	FilterAction,
-	ManageAction,
-	ColumnAction,
+	History,
 	IpcAction,
 	ColumnType,
 	Query,
@@ -28,7 +27,7 @@ export type Entities = {
 	works: Works
 };
 
-export type Action = ColumnAction | ManageAction | IpcAction | FilterAction | {type: 'INIT'};
+export type Action = ColumnAction | ManageAction | IpcAction | FilterAction | HistoryAction | {type: 'INIT'} ;
 
 export type Dispatch = (action: Action) => Action;
 
@@ -39,7 +38,8 @@ export type State = {
 		works: Works
 	},
 	manage: Manage,
-	filter: Filter
+	filter: Filter,
+	history: History
 };
 
 export type Store = {
