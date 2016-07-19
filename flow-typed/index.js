@@ -25,3 +25,7 @@ declare module 'redux-logger' {
 declare module 'redux-thunk' {
 	declare var exports: any;
 }
+
+declare module 'electron-context-menu' {
+	declare var exports: any;
+}
