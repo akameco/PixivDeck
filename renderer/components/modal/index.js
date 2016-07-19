@@ -2,8 +2,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import type {State, Dispatch, Manage, ModalType, Query} from '../../types';
-import {closeModal, addTagFilter, removeTagFilter, setR18} from '../../actions/manage';
-import {addColumn} from '../../actions/column';
+import {closeModal, addTagFilter, removeTagFilter, setR18, addColumn} from '../../actions';
 import ModalWrapper from './modal-wrapper';
 import SelectColumnModal from './select-column-modal';
 import SettingFilterModal from './setting-filter-modal';

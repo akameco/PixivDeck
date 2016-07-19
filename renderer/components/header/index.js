@@ -5,7 +5,7 @@ import {
 	logout,
 	toggleDropdown,
 	openModal
- } from '../../actions/manage';
+ } from '../../actions';
 import Header from './header';
 
 function mapStateToProps(state: State) {

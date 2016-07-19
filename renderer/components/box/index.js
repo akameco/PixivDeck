@@ -2,8 +2,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import type {Dispatch, State, Work, User} from '../../types/';
-import {addColumn} from '../../actions/column';
-import {openImageView, openMangaPreview, currentWork} from '../../actions/manage';
+import {addColumn, openImageView, openMangaPreview, currentWork} from '../../actions';
 import Box from './box';
 
 type Props = {
