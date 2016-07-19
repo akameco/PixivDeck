@@ -1,7 +1,5 @@
 // @flow
-import type {ManageAction, ModalType} from '../types/manage';
-
-type Action = ManageAction;
+import type {Action, ModalType} from '../types';
 
 export function login(name: string, password: string): Action {
 	return {

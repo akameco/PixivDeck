@@ -27,7 +27,8 @@ class Link extends Component {
 }
 
 type Props = {
-	onSelect: (query: Query, title: string) => void
+	onSelect: (query: Query, title: string) => void,
+	onClickHistory: () => void,
 };
 
 @CSSModules(styles)
@@ -40,6 +41,10 @@ export default class SelectColumnModal extends Component {
 
 	handleAddFavorite = (publicity: 'private' | 'public') => {
 		this.props.onSelect({type: 'favoriteWorks', opts: {publicity, page: 1}}, `favorite/${publicity}`);
+	}
+
+	handleAddHistory = () => {
+		this.props.onSelect({type: 'history', opts: {page: 1}}, 'history');
 	}
 
 	render() {
@@ -62,6 +67,11 @@ export default class SelectColumnModal extends Component {
 				<li>
 					<a onClick={() => this.handleAddFavorite('private')}>
 						お気に入り/非公開
+					</a>
+				</li>
+				<li>
+					<a onClick={this.props.onClickHistory}>
+						ヒストリー
 					</a>
 				</li>
 			</ul>

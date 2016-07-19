@@ -1,7 +1,5 @@
 // @flow
-import type {ColumnAction, Query} from '../types/column';
-
-type Action = ColumnAction;
+import type {Action, Query} from '../types';
 
 export function addColumn(query: Query, title: string): Action {
 	const id = Date.now();
@@ -23,4 +21,15 @@ export function reloadColumn(id: number): Action {
 
 export function closeColumn(id: number): Action {
 	return {type: 'CLOSE_COLUMN', id};
+}
+
+export function addHistoryColumn(works: Array<number>): Action {
+	const id = Date.now();
+	return {
+		type: 'ADD_COLUMN',
+		id,
+		works,
+		title: 'ヒストリー',
+		query: {type: 'history', opts: {page: 1}}
+	};
 }

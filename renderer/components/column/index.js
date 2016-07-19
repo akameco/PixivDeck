@@ -64,9 +64,10 @@ function filterR18(works: Array<Work>) {
 }
 
 function mapStateToProps(state: State, ownProps: Props) {
-	const {entities, filter} = state;
+	const {entities, filter, history} = state;
 	const {works} = entities;
-	const selectedWorks = selectWorks(ownProps.column.works, works);
+	const columnWorks = ownProps.column.query.type === 'history' ? history : ownProps.column.works;
+	const selectedWorks = selectWorks(columnWorks, works);
 	const filterdWorks = filterTag(selectedWorks, filter.tags);
 	const list = filter.r18 ? filterdWorks : filterR18(filterdWorks);
 

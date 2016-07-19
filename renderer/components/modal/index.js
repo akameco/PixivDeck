@@ -1,8 +1,8 @@
 // @flow
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import type {State, Dispatch, Manage, ModalType, Query, Filter} from '../../types';
-import {closeModal, addTagFilter, removeTagFilter, setR18, addColumn} from '../../actions';
+import type {State, Dispatch, Manage, ModalType, Query, Filter, History} from '../../types';
+import {closeModal, addTagFilter, removeTagFilter, setR18, addColumn, addHistoryColumn} from '../../actions';
 import ModalWrapper from './modal-wrapper';
 import SelectColumnModal from './select-column-modal';
 import SettingFilterModal from './setting-filter-modal';
@@ -11,6 +11,7 @@ import SearchModal from './search-modal';
 type Props = {
 	manage: Manage,
 	filter: Filter,
+	history: History,
 	modalType: ModalType,
 	dispatch: Dispatch
 };
@@ -45,10 +46,15 @@ class Modal extends Component {
 		this.props.dispatch(setR18(show));
 	}
 
+	handleHistory = () => {
+		this.props.dispatch(addHistoryColumn(this.props.history));
+	}
+
 	renderModal(type: ModalType) {
 		if (type === 'ADD_COLUMN') {
 			return (
 				<SelectColumnModal
+					onClickHistory={this.handleHistory}
 					onSelect={this.handleAddColumn}
 					/>
 			);
@@ -70,6 +76,7 @@ class Modal extends Component {
 		return (
 			<SelectColumnModal
 				onSelect={this.handleAddColumn}
+				onClickHistory={this.handleHistory}
 				/>
 		);
 	}
@@ -87,7 +94,8 @@ function mapStateToProps(state: State) {
 	return {
 		manage: state.manage,
 		filter: state.filter,
-		modalType: state.manage.modalType
+		modalType: state.manage.modalType,
+		history: state.history
 	};
 }
 
