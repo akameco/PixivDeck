@@ -6,6 +6,8 @@ import styles from './close-button.css';
 
 type Props = {
 	style?: Object,
+	iconStyle?: Object,
+	className?: string,
 	onClick: () => void
 };
 
@@ -26,9 +28,10 @@ export default class CloseButton extends Component {
 			<a
 				styleName="closeButton"
 				onClick={this.handleCloseClick}
+				className={this.props.className}
 				style={this.props.style}
 				>
-				<CloseIcon/>
+				<CloseIcon style={this.props.iconStyle}/>
 			</a>
 		);
 	}

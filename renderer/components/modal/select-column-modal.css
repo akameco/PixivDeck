@@ -1,26 +1,55 @@
 .list {
 	display: flex;
 	flex-wrap: wrap;
-	padding: 14px;
 	background-color: #eaeaea;
 	text-align: center;
 	color: #666;
-	height: 100%;
+	list-style: none;
+	margin: 0 0 1rem;
 }
 
 .list li {
-	margin: 10px;
+	margin: 0.2rem 1rem;
 	display: inline-flex;
 	line-height: 1.2rem;
-	list-style: none;
 	border: 1px solid #ccd6dd;
-	padding-top: 8px;
+	padding-top: 0.5rem;
 	text-align: center;
 	cursor: pointer;
+	width: calc(50% - 4rem);
+	height: 2rem;
 }
 
 .list li a {
-	font-size: 1.2rem;
-	width: 250px;
+	font-size: 1rem;
+	min-width: 200px;
 	height: 30px;
+}
+
+.wrap {
+	height: 100%;
+	padding: 1rem;
+	overflow-y: scroll;
+
+	& header{
+		& h4 {
+			font-size: 1.3rem;
+			font-weight: normal;
+			display: inline;
+			border-bottom: 1px solid #424242;
+		}
+	}
+}
+
+.body {
+
+}
+
+.kind {
+	display: inline-block;
+	font-size: 1.1rem;
+	color: #3b3838;
+	margin-top: 0.8rem;
+	margin-left: 2rem;
+	margin-bottom: 0.5rem;
 }

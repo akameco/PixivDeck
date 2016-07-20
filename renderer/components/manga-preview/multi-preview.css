@@ -1,15 +1,9 @@
 .base {
-	display: flex;
-	position: fixed;
-	top: 0;
-	left: 0;
+	composes: whitebox from '../style.css';
+	
 	text-align: center;
 	flex-direction: column;
-	background: rgba(24, 24, 24, 0.95);
 	overflow-y: scroll;
-	z-index: 300;
-	width: 100%;
-	height: 100%;
 }
 
 .item {

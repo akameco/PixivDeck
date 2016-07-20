@@ -19,11 +19,13 @@
 
 .from {
 	composes: base;
+	
 	cursor: wait;
 }
 
 .loaded {
 	composes: base;
+
 	cursor: zoom-in;
 	animation: fade-in 600ms forwards;
 }
