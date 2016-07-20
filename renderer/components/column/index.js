@@ -51,25 +51,25 @@ function selectWorks(nums: Array<number>, works: Works) {
 	return nums.map(i => works[i]);
 }
 
-function filterTag(works: Array<Work>, tags: Array<string>) {
+function filterWorks(works: Array<Work>, filters: Array<(work: Work)=> bool>) {
 	return works.filter(work => {
-		return work.tags.every(tag =>
-			tags.every(t => t !== tag)
-		);
+		return filters.every(f => f(work));
 	});
 }
 
-function filterR18(works: Array<Work>) {
-	return works.filter(work => work.ageLimit !== 'r18');
-}
+const r18Filter = (work: Work) => work.ageLimit !== 'r18';
+const tagFilter = (tags: Array<string>) => (work: Work) => work.tags.every(tag => tags.every(t => t !== tag));
 
 function mapStateToProps(state: State, ownProps: Props) {
 	const {entities, filter, history} = state;
 	const {works} = entities;
 	const columnWorks = ownProps.column.query.type === 'history' ? history : ownProps.column.works;
 	const selectedWorks = selectWorks(columnWorks, works);
-	const filterdWorks = filterTag(selectedWorks, filter.tags);
-	const list = filter.r18 ? filterdWorks : filterR18(filterdWorks);
+	const filters = [tagFilter(filter.tags)];
+	if (filter.r18) {
+		filters.push(r18Filter);
+	}
+	const list = filterWorks(selectedWorks, filters);
 
 	return {
 		works: list
