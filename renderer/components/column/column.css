@@ -1,12 +1,13 @@
 .base {
 	display: flex;
-	margin: 0 2px 0;
+	margin: 0;
+	border: 2px solid #444448;
 	min-width: 300px;
 	max-height: 100vh;
-	width: 400px;
 	height: 100%;
 	overflow-x: hidden;
 	overflow-y: hidden;
+	background: #444448;
 }
 
 .base h1 {

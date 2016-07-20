@@ -29,3 +29,6 @@ declare module 'redux-thunk' {
 declare module 'electron-context-menu' {
 	declare var exports: any;
 }
+declare module 'react-sortable-pane' {
+	declare var exports: any;
+}
