@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import css from 'react-css-modules';
 import {RANKING_MODES} from '../../contains';
 import type {Query} from '../../types/column';
+import {rankMap} from '../../utils';
 import styles from './select-column-modal.css';
 
 class Link extends Component {
@@ -19,7 +20,7 @@ class Link extends Component {
 		return (
 			<li>
 				<a onClick={() => this.props.onSelect(this.props.mode)}>
-					{`ranking/${this.props.mode}`}
+					{rankMap(this.props.mode)}
 				</a>
 			</li>
 		);
@@ -36,7 +37,7 @@ export default class SelectColumnModal extends Component {
 	props: Props;
 
 	handleAddRanking = (mode: string) => {
-		this.props.onSelect({type: 'ranking', opts: {mode, page: 1}}, `ranking/${mode}`);
+		this.props.onSelect({type: 'ranking', opts: {mode, page: 1}}, `${rankMap(mode)}ランキング`);
 	}
 
 	handleAddFavorite = (publicity: 'private' | 'public') => {
