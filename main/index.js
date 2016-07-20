@@ -100,7 +100,7 @@ app.on('ready', () => {
 	});
 
 	ipcMain.on('favoriteWorks', async (ev, {id, opts}) => {
-		const res = await pixiv.favoriteWorks(Object.assign({}, {per_page: 50}, opts));
+		const res = await pixiv.favoriteWorks(Object.assign({}, {per_page: 50, include_stats: true}, opts));
 		ev.sender.send('favoriteWorks', {id, res});
 	});
 
