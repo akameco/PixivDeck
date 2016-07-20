@@ -44,6 +44,7 @@ declare module 'electron' {
 	declare class webContents {
 		on(event: 'did-finish-load', listener: (event: any, options: any) => void): void;
 		on(event: 'did-finish-load', listener: Promise<(event: any, options: any) => void>): void;
+		on(event: 'new-window', listener: (event: any, url: string) => void): void;
 
 		static loadURL(url: string, options?: any): void;
 
@@ -84,5 +85,9 @@ declare module 'electron' {
 		static on(event: 'activate' | 'ready' | 'window-all-closed', listener: () => void): void;
 		static quit(): void;
 		static getPath(path: string): string;
+	}
+
+	declare class shell {
+		static openExternal(url: string): void;
 	}
 }

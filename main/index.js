@@ -4,7 +4,7 @@ import 'babel-polyfill';
 import os from 'os';
 import fs from 'fs';
 import {join, resolve} from 'path';
-import {app, BrowserWindow, ipcMain} from 'electron'; // eslint-disable-line import/no-extraneous-dependencies
+import {app, BrowserWindow, ipcMain, shell} from 'electron'; // eslint-disable-line import/no-extraneous-dependencies
 import Pixiv from 'pixiv.js';
 import Store from './store';
 
@@ -57,6 +57,12 @@ function createMainWindow() {
 		win.on(ev, () => {
 			bounds.set(win.getBounds());
 		});
+	});
+
+	const {webContents} = win;
+	webContents.on('new-window', (event: Event, url: string) => {
+		event.preventDefault();
+		shell.openExternal(url);
 	});
 
 	return win;
