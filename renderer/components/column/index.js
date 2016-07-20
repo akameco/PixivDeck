@@ -66,7 +66,7 @@ function mapStateToProps(state: State, ownProps: Props) {
 	const columnWorks = ownProps.column.query.type === 'history' ? history : ownProps.column.works;
 	const selectedWorks = selectWorks(columnWorks, works);
 	const filters = [tagFilter(filter.tags)];
-	if (filter.r18) {
+	if (!filter.r18) {
 		filters.push(r18Filter);
 	}
 	const list = filterWorks(selectedWorks, filters);
