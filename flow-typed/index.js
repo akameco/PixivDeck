@@ -32,3 +32,7 @@ declare module 'electron-context-menu' {
 declare module 'react-sortable-pane' {
 	declare var exports: any;
 }
+
+declare module 'autolinker' {
+	declare var exports: any;
+}

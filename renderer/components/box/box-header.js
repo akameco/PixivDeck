@@ -1,6 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import css from 'react-css-modules';
+import {link} from 'autolinker';
 import Avater from './avater';
 import styles from './box-header.css';
 
@@ -35,7 +36,11 @@ export default class BoxHeader extends Component {
 						</p>
 					</div>
 					<div styleName="body">
-						{caption}
+						<span
+							dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
+								__html: link(caption)
+							}}
+							/>
 					</div>
 				</div>
 			</div>
