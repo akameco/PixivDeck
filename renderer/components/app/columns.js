@@ -1,5 +1,6 @@
 // @flow
 import React, {Component} from 'react';
+import {SortablePane, Pane} from 'react-sortable-pane';
 import css from 'react-css-modules';
 import type {ColumnType} from '../../types';
 import Column from '../column';
@@ -15,12 +16,19 @@ export default class Columns extends Component {
 
 	render() {
 		const columns = this.props.columns.map(column => (
-			<Column key={column.id} column={column}/>
+			<Pane key={column.id} width={300} id={column.id} height="100%">
+				<Column column={column}/>
+			</Pane>
 		));
 
 		return (
 			<div styleName="content">
-				{columns}
+				<SortablePane
+					onResize={() => null}
+					onOrderChange={pane => console.dir(pane)}
+					>
+						{columns}
+				</SortablePane>
 			</div>
 		);
 	}

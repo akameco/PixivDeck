@@ -20,7 +20,7 @@ export const SearchIcon = () => (
 );
 
 export const CloseIcon = () => (
-	<svg viewBox="0 0 24 24">
+	<svg viewBox="0 0 24 24" style={{fill: 'white'}}>
 		<g><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"></path></g>
 	</svg>
 );
