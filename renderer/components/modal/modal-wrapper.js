@@ -5,7 +5,6 @@ import {CloseButton} from '../button/';
 import styles from './modal.css';
 
 type Props = {
-	title: string,
 	children?: any,
 	onClose: () => void,
 };
@@ -34,23 +33,15 @@ export default class ModalWrapper extends Component {
 
 	render() {
 		return (
-			<div
-				styleName="wrap"
-				onClick={this.handleOverlayClick}
-				>
+			<div styleName="wrap" onClick={this.handleOverlayClick}>
 				<div
-					styleName="base"
+					styleName="modal"
 					ref={c => {
 						this._content = c;
 					}}
 					>
-					<header>
-						<h2>{this.props.title}</h2>
-						<CloseButton onClick={this.handleCloseClick}/>
-					</header>
-					<div styleName="body">
-						{this.props.children}
-					</div>
+					<CloseButton onClick={this.handleCloseClick}/>
+					{this.props.children}
 				</div>
 			</div>
 		);

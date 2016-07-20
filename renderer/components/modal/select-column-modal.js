@@ -58,24 +58,38 @@ export default class SelectColumnModal extends Component {
 		);
 
 		return (
-			<ul styleName="list">
-				{rankingLinks}
-				<li>
-					<a onClick={() => this.handleAddFavorite('public')}>
-						お気に入り
-					</a>
-				</li>
-				<li>
-					<a onClick={() => this.handleAddFavorite('private')}>
-						お気に入り/非公開
-					</a>
-				</li>
-				<li>
-					<a onClick={this.props.onClickHistory}>
-						ヒストリー
-					</a>
-				</li>
-			</ul>
+			<div styleName="wrap">
+				<header>
+					<h4>追加するカラムを選択</h4>
+				</header>
+				<div styleName="body">
+					<div styleName="kind">ランキング</div>
+					<ul styleName="list">
+						{rankingLinks}
+					</ul>
+					<div styleName="kind">ブックマーク</div>
+					<ul styleName="list">
+						<li>
+							<a onClick={() => this.handleAddFavorite('public')}>
+								公開ブックマーク
+							</a>
+						</li>
+						<li>
+							<a onClick={() => this.handleAddFavorite('private')}>
+								非公開ブックマーク
+							</a>
+						</li>
+					</ul>
+					<div styleName="kind">履歴</div>
+					<ul styleName="list">
+						<li>
+							<a onClick={this.props.onClickHistory}>
+								ヒストリー
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
 		);
 	}
 }

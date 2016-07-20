@@ -29,7 +29,7 @@ export default class IllustPreview extends Component {
 
 	handleOnClose = () => {
 		this.props.onClose();
-	};
+	}
 
 	render() {
 		const {width, height, from, to} = this.props;
