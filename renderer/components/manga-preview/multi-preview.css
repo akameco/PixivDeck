@@ -5,7 +5,7 @@
 	left: 0;
 	text-align: center;
 	flex-direction: column;
-	background: rgba(244, 244, 244, 0.97);
+	background: rgba(24, 24, 24, 0.95);
 	overflow-y: scroll;
 	z-index: 300;
 	width: 100%;
