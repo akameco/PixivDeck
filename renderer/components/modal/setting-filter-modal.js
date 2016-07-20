@@ -47,7 +47,7 @@ export default class SettingFilterModal extends Component {
 	}
 
 	handleSubmit = (event: SyntheticKeyboardEvent) => { // eslint-disable-line no-undef
-		if (event.key === 'Enter' && this.state.value !== '') {
+		if (event.keyCode === 13 && this.state.value !== '') {
 			event.preventDefault();
 			this.props.onSubmit(this.state.value);
 			this.setState({value: ''});
