@@ -38,6 +38,7 @@
 	word-wrap: break-word;
 	overflow: hidden;
 	margin-bottom: 10px;
+	cursor: pointer;
 }
 
 .profile-area-line {
