@@ -141,7 +141,7 @@ export default class LazyImg extends Component {
 			return (
 				<div styleName="wrap">
 					<CloseButton
-						style={{color: '#676767', fontSize: '2rem', top: '0px', right: '10px'}}
+						style={{color: '#676767', top: '10px', right: '10px'}}
 						iconStyle={{fill: 'white'}}
 						onClick={this.props.onClose}
 						/>
