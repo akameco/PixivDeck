@@ -15,11 +15,15 @@
 	width: 100%;
 	overflow: auto;
 	text-align: center;
+	& a {
+		border-radius: 2px;
+		background: rgba(24, 24, 24, 0.3);
+	}
 }
 
 .from {
 	composes: base;
-	
+
 	cursor: wait;
 }
 
