@@ -1,6 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import css from 'react-css-modules';
+import {SearchIcon} from '../icon';
 import styles from './search-modal.css';
 
 type Props = {
@@ -60,14 +61,18 @@ export default class SearchModal extends Component {
 
 	render() {
 		return (
-			<div>
-				<input
-					type="text"
-					autoFocus
-					value={this.state.value}
-					onChange={this.handleChange}
-					onKeyDown={this.handleSubmit}
-					/>
+			<div styleName="wrap">
+				<div styleName="field">
+					<SearchIcon/>
+					<input
+						styleName="input"
+						type="text"
+						autoFocus
+						value={this.state.value}
+						onChange={this.handleChange}
+						onKeyDown={this.handleSubmit}
+						/>
+				</div>
 				{this.renderList()}
 			</div>
 		);
