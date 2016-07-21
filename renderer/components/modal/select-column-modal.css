@@ -11,13 +11,20 @@
 .list li {
 	margin: 0.2rem 1rem;
 	display: inline-flex;
-	line-height: 1.2rem;
+	line-height: 2rem;
 	border: 1px solid #ccd6dd;
 	padding-top: 0.5rem;
 	text-align: center;
 	cursor: pointer;
-	width: calc(50% - 4rem);
+	width: 200px;
+	overflow: hidden;
 	height: 2rem;
+}
+
+.list li:hover {
+	background: rgba(24, 24, 24, 0.9);
+	color: white;
+	border: 1px solid white;
 }
 
 .list li a {
@@ -33,7 +40,7 @@
 
 	& header{
 		& h4 {
-			font-size: 1.3rem;
+			font-size: 1.2rem;
 			font-weight: normal;
 			display: inline;
 			border-bottom: 1px solid #424242;
@@ -49,7 +56,7 @@
 	display: inline-block;
 	font-size: 1.1rem;
 	color: #3b3838;
-	margin-top: 0.8rem;
+	margin-top: 0.7rem;
 	margin-left: 2rem;
 	margin-bottom: 0.5rem;
 }
