@@ -5,7 +5,6 @@ import {save, history} from '../middleware/';
 import startIpc from '../middleware/ipc';
 import auth from '../middleware/auth';
 import api from '../middleware/api';
-import scroll from '../middleware/scroll';
 import startKeyEvent from '../middleware/key-event';
 
 export default function configureStore(initialState: Object) {
@@ -17,7 +16,6 @@ export default function configureStore(initialState: Object) {
 		applyMiddleware(
 			auth,
 			api,
-			scroll,
 			save,
 			history,
 			logger
