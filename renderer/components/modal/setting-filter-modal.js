@@ -1,6 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import css from 'react-css-modules';
+import Checkbox from '../shared/checkbox';
 import Tag from './tag';
 import styles from './setting-filter-modal.css';
 
@@ -55,7 +56,6 @@ export default class SettingFilterModal extends Component {
 	}
 
 	handleSelectR18 = (event: any) => {
-		console.log(event.target.checked);
 		this.props.onSelectR18(event.target.checked);
 	}
 
@@ -65,28 +65,27 @@ export default class SettingFilterModal extends Component {
 		);
 
 		return (
-			<div styleName="base">
-				<div>
-					<label>
-						<input
-							type="checkbox"
-							defaultChecked={this.props.r18}
-							value={this.props.r18}
-							onChange={this.handleSelectR18}
-							/>
-							R18を表示する
-					</label>
-				</div>
-				フィルター
-				<input
-					type="text"
-					value={this.state.value}
-					onChange={this.handleCangeInput}
-					onKeyDown={this.handleSubmit}
+			<div styleName="wrap">
+				<Checkbox
+					id="toggleR18"
+					onChange={this.handleSelectR18}
+					value={this.props.r18}
+					defaultChecked={this.props.r18}
+					text={"R18を表示する"}
 					/>
-				<ul>
-					{tags}
-				</ul>
+				<div styleName="tagFilter">
+					<h4>タグフィルター</h4>
+					<input
+						type="text"
+						styleName="input"
+						value={this.state.value}
+						onChange={this.handleCangeInput}
+						onKeyDown={this.handleSubmit}
+						/>
+					<ul>
+						{tags}
+					</ul>
+				</div>
 			</div>
 		);
 	}
