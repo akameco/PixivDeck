@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import css from 'react-css-modules';
 import Checkbox from '../shared/checkbox';
+import {VisibleOffIcon} from '../icon';
 import Tag from './tag';
 import styles from './setting-filter-modal.css';
 
@@ -75,13 +76,16 @@ export default class SettingFilterModal extends Component {
 					/>
 				<div styleName="tagFilter">
 					<h4>タグフィルター</h4>
-					<input
-						type="text"
-						styleName="input"
-						value={this.state.value}
-						onChange={this.handleCangeInput}
-						onKeyDown={this.handleSubmit}
-						/>
+					<div styleName="field">
+						<VisibleOffIcon/>
+						<input
+							type="text"
+							styleName="input"
+							value={this.state.value}
+							onChange={this.handleCangeInput}
+							onKeyDown={this.handleSubmit}
+							/>
+					</div>
 					<ul>
 						{tags}
 					</ul>
