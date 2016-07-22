@@ -73,8 +73,7 @@
       "xo-react"
     ],
     "ignores": [
-      "flow-typed/**",
-      "flow-typed/npm/**"
+      "interface/**"
     ],
     "rules": {
       "no-duplicate-imports": 0,
