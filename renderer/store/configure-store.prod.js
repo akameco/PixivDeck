@@ -1,21 +1,17 @@
 import {createStore, applyMiddleware, compose} from 'redux';
 import reducer from '../reducers';
-import {save} from '../middleware/';
-import startIpc from '../middleware/ipc';
-import auth from '../middleware/auth';
-import api from '../middleware/api';
-import startKeyEvent from '../middleware/key-event';
+import middlewares from '../middlewares';
+import storeWrapper from '../store-wrapper';
 
 export default function configureStore(initialState: Object) {
 	const enhancer = compose(
 		applyMiddleware(
-			auth,
-			api,
-			save
+			...middlewares
 		)
 	);
+
 	const store = createStore(reducer, initialState, enhancer);
-	startIpc(store);
-	startKeyEvent(store);
+	storeWrapper(store);
+
 	return store;
 }

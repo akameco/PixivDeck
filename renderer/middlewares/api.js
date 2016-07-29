@@ -4,19 +4,15 @@ import type {Store, Action, Dispatch, Query, ColumnType} from '../types';
 
 function ipcSend(id: number, query: Query): void {
 	const {type, opts, q} = query;
-	if (query.type === 'search') {
-		setImmediate(() => {
+	setImmediate(() => {
+		if (query.type === 'search') {
 			ipcRenderer.send(type, {id, q, opts});
-		});
-	} else if (query.type === 'userWorks') {
-		setImmediate(() => {
+		} else if (query.type === 'userWorks') {
 			ipcRenderer.send(type, {id, userID: query.id, opts});
-		});
-	} else {
-		setImmediate(() => {
+		} else {
 			ipcRenderer.send(type, {id, opts});
-		});
-	}
+		}
+	});
 }
 
 function selectColumn(store: Store, id: number): ColumnType {

@@ -8,8 +8,7 @@ export default () => (next: Dispatch) => (action: Action) => {
 	}
 	if (action.type === 'LOGIN') {
 		ipcRenderer.send('LOGIN', {name: action.name, password: action.password});
-	}
-	if (action.type === 'LOGOUT') {
+	} else if (action.type === 'LOGOUT') {
 		ipcRenderer.send('LOGOUT');
 	}
 
