@@ -32,3 +32,7 @@ declare module 'react-sortable-pane' {
 declare module 'autolinker' {
 	declare var exports: any;
 }
+
+declare module 'electron-referer' {
+	declare var exports: any;
+}
