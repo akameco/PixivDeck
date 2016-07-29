@@ -11,6 +11,7 @@ import Store from './store';
 let mainWindow;
 
 require('electron-context-menu')();
+require('electron-referer')('http://www.pixiv.net/');
 
 function loadExtension(id: string) {
 	const extensionDir = resolve(os.homedir(), 'Library/Application Support/Google/Chrome/Default/Extensions/');
@@ -38,16 +39,6 @@ function createMainWindow() {
 	} else {
 		win.loadURL(`file://${join(__dirname, 'index.html')}`);
 	}
-
-	const ses = win.webContents.session;
-	ses.webRequest.onBeforeSendHeaders((detail, cb) => {
-		let {requestHeaders} = detail;
-		requestHeaders = {...requestHeaders, Referer: 'http://www.pixiv.net/'};
-		cb({requestHeaders});
-	}, {
-		urls: ['<all_urls>'],
-		types: ['xmlhttprequest']
-	});
 
 	win.on('closed', () => {
 		mainWindow = null;

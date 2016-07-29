@@ -25,6 +25,7 @@
   "dependencies": {
     "autolinker": "^0.27.0",
     "electron-context-menu": "^0.4.0",
+    "electron-referer": "^0.2.0",
     "humps": "^1.1.0",
     "lodash": "^4.13.1",
     "normalizr": "^2.2.1",
