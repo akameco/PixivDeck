@@ -1,39 +1,40 @@
 // @flow
 /* eslint-disable camelcase */
-import 'babel-polyfill';
-import os from 'os';
-import fs from 'fs';
-import {join, resolve} from 'path';
-import {app, BrowserWindow, ipcMain, shell} from 'electron'; // eslint-disable-line import/no-extraneous-dependencies
+import {join} from 'path';
+import electron from 'electron';
+import Config from 'electron-config';
 import Pixiv from 'pixiv.js';
-import Store from './store';
 
+const {app, BrowserWindow, ipcMain, shell} = electron;
 let mainWindow;
 
 require('electron-context-menu')();
 require('electron-referer')('http://www.pixiv.net/');
 
-function loadExtension(id: string) {
-	const extensionDir = resolve(os.homedir(), 'Library/Application Support/Google/Chrome/Default/Extensions/');
-	const versions = fs.readdirSync(`${extensionDir}/${id}`).sort();
-	const version = versions.pop();
-	BrowserWindow.addDevToolsExtension(`${extensionDir}/${id}/${version}`);
-}
+const config = new Config({
+	defaults: {
+		bounds: {
+			width: 500,
+			height: 500
+		}
+	}
+});
 
 function createMainWindow() {
-	const bounds = new Store('bounds');
-	const win = new BrowserWindow(Object.assign({}, {
+	const lastWindowState = config.get('bounds');
+	const win = new BrowserWindow({
 		title: 'PixivDeck',
-		width: 500,
-		height: 500
-	}, bounds.get()));
+		width: lastWindowState.width,
+		height: lastWindowState.height,
+		x: lastWindowState.x,
+		y: lastWindowState.y
+	});
 
 	if (process.env.NODE_ENV === 'development') {
-		const extensionIds = ['lmhkpmbekcpmknklioeibfkpmmfibljd', 'fmkadmapgofadopljbjfkapdkoienihi'];
-		for (const id of extensionIds) {
-			loadExtension(id);
-		}
-		win.openDevTools();
+		const loadDevtool = require('electron-load-devtool');
+
+		loadDevtool(loadDevtool.REACT_DEVELOPER_TOOLS);
+		loadDevtool(loadDevtool.REDUX_DEVTOOLS);
 
 		win.loadURL('http://localhost:8080');
 	} else {
@@ -46,7 +47,7 @@ function createMainWindow() {
 
 	['resize', 'move'].forEach(ev => {
 		win.on(ev, () => {
-			bounds.set(win.getBounds());
+			config.set('bounds', win.getBounds());
 		});
 	});
 
@@ -73,11 +74,10 @@ app.on('activate', () => {
 
 app.on('ready', () => {
 	mainWindow = createMainWindow();
-	const authStore = new Store('auth');
+	const auth = config.get('auth');
 	let pixiv;
 
 	ipcMain.on('INIT', ev => {
-		const auth = authStore.get();
 		if (auth && auth.remember) {
 			const {name, password} = auth;
 			pixiv = new Pixiv(name, password);
@@ -88,7 +88,7 @@ app.on('ready', () => {
 	ipcMain.on('LOGIN', (ev, {name, password}) => {
 		pixiv = new Pixiv(name, password);
 		ev.sender.send('SUCCESS_LOGINED');
-		authStore.set({name, password, remember: true});
+		config.set('auth', {name, password, remember: true});
 	});
 
 	ipcMain.on('ranking', async (ev, {id, opts}) => {
