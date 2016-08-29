@@ -17,3 +17,9 @@ export const rankMap = (mode: string) => {
 	}[mode];
 };
 /* eslint-enable camelcase */
+
+export function delay(ms: number) {
+	return new Promise(resolve => {
+		setTimeout(() => resolve(true), ms);
+	});
+}

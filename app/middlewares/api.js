@@ -1,5 +1,7 @@
 // @flow
 import {ipcRenderer} from 'electron';
+import {ipcRequest} from '../actions';
+import {rankMap, delay} from '../utils';
 import type {Store, Action, Dispatch, Query, ColumnType} from '../types';
 
 function ipcSend(id: number, query: Query): void {
@@ -19,20 +21,10 @@ function selectColumn(store: Store, id: number): ColumnType {
 	return store.getState().columns.filter(v => v.id === id)[0];
 }
 
-function ipcRequest(): Action {
-	return {type: 'IPC_REQUEST'};
-}
-
 function asyncIpcSend(id: number, query: Query) {
 	return new Promise(resolve => {
 		ipcSend(id, query);
-		resolve(true);
-	});
-}
-
-function delay(ms: number = 200) {
-	return new Promise(resolve => {
-		setTimeout(() => resolve(true), ms);
+		resolve();
 	});
 }
 

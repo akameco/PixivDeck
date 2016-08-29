@@ -71,3 +71,7 @@ export function finishImgLoaded(): Action {
 export function addHistory(id: number): Action {
 	return {type: 'ADD_HISTORY', id};
 }
+
+export function ipcRequest(): Action {
+	return {type: 'IPC_REQUEST'};
+}
