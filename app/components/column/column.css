@@ -1,15 +1,11 @@
 .base {
 	display: flex;
 	margin: 0;
-	border: 2px solid #444448;
 	min-width: 300px;
 	max-height: 100vh;
-	height: 100%;
+	height: calc(100% - 2px);
 	overflow-x: hidden;
 	overflow-y: hidden;
 	background: #444448;
-}
-
-.base h1 {
-	display: inline-flex;
+	border: 2px solid #444448;
 }

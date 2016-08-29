@@ -1,22 +1,18 @@
 .wrap {
 	width: 100%;
+}
 
-	& header {
-		position: relative;;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		height: 50px;
-		z-index: 200;
-		text-align: center;
-		color: #e1e8ed;
-		background: #292f33;
-		width: 100%;
-
-		& a {
-			cursor: pointer;
-		}
-	}
+.header {
+	position: relative;;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 50px;
+	z-index: 200;
+	text-align: center;
+	color: #e1e8ed;
+	background: #292f33;
+	width: 100%;
 }
 
 .base {
@@ -40,13 +36,14 @@
 	display: flex;
 	justify-content: center;
 	height: 100%;
+}
 
-	& svg {
-		margin-top: 40%;
-		width: 30px;
-		height: 40px;
-		& path, & rect {
-			fill: #2c8a6b;
-		}
-	}
+.loading svg {
+	margin-top: 40%;
+	width: 30px;
+	height: 40px;
+}
+
+.loading svg {
+	fill: #2c8a6b;
 }
