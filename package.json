@@ -2,7 +2,7 @@
   "name": "PixivDeck",
   "version": "0.0.1",
   "description": "pixiv client for desktop",
-  "main": "./dist/index.js",
+  "main": "main.js",
   "scripts": {
     "start": "NODE_ENV=development nodemon --delay 3 --watch main --exec 'electron' .",
     "clean": "rm -fr release && mkdir dist",
