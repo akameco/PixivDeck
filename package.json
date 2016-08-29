@@ -7,11 +7,15 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development electron -r babel-register -r babel-polyfill main.development.js",
     "watch": "cross-env NODE_ENV=development webpack-dev-server --hot --inline --progress --colors --port 3000",
-    "pack": "cross-env NODE_ENV=production node -r babel-register -r babel-polyfill pack.js",
-    "pack:all": "npm run pack:macos && npm run pack:windows && npm run pack:linux",
     "pack:macos": "cross-env NODE_ENV=production node -r babel-register -r babel-polyfill pack.js --macos",
     "pack:windows": "cross-env NODE_ENV=production node -r babel-register -r babel-polyfill pack.js --windows",
     "pack:linux": "cross-env NODE_ENV=production node -r babel-register -r babel-polyfill pack.js --linux",
+    "pack": "npm run pack:macos && npm run pack:windows && npm run pack:linux",
+    "zip:macos": "cd release/PixivDeck-darwin-x64 && zip -ryXq9 ../PixivDeck-macos-${npm_package_version}.zip PixivDeck.app",
+    "zip:windows": "cd release/PixivDeck-win32-ia32 && zip -ryq9 ../PixivDeck-windows-${npm_package_version}.zip *",
+    "zip:linux": "cd release/PixivDeck-linux-x64 && zip -ryq9 ../PixivDeck-linux-${npm_package_version}.zip *",
+    "zip": "npm run zip:macos && npm run zip:windows && npm run zip:linux",
+    "build": "npm run pack && npm run zip",
     "test": "xo && flow"
   },
   "keywords": [
@@ -61,7 +65,6 @@
     "eslint": "^3.4.0",
     "eslint-config-xo-react": "^0.9.0",
     "eslint-plugin-react": "^6.2.0",
-    "execa": "^0.4.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "hard-rejection": "^0.1.0",
     "meow": "^3.7.0",
