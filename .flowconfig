@@ -1,6 +1,7 @@
 [ignore]
 .*/node_modules/.*
 .*/dist/.*
+.*/release/.*
 
 [include]
 

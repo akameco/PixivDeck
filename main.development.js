@@ -72,8 +72,16 @@ app.on('activate', () => {
 
 app.on('ready', () => {
 	mainWindow = createMainWindow();
+	const page = mainWindow.webContents;
+
 	const auth = config.get('auth');
 	let pixiv;
+
+	page.on('dom-ready', () => {
+		if (!(auth && auth.name && auth.password)) {
+			page.send('logout');
+		}
+	});
 
 	ipcMain.on('INIT', ev => {
 		if (auth && auth.remember) {
