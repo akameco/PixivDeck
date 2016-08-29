@@ -34,22 +34,16 @@
 }
 
 .wrap {
-	height: 100%;
+	height: calc(100% - 1rem);
 	padding: 1rem;
 	overflow-y: scroll;
-
-	& header{
-		& h4 {
-			font-size: 1.2rem;
-			font-weight: normal;
-			display: inline;
-			border-bottom: 1px solid #424242;
-		}
-	}
 }
 
-.body {
-
+.wrap header h4 {
+	font-size: 1.2rem;
+	font-weight: normal;
+	display: inline;
+	border-bottom: 1px solid #424242;
 }
 
 .kind {

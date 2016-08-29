@@ -5,9 +5,6 @@
 	margin-right: 3rem;
 }
 
-.base li {
-}
-
 .input {
 	font-size: 1.1rem;
 	height: 30px;
@@ -28,12 +25,12 @@
 	width: 100%;
 	max-width: 400px;
 	margin-bottom: 2rem;
+}
 
-	& svg {
-		position: absolute;
-		top: 1rem;
-		left: 0.5rem;
-		width: 1.5rem;
-		height: 1.5rem;
-	}
+.field svg {
+	position: absolute;
+	top: 1rem;
+	left: 0.5rem;
+	width: 1.5rem;
+	height: 1.5rem;
 }
