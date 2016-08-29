@@ -4,6 +4,7 @@ logs
 *.log
 npm-debug.log*
 
-dist/*.js
+dist
 release
 *.map
+main.js
