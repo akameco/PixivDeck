@@ -36,3 +36,19 @@ declare module 'autolinker' {
 declare module 'electron-referer' {
 	declare var exports: any;
 }
+
+declare module 'lodash.merge' {
+	declare var exports: any;
+}
+
+declare module 'lodash.union' {
+	declare var exports: any;
+}
+
+declare module 'electron-load-devtool' {
+	declare var exports: any;
+}
+
+declare module 'electron-config' {
+	declare var exports: any;
+}

@@ -45,6 +45,7 @@ declare module 'electron' {
 		on(event: 'did-finish-load', listener: (event: any, options: any) => void): void;
 		on(event: 'did-finish-load', listener: Promise<(event: any, options: any) => void>): void;
 		on(event: 'new-window', listener: (event: any, url: string) => void): void;
+		on(event: 'dom-ready', listener: (event: any) => void): void;
 
 		static loadURL(url: string, options?: any): void;
 
