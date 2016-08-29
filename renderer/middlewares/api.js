@@ -1,5 +1,5 @@
 // @flow
-import {ipcRenderer} from 'electron'; // eslint-disable-line import/no-extraneous-dependencies
+import {ipcRenderer} from 'electron';
 import type {Store, Action, Dispatch, Query, ColumnType} from '../types';
 
 function ipcSend(id: number, query: Query): void {

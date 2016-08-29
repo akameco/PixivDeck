@@ -1,5 +1,5 @@
 // @flow
-import {ipcRenderer} from 'electron'; // eslint-disable-line import/no-extraneous-dependencies
+import {ipcRenderer} from 'electron';
 import type {Action, Dispatch} from '../types';
 
 export default () => (next: Dispatch) => (action: Action) => {
