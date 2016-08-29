@@ -1,5 +1,5 @@
 // @flow
-import {union} from 'lodash';
+import union from 'lodash.union';
 import type {Action, ColumnType, Query} from '../types';
 
 type Column = ColumnType;
