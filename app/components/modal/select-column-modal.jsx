@@ -62,7 +62,7 @@ export default class SelectColumnModal extends Component {
 				<header>
 					<h4>追加するカラムを選択</h4>
 				</header>
-				<div styleName="body">
+				<div>
 					<div styleName="kind">ランキング</div>
 					<ul styleName="list">
 						{rankingLinks}
