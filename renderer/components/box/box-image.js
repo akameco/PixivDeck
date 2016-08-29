@@ -66,7 +66,7 @@ export default class BoxImage extends Component {
 		img.onload = () => {
 			this.setState({isLoaded: true});
 		};
-		img.src = this.props.work.imageUrls.medium;
+		img.src = this.props.work.imageUrls.px480mw;
 	}
 
 	handleRefs = (c: Component<*, *, *>) => {
@@ -86,7 +86,7 @@ export default class BoxImage extends Component {
 				{this.state.isVisible && this.state.isLoaded ?
 					<img
 						styleName="loaded"
-						src={imageUrls.medium}
+						src={imageUrls.px480mw}
 						onClick={this.props.onClick}
 						/> :
 					<img height={200}/>
