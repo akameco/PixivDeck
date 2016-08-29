@@ -84,7 +84,7 @@ app.on('ready', () => {
 	});
 
 	ipcMain.on('INIT', ev => {
-		if (auth && auth.remember) {
+		if (auth && auth.remember && auth.name && auth.password) {
 			const {name, password} = auth;
 			pixiv = new Pixiv(name, password);
 			ev.sender.send('SUCCESS_LOGINED');
