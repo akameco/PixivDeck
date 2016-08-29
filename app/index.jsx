@@ -6,7 +6,46 @@ import App from './components';
 import './app.global.css';
 
 const storage = localStorage.getItem('store');
-const initialState = storage ? JSON.parse(storage) : {};
+
+const defaultState = {
+	columns: [
+		{
+			id: 1,
+			title: 'デイリーランキング',
+			query: {
+				type: 'ranking',
+				opts: {
+					mode: 'daily',
+					page: 1
+				}
+			}
+		},
+		{
+			id: 2,
+			title: 'ウィークリーランキング',
+			query: {
+				type: 'ranking',
+				opts: {
+					mode: 'weekly',
+					page: 1
+				}
+			}
+		},
+		{
+			id: 3,
+			title: 'マンスリーランキング',
+			query: {
+				type: 'ranking',
+				opts: {
+					mode: 'monthly',
+					page: 1
+				}
+			}
+		}
+	]
+};
+
+const initialState = storage ? JSON.parse(storage) : defaultState;
 
 const store = configureStore(initialState);
 
