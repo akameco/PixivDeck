@@ -39,7 +39,7 @@ class IllustPreview extends Component {
 		return (
 			<Preview
 				show={show}
-				from={work.imageUrls.medium}
+				from={work.imageUrls.px480mw}
 				width={work.width}
 				height={work.height}
 				to={work.imageUrls.large}

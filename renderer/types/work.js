@@ -1,8 +1,6 @@
 // @flow
 export type ImageUrls = {
 	large: string,
-	medium: string,
-	small: string,
 	px128x128: string,
 	px480mw: string
 }
