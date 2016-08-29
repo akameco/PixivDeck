@@ -11,6 +11,10 @@ type Props = {
 export default class Avater extends Component {
 	props: Props;
 
+	shouldComponentUpdate(nextProps: Props) {
+		return nextProps.img !== this.props.img;
+	}
+
 	render() {
 		return (
 			<div styleName="avater">

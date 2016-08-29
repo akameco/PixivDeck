@@ -26,6 +26,10 @@ export default (store: Store) => {
 		dispatch({type: 'SUCCESS_LOGINED'});
 	});
 
+	ipcRenderer.on('logout', () => {
+		dispatch({type: 'LOGOUT'});
+	});
+
 	ipcRenderer.on('ranking', (ev, data) => {
 		const res = data.res.works.map(v => v.work);
 		send(data.id, format(res));

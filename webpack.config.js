@@ -9,7 +9,7 @@ module.exports = merge(baseConfig, {
 	cache: true,
 	entry: [
 		'babel-polyfill',
-		'./app/index.js'
+		'./app/index'
 	],
 	debug: true,
 	target: 'electron-renderer',

@@ -15,6 +15,10 @@ type Props = {
 export default class Checkbox extends Component {
 	props: Props;
 
+	shouldComponentUpdate(nextProps: Props) {
+		return nextProps.value !== this.props.value;
+	}
+
 	render() {
 		return (
 			<div styleName="wrap">
@@ -27,8 +31,8 @@ export default class Checkbox extends Component {
 							onChange={this.props.onChange}
 							id={this.props.id}
 							/>
-						<span styleName="track"></span>
-						<span styleName="button"></span>
+						<span styleName="track"/>
+						<span styleName="button"/>
 					</label>
 					<label styleName="message" htmlFor={this.props.id}>
 						{this.props.text}
