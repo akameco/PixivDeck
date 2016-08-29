@@ -1,16 +1,11 @@
 'use strict';
-const path = require('path');
 const webpack = require('webpack');
+const merge = require('webpack-merge');
+const baseConfig = require('./webpack.config.base');
 
 const port = 3000;
 
-const plugins = [
-	new webpack.DefinePlugin({
-		'process.env.NODE_ENV': JSON.stringify('development')
-	})
-];
-
-module.exports = {
+module.exports = merge(baseConfig, {
 	cache: true,
 	entry: [
 		'babel-polyfill',
@@ -22,7 +17,7 @@ module.exports = {
 	output: {
 		publicPath: `http://localhost:${port}/dist`
 	},
-	plugins,
+
 	module: {
 		loaders: [
 			{
@@ -31,15 +26,30 @@ module.exports = {
 				exclude: /node_modules/
 			},
 			{
-				test: /\.css$/,
+				test: /\.global\.css$/,
 				loaders: [
-					'style?sourceMap',
-					'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+					'style-loader',
+					'css-loader?sourceMap'
+				]
+			},
+			{
+				test: /^((?!\.global).)*\.css$/,
+				loaders: [
+					'style-loader',
+					'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
 					'postcss-loader'
-				],
-				exclude: /node_modules/
+				]
 			}
 		]
 	},
+
+	plugins: [
+		new webpack.HotModuleReplacementPlugin(),
+		new webpack.NoErrorsPlugin(),
+		new webpack.DefinePlugin({
+			'process.env.NODE_ENV': JSON.stringify('development')
+		})
+	],
+
 	postcss: () => [require('postcss-cssnext')()]
-};
+});

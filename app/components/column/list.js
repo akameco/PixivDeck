@@ -50,7 +50,7 @@ export default class List extends Component {
 
 		return (
 			<section styleName="wrap">
-				<header>
+				<header styleName="header">
 					<a styleName="title" onClick={this.handleTopClick}>
 						{this.props.title}
 					</a>
