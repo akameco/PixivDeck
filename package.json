@@ -6,7 +6,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development electron -r babel-register -r babel-polyfill main.development.js",
     "watch:m": "cross-env NODE_ENV=development webpack --config webpack.config.electron.js --watch --progress --colors",
-    "watch:r": "cross-env NODE_ENV=development webpack-dev-server --hot --inline --progress --colors",
+    "watch:r": "cross-env NODE_ENV=development webpack-dev-server --hot --inline --progress --colors --port 3000",
     "pack": "cross-env NODE_ENV=production node -r babel-register -r babel-polyfill pack.js",
     "test": "xo && flow"
   },
