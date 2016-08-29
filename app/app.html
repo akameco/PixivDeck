@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PixivDeck</title>
+	<meta charset="utf-8">
+	<script>
+		if (process.env.NODE_ENV !== 'development') {
+			const link = document.createElement('link');
+			link.rel = 'stylesheet';
+			link.href = '../dist/style.css';
+			document.write(link.outerHTML);
+		}
+	</script>
+</head>
+<body>
+	<div id="root"></div>
+	<script>
+	{
+		const script = document.createElement('script');
+		const port = process.env.PORT || 3000;
+		script.src = (process.env.NODE_ENV === 'development') ? `http://localhost:${port}/dist/bundle.js` : '../dist/bundle.js';
+		document.write(script.outerHTML);
+	}
+	</script>
+</body>
+</html>
