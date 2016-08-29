@@ -6,7 +6,6 @@ const packager = require('electron-packager');
 const pify = require('pify');
 const hardRejection = require('hard-rejection');
 const meow = require('meow');
-const execa = require('execa');
 
 const pkg = require('./package.json');
 const electronCfg = require('./webpack.config.electron');
@@ -65,15 +64,6 @@ const DEFAULT_OPTS = {
 
 const webpackBuild = cfg => pify(webpack)(cfg);
 
-const osIcon = plat => {
-	if (plat === 'darwin') {
-		return '.icns';
-	} else if (plat === 'win32') {
-		return '.ico';
-	}
-	return '.png';
-};
-
 async function build() {
 	console.log('build main...');
 	await webpackBuild(electronCfg);
@@ -83,21 +73,18 @@ async function build() {
 }
 
 async function pack(opts) {
-	const {platform, arch, zip} = opts;
+	const {platform, arch, icon} = opts;
+
 	await build();
+
 	console.log('start pack...');
 	const pkgOpt = Object.assign({}, DEFAULT_OPTS, {
 		platform,
-		arch
+		arch,
+		icon
 	});
+
 	await pify(packager)(pkgOpt);
-
-	process.chdir(`${__dirname}/release/PixivDeck-${platform}-${arch}/`);
-	console.log(process.cwd());
-
-	console.log('zip...');
-	await execa.spawn('zip', [zip.opt, `../PixivDeck-${zip.dest}-${version}.zip`, zip.src]);
-
 	console.log(`finish ${platform}`);
 }
 
@@ -106,11 +93,7 @@ const buildMacOS = async () => {
 	await pack({
 		platform: 'darwin',
 		arch: 'x64',
-		zip: {
-			opt: '-ryXq9',
-			dest: 'macos',
-			src: 'PixivDeck.app'
-		}
+		icon: 'static/Icon.icns'
 	});
 };
 
@@ -119,11 +102,7 @@ const buildWindows = async () => {
 	await pack({
 		platform: 'win32',
 		arch: 'ia32',
-		zip: {
-			opt: '-ryq9',
-			dest: 'windows',
-			src: './*'
-		}
+		icon: 'static/Icon.ico'
 	});
 };
 
@@ -132,11 +111,7 @@ const buildLinux = async () => {
 	await pack({
 		platform: 'linux',
 		arch: 'x64',
-		zip: {
-			opt: '-ryq9',
-			dest: 'linux',
-			src: '*'
-		}
+		icon: 'static/Icon.png'
 	});
 };
 
