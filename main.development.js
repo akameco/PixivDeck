@@ -13,8 +13,8 @@ require('electron-referer')('http://www.pixiv.net/');
 const config = new Config({
 	defaults: {
 		bounds: {
-			width: 500,
-			height: 500
+			width: 960,
+			height: 680
 		}
 	}
 });
