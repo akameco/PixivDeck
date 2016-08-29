@@ -12,6 +12,10 @@ type Props = {
 export default class Dropdwon extends Component {
 	props: Props;
 
+	shouldComponentUpdate() {
+		return false;
+	}
+
 	render() {
 		return (
 			<div styleName="base">
@@ -21,7 +25,7 @@ export default class Dropdwon extends Component {
 							設定
 						</a>
 					</li>
-					<li styleName="h"></li>
+					<li styleName="h"/>
 					<li>
 						<a onClick={this.props.onLogout}>
 							ログアウト

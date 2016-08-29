@@ -54,7 +54,7 @@ export default class Infinite extends Component {
 				styleName="base"
 				>
 				{this.props.children}
-				<div ref={this.handleRefs} style={{height: 100}}></div>
+				<div ref={this.handleRefs} style={{height: 100}}/>
 			</div>
 		);
 	}

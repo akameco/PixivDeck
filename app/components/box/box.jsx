@@ -19,6 +19,10 @@ type Props = {
 export default class Box extends Component {
 	props: Props;
 
+	shouldComponentUpdate(nextProps: Props) {
+		return nextProps.work.id !== this.props.work.id;
+	}
+
 	render() {
 		const {work, user, onClick, onClickTag, onClickUser} = this.props;
 		const {title, caption, tags} = work;
