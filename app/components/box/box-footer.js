@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import css from 'react-css-modules';
-import {union} from 'lodash';
+import union from 'lodash.union';
 import Tag from './tag';
 import styles from './box-footer.css';
 

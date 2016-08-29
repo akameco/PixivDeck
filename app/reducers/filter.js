@@ -1,5 +1,5 @@
 // @flow
-import {union} from 'lodash';
+import union from 'lodash.union';
 import type {Action, Filter} from '../types';
 
 const initialState: Filter = {
