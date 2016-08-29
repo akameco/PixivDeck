@@ -1,5 +1,5 @@
 // @flow
-import {ipcRenderer} from 'electron'; // eslint-disable-line import/no-extraneous-dependencies
+import {ipcRenderer} from 'electron';
 import {camelizeKeys} from 'humps';
 import {normalize} from 'normalizr';
 import type {Store, Dispatch} from '../types';
