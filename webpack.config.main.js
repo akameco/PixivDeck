@@ -1,19 +1,19 @@
 'use strict';
-const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
+	devtool: 'source-map',
+
 	entry: [
 		'babel-polyfill',
-		'./main/index.js'
+		'./main.development'
 	],
-	debug: true,
-	target: 'electron-main',
-	devtool: '#inline-source-map',
+
 	output: {
-		path: path.join(__dirname, '/dist'),
-		filename: 'index.js'
+		path: __dirname,
+		filename: 'main.js'
 	},
+
 	plugins: [
 		new webpack.DefinePlugin({
 			'process.env': {
@@ -21,6 +21,7 @@ module.exports = {
 			}
 		})
 	],
+
 	module: {
 		loaders: [
 			{
@@ -30,14 +31,19 @@ module.exports = {
 			}
 		]
 	},
+
 	resolve: {
 		extensions: ['', '.js', '.json'],
 		packageMains: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main']
 	},
+
+	target: 'electron-main',
+
 	node: {
 		__dirname: false,
 		__filename: false
 	},
+
 	externals: [
 		'electron-config',
 		'pixiv.js',
