@@ -2,6 +2,8 @@
 const path = require('path');
 const webpack = require('webpack');
 
+const port = 3000;
+
 const plugins = [
 	new webpack.DefinePlugin({
 		'process.env.NODE_ENV': JSON.stringify('development')
@@ -12,15 +14,13 @@ module.exports = {
 	cache: true,
 	entry: [
 		'babel-polyfill',
-		'./renderer/index.js'
+		'./app/index.js'
 	],
 	debug: true,
 	target: 'electron-renderer',
 	devtool: '#inline-source-map',
 	output: {
-		path: path.join(__dirname, '/dist'),
-		filename: 'bundle.js',
-		publicPath: '/'
+		publicPath: `http://localhost:${port}/dist`
 	},
 	plugins,
 	module: {

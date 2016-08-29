@@ -1,6 +1,5 @@
 // @flow
 /* eslint-disable camelcase */
-import {join} from 'path';
 import electron from 'electron';
 import Config from 'electron-config';
 import Pixiv from 'pixiv.js';
@@ -35,11 +34,10 @@ function createMainWindow() {
 
 		loadDevtool(loadDevtool.REACT_DEVELOPER_TOOLS);
 		loadDevtool(loadDevtool.REDUX_DEVTOOLS);
-
-		win.loadURL('http://localhost:8080');
-	} else {
-		win.loadURL(`file://${join(__dirname, 'index.html')}`);
 	}
+
+	win.loadURL(`file://${__dirname}/app/app.html`);
+	win.openDevTools();
 
 	win.on('closed', () => {
 		mainWindow = null;

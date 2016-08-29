@@ -2,9 +2,16 @@
 	"presets": ["es2015", "stage-0", "react"],
 	"plugins": [
 		"transform-decorators-legacy",
-		"transform-flow-strip-types"
+		"transform-flow-strip-types",
+		"add-module-exports"
 	],
 	"env": {
+		"production": {
+			"presets": ["react-optimize"],
+			"plugins": [
+				"babel-plugin-dev-expression"
+			]
+		},
 		"development": {
 			"presets": ["react-hmre"]
 		}
