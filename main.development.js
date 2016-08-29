@@ -37,7 +37,6 @@ function createMainWindow() {
 	}
 
 	win.loadURL(`file://${__dirname}/app/app.html`);
-	win.openDevTools();
 
 	win.on('closed', () => {
 		mainWindow = null;
@@ -113,7 +112,7 @@ app.on('ready', () => {
 	});
 
 	ipcMain.on('userWorks', async (ev, {id, userID, opts}) => {
-		const res = await pixiv.userWorks(userID, opts);
+		const res = await pixiv.usersWorks(userID, opts);
 		ev.sender.send('userWorks', {id, res});
 	});
 
