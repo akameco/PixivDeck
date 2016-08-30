@@ -59,6 +59,13 @@ $ npm start
 - Run: `$ npm start`
 - Build renderer process: `$ npm run watch`
 
+## Build
+
+Build renderer process and main process.
+
+```
+$ npm run build
+```
 
 ## Package
 Package for your OS.
