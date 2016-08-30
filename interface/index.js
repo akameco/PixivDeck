@@ -52,3 +52,7 @@ declare module 'electron-load-devtool' {
 declare module 'electron-config' {
 	declare var exports: any;
 }
+
+declare module 'electron-debug' {
+	declare var exports: any;
+}

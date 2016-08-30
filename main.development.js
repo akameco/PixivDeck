@@ -10,6 +10,10 @@ let mainWindow;
 require('electron-context-menu')();
 require('electron-referer')('http://www.pixiv.net/');
 
+if (process.env.NODE_ENV === 'development') {
+	require('electron-debug')();
+}
+
 const config = new Config({
 	defaults: {
 		bounds: {
