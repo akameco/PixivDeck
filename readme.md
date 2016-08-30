@@ -1,8 +1,8 @@
 <h1 align=center><img src="static/Icon.png" width=50/> Pixiv Deck<h1>
 
-<p align="center">
-<strong>TweetDeck like pixiv client for desktop</strong>
-</p>
+
+> TweetDeck like pixiv client for desktop
+
 
 ## Screenshot
 
