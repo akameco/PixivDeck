@@ -67,7 +67,8 @@
 	font-size: 0.8rem;
 	margin-bottom: 10px;
 	padding: 0 5px;
-	& a {
-		color: #51769f;
-	}
+}
+
+.body a {
+	color: #51769f;
 }
