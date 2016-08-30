@@ -91,4 +91,8 @@ declare module 'electron' {
 	declare class shell {
 		static openExternal(url: string): void;
 	}
+
+	declare class Menu {
+		static setApplicationMenu(appMenu: Object): void;
+	}
 }
