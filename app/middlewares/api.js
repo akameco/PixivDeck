@@ -1,7 +1,7 @@
 // @flow
 import {ipcRenderer} from 'electron';
 import {ipcRequest} from '../actions';
-import {rankMap, delay} from '../utils';
+import {delay} from '../utils';
 import type {Store, Action, Dispatch, Query, ColumnType} from '../types';
 
 function ipcSend(id: number, query: Query): void {
