@@ -64,7 +64,9 @@ $ npm start
 Package for your OS.
 
 ```
-$ npm run pack
+$ npm run pack:macos
+$ npm run pack:windows
+$ npm run pack:linux
 ```
 
 Package all(MacOS).
