@@ -22,6 +22,10 @@
 
 <img src="media/lightbox.gif"/>
 
+### Add Column
+
+<img src="media/add.gif"/>
+
 ## Download
 
 ### MacOS
