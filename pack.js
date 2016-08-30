@@ -20,7 +20,7 @@ const version = pkg.version;
 
 const cli = meow(`build app`, {
 	defaluts: {
-		asar: false,
+		asar: true,
 		name: pkg.productName,
 		icon: 'app/app'
 	},
@@ -40,7 +40,12 @@ if (flags.all) {
 const ignore = [
 	'^/test($|/)',
 	'^/release($|/)',
+	'^/media($|/)',
+	'^/static($|/)',
+	'^/webpack+?',
+	'^/pack.js$',
 	'^/interface($|/)',
+	'^/CSSFlowStub.js.flow',
 	'^/main.development.js'
 ].concat(
 	devDeps.map(name => `/node_modules/${name}($|/)`)
