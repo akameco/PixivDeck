@@ -70,10 +70,9 @@ async function pack(target) {
 
 const input = process.argv.slice(2)[0];
 
-if (!input) {
-	console.error('required input, [macos, windows, linux]');
-} else if (!['macos', 'windows', 'linux'].includes(input)) {
-	console.error('macos, windows, linux');
+if (!input || !['macos', 'windows', 'linux'].includes(input)) {
+	console.error('input required');
+	process.exit(1); // eslint-disable-line xo/no-process-exit
 }
 
 pack(input);
