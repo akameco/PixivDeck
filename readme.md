@@ -10,14 +10,17 @@
 
 <img src="media/main.png"/>
 
-### Move
-
-<img src="media/move.gif"/>
-
 ### Scroll
 
 <img src="media/scroll.gif"/>
 
+### Move
+
+<img src="media/move.gif"/>
+
+### Lightbox
+
+<img src="media/lightbox.gif"/>
 
 ## Download
 
