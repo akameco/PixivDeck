@@ -1,4 +1,4 @@
-<h1 align=center><img src="static/Icon.png" width=50/> Pixiv Deck<h1>
+<h1 align=center><img src="static/Icon.png" width=50/> Pixiv Deck</h1>
 
 
 > TweetDeck like pixiv client for desktop
