@@ -4,7 +4,7 @@ const merge = require('webpack-merge');
 const baseConfig = require('./webpack.config.base');
 
 module.exports = merge(baseConfig, {
-	devtool: 'source-map',
+	devtool: false,
 
 	entry: [
 		'babel-polyfill',
@@ -22,10 +22,6 @@ module.exports = merge(baseConfig, {
 				warnings: false
 			}
 		}),
-		new webpack.BannerPlugin(
-			'require("source-map-support").install();',
-			{raw: true, entryOnly: false}
-		),
 		new webpack.DefinePlugin({
 			'process.env': {
 				NODE_ENV: JSON.stringify('production')
@@ -42,7 +38,7 @@ module.exports = merge(baseConfig, {
 
 	externals: [
 		'electron-config',
-		'source-map-support',
+		'electron-context-menu',
 		'pixiv.js'
 	]
 });

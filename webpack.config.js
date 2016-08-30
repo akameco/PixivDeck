@@ -7,13 +7,18 @@ const port = 3000;
 
 module.exports = merge(baseConfig, {
 	cache: true,
+
 	entry: [
 		'babel-polyfill',
 		'./app/index'
 	],
+
 	debug: true,
+
 	target: 'electron-renderer',
+
 	devtool: '#inline-source-map',
+
 	output: {
 		publicPath: `http://localhost:${port}/dist`
 	},
