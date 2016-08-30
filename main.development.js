@@ -3,6 +3,7 @@
 import electron from 'electron';
 import Config from 'electron-config';
 import Pixiv from 'pixiv.js';
+import appMenu from './menu';
 
 const {app, BrowserWindow, ipcMain, shell} = electron;
 let mainWindow;
@@ -76,6 +77,8 @@ app.on('activate', () => {
 app.on('ready', () => {
 	mainWindow = createMainWindow();
 	const page = mainWindow.webContents;
+
+	electron.Menu.setApplicationMenu(appMenu);
 
 	const auth = config.get('auth');
 	let pixiv;
