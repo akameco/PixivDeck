@@ -29,6 +29,7 @@
     "babel-polyfill": "^6.13.0",
     "electron-config": "^0.2.1",
     "electron-context-menu": "^0.4.0",
+    "electron-debug": "^1.0.1",
     "electron-load-devtool": "^0.3.0",
     "electron-referer": "^0.3.0",
     "humps": "^1.1.0",
