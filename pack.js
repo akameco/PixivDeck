@@ -1,7 +1,5 @@
 /* eslint-disable quote-props */
 'use strict';
-require('babel-polyfill');
-
 const pify = require('pify');
 const packager = require('electron-packager');
 const hardRejection = require('hard-rejection');
@@ -32,7 +30,7 @@ const ignore = [
 	...ignoredDeps
 ];
 
-async function pack(target) {
+function pack(target) {
 	const buildOpts = {
 		macos: {
 			platform: 'darwin',
@@ -54,7 +52,7 @@ async function pack(target) {
 		}
 	};
 
-	const pkgOpt = {
+	const pkgOpt = Object.assign({
 		dir: './',
 		name: pkg.productName,
 		asar: true,
@@ -62,11 +60,10 @@ async function pack(target) {
 		overwrite: true,
 		prune: true,
 		out: 'release',
-		ignore,
-		...buildOpts[target]
-	};
+		ignore
+	}, buildOpts[target]);
 
-	await pify(packager)(pkgOpt);
+	return pify(packager)(pkgOpt);
 }
 
 const input = process.argv.slice(2)[0];
