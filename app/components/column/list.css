@@ -3,7 +3,7 @@
 }
 
 .header {
-	position: relative;;
+	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -42,7 +42,14 @@
 
 
 .title {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 50%;
+	margin: -0.6rem;
+	text-align: center;
 	font-size: 1.2rem;
+	display: block;
 }
 
 .loading {
