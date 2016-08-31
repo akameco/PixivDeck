@@ -83,10 +83,10 @@ $ brew install wine
 $ npm run pack
 ```
 
-Package all && zip all.
+remove release directory && Package all && zip all.
 
 ```
-$ npm run build
+$ npm run release
 ```
 
 
