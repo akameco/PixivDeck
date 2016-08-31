@@ -1,3 +1,4 @@
+/* eslint-disable quote-props */
 'use strict';
 require('babel-polyfill');
 
@@ -36,33 +37,33 @@ async function pack(target) {
 		macos: {
 			platform: 'darwin',
 			arch: 'x64',
-			icon: 'static/Icon.icns'
+			icon: 'static/Icon.icns',
+			'app-bundle-id': 'io.github.akameco.pixivdeck'
 		},
 		windows: {
 			platform: 'win32',
 			arch: 'ia32',
-			icon: 'static/Icon.ico'
+			icon: 'static/Icon.ico',
+			'app-bundle-id': 'io.github.akameco.pixivdeck'
 		},
 		linux: {
 			platform: 'linux',
 			arch: 'x64',
-			icon: 'static/Icon.png'
+			icon: 'static/Icon.png',
+			'version-string.ProductName': pkg.productName
 		}
 	};
 
-	const {platform, arch, icon} = buildOpts[target];
 	const pkgOpt = {
-		'dir': './',
-		'name': pkg.productName,
-		'asar': true,
+		dir: './',
+		name: pkg.productName,
+		asar: true,
 		'app-version': pkg.version,
-		'overwrite': true,
-		'prune': true,
-		'out': 'release',
+		overwrite: true,
+		prune: true,
+		out: 'release',
 		ignore,
-		platform,
-		arch,
-		icon
+		...buildOpts[target]
 	};
 
 	await pify(packager)(pkgOpt);
