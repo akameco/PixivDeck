@@ -35,10 +35,19 @@ function createMainWindow() {
 	});
 
 	if (process.env.NODE_ENV === 'development') {
-		const loadDevtool = require('electron-load-devtool');
+		const loadExtensions = async () => {
+			const installExtension = require('electron-devtools-installer');
 
-		loadDevtool(loadDevtool.REACT_DEVELOPER_TOOLS);
-		loadDevtool(loadDevtool.REDUX_DEVTOOLS);
+			const install = installExtension.default;
+			try {
+				await install(installExtension.REACT_DEVELOPER_TOOLS);
+				await install(installExtension.REDUX_DEVTOOLS);
+			} catch (err) {
+				console.error(err);
+			}
+		};
+
+		loadExtensions();
 	}
 
 	win.loadURL(`file://${__dirname}/app/app.html`);
