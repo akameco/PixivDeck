@@ -11,6 +11,24 @@ let mainWindow;
 require('electron-context-menu')();
 require('electron-referer')('http://www.pixiv.net/');
 
+function openTweet(url: string) {
+	const win = new BrowserWindow({width: 600, height: 400});
+
+	require('electron-referer')('https://twitter.com', win);
+
+	const page = win.webContents;
+
+	page.on('will-navigate', (event, url) => {
+		if (/twitter\.com\/intent\/tweet\/complete/.test(url)) {
+			win.close();
+		}
+
+		event.preventDefault();
+	});
+
+	win.loadURL(url);
+}
+
 if (process.env.NODE_ENV === 'development') {
 	require('electron-debug')();
 }
@@ -64,6 +82,9 @@ function createMainWindow() {
 
 	const {webContents} = win;
 	webContents.on('new-window', (event: Event, url: string) => {
+		if (/intent\/twitter/.test(url)) {
+			return;
+		}
 		event.preventDefault();
 		shell.openExternal(url);
 	});
@@ -135,5 +156,9 @@ app.on('ready', () => {
 	ipcMain.on('work', async (ev, id) => {
 		const res = await pixiv.works(id);
 		ev.sender.send('work', res);
+	});
+
+	ipcMain.on('tweet', (ev, url) => {
+		openTweet(url);
 	});
 });
