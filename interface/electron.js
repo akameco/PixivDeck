@@ -45,6 +45,7 @@ declare module 'electron' {
 		on(event: 'did-finish-load', listener: (event: any, options: any) => void): void;
 		on(event: 'did-finish-load', listener: Promise<(event: any, options: any) => void>): void;
 		on(event: 'new-window', listener: (event: any, url: string) => void): void;
+		on(event: 'will-navigate', listener: (event: any, url: string) => void): void;
 		on(event: 'dom-ready', listener: (event: any) => void): void;
 
 		static loadURL(url: string, options?: any): void;
@@ -60,6 +61,7 @@ declare module 'electron' {
 	declare class BrowserWindow extends EventEmitter {
 		openDevTools(): void;
 		loadURL(url: string, options: any): void;
+		close(): void;
 		reload(): void;
 		getTitle(): string;
 		getBounds(): {x: number, y: number, width: number, height: number};
