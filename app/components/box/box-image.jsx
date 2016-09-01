@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {findDOMNode} from 'react-dom';
 import css from 'react-css-modules';
 import type {Work} from '../../types';
-import {MangaIcon} from '../icon/';
+import Icon from '../icon/';
 import styles from './box-image.css';
 
 type Props = {
@@ -81,7 +81,7 @@ export default class BoxImage extends Component {
 				styleName="base"
 				>
 				{pageCount > 1 &&
-					<MangaIcon/>
+					<Icon type="manga"/>
 				}
 				{this.state.isVisible && this.state.isLoaded ?
 					<img
