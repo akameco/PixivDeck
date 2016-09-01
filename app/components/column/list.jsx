@@ -43,6 +43,11 @@ export default class List extends Component {
 		this.props.onClose();
 	}
 
+	// ignore event prop to react-sortable-pane
+	handleMove = (e: Event) => {
+		e.stopPropagation();
+	}
+
 	render() {
 		const List = this.props.works.map(work => {
 			return <Box key={work.id} work={work}/>;
@@ -57,7 +62,11 @@ export default class List extends Component {
 					<CloseButton onClick={this.handleClose}/>
 				</header>
 				{this.props.works.length > 0 ?
-					<div styleName="content">
+					<div
+						styleName="content"
+						onMouseDown={this.handleMove}
+						onTouchStart={this.handleMove}
+						>
 						<Infinite
 							ref={(c: Component<*, *, *>) => {
 								this.target = c;
