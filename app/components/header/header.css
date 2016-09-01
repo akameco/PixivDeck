@@ -24,34 +24,27 @@
 	width: 80%;
 	height: 45px;
 	margin: 0 auto;
-	cursor: pointer;
 }
 
-.headerIconColor {
+.header svg {
 	fill: gray;
 }
 
-.add {
-	composes: button;
-	composes: headerIconColor;
-}
-
-.search {
-	composes: button;
-	composes: headerIconColor;
+.button {
+	display: block;
+	width: 80%;
+	height: 45px;
+	margin: 0 auto;
 }
 
 .bottom {
 	width: 100%;
-	composes: headerIconColor;
 	position: absolute;
 	left: 0;
 	bottom: 20px;
-	& svg {
-		margin: 0 auto;
-		width: 75%;
-	}
-	& a {
-		cursor: pointer;
-	}
+}
+
+.bottom svg {
+	margin: 0 auto;
+	width: 75%;
 }

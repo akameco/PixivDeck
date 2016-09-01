@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import css from 'react-css-modules';
 import type {Manage} from '../../types';
-import {AddIcon, SearchIcon, SettingsIcon} from '../icon';
+import Icon from '../icon';
 import Dropdwon from './dropdown';
 import styles from './header.css';
 
@@ -27,16 +27,16 @@ export default class Header extends Component {
 		return (
 			<header styleName="header">
 				<div styleName="top">
-					<a styleName="add" onClick={this.props.onClickAdd}>
-						<AddIcon/>
+					<a styleName="button" onClick={this.props.onClickAdd}>
+						<Icon type="add"/>
 					</a>
-					<a styleName="search" onClick={this.props.onOpenSearchModal}>
-						<SearchIcon/>
+					<a styleName="button" onClick={this.props.onOpenSearchModal}>
+						<Icon type="search"/>
 					</a>
 				</div>
 				<div styleName="bottom">
 					<a onClick={this.props.onToggleDropdown}>
-						<SettingsIcon/>
+						<Icon type="setting"/>
 					</a>
 				</div>
 				{this.props.manage.isDropdown &&
