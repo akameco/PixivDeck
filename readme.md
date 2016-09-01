@@ -1,7 +1,7 @@
 <h1 align=center><img src="static/Icon.png" width=50/> Pixiv Deck</h1>
 
 
-> TweetDeck like pixiv client for desktop
+> :two_hearts: :two_hearts: pixiv client for Desktop like a TweetDeck :two_hearts: :two_hearts:
 
 
 ## Screenshot
