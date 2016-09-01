@@ -45,7 +45,7 @@ declare module 'lodash.union' {
 	declare var exports: any;
 }
 
-declare module 'electron-load-devtool' {
+declare module 'electron-devtools-installer' {
 	declare var exports: any;
 }
 
