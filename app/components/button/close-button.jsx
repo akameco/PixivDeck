@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import css from 'react-css-modules';
-import {CloseIcon} from '../icon';
+import Icon from '../icon';
 import styles from './close-button.css';
 
 type Props = {
@@ -31,7 +31,7 @@ export default class CloseButton extends Component {
 				className={this.props.className}
 				style={this.props.style}
 				>
-				<CloseIcon style={this.props.iconStyle}/>
+				<Icon type="close" style={this.props.iconStyle}/>
 			</a>
 		);
 	}

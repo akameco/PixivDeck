@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import css from 'react-css-modules';
-import {SearchIcon} from '../icon';
+import Icon from '../icon';
 import styles from './search-modal.css';
 
 type Props = {
@@ -63,7 +63,7 @@ export default class SearchModal extends Component {
 		return (
 			<div styleName="wrap">
 				<div styleName="field">
-					<SearchIcon/>
+					<Icon type="search"/>
 					<input
 						styleName="input"
 						type="text"
