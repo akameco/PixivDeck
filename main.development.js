@@ -3,6 +3,7 @@
 import electron from 'electron';
 import Config from 'electron-config';
 import Pixiv from 'pixiv.js';
+import PixivAppApi from 'pixiv-app-api';
 import referer from 'electron-referer';
 import appMenu from './menu';
 
@@ -117,6 +118,7 @@ app.on('ready', () => {
 
 	const auth = config.get('auth');
 	let pixiv;
+	let pixivApp;
 
 	page.on('dom-ready', () => {
 		if (!(auth && auth.name && auth.password)) {
@@ -128,6 +130,7 @@ app.on('ready', () => {
 		if (auth && auth.remember && auth.name && auth.password) {
 			const {name, password} = auth;
 			pixiv = new Pixiv(name, password);
+			pixivApp = new PixivAppApi(name, password);
 			ev.sender.send('SUCCESS_LOGINED');
 		}
 	});
@@ -136,6 +139,14 @@ app.on('ready', () => {
 		pixiv = new Pixiv(name, password);
 		ev.sender.send('SUCCESS_LOGINED');
 		config.set('auth', {name, password, remember: true});
+	});
+
+	ipcMain.on('bookmark', async (ev, {id, isPrivate}) => {
+		if (isPrivate) {
+			await pixivApp.illustBookmarkAdd(id, {restrict: 'private'});
+		} else {
+			await pixivApp.illustBookmarkAdd(id);
+		}
 	});
 
 	ipcMain.on('ranking', async (ev, {id, opts}) => {
