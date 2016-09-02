@@ -3,25 +3,24 @@
 import electron from 'electron';
 import Config from 'electron-config';
 import Pixiv from 'pixiv.js';
+import referer from 'electron-referer';
 import appMenu from './menu';
 
 const {app, BrowserWindow, ipcMain, shell} = electron;
 let mainWindow;
 
 require('electron-context-menu')();
-require('electron-referer')('http://www.pixiv.net/');
 
 function openTweet(url: string) {
 	const win = new BrowserWindow({width: 600, height: 400});
 
-	require('electron-referer')('https://twitter.com', win);
+	referer('https://twitter.com', win);
 
 	const page = win.webContents;
 
 	page.on('will-navigate', (event, url) => {
 		if (/twitter\.com\/intent\/tweet\/complete/.test(url)) {
 			win.close();
-			require('electron-referer')('http://www.pixiv.net');
 		}
 
 		event.preventDefault();
@@ -82,6 +81,11 @@ function createMainWindow() {
 	});
 
 	const {webContents} = win;
+
+	webContents.on('did-finish-load', () => {
+		referer('http://www.pixiv.net', win);
+	});
+
 	webContents.on('new-window', (event: Event, url: string) => {
 		if (/intent\/twitter/.test(url)) {
 			return;
