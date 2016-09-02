@@ -21,6 +21,7 @@ function openTweet(url: string) {
 	page.on('will-navigate', (event, url) => {
 		if (/twitter\.com\/intent\/tweet\/complete/.test(url)) {
 			win.close();
+			require('electron-referer')('http://www.pixiv.net');
 		}
 
 		event.preventDefault();
