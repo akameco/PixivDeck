@@ -2,6 +2,7 @@
 import {remote, ipcRenderer} from 'electron';
 import React, {Component} from 'react';
 import css from 'react-css-modules';
+import {download} from 'electron-dl';
 import type {Work, User} from '../../types/';
 import BoxHeader from './box-header';
 import BoxFooter from './box-footer';
@@ -29,10 +30,36 @@ export default class Box extends Component {
 	handleContextMenu = (e: Event) => {
 		e.preventDefault();
 
-		const {id, title} = this.props.work;
+		const {id, title, imageUrls} = this.props.work;
+		const img = imageUrls.large;
 		const name = this.props.user.name;
 
 		const menu = new Menu();
+
+		menu.append(new MenuItem({
+			label: 'オリジナルサイズの画像を保存',
+			click(item, win) {
+				download(win, img);
+			}
+		}));
+
+		menu.append(new MenuItem({type: 'separator'}));
+
+		menu.append(new MenuItem({
+			label: 'ブックマーク',
+			click() {
+				ipcRenderer.send('bookmark', {id});
+			}
+		}));
+
+		menu.append(new MenuItem({
+			label: '非公開ブックマーク',
+			click() {
+				ipcRenderer.send('bookmark', {id, isPrivate: true});
+			}
+		}));
+
+		menu.append(new MenuItem({type: 'separator'}));
 
 		menu.append(new MenuItem({
 			label: 'Twitterで共有',
