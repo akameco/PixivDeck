@@ -41,7 +41,8 @@ export default class SelectColumnModal extends Component {
 	}
 
 	handleAddFavorite = (publicity: 'private' | 'public') => {
-		this.props.onSelect({type: 'favoriteWorks', opts: {publicity, page: 1}}, `favorite/${publicity}`);
+		const title = {private: '非公開ブックマーク', public: '公開ブックマーク'}[publicity];
+		this.props.onSelect({type: 'favoriteWorks', opts: {publicity, page: 1}}, title);
 	}
 
 	handleAddHistory = () => {
