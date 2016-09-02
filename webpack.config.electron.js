@@ -39,6 +39,8 @@ module.exports = merge(baseConfig, {
 	externals: [
 		'electron-config',
 		'electron-context-menu',
-		'pixiv.js'
+		'pixiv.js',
+		'pixiv-app-api',
+		'electron-dl'
 	]
 });
