@@ -94,7 +94,22 @@ declare module 'electron' {
 		static openExternal(url: string): void;
 	}
 
+	declare class MenuItem {
+		static constructor(options: {
+			label: string,
+			click(): void
+		}): MenuItem;
+	}
+
 	declare class Menu {
 		static setApplicationMenu(appMenu: Object): void;
+		popup: (win: BrowserWindow) => void;
+		append: (item: MenuItem) => void;
+	}
+
+	declare class remote {
+		static Menu: Class<Menu>;
+		static MenuItem: Class<MenuItem>;
+		static getCurrentWindow: () => BrowserWindow;
 	}
 }
