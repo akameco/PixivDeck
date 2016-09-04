@@ -38,9 +38,11 @@ module.exports = merge(baseConfig, {
 
 	externals: [
 		'electron-config',
+		'electron-referer',
 		'electron-context-menu',
 		'pixiv.js',
 		'pixiv-app-api',
-		'electron-dl'
+		'electron-dl',
+		'dot-prop'
 	]
 });
