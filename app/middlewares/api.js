@@ -30,7 +30,7 @@ function asyncIpcSend(id: number, query: Query) {
 
 async function orderSend(columns: Array<ColumnType>) {
 	for (const c of columns) {
-		await asyncIpcSend(c.id, c.query).then(() => delay(500)); // eslint-disable-line babel/no-await-in-loop
+		await asyncIpcSend(c.id, c.query); // eslint-disable-line babel/no-await-in-loop
 		await delay(100); // eslint-disable-line babel/no-await-in-loop
 	}
 }
