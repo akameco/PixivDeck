@@ -28,19 +28,6 @@
 	height: calc(100% - 50px);
 }
 
-.content::-webkit-scrollbar-track {
-	background: #666;
-}
-
-.content::-webkit-scrollbar-track {
-	background: #eee;
-}
-
-.content::-webkit-scrollbar-thumb {
-	background: #666;
-}
-
-
 .title {
 	font-size: 1.2rem;
 }
