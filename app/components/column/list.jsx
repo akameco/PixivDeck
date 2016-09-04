@@ -48,6 +48,14 @@ export default class List extends Component {
 		e.stopPropagation();
 	}
 
+	hanadleRef = (c: Component<*, *, *>) => {
+		this.target = c;
+	}
+
+	handleOnIntersect = () => {
+		this.props.onNextPage();
+	}
+
 	render() {
 		const List = this.props.works.map(work => {
 			return <Box key={work.id} work={work}/>;
@@ -68,10 +76,8 @@ export default class List extends Component {
 						onTouchStart={this.handleMove}
 						>
 						<Infinite
-							ref={(c: Component<*, *, *>) => {
-								this.target = c;
-							}}
-							onIntersect={() => this.props.onNextPage()}
+							ref={this.hanadleRef}
+							onIntersect={this.handleOnIntersect}
 							>
 							{List}
 						</Infinite>

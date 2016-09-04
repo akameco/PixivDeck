@@ -99,8 +99,7 @@
       "main.js"
     ],
     "rules": {
-      "no-duplicate-imports": 0,
-      "react/jsx-no-bind": 0
+      "no-duplicate-imports": 0
     }
   }
 }
