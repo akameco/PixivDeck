@@ -46,9 +46,10 @@ export default class SearchModal extends Component {
 			return;
 		}
 		const list = [100, 500, 1000, 3000, 5000, 10000].map(v => {
+			const onClick = () => this.handleClick(v);
 			return (
 				<li key={v}>
-					<a onClick={() => this.handleClick(v)}>{`${this.state.value}${v}users入り`}</a>
+					<a onClick={onClick}>{`${this.state.value}${v}users入り`}</a>
 				</li>
 			);
 		});

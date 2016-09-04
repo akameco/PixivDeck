@@ -36,7 +36,7 @@ export default class ModalWrapper extends Component {
 			<div styleName="wrap" onClick={this.handleOverlayClick}>
 				<div
 					styleName="modal"
-					ref={c => {
+					ref={c => { // eslint-disable-line react/jsx-no-bind
 						this._content = c;
 					}}
 					>

@@ -14,6 +14,8 @@ type Props = {
 export default class Columns extends Component {
 	props: Props;
 
+	handleOnResize = () => null;
+
 	render() {
 		const columns = this.props.columns.map(column => (
 			<Pane key={column.id} width={300} id={column.id} height="100%">
@@ -24,8 +26,7 @@ export default class Columns extends Component {
 		return (
 			<div styleName="content">
 				<SortablePane
-					onResize={() => null}
-					onOrderChange={pane => console.dir(pane)}
+					onResize={this.handleOnResize}
 					>
 						{columns}
 				</SortablePane>
