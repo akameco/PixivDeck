@@ -177,4 +177,8 @@ app.on('ready', () => {
 	ipcMain.on('tweet', (ev, url) => {
 		openTweet(url);
 	});
+
+	ipcMain.on('open-pixiv', (ev, id) => {
+		shell.openExternal(`http://www.pixiv.net/member_illust.php?mode=medium&illust_id=${id}`);
+	});
 });

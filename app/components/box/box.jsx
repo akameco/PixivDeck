@@ -71,6 +71,13 @@ export default class Box extends Component {
 			}
 		}));
 
+		menu.append(new MenuItem({
+			label: 'pixivで開く',
+			click() {
+				ipcRenderer.send('open-pixiv', id);
+			}
+		}));
+
 		menu.popup(remote.getCurrentWindow());
 	}
 
