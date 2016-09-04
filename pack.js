@@ -36,7 +36,8 @@ function pack(target) {
 			platform: 'darwin',
 			arch: 'x64',
 			icon: 'static/Icon.icns',
-			'app-bundle-id': 'io.github.akameco.pixivdeck'
+			'app-bundle-id': 'io.github.akameco.pixivdeck',
+			'osx-sign': true
 		},
 		windows: {
 			platform: 'win32',
