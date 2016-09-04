@@ -56,3 +56,15 @@ declare module 'electron-config' {
 declare module 'electron-debug' {
 	declare var exports: any;
 }
+
+declare module 'dot-prop' {
+	declare var exports: any;
+}
+
+declare module 'electron-dl' {
+	declare var exports: any;
+}
+
+declare module 'pixiv-app-api' {
+	declare var exports: any;
+}
