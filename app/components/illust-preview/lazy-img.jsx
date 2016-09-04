@@ -121,12 +121,6 @@ export default class LazyImg extends Component {
 		this.setState({isClicked: !this.state.isClicked});
 	}
 
-	renderCloseButton() {
-		return (
-			<CloseButton onClick={this.props.onClose}/>
-		);
-	}
-
 	render() {
 		const {width, height, isLoaded} = this.props;
 		const style = this.selectStyle(isLoaded, this.state.isClicked);
