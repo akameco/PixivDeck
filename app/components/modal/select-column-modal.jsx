@@ -17,9 +17,10 @@ class Link extends Component {
 	}
 
 	render() {
+		const onClick = () => this.props.onSelect(this.props.mode);
 		return (
 			<li>
-				<a onClick={() => this.props.onSelect(this.props.mode)}>
+				<a onClick={onClick}>
 					{locale(`ranking.${this.props.mode}`)}
 				</a>
 			</li>
@@ -58,6 +59,9 @@ export default class SelectColumnModal extends Component {
 				/>
 		);
 
+		const onClickPublic = () => this.handleAddFavorite('public');
+		const onClickPrivate = () => this.handleAddFavorite('private');
+
 		return (
 			<div styleName="wrap">
 				<header>
@@ -71,12 +75,12 @@ export default class SelectColumnModal extends Component {
 					<div styleName="kind">ブックマーク</div>
 					<ul styleName="list">
 						<li>
-							<a onClick={() => this.handleAddFavorite('public')}>
+							<a onClick={onClickPublic}>
 								公開ブックマーク
 							</a>
 						</li>
 						<li>
-							<a onClick={() => this.handleAddFavorite('private')}>
+							<a onClick={onClickPrivate}>
 								非公開ブックマーク
 							</a>
 						</li>
