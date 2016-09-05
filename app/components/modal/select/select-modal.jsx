@@ -1,10 +1,10 @@
 // @flow
 import React, {Component} from 'react';
 import css from 'react-css-modules';
-import {RANKING_MODES} from '../../contains';
-import type {Query} from '../../types/column';
-import locale from '../../locale/';
-import styles from './select-column-modal.css';
+import {RANKING_MODES} from '../../../contains';
+import type {Query} from '../../../types/column';
+import locale from '../../../locale/';
+import styles from './select-modal.css';
 
 class Link extends Component {
 	props: {

@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import css from 'react-css-modules';
-import Icon from '../icon';
+import Icon from '../../icon';
 import styles from './search-modal.css';
 
 type Props = {

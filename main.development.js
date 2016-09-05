@@ -181,4 +181,8 @@ app.on('ready', () => {
 	ipcMain.on('open-pixiv', (ev, id) => {
 		shell.openExternal(`http://www.pixiv.net/member_illust.php?mode=medium&illust_id=${id}`);
 	});
+
+	ipcMain.on('open-pixiv-setting', () => {
+		shell.openExternal('http://www.pixiv.net/setting_user.php');
+	});
 });
