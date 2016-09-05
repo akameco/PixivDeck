@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import {findDOMNode} from 'react-dom';
 import css from 'react-css-modules';
-import type {Work} from '../../types';
+import type {Illust} from '../../types';
 import Box from '../box';
 import {CloseButton} from '../button';
 import {LoadingIcon} from '../icon';
@@ -11,7 +11,7 @@ import styles from './list.css';
 
 type Props = {
 	id: number,
-	works: Array<Work>,
+	illusts: Array<Illust>,
 	title: string,
 	onNextPage: () => void,
 	onReload: (id: number) => void,
@@ -24,7 +24,7 @@ export default class List extends Component {
 	target: Component<*, *, *>
 
 	shouldComponentUpdate(nextProps: Props) {
-		if (this.props.works.length !== nextProps.works.length) {
+		if (this.props.illusts.length !== nextProps.illusts.length) {
 			return true;
 		}
 		return false;
@@ -57,8 +57,8 @@ export default class List extends Component {
 	}
 
 	render() {
-		const List = this.props.works.map(work => {
-			return <Box key={work.id} work={work}/>;
+		const List = this.props.illusts.map(illust => {
+			return <Box key={illust.id} illust={illust}/>;
 		});
 
 		return (
@@ -69,7 +69,7 @@ export default class List extends Component {
 					</a>
 					<CloseButton onClick={this.handleClose}/>
 				</header>
-				{this.props.works.length > 0 ?
+				{this.props.illusts.length > 0 ?
 					<div
 						styleName="content"
 						onMouseDown={this.handleMove}

@@ -1,12 +1,12 @@
 // @flow
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import type {Dispatch, State, Work, User} from '../../types/';
-import {addColumn, openImageView, openMangaPreview, currentWork} from '../../actions';
+import type {Dispatch, State, Illust, User} from '../../types/';
+import {addColumn, openImageView, openMangaPreview, currentIllust} from '../../actions';
 import Box from './box';
 
 type Props = {
-	work: Work,
+	illust: Illust,
 	user: User,
 	dispatch: Dispatch
 };
@@ -15,7 +15,7 @@ class SmartBox extends Component {
 	props: Props;
 
 	shouldComponentUpdate(nextProps) {
-		return this.props.work.id !== nextProps.work.id;
+		return this.props.illust.id !== nextProps.illust.id;
 	}
 
 	handleTagClick = (tag: string) => {
@@ -24,12 +24,12 @@ class SmartBox extends Component {
 
 	handleClickUser = () => {
 		const {user} = this.props;
-		this.props.dispatch(addColumn({type: 'userWorks', id: user.id, opts: {page: 1}}, `${user.name}(${user.account})`));
+		this.props.dispatch(addColumn({type: 'userIllusts', id: user.id, opts: {page: 1}}, `${user.name}(${user.account})`));
 	}
 
 	handleClick = () => {
-		const {id, pageCount} = this.props.work;
-		this.props.dispatch(currentWork(id));
+		const {id, pageCount} = this.props.illust;
+		this.props.dispatch(currentIllust(id));
 		if (pageCount > 1) {
 			this.props.dispatch(openMangaPreview());
 		} else {
@@ -41,7 +41,7 @@ class SmartBox extends Component {
 		return (
 			<Box
 				user={this.props.user}
-				work={this.props.work}
+				illust={this.props.illust}
 				onClick={this.handleClick}
 				onClickUser={this.handleClickUser}
 				onClickTag={this.handleTagClick}
@@ -51,7 +51,7 @@ class SmartBox extends Component {
 }
 
 function mapStateToProps(state: State, ownProps: Props) {
-	const user = state.entities.users[ownProps.work.user];
+	const user = state.entities.users[ownProps.illust.user];
 	return {
 		user
 	};

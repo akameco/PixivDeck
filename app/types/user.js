@@ -4,8 +4,9 @@ export type User = {
 	name: string,
 	account: string,
 	profileImageUrls: {
-		px50x50: string
-	}
-}
+		medium: string
+	},
+	isFollowed: bool
+};
 
-export type Users = {[key: number]: User} | Object;
+export type Users = {[key: number]: User};

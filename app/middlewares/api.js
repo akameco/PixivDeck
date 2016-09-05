@@ -9,7 +9,7 @@ function ipcSend(id: number, query: Query): void {
 	setImmediate(() => {
 		if (query.type === 'search') {
 			ipcRenderer.send(type, {id, q, opts});
-		} else if (query.type === 'userWorks') {
+		} else if (query.type === 'userIllusts') {
 			ipcRenderer.send(type, {id, userID: query.id, opts});
 		} else {
 			ipcRenderer.send(type, {id, opts});
@@ -50,8 +50,8 @@ export default (store: Store) => (next: Dispatch) => (action: Action) => {
 	}
 
 	if (action.type === 'OPEN_MANGA_PREVIEW') {
-		const id = store.getState().manage.currentWorkId;
-		ipcRenderer.send('work', id);
+		const id = store.getState().manage.currentIllustId;
+		ipcRenderer.send('illust', id);
 	}
 
 	if (action.type === 'SUCCESS_LOGINED') {

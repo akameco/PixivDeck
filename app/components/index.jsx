@@ -29,7 +29,7 @@ class App extends Component {
 	}
 
 	render() {
-		const {isLogin, currentWorkId} = this.props.manage;
+		const {isLogin, currentIllustId} = this.props.manage;
 		if (!isLogin) {
 			return <Auth onClick={this.handleAuth}/>;
 		}
@@ -38,8 +38,8 @@ class App extends Component {
 			<div>
 				<Header/>
 				<Columns columns={this.props.columns}/>
-				{this.props.manage.isImageView && <IllustPreview id={currentWorkId}/>}
-				{this.props.manage.isMangaView && <MangaPreview id={currentWorkId}/>}
+				{this.props.manage.isImageView && <IllustPreview id={currentIllustId}/>}
+				{this.props.manage.isMangaView && <MangaPreview id={currentIllustId}/>}
 				{this.props.manage.isModal && <Modal/>}
 			</div>
 		);

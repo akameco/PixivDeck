@@ -3,7 +3,7 @@ import {remote, ipcRenderer} from 'electron';
 import React, {Component} from 'react';
 import css from 'react-css-modules';
 import {download} from 'electron-dl';
-import type {Work, User} from '../../types/';
+import type {Illust, User} from '../../types/';
 import BoxHeader from './box-header';
 import BoxFooter from './box-footer';
 import BoxImage from './box-image';
@@ -12,7 +12,7 @@ import styles from './box.css';
 const {Menu, MenuItem} = remote;
 
 type Props = {
-	work: Work,
+	illust: Illust,
 	user: User,
 	onClick: () => void,
 	onClickUser: () => void,
@@ -24,13 +24,13 @@ export default class Box extends Component {
 	props: Props;
 
 	shouldComponentUpdate(nextProps: Props) {
-		return nextProps.work.id !== this.props.work.id;
+		return nextProps.illust.id !== this.props.illust.id;
 	}
 
 	handleContextMenu = (e: Event) => {
 		e.preventDefault();
 
-		const {id, title, imageUrls} = this.props.work;
+		const {id, title, imageUrls} = this.props.illust;
 		const img = imageUrls.large;
 		const name = this.props.user.name;
 
@@ -82,19 +82,21 @@ export default class Box extends Component {
 	}
 
 	render() {
-		const {work, user, onClick, onClickTag, onClickUser} = this.props;
-		const {title, caption, tags} = work;
+		const {illust, user, onClick, onClickTag, onClickUser} = this.props;
+		const {title, caption} = illust;
+		const tags = illust.tags.map(x => x.name);
+
 		return (
 			<div styleName="box" onContextMenu={this.handleContextMenu}>
 				<BoxHeader
 					name={user.name}
 					account={user.account}
-					img={user.profileImageUrls.px50x50}
+					img={user.profileImageUrls.medium}
 					title={title}
 					caption={caption}
 					onClick={onClickUser}
 					/>
-				<BoxImage work={work} onClick={onClick}/>
+				<BoxImage illust={illust} onClick={onClick}/>
 				<BoxFooter tags={tags} onClickTag={onClickTag}/>
 			</div>
 		);

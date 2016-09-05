@@ -40,7 +40,6 @@
     "lodash.merge": "^4.6.0",
     "lodash.union": "^4.6.0",
     "normalizr": "^2.2.1",
-    "pixiv.js": "^0.18.0",
     "pixiv-app-api": "^0.3.0",
     "react": "^15.3.1",
     "react-css-modules": "^3.7.10",

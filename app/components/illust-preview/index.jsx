@@ -1,13 +1,13 @@
 // @flow
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import type {Dispatch, State, Work} from '../../types';
+import type {Dispatch, State, Illust} from '../../types';
 import {closeImageView, finishImgLoaded, startImgLoading} from '../../actions/manage';
 import Preview from './illust-preview';
 
 type Props = {
 	id: number,
-	work: Work,
+	illust: Illust,
 	show: bool,
 	isLoaded: bool,
 	dispatch: Dispatch
@@ -17,7 +17,7 @@ class IllustPreview extends Component {
 	props: Props;
 
 	componentWillMount() {
-		if (!this.props.work) {
+		if (!this.props.illust) {
 			this.props.dispatch(closeImageView());
 		}
 	}
@@ -35,14 +35,14 @@ class IllustPreview extends Component {
 	}
 
 	render() {
-		const {work, show} = this.props;
+		const {illust, show} = this.props;
 		return (
 			<Preview
 				show={show}
-				from={work.imageUrls.px480mw}
-				width={work.width}
-				height={work.height}
-				to={work.imageUrls.large}
+				from={illust.imageUrls.medium}
+				width={illust.width}
+				height={illust.height}
+				to={illust.imageUrls.large}
 				isLoaded={this.props.isLoaded}
 				onLoad={this.handleLoad}
 				onUnLoad={this.handleUnLoad}
@@ -55,10 +55,10 @@ class IllustPreview extends Component {
 function mapStateToProps(state: State, ownProps) {
 	const {entities, manage} = state;
 	const {isImageView, isImgLoaded} = manage;
-	const work = entities.works[ownProps.id];
+	const illust = entities.illusts[ownProps.id];
 
 	return {
-		work,
+		illust,
 		show: isImageView,
 		isLoaded: isImgLoaded
 	};

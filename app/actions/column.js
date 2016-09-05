@@ -1,5 +1,5 @@
 // @flow
-import type {Action, Query} from '../types';
+import type {Action, Query, Params} from '../types';
 
 export function addColumn(query: Query, title: string): Action {
 	const id = Date.now();
@@ -15,6 +15,10 @@ export function nextPage(id: number): Action {
 	return {type: 'NEXT_PAGE', id};
 }
 
+export function setQuery(id: number, params: Params): Action {
+	return {type: 'SET_QUERY', id, params};
+}
+
 export function reloadColumn(id: number): Action {
 	return {type: 'RELOAD_COLUMN', id};
 }
@@ -23,13 +27,13 @@ export function closeColumn(id: number): Action {
 	return {type: 'CLOSE_COLUMN', id};
 }
 
-export function addHistoryColumn(works: Array<number>): Action {
+export function addHistoryColumn(illusts: Array<number>): Action {
 	const id = Date.now();
 	return {
 		type: 'ADD_COLUMN',
 		id,
-		works,
 		title: 'ヒストリー',
-		query: {type: 'history', opts: {page: 1}}
+		illusts,
+		query: {type: 'history'}
 	};
 }

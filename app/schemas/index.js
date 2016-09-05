@@ -1,14 +1,12 @@
 // @flow
 import {Schema, arrayOf} from 'normalizr';
 
-const workSchema = new Schema('works', {idAttribute: 'id'});
-const userSchema = new Schema('users', {idAttribute: 'id'});
+const user = new Schema('users', {idAttribute: 'id'});
+const illusts = new Schema('illusts', {idAttribute: 'id'});
 
-workSchema.define({
-	user: userSchema
-});
+illusts.define({user});
 
 export default {
-	WORK: workSchema,
-	WORK_ARRAY: arrayOf(workSchema)
+	ILLUST: illusts,
+	ILLUSTS: arrayOf(illusts)
 };

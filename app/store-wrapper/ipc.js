@@ -1,26 +1,34 @@
 // @flow
+import url from 'url';
 import {ipcRenderer} from 'electron';
 import {camelizeKeys} from 'humps';
 import {normalize} from 'normalizr';
-import type {Store, Dispatch} from '../types';
+import type {Store, Action, Dispatch, Params} from '../types';
 import Schemas from '../schemas';
 
-function format(res: Object) {
+function setQuery(id: number, params: any): Action {
+	return {type: 'SET_QUERY', id, params};
+}
+
+function send(dispatch: Dispatch, id: number, response: Object) {
+	setImmediate(() => {
+		dispatch({type: 'SUCCESS_IPC_REQUEST', response});
+	});
+	setImmediate(() => {
+		dispatch({type: 'RECIEVE_ILLUSTS', id, illusts: response.result});
+	});
+}
+
+function sendIllusts(dispatch, id, res) {
 	const camelizedJson = camelizeKeys(res);
-	return normalize(camelizedJson, Schemas.WORK_ARRAY);
+	const {nextUrl, illusts} = camelizedJson;
+	const params: Params | any | void = nextUrl ? url.parse(nextUrl, true).query : {};
+	send(dispatch, id, normalize(illusts, Schemas.ILLUSTS));
+	dispatch(setQuery(id, params));
 }
 
 export default (store: Store) => {
-	const dispatch: Dispatch = store.dispatch;
-
-	function send(id: number, response: Object) {
-		setImmediate(() => {
-			dispatch({type: 'SUCCESS_IPC_REQUEST', response});
-		});
-		setImmediate(() => {
-			dispatch({type: 'RECIEVE_WORKS', id, works: response.result});
-		});
-	}
+	const dispatch = store.dispatch;
 
 	ipcRenderer.on('SUCCESS_LOGINED', () => {
 		dispatch({type: 'SUCCESS_LOGINED'});
@@ -31,29 +39,25 @@ export default (store: Store) => {
 	});
 
 	ipcRenderer.on('ranking', (ev, data) => {
-		const res = data.res.works.map(v => v.work);
-		send(data.id, format(res));
+		sendIllusts(dispatch, data.id, data.res);
 	});
 
-	ipcRenderer.on('favoriteWorks', (ev, data) => {
-		const res = data.res.response.map(v => v.work);
-		send(data.id, format(res));
+	ipcRenderer.on('userIllusts', (ev, data) => {
+		sendIllusts(dispatch, data.id, data.res);
+	});
+
+	ipcRenderer.on('favoriteIllusts', (ev, data) => {
+		sendIllusts(dispatch, data.id, data.res);
 	});
 
 	ipcRenderer.on('search', (ev, data) => {
-		const res = data.res.response;
-		send(data.id, format(res));
+		sendIllusts(dispatch, data.id, data.res);
 	});
 
-	ipcRenderer.on('userWorks', (ev, data) => {
-		const res = data.res.response;
-		send(data.id, format(res));
-	});
-
-	ipcRenderer.on('work', (ev, data) => {
+	ipcRenderer.on('illust', (ev, data) => {
 		const res = data.response[0];
 		const camelizedJson = camelizeKeys(res);
-		const normalizedJson = normalize(camelizedJson, Schemas.WORK);
+		const normalizedJson = normalize(camelizedJson, Schemas.ILLUST);
 		dispatch({type: 'SUCCESS_IPC_REQUEST', response: normalizedJson});
 	});
 };
