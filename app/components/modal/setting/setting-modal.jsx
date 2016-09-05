@@ -1,10 +1,10 @@
 // @flow
 import React, {Component} from 'react';
 import css from 'react-css-modules';
-import Checkbox from '../shared/checkbox';
-import Icon from '../icon';
-import Tag from './tag';
-import styles from './setting-filter-modal.css';
+import Checkbox from '../../shared/checkbox';
+import Icon from '../../icon';
+import Tag from '../tag';
+import styles from './setting-modal.css';
 
 type Props = {
 	onDelete: (tag: string) => void,
@@ -74,6 +74,9 @@ export default class SettingFilterModal extends Component {
 					defaultChecked={this.props.r18}
 					text={"R18を表示する"}
 					/>
+				<div>
+					<a href="http://www.pixiv.net/setting_user.php" target="_brank">閲覧制限を設定する(pixivを開く)</a>
+				</div>
 				<div styleName="tagFilter">
 					<h4>タグフィルター</h4>
 					<div styleName="field">
