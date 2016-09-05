@@ -19,7 +19,7 @@ function send(dispatch: Dispatch, id: number, response: Object) {
 	});
 }
 
-function sendIllusts(dispatch, id, res) {
+function sendIllusts(dispatch: Dispatch, id: number, res: Object) {
 	const camelizedJson = camelizeKeys(res);
 	const {nextUrl, illusts} = camelizedJson;
 	const params: Params | any | void = nextUrl ? url.parse(nextUrl, true).query : {};
@@ -38,20 +38,10 @@ export default (store: Store) => {
 		dispatch({type: 'LOGOUT'});
 	});
 
-	ipcRenderer.on('ranking', (ev, data) => {
-		sendIllusts(dispatch, data.id, data.res);
-	});
-
-	ipcRenderer.on('userIllusts', (ev, data) => {
-		sendIllusts(dispatch, data.id, data.res);
-	});
-
-	ipcRenderer.on('favoriteIllusts', (ev, data) => {
-		sendIllusts(dispatch, data.id, data.res);
-	});
-
-	ipcRenderer.on('search', (ev, data) => {
-		sendIllusts(dispatch, data.id, data.res);
+	['ranking', 'userIllusts', 'favoriteIllusts', 'search'].forEach(x => {
+		ipcRenderer.on(x, (ev, data) => {
+			sendIllusts(dispatch, data.id, data.res);
+		});
 	});
 
 	ipcRenderer.on('illust', (ev, data) => {
