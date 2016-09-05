@@ -7,9 +7,10 @@ type State = Array<Column>;
 
 function query(state: Query, action: Action): Query {
 	if (action.type === 'INIT') {
-		return {...state, opts: {...state.opts, page: 1}};
-	} else if (action.type === 'NEXT_PAGE') {
-		return {...state, opts: {...state.opts, page: state.opts.page + 1}};
+		return {...state, opts: {...state.opts, offset: 0}};
+	}
+	if (action.type === 'SET_QUERY') {
+		return {...state, opts: {...state.opts, ...action.params}};
 	}
 	return state;
 }
@@ -20,11 +21,12 @@ function column(state: Column, action: Action): Column {
 	}
 
 	switch (action.type) {
-		case 'NEXT_PAGE': {
+		case 'INIT':
+			return {...state, illusts: [], query: query(state.query, action)};
+		case 'SET_QUERY':
 			return {...state, query: query(state.query, action)};
-		}
-		case 'RECIEVE_WORKS':
-			return {...state, works: union(state.works, action.works)};
+		case 'RECIEVE_ILLUSTS':
+			return {...state, illusts: union(state.illusts, action.illusts)};
 		default:
 			return state;
 	}
@@ -32,13 +34,11 @@ function column(state: Column, action: Action): Column {
 
 export default function columns(state: State = [], action: Action): State {
 	switch (action.type) {
-		case 'INIT':
-			return state.map(t => ({...t, works: [], query: query(t.query, action)}));
 		case 'ADD_COLUMN': {
 			const {id, query, title} = action;
 			return [
 				...state,
-				{id, query, title, works: []}
+				{id, query: {...query, offset: 0}, title, illusts: []}
 			];
 		}
 		case 'CLOSE_COLUMN': {
@@ -46,9 +46,9 @@ export default function columns(state: State = [], action: Action): State {
 			const id = action.id;
 			return state.filter(t => t.id !== id);
 		}
-		case 'NEXT_PAGE':
-			return state.map(t => column(t, action));
-		case 'RECIEVE_WORKS':
+		case 'INIT':
+		case 'RECIEVE_ILLUSTS':
+		case 'SET_QUERY':
 			return state.map(t => column(t, action));
 		default:
 			return state;

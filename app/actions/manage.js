@@ -53,7 +53,7 @@ export function closeMnagaPreview(): Action {
 	return {type: 'CLOSE_MANGA_PREVIEW'};
 }
 
-export function currentWork(id: number): Action {
+export function currentIllust(id: number): Action {
 	return {
 		type: 'SELECT_WORK',
 		id

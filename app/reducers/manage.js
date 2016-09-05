@@ -8,7 +8,7 @@ const initManageState: Manage = {
 	isMangaView: false,
 	isModal: false,
 	isDropdown: false,
-	currentWorkId: null,
+	currentIllustId: null,
 	modalType: 'DEFAULT'
 };
 
@@ -29,11 +29,11 @@ export default function (state: Manage = initManageState, action: Action): Manag
 				isDropdown: false
 			};
 		case 'OPEN_IMAGE_VIEW':
-			return {...state, isImageView: Boolean(state.currentWorkId), isMangaView: false, isDropdown: false};
+			return {...state, isImageView: Boolean(state.currentIllustId), isMangaView: false, isDropdown: false};
 		case 'CLOSE_IMAGE_VIEW':
 			return {...state, isImageView: false};
 		case 'OPEN_MANGA_PREVIEW':
-			return {...state, isMangaView: Boolean(state.currentWorkId), isImageView: false, isDropdown: false};
+			return {...state, isMangaView: Boolean(state.currentIllustId), isImageView: false, isDropdown: false};
 		case 'CLOSE_MANGA_PREVIEW':
 			return {...state, isMangaView: false};
 		case 'OPEN_MODAL':
@@ -51,7 +51,7 @@ export default function (state: Manage = initManageState, action: Action): Manag
 		case 'SET_IMG_LOADED':
 			return {...state, isImgLoaded: true};
 		case 'SELECT_WORK':
-			return {...state, currentWorkId: action.id};
+			return {...state, currentIllustId: action.id};
 		default:
 			return state;
 	}

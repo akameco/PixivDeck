@@ -8,7 +8,7 @@ export type Manage = {
 	isImgLoaded: bool,
 	isMangaView: bool,
 	isDropdown: bool,
-	currentWorkId: ?number,
+	currentIllustId: ?number,
 	modalType: ModalType
 };
 

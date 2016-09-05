@@ -2,12 +2,12 @@
 import React, {Component} from 'react';
 import {findDOMNode} from 'react-dom';
 import css from 'react-css-modules';
-import type {Work} from '../../types';
+import type {Illust} from '../../types';
 import Icon from '../icon/';
 import styles from './box-image.css';
 
 type Props = {
-	work: Work,
+	illust: Illust,
 	onClick: () => void
 };
 
@@ -66,7 +66,7 @@ export default class BoxImage extends Component {
 		img.onload = () => {
 			this.setState({isLoaded: true});
 		};
-		img.src = this.props.work.imageUrls.px480mw;
+		img.src = this.props.illust.imageUrls.medium;
 	}
 
 	handleRefs = (c: Component<*, *, *>) => {
@@ -74,7 +74,7 @@ export default class BoxImage extends Component {
 	}
 
 	render() {
-		const {imageUrls, pageCount} = this.props.work;
+		const {imageUrls, pageCount} = this.props.illust;
 		return (
 			<div
 				ref={this.handleRefs}
@@ -86,7 +86,7 @@ export default class BoxImage extends Component {
 				{this.state.isVisible && this.state.isLoaded ?
 					<img
 						styleName="loaded"
-						src={imageUrls.px480mw}
+						src={imageUrls.medium}
 						onClick={this.props.onClick}
 						/> :
 					<img height={200}/>

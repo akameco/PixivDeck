@@ -1,14 +1,14 @@
 // @flow
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import type {State, Dispatch, Work} from '../../types';
+import type {State, Dispatch, Illust} from '../../types';
 import {closeMnagaPreview} from '../../actions';
 import Preview from './manga-preview';
 import MultiPreview from './multi-preview';
 
 type Props = {
 	id: number,
-	work: Work,
+	illust: Illust,
 	show: bool,
 	dispatch: Dispatch
 };
@@ -21,15 +21,15 @@ class MangaPreviewContainer extends Component {
 	}
 
 	render() {
-		const {work, show} = this.props;
-		if (work.metadata && work.metadata.pages) {
-			return <MultiPreview pages={work.metadata.pages} onClose={this.handleClose}/>;
+		const {illust, show} = this.props;
+		if (illust.metadata && illust.metadata.pages) {
+			return <MultiPreview pages={illust.metadata.pages} onClose={this.handleClose}/>;
 		}
 
 		return (
 			<Preview
 				show={show}
-				img={work.imageUrls.large}
+				img={illust.imageUrls.large}
 				onClose={this.handleClose}
 				/>
 		);
@@ -39,10 +39,10 @@ class MangaPreviewContainer extends Component {
 function mapStateToProps(state: State, ownProps) {
 	const {entities, manage} = state;
 	const {isMangaView} = manage;
-	const work: Work = entities.works[ownProps.id];
+	const illust: Illust = entities.illusts[ownProps.id];
 
 	return {
-		work,
+		illust,
 		show: isMangaView
 	};
 }
