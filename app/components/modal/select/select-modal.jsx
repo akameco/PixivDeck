@@ -38,16 +38,16 @@ export default class SelectColumnModal extends Component {
 	props: Props;
 
 	handleAddRanking = (mode: string) => {
-		this.props.onSelect({type: 'ranking', opts: {mode, page: 1}}, `${locale(`ranking.${mode}`)}ランキング`);
+		this.props.onSelect({type: 'ranking', opts: {mode}}, `${locale(`ranking.${mode}`)}ランキング`);
 	}
 
 	handleAddFavorite = (publicity: 'private' | 'public') => {
 		const title = {private: '非公開ブックマーク', public: '公開ブックマーク'}[publicity];
-		this.props.onSelect({type: 'favoriteWorks', opts: {publicity, page: 1}}, title);
+		this.props.onSelect({type: 'favoriteIllusts', opts: {restrict: publicity}}, title);
 	}
 
 	handleAddHistory = () => {
-		this.props.onSelect({type: 'history', opts: {page: 1}}, 'history');
+		this.props.onSelect({type: 'history'}, 'history');
 	}
 
 	render() {

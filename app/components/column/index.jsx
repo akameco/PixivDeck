@@ -1,12 +1,12 @@
 // @flow
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import type {Dispatch, State, Work, Works, ColumnType} from '../../types';
+import type {Dispatch, State, Illust, Illusts, ColumnType} from '../../types';
 import {nextPage, closeColumn, reloadColumn} from '../../actions';
 import Column from './column';
 
 type Props = {
-	works: Array<Work>,
+	illusts: Array<Illust>,
 	column: ColumnType,
 	dispatch: Dispatch
 }
@@ -15,7 +15,7 @@ class SmartColumn extends Component {
 	props: Props;
 
 	shouldComponentUpdate(nextProps) {
-		if (this.props.works.length !== nextProps.works.length) {
+		if (this.props.illusts.length !== nextProps.illusts.length) {
 			return true;
 		}
 		return false;
@@ -34,10 +34,10 @@ class SmartColumn extends Component {
 	}
 
 	render() {
-		const {column, works} = this.props;
+		const {column, illusts} = this.props;
 		return (
 			<Column
-				works={works}
+				illusts={illusts}
 				column={column}
 				onClickTop={this.handleTopClick}
 				onClose={this.handleClose}
@@ -47,32 +47,28 @@ class SmartColumn extends Component {
 	}
 }
 
-function selectWorks(nums: Array<number>, works: Works) {
-	return nums.map(i => works[i]);
+function selectIllusts(nums: Array<number>, illusts: Illusts) {
+	return nums.map(i => illusts[i]);
 }
 
-function filterWorks(works: Array<Work>, filters: Array<(work: Work)=> bool>) {
-	return works.filter(work => {
-		return filters.every(f => f(work));
+function filterIllusts(illusts: Array<Illust>, filters: Array<(illust: Illust)=> bool>) {
+	return illusts.filter(illust => {
+		return filters.every(f => f(illust));
 	});
 }
 
-const r18Filter = (work: Work) => work.ageLimit !== 'r18';
-const tagFilter = (tags: Array<string>) => (work: Work) => work.tags.every(tag => tags.every(t => t !== tag));
+const tagFilter = (tags: Array<string>) => (illust: Illust) => illust.tags.every(tag => tags.every(t => t !== tag));
 
 function mapStateToProps(state: State, ownProps: Props) {
 	const {entities, filter, history} = state;
-	const {works} = entities;
-	const columnWorks = ownProps.column.query.type === 'history' ? history : ownProps.column.works;
-	const selectedWorks = selectWorks(columnWorks, works);
+	const {illusts} = entities;
+	const columnIllusts = ownProps.column.query.type === 'history' ? history : ownProps.column.illusts;
+	const selectedIllusts = selectIllusts(columnIllusts, illusts);
 	const filters = [tagFilter(filter.tags)];
-	if (!filter.r18) {
-		filters.push(r18Filter);
-	}
-	const list = filterWorks(selectedWorks, filters);
+	const list = filterIllusts(selectedIllusts, filters);
 
 	return {
-		works: list
+		illusts: list
 	};
 }
 

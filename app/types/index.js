@@ -1,30 +1,31 @@
 // @flow
-import type {ColumnType, ColumnAction, Query} from './column';
+import type {ColumnType, ColumnAction, Query, Params} from './column';
 import type {Manage, ManageAction, ModalType} from './manage';
 import type {History, HistoryAction} from './history';
 import type {Filter, FilterAction} from './filter';
 import type {IpcAction} from './ipc';
-import type {Work, Works, Page} from './work';
+import type {Illust, Illusts, Page} from './illust';
 import type {User, Users} from './user';
 
 export type {
+	Illust,
+	Illusts,
 	Manage,
 	Filter,
 	History,
 	IpcAction,
 	ColumnType,
 	Query,
-	Work,
-	Works,
 	User,
 	Users,
 	Page,
-	ModalType
+	ModalType,
+	Params
 };
 
 export type Entities = {
 	users: Users,
-	works: Works
+	illusts: Illusts
 };
 
 export type Action = ColumnAction | ManageAction | IpcAction | FilterAction | HistoryAction | {type: 'INIT'} ;
@@ -33,10 +34,7 @@ export type Dispatch = (action: Action) => Action;
 
 export type State = {
 	columns: Array<ColumnType>,
-	entities: {
-		users: Users,
-		works: Works
-	},
+	entities: Entities,
 	manage: Manage,
 	filter: Filter,
 	history: History

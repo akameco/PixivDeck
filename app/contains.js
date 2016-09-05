@@ -1,6 +1,6 @@
 // @flow
-export type RankingModeType = 'daily' | 'weekly' | 'monthly' | 'rookie' | 'original' | 'male' | 'female' | 'daily_r18' | 'weekly_r18' | 'male_r18' | 'female_r18' | 'r18g';
+export type RankingModeType = 'day' | 'week' | 'month' | 'week_rookie' | 'week_original' | 'day_male' | 'day_female' | 'day_r18' | 'week_r18' | 'day_male_r18' | 'day_female_r18' | 'week_r18g';
 
 export const RANKING_MODES: Array<RankingModeType> = [
-	'daily', 'weekly', 'monthly', 'rookie', 'original', 'male', 'female', 'daily_r18', 'weekly_r18', 'male_r18', 'female_r18', 'r18g'
+	'day', 'week', 'month', 'week_rookie', 'week_original', 'day_male', 'day_female', 'day_r18', 'week_r18', 'day_male_r18', 'day_female_r18', 'week_r18g'
 ];

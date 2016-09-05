@@ -4,12 +4,12 @@ import type {Action, Dispatch} from '../types';
 
 export default () => (next: Dispatch) => (action: Action) => {
 	if (action.type === 'INIT') {
-		ipcRenderer.send('INIT');
+		ipcRenderer.send('init');
 	}
 	if (action.type === 'LOGIN') {
-		ipcRenderer.send('LOGIN', {name: action.name, password: action.password});
+		ipcRenderer.send('login', {name: action.name, password: action.password});
 	} else if (action.type === 'LOGOUT') {
-		ipcRenderer.send('LOGOUT');
+		ipcRenderer.send('logout');
 	}
 
 	return next(action);
