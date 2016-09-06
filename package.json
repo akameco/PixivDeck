@@ -28,7 +28,7 @@
   "author": "akameco <akameco.t@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "autolinker": "^0.28.0",
+    "autolinker": "^1.1.0",
     "babel-polyfill": "^6.13.0",
     "dot-prop": "^4.0.0",
     "electron-config": "^0.2.1",
