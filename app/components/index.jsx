@@ -28,8 +28,17 @@ class App extends Component {
 		this.props.dispatch(login(name, password));
 	}
 
+	renderPreview() {
+		const {currentIllustId, isImageView, isMangaView} = this.props.manage;
+		if (isImageView) {
+			return <IllustPreview id={currentIllustId}/>;
+		} else if (isMangaView) {
+			return <MangaPreview id={currentIllustId}/>;
+		}
+	}
+
 	render() {
-		const {isLogin, currentIllustId} = this.props.manage;
+		const {isLogin} = this.props.manage;
 		if (!isLogin) {
 			return <Auth onClick={this.handleAuth}/>;
 		}
@@ -38,8 +47,7 @@ class App extends Component {
 			<div>
 				<Header/>
 				<Columns columns={this.props.columns}/>
-				{this.props.manage.isImageView && <IllustPreview id={currentIllustId}/>}
-				{this.props.manage.isMangaView && <MangaPreview id={currentIllustId}/>}
+				{this.renderPreview()}
 				{this.props.manage.isModal && <Modal/>}
 			</div>
 		);
