@@ -4,7 +4,7 @@ import type {Manage, ManageAction, ModalType} from './manage';
 import type {History, HistoryAction} from './history';
 import type {Filter, FilterAction} from './filter';
 import type {IpcAction} from './ipc';
-import type {Illust, Illusts, Page} from './illust';
+import type {Illust, Illusts, MetaPages} from './illust';
 import type {User, Users} from './user';
 
 export type {
@@ -18,7 +18,7 @@ export type {
 	Query,
 	User,
 	Users,
-	Page,
+	MetaPages,
 	ModalType,
 	Params
 };
