@@ -1,7 +1,7 @@
 // @flow
 import type {Manage, Action} from '../types';
 
-const initManageState: Manage = {
+const initManageState: $Shape<Manage> = {
 	isLogin: false,
 	isImageView: false,
 	isImgLoaded: false,
@@ -12,7 +12,7 @@ const initManageState: Manage = {
 	modalType: 'DEFAULT'
 };
 
-export default function (state: Manage = initManageState, action: Action): Manage {
+export default function (state: Manage = initManageState, action: Action): $Shape<Manage> {
 	switch (action.type) {
 		case 'INIT':
 			return {...state, isModal: false, isDropdown: false, isMangaView: false, isImageView: false};

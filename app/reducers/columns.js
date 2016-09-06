@@ -3,9 +3,9 @@ import union from 'lodash.union';
 import type {Action, ColumnType, Query} from '../types';
 
 type Column = ColumnType;
-type State = Array<Column>;
+type State = Array<$Shape<Column>>;
 
-function query(state: Query, action: Action): Query {
+function query(state: Query, action: Action): $Shape<Query> {
 	if (action.type === 'INIT') {
 		return {...state, opts: {...state.opts, offset: 0}};
 	}
@@ -15,7 +15,7 @@ function query(state: Query, action: Action): Query {
 	return state;
 }
 
-function column(state: Column, action: Action): Column {
+function column(state: Column, action: Action): $Shape<Column> {
 	if (action.id && state.id !== action.id) {
 		return state;
 	}
