@@ -3,7 +3,7 @@ export type ImageUrls = {
 	squareMedium: string,
 	medium: string,
 	large: string
-}
+};
 
 export type MetaPages = Array<{
 	imageUrls: {

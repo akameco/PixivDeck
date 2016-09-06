@@ -1,5 +1,4 @@
 // @flow
-
 export type Params = {
 	mode?: string,
 	restrict?: 'public' | 'private',
@@ -26,6 +25,6 @@ export type ColumnAction =
 	| {type: 'ADD_COLUMN', id: number, title: string, query: Query}
 	| {type: 'RELOAD_COLUMN', id: number}
 	| {type: 'NEXT_PAGE', id: number}
-	| {type: 'SET_QUERY', id: number, params: Params | Object}
+	| {type: 'SET_QUERY', id: number, params: Params}
 	| {type: 'CLOSE_COLUMN', id: number}
 ;

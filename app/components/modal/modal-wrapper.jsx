@@ -5,7 +5,7 @@ import {CloseButton} from '../button/';
 import styles from './modal.css';
 
 type Props = {
-	children?: any,
+	children?: typeof Component,
 	onClose: () => void,
 };
 

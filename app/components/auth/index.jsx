@@ -25,12 +25,16 @@ export default class Auth extends Component {
 		};
 	}
 
-	handleChangeName = (event: any) => {
-		this.setState({name: event.target.value});
+	handleChangeName = (event: Event) => {
+		if (event.target instanceof HTMLInputElement) {
+			this.setState({name: event.target.value});
+		}
 	}
 
-	handleChangePassword = (event: any) => {
-		this.setState({password: event.target.value});
+	handleChangePassword = (event: Event) => {
+		if (event.target instanceof HTMLInputElement) {
+			this.setState({password: event.target.value});
+		}
 	}
 
 	handleClick = () => {
