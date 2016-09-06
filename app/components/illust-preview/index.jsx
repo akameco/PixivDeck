@@ -42,7 +42,7 @@ class IllustPreview extends Component {
 				from={illust.imageUrls.medium}
 				width={illust.width}
 				height={illust.height}
-				to={illust.imageUrls.large}
+				to={illust.metaSinglePage.originalImageUrl}
 				isLoaded={this.props.isLoaded}
 				onLoad={this.handleLoad}
 				onUnLoad={this.handleUnLoad}

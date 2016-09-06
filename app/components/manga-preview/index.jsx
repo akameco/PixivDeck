@@ -22,8 +22,8 @@ class MangaPreviewContainer extends Component {
 
 	render() {
 		const {illust, show} = this.props;
-		if (illust.metadata && illust.metadata.pages) {
-			return <MultiPreview pages={illust.metadata.pages} onClose={this.handleClose}/>;
+		if (illust.metaPages) {
+			return <MultiPreview pages={illust.metaPages} onClose={this.handleClose}/>;
 		}
 
 		return (
