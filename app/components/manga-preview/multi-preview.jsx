@@ -18,7 +18,7 @@ export default class MultiPreview extends Component {
 		const imgs = this.props.pages.map(page => {
 			return (
 				<div styleName="item" key={page.imageUrls.medium}>
-					<img src={page.imageUrls.medium}/>
+					<img src={page.imageUrls.large}/>
 				</div>
 			);
 		});
