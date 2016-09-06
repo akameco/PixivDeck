@@ -7,7 +7,7 @@ const initialState: Filter = {
 	tags: []
 };
 
-export default function (state: Filter = initialState, action: Action): Filter {
+export default function (state: Filter = initialState, action: Action): $Shape<Filter> {
 	switch (action.type) {
 		case 'ADD_TAG_FILTER':
 			return {...state, tags: union([...state.tags, action.tag])};
