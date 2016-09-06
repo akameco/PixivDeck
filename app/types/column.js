@@ -10,14 +10,14 @@ export type Query = {
 	type: 'search' | 'ranking' | 'favoriteIllusts' | 'userIllusts' | 'history',
 	id?: number,
 	q?: string,
-	opts?: Params
+	opts?: $Shape<Params>
 };
 
 export type ColumnType = {
 	id: number,
 	title: string,
 	illusts: Array<number>,
-	query: Query
+	query: $Shape<Query>
 };
 
 export type ColumnAction =

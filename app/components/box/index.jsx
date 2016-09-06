@@ -19,12 +19,12 @@ class SmartBox extends Component {
 	}
 
 	handleTagClick = (tag: string) => {
-		this.props.dispatch(addColumn({type: 'search', q: tag, opts: {page: 1}}, tag));
+		this.props.dispatch(addColumn({type: 'search', q: tag}, tag));
 	}
 
 	handleClickUser = () => {
 		const {user} = this.props;
-		this.props.dispatch(addColumn({type: 'userIllusts', id: user.id, opts: {page: 1}}, `${user.name}(${user.account})`));
+		this.props.dispatch(addColumn({type: 'userIllusts', id: user.id}, `${user.name}(${user.account})`));
 	}
 
 	handleClick = () => {
