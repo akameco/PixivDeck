@@ -11,7 +11,7 @@ type Props = {
 	onClickTop: (id: number) => void,
 	onClose: () => void,
 	onNextPage: () => void
-}
+};
 
 @css(styles)
 export default class Column extends Component {

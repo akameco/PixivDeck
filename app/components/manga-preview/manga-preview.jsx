@@ -11,7 +11,7 @@ type Props = {
 
 type State = {
 	isLoad: bool
-}
+};
 
 @css(styles)
 export default class MangaPreview extends Component {

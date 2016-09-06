@@ -71,6 +71,7 @@
     "electron-packager": "^8.0.0",
     "eslint": "^3.4.0",
     "eslint-config-xo-react": "^0.9.0",
+    "eslint-plugin-flowtype": "^2.15.0",
     "eslint-plugin-react": "^6.2.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "hard-rejection": "^0.1.0",
@@ -92,6 +93,9 @@
     "extends": [
       "xo-react"
     ],
+    "plugins": [
+      "flowtype"
+    ],
     "ignores": [
       "interface/**",
       "release/**",
@@ -99,7 +103,12 @@
       "main.js"
     ],
     "rules": {
-      "no-duplicate-imports": 0
+      "flowtype/define-flow-type": 2,
+      "flowtype/semi": [2, "always"],
+      "flowtype/space-after-type-colon": [2, "always"],
+      "flowtype/union-intersection-spacing": [2, "always"],
+      "flowtype/use-flow-type": 2,
+      "flowtype/valid-syntax": 2
     }
   }
 }

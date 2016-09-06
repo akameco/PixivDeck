@@ -9,7 +9,7 @@ type Props = {
 	illusts: Array<Illust>,
 	column: ColumnType,
 	dispatch: Dispatch
-}
+};
 
 class SmartColumn extends Component {
 	props: Props;
