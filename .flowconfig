@@ -11,4 +11,3 @@
 [options]
 esproposal.class_instance_fields=enable
 esproposal.decorators=ignore
-module.name_mapper.extension='css' -> '<PROJECT_ROOT>/CSSFlowStub.js.flow'
