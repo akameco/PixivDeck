@@ -7,7 +7,7 @@ import Modal from './search-modal';
 function mapDispatchToProps(dispatch: Dispatch) {
 	return {
 		onSubmit: (tag: string) => {
-			dispatch(addColumn({type: 'search', q: tag, opts: {page: 1}}, tag));
+			dispatch(addColumn({type: 'search', q: tag}, tag));
 		}
 	};
 }

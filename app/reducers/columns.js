@@ -6,13 +6,15 @@ type Column = ColumnType;
 type State = Array<$Shape<Column>>;
 
 function query(state: Query, action: Action): $Shape<Query> {
-	if (action.type === 'INIT') {
-		return {...state, opts: {...state.opts, offset: 0}};
+	switch (action.type) {
+		case 'INIT':
+		case 'ADD_COLUMN':
+			return {...state, opts: {...state.opts, offset: 0}};
+		case 'SET_QUERY':
+			return {...state, opts: {...state.opts, ...action.params}};
+		default:
+			return state;
 	}
-	if (action.type === 'SET_QUERY') {
-		return {...state, opts: {...state.opts, ...action.params}};
-	}
-	return state;
 }
 
 function column(state: Column, action: Action): $Shape<Column> {
@@ -35,10 +37,10 @@ function column(state: Column, action: Action): $Shape<Column> {
 export default function columns(state: State = [], action: Action): State {
 	switch (action.type) {
 		case 'ADD_COLUMN': {
-			const {id, query, title} = action;
+			const {id, title} = action;
 			return [
 				...state,
-				{id, query: {...query, offset: 0}, title, illusts: []}
+				{id, query: query(action.query, action), title, illusts: []}
 			];
 		}
 		case 'CLOSE_COLUMN': {
