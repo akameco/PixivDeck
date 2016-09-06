@@ -1,19 +1,7 @@
-.fullSize {
+.base {
 	width: 100%;
 	height: 100%;
-}
-
-.baseColor {
 	color: #e1e8ed;
-}
-
-.darkColor {
-	color: #9ea6ac;
-}
-
-.base {
-	composes: fullSize;
-	composes: baseColor;
 
 	display: flex;
 }
@@ -23,8 +11,7 @@
 }
 
 .title {
-	composes: baseColor;
-
+	color: #e1e8ed;
 	width: calc(100% - 20px);
 	padding: 5px 0 2px 5px;
 	font-size: 1rem;
@@ -46,21 +33,24 @@
 }
 
 .name {
-	composes: baseColor;
+	color: #e1e8ed;
 
 	margin-left: 0.5rem;
 	margin-right: 5px;
 }
 
-.account {
-	composes: darkColor;
+.name:hover {
+	color: #77aaff;
+}
 
+.account {
+	color: #9ea6ac;
 	line-height: 1;
 	font-size: 0.85rem;
 }
 
 .body {
-	composes: darkColor;
+	color: #9ea6ac;
 
 	width: calc(100% - 10px);
 	line-height: 1.2rem;
