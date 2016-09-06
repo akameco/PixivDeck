@@ -5,9 +5,14 @@ export type ImageUrls = {
 	large: string
 }
 
-export type Page = {
-	imageUrls: ImageUrls
-}
+export type MetaPages = Array<{
+	imageUrls: {
+		squareMedium: string,
+		medium: string,
+		large: string,
+		original: string
+	}
+}>;
 
 export type Illust = {
 	id: number,
@@ -26,14 +31,7 @@ export type Illust = {
 	metaSinglePage: {
 		originalImageUrl?: string
 	},
-	metaPages?: Array<{
-		imageUrls: {
-			squareMedium: string,
-			medium: string,
-			large: string,
-			original: string
-		}
-	}>,
+	metaPages?: MetaPages,
 	totalView: number,
 	totalBookmarks: number,
 	isBookmarked: bool,

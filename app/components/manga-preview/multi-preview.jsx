@@ -1,12 +1,12 @@
 // @flow
 import React, {Component} from 'react';
 import css from 'react-css-modules';
-import type {Page} from '../../types';
+import type {MetaPages} from '../../types';
 import {CloseButton} from '../button';
 import styles from './multi-preview.css';
 
 type Props = {
-	pages: Array<Page>,
+	pages: MetaPages,
 	onClose: () => void
 };
 
