@@ -5,20 +5,20 @@ export type ImageUrls = {
 	large: string
 };
 
-export type MetaPages = Array<{
+export type MetaPages = Array<$Shape<{
 	imageUrls: {
 		squareMedium: string,
 		medium: string,
 		large: string,
 		original: string
 	}
-}>;
+}>>;
 
 export type Illust = {
 	id: number,
 	title: string,
 	type: 'illust',
-	imageUrls: ImageUrls,
+	imageUrls: $Shape<ImageUrls>,
 	caption: string,
 	restrict: number,
 	user: number,
@@ -31,7 +31,7 @@ export type Illust = {
 	metaSinglePage: {
 		originalImageUrl?: string
 	},
-	metaPages?: MetaPages,
+	metaPages?: $Shape<MetaPages>,
 	totalView: number,
 	totalBookmarks: number,
 	isBookmarked: bool,

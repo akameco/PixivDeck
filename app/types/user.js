@@ -3,9 +3,9 @@ export type User = {
 	id: number,
 	name: string,
 	account: string,
-	profileImageUrls: {
+	profileImageUrls: $Shape<{
 		medium: string
-	},
+	}>,
 	isFollowed: bool
 };
 
