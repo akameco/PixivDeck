@@ -68,3 +68,7 @@ declare module 'electron-dl' {
 declare module 'pixiv-app-api' {
 	declare var exports: any;
 }
+
+declare module 'wallpaper' {
+	declare var exports: any;
+}
