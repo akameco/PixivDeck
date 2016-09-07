@@ -30,7 +30,7 @@ export default class Box extends Component {
 	handleContextMenu = (e: Event) => {
 		e.preventDefault();
 
-		const {id, title, imageUrls} = this.props.illust;
+		const {id, title, imageUrls, metaSinglePage} = this.props.illust;
 		const img = imageUrls.large;
 		const name = this.props.user.name;
 
@@ -75,6 +75,20 @@ export default class Box extends Component {
 			label: 'pixivで開く',
 			click() {
 				ipcRenderer.send('open-pixiv', id);
+			}
+		}));
+
+		menu.append(new MenuItem({type: 'separator'}));
+
+		menu.append(new MenuItem({
+			label: '壁紙に設定',
+			click() {
+				const img = metaSinglePage.originalImageUrl;
+				if (img) {
+					ipcRenderer.send('wallpaper', img);
+				} else {
+					ipcRenderer.send('wallpaper', imageUrls.large);
+				}
 			}
 		}));
 
