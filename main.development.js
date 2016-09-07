@@ -4,6 +4,8 @@ import electron from 'electron';
 import Config from 'electron-config';
 import Pixiv from 'pixiv-app-api';
 import referer from 'electron-referer';
+import wallpaper from 'wallpaper';
+import {download} from 'electron-dl';
 import appMenu from './menu';
 
 const {app, BrowserWindow, ipcMain, shell} = electron;
@@ -179,5 +181,15 @@ app.on('ready', () => {
 
 	ipcMain.on('open-pixiv-setting', () => {
 		shell.openExternal('http://www.pixiv.net/setting_user.php');
+	});
+
+	ipcMain.on('trending-tags-illust', async ev => {
+		const tags = await pixiv.trendingTagsIllust();
+		ev.sender.send('trending-tags-illust', tags);
+	});
+
+	ipcMain.on('wallpaper', async (ev, img) => {
+		const dl = await download(mainWindow, img);
+		await wallpaper.set(dl.getSavePath());
 	});
 });
