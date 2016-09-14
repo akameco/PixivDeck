@@ -43,6 +43,8 @@ module.exports = merge(baseConfig, {
 		'pixiv.js',
 		'pixiv-app-api',
 		'electron-dl',
-		'dot-prop'
+		'dot-prop',
+		'pify',
+		'wallpaper'
 	]
 });
