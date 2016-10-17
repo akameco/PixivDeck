@@ -6,7 +6,6 @@
 [include]
 
 [libs]
-./interface
 
 [options]
 esproposal.class_instance_fields=enable

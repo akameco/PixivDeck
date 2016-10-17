@@ -1,4 +1,4 @@
 release/*
 dist/*
-interface/*
+flow-typed/*
 main.js
