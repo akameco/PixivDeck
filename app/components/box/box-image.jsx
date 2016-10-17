@@ -31,16 +31,6 @@ export default class BoxImage extends Component {
 		};
 	}
 
-	shouldComponentUpdate(nextProps: Props, nextState: State) {
-		if (this.state.isLoaded !== nextState.isLoaded) {
-			return true;
-		}
-		if (this.state.isVisible !== nextState.isVisible) {
-			return true;
-		}
-		return false;
-	}
-
 	componentDidMount() {
 		const target = this.target;
 		this.io = new IntersectionObserver(entries => { // eslint-disable-line no-undef
@@ -53,6 +43,16 @@ export default class BoxImage extends Component {
 			rootMargin: '500px'
 		});
 		this.io.observe(findDOMNode(target));
+	}
+
+	shouldComponentUpdate(nextProps: Props, nextState: State) {
+		if (this.state.isLoaded !== nextState.isLoaded) {
+			return true;
+		}
+		if (this.state.isVisible !== nextState.isVisible) {
+			return true;
+		}
+		return false;
 	}
 
 	componentWillUnmount() {
@@ -89,7 +89,7 @@ export default class BoxImage extends Component {
 						src={imageUrls.medium}
 						onClick={this.props.onClick}
 						/> :
-					<img height={200}/>
+							<img height={200}/>
 				}
 			</div>
 		);
