@@ -1,0 +1,68 @@
+{
+	"parser": "babel-eslint",
+	"extends": [
+		"xo/esnext",
+		"xo-react",
+		"plugin:flowtype/recommended"
+	],
+	"env": {
+		"node": true,
+		"browser": true
+	},
+	"settings": {
+		"import/core-modules": [
+			"electron",
+			"atom"
+		]
+	},
+	"plugins": [
+		"babel",
+		"react",
+		"flowtype",
+		"promise",
+		"import"
+	],
+	"rules": {
+		"arrow-parens": 0,
+		"babel/arrow-parens": ["error", "as-needed"],
+		"indent": ["error", "tab", {"SwitchCase": 1}],
+		"react/sort-comp": [2, {
+			"order": [
+				"type-annotations",
+				"static-methods",
+				"lifecycle",
+				"everything-else",
+				"render"
+			]
+		}],
+		"flowtype/boolean-style": [2, "bool"],
+		"flowtype/define-flow-type": 2,
+		"flowtype/semi": [2, "always"],
+		"flowtype/space-after-type-colon": [2, "always"],
+		"flowtype/union-intersection-spacing": [2, "always"],
+		"flowtype/use-flow-type": 2,
+		"flowtype/valid-syntax": 2,
+		"import/default": "error",
+		"import/export": "error",
+		"import/extensions": ["error", {
+			"js": "never",
+			"json": "never",
+			"jsx": "never"
+		}],
+		"import/first": "error",
+		"import/named": "error",
+		"import/namespace": ["error", {"allowComputed": true}],
+		"import/no-absolute-path": "error",
+		"import/no-dynamic-require": "error",
+		"import/no-webpack-loader-syntax": "error",
+		"import/newline-after-import": "error",
+		"import/no-amd": "error",
+		"import/no-extraneous-dependencies": "error",
+		"import/no-mutable-exports": "error",
+		"import/no-named-as-default-member": "error",
+		"import/no-named-as-default": "error",
+		"import/order": "error",
+		"import/no-unassigned-import": "error",
+		"promise/param-names": "error"
+	}
+}

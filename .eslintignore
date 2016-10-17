@@ -1,0 +1,4 @@
+release/*
+dist/*
+interface/*
+main.js
