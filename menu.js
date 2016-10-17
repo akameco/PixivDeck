@@ -210,4 +210,6 @@ const otherTpl = [
 ];
 
 const tpl = process.platform === 'darwin' ? darwinTpl : otherTpl;
-module.exports = electron.Menu.buildFromTemplate(tpl);
+const appMenu = electron.Menu.buildFromTemplate(tpl);
+
+export default appMenu;

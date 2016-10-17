@@ -61,7 +61,7 @@ export default class SettingFilterModal extends Component {
 	}
 
 	render() {
-		const tags = this.props.tags.map(tag =>
+		const tags = this.props.tags.map((tag: string) =>
 			<Tag key={tag} tag={tag} onClick={this.props.onDelete}/>
 		);
 
@@ -72,7 +72,7 @@ export default class SettingFilterModal extends Component {
 					onChange={this.handleSelectR18}
 					value={this.props.r18}
 					defaultChecked={this.props.r18}
-					text={"R18を表示する"}
+					text={'R18を表示する'}
 					/>
 				<div>
 					<a href="http://www.pixiv.net/setting_user.php" target="_brank">閲覧制限を設定する(pixivを開く)</a>
