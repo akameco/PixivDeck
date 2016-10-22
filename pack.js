@@ -43,7 +43,10 @@ function pack(target) {
 			platform: 'win32',
 			arch: 'ia32',
 			icon: 'static/Icon.ico',
-			'app-bundle-id': 'io.github.akameco.pixivdeck'
+			'app-bundle-id': 'io.github.akameco.pixivdeck',
+			win32metadata: {
+				FileDescription: pkg.productName
+			}
 		},
 		linux: {
 			platform: 'linux',
