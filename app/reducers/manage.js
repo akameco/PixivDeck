@@ -16,10 +16,12 @@ export default function (state: Manage = initManageState, action: Action): $Shap
 	switch (action.type) {
 		case 'INIT':
 			return {...state, isModal: false, isDropdown: false, isMangaView: false, isImageView: false};
-		case 'SUCCESS_LOGINED':
-			return {...state, isLogin: true};
+		case 'LOGIN_SUCCESS':
+			return {...state, isLogin: true, isLoginSuccess: true};
+		case 'LOGIN_FAILED':
+			return {...state, isLoginSuccess: false};
 		case 'LOGOUT':
-			return {...state, isLogin: false};
+			return {...state, isLogin: false, isLoginSuccess: true, isDropdown: false};
 		case 'CLOSE_ALL':
 			return {
 				...state,

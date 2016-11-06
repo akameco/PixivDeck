@@ -4,6 +4,7 @@ import css from 'react-css-modules';
 import styles from './auth.css';
 
 type Props = {
+	isLoginSuccess: bool,
 	onClick: (name: string, password: string) => void,
 };
 
@@ -41,12 +42,22 @@ export default class Auth extends Component {
 		this.props.onClick(this.state.name, this.state.password);
 	}
 
+	renderErrorNotify() {
+		return (
+			<div styleName="notice">
+				ログインに失敗しました。
+				アカウント名またはパスワードを確認してください。
+			</div>
+		);
+	}
+
 	render() {
 		return (
 			<div styleName="wrap">
+				{!this.props.isLoginSuccess && this.renderErrorNotify()}
 				<div styleName="base">
 					<div styleName="title">
-						PixivDeckにログイン
+						PixivDeck
 					</div>
 					<input
 						placeholder="ユーザー名"

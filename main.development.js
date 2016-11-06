@@ -131,16 +131,23 @@ app.on('ready', () => {
 		if (auth && auth.remember && auth.name && auth.password) {
 			const {name, password} = auth;
 			pixiv = new Pixiv(name, password);
-			ev.sender.send('SUCCESS_LOGINED');
+			ev.sender.send('LOGIN_SUCCESS');
 			userId = userId || (await pixiv.authInfo()).response.user.id;
 		}
 	});
 
 	ipcMain.on('login', async (ev, {name, password}) => {
 		pixiv = new Pixiv(name, password);
-		ev.sender.send('SUCCESS_LOGINED');
-		config.set('auth', {name, password, remember: true});
-		userId = userId || (await pixiv.authInfo()).response.user.id;
+		try {
+			const info = await pixiv.authInfo();
+			if (info && info.response) {
+				ev.sender.send('LOGIN_SUCCESS');
+				config.set('auth', {name, password, remember: true});
+				userId = userId || info.response.user.id;
+			}
+		} catch (err) {
+			ev.sender.send('LOGIN_FAILED');
+		}
 	});
 
 	ipcMain.on('bookmark', async (ev, {id, isPrivate}) => {
