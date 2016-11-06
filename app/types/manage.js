@@ -3,6 +3,7 @@ export type ModalType = | 'DEFAULT' | 'ADD_COLUMN' | 'FILTER_TAG' | 'SEARCH';
 
 export type Manage = {
 	isLogin: bool,
+	isLoginSuccess: bool,
 	isModal: bool,
 	isImageView: bool,
 	isImgLoaded: bool,
@@ -24,6 +25,7 @@ export type ManageAction =
 	| {type: 'TOGGLE_DROPDOWN'}
 	| {type: 'SELECT_WORK', id: number}
 	| {type: 'LOGIN', name: string, password: string}
+	| {type: 'LOGIN_FAILED'}
 	| {type: 'LOGOUT'}
 	| {type: 'CLOSE_ALL'}
 	| {type: 'START_IMG_LOADING'}

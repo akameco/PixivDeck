@@ -3,8 +3,8 @@
 	height: 100vh;
 	background: #eee;
 	display: flex;
-	justify-content: center;
 	align-items: center;
+	flex-direction: column;
 }
 
 .base {
@@ -15,7 +15,8 @@
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	padding: 20px;
+	margin: 20px;
+	padding-bottom: 10px;
 	background-color: white;
 	box-shadow: 0 0 10px rgba(17,17,17,0.5);
 }
@@ -40,4 +41,14 @@
 	border: 1px solid #3b88c3;
 	border-radius: 4px;
 	cursor: pointer;
+}
+
+.notice {
+	display: block;
+	background-color: red;
+	margin: 20px;
+	padding: 10px;
+	color: #fff;
+	border-radius: 5px;
+	box-shadow: 0 0 2px rgb(255, 0, 0);
 }
