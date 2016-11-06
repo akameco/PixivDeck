@@ -28,7 +28,7 @@ export default class Columns extends Component {
 				<SortablePane
 					onResize={this.handleOnResize}
 					>
-						{columns}
+					{columns}
 				</SortablePane>
 			</div>
 		);
