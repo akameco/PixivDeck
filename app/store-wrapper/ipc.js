@@ -30,8 +30,12 @@ function sendIllusts(dispatch: Dispatch, id: number, res: Object) {
 export default (store: Store) => {
 	const dispatch = store.dispatch;
 
-	ipcRenderer.on('SUCCESS_LOGINED', () => {
-		dispatch({type: 'SUCCESS_LOGINED'});
+	ipcRenderer.on('LOGIN_SUCCESS', () => {
+		dispatch({type: 'LOGIN_SUCCESS'});
+	});
+
+	ipcRenderer.on('LOGIN_FAILED', () => {
+		dispatch({type: 'LOGIN_FAILED'});
 	});
 
 	ipcRenderer.on('logout', () => {

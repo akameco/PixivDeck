@@ -11,7 +11,6 @@ import Header from './header';
 import Columns from './app/columns';
 
 type Props = {
-	children: any,
 	columns: Array<ColumnType>,
 	manage: Manage,
 	dispatch: Dispatch
@@ -38,9 +37,9 @@ class App extends Component {
 	}
 
 	render() {
-		const {isLogin} = this.props.manage;
+		const {isLogin, isLoginSuccess} = this.props.manage;
 		if (!isLogin) {
-			return <Auth onClick={this.handleAuth}/>;
+			return <Auth onClick={this.handleAuth} isLoginSuccess={isLoginSuccess}/>;
 		}
 
 		return (

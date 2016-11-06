@@ -54,7 +54,7 @@ export default (store: Store) => (next: Dispatch) => (action: Action) => {
 		ipcRenderer.send('illust', id);
 	}
 
-	if (action.type === 'SUCCESS_LOGINED') {
+	if (action.type === 'LOGIN_SUCCESS') {
 		const {columns} = store.getState();
 		orderSend(columns);
 	}
