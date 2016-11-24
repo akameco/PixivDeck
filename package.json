@@ -48,6 +48,7 @@
     "react-redux": "^4.4.6",
     "react-sortable-pane": "^0.5.4",
     "redux": "^3.6.0",
+    "redux-thunk": "^2.1.0",
     "wallpaper": "^2.3.0"
   },
   "devDependencies": {
