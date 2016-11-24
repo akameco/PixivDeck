@@ -5,7 +5,6 @@ import styles from './manga-preview.css';
 
 type Props = {
 	img: string,
-	show: bool,
 	onClose: () => void
 };
 
