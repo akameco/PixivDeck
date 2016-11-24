@@ -15,7 +15,7 @@ class SmartModal extends Component {
 
 	handleAddColumn = (
 		query: Query,
-		title : string = ''
+		title: string = ''
 	) => {
 		this.props.dispatch(addColumn(query, title));
 	};

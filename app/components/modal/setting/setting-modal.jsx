@@ -1,7 +1,6 @@
 // @flow
 import React, {Component} from 'react';
 import css from 'react-css-modules';
-import Checkbox from '../../shared/checkbox';
 import Icon from '../../icon';
 import Tag from '../tag';
 import styles from './setting-modal.css';
@@ -9,9 +8,7 @@ import styles from './setting-modal.css';
 type Props = {
 	onDelete: (tag: string) => void,
 	onSubmit: (tag: string) => void,
-	onSelectR18: (show: bool) => void,
-	tags: Array<string>,
-	r18: bool
+	tags: Array<string>
 };
 
 type State = {
@@ -35,9 +32,6 @@ export default class SettingFilterModal extends Component {
 		if (this.state.value !== nextState.value) {
 			return true;
 		}
-		if (this.props.r18 !== nextProps.r18) {
-			return true;
-		}
 		return false;
 	}
 
@@ -56,10 +50,6 @@ export default class SettingFilterModal extends Component {
 		}
 	}
 
-	handleSelectR18 = (event: any) => {
-		this.props.onSelectR18(event.target.checked);
-	}
-
 	render() {
 		const tags = this.props.tags.map((tag: string) =>
 			<Tag key={tag} tag={tag} onClick={this.props.onDelete}/>
@@ -67,13 +57,6 @@ export default class SettingFilterModal extends Component {
 
 		return (
 			<div styleName="wrap">
-				<Checkbox
-					id="toggleR18"
-					onChange={this.handleSelectR18}
-					value={this.props.r18}
-					defaultChecked={this.props.r18}
-					text={'R18を表示する'}
-					/>
 				<div>
 					<a href="http://www.pixiv.net/setting_user.php" target="_brank">閲覧制限を設定する(pixivを開く)</a>
 				</div>
