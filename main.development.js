@@ -118,7 +118,7 @@ app.on('ready', () => {
 	electron.Menu.setApplicationMenu(appMenu);
 
 	const auth = config.get('auth');
-	let pixiv;
+	const pixiv = new Pixiv();
 	let userId;
 
 	page.on('dom-ready', () => {
@@ -128,24 +128,20 @@ app.on('ready', () => {
 	});
 
 	ipcMain.on('init', async ev => {
-		if (auth && auth.remember && auth.name && auth.password) {
-			const {name, password} = auth;
-			pixiv = new Pixiv(name, password);
-			const authInfo = await pixiv.login();
+		const {name, password, remember} = auth;
+		if (remember && name && password) {
+			const authInfo = await pixiv.login(name, password);
 			ev.sender.send('LOGIN_SUCCESS');
 			userId = userId || authInfo.user.id;
 		}
 	});
 
 	ipcMain.on('login', async (ev, {name, password}) => {
-		pixiv = new Pixiv(name, password);
 		try {
-			const info = await pixiv.authInfo();
-			if (info && info.response) {
-				ev.sender.send('LOGIN_SUCCESS');
-				config.set('auth', {name, password, remember: true});
-				userId = userId || info.response.user.id;
-			}
+			const info = await pixiv.login(name, password);
+			ev.sender.send('LOGIN_SUCCESS');
+			config.set('auth', {name, password, remember: true});
+			userId = userId || info.response.user.id;
 		} catch (err) {
 			ev.sender.send('LOGIN_FAILED');
 		}
