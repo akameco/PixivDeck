@@ -175,6 +175,12 @@ app.on('ready', () => {
 		ev.sender.send('userIllusts', {id, res});
 	});
 
+	// 新着 restrict: public | private
+	ipcMain.on('illustFollow', async (ev, {id, opts}) => {
+		const res = await pixiv.illustFollow(opts);
+		ev.sender.send('userIllusts', {id, res});
+	});
+
 	ipcMain.on('tweet', (ev, url) => {
 		openTweet(url);
 	});

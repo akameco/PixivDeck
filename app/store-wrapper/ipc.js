@@ -42,7 +42,8 @@ export default (store: Store) => {
 		dispatch({type: 'LOGOUT'});
 	});
 
-	['ranking', 'userIllusts', 'favoriteIllusts', 'search'].forEach(x => {
+	// TODO: flowtype
+	['ranking', 'userIllusts', 'favoriteIllusts', 'search', 'illustFollow'].forEach(x => {
 		ipcRenderer.on(x, (ev, data) => {
 			sendIllusts(dispatch, data.id, data.res);
 		});
