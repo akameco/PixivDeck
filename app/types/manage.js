@@ -4,6 +4,7 @@ export type ModalType = | 'DEFAULT' | 'ADD_COLUMN' | 'FILTER_TAG' | 'SEARCH';
 export type Manage = {
 	isLogin: bool,
 	isLoginSuccess: bool,
+	isLoading: bool,
 	isModal: bool,
 	isImageView: bool,
 	isImgLoaded: bool,
@@ -30,4 +31,5 @@ export type ManageAction =
 	| {type: 'CLOSE_ALL'}
 	| {type: 'START_IMG_LOADING'}
 	| {type: 'SET_IMG_LOADED'}
+	| {type: 'START_LOADING'}
 ;
