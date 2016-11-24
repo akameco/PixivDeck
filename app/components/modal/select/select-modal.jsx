@@ -95,12 +95,12 @@ export default class SelectColumnModal extends Component {
 					<div styleName="kind">新着</div>
 					<ul styleName="list">
 						<li>
-							<a onClick={onClickillustFollowPublic()}>
+							<a onClick={onClickillustFollowPublic}>
 								公開
 							</a>
 						</li>
 						<li>
-							<a onClick={onClickillustFollowPrivate()}>
+							<a onClick={onClickillustFollowPrivate}>
 								非公開
 							</a>
 						</li>
