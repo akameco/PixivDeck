@@ -1,5 +1,7 @@
 // @flow
-import type {Action, Query, Params} from '../types';
+import type {Action, Dispatch, State as S, Query, Params, ColumnType} from '../types';
+import Ipc from '../repo/ipc';
+import {ipcRequest} from './manage';
 
 export function addColumn(query: Query, title: string): Action {
 	const id = Date.now();
@@ -11,16 +13,22 @@ export function addColumn(query: Query, title: string): Action {
 	};
 }
 
-export function nextPage(id: number): Action {
-	return {type: 'NEXT_PAGE', id};
+export function nextPage(id: number) {
+	return async (dispatch: Dispatch, getState: () => S): Promise<*> => {
+		const column: ColumnType = getState().columns.filter(v => v.id === id)[0];
+		dispatch(ipcRequest());
+		await Ipc.reqestColumn(id, column.query);
+	};
+}
+
+export function reloadColumn(id: number) {
+	return (dispatch: Dispatch) => {
+		dispatch(nextPage(id));
+	};
 }
 
 export function setQuery(id: number, params: Params): Action {
 	return {type: 'SET_QUERY', id, params};
-}
-
-export function reloadColumn(id: number): Action {
-	return {type: 'RELOAD_COLUMN', id};
 }
 
 export function closeColumn(id: number): Action {
