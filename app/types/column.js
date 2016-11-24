@@ -6,8 +6,16 @@ export type Params = {
 	offset?: number
 };
 
+type QueryType = 'search'
+	| 'ranking'
+	| 'favoriteIllusts'
+	| 'userIllusts'
+	| 'history'
+	| 'illustFollow'
+;
+
 export type Query = {
-	type: 'search' | 'ranking' | 'favoriteIllusts' | 'userIllusts' | 'history',
+	type: QueryType,
 	id?: number,
 	q?: string,
 	opts?: $Shape<Params>
