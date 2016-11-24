@@ -131,8 +131,9 @@ app.on('ready', () => {
 		if (auth && auth.remember && auth.name && auth.password) {
 			const {name, password} = auth;
 			pixiv = new Pixiv(name, password);
+			const authInfo = await pixiv.login();
 			ev.sender.send('LOGIN_SUCCESS');
-			userId = userId || (await pixiv.authInfo()).response.user.id;
+			userId = userId || authInfo.user.id;
 		}
 	});
 
