@@ -3,35 +3,38 @@ import url from 'url';
 import {ipcRenderer} from 'electron';
 import {camelizeKeys} from 'humps';
 import {normalize} from 'normalizr';
-import type {Store, Action, Dispatch, Params} from '../types';
+import {delay} from '../utils';
+import type {Store, Action, Dispatch, Params, ColumnType} from '../types';
+import Ipc from '../repo/ipc';
 import Schemas from '../schemas';
 
 function setQuery(id: number, params: any): Action {
 	return {type: 'SET_QUERY', id, params};
 }
 
-function send(dispatch: Dispatch, id: number, response: Object) {
-	setImmediate(() => {
-		dispatch({type: 'SUCCESS_IPC_REQUEST', response});
-	});
-	setImmediate(() => {
-		dispatch({type: 'RECIEVE_ILLUSTS', id, illusts: response.result});
-	});
-}
-
-function sendIllusts(dispatch: Dispatch, id: number, res: Object) {
+async function sendIllusts(dispatch: Dispatch, id: number, res: Object) {
 	const camelizedJson = camelizeKeys(res);
 	const {nextUrl, illusts} = camelizedJson;
-	const params: Params | any | void = nextUrl ? url.parse(nextUrl, true).query : {};
-	send(dispatch, id, normalize(illusts, Schemas.ILLUSTS));
+	const params: Params | Object | void = nextUrl ? url.parse(nextUrl, true).query : {};
+	const response = normalize(illusts, Schemas.ILLUSTS);
+	await dispatch({type: 'SUCCESS_IPC_REQUEST', response});
+	await dispatch({type: 'RECIEVE_ILLUSTS', id, illusts: response.result});
 	dispatch(setQuery(id, params));
+}
+
+async function orderSend(columns: Array<ColumnType>) {
+	for (const c of columns) {
+		await Ipc.reqestColumn(c.id, c.query);
+		await delay(200); // eslint-disable-line babel/no-await-in-loop
+	}
 }
 
 export default (store: Store) => {
 	const dispatch = store.dispatch;
 
 	ipcRenderer.on('LOGIN_SUCCESS', () => {
-		dispatch({type: 'LOGIN_SUCCESS'});
+		const {columns} = store.getState();
+		orderSend(columns);
 	});
 
 	ipcRenderer.on('LOGIN_FAILED', () => {
@@ -42,7 +45,6 @@ export default (store: Store) => {
 		dispatch({type: 'LOGOUT'});
 	});
 
-	// TODO: flowtype
 	['ranking', 'userIllusts', 'favoriteIllusts', 'search', 'illustFollow'].forEach(x => {
 		ipcRenderer.on(x, (ev, data) => {
 			sendIllusts(dispatch, data.id, data.res);

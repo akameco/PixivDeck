@@ -1,5 +1,16 @@
 // @flow
-import type {Action, ModalType} from '../types';
+import type {ThunkAction} from 'redux'; // eslint-disable-line
+import type {Action, ModalType, State, Dispatch} from '../types';
+
+import Ipc from '../repo/ipc';
+
+export function openMangaPreview(): ThunkAction<State, Action> {
+	return (dispatch: Dispatch, getState) => {
+		const id = getState().manage.currentIllustId;
+		Ipc.send('illust', id);
+		return dispatch({type: 'OPEN_MANGA_PREVIEW'});
+	};
+}
 
 export function close(): Action {
 	return {type: 'CLOSE_ALL'};
@@ -31,10 +42,6 @@ export function openImageView(): Action {
 
 export function closeImageView(): Action {
 	return {type: 'CLOSE_IMAGE_VIEW'};
-}
-
-export function openMangaPreview(): Action {
-	return {type: 'OPEN_MANGA_PREVIEW'};
 }
 
 export function closeMnagaPreview(): Action {
