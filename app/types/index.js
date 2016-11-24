@@ -39,5 +39,5 @@ export type State = {
 	history: History
 };
 
-export type Dispatch = ReduxDispatch<Action>;
+export type Dispatch = ReduxDispatch<State, Action>;
 export type Store = ReduxStore<State, Action>;

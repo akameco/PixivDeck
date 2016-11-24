@@ -1,18 +1,6 @@
 // @flow
 import type {Action, ModalType} from '../types';
 
-export function login(name: string, password: string): Action {
-	return {
-		type: 'LOGIN',
-		name,
-		password
-	};
-}
-
-export function logout(): Action {
-	return {type: 'LOGOUT'};
-}
-
 export function close(): Action {
 	return {type: 'CLOSE_ALL'};
 }
@@ -53,23 +41,12 @@ export function closeMnagaPreview(): Action {
 	return {type: 'CLOSE_MANGA_PREVIEW'};
 }
 
-export function currentIllust(id: number): Action {
-	return {
-		type: 'SELECT_WORK',
-		id
-	};
-}
-
 export function startImgLoading(): Action {
 	return {type: 'START_IMG_LOADING'};
 }
 
 export function finishImgLoaded(): Action {
 	return {type: 'SET_IMG_LOADED'};
-}
-
-export function addHistory(id: number): Action {
-	return {type: 'ADD_HISTORY', id};
 }
 
 export function ipcRequest(): Action {

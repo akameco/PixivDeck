@@ -3,6 +3,7 @@ import type {Manage, Action} from '../types';
 
 const initManageState: $Shape<Manage> = {
 	isLogin: false,
+	isLoading: false,
 	isImageView: false,
 	isImgLoaded: false,
 	isMangaView: false,
@@ -54,6 +55,8 @@ export default function (state: Manage = initManageState, action: Action): $Shap
 			return {...state, isImgLoaded: true};
 		case 'SELECT_WORK':
 			return {...state, currentIllustId: action.id};
+		case 'START_LOADING':
+			return {...state, isLoading: true};
 		default:
 			return state;
 	}
