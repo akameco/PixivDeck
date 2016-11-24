@@ -1,4 +1,5 @@
 // @flow
+import type {Store as ReduxStore, Dispatch as ReduxDispatch} from 'redux'; // eslint-disable-line
 import type {ColumnType, ColumnAction, Query, Params} from './column';
 import type {Manage, ManageAction, ModalType} from './manage';
 import type {History, HistoryAction} from './history';
@@ -30,8 +31,6 @@ export type Entities = {
 
 export type Action = ColumnAction | ManageAction | IpcAction | FilterAction | HistoryAction | {type: 'INIT'} ;
 
-export type Dispatch = (action: Action) => Action;
-
 export type State = {
 	columns: Array<ColumnType>,
 	entities: Entities,
@@ -40,7 +39,5 @@ export type State = {
 	history: History
 };
 
-export type Store = {
-	dispatch: Dispatch,
-	getState: () => State,
-};
+export type Dispatch = ReduxDispatch<Action>;
+export type Store = ReduxStore<State, Action>;
