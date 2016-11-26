@@ -54,11 +54,6 @@ export default function (state: Manage = initManageState, action: Action): $Shap
 		case 'TOGGLE_DROPDOWN':
 			return {...state, isDropdown: !state.isDropdown};
 		case 'CLOSE_ALL':
-		case 'CLOSE_IMAGE_VIEW':
-		case 'CLOSE_MANGA_PREVIEW':
-		case 'CLOSE_MODAL':
-		case 'CLOSE_DRAWER':
-		case 'CLOSE_DROPDOWN':
 			return {...state, ...closeState};
 		case 'START_IMG_LOADING':
 			return {...state, isImgLoaded: false};
