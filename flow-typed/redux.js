@@ -8,14 +8,10 @@ declare module 'redux' {
     A = Action
   */
 
-  /* NEW: We create a few extra action and dispatch types */
   declare type ThunkAction<S, R> = (dispatch: Dispatch<S, any>, getState: () => S) => R;
-  declare type PromiseAction<R> = { type: string, payload: Promise<R> };
   declare type ThunkDispatch<S> = <R>(action: ThunkAction<S, R>) => R;
-  declare type PromiseDispatch = <R>(action: PromiseAction<R>) => Promise<R>;
   declare type PlainDispatch<A: {type: $Subtype<string>}> = (action: A) => A;
-  /* NEW: Dispatch is now a combination of these different dispatch types */
-  declare type Dispatch<S, A> = PlainDispatch<A> & ThunkDispatch<S> & PromiseDispatch;
+  declare type Dispatch<S, A> = PlainDispatch<A> & ThunkDispatch<S>
 
   declare type MiddlewareAPI<S, A> = {
     dispatch: Dispatch<S, A>;
