@@ -2,7 +2,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import type {Dispatch, State, Illust, User} from '../../types/';
-import {addColumn, openImageView, openMangaPreview, currentIllust} from '../../actions';
+import {
+	addColumn,
+	openImageView,
+	openMangaPreview,
+	openDrawer,
+	currentIllust
+} from '../../actions';
 import Box from './box';
 
 type Props = {
@@ -24,6 +30,7 @@ class SmartBox extends Component {
 
 	handleClickUser = () => {
 		const {user} = this.props;
+		this.props.dispatch(openDrawer());
 		this.props.dispatch(addColumn({type: 'userIllusts', id: user.id}, `${user.name}(${user.account})`));
 	}
 
