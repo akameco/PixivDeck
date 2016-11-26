@@ -42,11 +42,11 @@ export default function (state: Manage = initManageState, action: Action): $Shap
 		case 'LOGOUT':
 			return {...state, ...closeState, isLogin: false, isLoginSuccess: true};
 		case 'OPEN_IMAGE_VIEW':
-			return {...state, ...closeState, isImageView: Boolean(state.currentIllustId)};
+			return {...state, isImageView: Boolean(state.currentIllustId)};
 		case 'OPEN_MANGA_PREVIEW':
-			return {...state, ...closeState, isMangaView: Boolean(state.currentIllustId)};
+			return {...state, isMangaView: Boolean(state.currentIllustId)};
 		case 'OPEN_MODAL':
-			return {...state, ...closeState, isModal: true, modalType: action.modal};
+			return {...state, isModal: true, modalType: action.modal};
 		case 'OPEN_DROPDOWN':
 			return {...state, isDropdown: true};
 		case 'OPEN_DRAWER':
