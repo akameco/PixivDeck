@@ -31,7 +31,7 @@ class SmartBox extends Component {
 	handleClickUser = () => {
 		const {user} = this.props;
 		this.props.dispatch(openDrawer());
-		this.props.dispatch(addColumn({type: 'userIllusts', id: user.id}, `${user.name}(${user.account})`));
+		// this.props.dispatch(addColumn({type: 'userIllusts', id: user.id}, `${user.name}(${user.account})`));
 	}
 
 	handleClick = () => {
