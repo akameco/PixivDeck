@@ -13,10 +13,7 @@ type Props = {
 class SmartModal extends Component {
 	props: Props;
 
-	handleAddColumn = (
-		query: Query,
-		title: string = ''
-	) => {
+	handleAddColumn = (query: Query, title: string = '') => {
 		this.props.dispatch(addColumn(query, title));
 	};
 
