@@ -9,7 +9,7 @@ import MangaPreview from './manga-preview';
 import Modal from './modal';
 import Header from './header';
 import Columns from './app/columns';
-import Drawer from './drawer';
+import UserDrawer from './drawer/user-drawer';
 
 type Props = {
 	columns: Array<ColumnType>,
@@ -38,7 +38,7 @@ class App extends Component {
 	}
 
 	render() {
-		const {isLogin, isLoginSuccess, isDrawer, isModal} = this.props.manage;
+		const {isLogin, isLoginSuccess, isModal} = this.props.manage;
 		if (!isLogin) {
 			return <Auth onClick={this.handleAuth} isLoginSuccess={isLoginSuccess}/>;
 		}
@@ -48,7 +48,7 @@ class App extends Component {
 				<Header/>
 				<Columns columns={this.props.columns}/>
 				{this.renderPreview()}
-				<Drawer isOpen={isDrawer}/>
+				<UserDrawer/>
 				{isModal && <Modal/>}
 			</div>
 		);
