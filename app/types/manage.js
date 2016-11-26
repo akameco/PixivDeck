@@ -6,6 +6,7 @@ export type Manage = {|
 	isLoginSuccess: bool,
 	isLoading: bool,
 	isModal: bool,
+	isDrawer: bool,
 	isImageView: bool,
 	isImgLoaded: bool,
 	isMangaView: bool,
@@ -21,6 +22,8 @@ export type ManageAction =
 	| {|type: 'CLOSE_MANGA_PREVIEW'|}
 	| {|type: 'OPEN_MODAL', modal?: ModalType|}
 	| {|type: 'CLOSE_MODAL'|}
+	| {|type: 'OPEN_DRAWER'|}
+	| {|type: 'CLOSE_DRAWER'|}
 	| {|type: 'OPEN_DROPDOWN'|}
 	| {|type: 'CLOSE_DROPDOWN'|}
 	| {|type: 'TOGGLE_DROPDOWN'|}

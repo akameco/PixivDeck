@@ -24,6 +24,14 @@ export function closeModal(): Action {
 	return {type: 'CLOSE_MODAL'};
 }
 
+export function openDrawer(): Action {
+	return {type: 'OPEN_DRAWER'};
+}
+
+export function closeDrawer(): Action {
+	return {type: 'CLOSE_DRAWER'};
+}
+
 export function openDropdown(): Action {
 	return {type: 'OPEN_DROPDOWN'};
 }
