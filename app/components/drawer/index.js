@@ -5,12 +5,20 @@ import type {State, Dispatch} from '../../types';
 import {closeDrawer} from '../../actions';
 
 type Props = {
-	isOpen: bool,
+	isDrawer: bool,
 	children: React$Component<*, *, *>,
 	dispatch: Dispatch
 };
 
 const defaultStyle = {
+	root: {
+		position: 'absolute',
+		top: 0,
+		left: 0,
+		right: 0,
+		bottom: 0,
+		overflow: 'hidden'
+	},
 	overlay: {
 		zIndex: 800,
 		position: 'fixed',
@@ -46,20 +54,20 @@ class Drawer extends Component {
 	}
 
 	render() {
-		const {isOpen} = this.props;
+		const {isDrawer} = this.props;
 		const overlayStyle = {...defaultStyle.overlay};
 		const drawerStyle = {...defaultStyle.drawer};
-		drawerStyle.right = `-${drawerStyle.width}`;
+		drawerStyle.right = `-${drawerStyle.width}px`;
 		drawerStyle.transform = 'translateX(0)';
 
-		if (isOpen) {
+		if (isDrawer) {
 			drawerStyle.transform = `translateX(-${drawerStyle.width}px)`;
 			overlayStyle.opacity = 1;
 			overlayStyle.visibility = 'visible';
 		}
 
 		return (
-			<div>
+			<div style={defaultStyle.root}>
 				<div style={overlayStyle} onClick={this.handleCloseDrawer}/>
 				<div style={drawerStyle}>
 					{this.props.children}
