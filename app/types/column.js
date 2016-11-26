@@ -18,7 +18,7 @@ export type Query = {
 	type: QueryType,
 	id?: number,
 	q?: string,
-	opts?: $Shape<Params>
+	opts?: Params
 };
 
 export type ColumnType = {
@@ -29,8 +29,8 @@ export type ColumnType = {
 };
 
 export type ColumnAction =
-	| {type: 'RECEIVE_WORKS', id: number, illusts?: Array<number>}
-	| {type: 'ADD_COLUMN', id: number, title: string, query: $Shape<Query>}
-	| {type: 'SET_QUERY', id: number, params: Params}
-	| {type: 'CLOSE_COLUMN', id: number}
+	| {|type: 'RECEIVE_WORKS', id: number, illusts?: Array<number>|}
+	| {|type: 'ADD_COLUMN', id: number, title: string, query: Query, illusts?: Array<number>|}
+	| {|type: 'SET_QUERY', id: number, params: Params|}
+	| {|type: 'CLOSE_COLUMN', id: number|}
 ;

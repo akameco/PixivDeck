@@ -1,7 +1,7 @@
 // @flow
 import type {Manage, Action} from '../types';
 
-const initManageState: $Shape<Manage> = {
+const initManageState: Manage = {
 	isLogin: false,
 	isLoading: false,
 	isImageView: false,
@@ -10,6 +10,7 @@ const initManageState: $Shape<Manage> = {
 	isModal: false,
 	isDropdown: false,
 	currentIllustId: null,
+	isLoginSuccess: false,
 	modalType: 'DEFAULT'
 };
 
