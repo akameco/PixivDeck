@@ -21,7 +21,21 @@
 	overflow-y: hidden;
 	box-shadow: 0 0 10px rgba(17,17,17,0.5);
 	border-radius: 3px;
+	animation: fadeIn .2s ease-out .1s both;
 	& svg {
 		fill: #5b5b5b;
+	}
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+		margin-top: -1000px;
+	}
+	20% {
+		opacity: 100;
+	}
+	100% {
+		margin-top: 0;
 	}
 }

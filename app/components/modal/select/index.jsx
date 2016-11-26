@@ -22,7 +22,12 @@ class SmartModal extends Component {
 	}
 
 	render() {
-		return <Modal onClickHistory={this.handleHistory} onSelect={this.handleAddColumn}/>;
+		return (
+			<Modal
+				onClickHistory={this.handleHistory}
+				onSelect={this.handleAddColumn}
+				/>
+		);
 	}
 }
 
