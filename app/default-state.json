@@ -6,7 +6,7 @@
       "query": {
         "type": "illustRanking",
         "opts": {
-          "mode": "daily",
+          "mode": "day",
           "offset": 1
         }
       }
@@ -17,7 +17,7 @@
       "query": {
         "type": "illustRanking",
         "opts": {
-          "mode": "weekly",
+          "mode": "week",
           "offset": 1
         }
       }
@@ -28,7 +28,7 @@
       "query": {
         "type": "illustRanking",
         "opts": {
-          "mode": "monthly",
+          "mode": "month",
           "offset": 1
         }
       }
