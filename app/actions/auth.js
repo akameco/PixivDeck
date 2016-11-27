@@ -4,12 +4,16 @@ import type {Action, Dispatch, State} from '../types';
 import {initColumnOrder} from './column';
 
 export function init() {
-	return async (dispatch: Dispatch, getState: () => State): Promise<void> => {
+	return async (
+		dispatch: Dispatch,
+		getState: () => State
+	): Promise<void> | Action => {
 		const {username, password} = getState().auth;
 		if (username && password) {
 			await dispatch(login(username, password));
 		} else {
 			dispatch(logout());
+			dispatch({type: 'INIT'});
 		}
 	};
 }
