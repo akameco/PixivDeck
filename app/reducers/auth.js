@@ -8,7 +8,7 @@ const initState = {
 
 export default function auth(state: Auth = initState, action: Action): Auth {
 	switch (action.type) {
-		case 'LOGIN': {
+		case 'SAVE_LOGIN_INFO': {
 			const {username, password} = action;
 			return {username, password};
 		}

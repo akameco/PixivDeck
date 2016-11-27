@@ -26,7 +26,7 @@ export function login(username: string, password: string): (
 		try {
 			await Pixiv.login(username, password);
 			dispatch({type: 'LOGIN_SUCCESS'});
-			dispatch({type: 'LOGIN', username, password});
+			dispatch({type: 'SAVE_LOGIN_INFO', username, password});
 
 			const columns = getState().columns;
 			await initColumnOrder(dispatch, columns);
