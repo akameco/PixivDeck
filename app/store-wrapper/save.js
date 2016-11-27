@@ -5,18 +5,8 @@ import type {Store, Dispatch} from '../types';
 export default (store: Store) => {
 	const dispatch: Dispatch = store.dispatch;
 	const saveState = () => {
-		const s = store.getState();
-		const {auth, manage, columns, filter} = s;
-		const newColumns = columns.map(column => {
-			if (column && column.query && column.query.opts && column.query.opts) {
-				column.query.opts.offset = 0;
-				if (column.query.opts.max_bookmark_id) {
-					column.query.opts.max_bookmark_id = null;
-				}
-			}
-			return column;
-		});
-		const json = {auth, manage, columns: newColumns, filter};
+		const {auth, manage, columns, filter} = store.getState();
+		const json = {auth, manage, columns, filter};
 		localStorage.setItem('store', JSON.stringify(json));
 	};
 
