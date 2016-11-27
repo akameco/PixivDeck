@@ -16,6 +16,7 @@ export function init() {
 		return dispatch({type: 'INIT'});
 	};
 }
+
 export function login(
 	username: string,
 	password: string
