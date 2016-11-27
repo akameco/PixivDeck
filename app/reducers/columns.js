@@ -4,7 +4,7 @@ import type {Action, ColumnType as Column, Query, Params} from '../types';
 type State = Array<$Shape<Column>>;
 
 function params(state: $Shape<Params>): Params {
-	if (state.max_bookmark_id) {
+	if (state && state.max_bookmark_id) {
 		return {...state, offset: 0, max_bookmark_id: null}; // eslint-disable-line camelcase
 	}
 	return {...state, offset: 0};
