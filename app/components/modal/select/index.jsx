@@ -1,12 +1,11 @@
 // @flow
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import type {State, Dispatch, Query, History} from '../../../types';
-import {addHistoryColumn, addColumn} from '../../../actions';
+import type {State, Dispatch, Query} from '../../../types';
+import {addColumn} from '../../../actions';
 import Modal from './select-modal';
 
 type Props = {
-	history: History,
 	dispatch: Dispatch
 };
 
@@ -18,7 +17,6 @@ class SmartModal extends Component {
 	};
 
 	handleHistory = () => {
-		this.props.dispatch(addHistoryColumn(this.props.history));
 	}
 
 	render() {

@@ -1,56 +1,36 @@
 import React from 'react';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux';
+import type {State} from './types';
 import configureStore from './store';
 import App from './components';
-import './app.global.css';
+import Pixiv from './repo/pixiv';
+import defaultState from './default-state';
+import './app.global.css'; // eslint-disable-line
 
-const storage = localStorage.getItem('store');
+async function init() {
+	const storage: State = localStorage.getItem('store');
+	let initialState: State = storage ? JSON.parse(storage) : defaultState;
 
-const defaultState = {
-	columns: [
-		{
-			id: 1,
-			title: 'デイリーランキング',
-			query: {
-				type: 'ranking',
-				opts: {
-					mode: 'daily',
-					page: 1
-				}
-			}
-		},
-		{
-			id: 2,
-			title: 'ウィークリーランキング',
-			query: {
-				type: 'ranking',
-				opts: {
-					mode: 'weekly',
-					page: 1
-				}
-			}
-		},
-		{
-			id: 3,
-			title: 'マンスリーランキング',
-			query: {
-				type: 'ranking',
-				opts: {
-					mode: 'monthly',
-					page: 1
-				}
-			}
+	const {auth, manage, columns} = initialState;
+
+	if (auth && manage) {
+		const {username, password} = auth;
+		const {isLogin} = manage;
+		if (username && password && isLogin) {
+			await Pixiv.login(username, password);
 		}
-	]
-};
+	} else if (columns) {
+		initialState = {columns: initialState.columns};
+	}
 
-const initialState = storage ? JSON.parse(storage) : defaultState;
+	const store = configureStore(initialState);
 
-const store = configureStore(initialState);
+	render((
+		<Provider store={store}>
+			<App/>
+		</Provider>
+	), document.querySelector('#root'));
+}
 
-render((
-	<Provider store={store}>
-		<App/>
-	</Provider>
-), document.querySelector('#root'));
+init();

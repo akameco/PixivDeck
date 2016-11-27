@@ -31,7 +31,7 @@ export default class Header extends Component {
 						<Icon type="add"/>
 					</a>
 					<a styleName="button" onClick={this.props.onOpenSearchModal}>
-						<Icon type="search"/>
+						<Icon type="searchIllust"/>
 					</a>
 				</div>
 				<div styleName="bottom">

@@ -1,8 +1,7 @@
 // @flow
 
-export type IpcAction =
-	| {|type: 'IPC_REQUEST'|}
+export type ApiAction =
 	| {|type: 'LOGIN_SUCCESS'|}
 	| {|type: 'RECIEVE_ILLUSTS', id: number, illusts: Array<number>|}
-	| {|type: 'SUCCESS_IPC_REQUEST', response: Object|}
+	| {|type: 'SUCCESS_API_REQUEST', response: Object|}
 ;

@@ -1,9 +1,91 @@
 // @flow
-import type {Action, Dispatch, State as S, Query, Params, ColumnType} from '../types';
-import Ipc from '../repo/ipc';
-import {ipcRequest} from './manage';
+import url from 'url';
+import {camelizeKeys} from 'humps';
+import {normalize} from 'normalizr';
+import Schemas from '../schemas';
+import Pixiv from '../repo/pixiv';
+import type {
+	Action,
+	Dispatch,
+	Query,
+	Params,
+	Illust,
+	Illusts,
+	ColumnType
+} from '../types';
+import {delay} from '../utils';
 
-export function addColumn(query: Query, title: string): Action {
+// Arrayに変換
+export function selectIllusts(nums: Array<number>, illusts: Illusts): Array<Illust> {
+	return nums.map(i => illusts[i]);
+}
+
+function normalizeIllusts(response: Object): Object {
+	// キャメルケースに変換
+	const camelizedJson = camelizeKeys(response);
+	// ノーマライズ
+	return normalize(camelizedJson.illusts, Schemas.ILLUSTS);
+}
+
+export async function parseIllusts(dispatch: Dispatch, id: number, res: Object): Promise<Array<Illust>> {
+	const json = normalizeIllusts(res);
+	// Storeに反映
+	dispatch({type: 'SUCCESS_API_REQUEST', response: json});
+	const illusts: Illusts = json.entities.illusts;
+
+	// 次のクエリの指定
+	const params: ?Params = res.next_url ? url.parse(res.next_url, true).query : null;
+	if (params) {
+		await dispatch(setQuery(id, params));
+	}
+
+	return selectIllusts(json.result, illusts);
+}
+
+export async function reqestColumn(columnId: number, query: Query): Promise<*> {
+	const {id, opts, word, type} = query;
+	switch (type) {
+		case 'illustRanking':
+			return await Pixiv.illustRanking(opts);
+		case 'illustFollow':
+			return await Pixiv.illustFollow(opts);
+		case 'userBookmarksIllust': {
+			const myId = Pixiv.authInfo().user.id;
+			return await Pixiv.userBookmarksIllust(myId, opts);
+		}
+		case 'userIllusts':
+			if (!id) {
+				break;
+			}
+			return await Pixiv.userIllusts(id, opts);
+		case 'searchIllust':
+			if (!word) {
+				break;
+			}
+			return await Pixiv.searchIllust(word, opts);
+		default:
+			throw new Error('not match');
+	}
+}
+
+export function fetchColumn(column: ColumnType) {
+	return async (dispatch: Dispatch): Promise<Array<Illust>> => {
+		const res = await reqestColumn(column.id, column.query);
+		const illusts = await parseIllusts(dispatch, column.id, res);
+		return illusts;
+	};
+}
+
+// 順番にカラムを初期化
+export async function initColumnOrder(dispatch: Dispatch, columns: Array<ColumnType>): Promise<void> {
+	for (const c of columns) {
+		const res = await reqestColumn(c.id, c.query);
+		await parseIllusts(dispatch, c.id, res);
+		await delay(200);
+	}
+}
+
+export function addColumn(query: $Subtype<Query>, title: string): Action {
 	const id = Date.now();
 	return {
 		type: 'ADD_COLUMN',
@@ -13,17 +95,12 @@ export function addColumn(query: Query, title: string): Action {
 	};
 }
 
-export function nextPage(id: number) {
-	return async (dispatch: Dispatch, getState: () => S): Promise<*> => {
-		const column: ColumnType = getState().columns.filter(v => v.id === id)[0];
-		dispatch(ipcRequest());
-		await Ipc.reqestColumn(id, column.query);
-	};
-}
-
-export function reloadColumn(id: number) {
-	return (dispatch: Dispatch) => {
-		dispatch(nextPage(id));
+export function nextPage(column: ColumnType) {
+	return async (dispatch: Dispatch): Promise<Array<Illust>> => {
+		const {id, query} = column;
+		const res = await reqestColumn(id, query);
+		const illusts = await parseIllusts(dispatch, id, res);
+		return illusts;
 	};
 }
 
@@ -33,15 +110,4 @@ export function setQuery(id: number, params: Params): Action {
 
 export function closeColumn(id: number): Action {
 	return {type: 'CLOSE_COLUMN', id};
-}
-
-export function addHistoryColumn(illusts: Array<number>): Action {
-	const id = Date.now();
-	return {
-		type: 'ADD_COLUMN',
-		id,
-		title: 'ヒストリー',
-		illusts,
-		query: {type: 'history'}
-	};
 }

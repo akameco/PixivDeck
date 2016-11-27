@@ -8,9 +8,8 @@ import styles from './column.css';
 type Props = {
 	illusts: Array<Illust>,
 	column: ColumnType,
-	onClickTop: (id: number) => void,
 	onClose: () => void,
-	onNextPage: () => void
+	onNextPage: () => Promise<void>
 };
 
 @css(styles)
@@ -32,7 +31,6 @@ export default class Column extends Component {
 					id={column.id}
 					title={column.title}
 					illusts={illusts}
-					onReload={this.props.onClickTop}
 					onClose={this.props.onClose}
 					onNextPage={this.props.onNextPage}
 					/>

@@ -10,11 +10,9 @@ import Infinite from './infinite';
 import styles from './list.css';
 
 type Props = {
-	id: number,
 	illusts: Array<Illust>,
 	title: string,
-	onNextPage: () => void,
-	onReload: (id: number) => void,
+	onNextPage: () => Promise<void>,
 	onClose: () => void
 };
 
@@ -31,7 +29,6 @@ export default class List extends Component {
 	}
 
 	handleTopClick = (e: Event) => {
-		this.props.onReload(this.props.id);
 		e.preventDefault();
 		const node: HTMLElement = findDOMNode(this.target);
 		if (node) {
@@ -82,9 +79,9 @@ export default class List extends Component {
 							{List}
 						</Infinite>
 					</div> :
-					<div styleName="loading">
-						<LoadingIcon/>
-					</div>
+						<div styleName="loading">
+							<LoadingIcon/>
+						</div>
 				}
 			</section>
 		);

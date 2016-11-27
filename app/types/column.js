@@ -1,4 +1,5 @@
 // @flow
+
 export type Params = {
 	mode?: string,
 	restrict?: 'public' | 'private',
@@ -6,9 +7,9 @@ export type Params = {
 	offset?: number
 };
 
-type QueryType = 'search'
-	| 'ranking'
-	| 'favoriteIllusts'
+type QueryType = 'searchIllust'
+	| 'illustRanking'
+	| 'userBookmarksIllust'
 	| 'userIllusts'
 	| 'history'
 	| 'illustFollow'
@@ -17,7 +18,7 @@ type QueryType = 'search'
 export type Query = {
 	type: QueryType,
 	id?: number,
-	q?: string,
+	word?: string,
 	opts?: Params
 };
 
@@ -29,8 +30,7 @@ export type ColumnType = {
 };
 
 export type ColumnAction =
-	| {|type: 'RECEIVE_WORKS', id: number, illusts?: Array<number>|}
-	| {|type: 'ADD_COLUMN', id: number, title: string, query: Query, illusts?: Array<number>|}
+	| {|type: 'ADD_COLUMN', id: number, title: string, query: Query|}
 	| {|type: 'SET_QUERY', id: number, params: Params|}
 	| {|type: 'CLOSE_COLUMN', id: number|}
 ;

@@ -2,7 +2,6 @@
 /* eslint-disable camelcase */
 import electron from 'electron';
 import Config from 'electron-config';
-import Pixiv from 'pixiv-app-api';
 import referer from 'electron-referer';
 import wallpaper from 'wallpaper';
 import {download} from 'electron-dl';
@@ -117,89 +116,16 @@ app.on('ready', () => {
 
 	electron.Menu.setApplicationMenu(appMenu);
 
-	const auth = config.get('auth');
-	const pixiv = new Pixiv();
-	let userId;
-
-	page.on('dom-ready', () => {
-		if (!(auth && auth.name && auth.password)) {
-			page.send('logout');
-		}
-	});
-
-	ipcMain.on('init', async ev => {
-		const {name, password, remember} = auth;
-		if (remember && name && password) {
-			const authInfo = await pixiv.login(name, password);
-			ev.sender.send('LOGIN_SUCCESS');
-			userId = userId || authInfo.user.id;
-		}
-	});
-
-	ipcMain.on('login', async (ev, {name, password}) => {
-		try {
-			const info = await pixiv.login(name, password);
-			ev.sender.send('LOGIN_SUCCESS');
-			config.set('auth', {name, password, remember: true});
-			userId = userId || info.response.user.id;
-		} catch (err) {
-			ev.sender.send('LOGIN_FAILED');
-		}
-	});
-
-	ipcMain.on('bookmark', async (ev, {id, isPrivate}) => {
-		if (isPrivate) {
-			await pixiv.illustBookmarkAdd(id, {restrict: 'private'});
-		} else {
-			await pixiv.illustBookmarkAdd(id);
-		}
-	});
-
-	ipcMain.on('ranking', async (ev, {id, opts}) => {
-		const res = await pixiv.illustRanking({mode: 'day', ...opts});
-		ev.sender.send('ranking', {id, res});
-	});
-
-	ipcMain.on('favoriteIllusts', async (ev, {id, opts}) => {
-		const res = await pixiv.userBookmarksIllust(opts.id || userId, {...opts});
-		ev.sender.send('favoriteIllusts', {id, res});
-	});
-
-	ipcMain.on('search', async (ev, {id, q, opts}) => {
-		const res = await pixiv.searchIllust(q, opts);
-		ev.sender.send('search', {id, res});
-	});
-
-	ipcMain.on('userIllusts', async (ev, {id, userID, opts}) => {
-		const res = await pixiv.userIllusts(userID, opts);
-		ev.sender.send('userIllusts', {id, res});
-	});
-
-	// 新着 restrict: public | private
-	ipcMain.on('illustFollow', async (ev, {id, opts}) => {
-		const res = await pixiv.illustFollow(opts);
-		ev.sender.send('userIllusts', {id, res});
-	});
-
 	ipcMain.on('tweet', (ev, url) => {
 		openTweet(url);
-	});
-
-	ipcMain.on('open-pixiv', (ev, id) => {
-		shell.openExternal(`http://www.pixiv.net/member_illust.php?mode=medium&illust_id=${id}`);
-	});
-
-	ipcMain.on('open-pixiv-setting', () => {
-		shell.openExternal('http://www.pixiv.net/setting_user.php');
-	});
-
-	ipcMain.on('trending-tags-illust', async ev => {
-		const tags = await pixiv.trendingTagsIllust();
-		ev.sender.send('trending-tags-illust', tags);
 	});
 
 	ipcMain.on('wallpaper', async (ev, img) => {
 		const dl = await download(mainWindow, img);
 		await wallpaper.set(dl.getSavePath());
+	});
+
+	app.on('before-quit', () => {
+		page.send('save');
 	});
 });

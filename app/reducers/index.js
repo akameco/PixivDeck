@@ -5,13 +5,15 @@ import columns from './columns';
 import entities from './entities';
 import history from './history';
 import filter from './filter';
+import auth from './auth';
 
 const rootReducer = combineReducers({
 	manage,
 	entities,
 	columns,
 	history,
-	filter
+	filter,
+	auth
 });
 
 export default rootReducer;

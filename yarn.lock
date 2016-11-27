@@ -5552,9 +5552,9 @@ webpack-dev-server@^1.16.2:
     supports-color "^3.1.1"
     webpack-dev-middleware "^1.4.0"
 
-webpack-merge@^0.17.0:
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/webpack-merge/-/webpack-merge-0.17.0.tgz#3548ef319e3a72676f831edfe7cba687aa781c84"
+webpack-merge@^0.19.0:
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/webpack-merge/-/webpack-merge-0.19.0.tgz#a5bd927e0c069d3ffe8b99c7f176a388a96aa5dd"
   dependencies:
     lodash.find "^3.2.1"
     lodash.isequal "^4.2.0"

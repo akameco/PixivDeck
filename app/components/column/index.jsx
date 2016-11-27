@@ -1,45 +1,53 @@
 // @flow
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import type {Dispatch, State, Illust, Illusts, ColumnType} from '../../types';
-import {nextPage, closeColumn, reloadColumn} from '../../actions';
+import unionBy from 'lodash.unionby';
+import type {Dispatch, Illust, ColumnType} from '../../types';
+import {nextPage, closeColumn, fetchColumn} from '../../actions';
 import Column from './column';
 
 type Props = {
-	illusts: Array<Illust>,
 	column: ColumnType,
 	dispatch: Dispatch
 };
 
+type State = {
+	illusts: Array<Illust>
+};
+
 class SmartColumn extends Component {
 	props: Props;
+	state: State = {illusts: []};
 
-	shouldComponentUpdate(nextProps) {
-		if (this.props.illusts.length !== nextProps.illusts.length) {
-			return true;
-		}
-		return false;
+	componentDidMount() {
+		this.init();
+	}
+
+	async init(): Promise<void> {
+		const column = this.props.column;
+		const res = await this.props.dispatch(fetchColumn(column));
+		this.setState({illusts: res});
 	}
 
 	handleClose = () => {
 		this.props.dispatch(closeColumn(this.props.column.id));
 	}
 
-	handleOnNextPage = () => {
-		this.props.dispatch(nextPage(this.props.column.id));
-	}
-
-	handleTopClick = (id: number) => {
-		this.props.dispatch(reloadColumn(id));
+	handleOnNextPage: () => Promise<void> = async () => {
+		const illusts = await this.props.dispatch(nextPage(this.props.column));
+		const unionByArray = unionBy(this.state.illusts, illusts, 'id');
+		this.setState({
+			illusts: unionByArray
+		});
 	}
 
 	render() {
-		const {column, illusts} = this.props;
+		const {column} = this.props;
+		const {illusts} = this.state;
 		return (
 			<Column
 				illusts={illusts}
 				column={column}
-				onClickTop={this.handleTopClick}
 				onClose={this.handleClose}
 				onNextPage={this.handleOnNextPage}
 				/>
@@ -47,29 +55,4 @@ class SmartColumn extends Component {
 	}
 }
 
-function selectIllusts(nums: Array<number>, illusts: Illusts) {
-	return nums.map(i => illusts[i]);
-}
-
-function filterIllusts(illusts: Array<Illust>, filters: Array<(illust: Illust)=> bool>) {
-	return illusts.filter(illust => {
-		return filters.every(f => f(illust));
-	});
-}
-
-const tagFilter = (tags: Array<string>) => (illust: Illust) => illust.tags.every(tag => tags.every(t => t !== tag));
-
-function mapStateToProps(state: State, ownProps: Props) {
-	const {entities, filter, history} = state;
-	const {illusts} = entities;
-	const columnIllusts = ownProps.column.query.type === 'history' ? history : ownProps.column.illusts;
-	const selectedIllusts = selectIllusts(columnIllusts, illusts);
-	const filters = [tagFilter(filter.tags)];
-	const list = filterIllusts(selectedIllusts, filters);
-
-	return {
-		illusts: list
-	};
-}
-
-export default connect(mapStateToProps)(SmartColumn);
+export default connect()(SmartColumn);

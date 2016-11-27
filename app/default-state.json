@@ -1,0 +1,37 @@
+{
+  "columns": [
+    {
+      "id": 1,
+      "title": "デイリーランキング",
+      "query": {
+        "type": "illustRanking",
+        "opts": {
+          "mode": "daily",
+          "offset": 1
+        }
+      }
+    },
+    {
+      "id": 2,
+      "title": "ウィークリーランキング",
+      "query": {
+        "type": "illustRanking",
+        "opts": {
+          "mode": "weekly",
+          "offset": 1
+        }
+      }
+    },
+    {
+      "id": 3,
+      "title": "マンスリーランキング",
+      "query": {
+        "type": "illustRanking",
+        "opts": {
+          "mode": "monthly",
+          "offset": 1
+        }
+      }
+    }
+  ]
+}

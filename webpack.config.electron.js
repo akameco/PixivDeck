@@ -40,8 +40,6 @@ module.exports = merge(baseConfig, {
 		'electron-config',
 		'electron-referer',
 		'electron-context-menu',
-		'pixiv.js',
-		'pixiv-app-api',
 		'electron-dl',
 		'dot-prop',
 		'pify',
