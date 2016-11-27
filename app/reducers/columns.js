@@ -1,14 +1,20 @@
 // @flow
-import type {Action, ColumnType, Query} from '../types';
+import type {Action, ColumnType as Column, Query, Params} from '../types';
 
-type Column = ColumnType;
 type State = Array<$Shape<Column>>;
+
+function params(state: $Shape<Params>): Params {
+	if (state.max_bookmark_id) {
+		return {...state, offset: 0, max_bookmark_id: null}; // eslint-disable-line camelcase
+	}
+	return {...state, offset: 0};
+}
 
 function query(state: Query, action: Action): Query {
 	switch (action.type) {
 		case 'INIT':
 		case 'ADD_COLUMN':
-			return {...state, opts: {...state.opts, offset: 0}};
+			return {...state, opts: params(state.opts)};
 		case 'SET_QUERY':
 			return {...state, opts: {...state.opts, ...action.params}};
 		default:

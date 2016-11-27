@@ -4,7 +4,8 @@ export type Params = {
 	mode?: string,
 	restrict?: 'public' | 'private',
 	filter?: 'for_ios',
-	offset?: number
+	offset?: number,
+	max_bookmark_id?: ?number
 };
 
 type QueryType = 'searchIllust'
