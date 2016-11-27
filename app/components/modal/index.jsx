@@ -7,6 +7,7 @@ import ModalWrapper from './modal-wrapper';
 import SelectColumnModal from './select';
 import SettingModal from './setting';
 import SearchModal from './search';
+import LoginModal from './login';
 
 type Props = {
 	modalType: ModalType,
@@ -27,6 +28,8 @@ class Modal extends Component {
 			return <SettingModal/>;
 		} else if (type === 'SEARCH') {
 			return <SearchModal/>;
+		} else if (type === 'LOGIN') {
+			return <LoginModal/>;
 		}
 		return <SelectColumnModal/>;
 	}

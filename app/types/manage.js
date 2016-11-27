@@ -1,9 +1,15 @@
 // @flow
-export type ModalType = | 'DEFAULT' | 'ADD_COLUMN' | 'FILTER_TAG' | 'SEARCH';
+export type ModalType =
+	| 'DEFAULT'
+	| 'ADD_COLUMN'
+	| 'FILTER_TAG'
+	| 'SEARCH'
+	| 'LOGIN'
+;
 
 export type Manage = {|
 	isLogin: bool,
-	isLoginSuccess: bool,
+	isLoginFailure: bool,
 	isLoading: bool,
 	isModal: bool,
 	isDrawer: bool,
