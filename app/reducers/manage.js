@@ -8,12 +8,12 @@ const initManageState: Manage = {
 	isImgLoaded: false,
 	isDrawer: false,
 	isMangaView: false,
-	isModal: false,
 	isDropdown: false,
 	currentIllustId: null,
 	userId: null,
-	isLoginSuccess: false,
-	modalType: 'DEFAULT'
+	isLoginFailure: false,
+	isModal: true,
+	modalType: 'LOGIN'
 };
 
 type CloseState = {
@@ -37,11 +37,11 @@ export default function (state: Manage = initManageState, action: Action): $Shap
 		case 'INIT':
 			return {...state, ...closeState};
 		case 'LOGIN_SUCCESS':
-			return {...state, isLogin: true, isLoginSuccess: true};
+			return {...state, isLogin: true, isLoginFailure: false};
 		case 'LOGIN_FAILED':
-			return {...state, isLoginSuccess: false};
+			return {...state, isLoginFailure: true};
 		case 'LOGOUT':
-			return {...state, ...closeState, isLogin: false, isLoginSuccess: true};
+			return {...state, ...closeState, isLogin: false, isLoginFailure: false, isModal: true, modalType: 'LOGIN'};
 		case 'OPEN_IMAGE_VIEW':
 			return {...state, ...closeState, isImageView: Boolean(state.currentIllustId)};
 		case 'OPEN_MANGA_PREVIEW':

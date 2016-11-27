@@ -1,9 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import type {Dispatch, State, Manage, ColumnType} from '../types';
-import {login} from '../actions';
-import Auth from './auth';
+import type {State, Manage, ColumnType} from '../types';
 import IllustPreview from './illust-preview';
 import MangaPreview from './manga-preview';
 import Modal from './modal';
@@ -13,16 +11,11 @@ import UserDrawer from './drawer/user-drawer';
 
 type Props = {
 	columns: Array<ColumnType>,
-	manage: Manage,
-	dispatch: Dispatch
+	manage: Manage
 };
 
 class App extends Component {
 	props: Props;
-
-	handleAuth = (name: string, password: string) => {
-		this.props.dispatch(login(name, password));
-	}
 
 	renderPreview() {
 		const {currentIllustId, isImageView, isMangaView} = this.props.manage;
@@ -34,10 +27,7 @@ class App extends Component {
 	}
 
 	render() {
-		const {isLogin, isLoginSuccess, isModal} = this.props.manage;
-		if (!isLogin) {
-			return <Auth onClick={this.handleAuth} isLoginSuccess={isLoginSuccess}/>;
-		}
+		const {isModal} = this.props.manage;
 
 		return (
 			<div>
