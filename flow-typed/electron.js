@@ -73,11 +73,11 @@ declare module 'electron' {
 	}
 
 	declare class ipcRenderer {
-		static on(channel: string, callback: (event: Event, data: Object) => void): EventEmitter;
+		static on(channel: string, callback: (event: Event, data?: Object) => void): EventEmitter;
 		static send(channel: string, arg?: any): EventEmitter;
 	}
 
-	declare function _callback(event: IpcEvent, data: Object): void;
+	declare function _callback(event: IpcEvent, data?: Object): void;
 
 	declare class ipcMain {
 		static on(channel: string, callback: (_callback | Promise<_callback>)): EventEmitter;
@@ -85,7 +85,7 @@ declare module 'electron' {
 	}
 
 	declare class app {
-		static on(event: 'activate' | 'ready' | 'window-all-closed', listener: () => void): void;
+		static on(event: 'activate' | 'ready' | 'window-all-closed' | 'before-quit', listener: () => void): void;
 		static quit(): void;
 		static getPath(path: string): string;
 	}
