@@ -4,23 +4,20 @@ import type {Action, Dispatch, State} from '../types';
 import {initColumnOrder} from './column';
 
 export function init() {
-	return async (dispatch: Dispatch, getState: () => State): Promise<Action> => {
-		try {
-			const {username, password} = getState().auth;
-			if (username && password) {
-				await dispatch(login(username, password));
-			} else {
-				dispatch(logout());
-			}
-		} catch (err) { }
-		return dispatch({type: 'INIT'});
+	return async (dispatch: Dispatch, getState: () => State): Promise<void> => {
+		const {username, password} = getState().auth;
+		if (username && password) {
+			await dispatch(login(username, password));
+		} else {
+			dispatch(logout());
+		}
 	};
 }
 
-export function login(
-	username: string,
-	password: string
-): (dispatch: Dispatch, getState: () => State) => Promise<void> {
+export function login(username: string, password: string): (
+	dispatch: Dispatch,
+	getState: () => State
+) => Promise<Action> {
 	return async (dispatch, getState) => {
 		try {
 			await Pixiv.login(username, password);
@@ -32,6 +29,7 @@ export function login(
 		} catch (err) {
 			dispatch({type: 'LOGIN_FAILED'});
 		}
+		return dispatch({type: 'INIT'});
 	};
 }
 
