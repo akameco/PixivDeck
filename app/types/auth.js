@@ -8,6 +8,6 @@ export type Auth = {
 };
 
 export type Action =
-	| {type: 'LOGIN', username: Username, password: Password}
+	| {type: 'SAVE_LOGIN_INFO', username: Username, password: Password}
 	| {type: 'INIT'}
 ;
