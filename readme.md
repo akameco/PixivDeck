@@ -54,7 +54,6 @@ $ npm start
 
 ### Commands
 
-- Install flowtype: `brew install flow`
 - Init: `$ npm install`
 - Run: `$ npm start`
 - Build renderer process: `$ npm run watch`

@@ -1,8 +1,9 @@
 // @flow
-import {remote, ipcRenderer} from 'electron';
+import {shell, remote, ipcRenderer} from 'electron';
 import React, {Component} from 'react';
 import css from 'react-css-modules';
 import {download} from 'electron-dl';
+import Pixiv from '../../repo/pixiv';
 import type {Illust, User} from '../../types/';
 import BoxHeader from './box-header';
 import BoxFooter from './box-footer';
@@ -47,15 +48,15 @@ export default class Box extends Component {
 
 		menu.append(new MenuItem({
 			label: 'ブックマーク',
-			click() {
-				ipcRenderer.send('bookmark', {id});
+			click: async () => {
+				await Pixiv.illustBookmarkAdd(id);
 			}
 		}));
 
 		menu.append(new MenuItem({
 			label: '非公開ブックマーク',
-			click() {
-				ipcRenderer.send('bookmark', {id, isPrivate: true});
+			click: async () => {
+				await Pixiv.illustBookmarkDelete(id, {restrict: 'private'});
 			}
 		}));
 
@@ -74,7 +75,7 @@ export default class Box extends Component {
 		menu.append(new MenuItem({
 			label: 'pixivで開く',
 			click() {
-				ipcRenderer.send('open-pixiv', id);
+				shell.openExternal(`http://www.pixiv.net/member_illust.php?mode=medium&illust_id=${id}`);
 			}
 		}));
 

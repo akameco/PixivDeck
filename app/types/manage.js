@@ -12,6 +12,7 @@ export type Manage = {|
 	isMangaView: bool,
 	isDropdown: bool,
 	currentIllustId: ?number,
+	userId: ?number,
 	modalType: ModalType
 |};
 
@@ -22,7 +23,7 @@ export type ManageAction =
 	| {|type: 'CLOSE_MANGA_PREVIEW'|}
 	| {|type: 'OPEN_MODAL', modal?: ModalType|}
 	| {|type: 'CLOSE_MODAL'|}
-	| {|type: 'OPEN_DRAWER'|}
+	| {|type: 'OPEN_DRAWER', id: number|}
 	| {|type: 'CLOSE_DRAWER'|}
 	| {|type: 'OPEN_DROPDOWN'|}
 	| {|type: 'CLOSE_DROPDOWN'|}

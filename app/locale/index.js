@@ -3,7 +3,7 @@
 import dotProp from 'dot-prop';
 
 const obj = {
-	ranking: {
+	illustRanking: {
 		day: 'デイリー',
 		week: 'ウィークリー',
 		month: 'マンスリー',

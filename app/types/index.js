@@ -4,9 +4,10 @@ import type {ColumnType, ColumnAction, Query, Params} from './column';
 import type {Manage, ManageAction, ModalType} from './manage';
 import type {History, HistoryAction} from './history';
 import type {Filter, FilterAction} from './filter';
-import type {IpcAction} from './ipc';
+import type {ApiAction} from './api';
 import type {Illust, Illusts, MetaPages} from './illust';
 import type {User, Users} from './user';
+import type {Auth, Action as AuthAction} from './auth';
 
 export type {
 	Illust,
@@ -14,14 +15,15 @@ export type {
 	Manage,
 	Filter,
 	History,
-	IpcAction,
+	ApiAction,
 	ColumnType,
 	Query,
 	User,
 	Users,
 	MetaPages,
 	ModalType,
-	Params
+	Params,
+	Auth
 };
 
 export type Entities = {
@@ -29,10 +31,25 @@ export type Entities = {
 	illusts: Illusts
 };
 
-export type Action = ColumnAction | ManageAction | IpcAction | FilterAction | HistoryAction | {type: 'INIT'} ;
+export type Response = {
+	response: {
+		entities: Entities,
+		result: Array<number>
+	}
+};
+
+export type Action =
+	| ColumnAction
+	| ManageAction
+	| ApiAction
+	| FilterAction
+	| HistoryAction
+	| AuthAction
+;
 
 export type State = {
 	columns: Array<ColumnType>,
+	auth: Auth,
 	entities: Entities,
 	manage: Manage,
 	filter: Filter,

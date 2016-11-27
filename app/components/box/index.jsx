@@ -6,7 +6,6 @@ import {
 	addColumn,
 	openImageView,
 	openMangaPreview,
-	openDrawer,
 	currentIllust
 } from '../../actions';
 import Box from './box';
@@ -25,13 +24,12 @@ class SmartBox extends Component {
 	}
 
 	handleTagClick = (tag: string) => {
-		this.props.dispatch(addColumn({type: 'search', q: tag}, tag));
+		this.props.dispatch(addColumn({type: 'searchIllust', word: tag}, tag));
 	}
 
 	handleClickUser = () => {
 		const {user} = this.props;
-		this.props.dispatch(openDrawer());
-		// this.props.dispatch(addColumn({type: 'userIllusts', id: user.id}, `${user.name}(${user.account})`));
+		this.props.dispatch(addColumn({type: 'userIllusts', id: user.id}, `${user.name}(${user.account})`));
 	}
 
 	handleClick = () => {

@@ -64,7 +64,7 @@ export default class SearchModal extends Component {
 		return (
 			<div styleName="wrap">
 				<div styleName="field">
-					<Icon type="search"/>
+					<Icon type="searchIllust"/>
 					<input
 						styleName="input"
 						type="text"

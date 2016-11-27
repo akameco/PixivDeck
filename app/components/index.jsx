@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import type {Dispatch, State, Manage, ColumnType} from '../types';
-import {login, init} from '../actions';
+import {login} from '../actions';
 import Auth from './auth';
 import IllustPreview from './illust-preview';
 import MangaPreview from './manga-preview';
@@ -19,10 +19,6 @@ type Props = {
 
 class App extends Component {
 	props: Props;
-
-	componentWillMount() {
-		this.props.dispatch(init());
-	}
 
 	handleAuth = (name: string, password: string) => {
 		this.props.dispatch(login(name, password));

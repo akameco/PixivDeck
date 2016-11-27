@@ -32,17 +32,7 @@ export default class BoxImage extends Component {
 	}
 
 	componentDidMount() {
-		const target = this.target;
-		this.io = new IntersectionObserver(entries => { // eslint-disable-line no-undef
-			const intersectionRatio = entries[0].intersectionRatio;
-			if (intersectionRatio <= 0) {
-				this.setState({isVisible: false});
-			}
-			this.update();
-		}, {
-			rootMargin: '500px'
-		});
-		this.io.observe(findDOMNode(target));
+		this.tick();
 	}
 
 	shouldComponentUpdate(nextProps: Props, nextState: State) {
@@ -57,6 +47,20 @@ export default class BoxImage extends Component {
 
 	componentWillUnmount() {
 		this.io.unobserve(findDOMNode(this.target));
+	}
+
+	tick() {
+		const target = this.target;
+		this.io = new IntersectionObserver(entries => { // eslint-disable-line no-undef
+			const intersectionRatio = entries[0].intersectionRatio;
+			if (intersectionRatio <= 0) {
+				this.setState({isVisible: false});
+			}
+			this.update();
+		}, {
+			rootMargin: '500px'
+		});
+		this.io.observe(findDOMNode(target));
 	}
 
 	update() {

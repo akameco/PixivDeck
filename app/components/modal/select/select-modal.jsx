@@ -21,7 +21,7 @@ class Link extends Component {
 		return (
 			<li>
 				<a onClick={onClick}>
-					{locale(`ranking.${this.props.mode}`)}
+					{locale(`illustRanking.${this.props.mode}`)}
 				</a>
 			</li>
 		);
@@ -29,8 +29,7 @@ class Link extends Component {
 }
 
 type Props = {
-	onSelect: (query: Query, title: string) => void,
-	onClickHistory: () => void,
+	onSelect: (query: $Shape<Query>, title: string) => void
 };
 
 @css(styles)
@@ -38,12 +37,12 @@ export default class SelectColumnModal extends Component {
 	props: Props;
 
 	handleAddRanking = (mode: string) => {
-		this.props.onSelect({type: 'ranking', opts: {mode}}, `${locale(`ranking.${mode}`)}ランキング`);
+		this.props.onSelect({type: 'illustRanking', opts: {mode}}, `${locale(`illustRanking.${mode}`)}ランキング`);
 	}
 
 	handleAddFavorite = (publicity: 'private' | 'public') => {
 		const title = {private: '非公開ブックマーク', public: '公開ブックマーク'}[publicity];
-		this.props.onSelect({type: 'favoriteIllusts', opts: {restrict: publicity}}, title);
+		this.props.onSelect({type: 'userBookmarksIllust', opts: {restrict: publicity}}, title);
 	}
 
 	handleAddIllustFollow = (publicity: 'private' | 'public') => {
@@ -52,11 +51,10 @@ export default class SelectColumnModal extends Component {
 	}
 
 	handleAddHistory = () => {
-		this.props.onSelect({type: 'history'}, 'history');
 	}
 
 	render() {
-		const rankingLinks = RANKING_MODES.map(v =>
+		const illustRankingLinks = RANKING_MODES.map(v =>
 			<Link
 				mode={v}
 				key={v}
@@ -77,7 +75,7 @@ export default class SelectColumnModal extends Component {
 				<div>
 					<div styleName="kind">ランキング</div>
 					<ul styleName="list">
-						{rankingLinks}
+						{illustRankingLinks}
 					</ul>
 					<div styleName="kind">ブックマーク</div>
 					<ul styleName="list">
@@ -102,14 +100,6 @@ export default class SelectColumnModal extends Component {
 						<li>
 							<a onClick={onClickillustFollowPrivate}>
 								非公開
-							</a>
-						</li>
-					</ul>
-					<div styleName="kind">履歴</div>
-					<ul styleName="list">
-						<li>
-							<a onClick={this.props.onClickHistory}>
-								ヒストリー
 							</a>
 						</li>
 					</ul>

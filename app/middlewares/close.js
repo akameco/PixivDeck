@@ -8,8 +8,5 @@ export default () => (next: Dispatch) => (action: Action) => {
 	) {
 		return next({type: 'CLOSE_ALL'});
 	}
-	if (/^OPEN_/.test(action.type)) {
-		next({type: 'CLOSE_ALL'});
-	}
 	return next(action);
 };
