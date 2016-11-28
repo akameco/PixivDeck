@@ -33,7 +33,7 @@ const defaultStyle = {
 	},
 	drawer: {
 		zIndex: 900,
-		width: 700,
+		width: 600,
 		position: 'absolute',
 		top: 0,
 		bottom: 0,
