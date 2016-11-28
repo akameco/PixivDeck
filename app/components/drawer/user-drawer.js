@@ -185,7 +185,7 @@ function FollowButton({userId, isFollowed}: FollowButtonProps) {
 	if (isFollowed) {
 		return (
 			<a onClick={unFollow}>
-				<Button text="フォロー解除"/>
+				<Button style={{color: '#fff', backgroundColor: '#529ecc'}} text="フォロー解除"/>
 			</a>
 		);
 	}
