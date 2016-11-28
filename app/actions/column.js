@@ -20,7 +20,7 @@ export function selectIllusts(nums: Array<number>, illusts: Illusts): Array<Illu
 	return nums.map(i => illusts[i]);
 }
 
-function normalizeIllusts(response: Object): Object {
+export function normalizeIllusts(response: Object): Object {
 	// キャメルケースに変換
 	const camelizedJson = camelizeKeys(response);
 	// ノーマライズ
