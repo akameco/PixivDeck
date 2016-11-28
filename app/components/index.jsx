@@ -7,6 +7,7 @@ import MangaPreview from './manga-preview';
 import Modal from './modal';
 import Header from './header';
 import Columns from './app/columns';
+import Drawer from './drawer';
 import UserDrawer from './drawer/user-drawer';
 
 type Props = {
@@ -34,7 +35,9 @@ class App extends Component {
 				<Header/>
 				<Columns columns={this.props.columns}/>
 				{this.renderPreview()}
-				<UserDrawer/>
+				<Drawer>
+					{this.props.manage.isDrawer && <UserDrawer/>}
+				</Drawer>
 				{isModal && <Modal/>}
 			</div>
 		);
