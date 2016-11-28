@@ -6,7 +6,8 @@ import {
 	addColumn,
 	openImageView,
 	openMangaPreview,
-	currentIllust
+	currentIllust,
+	openUserDrawer
 } from '../../actions';
 import Box from './box';
 
@@ -29,7 +30,7 @@ class SmartBox extends Component {
 
 	handleClickUser = () => {
 		const {user} = this.props;
-		this.props.dispatch(addColumn({type: 'userIllusts', id: user.id}, `${user.name}(${user.account})`));
+		this.props.dispatch(openUserDrawer(user.id));
 	}
 
 	handleClick = () => {
