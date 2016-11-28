@@ -138,7 +138,7 @@ function Header({user, profile}: {user: User, profile: Profile}) {
 
 const navgationStyle = {
 	root: {
-		width: 700,
+		width: '100%',
 		position: 'flex',
 		left: 'auto',
 		transform: 'translateZ(0)',
