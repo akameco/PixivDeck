@@ -90,7 +90,7 @@ export default class BoxImage extends Component {
 				{this.state.isVisible && this.state.isLoaded ?
 					<img
 						styleName="loaded"
-						src={imageUrls.medium}
+						src={imageUrls.large}
 						onClick={this.props.onClick}
 						/> :
 							<img height={200}/>
