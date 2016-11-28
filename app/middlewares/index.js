@@ -1,8 +1,4 @@
 // @flow
-import close from './close';
-
-const root: Array<any> = [
-	close
-];
+const root: Array<any> = [];
 
 export default root;

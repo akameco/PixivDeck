@@ -1,9 +1,10 @@
 .base {
 	composes: whitebox from '../style.css';
-	
+
 	text-align: center;
 	flex-direction: column;
 	overflow-y: scroll;
+	z-index: 999;
 }
 
 .item {
