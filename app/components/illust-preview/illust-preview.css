@@ -2,4 +2,5 @@
 	composes: whitebox from '../style.css';
 
 	overflow: auto;
+	z-index: 999;
 }

@@ -32,7 +32,42 @@ const closeState: CloseState = {
 	isDropdown: false
 };
 
+function open(state: Manage, action: Action): $Shape<Manage> {
+	switch (action.type) {
+		case 'OPEN_IMAGE_VIEW':
+			return {...state, isImageView: Boolean(state.currentIllustId)};
+		case 'OPEN_MANGA_PREVIEW':
+			return {...state, isMangaView: Boolean(state.currentIllustId)};
+		case 'OPEN_MODAL':
+			return {...state, ...closeState, isModal: true, modalType: action.modal};
+		case 'OPEN_DROPDOWN':
+			return {...state, ...closeState, isDropdown: true};
+		case 'OPEN_DRAWER':
+			return {...state, ...closeState, isDrawer: Boolean(action.id), userId: action.id};
+		default:
+			return state;
+	}
+}
+
+function close(state: Manage, action: Action): $Shape<Manage> {
+	switch (action.type) {
+		case 'CLOSE_IMAGE_VIEW':
+			return {...state, isImageView: false};
+		case 'CLOSE_MANGA_PREVIEW':
+			return {...state, isMangaView: false};
+		case 'CLOSE_ALL':
+			return {...state, ...closeState};
+		default:
+			return {...state, ...closeState};
+	}
+}
+
 export default function (state: Manage = initManageState, action: Action): $Shape<Manage> {
+	if (/^OPEN/.test(action.type)) {
+		return open(state, action);
+	} else if (/^CLOSE/.test(action.type)) {
+		return close(state, action);
+	}
 	switch (action.type) {
 		case 'INIT':
 			return {...state, ...closeState};
@@ -42,20 +77,8 @@ export default function (state: Manage = initManageState, action: Action): $Shap
 			return {...state, isLoginFailure: true};
 		case 'LOGOUT':
 			return {...state, ...closeState, isLogin: false, isLoginFailure: false, isModal: true, modalType: 'LOGIN'};
-		case 'OPEN_IMAGE_VIEW':
-			return {...state, ...closeState, isImageView: Boolean(state.currentIllustId)};
-		case 'OPEN_MANGA_PREVIEW':
-			return {...state, ...closeState, isMangaView: Boolean(state.currentIllustId)};
-		case 'OPEN_MODAL':
-			return {...state, ...closeState, isModal: true, modalType: action.modal};
-		case 'OPEN_DROPDOWN':
-			return {...state, ...closeState, isDropdown: true};
-		case 'OPEN_DRAWER':
-			return {...state, ...closeState, isDrawer: Boolean(action.id), userId: action.id};
 		case 'TOGGLE_DROPDOWN':
 			return {...state, ...closeState, isDropdown: !state.isDropdown};
-		case 'CLOSE_ALL':
-			return {...state, ...closeState};
 		case 'START_IMG_LOADING':
 			return {...state, isImgLoaded: false};
 		case 'SET_IMG_LOADED':
