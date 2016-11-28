@@ -158,7 +158,7 @@ function Navgation({user, profile}: {user: User, profile: Profile}) {
 	return (
 		<div style={navgationStyle.root}>
 			<div style={navgationStyle.wrap}>
-				{profile.twitter_url && <TwitterButton url={profile.twitter_url}/>}
+				{profile.twitterUrl && <TwitterButton url={profile.twitterUrl}/>}
 				<FollowButton userId={user.id} isFollowed={user.isFollowed}/>
 				<AddColumnButton user={user}/>
 			</div>
