@@ -98,9 +98,10 @@ const headerStyle = {
 	},
 	imgWrap: {
 		position: 'relative',
-		width: 170,
-		height: 170,
-		margin: '20px auto'
+		width: '100%',
+		height: '100%',
+		margin: '20px auto',
+		textAlign: 'center'
 	},
 	info: {
 		textAlign: 'center'
