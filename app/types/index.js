@@ -6,7 +6,7 @@ import type {History, HistoryAction} from './history';
 import type {Filter, FilterAction} from './filter';
 import type {ApiAction} from './api';
 import type {Illust, Illusts, MetaPages} from './illust';
-import type {User, Users} from './user';
+import type {User, Users, Profile} from './user';
 import type {Auth, Action as AuthAction} from './auth';
 
 export type {
@@ -20,6 +20,7 @@ export type {
 	Query,
 	User,
 	Users,
+	Profile,
 	MetaPages,
 	ModalType,
 	Params,
