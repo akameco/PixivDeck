@@ -1,5 +1,6 @@
 // @flow
-// import type {Action, Dispatch} from '../types';
+import type {Action} from '../types';
 
-// export function openUserDrawer(id: number): (dispatch: Dispatch) => Action {
-// }
+export function openUserDrawer(id: number): Action {
+	return {type: 'OPEN_DRAWER', id};
+}
