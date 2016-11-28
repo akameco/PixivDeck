@@ -28,7 +28,7 @@
 
 ### Show User
 
-<img src="https://cloud.githubusercontent.com/assets/4002137/20658677/e95c0310-b581-11e6-94e8-913f727f4d25.gif"/>
+<img src="media/yoko.gif"/>
 
 ## Download
 
