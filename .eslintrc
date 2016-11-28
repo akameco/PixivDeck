@@ -35,6 +35,7 @@
 				"render"
 			]
 		}],
+		"react/forbid-component-props": 0,
 		"flowtype/boolean-style": [2, "bool"],
 		"flowtype/define-flow-type": 2,
 		"flowtype/semi": [2, "always"],
