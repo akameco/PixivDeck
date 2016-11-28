@@ -71,7 +71,7 @@
     "css-loader": "^0.26.0",
     "del": "^2.2.2",
     "devtron": "^1.4.0",
-    "electron": "^1.4.9",
+    "electron": "^1.4.8",
     "electron-devtools-installer": "^2.0.1",
     "electron-packager": "^8.3.0",
     "eslint": "^3.11.0",
