@@ -26,7 +26,9 @@ export default class BoxHeader extends Component {
 		const {name, account, img, title, caption} = this.props;
 		return (
 			<div styleName="base">
-				<Avater img={img}/>
+				<a onClick={this.props.onClick}>
+					<Avater img={img}/>
+				</a>
 				<div styleName="wrap">
 					<div styleName="title">{title}</div>
 					<div styleName="profile-area">
