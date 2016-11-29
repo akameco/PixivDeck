@@ -41,6 +41,9 @@ export default function columns(state: State = [], action: Action): State {
 	switch (action.type) {
 		case 'ADD_COLUMN': {
 			const {id, title, endpoint, timer} = action;
+			if (state.some(t => t.title === title)) {
+				return state;
+			}
 			return [
 				...state,
 				{id, endpoint, query: query(action.query, action), title, timer},
