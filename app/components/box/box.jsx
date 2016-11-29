@@ -41,7 +41,7 @@ export default class Box extends Component {
 			label: 'オリジナルサイズの画像を保存',
 			click(item, win) {
 				download(win, img);
-			}
+			},
 		}));
 
 		menu.append(new MenuItem({type: 'separator'}));
@@ -50,14 +50,14 @@ export default class Box extends Component {
 			label: 'ブックマーク',
 			click: async () => {
 				await Pixiv.illustBookmarkAdd(id);
-			}
+			},
 		}));
 
 		menu.append(new MenuItem({
 			label: '非公開ブックマーク',
 			click: async () => {
-				await Pixiv.illustBookmarkDelete(id, {restrict: 'private'});
-			}
+				await Pixiv.illustBookmarkAdd(id, {restrict: 'private'});
+			},
 		}));
 
 		menu.append(new MenuItem({type: 'separator'}));
@@ -69,14 +69,14 @@ export default class Box extends Component {
 				const encodedName = encodeURIComponent(name);
 				const url = `https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.pixiv.net%2Fmember_illust.php%3Fmode%3Dmedium%26illust_id%3D${id}&ref_src=twsrc%5Etfw&text=${encodedTitle}%20%7C%20${encodedName}%20%23pixiv%20%23PixivDeck&tw_p=tweetbutton&url=http%3A%2F%2Fwww.pixiv.net%2Fmember_illust.php%3Fillust_id%3D${id}%26mode%3Dmedium`;
 				ipcRenderer.send('tweet', url);
-			}
+			},
 		}));
 
 		menu.append(new MenuItem({
 			label: 'pixivで開く',
 			click() {
 				shell.openExternal(`http://www.pixiv.net/member_illust.php?mode=medium&illust_id=${id}`);
-			}
+			},
 		}));
 
 		menu.append(new MenuItem({type: 'separator'}));
@@ -90,7 +90,7 @@ export default class Box extends Component {
 				} else {
 					ipcRenderer.send('wallpaper', imageUrls.large);
 				}
-			}
+			},
 		}));
 
 		menu.popup(remote.getCurrentWindow());
