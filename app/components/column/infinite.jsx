@@ -29,7 +29,7 @@ export default class Infinite extends Component {
 			});
 		}, {
 			root: this.root,
-			rootMargin: this.props.rootMargin || '500%'
+			rootMargin: this.props.rootMargin || '1000px'
 		});
 		this.io.observe(findDOMNode(sentinel));
 	}
