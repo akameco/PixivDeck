@@ -24,7 +24,7 @@ export default class Infinite extends Component {
 			if (entries[0].intersectionRatio <= 0) {
 				return;
 			}
-			setImmediate(() => {
+			requestAnimationFrame(() => {
 				this.handleOnIntersect();
 			});
 		}, {
