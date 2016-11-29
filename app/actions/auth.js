@@ -2,6 +2,8 @@
 import Pixiv from '../repo/pixiv';
 import type {Action, Dispatch, State} from '../types';
 
+export const logout = (): Action => ({type: 'LOGOUT'});
+
 export function init() {
 	return async (
 		dispatch: Dispatch,
@@ -30,8 +32,4 @@ export function login(username: string, password: string): (
 		}
 		return dispatch({type: 'INIT'});
 	};
-}
-
-export function logout(): Action {
-	return {type: 'LOGOUT'};
 }

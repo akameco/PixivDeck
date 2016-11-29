@@ -14,6 +14,14 @@ import type {
 	ColumnType
 } from '../types';
 
+export const setQuery = (id: number, params: Params): Action => (
+	{type: 'SET_QUERY', id, params}
+);
+
+export const closeColumn = (id: number): Action => (
+	{type: 'CLOSE_COLUMN', id}
+);
+
 // Arrayに変換
 export function selectIllusts(nums: Array<number>, illusts: Illusts): Array<Illust> {
 	return nums.map(i => illusts[i]);
@@ -92,12 +100,4 @@ export function nextPage(column: ColumnType) {
 		const illusts = await parseIllusts(dispatch, id, res);
 		return illusts;
 	};
-}
-
-export function setQuery(id: number, params: Params): Action {
-	return {type: 'SET_QUERY', id, params};
-}
-
-export function closeColumn(id: number): Action {
-	return {type: 'CLOSE_COLUMN', id};
 }
