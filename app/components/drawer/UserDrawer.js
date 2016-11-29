@@ -50,7 +50,7 @@ class UserDrawer extends Component {
 		const user: User = userDetail.user;
 		const userIllusts = await Pixiv.userIllusts(id);
 		const json = normalizeIllusts(userIllusts);
-		this.props.dispatch({type: 'SUCCESS_API_REQUEST', response: json});
+		this.props.dispatch({type: 'API_REQUEST_SUCCESS', response: json});
 
 		const illusts: Illusts = json.entities.illusts;
 		const unionByArray = unionBy(this.state.illusts, selectIllusts(json.result, illusts), 'id');

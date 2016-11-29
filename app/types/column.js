@@ -32,6 +32,6 @@ export type ColumnType = {
 
 export type ColumnAction =
 	| {|type: 'ADD_COLUMN', id: number, title: string, query: Query|}
-	| {|type: 'SET_QUERY', id: number, params: Params|}
+	| {|type: 'SET_PARAMS', id: number, params: Params|}
 	| {|type: 'CLOSE_COLUMN', id: number|}
 ;
