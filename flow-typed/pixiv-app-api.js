@@ -1,4 +1,3 @@
-// @flow
 type ID = number | string;
 type Word = string;
 
@@ -41,6 +40,7 @@ declare module 'pixiv-app-api' {
 		mangaRecommended(params?: Object): Promise<Object>;
 		novelRecommendedNologin(params?: Object): Promise<Object>;
 		novelNew(params?: Object): Promise<Object>;
+		fetch(url: string, params?: Object): Promise<Object>;
 	}
 	declare module.exports: Class<PixivAppApi>;
 }
