@@ -3823,9 +3823,9 @@ pinkie@^2.0.0:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
 
-pixiv-app-api@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/pixiv-app-api/-/pixiv-app-api-0.5.0.tgz#8833450780d8e8d4c8f2c8932d968536104ebf14"
+pixiv-app-api:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/pixiv-app-api/-/pixiv-app-api-0.6.0.tgz#3ec9783c601e7e4af7da0d2fd92048e64283f06e"
   dependencies:
     axios "^0.15.2"
 
