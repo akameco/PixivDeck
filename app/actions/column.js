@@ -37,7 +37,7 @@ export function normalizeIllusts(response: Object): Object {
 export async function parseIllusts(dispatch: Dispatch, id: number, res: Object): Promise<Array<Illust>> {
 	const json = normalizeIllusts(res);
 	// Storeに反映
-	dispatch({type: 'SUCCESS_API_REQUEST', response: json});
+	dispatch({type: 'API_REQUEST_SUCCESS', response: json});
 	const illusts: Illusts = json.entities.illusts;
 
 	// 次のクエリの指定

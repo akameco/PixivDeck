@@ -15,7 +15,7 @@ function query(state: Query, action: Action): Query {
 		case 'INIT':
 		case 'ADD_COLUMN':
 			return {...state, opts: params(state.opts)};
-		case 'SET_QUERY':
+		case 'SET_PARAMS':
 			return {...state, opts: {...state.opts, ...action.params}};
 		default:
 			return state;
@@ -30,7 +30,7 @@ function column(state: Column, action: Action): Column {
 	switch (action.type) {
 		case 'INIT':
 			return {...state, query: query(state.query, action)};
-		case 'SET_QUERY':
+		case 'SET_PARAMS':
 			return {...state, query: query(state.query, action)};
 		default:
 			return state;
@@ -52,7 +52,7 @@ export default function columns(state: State = [], action: Action): State {
 			return state.filter(t => t.id !== id);
 		}
 		case 'INIT':
-		case 'SET_QUERY':
+		case 'SET_PARAMS':
 			return state.map(t => column(t, action));
 		default:
 			return state;

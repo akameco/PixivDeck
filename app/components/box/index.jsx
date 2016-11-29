@@ -7,7 +7,7 @@ import {
 	openImageView,
 	openMangaPreview,
 	currentIllust,
-	openUserDrawer
+	openUserDrawer,
 } from '../../actions';
 import Box from './box';
 
@@ -59,7 +59,7 @@ class SmartBox extends Component {
 function mapStateToProps(state: State, ownProps: Props) {
 	const user = state.entities.users[ownProps.illust.user];
 	return {
-		user
+		user,
 	};
 }
 
