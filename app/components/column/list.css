@@ -35,6 +35,7 @@
 .loading {
 	display: flex;
 	justify-content: center;
+	background: #4a4a4a;
 	height: 100%;
 }
 

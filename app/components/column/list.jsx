@@ -5,7 +5,7 @@ import css from 'react-css-modules';
 import type {Illust} from '../../types';
 import Box from '../box';
 import {CloseButton} from '../button';
-import {LoadingIcon} from '../icon';
+import Loading from '../common/Loading';
 import Infinite from './infinite';
 import styles from './list.css';
 
@@ -80,7 +80,7 @@ export default class List extends Component {
 						</Infinite>
 					</div> :
 						<div styleName="loading">
-							<LoadingIcon/>
+							<Loading wrapStyle={{background: '#121212'}}/>
 						</div>
 				}
 			</section>
