@@ -8,7 +8,8 @@ export type Params = {
 	max_bookmark_id?: ?number
 };
 
-export type Endpoint = 'searchIllust'
+export type Endpoint =
+	'searchIllust'
 	| 'illustRanking'
 	| 'userBookmarksIllust'
 	| 'userIllusts'

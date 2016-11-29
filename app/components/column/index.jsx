@@ -17,16 +17,38 @@ type State = {
 
 class SmartColumn extends Component {
 	props: Props;
+	timer: number;
 	state: State = {illusts: []};
 
 	componentDidMount() {
 		this.init();
 	}
 
+	componentWillUnmount() {
+		clearInterval(this.timer);
+	}
+
 	async init(): Promise<void> {
 		const column = this.props.column;
 		const res = await this.props.dispatch(fetchColumn(column));
 		this.setState({illusts: res});
+		const ms = 1000 * 60 * 5;
+		this.timer = setInterval(async () => {
+			await this.tick();
+		}, ms);
+	}
+
+	async tick() {
+		const column = this.props.column;
+		if (column.query.opts) {
+			delete column.query.opts.max_bookmark_id;
+			column.query.opts.offset = 0;
+		}
+		const res = await this.props.dispatch(fetchColumn(column), false);
+		const unionByArray = unionBy(res, this.state.illusts, 'id');
+		this.setState({
+			illusts: unionByArray,
+		});
 	}
 
 	handleClose = () => {
