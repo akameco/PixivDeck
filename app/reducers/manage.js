@@ -2,7 +2,6 @@
 import type {Manage, Action} from '../types';
 
 const initManageState: Manage = {
-	isLogin: false,
 	isLoading: false,
 	isImageView: false,
 	isImgLoaded: false,
@@ -11,7 +10,6 @@ const initManageState: Manage = {
 	isDropdown: false,
 	currentIllustId: null,
 	userId: null,
-	isLoginFailure: false,
 	isModal: true,
 	modalType: 'LOGIN',
 };
@@ -71,12 +69,8 @@ export default function (state: Manage = initManageState, action: Action): $Shap
 	switch (action.type) {
 		case 'INIT':
 			return {...state, ...closeState};
-		case 'LOGIN_SUCCESS':
-			return {...state, isLogin: true, isLoginFailure: false};
-		case 'LOGIN_FAILED':
-			return {...state, isLoginFailure: true};
 		case 'LOGOUT':
-			return {...state, ...closeState, isLogin: false, isLoginFailure: false, isModal: true, modalType: 'LOGIN'};
+			return {...state, ...closeState, isModal: true, modalType: 'LOGIN'};
 		case 'TOGGLE_DROPDOWN':
 			return {...state, ...closeState, isDropdown: !state.isDropdown};
 		case 'START_IMG_LOADING':

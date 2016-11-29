@@ -67,10 +67,11 @@
 
 .notice {
 	display: block;
-	background-color: red;
-	margin: 2px;
+	background-color: #b13232;
+	margin: 20px 5px 20px;
 	padding: 5px;
 	color: #fff;
-	border-radius: 5px;
-	box-shadow: 0 0 2px rgb(255, 0, 0);
+	border-radius: 2px;
+	text-align: center;
+	vertical-align: bottom;
 }

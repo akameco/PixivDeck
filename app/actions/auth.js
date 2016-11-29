@@ -21,15 +21,15 @@ export function init() {
 
 export function login(username: string, password: string): (
 	dispatch: Dispatch
-) => Promise<Action> {
+) => Promise<?Action> {
 	return async dispatch => {
+		dispatch({type: 'LOGIN_REQUEST'});
 		try {
 			await Pixiv.login(username, password);
-			dispatch({type: 'LOGIN_SUCCESS'});
-			dispatch({type: 'SAVE_LOGIN_INFO', username, password});
+			dispatch({type: 'LOGIN_SUCCESS', username, password});
+			return dispatch({type: 'INIT'});
 		} catch (err) {
-			dispatch({type: 'LOGIN_FAILED'});
+			dispatch({type: 'LOGIN_FAILURE'});
 		}
-		return dispatch({type: 'INIT'});
 	};
 }

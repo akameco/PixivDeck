@@ -8,8 +8,6 @@ export type ModalType =
 ;
 
 export type Manage = {|
-	isLogin: bool,
-	isLoginFailure: bool,
 	isLoading: bool,
 	isModal: bool,
 	isDrawer: bool,
@@ -35,8 +33,6 @@ export type ManageAction =
 	| {|type: 'CLOSE_DROPDOWN'|}
 	| {|type: 'TOGGLE_DROPDOWN'|}
 	| {|type: 'SELECT_WORK', id: number|}
-	| {|type: 'LOGIN_FAILED'|}
-	| {|type: 'LOGOUT'|}
 	| {|type: 'CLOSE_ALL'|}
 	| {|type: 'START_IMG_LOADING'|}
 	| {|type: 'SET_IMG_LOADED'|}
