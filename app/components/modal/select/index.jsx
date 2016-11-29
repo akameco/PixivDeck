@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import type {State, Dispatch, Query} from '../../../types';
+import type {State, Dispatch, Query, Endpoint} from '../../../types';
 import {addColumn} from '../../../actions';
 import Modal from './select-modal';
 
@@ -12,8 +12,8 @@ type Props = {
 class SmartModal extends Component {
 	props: Props;
 
-	handleAddColumn = (query: Query, title: string = '') => {
-		this.props.dispatch(addColumn(query, title));
+	handleAddColumn = (endpoint: Endpoint, query: Query, title: string = '') => {
+		this.props.dispatch(addColumn(endpoint, query, title));
 	};
 
 	handleHistory = () => {
@@ -31,7 +31,7 @@ class SmartModal extends Component {
 
 function mapStateToProps(state: State) {
 	return {
-		history: state.history
+		history: state.history,
 	};
 }
 

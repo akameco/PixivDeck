@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import css from 'react-css-modules';
 import {RANKING_MODES} from '../../../contains';
-import type {Query} from '../../../types/column';
+import type {Query, Endpoint} from '../../../types/column';
 import locale from '../../../locale/';
 import styles from './select-modal.css';
 
@@ -29,7 +29,7 @@ class Link extends Component {
 }
 
 type Props = {
-	onSelect: (query: $Shape<Query>, title: string) => void
+	onSelect: (endpoint: Endpoint, query: $Shape<Query>, title: string) => void
 };
 
 @css(styles)
@@ -37,17 +37,17 @@ export default class SelectColumnModal extends Component {
 	props: Props;
 
 	handleAddRanking = (mode: string) => {
-		this.props.onSelect({type: 'illustRanking', opts: {mode}}, `${locale(`illustRanking.${mode}`)}ランキング`);
+		this.props.onSelect('illustRanking', {opts: {mode}}, `${locale(`illustRanking.${mode}`)}ランキング`);
 	}
 
 	handleAddFavorite = (publicity: 'private' | 'public') => {
 		const title = {private: '非公開ブックマーク', public: '公開ブックマーク'}[publicity];
-		this.props.onSelect({type: 'userBookmarksIllust', opts: {restrict: publicity}}, title);
+		this.props.onSelect('userBookmarksIllust', {opts: {restrict: publicity}}, title);
 	}
 
 	handleAddIllustFollow = (publicity: 'private' | 'public') => {
 		const title = {private: '新着 非公開', public: '新着 公開'}[publicity];
-		this.props.onSelect({type: 'illustFollow', opts: {restrict: publicity}}, title);
+		this.props.onSelect('illustFollow', {opts: {restrict: publicity}}, title);
 	}
 
 	handleAddHistory = () => {

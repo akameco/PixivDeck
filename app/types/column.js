@@ -8,7 +8,7 @@ export type Params = {
 	max_bookmark_id?: ?number
 };
 
-type QueryType = 'searchIllust'
+export type Endpoint = 'searchIllust'
 	| 'illustRanking'
 	| 'userBookmarksIllust'
 	| 'userIllusts'
@@ -17,7 +17,6 @@ type QueryType = 'searchIllust'
 ;
 
 export type Query = {
-	type: QueryType,
 	id?: number,
 	word?: string,
 	opts?: Params
@@ -25,13 +24,13 @@ export type Query = {
 
 export type ColumnType = {
 	id: number,
+	endpoint: Endpoint,
 	title: string,
-	illusts: Array<number>,
-	query: $Shape<Query>
+	query: $Shape<Query>,
 };
 
 export type ColumnAction =
-	| {|type: 'ADD_COLUMN', id: number, title: string, query: Query|}
+	| {|type: 'ADD_COLUMN', id: number, title: string, endpoint: Endpoint, query: Query|}
 	| {|type: 'SET_PARAMS', id: number, params: Params|}
 	| {|type: 'CLOSE_COLUMN', id: number|}
 ;

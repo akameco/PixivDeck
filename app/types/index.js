@@ -1,6 +1,6 @@
 // @flow
 import type {Store as ReduxStore, Dispatch as ReduxDispatch} from 'redux'; // eslint-disable-line
-import type {ColumnType, ColumnAction, Query, Params} from './column';
+import type {ColumnType, ColumnAction, Query, Params, Endpoint} from './column';
 import type {Manage, ManageAction, ModalType} from './manage';
 import type {History, HistoryAction} from './history';
 import type {Filter, FilterAction} from './filter';
@@ -18,6 +18,7 @@ export type {
 	ApiAction,
 	ColumnType,
 	Query,
+	Endpoint,
 	User,
 	Users,
 	Profile,

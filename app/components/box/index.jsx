@@ -25,7 +25,7 @@ class SmartBox extends Component {
 	}
 
 	handleTagClick = (tag: string) => {
-		this.props.dispatch(addColumn({type: 'searchIllust', word: tag}, tag));
+		this.props.dispatch(addColumn('searchIllust', {word: tag}, tag));
 	}
 
 	handleClickUser = () => {
