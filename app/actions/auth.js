@@ -1,7 +1,6 @@
 // @flow
 import Pixiv from '../repo/pixiv';
 import type {Action, Dispatch, State} from '../types';
-import {initColumnOrder} from './column';
 
 export function init() {
 	return async (
@@ -19,17 +18,13 @@ export function init() {
 }
 
 export function login(username: string, password: string): (
-	dispatch: Dispatch,
-	getState: () => State
+	dispatch: Dispatch
 ) => Promise<Action> {
-	return async (dispatch, getState) => {
+	return async dispatch => {
 		try {
 			await Pixiv.login(username, password);
 			dispatch({type: 'LOGIN_SUCCESS'});
 			dispatch({type: 'SAVE_LOGIN_INFO', username, password});
-
-			const columns = getState().columns;
-			await initColumnOrder(dispatch, columns);
 		} catch (err) {
 			dispatch({type: 'LOGIN_FAILED'});
 		}
