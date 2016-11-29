@@ -28,15 +28,15 @@ class App extends Component {
 	}
 
 	render() {
-		const {isModal} = this.props.manage;
+		const {isModal, isDrawer} = this.props.manage;
 
 		return (
 			<div>
 				<Header/>
 				<Columns columns={this.props.columns}/>
 				{this.renderPreview()}
-				<Drawer>
-					{this.props.manage.isDrawer && <UserDrawer/>}
+				<Drawer isDrawer={isDrawer}>
+					{isDrawer && <UserDrawer/>}
 				</Drawer>
 				{isModal && <Modal/>}
 			</div>

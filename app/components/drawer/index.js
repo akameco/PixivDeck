@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import type {State, Dispatch} from '../../types';
+import type {Dispatch} from '../../types';
 import {closeDrawer} from '../../actions';
 
 type Props = {
@@ -77,9 +77,4 @@ class Drawer extends Component {
 	}
 }
 
-function mapStateToProps(state: State) {
-	const isDrawer = state.manage.isDrawer;
-	return {isDrawer};
-}
-
-export default connect(mapStateToProps)(Drawer);
+export default connect()(Drawer);
