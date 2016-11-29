@@ -20,13 +20,19 @@ export const setPrams = (id: number, params: Params): Action => (
 	{type: 'SET_PARAMS', id, params}
 );
 
-export function addColumn(endpoint: Endpoint, query: $Subtype<Query>, title: string): Action {
+export function addColumn(
+	endpoint: Endpoint,
+	query: $Subtype<Query>,
+	title: string,
+	timer: number,
+): Action {
 	const id = Date.now();
 	return {
 		type: 'ADD_COLUMN',
 		endpoint,
 		id,
 		title,
+		timer,
 		query,
 	};
 }

@@ -13,7 +13,7 @@ class SmartModal extends Component {
 	props: Props;
 
 	handleAddColumn = (endpoint: Endpoint, query: Query, title: string = '') => {
-		this.props.dispatch(addColumn(endpoint, query, title));
+		this.props.dispatch(addColumn(endpoint, query, title, 1000 * 60 * 5));
 	};
 
 	handleHistory = () => {
