@@ -8,7 +8,7 @@ import Modal from './modal';
 import Header from './header';
 import Columns from './app/columns';
 import Drawer from './drawer';
-import UserDrawer from './drawer/user-drawer';
+import UserDrawer from './drawer/UserDrawer';
 
 type Props = {
 	columns: Array<ColumnType>,
