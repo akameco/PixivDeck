@@ -3,7 +3,7 @@ import type {Action, Auth} from '../types';
 
 const initState = {
 	username: '',
-	password: ''
+	password: '',
 };
 
 export default function auth(state: Auth = initState, action: Action): Auth {

@@ -43,7 +43,7 @@ export default function columns(state: State = [], action: Action): State {
 			const {id, title} = action;
 			return [
 				...state,
-				{id, query: query(action.query, action), title}
+				{id, query: query(action.query, action), title},
 			];
 		}
 		case 'CLOSE_COLUMN': {

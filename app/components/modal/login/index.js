@@ -23,7 +23,7 @@ class LoginModal extends Component {
 	props: Props;
 	state: State = {
 		username: this.props.username,
-		password: this.props.password
+		password: this.props.password,
 	};
 
 	handleChangeName = (event: Event) => {
@@ -94,7 +94,7 @@ function mapDispatchToProps(dispatch: Dispatch) {
 	return {
 		onClick: (username, password) => {
 			dispatch(login(username, password));
-		}
+		},
 	};
 }
 

@@ -24,7 +24,7 @@ export type {
 	MetaPages,
 	ModalType,
 	Params,
-	Auth
+	Auth,
 };
 
 export type Entities = {

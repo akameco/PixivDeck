@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
 	columns,
 	history,
 	filter,
-	auth
+	auth,
 });
 
 export default rootReducer;

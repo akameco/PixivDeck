@@ -9,7 +9,7 @@ import type {
 	Dispatch,
 	State as S, User,
 	Profile,
-	Illust, Illusts
+	Illust, Illusts,
 } from '../../types';
 import {normalizeIllusts, selectIllusts} from '../../actions';
 import Box from '../box';
@@ -35,7 +35,7 @@ class UserDrawer extends Component {
 	state: State = {
 		user: null,
 		profile: null,
-		illusts: []
+		illusts: [],
 	};
 
 	componentDidMount() {
@@ -94,17 +94,17 @@ class UserDrawer extends Component {
 const headerStyle = {
 	root: {
 		backgroundColor: '#eee',
-		paddingBottom: '30px'
+		paddingBottom: '30px',
 	},
 	imgWrap: {
 		position: 'relative',
 		width: '100%',
 		height: '100%',
 		margin: '20px auto',
-		textAlign: 'center'
+		textAlign: 'center',
 	},
 	info: {
-		textAlign: 'center'
+		textAlign: 'center',
 	},
 	caption: {
 		backgroundColor: '#fff',
@@ -112,8 +112,8 @@ const headerStyle = {
 		margin: '10px 20px',
 		padding: '10px 20px',
 		lineHeight: '21px',
-		fontSize: '14px'
-	}
+		fontSize: '14px',
+	},
 };
 
 function Header({user, profile}: {user: User, profile: Profile}) {
@@ -129,7 +129,7 @@ function Header({user, profile}: {user: User, profile: Profile}) {
 			<div style={headerStyle.caption}>
 				<span
 					dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
-						__html: link(user.comment)
+						__html: link(user.comment),
 					}}
 					/>
 			</div>
@@ -145,14 +145,14 @@ const navgationStyle = {
 		transform: 'translateZ(0)',
 		height: 50,
 		top: 0,
-		zIndex: 10
+		zIndex: 10,
 	},
 	wrap: {
 		display: 'flex',
 		textAlign: 'left',
 		justifyContent: 'flex-end',
-		padding: '10px'
-	}
+		padding: '10px',
+	},
 };
 
 function Navgation({user, profile}: {user: User, profile: Profile}) {
@@ -211,7 +211,7 @@ function mapStateToProps(state: S) {
 	}
 	const user = state.entities.users[state.manage.userId];
 	return {
-		user
+		user,
 	};
 }
 

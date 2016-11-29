@@ -8,32 +8,32 @@ module.exports = merge(baseConfig, {
 
 	entry: [
 		'babel-polyfill',
-		'./main.development'
+		'./main.development',
 	],
 
 	output: {
 		path: __dirname,
-		filename: './main.js'
+		filename: './main.js',
 	},
 
 	plugins: [
 		new webpack.optimize.UglifyJsPlugin({
 			compressor: {
-				warnings: false
-			}
+				warnings: false,
+			},
 		}),
 		new webpack.DefinePlugin({
 			'process.env': {
-				NODE_ENV: JSON.stringify('production')
-			}
-		})
+				NODE_ENV: JSON.stringify('production'),
+			},
+		}),
 	],
 
 	target: 'electron-main',
 
 	node: {
 		__dirname: false,
-		__filename: false
+		__filename: false,
 	},
 
 	externals: [
@@ -43,6 +43,6 @@ module.exports = merge(baseConfig, {
 		'electron-dl',
 		'dot-prop',
 		'pify',
-		'wallpaper'
-	]
+		'wallpaper',
+	],
 });

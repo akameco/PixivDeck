@@ -13,7 +13,7 @@ const initManageState: Manage = {
 	userId: null,
 	isLoginFailure: false,
 	isModal: true,
-	modalType: 'LOGIN'
+	modalType: 'LOGIN',
 };
 
 type CloseState = {
@@ -29,7 +29,7 @@ const closeState: CloseState = {
 	isDrawer: false,
 	isMangaView: false,
 	isModal: false,
-	isDropdown: false
+	isDropdown: false,
 };
 
 function open(state: Manage, action: Action): $Shape<Manage> {

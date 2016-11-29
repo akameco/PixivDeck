@@ -15,8 +15,8 @@ const obj = {
 		week_r18: 'R18 ウィークリー',
 		day_male_r18: 'R18 男子に人気',
 		day_female_r18: 'R18 女子に人気',
-		week_r18g: 'R18 G'
-	}
+		week_r18g: 'R18 G',
+	},
 };
 
 export default (str: string) => {

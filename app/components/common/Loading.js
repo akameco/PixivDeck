@@ -9,8 +9,8 @@ const defaultStyle = {
 		width: '100%',
 		height: '100%',
 		display: 'flex',
-		justifyContent: 'center'
-	}
+		justifyContent: 'center',
+	},
 };
 
 type Props = {

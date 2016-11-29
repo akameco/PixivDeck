@@ -10,7 +10,7 @@ module.exports = merge(baseConfig, {
 
 	entry: [
 		'babel-polyfill',
-		'./app/index'
+		'./app/index',
 	],
 
 	debug: true,
@@ -20,7 +20,7 @@ module.exports = merge(baseConfig, {
 	devtool: '#inline-source-map',
 
 	output: {
-		publicPath: `http://localhost:${port}/dist`
+		publicPath: `http://localhost:${port}/dist`,
 	},
 
 	module: {
@@ -28,33 +28,33 @@ module.exports = merge(baseConfig, {
 			{
 				test: /\.js$/,
 				loader: 'babel?cacheDirectory',
-				exclude: /node_modules/
+				exclude: /node_modules/,
 			},
 			{
 				test: /\.global\.css$/,
 				loaders: [
 					'style-loader',
-					'css-loader?sourceMap'
-				]
+					'css-loader?sourceMap',
+				],
 			},
 			{
 				test: /^((?!\.global).)*\.css$/,
 				loaders: [
 					'style-loader',
 					'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
-					'postcss-loader'
-				]
-			}
-		]
+					'postcss-loader',
+				],
+			},
+		],
 	},
 
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NoErrorsPlugin(),
 		new webpack.DefinePlugin({
-			'process.env.NODE_ENV': JSON.stringify('development')
-		})
+			'process.env.NODE_ENV': JSON.stringify('development'),
+		}),
 	],
 
-	postcss: () => [require('postcss-cssnext')()]
+	postcss: () => [require('postcss-cssnext')()],
 });

@@ -7,7 +7,7 @@ import storeWrapper from '../store-wrapper';
 
 export default function configureStore(initialState: Object) {
 	const logger = createLogger({
-		collapsed: () => true
+		collapsed: () => true,
 	});
 
 	const enhancer = compose(

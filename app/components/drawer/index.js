@@ -17,7 +17,7 @@ const defaultStyle = {
 		left: 0,
 		right: 0,
 		bottom: 0,
-		overflow: 'hidden'
+		overflow: 'hidden',
 	},
 	overlay: {
 		zIndex: 800,
@@ -29,7 +29,7 @@ const defaultStyle = {
 		visibility: 'hidden',
 		transition: 'opacity .2s ease-out',
 		WebkitTransition: '-webkit-transform .2s ease-out',
-		backgroundColor: 'rgba(41, 47, 51, 0.9)'
+		backgroundColor: 'rgba(41, 47, 51, 0.9)',
 	},
 	drawer: {
 		zIndex: 900,
@@ -42,8 +42,8 @@ const defaultStyle = {
 		willChange: 'transform',
 		overflowY: 'auto',
 		boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.15)',
-		backgroundColor: '#fff'
-	}
+		backgroundColor: '#fff',
+	},
 };
 
 class Drawer extends Component {

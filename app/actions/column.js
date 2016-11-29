@@ -11,7 +11,7 @@ import type {
 	Params,
 	Illust,
 	Illusts,
-	ColumnType
+	ColumnType,
 } from '../types';
 
 export const setQuery = (id: number, params: Params): Action => (
@@ -89,7 +89,7 @@ export function addColumn(query: $Subtype<Query>, title: string): Action {
 		type: 'ADD_COLUMN',
 		id,
 		title,
-		query
+		query,
 	};
 }
 
