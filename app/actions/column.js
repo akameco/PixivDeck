@@ -6,6 +6,7 @@ import Schemas from '../schemas';
 import Pixiv from '../repo/pixiv';
 import type {
 	Action,
+	State,
 	Dispatch,
 	Query,
 	Params,
@@ -42,54 +43,52 @@ export const selectIllusts = (nums: Array<number>, illusts: Illusts) => {
 	return nums.map(i => illusts[i]);
 };
 
-export async function parseIllusts(
-	dispatch: Dispatch,
-	res: Object
-): Promise<{illusts: Array<Illust>, params: ?Object}> {
-	const json = normalizeIllusts(res);
-	dispatch({type: 'API_REQUEST_SUCCESS', response: json});
-	const illusts: Illusts = json.entities.illusts;
+export async function reqestColumn(column: ColumnType): Promise<*> {
+	const {endpoint, query} = column;
+	const {id, opts, word} = query;
+	let res;
+	if (endpoint === 'illustRanking') {
+		res = await Pixiv.illustRanking(opts);
+	} else if (endpoint === 'illustFollow') {
+		res = await Pixiv.illustFollow(opts);
+	} else if (endpoint === 'userBookmarksIllust') {
+		const myId = Pixiv.authInfo().user.id;
+		res = await Pixiv.userBookmarksIllust(myId, opts);
+	} else if (endpoint === 'userIllusts') {
+		if (!id) {
+			throw new Error('required id');
+		}
+		res = await Pixiv.userIllusts(id, opts);
+	} else if (endpoint === 'searchIllust') {
+		if (!word) {
+			throw new Error('required word');
+		}
+		res = await Pixiv.searchIllust(word, opts);
+	} else {
+		res = await Pixiv.fetch(endpoint, opts);
+	}
 
 	const params: ?Params = res.next_url ? url.parse(res.next_url, true).query : null;
-
 	return {
-		illusts: json.result.map(i => illusts[i]),
+		response: normalizeIllusts(res),
 		params,
 	};
 }
 
-export async function reqestColumn(column: ColumnType): Promise<*> {
-	const {id, opts, word} = column.query;
-	switch (column.endpoint) {
-		case 'illustRanking':
-			return await Pixiv.illustRanking(opts);
-		case 'illustFollow':
-			return await Pixiv.illustFollow(opts);
-		case 'userBookmarksIllust': {
-			const myId = Pixiv.authInfo().user.id;
-			return await Pixiv.userBookmarksIllust(myId, opts);
-		}
-		case 'userIllusts':
-			if (!id) {
-				break;
-			}
-			return await Pixiv.userIllusts(id, opts);
-		case 'searchIllust':
-			if (!word) {
-				break;
-			}
-			return await Pixiv.searchIllust(word, opts);
-		default:
-			throw new Error('not match');
-	}
-}
-
-export function fetchColumn(column: ColumnType) {
-	return async (dispatch: Dispatch): Promise<Array<Illust>> => {
+export function fetchColumn(column: ColumnType, updateQuery?: bool = true) {
+	return async (dispatch: Dispatch, getState: () => State): Promise<Array<Illust>> => {
 		const {id} = column;
-		const res = await reqestColumn(column);
-		const {illusts, params} = await parseIllusts(dispatch, res);
-		if (params) {
+		const authInfo = Pixiv.authInfo();
+		const {username, password} = getState().auth;
+		if (!authInfo && username && password) {
+			await Pixiv.login(username, password);
+		}
+		const {response, params} = await reqestColumn(column);
+		dispatch({type: 'API_REQUEST_SUCCESS', response});
+
+		const illusts = selectIllusts(response.result, response.entities.illusts);
+
+		if (params && updateQuery) {
 			dispatch(setPrams(id, params));
 		}
 		return illusts;
