@@ -28,10 +28,11 @@ export type ColumnType = {
 	endpoint: Endpoint,
 	title: string,
 	query: $Shape<Query>,
+	timer: number,
 };
 
 export type ColumnAction =
-	| {|type: 'ADD_COLUMN', id: number, title: string, endpoint: Endpoint, query: Query|}
+	| {|type: 'ADD_COLUMN', id: number, title: string, endpoint: Endpoint, query: Query, timer: number|}
 	| {|type: 'SET_PARAMS', id: number, params: Params|}
 	| {|type: 'CLOSE_COLUMN', id: number|}
 ;

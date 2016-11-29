@@ -32,10 +32,10 @@ class SmartColumn extends Component {
 		const column = this.props.column;
 		const res = await this.props.dispatch(fetchColumn(column));
 		this.setState({illusts: res});
-		const ms = 1000 * 60 * 5;
+
 		this.timer = setInterval(async () => {
 			await this.tick();
-		}, ms);
+		}, column.timer || 1000 * 60 * 5);
 	}
 
 	async tick() {

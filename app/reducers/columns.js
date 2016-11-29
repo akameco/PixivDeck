@@ -40,10 +40,10 @@ function column(state: Column, action: Action): Column {
 export default function columns(state: State = [], action: Action): State {
 	switch (action.type) {
 		case 'ADD_COLUMN': {
-			const {id, title, endpoint} = action;
+			const {id, title, endpoint, timer} = action;
 			return [
 				...state,
-				{id, endpoint, query: query(action.query, action), title},
+				{id, endpoint, query: query(action.query, action), title, timer},
 			];
 		}
 		case 'CLOSE_COLUMN': {
