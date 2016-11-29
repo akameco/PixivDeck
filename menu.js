@@ -10,7 +10,7 @@ const helpSubmenu = [
 		label: `${appName} Website`,
 		click() {
 			shell.openExternal('https://github.com/akameco/PixivDeck');
-		}
+		},
 	},
 	{
 		label: 'Report an Issue...',
@@ -24,13 +24,13 @@ ${app.getName()} ${app.getVersion()}
 Electron ${process.versions.electron}
 ${process.platform} ${process.arch} ${os.release()}`;
 			shell.openExternal(`https://github.com/akameco/PixivDeck/issues/new?body=${encodeURIComponent(body)}`);
-		}
-	}
+		},
+	},
 ];
 
 if (process.platform !== 'darwin') {
 	helpSubmenu.push({
-		type: 'separator'
+		type: 'separator',
 	}, {
 		role: 'about',
 		click() {
@@ -38,9 +38,9 @@ if (process.platform !== 'darwin') {
 				title: `About ${appName}`,
 				message: `${appName} ${app.getVersion()}`,
 				detail: 'Created by akameco',
-				buttons: []
+				buttons: [],
 			});
-		}
+		},
 	});
 }
 
@@ -49,69 +49,69 @@ const darwinTpl = [
 		label: appName,
 		submenu: [
 			{
-				role: 'about'
+				role: 'about',
 			},
 			{
-				type: 'separator'
+				type: 'separator',
 			},
 			{
 				role: 'services',
-				submenu: []
+				submenu: [],
 			},
 			{
-				type: 'separator'
+				type: 'separator',
 			},
 			{
-				role: 'hide'
+				role: 'hide',
 			},
 			{
-				role: 'hideothers'
+				role: 'hideothers',
 			},
 			{
-				role: 'unhide'
+				role: 'unhide',
 			},
 			{
-				type: 'separator'
+				type: 'separator',
 			},
 			{
-				role: 'quit'
-			}
-		]
+				role: 'quit',
+			},
+		],
 	},
 	{
-		label: 'File'
+		label: 'File',
 	},
 	{
 		label: 'Edit',
 		submenu: [
 			{
-				role: 'undo'
+				role: 'undo',
 			},
 			{
-				role: 'redo'
+				role: 'redo',
 			},
 			{
-				type: 'separator'
+				type: 'separator',
 			},
 			{
-				role: 'cut'
+				role: 'cut',
 			},
 			{
-				role: 'copy'
+				role: 'copy',
 			},
 			{
-				role: 'paste'
+				role: 'paste',
 			},
 			{
-				role: 'pasteandmatchstyle'
+				role: 'pasteandmatchstyle',
 			},
 			{
-				role: 'delete'
+				role: 'delete',
 			},
 			{
-				role: 'selectall'
-			}
-		]
+				role: 'selectall',
+			},
+		],
 	},
 	{
 		label: 'View',
@@ -123,37 +123,37 @@ const darwinTpl = [
 					if (focusedWindow) {
 						focusedWindow.reload();
 					}
-				}
-			}
-		]
+				},
+			},
+		],
 	},
 	{
 		role: 'window',
 		submenu: [
 			{
-				role: 'minimize'
+				role: 'minimize',
 			},
 			{
-				role: 'close'
+				role: 'close',
 			},
 			{
-				type: 'separator'
+				type: 'separator',
 			},
 			{
-				type: 'separator'
+				type: 'separator',
 			},
 			{
-				role: 'front'
+				role: 'front',
 			},
 			{
-				role: 'togglefullscreen'
-			}
-		]
+				role: 'togglefullscreen',
+			},
+		],
 	},
 	{
 		role: 'help',
-		submenu: helpSubmenu
-	}
+		submenu: helpSubmenu,
+	},
 ];
 
 const otherTpl = [
@@ -161,52 +161,52 @@ const otherTpl = [
 		label: 'File',
 		submenu: [
 			{
-				role: 'quit'
-			}
-		]
+				role: 'quit',
+			},
+		],
 	},
 	{
 		label: 'Edit',
 		submenu: [
 			{
-				role: 'undo'
+				role: 'undo',
 			},
 			{
-				role: 'redo'
+				role: 'redo',
 			},
 			{
-				type: 'separator'
+				type: 'separator',
 			},
 			{
-				role: 'cut'
+				role: 'cut',
 			},
 			{
-				role: 'copy'
+				role: 'copy',
 			},
 			{
-				role: 'paste'
+				role: 'paste',
 			},
 			{
-				role: 'pasteandmatchstyle'
+				role: 'pasteandmatchstyle',
 			},
 			{
-				role: 'delete'
+				role: 'delete',
 			},
 			{
-				type: 'separator'
+				type: 'separator',
 			},
 			{
-				role: 'selectall'
-			}
-		]
+				role: 'selectall',
+			},
+		],
 	},
 	{
-		label: 'View'
+		label: 'View',
 	},
 	{
 		role: 'help',
-		submenu: helpSubmenu
-	}
+		submenu: helpSubmenu,
+	},
 ];
 
 const tpl = process.platform === 'darwin' ? darwinTpl : otherTpl;

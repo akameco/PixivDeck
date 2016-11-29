@@ -3,7 +3,7 @@ import union from 'lodash.union';
 import type {Action, Filter} from '../types';
 
 const initialState: Filter = {
-	tags: []
+	tags: [],
 };
 
 export default function (state: Filter = initialState, action: Action): $Shape<Filter> {

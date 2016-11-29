@@ -16,7 +16,7 @@ const defaultStyle = {
 	cursor: 'pointer',
 	textDecoration: 'none',
 	padding: '4px 7px 5px 7px',
-	fontSize: 13
+	fontSize: 13,
 };
 
 export default class Button extends Component {

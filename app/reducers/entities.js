@@ -4,7 +4,7 @@ import type {Action, Entities} from '../types';
 
 const initialState: Entities = {
 	illusts: {},
-	users: {}
+	users: {},
 };
 
 export default function (state: Entities = initialState, action: Action): Entities {

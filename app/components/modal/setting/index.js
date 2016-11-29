@@ -12,7 +12,7 @@ function mapStateToProps(state: State) {
 function mapDispatchToProps(dispatch: Dispatch) {
 	return {
 		onSubmit: (tag: string) => dispatch(addTagFilter(tag)),
-		onDelete: (tag: string) => dispatch(removeTagFilter(tag))
+		onDelete: (tag: string) => dispatch(removeTagFilter(tag)),
 	};
 }
 

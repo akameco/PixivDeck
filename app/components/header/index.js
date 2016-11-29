@@ -4,7 +4,7 @@ import type {Dispatch, State} from '../../types';
 import {
 	logout,
 	toggleDropdown,
-	openModal
+	openModal,
  } from '../../actions';
 import Header from './header';
 
@@ -18,7 +18,7 @@ function mapDispatchToProps(dispatch: Dispatch) {
 		onClickAdd: () => dispatch(openModal()),
 		onToggleDropdown: () => dispatch(toggleDropdown()),
 		onOpenSearchModal: () => dispatch(openModal('SEARCH')),
-		onOpenFilterModal: () => dispatch(openModal('FILTER_TAG'))
+		onOpenFilterModal: () => dispatch(openModal('FILTER_TAG')),
 	};
 }
 

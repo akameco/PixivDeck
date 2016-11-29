@@ -38,9 +38,9 @@ const config = new Config({
 	defaults: {
 		bounds: {
 			width: 960,
-			height: 680
-		}
-	}
+			height: 680,
+		},
+	},
 });
 
 function createMainWindow() {
@@ -50,7 +50,7 @@ function createMainWindow() {
 		width: lastWindowState.width,
 		height: lastWindowState.height,
 		x: lastWindowState.x,
-		y: lastWindowState.y
+		y: lastWindowState.y,
 	});
 
 	if (process.env.NODE_ENV === 'development') {

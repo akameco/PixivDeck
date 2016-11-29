@@ -27,7 +27,7 @@ const ignore = [
 	'^/CSSFlowStub.js.flow',
 	'^/main.development.js',
 	...ignoredDevDeps,
-	...ignoredDeps
+	...ignoredDeps,
 ];
 
 function pack(target) {
@@ -37,7 +37,7 @@ function pack(target) {
 			arch: 'x64',
 			icon: 'static/Icon.icns',
 			'app-bundle-id': 'io.github.akameco.pixivdeck',
-			'osx-sign': true
+			'osx-sign': true,
 		},
 		windows: {
 			platform: 'win32',
@@ -45,15 +45,15 @@ function pack(target) {
 			icon: 'static/Icon.ico',
 			'app-bundle-id': 'io.github.akameco.pixivdeck',
 			win32metadata: {
-				FileDescription: pkg.productName
-			}
+				FileDescription: pkg.productName,
+			},
 		},
 		linux: {
 			platform: 'linux',
 			arch: 'x64',
 			icon: 'static/Icon.png',
-			'version-string.ProductName': pkg.productName
-		}
+			'version-string.ProductName': pkg.productName,
+		},
 	};
 
 	const pkgOpt = Object.assign({
@@ -64,7 +64,7 @@ function pack(target) {
 		overwrite: true,
 		prune: true,
 		out: 'release',
-		ignore
+		ignore,
 	}, buildOpts[target]);
 
 	return pify(packager)(pkgOpt);

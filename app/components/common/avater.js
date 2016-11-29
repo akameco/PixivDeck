@@ -10,8 +10,8 @@ const defaultStyle = {
 	img: {
 		width: 50,
 		height: 50,
-		borderRadius: 4
-	}
+		borderRadius: 4,
+	},
 };
 
 export default class Avater extends Component {

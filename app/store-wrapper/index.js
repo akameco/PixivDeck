@@ -6,7 +6,7 @@ import save from './save';
 export default (store: Store) => {
 	const wrappers = [
 		keyEvent,
-		save
+		save,
 	];
 
 	wrappers.forEach(wrap => {

@@ -8,5 +8,5 @@ illusts.define({user});
 
 export default {
 	ILLUST: illusts,
-	ILLUSTS: arrayOf(illusts)
+	ILLUSTS: arrayOf(illusts),
 };

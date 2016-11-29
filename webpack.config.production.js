@@ -9,11 +9,11 @@ module.exports = merge(baseConfig, {
 
 	entry: [
 		'babel-polyfill',
-		'./app/index'
+		'./app/index',
 	],
 
 	output: {
-		publicPath: '../dist/'
+		publicPath: '../dist/',
 	},
 
 	module: {
@@ -23,31 +23,31 @@ module.exports = merge(baseConfig, {
 				loader: ExtractTextPlugin.extract(
 					'style-loader',
 					'css-loader'
-				)
+				),
 			},
 			{
 				test: /^((?!\.global).)*\.css$/,
 				loader: ExtractTextPlugin.extract(
 					'style-loader',
 					'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
-				)
-			}
-		]
+				),
+			},
+		],
 	},
 
 	plugins: [
 		new webpack.optimize.OccurrenceOrderPlugin(),
 		new webpack.DefinePlugin({
-			'process.env.NODE_ENV': JSON.stringify('production')
+			'process.env.NODE_ENV': JSON.stringify('production'),
 		}),
 		new webpack.optimize.UglifyJsPlugin({
 			compressor: {
 				screw_ie8: true, // eslint-disable-line camelcase
-				warnings: false
-			}
+				warnings: false,
+			},
 		}),
-		new ExtractTextPlugin('style.css', {allChunks: true})
+		new ExtractTextPlugin('style.css', {allChunks: true}),
 	],
 
-	target: 'electron-renderer'
+	target: 'electron-renderer',
 });
