@@ -4,18 +4,20 @@ import {connect} from 'react-redux';
 import css from 'react-css-modules';
 import type {Dispatch, State as S} from '../../../types';
 import {login} from '../../../actions';
+import Loading from '../../common/Loading';
 import styles from './login.css';
 
 type Props = {
 	username: string,
 	password: string,
 	isLoginFailure: bool,
+	isLoading: bool,
 	onClick: (username: string, password: string) => void
 };
 
 type State = {
 	username: string,
-	password: string
+	password: string,
 };
 
 @css(styles)
@@ -45,16 +47,37 @@ class LoginModal extends Component {
 	renderErrorNotify() {
 		return (
 			<div styleName="notice">
-				ログインに失敗しました。
-				アカウント名またはパスワードを確認してください。
+				<p>
+					ログインに失敗しました。
+					<br/>
+					ユーザ名とパスワードを確認してください。
+				</p>
+			</div>
+		);
+	}
+
+	renderLoading() {
+		return (
+			<div styleName="wrap">
+				<div styleName="feild">
+					<Loading/>
+					<button styleName="submit">
+						ログイン中...
+					</button>
+				</div>
 			</div>
 		);
 	}
 
 	render() {
+		const {isLoginFailure, isLoading} = this.props;
+		if (isLoading) {
+			return this.renderLoading();
+		}
+
 		return (
 			<div styleName="wrap">
-				{this.props.isLoginFailure && this.renderErrorNotify()}
+				{isLoginFailure && this.renderErrorNotify()}
 				<div styleName="feild">
 					<input
 						styleName="input"
@@ -70,7 +93,6 @@ class LoginModal extends Component {
 						value={this.state.password}
 						onChange={this.handleChangePassword}
 						/>
-
 					<button onClick={this.handleClick} styleName="submit">
 						ログイン
 					</button>
@@ -81,13 +103,7 @@ class LoginModal extends Component {
 }
 
 function mapStateToProps(state: S) {
-	const {username, password} = state.auth;
-	const {isLoginFailure} = state.manage;
-	return {
-		username,
-		password,
-		isLoginFailure
-	};
+	return {...state.auth};
 }
 
 function mapDispatchToProps(dispatch: Dispatch) {

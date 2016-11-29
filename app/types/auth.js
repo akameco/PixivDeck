@@ -4,10 +4,15 @@ type Password = string;
 
 export type Auth = {
 	username: Username,
-	password: Password
+	password: Password,
+	isLoginFailure: bool,
+	isLoading: bool
 };
 
-export type Action =
-	| {type: 'SAVE_LOGIN_INFO', username: Username, password: Password}
-	| {type: 'INIT'}
+export type AuthAction =
+	| {|type: 'INIT'|}
+	| {|type: 'LOGIN_REQUEST'|}
+	| {|type: 'LOGIN_SUCCESS', username: Username, password: Password|}
+	| {|type: 'LOGIN_FAILURE'|}
+	| {|type: 'LOGOUT'|}
 ;
