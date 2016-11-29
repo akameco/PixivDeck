@@ -16,8 +16,8 @@ import Box from '../box';
 import Pixiv from '../../repo/pixiv';
 import Avater from '../common/avater';
 import Button from '../common/button';
+import Loading from '../common/Loading';
 import AddColumnButton from './AddColumnButton';
-import Loading from './Loading';
 
 type Props = {
 	user: User,
