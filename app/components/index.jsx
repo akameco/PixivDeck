@@ -49,7 +49,7 @@ function mapStateToProps(state: State) {
 
 	return {
 		manage,
-		columns
+		columns,
 	};
 }
 
