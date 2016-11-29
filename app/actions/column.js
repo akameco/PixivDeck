@@ -13,7 +13,6 @@ import type {
 	Illusts,
 	ColumnType
 } from '../types';
-import {delay} from '../utils';
 
 // Arrayに変換
 export function selectIllusts(nums: Array<number>, illusts: Illusts): Array<Illust> {
@@ -74,15 +73,6 @@ export function fetchColumn(column: ColumnType) {
 		const illusts = await parseIllusts(dispatch, column.id, res);
 		return illusts;
 	};
-}
-
-// 順番にカラムを初期化
-export async function initColumnOrder(dispatch: Dispatch, columns: Array<ColumnType>): Promise<void> {
-	for (const c of columns) {
-		const res = await reqestColumn(c.id, c.query);
-		await parseIllusts(dispatch, c.id, res);
-		await delay(200);
-	}
 }
 
 export function addColumn(query: $Subtype<Query>, title: string): Action {
