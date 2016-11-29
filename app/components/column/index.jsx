@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import unionBy from 'lodash.unionby';
 import type {Dispatch, Illust, ColumnType} from '../../types';
-import {nextPage, closeColumn, fetchColumn} from '../../actions';
+import {fetchColumn, closeColumn} from '../../actions';
 import Column from './column';
 
 type Props = {
@@ -34,10 +34,10 @@ class SmartColumn extends Component {
 	}
 
 	handleOnNextPage: () => Promise<void> = async () => {
-		const illusts = await this.props.dispatch(nextPage(this.props.column));
+		const illusts = await this.props.dispatch(fetchColumn(this.props.column));
 		const unionByArray = unionBy(this.state.illusts, illusts, 'id');
 		this.setState({
-			illusts: unionByArray
+			illusts: unionByArray,
 		});
 	}
 

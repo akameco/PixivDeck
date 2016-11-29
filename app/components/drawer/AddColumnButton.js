@@ -13,8 +13,7 @@ type Props = {
 function AddColumnButton({user, dispatch}: Props) {
 	const onClick = () => {
 		dispatch(
-			addColumn({type: 'userIllusts', id: user.id},
-			`${user.name}(${user.account})`)
+			addColumn('userIllusts', {id: user.id}, `${user.name}(${user.account})`)
 		);
 	};
 

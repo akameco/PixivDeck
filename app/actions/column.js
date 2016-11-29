@@ -11,47 +11,56 @@ import type {
 	Params,
 	Illust,
 	Illusts,
+	Endpoint,
 	ColumnType,
 } from '../types';
 
-export const setQuery = (id: number, params: Params): Action => (
-	{type: 'SET_QUERY', id, params}
+export const setPrams = (id: number, params: Params): Action => (
+	{type: 'SET_PARAMS', id, params}
 );
+
+export function addColumn(endpoint: Endpoint, query: $Subtype<Query>, title: string): Action {
+	const id = Date.now();
+	return {
+		type: 'ADD_COLUMN',
+		endpoint,
+		id,
+		title,
+		query,
+	};
+}
 
 export const closeColumn = (id: number): Action => (
 	{type: 'CLOSE_COLUMN', id}
 );
 
-// Arrayに変換
-export function selectIllusts(nums: Array<number>, illusts: Illusts): Array<Illust> {
+export const normalizeIllusts = (res: Object) => {
+	return normalize(camelizeKeys(res).illusts, Schemas.ILLUSTS);
+};
+
+export const selectIllusts = (nums: Array<number>, illusts: Illusts) => {
 	return nums.map(i => illusts[i]);
-}
+};
 
-export function normalizeIllusts(response: Object): Object {
-	// キャメルケースに変換
-	const camelizedJson = camelizeKeys(response);
-	// ノーマライズ
-	return normalize(camelizedJson.illusts, Schemas.ILLUSTS);
-}
-
-export async function parseIllusts(dispatch: Dispatch, id: number, res: Object): Promise<Array<Illust>> {
+export async function parseIllusts(
+	dispatch: Dispatch,
+	res: Object
+): Promise<{illusts: Array<Illust>, params: ?Object}> {
 	const json = normalizeIllusts(res);
-	// Storeに反映
 	dispatch({type: 'API_REQUEST_SUCCESS', response: json});
 	const illusts: Illusts = json.entities.illusts;
 
-	// 次のクエリの指定
 	const params: ?Params = res.next_url ? url.parse(res.next_url, true).query : null;
-	if (params) {
-		await dispatch(setQuery(id, params));
-	}
 
-	return selectIllusts(json.result, illusts);
+	return {
+		illusts: json.result.map(i => illusts[i]),
+		params,
+	};
 }
 
-export async function reqestColumn(columnId: number, query: Query): Promise<*> {
-	const {id, opts, word, type} = query;
-	switch (type) {
+export async function reqestColumn(column: ColumnType): Promise<*> {
+	const {id, opts, word} = column.query;
+	switch (column.endpoint) {
 		case 'illustRanking':
 			return await Pixiv.illustRanking(opts);
 		case 'illustFollow':
@@ -77,27 +86,12 @@ export async function reqestColumn(columnId: number, query: Query): Promise<*> {
 
 export function fetchColumn(column: ColumnType) {
 	return async (dispatch: Dispatch): Promise<Array<Illust>> => {
-		const res = await reqestColumn(column.id, column.query);
-		const illusts = await parseIllusts(dispatch, column.id, res);
-		return illusts;
-	};
-}
-
-export function addColumn(query: $Subtype<Query>, title: string): Action {
-	const id = Date.now();
-	return {
-		type: 'ADD_COLUMN',
-		id,
-		title,
-		query,
-	};
-}
-
-export function nextPage(column: ColumnType) {
-	return async (dispatch: Dispatch): Promise<Array<Illust>> => {
-		const {id, query} = column;
-		const res = await reqestColumn(id, query);
-		const illusts = await parseIllusts(dispatch, id, res);
+		const {id} = column;
+		const res = await reqestColumn(column);
+		const {illusts, params} = await parseIllusts(dispatch, res);
+		if (params) {
+			dispatch(setPrams(id, params));
+		}
 		return illusts;
 	};
 }

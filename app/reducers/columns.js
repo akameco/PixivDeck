@@ -1,7 +1,7 @@
 // @flow
 import type {Action, ColumnType as Column, Query, Params} from '../types';
 
-type State = Array<$Shape<Column>>;
+type State = Array<Column>;
 
 function params(state: $Shape<Params>): Params {
 	if (state && state.max_bookmark_id) {
@@ -40,10 +40,10 @@ function column(state: Column, action: Action): Column {
 export default function columns(state: State = [], action: Action): State {
 	switch (action.type) {
 		case 'ADD_COLUMN': {
-			const {id, title} = action;
+			const {id, title, endpoint} = action;
 			return [
 				...state,
-				{id, query: query(action.query, action), title},
+				{id, endpoint, query: query(action.query, action), title},
 			];
 		}
 		case 'CLOSE_COLUMN': {
