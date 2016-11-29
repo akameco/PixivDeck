@@ -27,8 +27,8 @@ const defaultStyle = {
 		left: 0,
 		right: 0,
 		visibility: 'hidden',
-		transition: 'opacity .3s ease-out',
-		WebkitTransition: '-webkit-transform .3s ease-out',
+		transition: 'opacity .2s ease-out',
+		WebkitTransition: '-webkit-transform .2s ease-out',
 		backgroundColor: 'rgba(41, 47, 51, 0.9)'
 	},
 	drawer: {
@@ -37,8 +37,8 @@ const defaultStyle = {
 		position: 'absolute',
 		top: 0,
 		bottom: 0,
-		transition: 'transform .3s ease-out',
-		WebkitTransition: '-webkit-transform .3s ease-out',
+		transition: 'transform .2s ease-out',
+		WebkitTransition: '-webkit-transform .2s ease-out',
 		willChange: 'transform',
 		overflowY: 'auto',
 		boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.15)',
