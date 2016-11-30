@@ -92,8 +92,7 @@ export default class BoxImage extends Component {
 						styleName="loaded"
 						src={imageUrls.large}
 						onClick={this.props.onClick}
-						/> :
-						<img height={200}/>
+						/> : <img height={200}/>
 				}
 			</div>
 		)

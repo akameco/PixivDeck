@@ -1,9 +1,9 @@
 // @flow
 import React, {Component} from 'react'
 import css from 'react-css-modules'
-import {link} from 'autolinker'
 import Avater from './avater'
-import styles from './box-header.css'
+import styles from './BoxHeader.css'
+import Caption from './header/Caption'
 
 type Props = {
 	name: string,
@@ -20,35 +20,42 @@ export default class BoxHeader extends Component {
 	props: Props;
 
 	shouldComponentUpdate(nextProps: Props) {
-		return this.props.name !== nextProps.name
+		return (
+			this.props.name !== nextProps.name ||
+			this.props.isIllustComment !== nextProps.isIllustComment
+		)
 	}
 
 	render() {
-		const {name, account, img, title, caption, isIllustComment} = this.props
+		const {name, account, img, title, caption, isIllustComment, onClick} = this.props
 		return (
 			<div styleName="base">
 				<a onClick={this.props.onClick}>
 					<Avater img={img}/>
 				</a>
 				<div styleName="wrap">
-					<div styleName="title">{title}</div>
-					<div styleName="profile-area">
-						<p styleName="profile-area-line">
-							<a styleName="name" onClick={this.props.onClick}>{name}</a>
-							<a styleName="account" onClick={this.props.onClick}>{account}</a>
-						</p>
-					</div>
-					{isIllustComment &&
-						<div styleName="body">
-							<span
-								dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
-									__html: link(caption),
-								}}
-								/>
-						</div>
-					}
+					<Title title={title}/>
+					<Profile name={name} account={account} onClick={onClick}/>
+					{isIllustComment && caption && <Caption caption={caption}/>}
 				</div>
 			</div>
 		)
 	}
+}
+
+const Title = ({title}: {title: string}) => <div className={styles.title}>{title}</div>
+
+function Profile({name, account, onClick}: {
+	name: string, account: string, onClick: () => void
+}) {
+	return (
+		<div>
+			<div className={styles.Profile}>
+				<p className={styles.profileAreaLine}>
+					<a className={styles.name} onClick={onClick}>{name}</a>
+					<a className={styles.account} onClick={onClick}>{account}</a>
+				</p>
+			</div>
+		</div>
+	)
 }

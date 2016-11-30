@@ -6,7 +6,7 @@ import css from 'react-css-modules'
 import {download} from 'electron-dl'
 import Pixiv from '../../repo/pixiv'
 import type {Illust, User} from '../../types/'
-import BoxHeader from './SmartBoxHeader'
+import BoxHeader from './BoxHeaderContainer'
 import BoxFooter from './box-footer'
 import BoxImage from './box-image'
 import styles from './box.css'
@@ -16,6 +16,7 @@ const {Menu, MenuItem} = remote
 type Props = {
 	illust: Illust,
 	user: User,
+	isIllustOnly: bool,
 	onClick: () => void,
 	onClickUser: () => void,
 	onClickTag: (tag: string) => void
@@ -26,15 +27,19 @@ class Box extends Component {
 	props: Props;
 
 	shouldComponentUpdate(nextProps: Props) {
-		return nextProps.illust.id !== this.props.illust.id
+		return (
+			nextProps.illust.id !== this.props.illust.id ||
+			nextProps.isIllustOnly !== this.props.isIllustOnly
+		)
 	}
 
 	handleContextMenu = (e: Event) => {
 		e.preventDefault()
 
-		const {id, title, imageUrls, metaSinglePage} = this.props.illust
+		const {illust, user, onClickUser} = this.props
+		const {id, title, imageUrls, metaSinglePage} = illust
 		const img = imageUrls.large
-		const name = this.props.user.name
+		const name = user.name
 
 		const menu = new Menu()
 
@@ -42,6 +47,15 @@ class Box extends Component {
 			label: 'オリジナルサイズの画像を保存',
 			click(item, win) {
 				download(win, img)
+			},
+		}))
+
+		menu.append(new MenuItem({type: 'separator'}))
+
+		menu.append(new MenuItem({
+			label: 'このユーザの情報を見る',
+			click() {
+				onClickUser(user.id)
 			},
 		}))
 
@@ -98,22 +112,26 @@ class Box extends Component {
 	}
 
 	render() {
-		const {illust, user, onClick, onClickTag, onClickUser} = this.props
+		const {illust, user, onClick, onClickTag, onClickUser, isIllustOnly} = this.props
 		const {title, caption} = illust
 		const tags = illust.tags.map(x => x.name)
 
 		return (
 			<div styleName="box" onContextMenu={this.handleContextMenu}>
-				<BoxHeader
-					name={user.name}
-					account={user.account}
-					img={user.profileImageUrls.medium}
-					title={title}
-					caption={caption}
-					onClick={onClickUser}
-					/>
+				{!isIllustOnly &&
+					<BoxHeader
+						name={user.name}
+						account={user.account}
+						img={user.profileImageUrls.medium}
+						title={title}
+						caption={caption}
+						onClick={onClickUser}
+						/>
+				}
 				<BoxImage illust={illust} onClick={onClick}/>
-				<BoxFooter tags={tags} onClickTag={onClickTag}/>
+				{!isIllustOnly &&
+					<BoxFooter tags={tags} onClickTag={onClickTag}/>
+				}
 			</div>
 		)
 	}
