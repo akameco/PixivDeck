@@ -1,11 +1,11 @@
 // @flow
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import css from 'react-css-modules';
-import type {Dispatch, State as S} from '../../../types';
-import {login} from '../../../actions';
-import Loading from '../../common/Loading';
-import styles from './login.css';
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import css from 'react-css-modules'
+import type {Dispatch, State as S} from '../../../types'
+import {login} from '../../../actions'
+import Loading from '../../common/Loading'
+import styles from './login.css'
 
 type Props = {
 	username: string,
@@ -30,18 +30,18 @@ class LoginModal extends Component {
 
 	handleChangeName = (event: Event) => {
 		if (event.target instanceof HTMLInputElement) {
-			this.setState({username: event.target.value});
+			this.setState({username: event.target.value})
 		}
 	}
 
 	handleChangePassword = (event: Event) => {
 		if (event.target instanceof HTMLInputElement) {
-			this.setState({password: event.target.value});
+			this.setState({password: event.target.value})
 		}
 	}
 
 	handleClick = () => {
-		this.props.onClick(this.state.username, this.state.password);
+		this.props.onClick(this.state.username, this.state.password)
 	}
 
 	renderErrorNotify() {
@@ -53,7 +53,7 @@ class LoginModal extends Component {
 					ユーザ名とパスワードを確認してください。
 				</p>
 			</div>
-		);
+		)
 	}
 
 	renderLoading() {
@@ -66,13 +66,13 @@ class LoginModal extends Component {
 					</button>
 				</div>
 			</div>
-		);
+		)
 	}
 
 	render() {
-		const {isLoginFailure, isLoading} = this.props;
+		const {isLoginFailure, isLoading} = this.props
 		if (isLoading) {
-			return this.renderLoading();
+			return this.renderLoading()
 		}
 
 		return (
@@ -98,20 +98,20 @@ class LoginModal extends Component {
 					</button>
 				</div>
 			</div>
-		);
+		)
 	}
 }
 
 function mapStateToProps(state: S) {
-	return {...state.auth};
+	return {...state.auth}
 }
 
 function mapDispatchToProps(dispatch: Dispatch) {
 	return {
 		onClick: (username, password) => {
-			dispatch(login(username, password));
+			dispatch(login(username, password))
 		},
-	};
+	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginModal);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginModal)

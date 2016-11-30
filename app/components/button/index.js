@@ -1,6 +1,6 @@
 // @flow
-import CloseButton from './close-button';
+import CloseButton from './close-button'
 
 export {
 	CloseButton,
-};
+}

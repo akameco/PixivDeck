@@ -1,20 +1,20 @@
 /* eslint-disable quote-props */
-'use strict';
-const pify = require('pify');
-const packager = require('electron-packager');
-const hardRejection = require('hard-rejection');
-const pkg = require('./package.json');
-const electronCfg = require('./webpack.config.electron');
+'use strict'
+const pify = require('pify')
+const packager = require('electron-packager')
+const hardRejection = require('hard-rejection')
+const pkg = require('./package.json')
+const electronCfg = require('./webpack.config.electron')
 
-hardRejection();
+hardRejection()
 
-const deps = Object.keys(pkg.dependencies);
-const devDeps = Object.keys(pkg.devDependencies);
+const deps = Object.keys(pkg.dependencies)
+const devDeps = Object.keys(pkg.devDependencies)
 
 const ignoredDeps = deps
 	.filter(name => !electronCfg.externals.includes(name))
-	.map(name => `/node_modules/${name}($|/)`);
-const ignoredDevDeps = devDeps.map(name => `/node_modules/${name}($|/)`);
+	.map(name => `/node_modules/${name}($|/)`)
+const ignoredDevDeps = devDeps.map(name => `/node_modules/${name}($|/)`)
 
 const ignore = [
 	'^/test($|/)',
@@ -28,7 +28,7 @@ const ignore = [
 	'^/main.development.js',
 	...ignoredDevDeps,
 	...ignoredDeps,
-];
+]
 
 function pack(target) {
 	const buildOpts = {
@@ -54,7 +54,7 @@ function pack(target) {
 			icon: 'static/Icon.png',
 			'version-string.ProductName': pkg.productName,
 		},
-	};
+	}
 
 	const pkgOpt = Object.assign({
 		dir: './',
@@ -65,16 +65,16 @@ function pack(target) {
 		prune: true,
 		out: 'release',
 		ignore,
-	}, buildOpts[target]);
+	}, buildOpts[target])
 
-	return pify(packager)(pkgOpt);
+	return pify(packager)(pkgOpt)
 }
 
-const input = process.argv.slice(2)[0];
+const input = process.argv.slice(2)[0]
 
 if (!input || !['macos', 'windows', 'linux'].includes(input)) {
-	console.error('input required');
-	process.exit(1); // eslint-disable-line xo/no-process-exit
+	console.error('input required')
+	process.exit(1) // eslint-disable-line xo/no-process-exit
 }
 
-pack(input);
+pack(input)

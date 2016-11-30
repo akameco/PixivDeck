@@ -1,13 +1,14 @@
 // @flow
 import type {Store as ReduxStore, Dispatch as ReduxDispatch} from 'redux'; // eslint-disable-line
-import type {ColumnType, ColumnAction, Query, Params, Endpoint} from './column';
-import type {Manage, ManageAction, ModalType} from './manage';
-import type {History, HistoryAction} from './history';
-import type {Filter, FilterAction} from './filter';
-import type {ApiAction} from './api';
-import type {Illust, Illusts, MetaPages} from './illust';
-import type {User, Users, Profile} from './user';
-import type {Auth, AuthAction} from './auth';
+import type {ColumnType, ColumnAction, Query, Params, Endpoint} from './column'
+import type {Manage, ManageAction, ModalType} from './manage'
+import type {History, HistoryAction} from './history'
+import type {Filter, FilterAction} from './filter'
+import type {ApiAction} from './api'
+import type {Illust, Illusts, MetaPages} from './illust'
+import type {User, Users, Profile} from './user'
+import type {Auth, AuthAction} from './auth'
+import type {Config, ConfigAction} from './config'
 
 export type {
 	Illust,
@@ -26,7 +27,9 @@ export type {
 	ModalType,
 	Params,
 	Auth,
-};
+	Config,
+	ConfigAction,
+}
 
 export type Entities = {
 	users: Users,
@@ -47,6 +50,7 @@ export type Action =
 	| FilterAction
 	| HistoryAction
 	| AuthAction
+	| ConfigAction
 ;
 
 export type State = {
@@ -55,7 +59,8 @@ export type State = {
 	entities: Entities,
 	manage: Manage,
 	filter: Filter,
-	history: History
+	history: History,
+	config: Config,
 };
 
 export type Dispatch = ReduxDispatch<State, Action>;

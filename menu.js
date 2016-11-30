@@ -1,15 +1,15 @@
-import os from 'os';
-import electron from 'electron';
+import os from 'os'
+import electron from 'electron'
 
-const {app, shell} = electron;
+const {app, shell} = electron
 
-const appName = app.getName();
+const appName = app.getName()
 
 const helpSubmenu = [
 	{
 		label: `${appName} Website`,
 		click() {
-			shell.openExternal('https://github.com/akameco/PixivDeck');
+			shell.openExternal('https://github.com/akameco/PixivDeck')
 		},
 	},
 	{
@@ -22,11 +22,11 @@ const helpSubmenu = [
 
 ${app.getName()} ${app.getVersion()}
 Electron ${process.versions.electron}
-${process.platform} ${process.arch} ${os.release()}`;
-			shell.openExternal(`https://github.com/akameco/PixivDeck/issues/new?body=${encodeURIComponent(body)}`);
+${process.platform} ${process.arch} ${os.release()}`
+			shell.openExternal(`https://github.com/akameco/PixivDeck/issues/new?body=${encodeURIComponent(body)}`)
 		},
 	},
-];
+]
 
 if (process.platform !== 'darwin') {
 	helpSubmenu.push({
@@ -39,9 +39,9 @@ if (process.platform !== 'darwin') {
 				message: `${appName} ${app.getVersion()}`,
 				detail: 'Created by akameco',
 				buttons: [],
-			});
+			})
 		},
-	});
+	})
 }
 
 const darwinTpl = [
@@ -121,7 +121,7 @@ const darwinTpl = [
 				accelerator: 'CmdOrCtrl+R',
 				click(item, focusedWindow) {
 					if (focusedWindow) {
-						focusedWindow.reload();
+						focusedWindow.reload()
 					}
 				},
 			},
@@ -154,7 +154,7 @@ const darwinTpl = [
 		role: 'help',
 		submenu: helpSubmenu,
 	},
-];
+]
 
 const otherTpl = [
 	{
@@ -207,9 +207,9 @@ const otherTpl = [
 		role: 'help',
 		submenu: helpSubmenu,
 	},
-];
+]
 
-const tpl = process.platform === 'darwin' ? darwinTpl : otherTpl;
-const appMenu = electron.Menu.buildFromTemplate(tpl);
+const tpl = process.platform === 'darwin' ? darwinTpl : otherTpl
+const appMenu = electron.Menu.buildFromTemplate(tpl)
 
-export default appMenu;
+export default appMenu

@@ -1,9 +1,9 @@
-'use strict';
-const webpack = require('webpack');
-const merge = require('webpack-merge');
-const baseConfig = require('./webpack.config.base');
+'use strict'
+const webpack = require('webpack')
+const merge = require('webpack-merge')
+const baseConfig = require('./webpack.config.base')
 
-const port = 3000;
+const port = 3000
 
 module.exports = merge(baseConfig, {
 	cache: true,
@@ -57,4 +57,4 @@ module.exports = merge(baseConfig, {
 	],
 
 	postcss: () => [require('postcss-cssnext')()],
-});
+})

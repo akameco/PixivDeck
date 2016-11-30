@@ -1,4 +1,4 @@
 // @flow
-const root: Array<any> = [];
+const root: Array<any> = []
 
-export default root;
+export default root

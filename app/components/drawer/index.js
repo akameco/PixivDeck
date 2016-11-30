@@ -1,8 +1,8 @@
 // @flow
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import type {Dispatch} from '../../types';
-import {closeDrawer} from '../../actions';
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import type {Dispatch} from '../../types'
+import {closeDrawer} from '../../actions'
 
 type Props = {
 	isDrawer: bool,
@@ -44,26 +44,26 @@ const defaultStyle = {
 		boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.15)',
 		backgroundColor: '#fff',
 	},
-};
+}
 
 class Drawer extends Component {
 	props: Props;
 
 	handleCloseDrawer = () => {
-		this.props.dispatch(closeDrawer());
+		this.props.dispatch(closeDrawer())
 	}
 
 	render() {
-		const {isDrawer} = this.props;
-		const overlayStyle = {...defaultStyle.overlay};
-		const drawerStyle = {...defaultStyle.drawer};
-		drawerStyle.right = `-${drawerStyle.width}px`;
-		drawerStyle.transform = 'translateX(0)';
+		const {isDrawer} = this.props
+		const overlayStyle = {...defaultStyle.overlay}
+		const drawerStyle = {...defaultStyle.drawer}
+		drawerStyle.right = `-${drawerStyle.width}px`
+		drawerStyle.transform = 'translateX(0)'
 
 		if (isDrawer) {
-			drawerStyle.transform = `translateX(-${drawerStyle.width}px)`;
-			overlayStyle.opacity = 1;
-			overlayStyle.visibility = 'visible';
+			drawerStyle.transform = `translateX(-${drawerStyle.width}px)`
+			overlayStyle.opacity = 1
+			overlayStyle.visibility = 'visible'
 		}
 
 		return (
@@ -73,8 +73,8 @@ class Drawer extends Component {
 					{this.props.children}
 				</div>
 			</div>
-		);
+		)
 	}
 }
 
-export default connect()(Drawer);
+export default connect()(Drawer)
