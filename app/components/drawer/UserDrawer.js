@@ -2,18 +2,19 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import unionBy from 'lodash.unionby'
-import {camelizeKeys} from 'humps'
+import {Tab, Tabs, TabList, TabPanel} from 'react-tabs'
 import type {
 	Dispatch,
-	State as S, User,
+	State as S,
+	User,
 	Profile,
-	Illust, Illusts,
+	Illust,
 } from '../../types'
-import {normalizeIllusts, selectIllusts} from '../../actions'
-import Box from '../box'
-import Pixiv from '../../repo/pixiv'
+import {fetchUserIllust, fetchUserDetail} from '../../actions'
 import Loading from '../common/Loading'
 import Header from './DrawerHeader'
+import {IllstList} from './IllustList'
+import styles from './UserDrawer.css'
 
 type Props = {
 	user: User,
@@ -35,7 +36,7 @@ class UserDrawer extends Component {
 		profile: null,
 		illusts: [],
 		mangas: [],
-		viewType: 'manga',
+		viewType: 'illust',
 	};
 
 	componentDidMount() {
@@ -43,67 +44,37 @@ class UserDrawer extends Component {
 	}
 
 	async init() {
+		const {dispatch} = this.props
 		const {id} = this.props.user
-		const res = await Pixiv.userDetail(id)
-		const userDetail = camelizeKeys(res)
-		const profile: Profile = userDetail.profile
-		const user: User = userDetail.user
-		const userIllusts = await Pixiv.userIllusts(id)
-		const json = normalizeIllusts(userIllusts)
-		this.props.dispatch({type: 'API_REQUEST_SUCCESS', response: json})
+		const {user, profile} = await fetchUserDetail(id)
+		this.setState({profile, user})
 
-		const illusts: Illusts = json.entities.illusts
-		const unionByArray = unionBy(this.state.illusts, selectIllusts(json.result, illusts), 'id')
-		this.setState({profile, user, illusts: unionByArray})
+		const illust = await dispatch(fetchUserIllust(id, 'illust'))
+		this.setState({illusts: unionBy(this.state.illusts, illust, 'id')})
 
-		const rowMangas = await Pixiv.userIllusts(id, {type: 'manga'})
-		const normalizeMangas = normalizeIllusts(rowMangas)
-
-		this.props.dispatch({type: 'API_REQUEST_SUCCESS', response: normalizeMangas})
-		const is: Illusts = json.entities.illusts
-		const mangas = unionBy(this.state.illusts, selectIllusts(json.result, is), 'id')
-		this.setState({mangas})
-	}
-
-	renderIllusts() {
-		const List = this.state.illusts.map(illust => {
-			return (
-				<Box
-					key={illust.id}
-					user={illust.user}
-					illust={illust}
-					/>
-			)
-		})
-		return List
-	}
-
-	renderMangas() {
-		const List = this.state.mangas.map(illust => {
-			return (
-				<Box
-					key={illust.id}
-					user={illust.user}
-					illust={illust}
-					/>
-			)
-		})
-		return List
-	}
-
-	renderLoading() {
-		return (
-			<Loading/>
-		)
+		const mangas = await dispatch(fetchUserIllust(id, 'manga'))
+		this.setState({mangas: unionBy(this.state.mangas, mangas, 'id')})
 	}
 
 	renderContent(user, profile) {
-		const {viewType, illusts, mangas} = this.state
+		const {illusts, mangas} = this.state
 		return (
 			<div>
 				<Header user={user} profile={profile}/>
-				{viewType === 'illust' && illusts.length > 0 && this.renderIllusts()}
-				{viewType === 'manga' && mangas.length > 0 && this.renderMangas()}
+				<div>
+					<Tabs>
+						<TabList className={styles.TabList} activeTabClassName={styles.TabListActive}>
+							<Tab className={styles.TabLink} activeTabClassName={styles.TabLinkActive}>イラスト</Tab>
+							<Tab className={styles.TabLink} activeTabClassName={styles.TabLinkActive}>マンガ</Tab>
+						</TabList>
+						<TabPanel>
+							<IllstList illusts={illusts}/>
+						</TabPanel>
+						<TabPanel>
+							<IllstList illusts={mangas}/>
+						</TabPanel>
+					</Tabs>
+				</div>
 			</div>
 		)
 	}
@@ -114,7 +85,7 @@ class UserDrawer extends Component {
 		if (user && user.id && user.profileImageUrls && profile) {
 			return this.renderContent(user, profile)
 		}
-		return this.renderLoading()
+		return <Loading/>
 	}
 }
 
