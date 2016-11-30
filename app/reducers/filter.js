@@ -1,20 +1,20 @@
 // @flow
-import union from 'lodash.union';
-import type {Action, Filter} from '../types';
+import union from 'lodash.union'
+import type {Action, Filter} from '../types'
 
 const initialState: Filter = {
 	tags: [],
-};
+}
 
 export default function (state: Filter = initialState, action: Action): $Shape<Filter> {
 	switch (action.type) {
 		case 'ADD_TAG_FILTER':
-			return {...state, tags: union([...state.tags, action.tag])};
+			return {...state, tags: union([...state.tags, action.tag])}
 		case 'REMOVE_TAG_FILTER': {
-			const tag = action.tag;
-			return {...state, tags: state.tags.filter(t => tag !== t)};
+			const tag = action.tag
+			return {...state, tags: state.tags.filter(t => tag !== t)}
 		}
 		default:
-			return state;
+			return state
 	}
 }

@@ -1,6 +1,6 @@
 // @flow
 /* eslint-disable camelcase */
-import dotProp from 'dot-prop';
+import dotProp from 'dot-prop'
 
 const obj = {
 	illustRanking: {
@@ -17,8 +17,8 @@ const obj = {
 		day_female_r18: 'R18 女子に人気',
 		week_r18g: 'R18 G',
 	},
-};
+}
 
 export default (str: string) => {
-	return dotProp.get(obj, str);
-};
+	return dotProp.get(obj, str)
+}

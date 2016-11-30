@@ -1,7 +1,7 @@
 // @flow
-import React, {Component} from 'react';
-import css from 'react-css-modules';
-import styles from './Loading.css';
+import React, {Component} from 'react'
+import css from 'react-css-modules'
+import styles from './Loading.css'
 
 const defaultStyle = {
 	wrap: {
@@ -11,7 +11,7 @@ const defaultStyle = {
 		display: 'flex',
 		justifyContent: 'center',
 	},
-};
+}
 
 type Props = {
 	wrapStyle?: Object
@@ -22,7 +22,7 @@ export default class Loading extends Component {
 	props: Props;
 
 	render() {
-		const wrapStyle = Object.assign({}, defaultStyle.wrap, this.props.wrapStyle);
+		const wrapStyle = Object.assign({}, defaultStyle.wrap, this.props.wrapStyle)
 		return (
 			<div style={wrapStyle}>
 				<div styleName="spinner">
@@ -33,6 +33,6 @@ export default class Loading extends Component {
 					<div styleName="rect5"/>
 				</div>
 			</div>
-		);
+		)
 	}
 }

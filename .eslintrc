@@ -23,11 +23,12 @@
 		"import"
 	],
 	"rules": {
+		"semi": ["error", "never"],
 		"comma-dangle": ["error", "always-multiline"],
 		"arrow-parens": 0,
 		"babel/arrow-parens": ["error", "as-needed"],
 		"indent": ["error", "tab", {"SwitchCase": 1}],
-		"react/sort-comp": [2, {
+		"react/sort-comp": ["error", {
 			"order": [
 				"type-annotations",
 				"static-methods",
@@ -37,13 +38,13 @@
 			]
 		}],
 		"react/forbid-component-props": 0,
-		"flowtype/boolean-style": [2, "bool"],
-		"flowtype/define-flow-type": 2,
-		"flowtype/semi": [2, "always"],
-		"flowtype/space-after-type-colon": [2, "always"],
-		"flowtype/union-intersection-spacing": [2, "always"],
-		"flowtype/use-flow-type": 2,
-		"flowtype/valid-syntax": 2,
+		"flowtype/boolean-style": ["error", "bool"],
+		"flowtype/define-flow-type": "error",
+		"flowtype/semi": ["error", "always"],
+		"flowtype/space-after-type-colon": ["error", "always"],
+		"flowtype/union-intersection-spacing": ["error", "always"],
+		"flowtype/use-flow-type": "error",
+		"flowtype/valid-syntax": "error",
 		"import/default": "error",
 		"import/export": "error",
 		"import/extensions": ["error", {

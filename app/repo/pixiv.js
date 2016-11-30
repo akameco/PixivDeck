@@ -1,6 +1,6 @@
 // @flow
-import PixivAppApi from 'pixiv-app-api';
+import PixivAppApi from 'pixiv-app-api'
 
-const pixiv = new PixivAppApi();
+const pixiv = new PixivAppApi()
 
-export default pixiv;
+export default pixiv

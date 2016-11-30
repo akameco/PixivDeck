@@ -1,5 +1,5 @@
 // @flow
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 
 type Props = {
 	img: string,
@@ -12,19 +12,19 @@ const defaultStyle = {
 		height: 50,
 		borderRadius: 4,
 	},
-};
+}
 
 export default class Avater extends Component {
 	props: Props;
 
 	shouldComponentUpdate(nextProps: Props) {
-		return nextProps.img !== this.props.img;
+		return nextProps.img !== this.props.img
 	}
 
 	render() {
-		const imgStyle = {...defaultStyle.img, ...this.props.imgStyle};
+		const imgStyle = {...defaultStyle.img, ...this.props.imgStyle}
 		return (
 			<img src={this.props.img} style={imgStyle}/>
-		);
+		)
 	}
 }

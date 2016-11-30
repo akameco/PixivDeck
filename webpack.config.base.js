@@ -1,5 +1,5 @@
-'use strict';
-const path = require('path');
+'use strict'
+const path = require('path')
 
 module.exports = {
 	module: {
@@ -28,4 +28,4 @@ module.exports = {
 	],
 	externals: [
 	],
-};
+}
