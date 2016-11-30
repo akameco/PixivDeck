@@ -9,8 +9,11 @@ import styles from './setting-modal.css'
 type Props = {
 	onDelete: (tag: string) => void,
 	onSubmit: (tag: string) => void,
+	onCheckShowText: (isShow: bool) => void,
+	onCheckIllustOnly: (isShow: bool) => void,
 	tags: Array<string>,
 	isIllustComment: bool,
+	isIllustOnly: bool,
 };
 
 type State = {
@@ -53,7 +56,11 @@ export default class SettingFilterModal extends Component {
 	}
 
 	handleCheckShowText = () => {
+		this.props.onCheckShowText(!(this.props.isIllustComment))
+	}
 
+	handleCheckSetOnlyIllust = () => {
+		this.props.onCheckIllustOnly(!(this.props.isIllustOnly))
 	}
 
 	render() {
@@ -70,8 +77,18 @@ export default class SettingFilterModal extends Component {
 					<Checkbox
 						id="box-text"
 						onChange={this.handleCheckShowText}
+						defaultChecked={this.props.isIllustComment}
 						value={this.props.isIllustComment}
-						text="show illust message"
+						text="説明を表示"
+						/>
+				</div>
+				<div>
+					<Checkbox
+						id="BoxIllustOnly"
+						onChange={this.handleCheckSetOnlyIllust}
+						defaultChecked={this.props.isIllustOnly}
+						value={this.props.isIllustOnly}
+						text="画像のみ表示"
 						/>
 				</div>
 				<div styleName="tagFilter">

@@ -5,8 +5,8 @@ import type {Store, Dispatch} from '../types'
 export default (store: Store) => {
 	const dispatch: Dispatch = store.dispatch
 	const saveState = () => {
-		const {auth, manage, columns, filter} = store.getState()
-		const json = {auth, manage, columns, filter}
+		const {auth, manage, columns, filter, config} = store.getState()
+		const json = {auth, manage, columns, filter, config}
 		localStorage.setItem('store', JSON.stringify(json))
 	}
 

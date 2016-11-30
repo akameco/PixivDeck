@@ -18,7 +18,7 @@
 	margin: 0;
 }
 
-.profile-area {
+.Profile {
 	display: inline-flex;
 	margin-top: 2px;
 	white-space: nowrap;
@@ -28,13 +28,12 @@
 	cursor: pointer;
 }
 
-.profile-area-line {
+.profileAreaLine {
 	margin: 0;
 }
 
 .name {
 	color: #e1e8ed;
-
 	margin-left: 0.5rem;
 	margin-right: 5px;
 }
@@ -47,18 +46,4 @@
 	color: #9ea6ac;
 	line-height: 1;
 	font-size: 0.85rem;
-}
-
-.body {
-	color: #9ea6ac;
-
-	width: calc(100% - 10px);
-	line-height: 1.2rem;
-	font-size: 0.8rem;
-	margin-bottom: 10px;
-	padding: 0 5px;
-}
-
-.body a {
-	color: #51769f;
 }
