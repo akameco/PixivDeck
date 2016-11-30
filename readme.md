@@ -98,7 +98,6 @@ $ npm run release
 [pixiv-app-api](https://github.com/akameco/pixiv-app-api) - Promise base pixiv API client <br>
 [pixiv-img](https://github.com/akameco/pixiv-img) - Download pixiv image. <br>
 [pixiv-dl](https://github.com/akameco/pixiv-dl) - CLI base pixiv image downloader. <br>
-[pixiv.js](https://github.com/akameco/pixiv) - pixiv public api client(deprecated) <br>
 
 ## License
 
