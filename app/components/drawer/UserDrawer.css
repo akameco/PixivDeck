@@ -1,0 +1,55 @@
+:global .react-tabs [role=tablist] {
+	margin: 0;
+	border: none;
+}
+
+:global .react-tabs [role=tab] {
+	border-radius: 0;
+	padding: 10px 12px;
+}
+
+:global .react-tabs [role=tab][aria-selected=true] {
+	border-radius: 0;
+	padding: 10px 12px;
+}
+
+.TabList {
+	width: 100%;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	overflow: hidden;
+	color: #fff;
+	background-color: rgb(54, 75, 78);
+}
+
+.TabList [role=tab] {
+	border: none;
+	bottom: 0;
+}
+
+.TabListActive {
+	margin: 0;
+}
+
+.TabLink {
+	width: 100%;
+	text-align: center;
+	margin: 0 auto;
+	padding: 10px 0;
+	color: white;
+	font-size: 14px;
+}
+
+.TabLinkActive {
+	width: 100%;
+	text-align: center;
+	margin: 0 auto;
+	padding: 8px 0 10px;
+	color: white;
+	font-size: 14px;
+	border-bottom: 3px solid #b94545;
+}
+
+.TabLinkText {
+}
