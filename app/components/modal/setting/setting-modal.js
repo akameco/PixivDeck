@@ -71,15 +71,12 @@ export default class SettingFilterModal extends Component {
 		return (
 			<div styleName="wrap">
 				<div>
-					<a href="http://www.pixiv.net/setting_user.php" target="_brank">閲覧制限を設定する(pixivを開く)</a>
-				</div>
-				<div>
 					<Checkbox
 						id="box-text"
 						onChange={this.handleCheckShowText}
 						defaultChecked={this.props.isIllustComment}
 						value={this.props.isIllustComment}
-						text="説明を表示"
+						text="キャプションを表示"
 						/>
 				</div>
 				<div>
@@ -90,6 +87,9 @@ export default class SettingFilterModal extends Component {
 						value={this.props.isIllustOnly}
 						text="画像のみ表示"
 						/>
+				</div>
+				<div>
+					<a href="http://www.pixiv.net/setting_user.php" target="_brank">閲覧制限を設定する(pixivを開く)</a>
 				</div>
 				<div styleName="tagFilter">
 					<h4>タグフィルター</h4>
