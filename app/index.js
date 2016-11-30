@@ -5,12 +5,11 @@ import type {State} from './types'
 import configureStore from './store'
 import App from './components'
 import Pixiv from './repo/pixiv'
-import defaultState from './default-state'
 import './app.global.css'; // eslint-disable-line
 
 async function init() {
 	const storage: State = localStorage.getItem('store')
-	let initialState: State = storage ? JSON.parse(storage) : defaultState
+	let initialState: State = storage ? JSON.parse(storage) : {}
 
 	const {auth, manage, columns} = initialState
 

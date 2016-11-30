@@ -1,5 +1,6 @@
 // @flow
 import type {Action, ColumnType as Column, Query, Params} from '../types'
+import initState from '../default-state'
 
 type State = Array<Column>;
 
@@ -37,7 +38,7 @@ function column(state: Column, action: Action): Column {
 	}
 }
 
-export default function columns(state: State = [], action: Action): State {
+export default function columns(state: State = initState, action: Action): State {
 	switch (action.type) {
 		case 'ADD_COLUMN': {
 			const {id, title, endpoint, timer} = action
