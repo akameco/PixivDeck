@@ -38,3 +38,17 @@ export const fetchUserDetail = (id: number) => {
 		dispatch(addDrawerProfile(profile))
 	}
 }
+
+export const follow = (id: number) => {
+	return async (dispatch: Dispatch) => {
+		await Pixiv.userFollowAdd(id)
+		dispatch(fetchUserDetail(id))
+	}
+}
+
+export const unFollow = (id: number) => {
+	return async (dispatch: Dispatch) => {
+		await Pixiv.userFollowDelete(id)
+		dispatch(fetchUserDetail(id))
+	}
+}

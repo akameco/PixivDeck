@@ -1,7 +1,6 @@
 // @flow
 import React from 'react'
 import {connect} from 'react-redux'
-import Pixiv from '../../repo/pixiv'
 import Button from '../common/button'
 
 type Props = {

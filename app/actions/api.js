@@ -95,15 +95,3 @@ export function fetchColumn(column: ColumnType, updateQuery?: bool = true) {
 		}
 	}
 }
-
-export const follow = (id: number) => {
-	return async () => {
-		await Pixiv.userFollowAdd(id)
-	}
-}
-
-export const unFollow = (id: number) => {
-	return async () => {
-		await Pixiv.userFollowDelete(id)
-	}
-}
