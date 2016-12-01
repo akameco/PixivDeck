@@ -9,8 +9,8 @@ import Column from './column'
 
 type Props = {
 	column: ColumnType,
-	dispatch: Dispatch,
-	illusts: Array<Illust>
+	illusts: Array<Illust>,
+	dispatch: Dispatch
 };
 
 class SmartColumn extends Component {
@@ -32,23 +32,21 @@ class SmartColumn extends Component {
 	}
 
 	async init(): Promise<void> {
-		await this.fetch()
+		const {column, dispatch} = this.props
+		await dispatch(fetchColumn(column))
 		this.timer = setInterval(async () => {
 			await this.fetch()
-		}, this.props.column.timer || 1000 * 60 * 5)
+		}, column.timer)
 	}
 
 	async fetch() {
-		const column = this.props.column
-		if (column.query.opts) {
-			delete column.query.opts.max_bookmark_id
-			column.query.opts.offset = 0
-		}
-		await this.props.dispatch(fetchColumn(column), false)
+		const {column, dispatch} = this.props
+		await dispatch(fetchColumn(column, false))
 	}
 
 	handleClose = () => {
-		this.props.dispatch(closeColumn(this.props.column.id))
+		const {dispatch, column} = this.props
+		dispatch(closeColumn(column.id))
 	}
 
 	handleReload = () => {
@@ -56,7 +54,8 @@ class SmartColumn extends Component {
 	}
 
 	handleOnNextPage = () => {
-		this.props.dispatch(fetchColumn(this.props.column))
+		const {column, dispatch} = this.props
+		dispatch(fetchColumn(column))
 	}
 
 	render() {
