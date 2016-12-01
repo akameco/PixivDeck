@@ -30,6 +30,7 @@
   "dependencies": {
     "autolinker": "^1.4.0",
     "babel-polyfill": "^6.16.0",
+    "camelcase-keys": "^4.0.0",
     "dot-prop": "^4.1.0",
     "electron-config": "^0.2.1",
     "electron-context-menu": "^0.8.0",
