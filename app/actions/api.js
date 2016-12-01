@@ -1,8 +1,8 @@
 // @flow
 import {camelizeKeys} from 'humps'
-import type {Dispatch, Illust} from '../types'
+import type {Dispatch, State, Illust} from '../types'
 import Pixiv from '../repo/pixiv'
-import {normalizeIllusts, selectIllusts} from './column'
+import {normalizeIllusts, selectIllusts, fetchColumn, addColumnIllusts} from './column'
 
 type UserIllust = | 'illust' | 'manga';
 
@@ -19,5 +19,18 @@ export function fetchUserIllust(id: number, type?: UserIllust = 'illust') {
 		dispatch({type: 'API_REQUEST_SUCCESS', response})
 
 		return selectIllusts(response.result, response.entities.illusts)
+	}
+}
+
+export function addBookmark(id: number, isPublic?: bool = true) {
+	return async (dispatch: Dispatch, getState: () => State): Promise<void> => {
+		const opts = isPublic ? {} : {restrict: 'private'}
+		await Pixiv.illustBookmarkAdd(id, opts)
+		// const columns = getState().columns.filter(c => c.endpoint === 'userBookmarksIllust')
+		// for (const c of columns) {
+			// const res = await dispatch(fetchColumn(c, false))
+			// const ids = res.map(v => v.id)
+			// dispatch(addColumnIllusts(c.id, ids))
+		// }
 	}
 }

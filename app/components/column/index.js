@@ -1,27 +1,30 @@
 // @flow
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import unionBy from 'lodash.unionby'
-import type {Dispatch, Illust, ColumnType} from '../../types'
+import isEqual from 'lodash.isequal'
+import type {Dispatch, State as S, Illust, ColumnType} from '../../types'
 import {fetchColumn, closeColumn} from '../../actions'
+import {getIllusts} from '../../reducers'
 import Column from './column'
 
 type Props = {
 	column: ColumnType,
-	dispatch: Dispatch
-};
-
-type State = {
+	dispatch: Dispatch,
 	illusts: Array<Illust>
 };
 
 class SmartColumn extends Component {
 	props: Props;
 	timer: number;
-	state: State = {illusts: []};
 
 	componentDidMount() {
 		this.init()
+	}
+
+	shouldComponentUpdate(nextProps, nextState) {
+		const propsDiff = isEqual(nextProps, this.props)
+		const stateDiff = isEqual(nextState, this.state)
+		return !(propsDiff && stateDiff)
 	}
 
 	componentWillUnmount() {
@@ -29,26 +32,19 @@ class SmartColumn extends Component {
 	}
 
 	async init(): Promise<void> {
-		const column = this.props.column
-		const res = await this.props.dispatch(fetchColumn(column))
-		this.setState({illusts: res})
-
+		await this.fetch()
 		this.timer = setInterval(async () => {
-			await this.tick()
-		}, column.timer || 1000 * 60 * 5)
+			await this.fetch()
+		}, this.props.column.timer || 1000 * 60 * 5)
 	}
 
-	async tick() {
+	async fetch() {
 		const column = this.props.column
 		if (column.query.opts) {
 			delete column.query.opts.max_bookmark_id
 			column.query.opts.offset = 0
 		}
-		const res = await this.props.dispatch(fetchColumn(column), false)
-		const unionByArray = unionBy(res, this.state.illusts, 'id')
-		this.setState({
-			illusts: unionByArray,
-		})
+		await this.props.dispatch(fetchColumn(column), false)
 	}
 
 	handleClose = () => {
@@ -56,20 +52,15 @@ class SmartColumn extends Component {
 	}
 
 	handleReload = () => {
-		this.tick()
+		this.fetch()
 	}
 
-	handleOnNextPage: () => Promise<void> = async () => {
-		const illusts = await this.props.dispatch(fetchColumn(this.props.column))
-		const unionByArray = unionBy(this.state.illusts, illusts, 'id')
-		this.setState({
-			illusts: unionByArray,
-		})
+	handleOnNextPage = () => {
+		this.props.dispatch(fetchColumn(this.props.column))
 	}
 
 	render() {
-		const {column} = this.props
-		const {illusts} = this.state
+		const {column, illusts} = this.props
 		return (
 			<Column
 				illusts={illusts}
@@ -82,4 +73,8 @@ class SmartColumn extends Component {
 	}
 }
 
-export default connect()(SmartColumn)
+const mapStateToProps = (state: S, {column}: Props) => ({
+	illusts: getIllusts(state, column.id),
+})
+
+export default connect(mapStateToProps)(SmartColumn)

@@ -10,7 +10,7 @@ type Props = {
 	column: ColumnType,
 	onClose: () => void,
 	onReload: () => void,
-	onNextPage: () => Promise<void>
+	onNextPage: () => void
 };
 
 @css(styles)

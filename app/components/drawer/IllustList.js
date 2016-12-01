@@ -8,7 +8,6 @@ type Props = {
 };
 
 export function IllstList({illusts}: Props) {
-	console.log(illusts)
 	const List = illusts.map(illust => (
 		<Box
 			key={illust.id}

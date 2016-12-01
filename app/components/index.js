@@ -6,7 +6,7 @@ import IllustPreview from './illust-preview'
 import MangaPreview from './manga-preview'
 import Modal from './modal'
 import Header from './header'
-import Columns from './app/columns'
+import Columns from './column/columns'
 import Drawer from './drawer'
 import UserDrawer from './drawer/UserDrawer'
 
