@@ -7,7 +7,7 @@ import initState from '../default-state'
 type State = Array<Column>;
 
 function params(state: $Shape<Params>): Params {
-	if (state && state.max_bookmark_id) {
+	if (state && state.maxBookmarkId) {
 		return {...state, offset: 0, maxBookmarkId: null}
 	}
 	return {...state, offset: 0}
