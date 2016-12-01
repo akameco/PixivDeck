@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import isEqual from 'lodash.isequal'
 import type {Dispatch, State as S, Illust, ColumnType} from '../../types'
-import {fetchColumn, closeColumn} from '../../actions'
+import {fetchColumn, closeColumn, nextPage} from '../../actions'
 import {getIllusts} from '../../reducers'
 import Column from './column'
 
@@ -33,7 +33,7 @@ class SmartColumn extends Component {
 
 	async init(): Promise<void> {
 		const {column, dispatch} = this.props
-		await dispatch(fetchColumn(column))
+		await dispatch(fetchColumn(column, true))
 		this.timer = setInterval(async () => {
 			await this.fetch()
 		}, column.timer)
@@ -55,7 +55,7 @@ class SmartColumn extends Component {
 
 	handleOnNextPage = () => {
 		const {column, dispatch} = this.props
-		dispatch(fetchColumn(column))
+		dispatch(nextPage(column.id))
 	}
 
 	render() {

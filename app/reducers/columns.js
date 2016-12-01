@@ -1,6 +1,6 @@
 // @flow
 import isEqual from 'lodash.isequal'
-import unionBy from 'lodash.unionby'
+import union from 'lodash.union'
 import type {Action, ColumnType as Column, Query, Params} from '../types'
 import initState from '../default-state'
 
@@ -8,7 +8,7 @@ type State = Array<Column>;
 
 function params(state: $Shape<Params>): Params {
 	if (state && state.max_bookmark_id) {
-		return {...state, offset: 0, max_bookmark_id: null} // eslint-disable-line camelcase
+		return {...state, offset: 0, maxBookmarkId: null}
 	}
 	return {...state, offset: 0}
 }
@@ -36,8 +36,12 @@ function column(state: Column, action: Action): Column {
 		case 'SET_PARAMS':
 			return {...state, query: query(state.query, action)}
 		case 'ADD_COLUMN_ILLUSTS': {
-			const ids = unionBy(action.ids, state.ids)
-			return isEqual(ids, state) ? state : {...state, ids}
+			const ids = union([], action.ids, state.ids)
+			return isEqual(ids, state.ids) ? state : {...state, ids}
+		}
+		case 'NEXT_COLUMN_ILLUSTS': {
+			const ids = union([], state.ids, action.ids)
+			return isEqual(ids, state.ids) ? state : {...state, ids}
 		}
 		default:
 			return state
@@ -62,6 +66,7 @@ export default function columns(state: State = initState, action: Action): State
 			return state.filter(t => t.id !== id)
 		}
 		case 'ADD_COLUMN_ILLUSTS':
+		case 'NEXT_COLUMN_ILLUSTS':
 		case 'INIT':
 		case 'SET_PARAMS':
 			return state.map(t => column(t, action))

@@ -1,32 +1,33 @@
 // @flow
 import url from 'url'
-import {camelizeKeys} from 'humps'
 import type {
 	State,
+	Action,
 	Dispatch,
 	Illust,
 	ColumnType,
 	Params,
 } from '../types'
-import Pixiv from '../repo/pixiv'
-import {normalizeIllusts, selectIllusts, addColumnIllusts, setPrams} from './column'
+import Pixiv, {normalizeIllusts} from '../repo/pixiv'
+import {getColumn} from '../reducers'
+import {selectIllusts, addColumnIllusts, setPrams,
+	nextColumnIllusts,
+} from './column'
 
 type UserIllust = | 'illust' | 'manga';
 
 export async function fetchUserDetail(id: number) {
-	const res = await Pixiv.userDetail(id)
-	return camelizeKeys(res)
+	return await Pixiv.userDetail(id)
 }
+
+const apiRequestSuccess = (response: Object): Action => ({type: 'API_REQUEST_SUCCESS', response})
 
 export function fetchUserIllust(id: number, type?: UserIllust = 'illust') {
 	return async (dispatch: Dispatch): Promise<Array<Illust>> => {
 		const rawData = await Pixiv.userIllusts(id, {type})
 		const response = normalizeIllusts(rawData)
 
-		dispatch({
-			type: 'API_REQUEST_SUCCESS',
-			response,
-		})
+		dispatch(apiRequestSuccess(response))
 
 		return selectIllusts(response.result, response.entities.illusts)
 	}
@@ -67,10 +68,22 @@ async function fetchPixiv({endpoint, query}: ColumnType): Promise<{response: Obj
 		res = await Pixiv.fetch(endpoint, opts)
 	}
 
-	const params: ?Params = res.next_url ? url.parse(res.next_url, true).query : null
+	const params: ?Params = res.nextUrl ? url.parse(res.nextUrl, true).query : null
 	return {
 		response: normalizeIllusts(res),
 		params,
+	}
+}
+
+export const nextPage = (id: number) => {
+	return async (dispatch: Dispatch, getState: () => State): Promise<void> => {
+		const column = getColumn(getState(), id)
+		const {response, params} = await fetchPixiv(column)
+		dispatch(apiRequestSuccess(response))
+		dispatch(nextColumnIllusts(id, response.result))
+		if (params) {
+			dispatch(setPrams(id, params))
+		}
 	}
 }
 
@@ -82,13 +95,12 @@ export function fetchColumn(column: ColumnType, updateQuery?: bool = true) {
 		if (!authInfo && username && password) {
 			await Pixiv.login(username, password)
 		}
-		const clone = Object.assign({}, column)
-		if (!updateQuery && clone.query.opts) {
-			delete clone.query.opts.max_bookmark_id
-			clone.query.opts.offset = 0
+		if (!updateQuery && column.query.opts) {
+			delete column.query.opts.max_bookmark_id
+			column.query.opts.offset = 0
 		}
-		const {response, params} = await fetchPixiv(clone)
-		dispatch({type: 'API_REQUEST_SUCCESS', response})
+		const {response, params} = await fetchPixiv(column)
+		dispatch(apiRequestSuccess(response))
 		dispatch(addColumnIllusts(column.id, response.result))
 
 		if (params && updateQuery) {
