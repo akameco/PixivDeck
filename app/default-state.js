@@ -15,6 +15,7 @@ const initState: Array<Column> = [
 				offset: 0,
 			},
 		},
+		ids: [],
 	},
 	{
 		id: 2,
@@ -27,6 +28,7 @@ const initState: Array<Column> = [
 				offset: 0,
 			},
 		},
+		ids: [],
 	},
 	{
 		id: 3,
@@ -39,6 +41,7 @@ const initState: Array<Column> = [
 				offset: 0,
 			},
 		},
+		ids: [],
 	},
 ]
 

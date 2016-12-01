@@ -4,7 +4,6 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import css from 'react-css-modules'
 import {download} from 'electron-dl'
-import Pixiv from '../../repo/pixiv'
 import type {Illust, User} from '../../types/'
 import BoxHeader from './BoxHeaderContainer'
 import BoxFooter from './box-footer'
@@ -19,7 +18,8 @@ type Props = {
 	isIllustOnly: bool,
 	onClick: () => void,
 	onClickUser: () => void,
-	onClickTag: (tag: string) => void
+	onClickTag: (tag: string) => void,
+	addBookmark: (id: number, isPublic: bool) => void
 };
 
 @css(styles)
@@ -36,7 +36,7 @@ class Box extends Component {
 	handleContextMenu = (e: Event) => {
 		e.preventDefault()
 
-		const {illust, user, onClickUser} = this.props
+		const {illust, user, onClickUser, addBookmark} = this.props
 		const {id, title, imageUrls, metaSinglePage} = illust
 		const img = imageUrls.large
 		const name = user.name
@@ -63,15 +63,15 @@ class Box extends Component {
 
 		menu.append(new MenuItem({
 			label: 'ブックマーク',
-			click: async () => {
-				await Pixiv.illustBookmarkAdd(id)
+			click: () => {
+				addBookmark(id, true)
 			},
 		}))
 
 		menu.append(new MenuItem({
 			label: '非公開ブックマーク',
-			click: async () => {
-				await Pixiv.illustBookmarkAdd(id, {restrict: 'private'})
+			click: () => {
+				addBookmark(id, false)
 			},
 		}))
 

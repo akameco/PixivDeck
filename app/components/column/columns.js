@@ -4,7 +4,7 @@ import {SortablePane, Pane} from 'react-sortable-pane'
 import css from 'react-css-modules'
 import type {ColumnType} from '../../types'
 import Column from '../column'
-import styles from './columns.css'
+import styles from './Columns.css'
 
 type Props = {
 	columns: Array<ColumnType>

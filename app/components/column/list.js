@@ -12,7 +12,7 @@ import styles from './list.css'
 type Props = {
 	illusts: Array<Illust>,
 	title: string,
-	onNextPage: () => Promise<void>,
+	onNextPage: () => void,
 	onReload: () => void,
 	onClose: () => void
 };
@@ -81,9 +81,9 @@ export default class List extends Component {
 							{List}
 						</Infinite>
 					</div> :
-					<div styleName="loading">
-						<Loading wrapStyle={{background: '#121212'}}/>
-					</div>
+						<div styleName="loading">
+							<Loading wrapStyle={{background: '#121212'}}/>
+						</div>
 				}
 			</section>
 		)

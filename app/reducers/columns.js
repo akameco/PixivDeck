@@ -1,4 +1,6 @@
 // @flow
+import isEqual from 'lodash.isequal'
+import unionBy from 'lodash.unionby'
 import type {Action, ColumnType as Column, Query, Params} from '../types'
 import initState from '../default-state'
 
@@ -30,9 +32,13 @@ function column(state: Column, action: Action): Column {
 
 	switch (action.type) {
 		case 'INIT':
-			return {...state, query: query(state.query, action)}
+			return {...state, query: query(state.query, action), ids: []}
 		case 'SET_PARAMS':
 			return {...state, query: query(state.query, action)}
+		case 'ADD_COLUMN_ILLUSTS': {
+			const ids = unionBy(action.ids, state.ids)
+			return isEqual(ids, state) ? state : {...state, ids}
+		}
 		default:
 			return state
 	}
@@ -47,7 +53,7 @@ export default function columns(state: State = initState, action: Action): State
 			}
 			return [
 				...state,
-				{id, endpoint, query: query(action.query, action), title, timer},
+				{id, endpoint, query: query(action.query, action), title, timer, ids: []},
 			]
 		}
 		case 'CLOSE_COLUMN': {
@@ -55,6 +61,7 @@ export default function columns(state: State = initState, action: Action): State
 			const id = action.id
 			return state.filter(t => t.id !== id)
 		}
+		case 'ADD_COLUMN_ILLUSTS':
 		case 'INIT':
 		case 'SET_PARAMS':
 			return state.map(t => column(t, action))

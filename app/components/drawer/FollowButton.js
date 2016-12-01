@@ -1,24 +1,16 @@
 // @flow
 import React from 'react'
 import {connect} from 'react-redux'
-import type {User} from '../../types'
 import Pixiv from '../../repo/pixiv'
 import Button from '../common/button'
 
 type Props = {
-	user: User,
+	follow: () => void,
+	unFollow: () => void,
 	isFollowed: bool
 };
 
-function FollowButton({user, isFollowed}: Props) {
-	const follow = async () => {
-		await Pixiv.userFollowAdd(user.id)
-	}
-
-	const unFollow = async () => {
-		await Pixiv.userFollowDelete(user.id)
-	}
-
+function FollowButton({isFollowed, follow, unFollow}: Props) {
 	if (isFollowed) {
 		return (
 			<a onClick={unFollow}>

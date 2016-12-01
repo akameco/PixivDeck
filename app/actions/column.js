@@ -20,6 +20,10 @@ export const setPrams = (id: number, params: Params): Action => (
 	{type: 'SET_PARAMS', id, params}
 )
 
+export const addColumnIllusts = (id: number, ids: number[]): Action => (
+	{type: 'ADD_COLUMN_ILLUSTS', id, ids}
+)
+
 export function addColumn(
 	endpoint: Endpoint,
 	query: $Subtype<Query>,
@@ -91,6 +95,7 @@ export function fetchColumn(column: ColumnType, updateQuery?: bool = true) {
 		}
 		const {response, params} = await reqestColumn(column)
 		dispatch({type: 'API_REQUEST_SUCCESS', response})
+		dispatch(addColumnIllusts(column.id, response.result))
 
 		const illusts = selectIllusts(response.result, response.entities.illusts)
 

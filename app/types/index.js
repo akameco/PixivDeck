@@ -1,6 +1,6 @@
 // @flow
 import type {Store as ReduxStore, Dispatch as ReduxDispatch} from 'redux'; // eslint-disable-line
-import type {ColumnType, ColumnAction, Query, Params, Endpoint} from './column'
+import type {Columns, ColumnType, ColumnAction, Query, Params, Endpoint} from './column'
 import type {Manage, ManageAction, ModalType} from './manage'
 import type {History, HistoryAction} from './history'
 import type {Filter, FilterAction} from './filter'
@@ -29,6 +29,7 @@ export type {
 	Auth,
 	Config,
 	ConfigAction,
+	Columns,
 }
 
 export type Entities = {
@@ -61,6 +62,7 @@ export type State = {
 	filter: Filter,
 	history: History,
 	config: Config,
+	illustById: Illusts,
 };
 
 export type Dispatch = ReduxDispatch<State, Action>;

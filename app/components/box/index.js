@@ -8,14 +8,16 @@ import {
 	openMangaPreview,
 	currentIllust,
 	openUserDrawer,
+	addBookmark,
 } from '../../actions'
 import Box from './box'
 
 type Props = {
-	illust: Illust;
-	user: User;
-	isIllustOnly: bool;
-	dispatch: Dispatch;
+	illust: Illust,
+	user: User,
+	isIllustOnly: bool,
+	dispatch: Dispatch,
+	addBookmark: (id: number, isPublic: bool) => void,
 };
 
 class SmartBox extends Component {
@@ -54,6 +56,7 @@ class SmartBox extends Component {
 				illust={this.props.illust}
 				isIllustOnly={this.props.isIllustOnly}
 				onClick={this.handleClick}
+				addBookmark={this.props.addBookmark}
 				onClickUser={this.handleClickUser}
 				onClickTag={this.handleTagClick}
 				/>
@@ -70,4 +73,11 @@ function mapStateToProps(state: State, ownProps: Props) {
 	}
 }
 
-export default connect(mapStateToProps)(SmartBox)
+const mapDispatchToProps = (dispatch: Dispatch) => {
+	return {
+		dispatch,
+		addBookmark: (id: number, isPublic: bool) => dispatch(addBookmark(id, isPublic)),
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SmartBox)
