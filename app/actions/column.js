@@ -1,7 +1,4 @@
 // @flow
-import {camelizeKeys} from 'humps'
-import {normalize} from 'normalizr'
-import Schemas from '../schemas'
 import type {
 	Action,
 	Query,
@@ -16,6 +13,10 @@ export const setPrams = (id: number, params: Params): Action => (
 
 export const addColumnIllusts = (id: number, ids: number[]): Action => (
 	{type: 'ADD_COLUMN_ILLUSTS', id, ids}
+)
+
+export const nextColumnIllusts = (id: number, ids: number[]): Action => (
+	{type: 'NEXT_COLUMN_ILLUSTS', id, ids}
 )
 
 export function addColumn(
@@ -37,10 +38,6 @@ export function addColumn(
 export const closeColumn = (id: number): Action => (
 	{type: 'CLOSE_COLUMN', id}
 )
-
-export const normalizeIllusts = (res: Object) => {
-	return normalize(camelizeKeys(res).illusts, Schemas.ILLUSTS)
-}
 
 export const selectIllusts = (nums: Array<number>, illusts: Illusts) => {
 	return nums.map(i => illusts[i])

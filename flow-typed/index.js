@@ -6,10 +6,6 @@ declare module 'babel-polyfill' {
 	declare var exports: any;
 }
 
-declare module 'humps' {
-	declare function camelizeKeys(target: Object): Object;
-}
-
 declare class IntersectionObserver {
 	observe(): () => void;
 }

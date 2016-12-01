@@ -1,6 +1,6 @@
 // @flow
 import {combineReducers} from 'redux'
-import type {State, User} from '../types'
+import type {State, User, ColumnType} from '../types'
 import manage from './manage'
 import columns from './columns'
 import entities from './entities'
@@ -21,6 +21,9 @@ const rootReducer = combineReducers({
 	config,
 	illustById,
 })
+
+export const getColumn = ({columns}: State, id: number) =>
+	columns.filter(c => c.id === id)[0]
 
 export const getIllusts = (state: State, columnId: number) => {
 	const column = state.columns.filter(c => c.id === columnId)[0]
