@@ -1,38 +1,20 @@
 // @flow
-import url from 'url'
-import camelizeKeys from 'camelcase-keys'
 import type {
 	State,
 	Action,
 	Dispatch,
-	Illust,
 	ColumnType,
 	Params,
 } from '../types'
-import Pixiv, {normalizeIllusts} from '../repo/pixiv'
+import Pixiv, {normalizeIllusts, parseUrl} from '../repo/pixiv'
 import {getColumn} from '../reducers'
-import {selectIllusts, addColumnIllusts, setPrams,
+import {
+	addColumnIllusts,
+	setPrams,
 	nextColumnIllusts,
 } from './column'
 
-type UserIllust = | 'illust' | 'manga';
-
-export async function fetchUserDetail(id: number) {
-	return await Pixiv.userDetail(id)
-}
-
-const apiRequestSuccess = (response: Object): Action => ({type: 'API_REQUEST_SUCCESS', response})
-
-export function fetchUserIllust(id: number, type?: UserIllust = 'illust') {
-	return async (dispatch: Dispatch): Promise<Array<Illust>> => {
-		const rawData = await Pixiv.userIllusts(id, {type})
-		const response = normalizeIllusts(rawData)
-
-		dispatch(apiRequestSuccess(response))
-
-		return selectIllusts(response.result, response.entities.illusts)
-	}
-}
+export const apiRequestSuccess = (response: Object): Action => ({type: 'API_REQUEST_SUCCESS', response})
 
 export function addBookmark(id: number, isPublic?: bool = true) {
 	return async (dispatch: Dispatch, getState: () => State): Promise<void> => {
@@ -76,7 +58,7 @@ function fetchPixiv(columnId: number, rawOpts: ?Object) {
 			res = await Pixiv.fetch(endpoint, opts)
 		}
 
-		const params: ?Params = res.nextUrl ? camelizeKeys(url.parse(res.nextUrl, true).query) : null
+		const params: ?Params = res.nextUrl ? parseUrl(res.nextUrl) : null
 		return {
 			response: normalizeIllusts(res),
 			params,
@@ -111,5 +93,17 @@ export function fetchColumn(column: ColumnType, updateQuery?: bool = true) {
 		if (params && updateQuery) {
 			dispatch(setPrams(id, params))
 		}
+	}
+}
+
+export const follow = (id: number) => {
+	return async () => {
+		await Pixiv.userFollowAdd(id)
+	}
+}
+
+export const unFollow = (id: number) => {
+	return async () => {
+		await Pixiv.userFollowDelete(id)
 	}
 }

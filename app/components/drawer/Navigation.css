@@ -1,0 +1,16 @@
+.root {
+	width: 100%;
+	position: flex;
+	left: auto;
+	transform: translateZ(0);
+	height: 50px;
+	top: 0;
+	z-index: 10;
+}
+
+.wrap {
+	display: flex;
+	text-align: left;
+	justify-content: flex-end;
+	padding: 10px;
+}

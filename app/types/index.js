@@ -9,6 +9,7 @@ import type {Illust, Illusts, MetaPages} from './illust'
 import type {User, Users, Profile} from './user'
 import type {Auth, AuthAction} from './auth'
 import type {Config, ConfigAction} from './config'
+import type {Drawer, DrawerAction} from './drawer'
 
 export type {
 	Illust,
@@ -30,6 +31,7 @@ export type {
 	Config,
 	ConfigAction,
 	Columns,
+	Drawer,
 }
 
 export type Entities = {
@@ -52,6 +54,7 @@ export type Action =
 	| HistoryAction
 	| AuthAction
 	| ConfigAction
+	| DrawerAction
 ;
 
 export type State = {
@@ -63,6 +66,7 @@ export type State = {
 	history: History,
 	config: Config,
 	illustById: Illusts,
+	drawer: Drawer,
 };
 
 export type Dispatch = ReduxDispatch<State, Action>;
