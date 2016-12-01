@@ -11,6 +11,7 @@ import type {
 	Illust,
 } from '../../types'
 import {fetchUserIllust, fetchUserDetail} from '../../actions'
+import {getCurrentUser} from '../../reducers'
 import Loading from '../common/Loading'
 import Header from './DrawerHeader'
 import {IllstList} from './IllustList'
@@ -89,14 +90,8 @@ class UserDrawer extends Component {
 	}
 }
 
-function mapStateToProps(state: S) {
-	if (!state.manage.userId) {
-		return {}
-	}
-	const user = state.entities.users[state.manage.userId]
-	return {
-		user,
-	}
-}
+const mapStateToProps = (state: S) => ({
+	user: getCurrentUser(state),
+})
 
 export default connect(mapStateToProps)(UserDrawer)
