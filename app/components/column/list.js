@@ -6,7 +6,7 @@ import type {Illust} from '../../types'
 import Box from '../box'
 import {CloseButton} from '../button'
 import Loading from '../common/Loading'
-import Infinite from './infinite'
+import Infinite from '../common/Infinite'
 import styles from './list.css'
 
 type Props = {

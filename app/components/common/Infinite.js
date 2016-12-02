@@ -2,7 +2,7 @@
 import React, {Component} from 'react'
 import {findDOMNode} from 'react-dom'
 import css from 'react-css-modules'
-import styles from './infinite.css'
+import styles from './Infinite.css'
 
 type Props = {
 	rootMargin?: string,
@@ -44,6 +44,7 @@ export default class Infinite extends Component {
 
 	handleRootRefs = (c: Component<*, *, *>) => {
 		this.root = c
+		console.log(this.root)
 	}
 
 	render() {
