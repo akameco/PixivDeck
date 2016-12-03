@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import {findDOMNode} from 'react-dom'
 import type {Illust} from '../../types'
 import Icon from '../icon/'
-import styles from './box-image.css'
+import styles from './BoxImage.css'
 
 type Props = {
 	illust: Illust,
