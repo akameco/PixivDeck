@@ -28,11 +28,11 @@ export default class MangaPreview extends Component {
 
 	handleClose = () => {
 		this.props.onClose()
-	};
+	}
 
 	handleImgLoad = () => {
 		this.setState({isLoad: true})
-	};
+	}
 
 	render() {
 		const imgStyle = this.state.isLoad ? 'loaded' : ''
@@ -41,7 +41,7 @@ export default class MangaPreview extends Component {
 				<img
 					src={this.props.img}
 					onLoad={this.handleImgLoad}
-					styleName={imgStyle}
+					className={imgStyle}
 					/>
 			</div>
 		)

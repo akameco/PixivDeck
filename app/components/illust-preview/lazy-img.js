@@ -87,10 +87,11 @@ export default class LazyImg extends Component {
 
 	handleLoad = () => {
 		const img = new Image()
+		const {to, onLoad} = this.props
 		img.onload = () => {
-			this.props.onLoad()
+			onLoad()
 		}
-		img.src = this.props.to
+		img.src = to
 	}
 
 	calcMarginTop(node: HTMLElement): number {
@@ -120,8 +121,10 @@ export default class LazyImg extends Component {
 	}
 
 	render() {
-		const {width, height, isLoaded} = this.props
-		const style = this.selectStyle(isLoaded, this.state.isClicked)
+		const {width, height, isLoaded, onClose} = this.props
+		const {isClicked} = this.state
+
+		const style = this.selectStyle(isLoaded, isClicked)
 		const toStyle = {marginTop: `${this.state.toMarginTop}px`}
 		const fromStyle = Object.assign(
 			{},
@@ -129,13 +132,13 @@ export default class LazyImg extends Component {
 			{marginTop: `${this.state.fromMarginTop}px`}
 		)
 
-		if (this.props.isLoaded) {
+		if (isLoaded) {
 			return (
 				<div className={styles.wrap}>
 					<CloseButton
 						style={{color: '#676767', top: '10px', right: '10px'}}
 						iconStyle={{fill: 'white'}}
-						onClick={this.props.onClose}
+						onClick={onClose}
 						/>
 					<img
 						src={this.props.to}
@@ -154,13 +157,13 @@ export default class LazyImg extends Component {
 
 		return (
 			<div className={styles.wrap}>
-				<CloseButton onClick={this.props.onClose} iconStyle={{fill: 'white'}}/>
+				<CloseButton onClick={onClose} iconStyle={{fill: 'white'}}/>
 				<img
 					src={this.props.from}
 					className={styles.from}
 					style={fromStyle}
 					onLoad={this.handleLoad}
-					ref={(c: Component<*, *, *>) => { // eslint-disable-line react/jsx-no-bind
+					ref={c => { // eslint-disable-line react/jsx-no-bind
 						this.from = c
 					}}
 					/>
