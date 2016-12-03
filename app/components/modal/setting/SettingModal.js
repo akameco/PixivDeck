@@ -1,9 +1,9 @@
 // @flow
 import React, {Component} from 'react'
 import Icon from '../../common/icon'
-import Tag from '../tag'
 import Checkbox from '../../common/Checkbox'
-import styles from './setting-modal.css'
+import Tag from './Tag'
+import styles from './SettingModal.css'
 
 type Props = {
 	onDelete: (tag: string) => void,

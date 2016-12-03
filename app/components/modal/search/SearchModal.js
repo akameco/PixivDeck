@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react'
 import Icon from '../../common/icon'
-import styles from './search-modal.css'
+import styles from './SearchModal.css'
 
 type Props = {
 	onSubmit: (tag: string) => void

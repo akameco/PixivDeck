@@ -2,7 +2,7 @@
 import {connect} from 'react-redux'
 import type {Dispatch} from '../../../types'
 import {addColumn} from '../../../actions'
-import Modal from './search-modal'
+import Modal from './SearchModal'
 
 function mapDispatchToProps(dispatch: Dispatch) {
 	return {
