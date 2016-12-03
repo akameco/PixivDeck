@@ -6,24 +6,6 @@
 	margin-right: 3rem;
 }
 
-.base {
-	display: flex;
-	height: auto;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	margin: 20px;
-	padding-bottom: 10px;
-	background-color: white;
-	box-shadow: 0 0 10px rgba(17,17,17,0.5);
-}
-
-.title {
-	color: #555;
-	font-size: 1.5rem;
-	margin: 30px 0;
-}
-
 .feild {
 	width: 70%;
 	min-width: 200px;
@@ -31,7 +13,7 @@
 	text-align: center;
 }
 
-.input {
+.feild input {
 	font-size: 1.1rem;
 	height: 34px;
 	width: 100%;
@@ -60,7 +42,6 @@
 	height: 45px;
 	z-index: 1;
 	width: 100%;
-	margin: 12px 0;
 	background-color: #529ecc;
 	border-color: #529ecc;
 }
@@ -68,7 +49,7 @@
 .notice {
 	display: block;
 	background-color: #b13232;
-	margin: 20px 5px 20px;
+	margin: 20px 5px;
 	padding: 5px;
 	color: #fff;
 	border-radius: 2px;
