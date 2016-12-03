@@ -8,9 +8,9 @@ import {
  } from '../../actions'
 import Header from './header'
 
-function mapStateToProps(state: State) {
-	return {manage: state.manage}
-}
+const mapStateToProps = ({manage: {isDropdown}}: State) => (
+	{isDropdown}
+)
 
 function mapDispatchToProps(dispatch: Dispatch) {
 	return {
