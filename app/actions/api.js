@@ -6,7 +6,7 @@ import type {
 	ColumnType,
 	Params,
 } from '../types'
-import Pixiv, {normalizeIllusts, parseUrl} from '../repo/pixiv'
+import Pixiv, {normalizeIllusts, parseUrl} from '../util/pixiv'
 import {getColumn} from '../reducers'
 import {
 	addColumnIllusts,

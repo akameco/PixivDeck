@@ -1,6 +1,6 @@
 // @flow
 import type {User, Action, Dispatch, Profile} from '../types'
-import Pixiv, {normalizeIllusts, parseUrl} from '../repo/pixiv'
+import Pixiv, {normalizeIllusts} from '../util/pixiv'
 import {apiRequestSuccess} from './api'
 
 export const openUserDrawer = (id: number): Action => ({type: 'OPEN_DRAWER', id})
