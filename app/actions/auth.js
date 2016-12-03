@@ -1,5 +1,5 @@
 // @flow
-import Pixiv from '../repo/pixiv'
+import Pixiv from '../util/pixiv'
 import type {Action, Dispatch, State} from '../types'
 
 export const logout = (): Action => ({type: 'LOGOUT'})
