@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react'
 import type {Manage} from '../../types'
-import Icon from '../icon'
+import Icon from '../common/icon'
 import Dropdwon from './dropdown'
 import styles from './header.css'
 

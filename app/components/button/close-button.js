@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react'
-import Icon from '../icon'
+import Icon from '../common/icon'
 import styles from './close-button.css'
 
 type Props = {
