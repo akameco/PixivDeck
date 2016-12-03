@@ -22,29 +22,9 @@
 	width: 100%;
 }
 
-.content {
-	overflow-y: auto;
-	overflow-x: hidden;
-	height: calc(100% - 50px);
-}
-
-.title {
-	font-size: 1.2rem;
-}
-
 .loading {
 	display: flex;
 	justify-content: center;
 	background: #4a4a4a;
 	height: 100%;
-}
-
-.loading svg {
-	margin-top: 40%;
-	width: 30px;
-	height: 40px;
-}
-
-.loading svg {
-	fill: #2c8a6b;
 }

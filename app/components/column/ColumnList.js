@@ -2,11 +2,10 @@
 import React, {Component} from 'react'
 import {findDOMNode} from 'react-dom'
 import type {Illust} from '../../types'
-import Box from '../box'
-import {CloseButton} from '../button'
 import Loading from '../common/Loading'
-import Infinite from '../common/Infinite'
-import styles from './list.css'
+import ColumnHeader from './ColumnHeader'
+import ColumnContent from './ColumnContent'
+import styles from './ColumnList.css'
 
 type Props = {
 	illusts: Array<Illust>,
@@ -54,36 +53,22 @@ export default class List extends Component {
 	}
 
 	render() {
-		const List = this.props.illusts.map(illust => {
-			return <Box key={illust.id} illust={illust}/>
-		})
+		const {illusts, title} = this.props
 
 		return (
 			<section className={styles.wrap}>
-				<header className={styles.header}>
-					<a className={styles.title} onClick={this.handleTopClick}>
-						{this.props.title}
-					</a>
-					<CloseButton onClick={this.handleClose}/>
-				</header>
-				{this.props.illusts.length > 0 ?
-					<div
-						className={styles.content}
-						onMouseDown={this.handleMove}
-						onTouchStart={this.handleMove}
-						>
-						<Infinite
-							ref={this.hanadleRef}
-							onIntersect={this.handleOnIntersect}
-							>
-							{List}
-						</Infinite>
-					</div> :
-					<div className={styles.loading}>
-						<Loading wrapStyle={{background: '#121212'}}/>
-					</div>
+				<ColumnHeader title={title} onClose={this.handleClose} onTopClick={this.handleTopClick}/>
+				{illusts.length > 0 ?
+					<ColumnContent target={this.hanadleRef} onIntersect={this.handleOnIntersect} illusts={illusts}/> :
+						<ColumnLoading/>
 				}
 			</section>
 		)
 	}
 }
+
+const ColumnLoading = () => (
+	<div className={styles.loading}>
+		<Loading wrapStyle={{background: '#121212'}}/>
+	</div>
+)
