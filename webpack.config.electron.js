@@ -41,7 +41,6 @@ module.exports = merge(baseConfig, {
 		'electron-referer',
 		'electron-context-menu',
 		'electron-dl',
-		'dot-prop',
 		'pify',
 		'wallpaper',
 	],

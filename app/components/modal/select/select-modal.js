@@ -1,10 +1,25 @@
 // @flow
 import React, {Component} from 'react'
 import css from 'react-css-modules'
-import {RANKING_MODES} from '../../../contains'
 import type {Query, Endpoint} from '../../../types/column'
-import locale from '../../../locale/'
 import styles from './select-modal.css'
+
+/* eslint-disable camelcase */
+const illustRanking = {
+	day: 'デイリー',
+	week: 'ウィークリー',
+	month: 'マンスリー',
+	day_male: '男子に人気',
+	day_female: '女子に人気',
+	week_rookie: 'ルーキー',
+	week_original: 'オリジナル',
+	day_r18: 'R18 デイリー',
+	week_r18: 'R18 ウィークリー',
+	day_male_r18: 'R18 男子に人気',
+	day_female_r18: 'R18 女子に人気',
+	week_r18g: 'R18 G',
+}
+/* eslint-enable camelcase */
 
 class Link extends Component {
 	props: {
@@ -21,7 +36,7 @@ class Link extends Component {
 		return (
 			<li>
 				<a onClick={onClick}>
-					{locale(`illustRanking.${this.props.mode}`)}
+					{illustRanking[this.props.mode]}
 				</a>
 			</li>
 		)
@@ -37,7 +52,7 @@ export default class SelectColumnModal extends Component {
 	props: Props;
 
 	handleAddRanking = (mode: string) => {
-		this.props.onSelect('illustRanking', {opts: {mode}}, `${locale(`illustRanking.${mode}`)}ランキング`)
+		this.props.onSelect('illustRanking', {opts: {mode}}, `${illustRanking[mode]}ランキング`)
 	}
 
 	handleAddFavorite = (publicity: 'private' | 'public') => {
@@ -54,7 +69,7 @@ export default class SelectColumnModal extends Component {
 	}
 
 	render() {
-		const illustRankingLinks = RANKING_MODES.map(v =>
+		const illustRankingLinks = Object.keys(illustRanking).map(v =>
 			<Link
 				mode={v}
 				key={v}
