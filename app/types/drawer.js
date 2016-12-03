@@ -6,6 +6,8 @@ export type Drawer = {
 	mangas: number[],
 	user: ?User,
 	profile: ?Profile,
+	nextIllustUrl: ?string,
+	nextMangaUrl: ?string,
 };
 
 export type DrawerAction =
@@ -13,4 +15,6 @@ export type DrawerAction =
 	| {|type: 'DRAWER_ADD_MANGAS', ids: number[]|}
 	| {|type: 'DRAWER_ADD_USER', user: User|}
 	| {|type: 'DRAWER_ADD_PROFILE', profile: Profile|}
+	| {|type: 'DRAWER_SET_NEXT_ILLUST_URL', url: string|}
+	| {|type: 'DRAWER_SET_NEXT_MANGA_URL', url: string|}
 ;
