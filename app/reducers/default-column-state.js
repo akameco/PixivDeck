@@ -1,5 +1,5 @@
 // @flow
-import type {ColumnType as Column} from './types'
+import type {ColumnType as Column} from '../types'
 
 const hour = 1000 * 60 * 60
 
