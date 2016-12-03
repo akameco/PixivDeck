@@ -2,7 +2,7 @@
 import isEqual from 'lodash.isequal'
 import union from 'lodash.union'
 import type {Action, ColumnType as Column, Query, Params} from '../types'
-import initState from '../default-state'
+import initState from './default-column-state'
 
 type State = Array<Column>;
 
