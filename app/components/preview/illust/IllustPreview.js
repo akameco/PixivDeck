@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react'
-import LazyImg from './lazy-img'
-import styles from './illust-preview.css'
+import LazyImg from './LazyImg'
+import styles from './IllustPreview.css'
 
 type Props = {
 	from: string,

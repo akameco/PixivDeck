@@ -1,8 +1,8 @@
 // @flow
 import React, {Component} from 'react'
 import {findDOMNode} from 'react-dom'
-import CloseButton from '../common/CloseButton'
-import styles from './lazy-img.css'
+import CloseButton from '../../common/CloseButton'
+import styles from './Lazyimg.css'
 
 type Size = {
 	width: number | 'auto',

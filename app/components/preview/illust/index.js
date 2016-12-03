@@ -1,9 +1,9 @@
 // @flow
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import type {Dispatch, State, Illust} from '../../types'
-import {closeImageView, finishImgLoaded, startImgLoading} from '../../actions/manage'
-import Preview from './illust-preview'
+import type {Dispatch, State, Illust} from '../../../types'
+import {closeImageView, finishImgLoaded, startImgLoading} from '../../../actions/manage'
+import Preview from './IllustPreview'
 
 type Props = {
 	illust: Illust,
@@ -12,7 +12,7 @@ type Props = {
 	dispatch: Dispatch
 };
 
-class IllustPreview extends Component {
+class IllustPreviewContainer extends Component {
 	props: Props;
 
 	componentWillMount() {
@@ -60,4 +60,4 @@ const mapStateToProps = (
 	isLoaded: isImgLoaded,
 })
 
-export default connect(mapStateToProps)(IllustPreview)
+export default connect(mapStateToProps)(IllustPreviewContainer)

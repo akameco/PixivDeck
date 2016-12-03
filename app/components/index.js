@@ -2,7 +2,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import type {State, Manage, ColumnType} from '../types'
-import IllustPreview from './illust-preview'
+import IllustPreview from './preview/illust'
 import MangaPreview from './manga-preview'
 import Modal from './modal'
 import Header from './header'
