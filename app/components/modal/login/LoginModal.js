@@ -46,38 +46,31 @@ export default class LoginModal extends Component {
 			return <LoginLoading/>
 		}
 
+		const {username, password} = this.state
 		return (
 			<div className={styles.wrap}>
 				{isLoginFailure && <ErrorNotify/>}
 				<div className={styles.feild}>
-					<input
-						className={styles.input}
-						placeholder="ユーザー名"
-						type="text"
-						value={this.state.username}
-						onChange={this.handleChangeName}
-						/>
-					<input
-						className={styles.input}
-						placeholder="パスワード"
-						type="password"
-						value={this.state.password}
-						onChange={this.handleChangePassword}
-						/>
-					<button onClick={this.handleClick} className={styles.submit}>
-						ログイン
-					</button>
+					<input placeholder="ユーザー名" type="text" value={username} onChange={this.handleChangeName}/>
+					<input placeholder="パスワード" type="password" value={password} onChange={this.handleChangePassword}/>
+					<LoginButton onClick={this.handleClick}/>
 				</div>
 			</div>
 		)
 	}
 }
 
+const LoginButton = ({onClick}: {onClick: () => void}) => (
+	<button onClick={onClick} className={styles.submit}>
+		ログイン
+	</button>
+)
+
 const LoginLoading = () => (
 	<div className={styles.wrap}>
 		<div className={styles.feild}>
 			<Loading/>
-			<button className={styles.ubmit}>
+			<button className={styles.submit}>
 				ログイン中...
 			</button>
 		</div>
