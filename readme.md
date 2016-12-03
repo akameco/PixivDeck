@@ -6,17 +6,9 @@
 
 ## Screenshot
 
-### Main
-
-<img src="media/main.png"/>
-
 ### Scroll
 
 <img src="https://i.gyazo.com/b9b519f35505d032da8bebf55085a790.gif"/>
-
-### Move
-
-<img src="media/move.gif"/>
 
 ### Lightbox
 
