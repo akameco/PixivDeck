@@ -4,7 +4,7 @@ import {Provider} from 'react-redux'
 import type {State} from './types'
 import configureStore from './store'
 import App from './components'
-import Pixiv from './repo/pixiv'
+import Pixiv from './util/pixiv'
 import './app.global.css'; // eslint-disable-line
 
 async function init() {
