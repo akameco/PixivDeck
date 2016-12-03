@@ -10,7 +10,7 @@ import {
 	openUserDrawer,
 	addBookmark,
 } from '../../actions'
-import Box from './box'
+import Box from './Box'
 
 type Props = {
 	illust: Illust,

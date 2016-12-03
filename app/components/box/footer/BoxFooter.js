@@ -1,8 +1,8 @@
 // @flow
 import React, {Component} from 'react'
 import union from 'lodash.union'
-import Tag from './tag'
-import styles from './box-footer.css'
+import Tag from './Tag'
+import styles from './BoxFooter.css'
 
 type Props = {
 	onClickTag: (tag: string) => void,

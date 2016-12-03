@@ -1,8 +1,9 @@
 // @flow
 import React, {Component} from 'react'
-import Avater from './avater'
+import Avater from './Avater'
 import styles from './BoxHeader.css'
-import Caption from './header/Caption'
+import Caption from './Caption'
+import Profile from './Profile'
 
 type Props = {
 	name: string,
@@ -13,6 +14,8 @@ type Props = {
 	onClick: () => void,
 	isIllustComment: bool,
 };
+
+const Title = ({title}: {title: string}) => <div className={styles.title}>{title}</div>
 
 export default class BoxHeader extends Component {
 	props: Props;
@@ -39,21 +42,4 @@ export default class BoxHeader extends Component {
 			</div>
 		)
 	}
-}
-
-const Title = ({title}: {title: string}) => <div className={styles.title}>{title}</div>
-
-function Profile({name, account, onClick}: {
-	name: string, account: string, onClick: () => void
-}) {
-	return (
-		<div>
-			<div className={styles.Profile}>
-				<p className={styles.profileAreaLine}>
-					<a className={styles.name} onClick={onClick}>{name}</a>
-					<a className={styles.account} onClick={onClick}>{account}</a>
-				</p>
-			</div>
-		</div>
-	)
 }
