@@ -33,15 +33,15 @@ const closeState: CloseState = {
 function open(state: Manage, action: Action): $Shape<Manage> {
 	switch (action.type) {
 		case 'OPEN_IMAGE_VIEW':
-			return {...state, isImageView: Boolean(state.currentIllustId)}
+			return {isImageView: Boolean(state.currentIllustId)}
 		case 'OPEN_MANGA_PREVIEW':
-			return {...state, isMangaView: Boolean(state.currentIllustId)}
+			return {isMangaView: Boolean(state.currentIllustId)}
 		case 'OPEN_MODAL':
-			return {...state, ...closeState, isModal: true, modalType: action.modal}
+			return {...closeState, isModal: true, modalType: action.modal}
 		case 'OPEN_DROPDOWN':
-			return {...state, ...closeState, isDropdown: true}
+			return {...closeState, isDropdown: true}
 		case 'OPEN_DRAWER':
-			return {...state, ...closeState, isDrawer: Boolean(action.id), userId: action.id}
+			return {...closeState, isDrawer: Boolean(action.id), userId: action.id}
 		default:
 			return state
 	}
@@ -62,7 +62,7 @@ function close(state: Manage, action: Action): $Shape<Manage> {
 
 export default function (state: Manage = initManageState, action: Action): $Shape<Manage> {
 	if (/^OPEN/.test(action.type)) {
-		return open(state, action)
+		return {...state, ...open(state, action)}
 	} else if (/^CLOSE/.test(action.type)) {
 		return close(state, action)
 	}
