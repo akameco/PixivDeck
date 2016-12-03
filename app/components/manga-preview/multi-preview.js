@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react'
 import type {MetaPages} from '../../types'
-import {CloseButton} from '../button'
+import CloseButton from '../common/CloseButton'
 import styles from './multi-preview.css'
 
 type Props = {

@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import {CloseButton} from '../button'
+import CloseButton from '../common/CloseButton'
 import styles from './ColumnHeader.css'
 
 type Props = {

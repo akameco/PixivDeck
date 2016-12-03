@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react'
-import {CloseButton} from '../button/'
+import CloseButton from '../common/CloseButton'
 import styles from './modal.css'
 
 type Props = {

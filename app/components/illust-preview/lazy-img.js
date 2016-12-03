@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react'
 import {findDOMNode} from 'react-dom'
-import {CloseButton} from '../button'
+import CloseButton from '../common/CloseButton'
 import styles from './lazy-img.css'
 
 type Size = {
