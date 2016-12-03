@@ -1,6 +1,5 @@
 // @flow
 import React, {Component} from 'react'
-import css from 'react-css-modules'
 import Icon from '../../icon'
 import styles from './search-modal.css'
 
@@ -12,7 +11,6 @@ type State = {
 	value: string
 };
 
-@css(styles)
 export default class SearchModal extends Component {
 	props: Props;
 	state: State;
@@ -62,11 +60,11 @@ export default class SearchModal extends Component {
 
 	render() {
 		return (
-			<div styleName="wrap">
-				<div styleName="field">
+			<div className={styles.wrap}>
+				<div className={styles.field}>
 					<Icon type="searchIllust"/>
 					<input
-						styleName="input"
+						className={styles.input}
 						type="text"
 						autoFocus
 						value={this.state.value}

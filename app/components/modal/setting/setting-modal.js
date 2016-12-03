@@ -1,6 +1,5 @@
 // @flow
 import React, {Component} from 'react'
-import css from 'react-css-modules'
 import Icon from '../../icon'
 import Tag from '../tag'
 import Checkbox from '../../common/Checkbox'
@@ -20,7 +19,6 @@ type State = {
 	value: string
 };
 
-@css(styles)
 export default class SettingFilterModal extends Component {
 	props: Props;
 	state: State;
@@ -69,7 +67,7 @@ export default class SettingFilterModal extends Component {
 		)
 
 		return (
-			<div styleName="wrap">
+			<div className={styles.wrap}>
 				<div>
 					<Checkbox
 						id="box-text"
@@ -91,13 +89,13 @@ export default class SettingFilterModal extends Component {
 				<div>
 					<a href="http://www.pixiv.net/setting_user.php" target="_brank">閲覧制限を設定する(pixivを開く)</a>
 				</div>
-				<div styleName="tagFilter">
+				<div className={styles.tagFilter}>
 					<h4>タグフィルター</h4>
-					<div styleName="field">
+					<div className={styles.field}>
 						<Icon type="visible-off"/>
 						<input
 							type="text"
-							styleName="input"
+							className={styles.input}
 							value={this.state.value}
 							onChange={this.handleCangeInput}
 							onKeyDown={this.handleSubmit}

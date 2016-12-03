@@ -1,7 +1,6 @@
 // @flow
 import React, {Component} from 'react'
 import {findDOMNode} from 'react-dom'
-import css from 'react-css-modules'
 import type {Illust} from '../../types'
 import Icon from '../icon/'
 import styles from './box-image.css'
@@ -16,7 +15,6 @@ type State = {
 	isLoaded: bool
 };
 
-@css(styles)
 export default class BoxImage extends Component {
 	props: Props;
 	state: State;
@@ -83,14 +81,14 @@ export default class BoxImage extends Component {
 		return (
 			<div
 				ref={this.handleRefs}
-				styleName="base"
+				className={styles.base}
 				>
 				{isVisible && isLoaded && pageCount > 1 &&
 					<Icon type="manga"/>
 				}
 				{isVisible && isLoaded ?
 					<img
-						styleName="loaded"
+						className={styles.loaded}
 						src={imageUrls.large}
 						onClick={this.props.onClick}
 						/> : <img height={200}/>

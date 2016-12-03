@@ -1,6 +1,5 @@
 // @flow
 import React, {Component} from 'react'
-import css from 'react-css-modules'
 import styles from './Checkbox.css'
 
 type Props = {
@@ -11,7 +10,6 @@ type Props = {
 	id: string
 };
 
-@css(styles)
 export default class Checkbox extends Component {
 	props: Props;
 
@@ -21,9 +19,9 @@ export default class Checkbox extends Component {
 
 	render() {
 		return (
-			<div styleName="wrap">
-				<div styleName="checkbox">
-					<label styleName="switch">
+			<div className={styles.wrap}>
+				<div className={styles.checkbox}>
+					<label className={styles.switch}>
 						<input
 							type="checkbox"
 							defaultChecked={this.props.defaultChecked || false}
@@ -31,10 +29,10 @@ export default class Checkbox extends Component {
 							onChange={this.props.onChange}
 							id={this.props.id}
 							/>
-						<span styleName="track"/>
-						<span styleName="button"/>
+						<span className={styles.track}/>
+						<span className={styles.button}/>
 					</label>
-					<label styleName="message" htmlFor={this.props.id}>
+					<label className={styles.message} htmlFor={this.props.id}>
 						{this.props.text}
 					</label>
 				</div>

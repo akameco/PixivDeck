@@ -1,7 +1,6 @@
 // @flow
 import React, {Component} from 'react'
 import {findDOMNode} from 'react-dom'
-import css from 'react-css-modules'
 import type {Illust} from '../../types'
 import Box from '../box'
 import {CloseButton} from '../button'
@@ -17,7 +16,6 @@ type Props = {
 	onClose: () => void
 };
 
-@css(styles)
 export default class List extends Component {
 	props: Props;
 	target: Component<*, *, *>
@@ -61,16 +59,16 @@ export default class List extends Component {
 		})
 
 		return (
-			<section styleName="wrap">
-				<header styleName="header">
-					<a styleName="title" onClick={this.handleTopClick}>
+			<section className={styles.wrap}>
+				<header className={styles.header}>
+					<a className={styles.title} onClick={this.handleTopClick}>
 						{this.props.title}
 					</a>
 					<CloseButton onClick={this.handleClose}/>
 				</header>
 				{this.props.illusts.length > 0 ?
 					<div
-						styleName="content"
+						className={styles.content}
 						onMouseDown={this.handleMove}
 						onTouchStart={this.handleMove}
 						>
@@ -81,9 +79,9 @@ export default class List extends Component {
 							{List}
 						</Infinite>
 					</div> :
-						<div styleName="loading">
-							<Loading wrapStyle={{background: '#121212'}}/>
-						</div>
+					<div className={styles.loading}>
+						<Loading wrapStyle={{background: '#121212'}}/>
+					</div>
 				}
 			</section>
 		)

@@ -1,6 +1,5 @@
 // @flow
 import React, {Component} from 'react'
-import css from 'react-css-modules'
 import type {Manage} from '../../types'
 import Icon from '../icon'
 import Dropdwon from './dropdown'
@@ -15,7 +14,6 @@ type Props = {
 	onLogout: () => void
 };
 
-@css(styles)
 export default class Header extends Component {
 	props: Props;
 
@@ -25,16 +23,16 @@ export default class Header extends Component {
 
 	render() {
 		return (
-			<header styleName="header">
-				<div styleName="top">
-					<a styleName="button" onClick={this.props.onClickAdd}>
+			<header className={styles.header}>
+				<div className={styles.top}>
+					<a className={styles.button} onClick={this.props.onClickAdd}>
 						<Icon type="add"/>
 					</a>
-					<a styleName="button" onClick={this.props.onOpenSearchModal}>
+					<a className={styles.button} onClick={this.props.onOpenSearchModal}>
 						<Icon type="searchIllust"/>
 					</a>
 				</div>
-				<div styleName="bottom">
+				<div className={styles.bottom}>
 					<a onClick={this.props.onToggleDropdown}>
 						<Icon type="setting"/>
 					</a>

@@ -45,7 +45,6 @@
     "pify": "^2.3.0",
     "pixiv-app-api": "^0.8.0",
     "react": "^15.4.1",
-    "react-css-modules": "^4.1.0",
     "react-dom": "^15.4.1",
     "react-redux": "^4.4.6",
     "react-sortable-pane": "^0.5.4",

@@ -1,6 +1,5 @@
 // @flow
 import React, {Component} from 'react'
-import css from 'react-css-modules'
 import Loading from '../../common/Loading'
 import styles from './LoginModal.css'
 
@@ -17,7 +16,6 @@ type State = {
 	password: string,
 };
 
-@css(styles)
 export default class LoginModal extends Component {
 	props: Props;
 	state: State = {
@@ -49,24 +47,24 @@ export default class LoginModal extends Component {
 		}
 
 		return (
-			<div styleName="wrap">
+			<div className={styles.wrap}>
 				{isLoginFailure && <ErrorNotify/>}
-				<div styleName="feild">
+				<div className={styles.feild}>
 					<input
-						styleName="input"
+						className={styles.input}
 						placeholder="ユーザー名"
 						type="text"
 						value={this.state.username}
 						onChange={this.handleChangeName}
 						/>
 					<input
-						styleName="input"
+						className={styles.input}
 						placeholder="パスワード"
 						type="password"
 						value={this.state.password}
 						onChange={this.handleChangePassword}
 						/>
-					<button onClick={this.handleClick} styleName="submit">
+					<button onClick={this.handleClick} className={styles.submit}>
 						ログイン
 					</button>
 				</div>

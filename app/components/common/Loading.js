@@ -1,6 +1,5 @@
 // @flow
 import React, {Component} from 'react'
-import css from 'react-css-modules'
 import styles from './Loading.css'
 
 const defaultStyle = {
@@ -17,7 +16,6 @@ type Props = {
 	wrapStyle?: Object
 };
 
-@css(styles)
 export default class Loading extends Component {
 	props: Props;
 
@@ -25,12 +23,12 @@ export default class Loading extends Component {
 		const wrapStyle = Object.assign({}, defaultStyle.wrap, this.props.wrapStyle)
 		return (
 			<div style={wrapStyle}>
-				<div styleName="spinner">
+				<div className={styles.spinner}>
 					<div/>
-					<div styleName="rect2"/>
-					<div styleName="rect3"/>
-					<div styleName="rect4"/>
-					<div styleName="rect5"/>
+					<div className={styles.rect2}/>
+					<div className={styles.rect3}/>
+					<div className={styles.rect4}/>
+					<div className={styles.rect5}/>
 				</div>
 			</div>
 		)

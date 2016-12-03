@@ -1,6 +1,5 @@
 // @flow
 import React, {Component} from 'react'
-import css from 'react-css-modules'
 import union from 'lodash.union'
 import Tag from './tag'
 import styles from './box-footer.css'
@@ -10,7 +9,6 @@ type Props = {
 	tags: Array<string>
 };
 
-@css(styles)
 export default class BoxFooter extends Component {
 	props: Props;
 
@@ -23,7 +21,7 @@ export default class BoxFooter extends Component {
 			<Tag key={item} name={item} onClick={this.props.onClickTag}/>
 		)
 		return (
-			<div styleName="base">
+			<div className={styles.base}>
 				{Tags}
 			</div>
 		)

@@ -1,7 +1,6 @@
 // @flow
 import React, {Component} from 'react'
 import {findDOMNode} from 'react-dom'
-import css from 'react-css-modules'
 import styles from './Infinite.css'
 
 type Props = {
@@ -11,7 +10,6 @@ type Props = {
 	style?: Object
 };
 
-@css(styles)
 export default class Infinite extends Component {
 	props: Props;
 	sentinel: Component<*, *, *>;
@@ -52,7 +50,7 @@ export default class Infinite extends Component {
 			<div
 				ref={this.handleRootRefs}
 				style={this.props.style}
-				styleName="base"
+				className={styles.base}
 				>
 				{this.props.children}
 				<div ref={this.handleRefs} style={{height: 100}}/>

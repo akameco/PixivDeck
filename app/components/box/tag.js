@@ -1,6 +1,5 @@
 // @flow
 import React, {Component} from 'react'
-import css from 'react-css-modules'
 import styles from './tag.css'
 
 type Props = {
@@ -8,7 +7,6 @@ type Props = {
 	name: string
 };
 
-@css(styles)
 export default class Tag extends Component {
 	props: Props;
 
@@ -22,7 +20,7 @@ export default class Tag extends Component {
 
 	render() {
 		return (
-			<a onClick={this.handleClick} styleName="tag">
+			<a onClick={this.handleClick} className={styles.tag}>
 				#{this.props.name}
 			</a>
 		)

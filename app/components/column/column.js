@@ -1,6 +1,5 @@
 // @flow
 import React, {Component} from 'react'
-import css from 'react-css-modules'
 import type {Illust, ColumnType} from '../../types'
 import List from './list'
 import styles from './column.css'
@@ -13,7 +12,6 @@ type Props = {
 	onNextPage: () => void
 };
 
-@css(styles)
 export default class Column extends Component {
 	props: Props;
 
@@ -27,7 +25,7 @@ export default class Column extends Component {
 	render() {
 		const {column, ...othres} = this.props
 		return (
-			<div styleName="base">
+			<div className={styles.base}>
 				<List
 					id={column.id}
 					title={column.title}

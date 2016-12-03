@@ -1,7 +1,6 @@
 // @flow
 import React, {Component} from 'react'
 import {SortablePane, Pane} from 'react-sortable-pane'
-import css from 'react-css-modules'
 import type {ColumnType} from '../../types'
 import Column from '../column'
 import styles from './Columns.css'
@@ -10,7 +9,6 @@ type Props = {
 	columns: Array<ColumnType>
 };
 
-@css(styles)
 export default class Columns extends Component {
 	props: Props;
 
@@ -24,7 +22,7 @@ export default class Columns extends Component {
 		))
 
 		return (
-			<div styleName="content">
+			<div className={styles.content}>
 				<SortablePane
 					onResize={this.handleOnResize}
 					>
