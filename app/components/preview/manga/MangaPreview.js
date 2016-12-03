@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react'
-import styles from './manga-preview.css'
+import styles from './MangaPreview.css'
 
 type Props = {
 	img: string,

@@ -1,10 +1,10 @@
 // @flow
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import type {State, Dispatch, Illust} from '../../types'
-import {closeMnagaPreview} from '../../actions'
-import Preview from './manga-preview'
-import MultiPreview from './multi-preview'
+import type {State, Dispatch, Illust} from '../../../types'
+import {closeMnagaPreview} from '../../../actions'
+import Preview from './MangaPreview'
+import MultiPreview from './MultiPreview'
 
 type Props = {
 	illust: Illust,
@@ -35,10 +35,8 @@ class MangaPreviewContainer extends Component {
 	}
 }
 
-function mapStateToProps(state: State, ownProps) {
-	const {entities, manage} = state
-	const {isMangaView} = manage
-	const illust: Illust = entities.illusts[ownProps.id]
+function mapStateToProps({illustById, manage: {isMangaView}}: State, {id}) {
+	const illust = illustById[id]
 
 	return {
 		illust,
