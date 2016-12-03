@@ -9,7 +9,7 @@ import type {
 	Illust,
 } from '../../types'
 import {fetchUserDetail} from '../../actions'
-import {fetchDrawerIllust} from '../../actions/drawer'
+import {fetchDrawerIllust, fetchDrawerManga} from '../../actions/drawer'
 import {getCurrentUser, getDrawerIllusts, getDrawerMangas} from '../../reducers'
 import Loading from '../common/Loading'
 import UserDrawer from './UserDrawer'
@@ -34,8 +34,8 @@ class UserDrawerContainer extends Component {
 
 		Promise.all([
 			dispatch(fetchUserDetail(id)),
-			dispatch(fetchDrawerIllust(id, 'illust')),
-			dispatch(fetchDrawerIllust(id, 'manga')),
+			dispatch(fetchDrawerIllust(id)),
+			dispatch(fetchDrawerManga(id)),
 		])
 	}
 
