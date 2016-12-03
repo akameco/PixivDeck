@@ -79,15 +79,16 @@ export default class BoxImage extends Component {
 
 	render() {
 		const {imageUrls, pageCount} = this.props.illust
+		const {isVisible, isLoaded} = this.state
 		return (
 			<div
 				ref={this.handleRefs}
 				styleName="base"
 				>
-				{pageCount > 1 &&
+				{isVisible && isLoaded && pageCount > 1 &&
 					<Icon type="manga"/>
 				}
-				{this.state.isVisible && this.state.isLoaded ?
+				{isVisible && isLoaded ?
 					<img
 						styleName="loaded"
 						src={imageUrls.large}
