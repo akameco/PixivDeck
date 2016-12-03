@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react'
-import Icon from '../../icon'
+import Icon from '../../common/icon'
 import Tag from '../tag'
 import Checkbox from '../../common/Checkbox'
 import styles from './setting-modal.css'
