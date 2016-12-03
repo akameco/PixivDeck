@@ -142,7 +142,7 @@ export default class LazyImg extends Component {
 						width={width}
 						height={height}
 						style={toStyle}
-						styleName={style}
+						className={styles[style]}
 						onClick={this.handleClick}
 						ref={c => { // eslint-disable-line react/jsx-no-bind
 							this.to = c
