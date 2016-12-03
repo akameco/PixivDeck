@@ -7,7 +7,7 @@ import {
 	setCaptionShow,
 	setOnlyIllust,
 } from '../../../actions'
-import Modal from './setting-modal'
+import Modal from './SettingModal'
 
 function mapStateToProps(state: State) {
 	const {isIllustComment, isIllustOnly} = state.config

@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import type {State, Dispatch, Query, Endpoint} from '../../../types'
 import {addColumn} from '../../../actions'
-import Modal from './select-modal'
+import Modal from './SelectModal'
 
 type Props = {
 	dispatch: Dispatch

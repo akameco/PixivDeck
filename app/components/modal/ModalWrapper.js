@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react'
 import CloseButton from '../common/CloseButton'
-import styles from './modal.css'
+import styles from './ModalWrapper.css'
 
 type Props = {
 	children?: typeof Component,
@@ -10,11 +10,12 @@ type Props = {
 
 export default class ModalWrapper extends Component {
 	props: Props;
-	_content: Component<*, *, *>;
+	_content: typeof Component;
 
 	handleOverlayClick = (event: any) => {
 		let node = event.target
 
+		// モーダル内をクリックしたときは閉じない
 		while (node) {
 			if (node === this._content) {
 				return
@@ -25,11 +26,8 @@ export default class ModalWrapper extends Component {
 		this.props.onClose()
 	}
 
-	handleCloseClick = () => {
-		this.props.onClose()
-	};
-
 	render() {
+		const {onClose, children} = this.props
 		return (
 			<div className={styles.wrap} onClick={this.handleOverlayClick}>
 				<div
@@ -38,8 +36,8 @@ export default class ModalWrapper extends Component {
 						this._content = c
 					}}
 					>
-					<CloseButton onClick={this.handleCloseClick}/>
-					{this.props.children}
+					<CloseButton onClick={onClose}/>
+					{children}
 				</div>
 			</div>
 		)

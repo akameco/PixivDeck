@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react'
 import type {Query, Endpoint} from '../../../types/column'
-import styles from './select-modal.css'
+import styles from './SelectModal.css'
 
 /* eslint-disable camelcase */
 const illustRanking = {
