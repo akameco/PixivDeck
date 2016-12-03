@@ -51,16 +51,13 @@ class IllustPreview extends Component {
 	}
 }
 
-function mapStateToProps(state: State, ownProps) {
-	const {entities, manage} = state
-	const {isImageView, isImgLoaded} = manage
-	const illust = entities.illusts[ownProps.id]
-
-	return {
-		illust,
-		show: isImageView,
-		isLoaded: isImgLoaded,
-	}
-}
+const mapStateToProps = (
+	{illustById, manage: {isImageView, isImgLoaded}}: State,
+	{id}
+) => ({
+	illust: illustById[id],
+	show: isImageView,
+	isLoaded: isImgLoaded,
+})
 
 export default connect(mapStateToProps)(IllustPreview)
