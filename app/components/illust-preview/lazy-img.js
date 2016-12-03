@@ -1,6 +1,5 @@
 // @flow
 import React, {Component} from 'react'
-import css from 'react-css-modules'
 import {findDOMNode} from 'react-dom'
 import {CloseButton} from '../button'
 import styles from './lazy-img.css'
@@ -46,7 +45,6 @@ type State = {
 	toMarginTop: number
 };
 
-@css(styles)
 export default class LazyImg extends Component {
 	props: Props;
 	state: State;
@@ -133,7 +131,7 @@ export default class LazyImg extends Component {
 
 		if (this.props.isLoaded) {
 			return (
-				<div styleName="wrap">
+				<div className={styles.wrap}>
 					<CloseButton
 						style={{color: '#676767', top: '10px', right: '10px'}}
 						iconStyle={{fill: 'white'}}
@@ -155,11 +153,11 @@ export default class LazyImg extends Component {
 		}
 
 		return (
-			<div styleName="wrap">
+			<div className={styles.wrap}>
 				<CloseButton onClick={this.props.onClose} iconStyle={{fill: 'white'}}/>
 				<img
 					src={this.props.from}
-					styleName="from"
+					className={styles.from}
 					style={fromStyle}
 					onLoad={this.handleLoad}
 					ref={(c: Component<*, *, *>) => { // eslint-disable-line react/jsx-no-bind

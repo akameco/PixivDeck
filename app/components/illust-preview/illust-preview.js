@@ -1,6 +1,5 @@
 // @flow
 import React, {Component} from 'react'
-import css from 'react-css-modules'
 import LazyImg from './lazy-img'
 import styles from './illust-preview.css'
 
@@ -15,7 +14,6 @@ type Props = {
 	onClose: () => void
 };
 
-@css(styles)
 export default class IllustPreview extends Component {
 	props: Props;
 
@@ -35,7 +33,7 @@ export default class IllustPreview extends Component {
 		const {width, height, from, to} = this.props
 
 		return (
-			<div styleName="base" onClick={this.handleOnClose}>
+			<div className={styles.base} onClick={this.handleOnClose}>
 				<LazyImg
 					from={from}
 					to={to}

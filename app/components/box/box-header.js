@@ -1,6 +1,5 @@
 // @flow
 import React, {Component} from 'react'
-import css from 'react-css-modules'
 import Avater from './avater'
 import styles from './BoxHeader.css'
 import Caption from './header/Caption'
@@ -15,7 +14,6 @@ type Props = {
 	isIllustComment: bool,
 };
 
-@css(styles)
 export default class BoxHeader extends Component {
 	props: Props;
 
@@ -29,11 +27,11 @@ export default class BoxHeader extends Component {
 	render() {
 		const {name, account, img, title, caption, isIllustComment, onClick} = this.props
 		return (
-			<div styleName="base">
+			<div className={styles.base}>
 				<a onClick={this.props.onClick}>
 					<Avater img={img}/>
 				</a>
-				<div styleName="wrap">
+				<div className={styles.wrap}>
 					<Title title={title}/>
 					<Profile name={name} account={account} onClick={onClick}/>
 					{isIllustComment && caption && <Caption caption={caption}/>}

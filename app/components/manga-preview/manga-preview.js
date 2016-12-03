@@ -1,6 +1,5 @@
 // @flow
 import React, {Component} from 'react'
-import css from 'react-css-modules'
 import styles from './manga-preview.css'
 
 type Props = {
@@ -12,7 +11,6 @@ type State = {
 	isLoad: bool
 };
 
-@css(styles)
 export default class MangaPreview extends Component {
 	props: Props;
 	state: State;
@@ -39,7 +37,7 @@ export default class MangaPreview extends Component {
 	render() {
 		const imgStyle = this.state.isLoad ? 'loaded' : ''
 		return (
-			<div styleName="base" onClick={this.handleClose}>
+			<div className={styles.base} onClick={this.handleClose}>
 				<img
 					src={this.props.img}
 					onLoad={this.handleImgLoad}

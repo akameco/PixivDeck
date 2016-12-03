@@ -2,7 +2,6 @@
 import {shell, remote, ipcRenderer} from 'electron'
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import css from 'react-css-modules'
 import {download} from 'electron-dl'
 import type {Illust, User} from '../../types/'
 import BoxHeader from './BoxHeaderContainer'
@@ -22,7 +21,6 @@ type Props = {
 	addBookmark: (id: number, isPublic: bool) => void
 };
 
-@css(styles)
 class Box extends Component {
 	props: Props;
 
@@ -117,7 +115,7 @@ class Box extends Component {
 		const tags = illust.tags.map(x => x.name)
 
 		return (
-			<div styleName="box" onContextMenu={this.handleContextMenu}>
+			<div className={styles.box} onContextMenu={this.handleContextMenu}>
 				{!isIllustOnly &&
 					<BoxHeader
 						name={user.name}

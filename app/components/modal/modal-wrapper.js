@@ -1,6 +1,5 @@
 // @flow
 import React, {Component} from 'react'
-import css from 'react-css-modules'
 import {CloseButton} from '../button/'
 import styles from './modal.css'
 
@@ -9,7 +8,6 @@ type Props = {
 	onClose: () => void,
 };
 
-@css(styles)
 export default class ModalWrapper extends Component {
 	props: Props;
 	_content: Component<*, *, *>;
@@ -33,9 +31,9 @@ export default class ModalWrapper extends Component {
 
 	render() {
 		return (
-			<div styleName="wrap" onClick={this.handleOverlayClick}>
+			<div className={styles.wrap} onClick={this.handleOverlayClick}>
 				<div
-					styleName="modal"
+					className={styles.modal}
 					ref={c => { // eslint-disable-line react/jsx-no-bind
 						this._content = c
 					}}

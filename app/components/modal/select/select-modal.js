@@ -1,6 +1,5 @@
 // @flow
 import React, {Component} from 'react'
-import css from 'react-css-modules'
 import type {Query, Endpoint} from '../../../types/column'
 import styles from './select-modal.css'
 
@@ -47,7 +46,6 @@ type Props = {
 	onSelect: (endpoint: Endpoint, query: $Shape<Query>, title: string) => void
 };
 
-@css(styles)
 export default class SelectColumnModal extends Component {
 	props: Props;
 
@@ -83,17 +81,17 @@ export default class SelectColumnModal extends Component {
 		const onClickillustFollowPrivate = () => this.handleAddIllustFollow('private')
 
 		return (
-			<div styleName="wrap">
+			<div className={styles.wrap}>
 				<header>
 					<h4>追加するカラムを選択</h4>
 				</header>
 				<div>
-					<div styleName="kind">ランキング</div>
-					<ul styleName="list">
+					<div className={styles.kind}>ランキング</div>
+					<ul className={styles.list}>
 						{illustRankingLinks}
 					</ul>
-					<div styleName="kind">ブックマーク</div>
-					<ul styleName="list">
+					<div className={styles.kind}>ブックマーク</div>
+					<ul className={styles.list}>
 						<li>
 							<a onClick={onClickPublic}>
 								公開ブックマーク
@@ -105,8 +103,8 @@ export default class SelectColumnModal extends Component {
 							</a>
 						</li>
 					</ul>
-					<div styleName="kind">新着</div>
-					<ul styleName="list">
+					<div className={styles.kind}>新着</div>
+					<ul className={styles.list}>
 						<li>
 							<a onClick={onClickillustFollowPublic}>
 								公開
