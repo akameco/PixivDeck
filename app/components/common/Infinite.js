@@ -36,24 +36,23 @@ export default class Infinite extends Component {
 		this.props.onIntersect()
 	}
 
-	handleRefs = (c: Component<*, *, *>) => {
-		this.sentinel = c
-	}
-
-	handleRootRefs = (c: Component<*, *, *>) => {
-		this.root = c
-		console.log(this.root)
-	}
-
 	render() {
+		const {style, children} = this.props
 		return (
 			<div
-				ref={this.handleRootRefs}
-				style={this.props.style}
+				ref={c => { // eslint-disable-line react/jsx-no-bind
+					this.root = c
+				}}
+				style={style}
 				className={styles.base}
 				>
-				{this.props.children}
-				<div ref={this.handleRefs} style={{height: 100}}/>
+				{children}
+				<div
+					ref={c => { // eslint-disable-line react/jsx-no-bind
+						this.sentinel = c
+					}}
+					style={{height: 100}}
+					/>
 			</div>
 		)
 	}
