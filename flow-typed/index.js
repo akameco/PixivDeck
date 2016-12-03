@@ -49,10 +49,6 @@ declare module 'electron-debug' {
 	declare var exports: any;
 }
 
-declare module 'dot-prop' {
-	declare var exports: any;
-}
-
 declare module 'electron-dl' {
 	declare var exports: any;
 }
