@@ -14,7 +14,7 @@ const styles = {
 	backgroundColor: '#222426',
 }
 
-export function IllstList({illusts}: Props) {
+const IllstList = ({illusts}: Props) => {
 	const List = illusts.map(illust => (
 		<Box
 			key={illust.id}
@@ -32,3 +32,5 @@ export function IllstList({illusts}: Props) {
 		</div>
 	)
 }
+
+export default IllstList

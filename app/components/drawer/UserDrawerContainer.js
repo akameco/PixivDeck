@@ -42,7 +42,14 @@ class UserDrawerContainer extends Component {
 	render() {
 		const {user, profile, illusts, mangas} = this.props
 		if (profile && user) {
-			return <UserDrawer illusts={illusts} mangas={mangas} profile={profile} user={user}/>
+			return (
+				<UserDrawer
+					illusts={illusts}
+					mangas={mangas}
+					profile={profile}
+					user={user}
+					/>
+			)
 		}
 		return <Loading/>
 	}
