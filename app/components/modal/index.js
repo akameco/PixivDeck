@@ -24,11 +24,14 @@ class Modal extends Component {
 	renderModal(type: ModalType) {
 		if (type === 'ADD_COLUMN') {
 			return <SelectColumnModal/>
-		} else if (type === 'FILTER_TAG') {
+		}
+		if (type === 'FILTER_TAG') {
 			return <SettingModal/>
-		} else if (type === 'SEARCH') {
+		}
+		if (type === 'SEARCH') {
 			return <SearchModal/>
-		} else if (type === 'LOGIN') {
+		}
+		if (type === 'LOGIN') {
 			return <LoginModal/>
 		}
 		return <SelectColumnModal/>
