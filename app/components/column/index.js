@@ -5,7 +5,7 @@ import isEqual from 'lodash.isequal'
 import type {Dispatch, State as S, Illust, ColumnType} from '../../types'
 import {fetchColumn, closeColumn, nextPage} from '../../actions'
 import {getIllusts} from '../../reducers'
-import Column from './column'
+import Column from './Column'
 
 type Props = {
 	column: ColumnType,
@@ -13,7 +13,7 @@ type Props = {
 	dispatch: Dispatch
 };
 
-class SmartColumn extends Component {
+class ColumnContainer extends Component {
 	props: Props;
 	timer: number;
 
@@ -76,4 +76,4 @@ const mapStateToProps = (state: S, {column}: Props) => ({
 	illusts: getIllusts(state, column.id),
 })
 
-export default connect(mapStateToProps)(SmartColumn)
+export default connect(mapStateToProps)(ColumnContainer)
