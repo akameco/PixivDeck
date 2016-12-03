@@ -6,9 +6,8 @@ import type {
 	Profile,
 	Illust,
 } from '../../types'
-import Loading from '../common/Loading'
 import Header from './DrawerHeader'
-import {IllstList} from './IllustList'
+import IllstList from './IllustList'
 import styles from './UserDrawer.css'
 
 type Props = {
@@ -19,9 +18,6 @@ type Props = {
 };
 
 const UserDrawer = ({user, profile, illusts, mangas}: Props) => {
-	if (!profile) {
-		return <Loading/>
-	}
 	const {totalIllusts, totalManga} = profile
 	return (
 		<div>
