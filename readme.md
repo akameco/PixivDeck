@@ -6,29 +6,25 @@
 
 ## Screenshot
 
-### Main
-
-<img src="media/main.png"/>
-
 ### Scroll
 
-<img src="media/scroll.gif"/>
+<img src="https://i.gyazo.com/b9b519f35505d032da8bebf55085a790.gif"/>
 
 ### Move
 
-<img src="media/move.gif"/>
+<img src="https://i.gyazo.com/ae96a85ccea972427b45338f7da4ad62.gif"/>
 
 ### Lightbox
 
-<img src="media/lightbox.gif"/>
+<img src="https://i.gyazo.com/e280d761c575718eca792dd07d613593.gif"/>
 
 ### Add Column
 
-<img src="media/add.gif"/>
+<img src="https://i.gyazo.com/e7e0f05ed1b17b6821fa7e1587bd3c62.gif">
 
 ### Show User
 
-<img src="media/yoko.gif"/>
+<img src="https://i.gyazo.com/af0a101f26b4603289b2496c0162193f.gif"/>
 
 ## Download
 
