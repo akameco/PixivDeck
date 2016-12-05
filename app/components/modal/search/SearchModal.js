@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react'
-import Icon from '../../common/icon'
+import Icon from '../../common/Icon'
 import styles from './SearchModal.css'
 
 type Props = {
