@@ -13,14 +13,7 @@ type State = {
 
 export default class MangaPreview extends Component {
 	props: Props;
-	state: State;
-
-	constructor(props: Props) {
-		super(props)
-		this.state = {
-			isLoad: false,
-		}
-	}
+	state: State = {isLoad: false};
 
 	shouldComponentUpdate(nextProps: Props, nextState: State) {
 		return this.state.isLoad !== nextState.isLoad

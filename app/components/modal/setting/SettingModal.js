@@ -21,12 +21,7 @@ type State = {
 
 export default class SettingFilterModal extends Component {
 	props: Props;
-	state: State;
-
-	constructor(props: Props) {
-		super(props)
-		this.state = {value: ''}
-	}
+	state: State = {value: ''}
 
 	shouldComponentUpdate(nextProps: Props, nextState: State) {
 		if (nextProps.tags.length !== this.props.tags.length) {
