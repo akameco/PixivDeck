@@ -1,30 +1,37 @@
 // @flow
-import React, {Component} from 'react'
+import React from 'react'
 
 type Props = {
-	img: string,
-	imgStyle?: Object
+	size: number,
+	src: string,
+	style?: Object,
+	className?: string,
+	color?: string,
 };
 
-const defaultStyle = {
-	img: {
-		width: 50,
-		height: 50,
-		borderRadius: 4,
-	},
+const getStyles = ({color, size}: $Shape<Props>): Object => {
+	const styles = {
+		root: {
+			userSelect: 'none',
+			display: 'inline-flex',
+			alignItems: 'center',
+			justifyContent: 'center',
+			fontSize: size / 2,
+			borderRadius: '5px',
+			height: size,
+			width: size,
+			color: color || '#fff',
+		},
+	}
+	return styles
 }
 
-export default class Avater extends Component {
-	props: Props;
+const Avater = ({src, style, className, ...other}: Props) => (
+	<img
+		src={src}
+		style={Object.assign(getStyles(other).root, style)}
+		className={className}
+		/>
+)
 
-	shouldComponentUpdate(nextProps: Props) {
-		return nextProps.img !== this.props.img
-	}
-
-	render() {
-		const imgStyle = {...defaultStyle.img, ...this.props.imgStyle}
-		return (
-			<img src={this.props.img} style={imgStyle}/>
-		)
-	}
-}
+export default Avater

@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import {link} from 'autolinker'
-import Avater from '../common/avater'
+import Avater from '../common/Avater'
 import type {
 	User,
 	Profile,
@@ -13,7 +13,7 @@ const Header = ({user, profile}: {user: User, profile: Profile}) => (
 	<div className={styles.root}>
 		<Navigation user={user} profile={profile}/>
 		<div className={styles.imgWrap}>
-			<Avater img={user.profileImageUrls.medium} imgStyle={{width: '140px', height: '140px'}}/>
+			<Avater src={user.profileImageUrls.medium} size={140}/>
 		</div>
 		<div className={styles.info}>
 			<h1>{user.name}</h1>

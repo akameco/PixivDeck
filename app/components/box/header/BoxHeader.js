@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react'
-import Avater from './Avater'
+import Avater from '../../common/Avater'
 import styles from './BoxHeader.css'
 import Caption from './Caption'
 import Profile from './Profile'
@@ -31,8 +31,8 @@ export default class BoxHeader extends Component {
 		const {name, account, img, title, caption, isIllustComment, onClick} = this.props
 		return (
 			<div className={styles.base}>
-				<a onClick={this.props.onClick}>
-					<Avater img={img}/>
+				<a onClick={this.props.onClick} style={{margin: 5}}>
+					<Avater src={img} size={48}/>
 				</a>
 				<div className={styles.wrap}>
 					<Title title={title}/>
