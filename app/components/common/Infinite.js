@@ -9,6 +9,7 @@ type Props = {
 	onIntersect: () => void,
 	children?: any,
 	root?: any,
+	targetRef?: (c: Component<*, *, *>) => void,
 	style?: Object
 };
 
@@ -16,12 +17,16 @@ export default class Infinite extends Component {
 	props: Props;
 	sentinel: Component<*, *, *>;
 	io: Object;
+	root: Component<*, *, *>
+
+	static defaultProps = {
+		rootMargin: '1000px',
+	}
 
 	componentDidMount() {
 		const sentinel = this.sentinel
 		const {root, rootMargin, onIntersect} = this.props
-		const defaultOpts = {rootMargin: rootMargin || '1000px'}
-		const opts = root ? defaultOpts : {...defaultOpts, root}
+		const opts = root ? {rootMargin} : {rootMargin, root}
 		this.io = new IntersectionObserver(entries => { // eslint-disable-line no-undef
 			if (entries[0].intersectionRatio <= 0) {
 				return
@@ -34,9 +39,13 @@ export default class Infinite extends Component {
 	}
 
 	render() {
-		const {style, children} = this.props
+		const {style, children, targetRef} = this.props
 		return (
-			<div style={style} className={styles.wrap}>
+			<div
+				style={style}
+				className={styles.wrap}
+				ref={targetRef}
+				>
 				{children}
 				<div
 					ref={c => { // eslint-disable-line react/jsx-no-bind

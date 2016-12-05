@@ -18,6 +18,8 @@ type Props = {
 export default class List extends Component {
 	props: Props;
 	target: Component<*, *, *>
+	root: typeof ColumnContent
+	state: {toTop: bool} = {toTop: false}
 
 	shouldComponentUpdate(nextProps: Props) {
 		if (this.props.illusts.length !== nextProps.illusts.length) {
@@ -28,24 +30,15 @@ export default class List extends Component {
 
 	handleTopClick = (e: Event) => {
 		e.preventDefault()
-		const node: HTMLElement = findDOMNode(this.target)
+		const node: HTMLElement = findDOMNode(this.root)
 		if (node) {
 			node.scrollTop = 0
 		}
 		this.props.onReload()
-	};
+	}
 
 	handleClose = () => {
 		this.props.onClose()
-	}
-
-	// ignore event prop to react-sortable-pane
-	handleMove = (e: Event) => {
-		e.stopPropagation()
-	}
-
-	hanadleRef = (c: Component<*, *, *>) => {
-		this.target = c
 	}
 
 	handleOnIntersect = () => {
@@ -57,10 +50,22 @@ export default class List extends Component {
 
 		return (
 			<section className={styles.wrap}>
-				<ColumnHeader title={title} onClose={this.handleClose} onTopClick={this.handleTopClick}/>
+				<ColumnHeader
+					title={title}
+					onClose={this.handleClose}
+					onTopClick={this.handleTopClick}
+					/>
 				{illusts.length > 0 ?
-					<ColumnContent target={this.hanadleRef} onIntersect={this.handleOnIntersect} illusts={illusts}/> :
-						<ColumnLoading/>
+					<ColumnContent
+						root={c => { // eslint-disable-line react/jsx-no-bind
+							this.target = c
+						}}
+						targetRef={c => { // eslint-disable-line react/jsx-no-bind
+							this.root = c
+						}}
+						onIntersect={this.handleOnIntersect}
+						illusts={illusts}
+						/> : <ColumnLoading/>
 				}
 			</section>
 		)
