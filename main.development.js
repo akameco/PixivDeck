@@ -42,14 +42,8 @@ const config = new Config({
 })
 
 function createMainWindow() {
-	const lastWindowState = config.get('bounds')
-	const win = new BrowserWindow({
-		title: 'PixivDeck',
-		width: lastWindowState.width,
-		height: lastWindowState.height,
-		x: lastWindowState.x,
-		y: lastWindowState.y,
-	})
+	const {width, height, x, y} = config.get('bounds')
+	const win = new BrowserWindow({title: 'PixivDeck', width, height, x, y})
 
 	if (process.env.NODE_ENV === 'development') {
 		const loadExtensions = async () => {
