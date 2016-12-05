@@ -2,6 +2,7 @@
 import type {User, Action, Dispatch, Profile, State} from '../types'
 import type {DrawerType} from '../types/drawer'
 import Pixiv, {normalizeIllusts} from '../util/pixiv'
+import {getNextUrl} from '../reducers/drawer'
 import {apiRequestSuccess} from './api'
 
 export const openUserDrawer = (id: number): Action => ({type: 'OPEN_DRAWER', id})
@@ -39,8 +40,7 @@ export const fetchDrawerIllust = (id: number, type: DrawerType) => {
 
 export const nextDrawerPage = (type: DrawerType) => {
 	return async (dispatch: Dispatch, getState: () => State): Promise<void> => {
-		const {drawer: {nextIllustUrl, nextMangaUrl}} = getState()
-		const nextUrl = type === 'illust' ? nextIllustUrl : nextMangaUrl
+		const nextUrl = getNextUrl(type, getState())
 		if (nextUrl) {
 			const data = await Pixiv.fetch(nextUrl)
 			const {result} = await dispatch(fetchDrawerData(data, type))
