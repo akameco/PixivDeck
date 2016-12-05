@@ -13,21 +13,19 @@ let mainWindow
 require('electron-context-menu')()
 
 function openTweet(url: string) {
-	const win = new BrowserWindow({width: 800, height: 600})
+	const tweetWin = new BrowserWindow({width: 800, height: 600})
 
-	referer('https://twitter.com', win)
-
-	const page = win.webContents
+	const page = tweetWin.webContents
 
 	page.on('will-navigate', (event, url) => {
 		if (/twitter\.com\/intent\/tweet\/complete/.test(url)) {
-			win.close()
+			tweetWin.close()
 		}
 
 		event.preventDefault()
 	})
 
-	win.loadURL(url)
+	tweetWin.loadURL(url, {httpReferrer: 'https://twitter.com'})
 }
 
 if (process.env.NODE_ENV === 'development') {
