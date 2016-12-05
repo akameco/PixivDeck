@@ -121,6 +121,7 @@ export default class Box extends Component {
 						account={user.account}
 						img={user.profileImageUrls.medium}
 						title={title}
+						isBookmarked={illust.isBookmarked}
 						caption={caption}
 						onClick={onClickUser}
 						/>
