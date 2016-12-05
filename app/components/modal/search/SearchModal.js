@@ -13,12 +13,7 @@ type State = {
 
 export default class SearchModal extends Component {
 	props: Props;
-	state: State;
-
-	constructor(props: Props) {
-		super(props)
-		this.state = {value: ''}
-	}
+	state: State = {value: ''};
 
 	handleChange = (event: any) => {
 		this.setState({value: event.target.value})

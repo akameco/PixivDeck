@@ -47,18 +47,13 @@ type State = {
 
 export default class LazyImg extends Component {
 	props: Props;
-	state: State;
 	to: Component<*, *, *>
 	from: Component<*, *, *>
-
-	constructor(props: Props) {
-		super(props)
-		this.state = {
-			isClicked: false,
-			fromMarginTop: 0,
-			toMarginTop: 0,
-		}
-	}
+	state: State = {
+		isClicked: false,
+		fromMarginTop: 0,
+		toMarginTop: 0,
+	};
 
 	componentDidMount() {
 		const to = this.calcMarginTop(findDOMNode(this.to))
