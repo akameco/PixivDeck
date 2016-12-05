@@ -1,5 +1,6 @@
 // @flow
 import React, {Component} from 'react'
+import isEqual from 'lodash.isequal'
 import type {Illust, ColumnType} from '../../types'
 import ColumnList from './ColumnList'
 import styles from './Column.css'
@@ -16,10 +17,7 @@ export default class Column extends Component {
 	props: Props;
 
 	shouldComponentUpdate(nextProps: Props) {
-		if (this.props.illusts.length !== nextProps.illusts.length) {
-			return true
-		}
-		return false
+		return !isEqual(this.props.illusts, nextProps.illusts)
 	}
 
 	render() {

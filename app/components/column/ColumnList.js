@@ -21,13 +21,6 @@ export default class List extends Component {
 	root: typeof ColumnContent
 	state: {toTop: bool} = {toTop: false}
 
-	shouldComponentUpdate(nextProps: Props) {
-		if (this.props.illusts.length !== nextProps.illusts.length) {
-			return true
-		}
-		return false
-	}
-
 	handleTopClick = (e: Event) => {
 		e.preventDefault()
 		const node: HTMLElement = findDOMNode(this.root)
