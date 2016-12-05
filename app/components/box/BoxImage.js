@@ -79,7 +79,7 @@ export default class BoxImage extends Component {
 				className={styles.base}
 				>
 				{isVisible && isLoaded && pageCount > 1 &&
-					<Icon type="manga"/>
+					<Icon type="manga" color="#fff"/>
 				}
 				{isVisible && isLoaded ?
 					<img
