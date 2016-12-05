@@ -17,17 +17,12 @@ type State = {
 
 export default class BoxImage extends Component {
 	props: Props;
-	state: State;
 	target: Component<*, *, *>;
 	io: Object;
-
-	constructor(props: Props) {
-		super(props)
-		this.state = {
-			isVisible: false,
-			isLoaded: false,
-		}
-	}
+	state: State = {
+		isVisible: false,
+		isLoaded: false,
+	};
 
 	componentDidMount() {
 		this.tick()
