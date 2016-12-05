@@ -1,6 +1,6 @@
 // @flow
 import union from 'lodash.union'
-import type {Action} from '../types'
+import type {Action, State} from '../types'
 import type {Drawer, DrawerType} from '../types/drawer'
 
 const initState = {
@@ -38,5 +38,13 @@ export default function drawer(state: Drawer = initState, action: Action): Drawe
 			return {...initState}
 		default:
 			return state
+	}
+}
+
+export const getNextUrl = (type: DrawerType, {drawer: {nextIllustUrl, nextMangaUrl}}: State): ?string => {
+	if (type === 'illust') {
+		return nextIllustUrl
+	} else if (type === 'manga') {
+		return nextMangaUrl
 	}
 }
