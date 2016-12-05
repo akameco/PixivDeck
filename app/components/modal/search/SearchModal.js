@@ -1,6 +1,10 @@
 // @flow
 import React, {Component} from 'react'
+import throttle from 'lodash.throttle'
+import Pixiv from '../../../util/pixiv'
 import Icon from '../../common/Icon'
+import PopoverAuto from './PopoverAuto'
+import UsersOver from './UsersOver'
 import styles from './SearchModal.css'
 
 type Props = {
@@ -8,16 +12,26 @@ type Props = {
 };
 
 type State = {
-	value: string
+	value: string,
+	keywords: string[],
 };
 
-export default class SearchModal extends Component {
+class SearchModal extends Component {
 	props: Props;
-	state: State = {value: ''};
+	state: State = {value: '', keywords: []};
 
-	handleChange = (event: any) => {
+	handleChange = async (event: any) => {
 		this.setState({value: event.target.value})
+		this._autoComplte()
 	}
+
+	_autoComplte = throttle(async () => {
+		if (this.state.value === '') {
+			return
+		}
+		const {searchAutoCompleteKeywords} = await Pixiv.searchAutoComplete(this.state.value)
+		this.setState({keywords: searchAutoCompleteKeywords})
+	}, 500)
 
 	handleSubmit = (event: SyntheticKeyboardEvent) => { // eslint-disable-line no-undef
 		const text = this.state.value.trim()
@@ -27,48 +41,42 @@ export default class SearchModal extends Component {
 		}
 	}
 
-	handleClick = (n: number) => {
-		const text = this.state.value.trim()
-		if (text !== '') {
-			this.props.onSubmit(`${text}${n}users入り`)
+	handleClick = (keyword: string) => {
+		if (keyword !== '') {
+			this.props.onSubmit(keyword)
 		}
-	}
-
-	renderList() {
-		if (this.state.value === '') {
-			return
-		}
-		const list = [100, 500, 1000, 3000, 5000, 10000].map(v => {
-			const onClick = () => this.handleClick(v)
-			return (
-				<li key={v}>
-					<a onClick={onClick}>{`${this.state.value}${v}users入り`}</a>
-				</li>
-			)
-		})
-		return (
-			<ul>
-				{list}
-			</ul>
-		)
 	}
 
 	render() {
+		const {keywords, value} = this.state
 		return (
 			<div className={styles.wrap}>
 				<div className={styles.field}>
-					<Icon type="searchIllust"/>
+					<Icon type="searchIllust" className={styles.icon}/>
 					<input
 						className={styles.input}
 						type="text"
 						autoFocus
-						value={this.state.value}
+						value={value}
 						onChange={this.handleChange}
 						onKeyDown={this.handleSubmit}
 						/>
 				</div>
-				{this.renderList()}
+				{value &&
+					<div className={styles.popup}>
+						{keywords.length > 0 &&
+							<PopoverAuto
+								value={value}
+								keywords={this.state.keywords}
+								onClick={this.handleClick}
+								/>
+						}
+						<UsersOver value={value} onClick={this.handleClick}/>
+					</div>
+				}
 			</div>
 		)
 	}
 }
+
+export default SearchModal

@@ -1,9 +1,10 @@
 .wrap {
 	position: relative;
 	max-width: 100%;
-	margin-top: 2rem;
+	margin-top: 1rem;
 	margin-left: 3rem;
 	margin-right: 3rem;
+	height: calc(100% - 50px);
 }
 
 .input {
@@ -20,13 +21,23 @@
 .field {
 	position: relative;
 	max-width: 400px;
-	margin-bottom: 2rem;
+	margin-bottom: 5px;
 }
 
-.field svg{
+.icon {
 	position: absolute;
 	top: 1rem;
 	left: 0.5rem;
 	width: 1.5rem;
 	height: 1.5rem;
+}
+
+.popup {
+	width: 80%;
+	height: calc(100% - 50px);
+	padding: 1px;
+	border-radius: 3px;
+	background: rgba(0, 0, 0, 0.1);
+	overflow-y: scroll;
+	margin: 0;
 }
