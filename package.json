@@ -39,6 +39,7 @@
     "json-loader": "^0.5.4",
     "lodash.isequal": "^4.4.0",
     "lodash.merge": "^4.6.0",
+    "lodash.throttle": "^4.1.1",
     "lodash.union": "^4.6.0",
     "lodash.unionby": "^4.8.0",
     "normalizr": "^2.2.1",
