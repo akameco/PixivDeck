@@ -1,0 +1,11 @@
+.base {
+	display: flex;
+	margin: 0;
+	min-width: 300px;
+	max-height: 100vh;
+	height: calc(100% - 2px);
+	overflow-x: hidden;
+	overflow-y: hidden;
+	background: #444448;
+	border: 2px solid #444448;
+}
