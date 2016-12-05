@@ -1,22 +1,41 @@
-html, body, div, li, ul, h1, h2, h3, h4, h5, h6, p, a, img {
+* {
+	-webkit-font-smoothing: antialiased;
+}
+
+html,
+body,
+div,
+li,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+img {
 	margin: 0;
 	padding: 0;
 	border: 0;
 	vertical-align: baseline;
 }
 
-html, body {
+html,
+body {
 	overflow-y: hidden;
 }
 
-:active, :focus {
+:active,
+:focus {
 	outline: 0;
 	outline-style: none;
 	outline-width: 0;
 }
 
 body {
-	font-family: Helvetica , "游ゴシック" , "Yu Gothic" , sans-serif;
+	font-family: Helvetica, "游ゴシック", "Yu Gothic", sans-serif;
 }
 
 li {
@@ -25,6 +44,11 @@ li {
 
 a {
 	cursor: pointer;
+}
+
+a,
+body {
+	color: #444;
 }
 
 #root {
