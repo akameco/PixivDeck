@@ -23,13 +23,6 @@ type Props = {
 class SmartBox extends Component {
 	props: Props;
 
-	shouldComponentUpdate(nextProps) {
-		return (
-			this.props.illust.id !== nextProps.illust.id ||
-			nextProps.isIllustOnly !== this.props.isIllustOnly
-		)
-	}
-
 	handleTagClick = (tag: string) => {
 		this.props.dispatch(addColumn('searchIllust', {word: tag}, tag, 1000 * 60 * 5))
 	}

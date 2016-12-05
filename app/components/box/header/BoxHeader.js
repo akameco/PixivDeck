@@ -1,5 +1,5 @@
 // @flow
-import React, {Component} from 'react'
+import React from 'react'
 import Avater from '../../common/Avater'
 import styles from './BoxHeader.css'
 import Caption from './Caption'
@@ -19,15 +19,8 @@ type Props = {
 
 const Title = ({title}: {title: string}) => <div className={styles.title}>{title}</div>
 
-export default class BoxHeader extends Component {
+export default class BoxHeader extends React.PureComponent {
 	props: Props;
-
-	shouldComponentUpdate(nextProps: Props) {
-		return (
-			this.props.name !== nextProps.name ||
-			this.props.isIllustComment !== nextProps.isIllustComment
-		)
-	}
 
 	render() {
 		const {name, account, img, title, caption, isIllustComment, onClick, isBookmarked} = this.props

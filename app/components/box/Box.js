@@ -24,9 +24,11 @@ export default class Box extends Component {
 	props: Props;
 
 	shouldComponentUpdate(nextProps: Props) {
+		const {illust, isIllustOnly} = this.props
 		return (
-			nextProps.illust.id !== this.props.illust.id ||
-			nextProps.isIllustOnly !== this.props.isIllustOnly
+			nextProps.illust.isBookmarked !== illust.isBookmarked ||
+			nextProps.illust.id !== illust.id ||
+			nextProps.isIllustOnly !== isIllustOnly
 		)
 	}
 
