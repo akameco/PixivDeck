@@ -1,6 +1,7 @@
 // @flow
+import union from 'lodash.union'
 import type {Action} from '../types'
-import type {Drawer} from '../types/drawer'
+import type {Drawer, DrawerType} from '../types/drawer'
 
 const initState = {
 	illusts: [],
@@ -11,12 +12,18 @@ const initState = {
 	nextMangaUrl: null,
 }
 
+const addDrawerIllusts = (type: DrawerType, illusts: number[], ids: number[]) => {
+	if (type === 'illust') {
+		return {illusts: union(illusts, ids)}
+	} else if (type === 'manga') {
+		return {mangas: union(illusts, ids)}
+	}
+}
+
 export default function drawer(state: Drawer = initState, action: Action): Drawer {
 	switch (action.type) {
 		case 'DRAWER_ADD_ILLUSTS':
-			return {...state, illusts: [...state.illusts, ...action.ids]}
-		case 'DRAWER_ADD_MANGAS':
-			return {...state, mangas: [...state.mangas, ...action.ids]}
+			return {...state, ...addDrawerIllusts(action.drawerType, state.illusts, action.ids)}
 		case 'DRAWER_ADD_USER':
 			return {...state, user: action.user}
 		case 'DRAWER_ADD_PROFILE':
