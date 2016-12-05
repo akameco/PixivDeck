@@ -1,5 +1,5 @@
 import React from 'react'
-import Icon from '../common/icon'
+import Icon from '../common/Icon'
 import styles from './HeaderButton.css'
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
 
 const HeaderButton = ({iconType, onClick}: Props) => (
 	<a className={styles.button} onClick={onClick}>
-		<Icon type={iconType}/>
+		<Icon type={iconType} size={38}/>
 	</a>
 )
 
