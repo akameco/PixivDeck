@@ -4,12 +4,14 @@ import Avater from '../../common/Avater'
 import styles from './BoxHeader.css'
 import Caption from './Caption'
 import Profile from './Profile'
+import BookmarkButton from './BookmarkButton'
 
 type Props = {
 	name: string,
 	account: string,
 	img: string,
 	title: string,
+	isBookmarked: bool,
 	caption?: string,
 	onClick: () => void,
 	isIllustComment: bool,
@@ -28,7 +30,7 @@ export default class BoxHeader extends Component {
 	}
 
 	render() {
-		const {name, account, img, title, caption, isIllustComment, onClick} = this.props
+		const {name, account, img, title, caption, isIllustComment, onClick, isBookmarked} = this.props
 		return (
 			<div className={styles.base}>
 				<a onClick={this.props.onClick} style={{margin: 5}}>
@@ -37,6 +39,7 @@ export default class BoxHeader extends Component {
 				<div className={styles.wrap}>
 					<Title title={title}/>
 					<Profile name={name} account={account} onClick={onClick}/>
+					<BookmarkButton isBookmarked={isBookmarked}/>
 					{isIllustComment && caption && <Caption caption={caption}/>}
 				</div>
 			</div>

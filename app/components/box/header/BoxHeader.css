@@ -6,6 +6,7 @@
 }
 
 .wrap {
+	position: relative;
 	width: calc(100% - 56px);
 }
 
