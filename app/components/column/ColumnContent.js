@@ -4,12 +4,13 @@ import Infinite from '../common/Infinite'
 import styles from './ColumnContent.css'
 
 type ColumnContentType = {
-	target: any,
+	root: any,
+	targetRef?: (c: Component<*, *, *>) => void,
 	onIntersect: () => void,
 	illusts: Array<Illust>,
 };
 
-const ColumnContent = ({target, onIntersect, illusts}: ColumnContentType) => {
+const ColumnContent = ({root, onIntersect, illusts, targetRef}: ColumnContentType) => {
 	const handleMove = (e: Event) => {
 		e.stopPropagation()
 	}
@@ -19,10 +20,15 @@ const ColumnContent = ({target, onIntersect, illusts}: ColumnContentType) => {
 	)
 
 	return (
-		<div className={styles.content} onMouseDown={handleMove} onTouchStart={handleMove}>
+		<div
+			className={styles.content}
+			onMouseDown={handleMove}
+			onTouchStart={handleMove}
+			>
 			<Infinite
-				root={target}
+				root={root}
 				onIntersect={onIntersect}
+				targetRef={targetRef}
 				>
 				{List}
 			</Infinite>
