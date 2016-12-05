@@ -6,23 +6,16 @@ import {apiRequestSuccess} from './api'
 
 export const openUserDrawer = (id: number): Action => ({type: 'OPEN_DRAWER', id})
 
-const addDrawerIllusts = (ids: number[], drawerType: DrawerType): Action => ({type: 'DRAWER_ADD_ILLUSTS', ids, drawerType})
+const addDrawerIllusts = (ids: number[], drawerType: DrawerType): Action => (
+	{type: 'DRAWER_ADD_ILLUSTS', ids, drawerType}
+)
 
-const setNextIllustUrl = (url: string): Action => ({type: 'DRAWER_SET_NEXT_ILLUST_URL', url})
-const setNextMangaUrl = (url: string): Action => ({type: 'DRAWER_SET_NEXT_MANGA_URL', url})
+const setNextUrl = (url: string, drawerType: DrawerType): Action => (
+	{type: 'DRAWER_SET_NEXT_URL', url, drawerType}
+)
 
 const addDrawerUser = (user: User): Action => ({type: 'DRAWER_ADD_USER', user})
 const addDrawerProfile = (profile: Profile): Action => ({type: 'DRAWER_ADD_PROFILE', profile})
-
-const setNextUrl = (url: string, type: DrawerType) => {
-	return (dispatch: Dispatch) => {
-		if (type === 'manga') {
-			dispatch(setNextMangaUrl(url))
-		} else if (type === 'illust') {
-			dispatch(setNextIllustUrl(url))
-		}
-	}
-}
 
 const fetchDrawerData = (data: Object, type: DrawerType) => {
 	return async (dispatch: Dispatch): Promise<Object> => {
