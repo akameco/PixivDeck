@@ -10,9 +10,10 @@ export type Drawer = {
 	nextMangaUrl: ?string,
 };
 
+export type DrawerType = | 'illust' | 'manga';
+
 export type DrawerAction =
-	| {|type: 'DRAWER_ADD_ILLUSTS', ids: number[]|}
-	| {|type: 'DRAWER_ADD_MANGAS', ids: number[]|}
+	| {|type: 'DRAWER_ADD_ILLUSTS', ids: number[], drawerType: DrawerType|}
 	| {|type: 'DRAWER_ADD_USER', user: User|}
 	| {|type: 'DRAWER_ADD_PROFILE', profile: Profile|}
 	| {|type: 'DRAWER_SET_NEXT_ILLUST_URL', url: string|}

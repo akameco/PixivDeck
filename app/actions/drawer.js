@@ -1,27 +1,30 @@
 // @flow
 import type {User, Action, Dispatch, Profile, State} from '../types'
+import type {DrawerType} from '../types/drawer'
 import Pixiv, {normalizeIllusts} from '../util/pixiv'
 import {apiRequestSuccess} from './api'
 
 export const openUserDrawer = (id: number): Action => ({type: 'OPEN_DRAWER', id})
 
-const addDrawerIllusts = (ids: number[]): Action => ({type: 'DRAWER_ADD_ILLUSTS', ids})
-const addDrawerMangas = (ids: number[]): Action => ({type: 'DRAWER_ADD_MANGAS', ids})
+const addDrawerIllusts = (ids: number[], drawerType: DrawerType): Action => ({type: 'DRAWER_ADD_ILLUSTS', ids, drawerType})
 
 const setNextIllustUrl = (url: string): Action => ({type: 'DRAWER_SET_NEXT_ILLUST_URL', url})
 const setNextMangaUrl = (url: string): Action => ({type: 'DRAWER_SET_NEXT_MANGA_URL', url})
 
-type UserIllust = | 'illust' | 'manga';
-const setNextUrl = (url: string, type: UserIllust) => {
+const addDrawerUser = (user: User): Action => ({type: 'DRAWER_ADD_USER', user})
+const addDrawerProfile = (profile: Profile): Action => ({type: 'DRAWER_ADD_PROFILE', profile})
+
+const setNextUrl = (url: string, type: DrawerType) => {
 	return (dispatch: Dispatch) => {
 		if (type === 'manga') {
 			dispatch(setNextMangaUrl(url))
+		} else if (type === 'illust') {
+			dispatch(setNextIllustUrl(url))
 		}
-		dispatch(setNextIllustUrl(url))
 	}
 }
 
-const fetchDrawerData = (data: Object, type: UserIllust) => {
+const fetchDrawerData = (data: Object, type: DrawerType) => {
 	return async (dispatch: Dispatch): Promise<Object> => {
 		const response = normalizeIllusts(data)
 		dispatch(apiRequestSuccess(response))
@@ -33,36 +36,25 @@ const fetchDrawerData = (data: Object, type: UserIllust) => {
 	}
 }
 
-export const fetchDrawerIllust = (id: number) => {
+export const fetchDrawerIllust = (id: number, type: DrawerType) => {
 	return async (dispatch: Dispatch): Promise<void> => {
-		const type = 'illust'
 		const data = await Pixiv.userIllusts(id, {type})
 		const {result} = await dispatch(fetchDrawerData(data, type))
-		dispatch(addDrawerIllusts(result))
+		dispatch(addDrawerIllusts(result, type))
 	}
 }
 
-export const fetchDrawerManga = (id: number) => {
-	return async (dispatch: Dispatch): Promise<void> => {
-		const type = 'manga'
-		const data = await Pixiv.userIllusts(id, {type})
-		const {result} = await dispatch(fetchDrawerData(data, type))
-		dispatch(addDrawerMangas(result))
-	}
-}
-
-export const nextDrawerPage = (type: UserIllust) => {
+export const nextDrawerPage = (type: DrawerType) => {
 	return async (dispatch: Dispatch, getState: () => State): Promise<void> => {
-		const {drawer: {nextIllustUrl}} = getState()
-		if (nextIllustUrl) {
-			const data = await Pixiv.fetch(nextIllustUrl)
-			await dispatch(fetchDrawerData(data, type))
+		const {drawer: {nextIllustUrl, nextMangaUrl}} = getState()
+		const nextUrl = type === 'illust' ? nextIllustUrl : nextMangaUrl
+		if (nextUrl) {
+			const data = await Pixiv.fetch(nextUrl)
+			const {result} = await dispatch(fetchDrawerData(data, type))
+			dispatch(addDrawerIllusts(result, type))
 		}
 	}
 }
-
-const addDrawerUser = (user: User): Action => ({type: 'DRAWER_ADD_USER', user})
-const addDrawerProfile = (profile: Profile): Action => ({type: 'DRAWER_ADD_PROFILE', profile})
 
 export const fetchUserDetail = (id: number) => {
 	return async (dispatch: Dispatch) => {

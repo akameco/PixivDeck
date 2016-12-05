@@ -7,7 +7,7 @@ import type {
 	Illust,
 } from '../../types'
 import Header from './DrawerHeader'
-import IllstList from './IllustList'
+import IllstList from './IllustListContainer'
 import styles from './UserDrawer.css'
 
 type Props = {
@@ -38,12 +38,12 @@ const UserDrawer = ({user, profile, illusts, mangas}: Props) => {
 					</TabList>
 					{totalIllusts > 0 &&
 						<TabPanel>
-							<IllstList illusts={illusts}/>
+							<IllstList illusts={illusts} type="illust"/>
 						</TabPanel>
 					}
 					{totalManga > 0 &&
 						<TabPanel>
-							<IllstList illusts={mangas}/>
+							<IllstList illusts={mangas} type="manga"/>
 						</TabPanel>
 					}
 				</Tabs>
