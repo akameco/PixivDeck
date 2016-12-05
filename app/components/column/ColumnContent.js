@@ -4,7 +4,7 @@ import Infinite from '../common/Infinite'
 import styles from './ColumnContent.css'
 
 type ColumnContentType = {
-	target: (c: Component<*, *, *>) => void,
+	target: any,
 	onIntersect: () => void,
 	illusts: Array<Illust>,
 };
@@ -21,7 +21,7 @@ const ColumnContent = ({target, onIntersect, illusts}: ColumnContentType) => {
 	return (
 		<div className={styles.content} onMouseDown={handleMove} onTouchStart={handleMove}>
 			<Infinite
-				ref={target}
+				root={target}
 				onIntersect={onIntersect}
 				>
 				{List}

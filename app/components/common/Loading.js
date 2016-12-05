@@ -13,7 +13,8 @@ const defaultStyle = {
 }
 
 type Props = {
-	wrapStyle?: Object
+	wrapStyle?: Object,
+	style?: Object,
 };
 
 export default class Loading extends Component {
@@ -23,7 +24,7 @@ export default class Loading extends Component {
 		const wrapStyle = Object.assign({}, defaultStyle.wrap, this.props.wrapStyle)
 		return (
 			<div style={wrapStyle}>
-				<div className={styles.spinner}>
+				<div className={styles.spinner} style={this.props.style}>
 					<div/>
 					<div className={styles.rect2}/>
 					<div className={styles.rect3}/>
