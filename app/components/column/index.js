@@ -12,7 +12,9 @@ import Column from './Column'
 type Props = {
 	column: ColumnType,
 	illusts: Array<Illust>,
-	dispatch: Dispatch
+	onNextPage: () => void,
+	onClose: () => void,
+	dispatch: Dispatch,
 };
 
 class ColumnContainer extends Component {
@@ -46,36 +48,39 @@ class ColumnContainer extends Component {
 		await dispatch(fetchColumn(column, false))
 	}
 
-	handleClose = () => {
-		const {dispatch, column} = this.props
-		dispatch(closeColumn(column.id))
-	}
-
 	handleReload = () => {
 		this.fetch()
 	}
 
-	handleOnNextPage = () => {
-		const {column, dispatch} = this.props
-		dispatch(nextPage(column.id))
-	}
-
 	render() {
-		const {column, illusts} = this.props
+		const {column, illusts, ...other} = this.props
 		return (
 			<Column
 				illusts={illusts}
 				column={column}
 				onReload={this.handleReload}
-				onClose={this.handleClose}
-				onNextPage={this.handleOnNextPage}
+				{...other}
 				/>
 		)
 	}
 }
 
-const mapStateToProps = (state: S, {column}: Props) => ({
-	illusts: getIllusts(state, column.id),
+const mapStateToProps = (state: S, {column: {id}}: Props) => ({
+	illusts: getIllusts(state, id),
 })
 
-export default connect(mapStateToProps)(ColumnContainer)
+const matDispatchToProps = (dispatch: Dispatch, {column}: Props) => {
+	const {id} = column
+
+	return {
+		dispatch,
+		onNextPage() {
+			dispatch(nextPage(id))
+		},
+		onClose() {
+			dispatch(closeColumn(id))
+		},
+	}
+}
+
+export default connect(mapStateToProps, matDispatchToProps)(ColumnContainer)
