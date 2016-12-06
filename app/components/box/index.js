@@ -1,7 +1,10 @@
 // @flow
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import type {Dispatch, State, Illust, User} from '../../types/'
+import type {Dispatch, State} from '../../types/'
+import type {Illust} from '../../types/illust'
+import type {User} from '../../types/user'
+
 import {
 	addColumn,
 	openImageView,

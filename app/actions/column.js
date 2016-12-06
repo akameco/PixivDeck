@@ -1,11 +1,7 @@
 // @flow
-import type {
-	Action,
-	Query,
-	Params,
-	Illusts,
-	Endpoint,
-} from '../types'
+import type {Action} from '../types'
+import type {Query, Params, Endpoint} from '../types/column'
+import type {Illusts} from '../types/illust'
 
 export const setPrams = (id: number, params: Params): Action => (
 	{type: 'SET_PARAMS', id, params}

@@ -1,5 +1,6 @@
 // @flow
-import type {Illusts, Action, Illust} from '../types'
+import type {Action} from '../types'
+import type {Illust, Illusts} from '../types/illust'
 
 const illustById = (state: Illusts = {}, action: Action) => {
 	if (action.response) {

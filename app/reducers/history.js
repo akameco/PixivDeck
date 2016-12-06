@@ -1,6 +1,7 @@
 // @flow
 import union from 'lodash.union'
-import type {Action, History} from '../types'
+import type {Action} from '../types'
+import type {History} from '../types/history'
 
 export default function (state: History = [], action: Action): History {
 	switch (action.type) {

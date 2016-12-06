@@ -1,7 +1,9 @@
 // @flow
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import type {State, Manage, ColumnType} from '../types'
+import type {State} from '../types'
+import type {Manage} from '../types/manage'
+import type {ColumnType} from '../types/column'
 import IllustPreview from './preview/illust'
 import MangaPreview from './preview/manga'
 import Modal from './modal'

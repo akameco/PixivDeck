@@ -1,11 +1,6 @@
 // @flow
-import type {
-	State,
-	Action,
-	Dispatch,
-	ColumnType,
-	Params,
-} from '../types'
+import type {State, Action, Dispatch} from '../types'
+import type {ColumnType, Params} from '../types/column'
 import Pixiv, {normalizeIllusts, parseUrl} from '../util/pixiv'
 import {getColumn} from '../reducers'
 import {

@@ -1,7 +1,8 @@
 // @flow
 import isEqual from 'lodash.isequal'
 import union from 'lodash.union'
-import type {Action, ColumnType as Column, Query, Params} from '../types'
+import type {Action} from '../types'
+import type {ColumnType as Column, Query, Params} from '../types/column'
 import initState from './default-column-state'
 
 type State = Array<Column>;

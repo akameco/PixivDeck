@@ -1,5 +1,6 @@
 // @flow
-import type {Action, Auth} from '../types'
+import type {Action} from '../types'
+import type {Auth} from '../types/auth'
 
 const initState = {
 	username: '',

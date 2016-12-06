@@ -1,11 +1,8 @@
 // @flow
 import React from 'react'
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs'
-import type {
-	User,
-	Profile,
-	Illust,
-} from '../../types'
+import type {User, Profile} from '../../types/user'
+import type {Illust} from '../../types/illust'
 import Header from './DrawerHeader'
 import IllstList from './IllustListContainer'
 import styles from './UserDrawer.css'

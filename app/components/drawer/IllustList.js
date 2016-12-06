@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import type {Illust} from '../../types'
+import type {Illust} from '../../types/illust'
 import type {DrawerType} from '../../types/drawer'
 import Loading from '../common/Loading'
 import Infinite from '../common/Infinite'
