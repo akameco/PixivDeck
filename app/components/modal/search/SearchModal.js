@@ -20,16 +20,19 @@ class SearchModal extends Component {
 	props: Props;
 	state: State = {value: '', keywords: []};
 
-	handleChange = async (event: any) => {
-		this.setState({value: event.target.value})
-		this._autoComplte()
+	handleChange = ({target}: Event) => {
+		if (target instanceof HTMLInputElement) {
+			this.setState({value: target.value})
+			this._autoComplte()
+		}
 	}
 
 	_autoComplte = throttle(async () => {
-		if (this.state.value === '') {
+		const {value} = this.state
+		if (value === '') {
 			return
 		}
-		const {searchAutoCompleteKeywords} = await Pixiv.searchAutoComplete(this.state.value)
+		const {searchAutoCompleteKeywords} = await Pixiv.searchAutoComplete(value)
 		this.setState({keywords: searchAutoCompleteKeywords})
 	}, 500)
 
