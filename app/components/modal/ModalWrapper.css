@@ -1,10 +1,9 @@
 .wrap {
 	composes: center from '../style.css';
 	composes: fullSize from '../style.css';
-
 	position: fixed;
 	align-content: center;
-	background: rgba(17,17,17,0.6);
+	background: rgba(17, 17, 17, 0.6);
 	top: 0;
 	left: 0;
 	margin: 0;
@@ -13,18 +12,19 @@
 
 .modal {
 	position: relative;
-	background: #ebebeb;
+	background: #f5f5f5;
 	max-width: 70%;
-	max-height: 70%;
-	width: 600px;
-	height: 600px;
+	max-height: 90%;
+	width: 500px;
+	height: 900px;
 	overflow-y: hidden;
-	box-shadow: 0 0 10px rgba(17,17,17,0.5);
+	box-shadow: 0 0 10px rgba(17, 17, 17, 0.5);
 	border-radius: 3px;
-	animation: fadeIn .2s ease-out .1s both;
-	& svg {
-		fill: #5b5b5b;
-	}
+	animation: fadeIn 0.2s ease-out 0.1s both;
+}
+
+.modal svg {
+	fill: #5b5b5b;
 }
 
 @keyframes fadeIn {
@@ -32,9 +32,11 @@
 		opacity: 0;
 		margin-top: -1000px;
 	}
+
 	20% {
 		opacity: 100;
 	}
+
 	100% {
 		margin-top: 0;
 	}
