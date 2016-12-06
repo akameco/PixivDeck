@@ -29,10 +29,6 @@ declare module 'electron-referer' {
 	declare var exports: any;
 }
 
-declare module 'lodash.merge' {
-	declare var exports: any;
-}
-
 declare module 'lodash.union' {
 	declare var exports: any;
 }
