@@ -1,7 +1,8 @@
 // @flow
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import type {State, Dispatch, Query, Endpoint} from '../../../types'
+import type {State, Dispatch} from '../../../types'
+import type {Query, Endpoint} from '../../../types/column'
 import {addColumn} from '../../../actions'
 import Modal from './SelectModal'
 

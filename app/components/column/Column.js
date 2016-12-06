@@ -1,7 +1,8 @@
 // @flow
 import React, {Component} from 'react'
 import isEqual from 'lodash.isequal'
-import type {Illust, ColumnType} from '../../types'
+import type {Illust} from '../../types/illust'
+import type {ColumnType} from '../../types/column'
 import ColumnList from './ColumnList'
 import styles from './Column.css'
 

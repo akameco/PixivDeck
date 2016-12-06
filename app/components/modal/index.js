@@ -1,7 +1,8 @@
 // @flow
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import type {State, Dispatch, ModalType} from '../../types'
+import type {State, Dispatch} from '../../types'
+import type {ModalType} from '../../types/manage'
 import {closeModal} from '../../actions'
 import ModalWrapper from './ModalWrapper'
 import SelectColumnModal from './select'

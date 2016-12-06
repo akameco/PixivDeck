@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react'
 import {findDOMNode} from 'react-dom'
-import type {Illust} from '../../types'
+import type {Illust} from '../../types/illust'
 import Loading from '../common/Loading'
 import ColumnHeader from './ColumnHeader'
 import ColumnContent from './ColumnContent'

@@ -1,6 +1,7 @@
 // @flow
 import union from 'lodash.union'
-import type {Action, Filter} from '../types'
+import type {Action} from '../types'
+import type {Filter} from '../types/filter'
 
 const initialState: Filter = {
 	tags: [],

@@ -1,5 +1,6 @@
 // @flow
-import type {Manage, Action} from '../types'
+import type {Action} from '../types'
+import type {Manage} from '../types/manage'
 
 const initManageState: Manage = {
 	isLoading: false,

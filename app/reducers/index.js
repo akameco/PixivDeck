@@ -1,6 +1,7 @@
 // @flow
 import {combineReducers} from 'redux'
-import type {State, User} from '../types'
+import type {State} from '../types'
+import type {User} from '../types/user'
 import manage from './manage'
 import columns from './columns'
 import entities from './entities'

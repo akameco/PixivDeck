@@ -1,6 +1,7 @@
 // @flow
 import type {ThunkAction} from 'redux'; // eslint-disable-line
-import type {Action, ModalType} from '../types'
+import type {Action} from '../types'
+import type {ModalType} from '../types/manage'
 
 export const openModal = (modal?: ModalType = 'DEFAULT'): Action => (
 	{type: 'OPEN_MODAL', modal}

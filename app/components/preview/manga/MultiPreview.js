@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react'
-import type {MetaPages} from '../../../types'
+import type {MetaPages} from '../../../types/illust'
 import CloseButton from '../../common/CloseButton'
 import styles from './MultiPreview.css'
 

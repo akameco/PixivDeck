@@ -1,7 +1,8 @@
 // @flow
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import type {State, Dispatch, Illust} from '../../../types'
+import type {State, Dispatch} from '../../../types'
+import type {Illust} from '../../../types/illust'
 import {closeMnagaPreview} from '../../../actions'
 import Preview from './MangaPreview'
 import MultiPreview from './MultiPreview'

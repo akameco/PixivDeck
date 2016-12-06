@@ -1,7 +1,8 @@
 // @flow
 import React from 'react'
 import {connect} from 'react-redux'
-import type {Dispatch, User} from '../../types'
+import type {Dispatch} from '../../types'
+import type {User} from '../../types/user'
 import {addColumn} from '../../actions'
 import Button from '../common/button'
 

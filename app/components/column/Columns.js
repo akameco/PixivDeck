@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import {SortablePane, Pane} from 'react-sortable-pane'
-import type {ColumnType} from '../../types'
+import type {ColumnType} from '../../types/column'
 import Column from '../column'
 import styles from './Columns.css'
 

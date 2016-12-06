@@ -2,10 +2,7 @@
 import {shell} from 'electron'
 import React from 'react'
 import Button from '../common/button'
-import type {
-	User,
-	Profile,
-} from '../../types'
+import type {User, Profile} from '../../types/user'
 import AddColumnButton from './AddColumnButton'
 import styles from './Navigation.css'
 

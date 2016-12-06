@@ -2,10 +2,7 @@
 import React from 'react'
 import {link} from 'autolinker'
 import Avater from '../common/Avater'
-import type {
-	User,
-	Profile,
-} from '../../types'
+import type {User, Profile} from '../../types/user'
 import Navigation from './NavigationContainer'
 import styles from './DrawerHeader.css'
 
