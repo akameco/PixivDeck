@@ -3,7 +3,6 @@ export type ModalType =
 	| 'DEFAULT'
 	| 'ADD_COLUMN'
 	| 'FILTER_TAG'
-	| 'SEARCH'
 	| 'LOGIN'
 ;
 
@@ -11,6 +10,7 @@ export type Manage = {|
 	isLoading: bool,
 	isModal: bool,
 	isDrawer: bool,
+	isSearchField: bool,
 	isImageView: bool,
 	isImgLoaded: bool,
 	isMangaView: bool,
@@ -37,4 +37,7 @@ export type ManageAction =
 	| {|type: 'START_IMG_LOADING'|}
 	| {|type: 'SET_IMG_LOADED'|}
 	| {|type: 'START_LOADING'|}
+	| {|type: 'OPEN_SEARCH_FIELD'|}
+	| {|type: 'CLOSE_SEARCH_FIELD'|}
+	| {|type: 'TOGGLE_SEARCH_FIELD'|}
 ;

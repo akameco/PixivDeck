@@ -17,3 +17,12 @@
 .header svg {
 	fill: gray;
 }
+
+.search {
+	position: fixed;
+	top: 35px;
+	left: 50px;
+	width: auto;
+	min-width: 260px;
+	height: 100%;
+}

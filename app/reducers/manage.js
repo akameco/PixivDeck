@@ -7,6 +7,7 @@ const initManageState: Manage = {
 	isImageView: false,
 	isImgLoaded: false,
 	isDrawer: false,
+	isSearchField: false,
 	isMangaView: false,
 	isDropdown: false,
 	currentIllustId: null,
@@ -18,6 +19,7 @@ const initManageState: Manage = {
 type CloseState = {
 	isImageView: bool,
 	isDrawer: bool,
+	isSearchField: bool,
 	isMangaView: bool,
 	isModal: bool,
 	isDropdown: bool
@@ -26,6 +28,7 @@ type CloseState = {
 const closeState: CloseState = {
 	isImageView: false,
 	isDrawer: false,
+	isSearchField: false,
 	isMangaView: false,
 	isModal: false,
 	isDropdown: false,
@@ -41,6 +44,8 @@ function open(state: Manage, action: Action): $Shape<Manage> {
 			return {...closeState, isModal: true, modalType: action.modal}
 		case 'OPEN_DROPDOWN':
 			return {...closeState, isDropdown: true}
+		case 'OPEN_SEARCH_FIELD':
+			return {...closeState, isSearchField: true}
 		case 'OPEN_DRAWER':
 			return {...closeState, isDrawer: Boolean(action.id), userId: action.id}
 		default:
@@ -74,6 +79,8 @@ export default function (state: Manage = initManageState, action: Action): $Shap
 			return {...state, ...closeState, isModal: true, modalType: 'LOGIN'}
 		case 'TOGGLE_DROPDOWN':
 			return {...state, ...closeState, isDropdown: !state.isDropdown}
+		case 'TOGGLE_SEARCH_FIELD':
+			return {...state, ...closeState, isSearchField: !state.isSearchField}
 		case 'START_IMG_LOADING':
 			return {...state, isImgLoaded: false}
 		case 'SET_IMG_LOADED':
