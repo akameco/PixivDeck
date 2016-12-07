@@ -1,20 +1,16 @@
 .wrap {
 	position: relative;
-	max-width: 100%;
-	margin-top: 1rem;
-	margin-left: 3rem;
-	margin-right: 3rem;
-	height: calc(100% - 50px);
+	height: auto;
 }
 
 .input {
 	font-size: 1.1rem;
-	height: 34px;
-	width: calc(100% - 2.5rem);
+	height: 40px;
+	width: 100%;
 	border: 0;
 	margin-top: 10px;
 	border-radius: 3px;
-	padding-left: 2.5rem;
+	padding-left: 1rem;
 	box-sizing: border-box;
 }
 
@@ -33,11 +29,11 @@
 }
 
 .popup {
-	width: 80%;
 	height: calc(100% - 50px);
 	padding: 1px;
 	border-radius: 3px;
 	background: rgba(0, 0, 0, 0.1);
 	overflow-y: scroll;
 	margin: 0;
+	box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
 }

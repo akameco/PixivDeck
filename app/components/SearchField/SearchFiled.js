@@ -1,13 +1,14 @@
 // @flow
 import React, {Component} from 'react'
+import {findDOMNode} from 'react-dom'
 import throttle from 'lodash.throttle'
-import Pixiv from '../../../util/pixiv'
-import Icon from '../../common/Icon'
+import Pixiv from '../../util/pixiv'
 import PopoverAuto from './PopoverAuto'
 import UsersOver from './UsersOver'
-import styles from './SearchModal.css'
+import styles from './SearchField.css'
 
 type Props = {
+	onClose: () => void,
 	onSubmit: (tag: string) => void
 };
 
@@ -16,15 +17,35 @@ type State = {
 	keywords: string[],
 };
 
-class SearchModal extends Component {
+class SearchField extends Component {
 	props: Props;
 	state: State = {value: '', keywords: []};
+
+	componentDidMount() {
+		window.addEventListener('click', this._handleClose)
+	}
+
+	componentWillUnmount() {
+		window.removeEventListener('click', this._handleClose)
+	}
 
 	handleChange = ({target}: Event) => {
 		if (target instanceof HTMLInputElement) {
 			this.setState({value: target.value})
 			this._autoComplte()
 		}
+	}
+
+	_handleClose = (event: any) => {
+		event.preventDefault()
+		let node = event.target
+		while (node) {
+			if (node === findDOMNode(this)) {
+				return
+			}
+			node = node.parentNode
+		}
+		this.props.onClose()
 	}
 
 	_autoComplte = throttle(async () => {
@@ -34,7 +55,7 @@ class SearchModal extends Component {
 		}
 		const {searchAutoCompleteKeywords} = await Pixiv.searchAutoComplete(value)
 		this.setState({keywords: searchAutoCompleteKeywords})
-	}, 500)
+	}, 200)
 
 	handleSubmit = (event: SyntheticKeyboardEvent) => { // eslint-disable-line no-undef
 		const text = this.state.value.trim()
@@ -55,10 +76,10 @@ class SearchModal extends Component {
 		return (
 			<div className={styles.wrap}>
 				<div className={styles.field}>
-					<Icon type="searchIllust" className={styles.icon}/>
 					<input
 						className={styles.input}
 						type="text"
+						placeholder="キーワード検索"
 						autoFocus
 						value={value}
 						onChange={this.handleChange}
@@ -82,4 +103,4 @@ class SearchModal extends Component {
 	}
 }
 
-export default SearchModal
+export default SearchField

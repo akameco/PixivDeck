@@ -11,6 +11,10 @@ export const closeModal = (): Action => ({type: 'CLOSE_MODAL'})
 export const openDrawer = (id: number): Action => ({type: 'OPEN_DRAWER', id})
 export const closeDrawer = (): Action => ({type: 'CLOSE_DRAWER'})
 
+export const openSearchField = (): Action => ({type: 'OPEN_SEARCH_FIELD'})
+export const closeSearchField = (): Action => ({type: 'CLOSE_SEARCH_FIELD'})
+export const toggleSearchField = (): Action => ({type: 'TOGGLE_SEARCH_FIELD'})
+
 export const openDropdown = (): Action => ({type: 'OPEN_DROPDOWN'})
 export const toggleDropdown = (): Action => ({type: 'TOGGLE_DROPDOWN'})
 export const closeDropdown = (): Action => ({type: 'CLOSE_DROPDOWN'})

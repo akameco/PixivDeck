@@ -5,11 +5,16 @@ import {
 	logout,
 	toggleDropdown,
 	openModal,
+	toggleSearchField,
+	closeSearchField,
  } from '../../actions'
 import Header from './header'
 
-const mapStateToProps = ({manage: {isDropdown}}: State) => (
-	{isDropdown}
+const mapStateToProps = ({manage: {isDropdown, isSearchField}}: State) => (
+	{
+		isDropdown,
+		isSearchField,
+	}
 )
 
 function mapDispatchToProps(dispatch: Dispatch) {
@@ -17,8 +22,9 @@ function mapDispatchToProps(dispatch: Dispatch) {
 		onLogout: () => dispatch(logout()),
 		onClickAdd: () => dispatch(openModal()),
 		onToggleDropdown: () => dispatch(toggleDropdown()),
-		onOpenSearchModal: () => dispatch(openModal('SEARCH')),
 		onOpenFilterModal: () => dispatch(openModal('FILTER_TAG')),
+		toggleSearchField: () => dispatch(toggleSearchField()),
+		closeSearchField: () => dispatch(closeSearchField()),
 	}
 }
 

@@ -7,7 +7,6 @@ import {closeModal} from '../../actions'
 import ModalWrapper from './ModalWrapper'
 import SelectColumnModal from './select'
 import SettingModal from './setting'
-import SearchModal from './search'
 import LoginModal from './login'
 
 type Props = {
@@ -29,9 +28,6 @@ class Modal extends Component {
 		if (type === 'FILTER_TAG') {
 			return <SettingModal/>
 		}
-		if (type === 'SEARCH') {
-			return <SearchModal/>
-		}
 		if (type === 'LOGIN') {
 			return <LoginModal/>
 		}
@@ -47,10 +43,8 @@ class Modal extends Component {
 	}
 }
 
-function mapStateToProps(state: State) {
-	return {
-		modalType: state.manage.modalType,
-	}
-}
+const mapStateToProps = ({manage: modalType}: State) => ({
+	modalType,
+})
 
 export default connect(mapStateToProps)(Modal)
