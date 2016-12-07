@@ -13,7 +13,7 @@ let mainWindow
 require('electron-context-menu')()
 
 function openTweet(url: string) {
-	const tweetWin = new BrowserWindow({width: 800, height: 600})
+	const tweetWin = new BrowserWindow({width: 600, height: 400})
 
 	const page = tweetWin.webContents
 
@@ -35,8 +35,8 @@ if (process.env.NODE_ENV === 'development') {
 const config = new Config({
 	defaults: {
 		bounds: {
-			width: 960,
-			height: 680,
+			width: 1200,
+			height: 800,
 		},
 	},
 })
