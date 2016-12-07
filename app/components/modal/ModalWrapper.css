@@ -13,14 +13,17 @@
 .modal {
 	position: relative;
 	background: #f5f5f5;
-	max-width: 70%;
+	max-width: 90%;
 	max-height: 90%;
-	width: 500px;
-	height: 900px;
+	min-width: 500px;
+	width: auto;
+	height: auto;
 	overflow-y: hidden;
 	box-shadow: 0 0 10px rgba(17, 17, 17, 0.5);
 	border-radius: 3px;
 	animation: fadeIn 0.2s ease-out 0.1s both;
+	padding-top: 10px;
+	padding-bottom: 15px;
 }
 
 .modal svg {
