@@ -91,7 +91,7 @@ class SearchField extends Component {
 						{keywords.length > 0 &&
 							<PopoverAuto
 								value={value}
-								keywords={this.state.keywords}
+								keywords={keywords}
 								onClick={this.handleClick}
 								/>
 						}
