@@ -12,6 +12,9 @@ const illustRanking = {
 	day_female: '女子に人気',
 	week_rookie: 'ルーキー',
 	week_original: 'オリジナル',
+}
+
+const illustR18Ranking = {
 	day_r18: 'R18 デイリー',
 	week_r18: 'R18 ウィークリー',
 	day_male_r18: 'R18 男子に人気',
@@ -20,30 +23,12 @@ const illustRanking = {
 }
 /* eslint-enable camelcase */
 
-class Link extends Component {
-	props: {
-		onSelect: (mode: string) => void,
-		mode: string
-	};
-
-	shouldComponentUpdate() {
-		return false
-	}
-
-	render() {
-		const onClick = () => this.props.onSelect(this.props.mode)
-		return (
-			<li>
-				<a onClick={onClick}>
-					{illustRanking[this.props.mode]}
-				</a>
-			</li>
-		)
-	}
-}
-
 type Props = {
-	onSelect: (endpoint: Endpoint, query: $Shape<Query>, title: string) => void
+	onSelect: (endpoint: Endpoint, query: $Shape<Query>, title: string) => void,
+	addBookmark: () => void,
+	addBookmarkPrivate: () => void,
+	addFollow: () => void,
+	addFollowPrivate: () => void,
 };
 
 export default class SelectColumnModal extends Component {
@@ -53,71 +38,79 @@ export default class SelectColumnModal extends Component {
 		this.props.onSelect('illustRanking', {opts: {mode}}, `${illustRanking[mode]}ランキング`)
 	}
 
-	handleAddFavorite = (publicity: 'private' | 'public') => {
-		const title = {private: '非公開ブックマーク', public: '公開ブックマーク'}[publicity]
-		this.props.onSelect('userBookmarksIllust', {opts: {restrict: publicity}}, title)
-	}
-
-	handleAddIllustFollow = (publicity: 'private' | 'public') => {
-		const title = {private: '新着 非公開', public: '新着 公開'}[publicity]
-		this.props.onSelect('illustFollow', {opts: {restrict: publicity}}, title)
-	}
-
-	handleAddHistory = () => {
+	handleAddR18Ranking = (mode: string) => {
+		this.props.onSelect('illustRanking', {opts: {mode}}, `${illustR18Ranking[mode]}ランキング`)
 	}
 
 	render() {
-		const illustRankingLinks = Object.keys(illustRanking).map(v =>
-			<Link
-				mode={v}
-				key={v}
-				onSelect={this.handleAddRanking}
-				/>
-		)
+		const IllustRankingLinks = Object.keys(illustRanking).map(v => {
+			const handleClick = () => this.handleAddRanking(v)
+			return <LinkButton text={illustRanking[v]} onClick={handleClick} key={v}/>
+		})
 
-		const onClickPublic = () => this.handleAddFavorite('public')
-		const onClickPrivate = () => this.handleAddFavorite('private')
-		const onClickillustFollowPublic = () => this.handleAddIllustFollow('public')
-		const onClickillustFollowPrivate = () => this.handleAddIllustFollow('private')
+		const IllustR18RankingLinks = Object.keys(illustR18Ranking).map(v => {
+			const handleClick = () => this.handleAddR18Ranking(v)
+			return <LinkButton text={illustR18Ranking[v]} onClick={handleClick} key={v}/>
+		})
+
+		const {
+			addBookmark,
+			addBookmarkPrivate,
+			addFollow,
+			addFollowPrivate,
+		} = this.props
 
 		return (
 			<div className={styles.wrap}>
-				<header>
-					<h4>追加するカラムを選択</h4>
-				</header>
-				<div>
-					<div className={styles.kind}>ランキング</div>
-					<ul className={styles.list}>
-						{illustRankingLinks}
-					</ul>
-					<div className={styles.kind}>ブックマーク</div>
-					<ul className={styles.list}>
-						<li>
-							<a onClick={onClickPublic}>
-								公開ブックマーク
-							</a>
-						</li>
-						<li>
-							<a onClick={onClickPrivate}>
-								非公開ブックマーク
-							</a>
-						</li>
-					</ul>
-					<div className={styles.kind}>新着</div>
-					<ul className={styles.list}>
-						<li>
-							<a onClick={onClickillustFollowPublic}>
-								公開
-							</a>
-						</li>
-						<li>
-							<a onClick={onClickillustFollowPrivate}>
-								非公開
-							</a>
-						</li>
-					</ul>
+				<div className={styles.header}>
+					追加するカラムを選択
+				</div>
+				<div className={styles.content}>
+					<Card title="ランキング">
+						<List>
+							{IllustRankingLinks}
+						</List>
+					</Card>
+					<Card title="ブックマーク">
+						<List>
+							<LinkButton text="公開" onClick={addBookmark}/>
+							<LinkButton text="非公開" onClick={addBookmarkPrivate}/>
+						</List>
+					</Card>
+					<Card title="新着">
+						<List>
+							<LinkButton text="公開" onClick={addFollow}/>
+							<LinkButton text="非公開" onClick={addFollowPrivate}/>
+						</List>
+					</Card>
+					<Card title="R18 ランキング">
+						<List>
+							{IllustR18RankingLinks}
+						</List>
+					</Card>
 				</div>
 			</div>
 		)
 	}
 }
+
+const Card = ({title, children}: {title: string, children?: ?any}) => (
+	<div className={styles.Card}>
+		<div className={styles.title}>{title}</div>
+		{children}
+	</div>
+)
+
+const LinkButton = ({text, onClick}: {text: string, onClick: () => void}) => (
+	<div onClick={onClick} className={styles.LinkButton}>
+		<div className={styles.innerButton}>
+			{text}
+		</div>
+	</div>
+)
+
+const List = ({children}: {children?: any}) => (
+	<div className={styles.List}>
+		{children}
+	</div>
+)
