@@ -11,40 +11,44 @@ import LoginModal from './login'
 
 type Props = {
 	modalType: ModalType,
-	dispatch: Dispatch
+	closeModal: () => void,
 };
 
 class Modal extends Component {
 	props: Props;
 
-	handleOnCloseModal = () => {
-		this.props.dispatch(closeModal())
-	}
-
 	renderModal(type: ModalType) {
 		if (type === 'ADD_COLUMN') {
 			return <SelectColumnModal/>
-		}
-		if (type === 'FILTER_TAG') {
+		} else if (type === 'FILTER_TAG') {
 			return <SettingModal/>
-		}
-		if (type === 'LOGIN') {
+		} else if (type === 'LOGIN') {
 			return <LoginModal/>
+		} else if (type === 'DEFAULT') {
+			return <SelectColumnModal/>
 		}
-		return <SelectColumnModal/>
 	}
 
 	render() {
+		const {modalType, closeModal} = this.props
 		return (
-			<ModalWrapper onClose={this.handleOnCloseModal} title={'select'}>
-				{this.renderModal(this.props.modalType)}
+			<ModalWrapper onClose={closeModal} title={'select'}>
+				{this.renderModal(modalType)}
 			</ModalWrapper>
 		)
 	}
 }
 
-const mapStateToProps = ({manage: modalType}: State) => ({
+const mapStateToProps = ({manage: {modalType}}: State) => ({
 	modalType,
 })
 
-export default connect(mapStateToProps)(Modal)
+const mapDispatchToProps = (dispatch: Dispatch) => (
+	{
+		closeModal() {
+			dispatch(closeModal())
+		},
+	}
+)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Modal)
