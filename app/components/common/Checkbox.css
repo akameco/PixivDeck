@@ -8,7 +8,6 @@
 	position: absolute;
 	top: 0;
 	left: 2px;
-
 	display: inline-block;
 	width: 24px;
 	height: 14px;
@@ -26,6 +25,7 @@
 
 .message {
 	vertical-align: top;
+	user-select: none;
 }
 
 .checkbox {
@@ -37,7 +37,7 @@
 	vertical-align: top;
 }
 
-.track{
+.track {
 	background-color: #9da6af;
 	position: absolute;
 	top: 0;
