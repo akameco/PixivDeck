@@ -1,12 +1,19 @@
 .wrap {
 	max-width: 100%;
 	margin-top: 2rem;
-	margin-left: 2rem;
-	margin-right: 2rem;
+	margin-left: 1rem;
+	margin-right: 1rem;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
 }
 
-.wrap a {
-	text-decoration: none;
+.card {
+	width: 360px;
+	background: white;
+	margin: 10px;
+	padding: 10px;
 }
 
 .input {
@@ -14,20 +21,23 @@
 	height: 30px;
 	width: calc(100% - 2.5rem);
 	margin-top: 10px;
-	border-radius: 3px;
 	padding-left: 2.5rem;
-	border: 0;
+	border: 1px solid rgba(0, 0, 0, 0.09);
+	border-radius: 17px;
+}
+
+.input:focus {
+	border: 1px solid rgba(82, 158, 204, 0.7);
 }
 
 .tagFilter {
-	margin-top: 2rem;
-	max-width: 450px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 .field {
 	position: relative;
 	width: 100%;
-	max-width: 400px;
 	margin-bottom: 2rem;
 }
 
@@ -37,4 +47,23 @@
 	left: 0.5rem;
 	width: 1.5rem;
 	height: 1.5rem;
+}
+
+.discription {
+	color: rgba(0, 0, 0, 0.5);
+	font-size: 14px;
+	margin: 4px 0 0;
+	line-height: 16px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: wrap;
+	padding: 5px 20px;
+}
+
+.OpenLink {
+	color: rgba(37, 143, 233, 0.8);
+	text-decoration: underline;
+	display: inline-flex;
+	align-items: flex-end;
+	margin: 2px;
 }
