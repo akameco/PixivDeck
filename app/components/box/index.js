@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import type {Dispatch, State} from '../../types/'
 import type {Illust} from '../../types/illust'
 import type {User} from '../../types/user'
-
+import {getUser} from '../../reducers'
 import {
 	addColumn,
 	openImageView,
@@ -60,9 +60,9 @@ class SmartBox extends Component {
 	}
 }
 
-function mapStateToProps(state: State, ownProps: Props) {
-	const user = state.entities.users[ownProps.illust.user]
-	const {isIllustOnly} = state.config
+const mapStateToProps = (state: State, {illust}: Props) => {
+	const user = getUser(state, illust.user)
+	const {config: {isIllustOnly}} = state
 	return {
 		user,
 		isIllustOnly,

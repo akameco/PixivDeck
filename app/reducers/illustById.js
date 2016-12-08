@@ -3,7 +3,7 @@ import type {Action} from '../types'
 import type {Illust, Illusts} from '../types/illust'
 
 const illustById = (state: Illusts = {}, action: Action) => {
-	if (action.response) {
+	if (action.response && action.response.entities.illusts) {
 		return {
 			...state,
 			...action.response.entities.illusts,
