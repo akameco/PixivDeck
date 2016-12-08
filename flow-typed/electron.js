@@ -112,4 +112,20 @@ declare module 'electron' {
 		static MenuItem: Class<MenuItem>;
 		static getCurrentWindow: () => BrowserWindow;
 	}
+
+	declare class nativeImage {
+		static createEmpty(): nativeImage;
+		static createFromBuffer(buffer: Buffer, scaleFactor?: number): nativeImage;
+		static createFromDataURL(dataURL: string): nativeImage;
+		static createFromPath(path: string): nativeImage;
+
+		getNativeHandle(): Buffer;
+		getSize(): number;
+		isEmpty(): boolean;
+		isTemplateImage(): boolean;
+		setTemplateImage(option: boolean): void;
+		toDataURL(): string;
+		toJpeg(quality: number): Buffer;
+		toPng(): Buffer;
+	}
 }
