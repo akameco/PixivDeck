@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react'
-import type {Query, Endpoint} from '../../../types/column'
-import styles from './SelectModal.css'
+import type {Query, Endpoint} from '../../types/column'
+import styles from './AddColumnModal.css'
 
 /* eslint-disable camelcase */
 const illustRanking = {
@@ -67,26 +67,18 @@ export default class SelectColumnModal extends Component {
 				</div>
 				<div className={styles.content}>
 					<Card title="ランキング">
-						<List>
-							{IllustRankingLinks}
-						</List>
+						{IllustRankingLinks}
 					</Card>
 					<Card title="ブックマーク">
-						<List>
-							<LinkButton text="公開" onClick={addBookmark}/>
-							<LinkButton text="非公開" onClick={addBookmarkPrivate}/>
-						</List>
+						<LinkButton text="公開" onClick={addBookmark}/>
+						<LinkButton text="非公開" onClick={addBookmarkPrivate}/>
 					</Card>
 					<Card title="新着">
-						<List>
-							<LinkButton text="公開" onClick={addFollow}/>
-							<LinkButton text="非公開" onClick={addFollowPrivate}/>
-						</List>
+						<LinkButton text="公開" onClick={addFollow}/>
+						<LinkButton text="非公開" onClick={addFollowPrivate}/>
 					</Card>
 					<Card title="R18 ランキング">
-						<List>
-							{IllustR18RankingLinks}
-						</List>
+						{IllustR18RankingLinks}
 					</Card>
 				</div>
 			</div>
@@ -97,7 +89,9 @@ export default class SelectColumnModal extends Component {
 const Card = ({title, children}: {title: string, children?: ?any}) => (
 	<div className={styles.Card}>
 		<div className={styles.title}>{title}</div>
-		{children}
+		<List>
+			{children}
+		</List>
 	</div>
 )
 

@@ -1,13 +1,13 @@
 // @flow
 import {connect} from 'react-redux'
-import type {State, Dispatch} from '../../../types'
-import type {Query, Endpoint} from '../../../types/column'
-import {addColumn} from '../../../actions'
-import Modal from './SelectModal'
+import type {State, Dispatch} from '../../types'
+import type {Query, Endpoint} from '../../types/column'
+import {addColumn} from '../../actions'
+import Modal from './AddColumnModal'
 
-function mapStateToProps(state: State) {
+const mapStateToProps = ({history}: State) => {
 	return {
-		history: state.history,
+		history,
 	}
 }
 

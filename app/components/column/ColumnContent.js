@@ -3,14 +3,14 @@ import Box from '../box'
 import Infinite from '../common/Infinite'
 import styles from './ColumnContent.css'
 
-type ColumnContentType = {
+type Props = {
 	root: any,
 	targetRef?: (c: Component<*, *, *>) => void,
 	onIntersect: () => void,
 	illusts: Array<Illust>,
 };
 
-const ColumnContent = ({root, onIntersect, illusts, targetRef}: ColumnContentType) => {
+const ColumnContent = ({root, onIntersect, illusts, targetRef}: Props) => {
 	const handleMove = (e: Event) => {
 		e.stopPropagation()
 	}

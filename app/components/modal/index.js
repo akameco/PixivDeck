@@ -4,10 +4,10 @@ import {connect} from 'react-redux'
 import type {State, Dispatch} from '../../types'
 import type {ModalType} from '../../types/manage'
 import {closeModal} from '../../actions'
+import LoginModal from '../LoginModal'
+import SettingModal from '../SettingModal'
+import AddColumnModal from '../AddColumnModal'
 import ModalWrapper from './ModalWrapper'
-import SelectColumnModal from './select'
-import SettingModal from './setting'
-import LoginModal from './login'
 
 type Props = {
 	modalType: ModalType,
@@ -19,13 +19,13 @@ class Modal extends Component {
 
 	renderModal(type: ModalType) {
 		if (type === 'ADD_COLUMN') {
-			return <SelectColumnModal/>
+			return <AddColumnModal/>
 		} else if (type === 'FILTER_TAG') {
 			return <SettingModal/>
 		} else if (type === 'LOGIN') {
 			return <LoginModal/>
 		} else if (type === 'DEFAULT') {
-			return <SelectColumnModal/>
+			return <AddColumnModal/>
 		}
 	}
 

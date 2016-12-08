@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react'
-import Loading from '../../common/Loading'
+import Loading from '../common/Loading'
 import styles from './LoginModal.css'
 
 type Props = {

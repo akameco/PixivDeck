@@ -15,11 +15,15 @@ type Props = {
 	onClose: () => void
 };
 
+type State = {
+	toTop: bool,
+};
+
 export default class List extends Component {
 	props: Props;
 	target: Component<*, *, *>
 	root: typeof ColumnContent
-	state: {toTop: bool} = {toTop: false}
+	state: State = {toTop: false}
 
 	handleTopClick = (e: Event) => {
 		e.preventDefault()
@@ -30,22 +34,19 @@ export default class List extends Component {
 		this.props.onReload()
 	}
 
-	handleClose = () => {
-		this.props.onClose()
-	}
-
-	handleOnIntersect = () => {
-		this.props.onNextPage()
-	}
-
 	render() {
-		const {illusts, title} = this.props
+		const {
+			illusts,
+			title,
+			onClose,
+			onNextPage,
+		} = this.props
 
 		return (
 			<section className={styles.wrap}>
 				<ColumnHeader
 					title={title}
-					onClose={this.handleClose}
+					onClose={onClose}
 					onTopClick={this.handleTopClick}
 					/>
 				{illusts.length > 0 ?
@@ -56,7 +57,7 @@ export default class List extends Component {
 						targetRef={c => { // eslint-disable-line react/jsx-no-bind
 							this.root = c
 						}}
-						onIntersect={this.handleOnIntersect}
+						onIntersect={onNextPage}
 						illusts={illusts}
 						/> : <ColumnLoading/>
 				}
