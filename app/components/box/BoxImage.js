@@ -25,7 +25,7 @@ export default class BoxImage extends Component {
 	};
 
 	componentDidMount() {
-		this.tick()
+		this.init()
 	}
 
 	shouldComponentUpdate(nextProps: Props, nextState: State) {
@@ -42,7 +42,7 @@ export default class BoxImage extends Component {
 		this.io.unobserve(findDOMNode(this.target))
 	}
 
-	tick() {
+	init() {
 		const target = this.target
 		this.io = new IntersectionObserver(entries => { // eslint-disable-line no-undef
 			const intersectionRatio = entries[0].intersectionRatio
