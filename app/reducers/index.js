@@ -4,23 +4,23 @@ import type {State} from '../types'
 import type {User} from '../types/user'
 import manage from './manage'
 import columns from './columns'
-import entities from './entities'
 import history from './history'
 import filter from './filter'
 import auth from './auth'
 import config from './config'
 import illustById, * as fromIllustById from './illustById'
+import userById, * as fromUserById from './userById'
 import drawer from './drawer'
 
 const rootReducer = combineReducers({
 	manage,
-	entities,
 	columns,
 	history,
 	filter,
 	auth,
 	config,
 	illustById,
+	userById,
 	drawer,
 })
 
@@ -45,11 +45,11 @@ export const getDrawerMangas = (state: State) =>
 	state.drawer.mangas.map(id => fromIllustById.getIllust(state.illustById, id))
 
 export const getUser = (state: State, userId: number): User =>
-	state.entities.users[userId]
+	fromUserById.getUser(state, userId)
 
 export const getCurrentUser = (state: State): ?User => {
 	if (state.manage.userId) {
-		return state.entities.users[state.manage.userId]
+		return state.userById[state.manage.userId]
 	}
 }
 

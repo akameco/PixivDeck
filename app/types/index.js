@@ -43,6 +43,7 @@ export type State = {
 	history: History,
 	config: Config,
 	illustById: Illusts,
+	userById: Users,
 	drawer: Drawer,
 };
 
