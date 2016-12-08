@@ -1,8 +1,10 @@
 // @flow
 import React, {Component} from 'react'
 import Chip from 'material-ui/Chip'
+import {List, ListItem} from 'material-ui/List'
+import Subheader from 'material-ui/Subheader'
+import Toggle from 'material-ui/Toggle'
 import Icon from '../../common/Icon'
-import Checkbox from '../../common/Checkbox'
 import styles from './SettingModal.css'
 
 type Props = {
@@ -22,16 +24,6 @@ type State = {
 export default class SettingFilterModal extends Component {
 	props: Props;
 	state: State = {value: ''}
-
-	shouldComponentUpdate(nextProps: Props, nextState: State) {
-		if (nextProps.tags.length !== this.props.tags.length) {
-			return true
-		}
-		if (this.state.value !== nextState.value) {
-			return true
-		}
-		return false
-	}
 
 	handleCangeInput = (event: SyntheticEvent) => { // eslint-disable-line no-undef
 		const target = event.target
@@ -71,43 +63,65 @@ export default class SettingFilterModal extends Component {
 	}
 
 	render() {
+		const {isIllustComment, isIllustOnly} = this.props
 		return (
 			<div className={styles.wrap}>
-				<div>
-					<Checkbox
-						id="box-text"
-						onChange={this.handleCheckShowText}
-						defaultChecked={this.props.isIllustComment}
-						value={this.props.isIllustComment}
-						text="キャプションを表示"
-						/>
-				</div>
-				<div>
-					<Checkbox
-						id="BoxIllustOnly"
-						onChange={this.handleCheckSetOnlyIllust}
-						defaultChecked={this.props.isIllustOnly}
-						value={this.props.isIllustOnly}
-						text="画像のみ表示"
-						/>
-				</div>
-				<div>
-					<a href="http://www.pixiv.net/setting_user.php" target="_brank">閲覧制限を設定する(pixivを開く)</a>
-				</div>
-				<div className={styles.tagFilter}>
-					<h4>タグフィルター</h4>
-					<div className={styles.field}>
-						<Icon type="visible-off"/>
-						<input
-							type="text"
-							className={styles.input}
-							value={this.state.value}
-							onChange={this.handleCangeInput}
-							onKeyDown={this.handleSubmit}
+				<div className={styles.card}>
+					<List>
+						<Subheader>
+							UI 設定
+						</Subheader>
+						<ListItem
+							primaryText="キャプションを表示"
+							rightToggle={
+								<Toggle
+									onToggle={this.handleCheckShowText}
+									toggled={isIllustComment}
+									/>
+							}
 							/>
+						<ListItem
+							primaryText="画像のみ表示"
+							rightToggle={
+								<Toggle
+									onToggle={this.handleCheckSetOnlyIllust}
+									toggled={isIllustOnly}
+									/>
+							}
+							/>
+					</List>
+				</div>
+				<div className={styles.card}>
+					<div className={styles.tagFilter}>
+						<Subheader>タグフィルター</Subheader>
+						<div className={styles.field}>
+							<Icon type="visible-off"/>
+							<input
+								type="text"
+								className={styles.input}
+								value={this.state.value}
+								onChange={this.handleCangeInput}
+								onKeyDown={this.handleSubmit}
+								/>
+						</div>
+						<div style={{display: 'flex', flexWrap: 'wrap'}}>
+							{this.props.tags.map(this.renderChip, this)}
+						</div>
 					</div>
-					<div style={{display: 'flex', flexWrap: 'wrap'}}>
-						{this.props.tags.map(this.renderChip, this)}
+				</div>
+				<div className={styles.card}>
+					<Subheader>閲覧制限</Subheader>
+					<div className={styles.discription}>
+						R-18タグをフィルターするのがもっとも簡単です。
+						どうしても閲覧制限を設定はpixivのサイト上にて変更する必要があります。
+						<br/>
+						<a
+							href="http://www.pixiv.net/setting_user.php"
+							target="_brank"
+							className={styles.OpenLink}
+							>
+							pixiv - R-18設定
+						</a>
 					</div>
 				</div>
 			</div>
