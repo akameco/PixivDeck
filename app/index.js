@@ -1,11 +1,15 @@
 import React from 'react'
 import {render} from 'react-dom'
 import {Provider} from 'react-redux'
+import injectTapEventPlugin from 'react-tap-event-plugin'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import type {State} from './types'
 import configureStore from './store'
 import App from './components'
 import Pixiv from './util/pixiv'
 import './app.global.css'; // eslint-disable-line
+
+injectTapEventPlugin()
 
 async function init() {
 	const storage: State = localStorage.getItem('store')
@@ -27,7 +31,9 @@ async function init() {
 
 	render((
 		<Provider store={store}>
-			<App/>
+			<MuiThemeProvider>
+				<App/>
+			</MuiThemeProvider>
 		</Provider>
 	), document.querySelector('#root'))
 }
