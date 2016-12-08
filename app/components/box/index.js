@@ -148,10 +148,6 @@ class BoxContainer extends Component {
 	}
 }
 
-const setWallpaper = (id: number) => {
-	// stateを取って画像を特定
-}
-
 const mapStateToProps = (state: State, {illust}: Props) => {
 	const user = getUser(state, illust.user)
 	const {config: {isIllustOnly}} = state

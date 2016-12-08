@@ -4,7 +4,7 @@ import Chip from 'material-ui/Chip'
 import {List, ListItem} from 'material-ui/List'
 import Subheader from 'material-ui/Subheader'
 import Toggle from 'material-ui/Toggle'
-import Icon from '../../common/Icon'
+import Icon from '../common/Icon'
 import styles from './SettingModal.css'
 
 type Props = {
@@ -66,7 +66,7 @@ export default class SettingFilterModal extends Component {
 		const {isIllustComment, isIllustOnly} = this.props
 		return (
 			<div className={styles.wrap}>
-				<div className={styles.card}>
+				<Card>
 					<List>
 						<Subheader>
 							UI 設定
@@ -90,8 +90,8 @@ export default class SettingFilterModal extends Component {
 							}
 							/>
 					</List>
-				</div>
-				<div className={styles.card}>
+				</Card>
+				<Card>
 					<div className={styles.tagFilter}>
 						<Subheader>タグフィルター</Subheader>
 						<div className={styles.field}>
@@ -108,23 +108,33 @@ export default class SettingFilterModal extends Component {
 							{this.props.tags.map(this.renderChip, this)}
 						</div>
 					</div>
-				</div>
-				<div className={styles.card}>
-					<Subheader>閲覧制限</Subheader>
-					<div className={styles.discription}>
-						R-18タグをフィルターするのがもっとも簡単です。
-						どうしても閲覧制限を設定はpixivのサイト上にて変更する必要があります。
-						<br/>
-						<a
-							href="http://www.pixiv.net/setting_user.php"
-							target="_brank"
-							className={styles.OpenLink}
-							>
-							pixiv - R-18設定
-						</a>
-					</div>
-				</div>
+				</Card>
+				<LimitSetting/>
 			</div>
 		)
 	}
 }
+
+const Card = ({children}: {children?: any}) => (
+	<div className={styles.card}>
+		{children}
+	</div>
+)
+
+const LimitSetting = () => (
+	<Card>
+		<Subheader>閲覧制限</Subheader>
+		<div className={styles.discription}>
+			R-18タグをフィルターするのがもっとも簡単です。
+			どうしても閲覧制限を設定はpixivのサイト上にて変更する必要があります。
+			<br/>
+			<a
+				href="http://www.pixiv.net/setting_user.php"
+				target="_brank"
+				className={styles.OpenLink}
+				>
+				pixiv - R-18設定
+			</a>
+		</div>
+	</Card>
+)
