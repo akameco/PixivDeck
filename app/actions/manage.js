@@ -27,3 +27,5 @@ export const closeMnagaPreview = (): Action => ({type: 'CLOSE_MANGA_PREVIEW'})
 
 export const startImgLoading = (): Action => ({type: 'START_IMG_LOADING'})
 export const finishImgLoaded = (): Action => ({type: 'SET_IMG_LOADED'})
+
+export const currentIllust = (id: number): Action => ({type: 'SELECT_WORK', id})

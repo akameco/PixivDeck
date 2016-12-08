@@ -4,7 +4,6 @@ import type {State} from '../types'
 import type {User} from '../types/user'
 import manage from './manage'
 import columns from './columns'
-import history from './history'
 import filter from './filter'
 import auth from './auth'
 import config from './config'
@@ -15,7 +14,6 @@ import drawer from './drawer'
 const rootReducer = combineReducers({
 	manage,
 	columns,
-	history,
 	filter,
 	auth,
 	config,

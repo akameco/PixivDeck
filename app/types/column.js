@@ -13,7 +13,6 @@ export type Endpoint =
 	| 'illustRanking'
 	| 'userBookmarksIllust'
 	| 'userIllusts'
-	| 'history'
 	| 'illustFollow'
 ;
 

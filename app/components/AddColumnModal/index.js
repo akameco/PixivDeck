@@ -1,15 +1,9 @@
 // @flow
 import {connect} from 'react-redux'
-import type {State, Dispatch} from '../../types'
+import type {Dispatch} from '../../types'
 import type {Query, Endpoint} from '../../types/column'
 import {addColumn} from '../../actions'
 import Modal from './AddColumnModal'
-
-const mapStateToProps = ({history}: State) => {
-	return {
-		history,
-	}
-}
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
 	const hour = 1000 * 60 * 5
@@ -32,4 +26,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Modal)
+export default connect(undefined, mapDispatchToProps)(Modal)
