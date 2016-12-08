@@ -1,8 +1,8 @@
 // @flow
 import React, {Component} from 'react'
+import Chip from 'material-ui/Chip'
 import Icon from '../../common/Icon'
 import Checkbox from '../../common/Checkbox'
-import Tag from './Tag'
 import styles from './SettingModal.css'
 
 type Props = {
@@ -56,11 +56,21 @@ export default class SettingFilterModal extends Component {
 		this.props.onCheckIllustOnly(!(this.props.isIllustOnly))
 	}
 
-	render() {
-		const tags = this.props.tags.map((tag: string) =>
-			<Tag key={tag} tag={tag} onClick={this.props.onDelete}/>
+	renderChip(tag: string) {
+		const handleClick = () => this.props.onDelete(tag)
+		const style = {margin: 4}
+		return (
+			<Chip
+				key={tag}
+				onRequestDelete={handleClick}
+				style={style}
+				>
+				{tag}
+			</Chip>
 		)
+	}
 
+	render() {
 		return (
 			<div className={styles.wrap}>
 				<div>
@@ -96,9 +106,9 @@ export default class SettingFilterModal extends Component {
 							onKeyDown={this.handleSubmit}
 							/>
 					</div>
-					<ul>
-						{tags}
-					</ul>
+					<div style={{display: 'flex', flexWrap: 'wrap'}}>
+						{this.props.tags.map(this.renderChip, this)}
+					</div>
 				</div>
 			</div>
 		)

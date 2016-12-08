@@ -42,6 +42,7 @@
     "lodash.throttle": "^4.1.1",
     "lodash.union": "^4.6.0",
     "lodash.unionby": "^4.8.0",
+    "material-ui": "^0.16.4",
     "normalizr": "^2.2.1",
     "pify": "^2.3.0",
     "pixiv-app-api": "^0.8.0",
@@ -50,6 +51,7 @@
     "react-redux": "^4.4.6",
     "react-sortable-pane": "^0.5.4",
     "react-tabs": "^0.8.2",
+    "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
     "wallpaper": "^2.3.0"
