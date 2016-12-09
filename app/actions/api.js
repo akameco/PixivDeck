@@ -9,59 +9,45 @@ import {
 	nextColumnIllusts,
 } from './column'
 
-export const apiRequestSuccess = (response: Object): Action => ({type: 'API_REQUEST_SUCCESS', response})
+export const apiRequestSuccess = (response: Object): Action => (
+	{type: 'API_REQUEST_SUCCESS', response}
+)
 
-export function addBookmark(id: number, isPublic?: bool = true) {
-	return async (dispatch: Dispatch, getState: () => State): Promise<void> => {
-		const opts = isPublic ? {} : {restrict: 'private'}
-		await Pixiv.illustBookmarkAdd(id, opts)
-		const columns = getState().columns.filter(c => c.endpoint === 'userBookmarksIllust')
-		for (const c of columns) {
-			await dispatch(fetchColumn(c, false))
+const refreshAllColumns = () => {
+	return async (dispatch: Dispatch, getState: () => State) => {
+		// 全カラムの更新
+		for (const column of getState().columns) {
+			await dispatch(fetchColumn(column, false))
 		}
 	}
 }
 
-function fetchPixiv(columnId: number, rawOpts: ?Object) {
+export function addBookmark(id: number, isPublic?: bool = true) {
+	return async (dispatch: Dispatch): Promise<void> => {
+		const restrict = isPublic ? 'public' : 'private'
+		await Pixiv.illustBookmarkAdd(id, {restrict})
+		await dispatch(refreshAllColumns())
+	}
+}
+
+function fetchPixiv(columnId: number, params: ?Params) {
 	return async (
 		dispatch: Dispatch,
 		getState: () => State
-	): Promise<{response: Object, params: ?Object}> => {
+	): Promise<{response: Object, params: ?Params}> => {
 		const column = getColumn(getState(), columnId)
-		const opts = {...column.query.opts, ...rawOpts}
-		const {endpoint} = column
-		const {id, word} = column.query
-		let res
-		if (endpoint === 'illustRanking') {
-			res = await Pixiv.illustRanking(opts)
-		} else if (endpoint === 'illustFollow') {
-			res = await Pixiv.illustFollow(opts)
-		} else if (endpoint === 'userBookmarksIllust') {
-			const myId = Pixiv.authInfo().user.id
-			res = await Pixiv.userBookmarksIllust(myId, opts)
-		} else if (endpoint === 'userIllusts') {
-			if (!id) {
-				throw new Error('required id')
-			}
-			res = await Pixiv.userIllusts(id, opts)
-		} else if (endpoint === 'searchIllust') {
-			if (!word) {
-				throw new Error('required word')
-			}
-			res = await Pixiv.searchIllust(word, opts)
-		} else {
-			res = await Pixiv.fetch(endpoint, opts)
-		}
+		const opts = {...column.params, ...params}
+		const res = await Pixiv.fetch(column.endpoint, {params: opts})
 
-		const params: ?Params = res.nextUrl ? parseUrl(res.nextUrl) : null
+		const nextParams: ?Params = res.nextUrl ? parseUrl(res.nextUrl) : null
 		return {
 			response: normalizeIllusts(res),
-			params,
+			params: nextParams,
 		}
 	}
 }
 
-export const nextPage = (id: number) => {
+export const nextColumnPage = (id: number) => {
 	return async (dispatch: Dispatch): Promise<void> => {
 		const {response, params} = await dispatch(fetchPixiv(id))
 		dispatch(apiRequestSuccess(response))
@@ -72,7 +58,7 @@ export const nextPage = (id: number) => {
 	}
 }
 
-export function fetchColumn(column: ColumnType, updateQuery?: bool = true) {
+export function fetchColumn(column: ColumnType, updateParams?: bool = true) {
 	return async (dispatch: Dispatch, getState: () => State): Promise<void> => {
 		const {id} = column
 		const authInfo = Pixiv.authInfo()
@@ -80,12 +66,12 @@ export function fetchColumn(column: ColumnType, updateQuery?: bool = true) {
 		if (!authInfo && username && password) {
 			await Pixiv.login(username, password)
 		}
-		const opts = updateQuery ? {} : {offset: 0, maxBookmarkId: null}
+		const opts = updateParams ? {} : {offset: 0, maxBookmarkId: null}
 		const {response, params} = await dispatch(fetchPixiv(id, opts))
 		dispatch(apiRequestSuccess(response))
 		dispatch(addColumnIllusts(column.id, response.result))
 
-		if (params && updateQuery) {
+		if (params && updateParams) {
 			dispatch(setPrams(id, params))
 		}
 	}

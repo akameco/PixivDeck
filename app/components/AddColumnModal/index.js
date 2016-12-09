@@ -1,27 +1,34 @@
 // @flow
 import {connect} from 'react-redux'
 import type {Dispatch} from '../../types'
-import type {Query, Endpoint} from '../../types/column'
-import {addColumn} from '../../actions'
+import {
+	addBookmarkColumn,
+	addFollowColumn,
+	addIllustRankingColumn,
+	addIllustR18RankingColumn,
+} from '../../actions'
+import * as ranking from '../../constants/ranking'
 import Modal from './AddColumnModal'
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
-	const hour = 1000 * 60 * 5
-	const add = (endpoint: Endpoint, query: Query, title: string) =>
-		dispatch(addColumn(endpoint, query, title, hour))
 	return {
-		onSelect: add,
 		addBookmark() {
-			add('userBookmarksIllust', {opts: {restrict: 'public'}}, '公開ブックマーク')
+			dispatch(addBookmarkColumn(true))
 		},
 		addBookmarkPrivate() {
-			add('userBookmarksIllust', {opts: {restrict: 'private'}}, '非公開ブックマーク')
+			dispatch(addBookmarkColumn(false))
 		},
 		addFollow() {
-			add('illustFollow', {opts: {restrict: 'public'}}, '新着 公開')
+			dispatch(addFollowColumn(true))
 		},
 		addFollowPrivate() {
-			add('illustFollow', {opts: {restrict: 'private'}}, '新着 非公開')
+			dispatch(addFollowColumn(false))
+		},
+		addIllustRanking(mode: $Keys<typeof ranking.ILLUST_RANKING>) {
+			dispatch(addIllustRankingColumn(mode))
+		},
+		addIllustR18Ranking(mode: $Keys<typeof ranking.ILLUST_R18_RANKING>) {
+			dispatch(addIllustR18RankingColumn(mode))
 		},
 	}
 }

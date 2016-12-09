@@ -3,21 +3,14 @@ import React from 'react'
 import {connect} from 'react-redux'
 import type {Dispatch} from '../../types'
 import type {User} from '../../types/user'
-import {addColumn} from '../../actions'
+import {addUserIllusts} from '../../actions'
 import Button from '../common/button'
 
 type Props = {
-	user: User,
-	dispatch: Dispatch
+	onClick: () => void,
 };
 
-function AddColumnButton({user, dispatch}: Props) {
-	const onClick = () => {
-		dispatch(
-			addColumn('userIllusts', {id: user.id}, `${user.name}(${user.account})`, 1000 * 60 * 60)
-		)
-	}
-
+const AddColumnButton = ({onClick}: Props) => {
 	return (
 		<a style={{margin: '0 10px'}} onClick={onClick}>
 			<Button text="カラムに追加"/>
@@ -25,4 +18,8 @@ function AddColumnButton({user, dispatch}: Props) {
 	)
 }
 
-export default connect()(AddColumnButton)
+export default connect(undefined, (dispatch: Dispatch, {user}: {user: User}) => ({
+	onClick() {
+		dispatch(addUserIllusts(user))
+	},
+}))(AddColumnButton)

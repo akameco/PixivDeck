@@ -5,7 +5,7 @@ import isEqual from 'lodash.isequal'
 import type {Dispatch, State as S} from '../../types'
 import type {Illust} from '../../types/illust'
 import type {ColumnType} from '../../types/column'
-import {fetchColumn, closeColumn, nextPage} from '../../actions'
+import {fetchColumn, closeColumn, nextColumnPage} from '../../actions'
 import {getIllusts} from '../../reducers'
 import Column from './Column'
 
@@ -75,7 +75,7 @@ const matDispatchToProps = (dispatch: Dispatch, {column}: Props) => {
 	return {
 		dispatch,
 		onNextPage() {
-			dispatch(nextPage(id))
+			dispatch(nextColumnPage(id))
 		},
 		onClose() {
 			dispatch(closeColumn(id))
