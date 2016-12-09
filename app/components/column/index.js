@@ -5,7 +5,11 @@ import isEqual from 'lodash.isequal'
 import type {Dispatch, State as S} from '../../types'
 import type {Illust} from '../../types/illust'
 import type {ColumnType} from '../../types/column'
-import {fetchColumn, closeColumn, nextColumnPage} from '../../actions'
+import {fetchColumn,
+	closeColumn,
+	nextColumnPage,
+	checkColumnUpdate,
+} from '../../actions'
 import {getIllusts} from '../../reducers'
 import Column from './Column'
 
@@ -36,20 +40,16 @@ class ColumnContainer extends Component {
 	}
 
 	async init(): Promise<void> {
-		const {column, dispatch} = this.props
-		await dispatch(fetchColumn(column, true))
-		this.timer = setInterval(async () => {
-			await this.fetch()
-		}, column.timer)
-	}
-
-	async fetch() {
-		const {column, dispatch} = this.props
-		await dispatch(fetchColumn(column, false))
+		const {column: {id, timer}, dispatch} = this.props
+		await dispatch(fetchColumn(id))
+		this.timer = setInterval(() => {
+			dispatch(checkColumnUpdate(id))
+		}, timer)
 	}
 
 	handleReload = () => {
-		this.fetch()
+		const {column: {id}, dispatch} = this.props
+		dispatch(checkColumnUpdate(id))
 	}
 
 	render() {

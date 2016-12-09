@@ -1,6 +1,6 @@
 // @flow
 import type {State, Action, Dispatch} from '../types'
-import type {ColumnType, Params} from '../types/column'
+import type {Params} from '../types/column'
 import Pixiv, {normalizeIllusts, parseUrl} from '../util/pixiv'
 import {getColumn} from '../reducers'
 import {
@@ -17,7 +17,7 @@ const refreshAllColumns = () => {
 	return async (dispatch: Dispatch, getState: () => State) => {
 		// 全カラムの更新
 		for (const column of getState().columns) {
-			await dispatch(fetchColumn(column, false))
+			await dispatch(fetchColumn(column.id, false))
 		}
 	}
 }
@@ -58,20 +58,33 @@ export const nextColumnPage = (id: number) => {
 	}
 }
 
-export function fetchColumn(column: ColumnType, updateParams?: bool = true) {
-	return async (dispatch: Dispatch, getState: () => State): Promise<void> => {
-		const {id} = column
+export const checkColumnUpdate = (id: number) => {
+	return async (dispatch: Dispatch, getState: () => State) => {
 		const authInfo = Pixiv.authInfo()
 		const {auth: {username, password}} = getState()
 		if (!authInfo && username && password) {
 			await Pixiv.login(username, password)
 		}
-		const opts = updateParams ? {} : {offset: 0, maxBookmarkId: null}
-		const {response, params} = await dispatch(fetchPixiv(id, opts))
-		dispatch(apiRequestSuccess(response))
-		dispatch(addColumnIllusts(column.id, response.result))
 
-		if (params && updateParams) {
+		const opts = {offset: 0, maxBookmarkId: null}
+		const {response} = await dispatch(fetchPixiv(id, opts))
+		dispatch(apiRequestSuccess(response))
+		dispatch(addColumnIllusts(id, response.result))
+	}
+}
+
+export function fetchColumn(id: number) {
+	return async (dispatch: Dispatch, getState: () => State): Promise<void> => {
+		const authInfo = Pixiv.authInfo()
+		const {auth: {username, password}} = getState()
+		if (!authInfo && username && password) {
+			await Pixiv.login(username, password)
+		}
+		const {response, params} = await dispatch(fetchPixiv(id))
+		dispatch(apiRequestSuccess(response))
+		dispatch(addColumnIllusts(id, response.result))
+
+		if (params) {
 			dispatch(setPrams(id, params))
 		}
 	}
