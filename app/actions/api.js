@@ -58,13 +58,16 @@ export const nextColumnPage = (id: number) => {
 	}
 }
 
+const loginIfNotLogined = async ({auth: {username, password}}: State) => {
+	const authInfo = Pixiv.authInfo()
+	if (!authInfo && username && password) {
+		await Pixiv.login(username, password)
+	}
+}
+
 export const checkColumnUpdate = (id: number) => {
 	return async (dispatch: Dispatch, getState: () => State) => {
-		const authInfo = Pixiv.authInfo()
-		const {auth: {username, password}} = getState()
-		if (!authInfo && username && password) {
-			await Pixiv.login(username, password)
-		}
+		await loginIfNotLogined(getState())
 
 		const opts = {offset: 0, maxBookmarkId: null}
 		const {response} = await dispatch(fetchPixiv(id, opts))
@@ -75,11 +78,8 @@ export const checkColumnUpdate = (id: number) => {
 
 export function fetchColumn(id: number) {
 	return async (dispatch: Dispatch, getState: () => State): Promise<void> => {
-		const authInfo = Pixiv.authInfo()
-		const {auth: {username, password}} = getState()
-		if (!authInfo && username && password) {
-			await Pixiv.login(username, password)
-		}
+		await loginIfNotLogined(getState())
+
 		const {response, params} = await dispatch(fetchPixiv(id))
 		dispatch(apiRequestSuccess(response))
 		dispatch(addColumnIllusts(id, response.result))
