@@ -1,56 +1,29 @@
 // @flow
 import React, {Component} from 'react'
-import type {Query, Endpoint} from '../../types/column'
+import * as ranking from '../../constants/ranking'
 import styles from './AddColumnModal.css'
 
-/* eslint-disable camelcase */
-const illustRanking = {
-	day: 'デイリー',
-	week: 'ウィークリー',
-	month: 'マンスリー',
-	day_male: '男子に人気',
-	day_female: '女子に人気',
-	week_rookie: 'ルーキー',
-	week_original: 'オリジナル',
-}
-
-const illustR18Ranking = {
-	day_r18: 'R18 デイリー',
-	week_r18: 'R18 ウィークリー',
-	day_male_r18: 'R18 男子に人気',
-	day_female_r18: 'R18 女子に人気',
-	week_r18g: 'R18 G',
-}
-/* eslint-enable camelcase */
-
 type Props = {
-	onSelect: (endpoint: Endpoint, query: $Shape<Query>, title: string) => void,
 	addBookmark: () => void,
 	addBookmarkPrivate: () => void,
 	addFollow: () => void,
 	addFollowPrivate: () => void,
+	addIllustRanking: (mode: $Keys<typeof ranking.ILLUST_RANKING>) => void,
+	addIllustR18Ranking: (mode: $Keys<typeof ranking.ILLUST_R18_RANKING>) => void,
 };
 
 export default class SelectColumnModal extends Component {
 	props: Props;
 
-	handleAddRanking = (mode: string) => {
-		this.props.onSelect('illustRanking', {opts: {mode}}, `${illustRanking[mode]}ランキング`)
-	}
-
-	handleAddR18Ranking = (mode: string) => {
-		this.props.onSelect('illustRanking', {opts: {mode}}, `${illustR18Ranking[mode]}ランキング`)
-	}
-
 	render() {
-		const IllustRankingLinks = Object.keys(illustRanking).map(v => {
-			const handleClick = () => this.handleAddRanking(v)
-			return <LinkButton text={illustRanking[v]} onClick={handleClick} key={v}/>
+		const IllustRankingLinks = Object.keys(ranking.ILLUST_RANKING).map(v => {
+			const handleClick = () => this.props.addIllustRanking(v)
+			return <LinkButton text={ranking.ILLUST_RANKING[v]} onClick={handleClick} key={v}/>
 		})
 
-		const IllustR18RankingLinks = Object.keys(illustR18Ranking).map(v => {
-			const handleClick = () => this.handleAddR18Ranking(v)
-			return <LinkButton text={illustR18Ranking[v]} onClick={handleClick} key={v}/>
+		const IllustR18RankingLinks = Object.keys(ranking.ILLUST_R18_RANKING).map(v => {
+			const handleClick = () => this.props.addIllustR18Ranking(v)
+			return <LinkButton text={ranking.ILLUST_R18_RANKING[v]} onClick={handleClick} key={v}/>
 		})
 
 		const {

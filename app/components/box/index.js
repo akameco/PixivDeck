@@ -8,12 +8,12 @@ import type {Illust} from '../../types/illust'
 import type {User} from '../../types/user'
 import {getUser} from '../../reducers'
 import {
-	addColumn,
 	openImageView,
 	openMangaPreview,
 	currentIllust,
 	openUserDrawer,
 	addBookmark,
+	addSearchIllustColumn,
 } from '../../actions'
 import Box from './Box'
 
@@ -31,7 +31,7 @@ class BoxContainer extends Component {
 	props: Props;
 
 	handleTagClick = (tag: string) => {
-		this.props.dispatch(addColumn('searchIllust', {word: tag}, tag, 1000 * 60 * 5))
+		this.props.dispatch(addSearchIllustColumn(tag))
 	}
 
 	handleClickUser = () => {

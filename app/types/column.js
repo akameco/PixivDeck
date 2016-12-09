@@ -5,22 +5,20 @@ export type Params = {
 	restrict?: 'public' | 'private',
 	filter?: 'for_ios',
 	offset?: number,
-	max_bookmark_id?: ?number
+	userId?: number,
+	illustId?: number,
+	max_bookmark_id?: ?number,
+	maxBookmarkId?: ?number,
+	word?: string,
 };
 
 export type Endpoint =
-	'searchIllust'
-	| 'illustRanking'
-	| 'userBookmarksIllust'
-	| 'userIllusts'
-	| 'illustFollow'
+	'/v1/search/illust'
+	| '/v1/illust/ranking'
+	| '/v1/user/bookmarks/illust'
+	| '/v1/user/illusts'
+	| '/v2/illust/follow'
 ;
-
-export type Query = {
-	id?: number,
-	word?: string,
-	opts?: Params
-};
 
 type Ids = number[];
 
@@ -28,7 +26,7 @@ export type ColumnType = {
 	id: number,
 	endpoint: Endpoint,
 	title: string,
-	query: $Shape<Query>,
+	params: Params,
 	timer: number,
 	ids: Ids,
 };
@@ -36,7 +34,7 @@ export type ColumnType = {
 export type Columns = {[key: number]: ColumnType};
 
 export type ColumnAction =
-	| {|type: 'ADD_COLUMN', id: number, title: string, endpoint: Endpoint, query: Query, timer: number|}
+	| {|type: 'ADD_COLUMN', id: number, title: string, endpoint: Endpoint, params: Params, timer: number|}
 	| {|type: 'ADD_COLUMN_ILLUSTS', id: number, ids: Ids|}
 	| {|type: 'NEXT_COLUMN_ILLUSTS', id: number, ids: Ids|}
 	| {|type: 'SET_PARAMS', id: number, params: Params|}
