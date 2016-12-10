@@ -13,9 +13,10 @@ const HeaderButton = ({iconType, onClick, IconStyle}: Props) => {
 		evnet.stopPropagation()
 		onClick()
 	}
+	const style = {color: '#a4a4a4', ...IconStyle}
 	return (
 		<a className={styles.button} onClick={handleClick}>
-			<Icon type={iconType} size={38} style={IconStyle}/>
+			<Icon type={iconType} size={38} style={style}/>
 		</a>
 	)
 }
