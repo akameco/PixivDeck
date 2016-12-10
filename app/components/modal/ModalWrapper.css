@@ -29,10 +29,6 @@
 	padding-bottom: 15px;
 }
 
-.modal svg {
-	fill: #5b5b5b;
-}
-
 @keyframes fadeIn {
 	0% {
 		opacity: 0;
