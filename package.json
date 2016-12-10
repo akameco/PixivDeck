@@ -1,7 +1,7 @@
 {
   "name": "PixivDeck",
   "productName": "PixivDeck",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "description": "pixiv client for desktop",
   "main": "main.js",
   "scripts": {
