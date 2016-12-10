@@ -12,13 +12,20 @@ type Props = {
 const Columns = ({columns}: Props) => {
 	const handleOnResize = () => null
 	const panes = columns.map(column => (
-		<Pane key={column.id} width={300} id={column.id} height="100%">
+		<Pane
+			key={column.id}
+			width={300}
+			id={column.id}
+			height="100%"
+			isResizable={{x: false, y: false, xy: false}}
+			>
 			<Column column={column}/>
 		</Pane>
 	))
 	return (
 		<div className={styles.content}>
 			<SortablePane
+				disableEffect
 				onResize={handleOnResize}
 				>
 				{panes}
