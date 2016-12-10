@@ -19,7 +19,7 @@ const Columns = ({columns}: Props) => {
 			height="100%"
 			isResizable={{x: false, y: false, xy: false}}
 			>
-			<Column column={column}/>
+			<Column id={column.id}/>
 		</Pane>
 	))
 	return (

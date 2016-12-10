@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import * as ranking from '../../constants/ranking'
 import styles from './AddColumnModal.css'
 
-type Props = {
+export type Props = {
 	addBookmark: () => void,
 	addBookmarkPrivate: () => void,
 	addFollow: () => void,
@@ -59,7 +59,7 @@ export default class SelectColumnModal extends Component {
 	}
 }
 
-const Card = ({title, children}: {title: string, children?: ?any}) => (
+const Card = ({title, children}: {title: string, children?: React$Element<any>}) => (
 	<div className={styles.card}>
 		<div className={styles.title}>{title}</div>
 		<List>
@@ -76,7 +76,7 @@ const LinkButton = ({text, onClick}: {text: string, onClick: () => void}) => (
 	</div>
 )
 
-const List = ({children}: {children?: any}) => (
+const List = ({children}: {children?: React$Element<any>}) => (
 	<div className={styles.list}>
 		{children}
 	</div>

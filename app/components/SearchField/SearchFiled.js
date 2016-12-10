@@ -7,7 +7,7 @@ import PopoverAuto from './PopoverAuto'
 import UsersOver from './UsersOver'
 import styles from './SearchField.css'
 
-type Props = {
+export type Props = {
 	onClose: () => void,
 	onSubmit: (tag: string) => void
 };

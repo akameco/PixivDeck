@@ -18,7 +18,7 @@ const styles = {
 
 const hoverColor = '#b94343'
 
-type Props = {
+export type Props = {
 	onClick: () => void;
 	isBookmarked: bool;
 };

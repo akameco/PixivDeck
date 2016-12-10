@@ -32,7 +32,7 @@ const filterByMinBookmarks = (illust: Illust, bookmarks: number): bool =>
 const filterByTags = (illust: Illust, tags: Array<string>): bool =>
 	illust.tags.every(t => tags.every(tag => !t.name.includes(tag)))
 
-const getIllust = ({illustById}: State, id: number) =>
+export const getIllust = ({illustById}: State, id: number): Illust =>
 	fromIllustById.getIllust(illustById, id)
 
 export const getIllusts = (state: State, columnId: number) => {

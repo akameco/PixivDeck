@@ -1,16 +1,18 @@
 // @flow
 import React, {Component} from 'react'
+import type {Connector} from 'react-redux'
 import {connect} from 'react-redux'
 import isEqual from 'lodash.isequal'
-import type {Dispatch, State as S} from '../../types'
+import type {Dispatch, State as ReduxState} from '../../types'
 import type {Illust} from '../../types/illust'
 import type {ColumnType} from '../../types/column'
-import {fetchColumn,
+import {
+	fetchColumn,
 	closeColumn,
 	nextColumnPage,
 	checkColumnUpdate,
 } from '../../actions'
-import {getIllusts} from '../../reducers'
+import {getIllusts, getColumn} from '../../reducers'
 import Column from './Column'
 
 type Props = {
@@ -18,7 +20,8 @@ type Props = {
 	illusts: Array<Illust>,
 	onNextPage: () => void,
 	onClose: () => void,
-	dispatch: Dispatch,
+	fetchColumn: () => void,
+	checkColumnUpdate: () => void,
 };
 
 class ColumnContainer extends Component {
@@ -39,17 +42,22 @@ class ColumnContainer extends Component {
 		clearInterval(this.timer)
 	}
 
-	async init(): Promise<void> {
-		const {column: {id, timer}, dispatch} = this.props
-		await dispatch(fetchColumn(id))
+	init() {
+		const {
+			column: {timer},
+			fetchColumn,
+			checkColumnUpdate,
+		} = this.props
+
+		fetchColumn()
+
 		this.timer = setInterval(() => {
-			dispatch(checkColumnUpdate(id))
+			checkColumnUpdate()
 		}, timer)
 	}
 
 	handleReload = () => {
-		const {column: {id}, dispatch} = this.props
-		dispatch(checkColumnUpdate(id))
+		this.props.checkColumnUpdate()
 	}
 
 	render() {
@@ -65,22 +73,29 @@ class ColumnContainer extends Component {
 	}
 }
 
-const mapStateToProps = (state: S, {column: {id}}: Props) => ({
+type OwnProps = {
+	id: number
+};
+
+const mapStateToProps = (state: ReduxState, {id}) => ({
+	column: getColumn(state, id),
 	illusts: getIllusts(state, id),
 })
 
-const matDispatchToProps = (dispatch: Dispatch, {column}: Props) => {
-	const {id} = column
+const mapDispatchToProps = (dispatch: Dispatch, {id}) => ({
+	fetchColumn() {
+		dispatch(fetchColumn(id))
+	},
+	checkColumnUpdate() {
+		dispatch(checkColumnUpdate(id))
+	},
+	onNextPage() {
+		dispatch(nextColumnPage(id))
+	},
+	onClose() {
+		dispatch(closeColumn(id))
+	},
+})
 
-	return {
-		dispatch,
-		onNextPage() {
-			dispatch(nextColumnPage(id))
-		},
-		onClose() {
-			dispatch(closeColumn(id))
-		},
-	}
-}
-
-export default connect(mapStateToProps, matDispatchToProps)(ColumnContainer)
+const connector: Connector<OwnProps, Props> = connect(mapStateToProps, mapDispatchToProps)
+export default connector(ColumnContainer)

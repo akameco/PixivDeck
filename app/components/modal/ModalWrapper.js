@@ -4,7 +4,7 @@ import CloseButton from '../common/CloseButton'
 import styles from './ModalWrapper.css'
 
 type Props = {
-	children?: typeof Component,
+	children?: React$Element<any>,
 	onClose: () => void,
 };
 

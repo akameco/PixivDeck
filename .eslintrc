@@ -26,6 +26,7 @@
 		"semi": ["error", "never"],
 		"comma-dangle": ["error", "always-multiline"],
 		"arrow-parens": 0,
+		"no-duplicate-imports": 0,
 		"babel/arrow-parens": ["error", "as-needed"],
 		"indent": ["error", "tab", {"SwitchCase": 1}],
 		"react/sort-comp": ["error", {

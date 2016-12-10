@@ -6,10 +6,9 @@ import styles from './BoxHeader.css'
 import Caption from './Caption'
 import Profile from './Profile'
 
-type Props = {
+export type Props = {
 	id: number,
 	name: string,
-	account: string,
 	img: string,
 	title: string,
 	isBookmarked: bool,
@@ -27,7 +26,6 @@ export default class BoxHeader extends React.PureComponent {
 		const {
 			id,
 			name,
-			account,
 			img,
 			title,
 			caption,
@@ -42,7 +40,7 @@ export default class BoxHeader extends React.PureComponent {
 				</a>
 				<div className={styles.wrap}>
 					<Title title={title}/>
-					<Profile name={name} account={account} onClick={onClick}/>
+					<Profile name={name} onClick={onClick}/>
 					<div style={{position: 'absolute', top: 5, right: 10}}>
 						<BookmarkButton
 							id={id}

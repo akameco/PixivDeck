@@ -38,7 +38,7 @@ class App extends Component {
 				<Header/>
 				<Columns columns={columns}/>
 				{this.renderPreview()}
-				<Drawer isDrawer={isDrawer}>
+				<Drawer>
 					{isDrawer && <UserDrawer/>}
 				</Drawer>
 				{isModal && <Modal/>}
