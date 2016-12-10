@@ -31,3 +31,7 @@ export const addColumn = (
 export const closeColumn = (id: number): Action => (
 	{type: 'CLOSE_COLUMN', id}
 )
+
+export const setColumnMinBookmarks = (id: number, minBookmarks: number): Action => (
+	{type: 'SET_COLUMN_MIN_BOOKMARKS', id, minBookmarks}
+)

@@ -8,6 +8,7 @@ import ColumnContent from './ColumnContent'
 import styles from './ColumnList.css'
 
 type Props = {
+	id: number,
 	illusts: Array<Illust>,
 	title: string,
 	onNextPage: () => void,
@@ -16,14 +17,16 @@ type Props = {
 };
 
 type State = {
-	toTop: bool,
+	toTop: bool;
 };
 
 export default class List extends Component {
 	props: Props;
 	target: Component<*, *, *>
 	root: typeof ColumnContent
-	state: State = {toTop: false}
+	state: State = {
+		toTop: false,
+	}
 
 	handleTopClick = (e: Event) => {
 		e.preventDefault()
@@ -40,11 +43,13 @@ export default class List extends Component {
 			title,
 			onClose,
 			onNextPage,
+			id,
 		} = this.props
 
 		return (
 			<section className={styles.wrap}>
 				<ColumnHeader
+					id={id}
 					title={title}
 					onClose={onClose}
 					onTopClick={this.handleTopClick}

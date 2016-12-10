@@ -2,6 +2,7 @@
 import {combineReducers} from 'redux'
 import type {State} from '../types'
 import type {User} from '../types/user'
+import type {Illust} from '../types/illust'
 import * as endpoint from '../constants/endpoint'
 import manage from './manage'
 import columns from './columns'
@@ -26,15 +27,21 @@ const rootReducer = combineReducers({
 export const getColumn = ({columns}: State, id: number) =>
 	columns.filter(c => c.id === id)[0]
 
-export const filterByTags = ({illustById, filter: {tags}}: State, id: number) => {
-	const illust = fromIllustById.getIllust(illustById, id)
-	const isShow = illust.tags.every(t => tags.every(tag => !t.name.includes(tag)))
-	return isShow ? illust : null
-}
+const filterByMinBookmarks = (illust: Illust, bookmarks: number): bool =>
+	illust.totalBookmarks >= bookmarks
+
+const filterByTags = (illust: Illust, tags: Array<string>): bool =>
+	illust.tags.every(t => tags.every(tag => !t.name.includes(tag)))
+
+const getIllust = ({illustById}: State, id: number) =>
+	fromIllustById.getIllust(illustById, id)
 
 export const getIllusts = (state: State, columnId: number) => {
-	const column = state.columns.filter(c => c.id === columnId)[0]
-	return column.ids.map(id => filterByTags(state, id)).filter(v => v)
+	const column = getColumn(state, columnId)
+	return column.ids.map(id =>
+		getIllust(state, id))
+		.filter(v => filterByTags(v, state.filter.tags))
+		.filter(v => filterByMinBookmarks(v, column.minBookmarks))
 }
 
 export const getDrawerIllusts = (state: State) =>
