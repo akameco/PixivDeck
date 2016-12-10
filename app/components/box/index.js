@@ -56,6 +56,7 @@ class BoxContainer extends Component {
 		const {id, title, imageUrls, metaSinglePage} = illust
 		const img = imageUrls.large
 		const name = user.name
+		const showUser = this.handleClickUser
 
 		const menu = new Menu()
 
@@ -71,7 +72,7 @@ class BoxContainer extends Component {
 		menu.append(new MenuItem({
 			label: 'このユーザの情報を見る',
 			click() {
-				this.handleClickUser()
+				showUser()
 			},
 		}))
 
