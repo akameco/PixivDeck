@@ -1,5 +1,5 @@
 // @flow
-import {shell, remote, ipcRenderer} from 'electron'
+import {remote} from 'electron'
 import React, {Component} from 'react'
 import type {Connector} from 'react-redux'
 import {download} from 'electron-dl'
@@ -16,6 +16,9 @@ import {
 	addBookmark,
 	addSearchIllustColumn,
 } from '../../actions'
+import {openPixiv} from '../../actions/openPixiv'
+import {shareTwitter} from '../../actions/shareTwitter'
+import {setWallpaper} from '../../actions/setWallpaper'
 import Box from './Box'
 
 const {Menu, MenuItem} = remote
@@ -28,6 +31,9 @@ type Props = {
 	openPreview: () => void,
 	addSearchIllustColumn: (tag: string) => void,
 	addBookmark: (isPublic: bool) => void,
+	openPixiv: () => void,
+	shareTwitter: () => void,
+	setWallpaper: () => void,
 };
 
 class BoxContainer extends Component {
@@ -37,29 +43,25 @@ class BoxContainer extends Component {
 		this.props.addSearchIllustColumn(tag)
 	}
 
-	handleClickUser = () => {
-		this.props.openUserDrawer()
-	}
-
-	handleClick = () => {
-		this.props.openPreview()
-	}
-
 	handleContextMenu = (e: Event) => {
 		e.preventDefault()
 
-		const {illust, user, addBookmark} = this.props
-		const {id, title, imageUrls, metaSinglePage} = illust
-		const img = imageUrls.large
-		const name = user.name
-		const showUser = this.handleClickUser
+		const {
+			illust,
+			addBookmark,
+			openPixiv,
+			openUserDrawer,
+			shareTwitter,
+			setWallpaper,
+		} = this.props
 
 		const menu = new Menu()
 
 		menu.append(new MenuItem({
 			label: 'オリジナルサイズの画像を保存',
 			click(item, win) {
-				download(win, img)
+				const img = illust.metaSinglePage.originalImageUrl
+				download(win, img ? img : illust.imageUrls.large)
 			},
 		}))
 
@@ -68,7 +70,7 @@ class BoxContainer extends Component {
 		menu.append(new MenuItem({
 			label: 'このユーザの情報を見る',
 			click() {
-				showUser()
+				openUserDrawer()
 			},
 		}))
 
@@ -93,17 +95,14 @@ class BoxContainer extends Component {
 		menu.append(new MenuItem({
 			label: 'Twitterで共有',
 			click() {
-				const encodedTitle = encodeURIComponent(title)
-				const encodedName = encodeURIComponent(name)
-				const url = `https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.pixiv.net%2Fmember_illust.php%3Fmode%3Dmedium%26illust_id%3D${id}&ref_src=twsrc%5Etfw&text=${encodedTitle}%20%7C%20${encodedName}%20%23pixiv%20%23PixivDeck&tw_p=tweetbutton&url=http%3A%2F%2Fwww.pixiv.net%2Fmember_illust.php%3Fillust_id%3D${id}%26mode%3Dmedium`
-				ipcRenderer.send('tweet', url)
+				shareTwitter(illust.id)
 			},
 		}))
 
 		menu.append(new MenuItem({
 			label: 'pixivで開く',
 			click() {
-				shell.openExternal(`http://www.pixiv.net/member_illust.php?mode=medium&illust_id=${id}`)
+				openPixiv()
 			},
 		}))
 
@@ -112,12 +111,7 @@ class BoxContainer extends Component {
 		menu.append(new MenuItem({
 			label: '壁紙に設定',
 			click() {
-				const img = metaSinglePage.originalImageUrl
-				if (img) {
-					ipcRenderer.send('wallpaper', img)
-				} else {
-					ipcRenderer.send('wallpaper', imageUrls.large)
-				}
+				setWallpaper()
 			},
 		}))
 
@@ -129,6 +123,8 @@ class BoxContainer extends Component {
 			user,
 			illust,
 			isIllustOnly,
+			openPreview,
+			openUserDrawer,
 		} = this.props
 
 		return (
@@ -136,8 +132,8 @@ class BoxContainer extends Component {
 				user={user}
 				illust={illust}
 				isIllustOnly={isIllustOnly}
-				onClick={this.handleClick}
-				onClickUser={this.handleClickUser}
+				onClick={openPreview}
+				onClickUser={openUserDrawer}
 				onClickTag={this.handleTagClick}
 				onContextMenu={this.handleContextMenu}
 				/>
@@ -174,6 +170,15 @@ const mapDispatchToProps = (dispatch: Dispatch, {illust}) => {
 		},
 		addSearchIllustColumn(tag: string) {
 			dispatch(addSearchIllustColumn(tag))
+		},
+		openPixiv() {
+			dispatch(openPixiv(illustId))
+		},
+		shareTwitter() {
+			dispatch(shareTwitter(illustId))
+		},
+		setWallpaper() {
+			dispatch(setWallpaper(illustId))
 		},
 	}
 }
