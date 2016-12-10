@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import Icon from '../common/Icon'
+import ClearIcon from 'material-ui/svg-icons/content/clear'
 import styles from './CloseButton.css'
 
 type Props = {
@@ -15,7 +15,7 @@ const CloseButton = ({onClick, style, iconStyle}: Props) => (
 		onClick={onClick}
 		style={style}
 		>
-		<Icon type="close" style={iconStyle}/>
+		<ClearIcon style={iconStyle}/>
 	</a>
 )
 
