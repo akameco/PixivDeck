@@ -1,11 +1,32 @@
-.base {
-	display: flex;
+.wrap {
 	margin: 0;
+	width: 100%;
+	height: calc(100% - 2px);
 	min-width: 300px;
 	max-height: 100vh;
-	height: calc(100% - 2px);
 	overflow-x: hidden;
 	overflow-y: hidden;
 	background: #444448;
 	border: 2px solid #444448;
+}
+
+.header {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 50px;
+	z-index: 200;
+	text-align: center;
+	color: #e1e8ed;
+	background: #292f33;
+	width: 100%;
+	padding: 0 10px;
+}
+
+.loading {
+	display: flex;
+	justify-content: center;
+	background: #4a4a4a;
+	height: 100%;
 }
