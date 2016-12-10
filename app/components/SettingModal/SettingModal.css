@@ -41,7 +41,7 @@
 	margin-bottom: 2rem;
 }
 
-.field svg {
+.icon {
 	position: absolute;
 	top: 1rem;
 	left: 0.5rem;
@@ -60,7 +60,7 @@
 	padding: 5px 20px;
 }
 
-.OpenLink {
+.openLink {
 	color: rgba(37, 143, 233, 0.8);
 	text-decoration: underline;
 	display: inline-flex;

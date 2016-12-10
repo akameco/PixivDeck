@@ -1,19 +1,4 @@
-:global .react-tabs [role=tablist] {
-	margin: 0;
-	border: none;
-}
-
-:global .react-tabs [role=tab] {
-	border-radius: 0;
-	padding: 10px 12px;
-}
-
-:global .react-tabs [role=tab][aria-selected=true] {
-	border-radius: 0;
-	padding: 10px 12px;
-}
-
-.TabList {
+.tabList {
 	width: 100%;
 	height: 40px;
 	display: flex;
@@ -23,16 +8,16 @@
 	background-color: rgb(54, 75, 78);
 }
 
-.TabList [role=tab] {
+.tabList [role=tab] {
 	border: none;
 	bottom: 0;
 }
 
-.TabListActive {
+.tabListActive {
 	margin: 0;
 }
 
-.TabLink {
+.tabLink {
 	width: 100%;
 	text-align: center;
 	margin: 0 auto;
@@ -41,7 +26,7 @@
 	font-size: 14px;
 }
 
-.TabLinkActive {
+.tabLinkActive {
 	width: 100%;
 	text-align: center;
 	margin: 0 auto;

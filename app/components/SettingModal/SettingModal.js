@@ -4,7 +4,7 @@ import Chip from 'material-ui/Chip'
 import {List, ListItem} from 'material-ui/List'
 import Subheader from 'material-ui/Subheader'
 import Toggle from 'material-ui/Toggle'
-import Icon from '../common/Icon'
+import VisibilityOffIcon from 'material-ui/svg-icons/action/visibility-off'
 import styles from './SettingModal.css'
 
 type Props = {
@@ -95,7 +95,9 @@ export default class SettingFilterModal extends Component {
 					<div className={styles.tagFilter}>
 						<Subheader>タグフィルター</Subheader>
 						<div className={styles.field}>
-							<Icon type="visible-off"/>
+							<div className={styles.icon}>
+								<VisibilityOffIcon/>
+							</div>
 							<input
 								type="text"
 								className={styles.input}
@@ -131,7 +133,7 @@ const LimitSetting = () => (
 			<a
 				href="http://www.pixiv.net/setting_user.php"
 				target="_brank"
-				className={styles.OpenLink}
+				className={styles.openLink}
 				>
 				pixiv - R-18設定
 			</a>

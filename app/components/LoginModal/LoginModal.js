@@ -47,12 +47,25 @@ export default class LoginModal extends Component {
 		}
 
 		const {username, password} = this.state
+
 		return (
 			<div className={styles.wrap}>
 				{isLoginFailure && <ErrorNotify/>}
 				<div className={styles.feild}>
-					<input placeholder="ユーザー名" type="text" value={username} onChange={this.handleChangeName}/>
-					<input placeholder="パスワード" type="password" value={password} onChange={this.handleChangePassword}/>
+					<input
+						placeholder="ユーザー名"
+						type="text"
+						value={username}
+						onChange={this.handleChangeName}
+						className={styles.input}
+						/>
+					<input
+						placeholder="パスワード"
+						type="password"
+						value={password}
+						onChange={this.handleChangePassword}
+						className={styles.input}
+						/>
 					<LoginButton onClick={this.handleClick}/>
 				</div>
 			</div>

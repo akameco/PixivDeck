@@ -12,7 +12,7 @@
 	width: 6px;
 	display: inline-block;
 	margin: 1px;
-	animation: sk-stretchdelay 1.2s infinite ease-in-out;
+	animation: loading 1.2s infinite ease-in-out;
 }
 
 .spinner .rect2 {
@@ -31,7 +31,7 @@
 	animation-delay: -0.8s;
 }
 
-@keyframes sk-stretchdelay {
+@keyframes loading {
 	0%,
 	40%,
 	100% {
