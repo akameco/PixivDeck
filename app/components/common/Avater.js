@@ -26,10 +26,10 @@ const getStyles = ({color, size}: $Shape<Props>): Object => {
 	return styles
 }
 
-const Avater = ({src, style, className, ...other}: Props) => (
+const Avater = ({src, style, className, ...others}: Props) => (
 	<img
 		src={src}
-		style={Object.assign(getStyles(other).root, style)}
+		style={Object.assign(getStyles(others).root, style)}
 		className={className}
 		/>
 )
