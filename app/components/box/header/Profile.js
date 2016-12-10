@@ -12,7 +12,6 @@ const Profile = ({name, account, onClick}: Props) => (
 		<div className={styles.Profile}>
 			<p className={styles.profileAreaLine}>
 				<a className={styles.name} onClick={onClick}>{name}</a>
-				<a className={styles.account} onClick={onClick}>{account}</a>
 			</p>
 		</div>
 	</div>

@@ -13,17 +13,13 @@
 }
 
 .name {
-	color: #e1e8ed;
+	color: #9ea6ac;
+	line-height: 1;
 	margin-left: 0.5rem;
+	font-size: 0.9rem;
 	margin-right: 5px;
 }
 
 .name:hover {
 	color: #7af;
-}
-
-.account {
-	color: #9ea6ac;
-	line-height: 1;
-	font-size: 0.85rem;
 }
