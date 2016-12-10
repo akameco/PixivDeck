@@ -60,7 +60,7 @@ export default class SelectColumnModal extends Component {
 }
 
 const Card = ({title, children}: {title: string, children?: ?any}) => (
-	<div className={styles.Card}>
+	<div className={styles.card}>
 		<div className={styles.title}>{title}</div>
 		<List>
 			{children}
@@ -69,7 +69,7 @@ const Card = ({title, children}: {title: string, children?: ?any}) => (
 )
 
 const LinkButton = ({text, onClick}: {text: string, onClick: () => void}) => (
-	<div onClick={onClick} className={styles.LinkButton}>
+	<div onClick={onClick} className={styles.linkButton}>
 		<div className={styles.innerButton}>
 			{text}
 		</div>
@@ -77,7 +77,7 @@ const LinkButton = ({text, onClick}: {text: string, onClick: () => void}) => (
 )
 
 const List = ({children}: {children?: any}) => (
-	<div className={styles.List}>
+	<div className={styles.list}>
 		{children}
 	</div>
 )

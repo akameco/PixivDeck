@@ -17,7 +17,7 @@
 	overflow-y: auto;
 }
 
-.Card {
+.card {
 	display: block;
 	width: 100%;
 	height: 100%;
@@ -42,7 +42,7 @@
 	line-height: 40px;
 }
 
-.LinkButton {
+.linkButton {
 	border: 10px;
 	display: block;
 	cursor: pointer;
@@ -55,7 +55,7 @@
 	transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0;
 }
 
-.LinkButton:hover {
+.linkButton:hover {
 	background-color: rgba(0, 0, 0, 0.098);
 }
 
@@ -63,7 +63,7 @@
 	padding: 10px 16px 10px 17px;
 }
 
-.List {
+.list {
 	padding: 0;
 	margin: 0;
 	overflow: hidden;
