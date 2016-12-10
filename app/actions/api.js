@@ -13,11 +13,29 @@ export const apiRequestSuccess = (response: Object): Action => (
 	{type: 'API_REQUEST_SUCCESS', response}
 )
 
+const loginIfNotLogined = async ({auth: {username, password}}: State) => {
+	const authInfo = Pixiv.authInfo()
+	if (!authInfo && username && password) {
+		await Pixiv.login(username, password)
+	}
+}
+
+export const checkColumnUpdate = (id: number) => {
+	return async (dispatch: Dispatch, getState: () => State) => {
+		await loginIfNotLogined(getState())
+
+		const opts = {offset: 0, maxBookmarkId: null}
+		const {response} = await dispatch(fetchPixiv(id, opts))
+		dispatch(apiRequestSuccess(response))
+		dispatch(addColumnIllusts(id, response.result))
+	}
+}
+
 const refreshAllColumns = () => {
 	return async (dispatch: Dispatch, getState: () => State) => {
 		// 全カラムの更新
 		for (const column of getState().columns) {
-			await dispatch(fetchColumn(column.id, false))
+			await dispatch(checkColumnUpdate(column.id))
 		}
 	}
 }
@@ -55,24 +73,6 @@ export const nextColumnPage = (id: number) => {
 		if (params) {
 			dispatch(setPrams(id, params))
 		}
-	}
-}
-
-const loginIfNotLogined = async ({auth: {username, password}}: State) => {
-	const authInfo = Pixiv.authInfo()
-	if (!authInfo && username && password) {
-		await Pixiv.login(username, password)
-	}
-}
-
-export const checkColumnUpdate = (id: number) => {
-	return async (dispatch: Dispatch, getState: () => State) => {
-		await loginIfNotLogined(getState())
-
-		const opts = {offset: 0, maxBookmarkId: null}
-		const {response} = await dispatch(fetchPixiv(id, opts))
-		dispatch(apiRequestSuccess(response))
-		dispatch(addColumnIllusts(id, response.result))
 	}
 }
 

@@ -15,6 +15,7 @@ const initState: Array<Column> = [
 			offset: 0,
 		},
 		ids: [],
+		minBookmarks: 0,
 	},
 	{
 		id: 2,
@@ -26,6 +27,7 @@ const initState: Array<Column> = [
 			offset: 0,
 		},
 		ids: [],
+		minBookmarks: 0,
 	},
 	{
 		id: 3,
@@ -37,6 +39,7 @@ const initState: Array<Column> = [
 			offset: 0,
 		},
 		ids: [],
+		minBookmarks: 0,
 	},
 ]
 

@@ -29,6 +29,7 @@ export type ColumnType = {
 	params: Params,
 	timer: number,
 	ids: Ids,
+	minBookmarks: number,
 };
 
 export type Columns = {[key: number]: ColumnType};
@@ -38,5 +39,6 @@ export type ColumnAction =
 	| {|type: 'ADD_COLUMN_ILLUSTS', id: number, ids: Ids|}
 	| {|type: 'NEXT_COLUMN_ILLUSTS', id: number, ids: Ids|}
 	| {|type: 'SET_PARAMS', id: number, params: Params|}
+	| {|type: 'SET_COLUMN_MIN_BOOKMARKS', id: number, minBookmarks: number|}
 	| {|type: 'CLOSE_COLUMN', id: number|}
 ;

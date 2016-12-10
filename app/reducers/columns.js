@@ -26,7 +26,7 @@ function params(state: Params, action: Action): $Shape<Params> {
 	}
 }
 
-function column(state: Column, action: Action): Column {
+function column(state: Column, action: Action): $Shape<Column> {
 	if (action.id && state.id !== action.id) {
 		return state
 	}
@@ -44,9 +44,17 @@ function column(state: Column, action: Action): Column {
 			const ids = union([], state.ids, action.ids)
 			return isEqual(ids, state.ids) ? state : {...state, ids}
 		}
+		case 'SET_COLUMN_MIN_BOOKMARKS':
+			return {...state, minBookmarks: action.minBookmarks}
 		default:
 			return state
 	}
+}
+
+const defaultState: $Shape<Column> = {
+	ids: [],
+	timer: 1000 * 60 * 5,
+	minBookmarks: 0,
 }
 
 export default function columns(state: State = initState, action: Action): State {
@@ -58,7 +66,7 @@ export default function columns(state: State = initState, action: Action): State
 			}
 			return [
 				...state,
-				{id, endpoint, params: params(action.params, action), title, timer, ids: []},
+				{...defaultState, id, endpoint, params: params(action.params, action), title, timer},
 			]
 		}
 		case 'CLOSE_COLUMN': {
@@ -68,6 +76,7 @@ export default function columns(state: State = initState, action: Action): State
 		}
 		case 'ADD_COLUMN_ILLUSTS':
 		case 'NEXT_COLUMN_ILLUSTS':
+		case 'SET_COLUMN_MIN_BOOKMARKS':
 		case 'INIT':
 		case 'SET_PARAMS':
 			return state.map(t => column(t, action))
