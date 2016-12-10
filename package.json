@@ -29,7 +29,7 @@
   "license": "MIT",
   "dependencies": {
     "autolinker": "^1.4.0",
-    "babel-polyfill": "^6.16.0",
+    "babel-polyfill": "^6.20.0",
     "camelcase-keys": "^4.0.0",
     "electron-config": "^0.2.1",
     "electron-context-menu": "^0.8.0",
@@ -43,7 +43,7 @@
     "lodash.throttle": "^4.1.1",
     "lodash.union": "^4.6.0",
     "lodash.unionby": "^4.8.0",
-    "material-ui": "^0.16.4",
+    "material-ui": "^0.16.5",
     "normalizr": "^2.3.0",
     "pify": "^2.3.0",
     "pixiv-app-api": "^0.8.0",
@@ -58,7 +58,7 @@
     "wallpaper": "^2.3.0"
   },
   "devDependencies": {
-    "babel-core": "^6.18.2",
+    "babel-core": "^6.20.0",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.9",
     "babel-plugin-add-module-exports": "^0.2.1",
@@ -73,10 +73,10 @@
     "css-loader": "^0.26.1",
     "del": "^2.2.2",
     "devtron": "^1.4.0",
-    "electron": "^1.4.11",
+    "electron": "^1.4.12",
     "electron-devtools-installer": "^2.0.1",
-    "electron-packager": "^8.3.0",
-    "eslint": "^3.11.1",
+    "electron-packager": "^8.4.0",
+    "eslint": "^3.12.0",
     "eslint-config-xo": "^0.17.0",
     "eslint-config-xo-react": "^0.10.0",
     "eslint-plugin-babel": "^4.0.0",
@@ -93,6 +93,6 @@
     "style-loader": "^0.13.1",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2",
-    "webpack-merge": "^1.0.2"
+    "webpack-merge": "^1.1.0"
   }
 }
