@@ -14,10 +14,6 @@
 	background-color: #292f33;
 }
 
-.header svg {
-	fill: gray;
-}
-
 .search {
 	position: fixed;
 	top: 35px;
