@@ -3,6 +3,7 @@ import React from 'react'
 import IconButton from 'material-ui/IconButton'
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu'
 import NavigationClose from 'material-ui/svg-icons/navigation/close'
+import type {ColumnType} from '../../types/column'
 import ColumnSetting from './ColumnSettinContainer'
 import styles from './ColumnHeader.css'
 
@@ -11,8 +12,7 @@ const style = {
 }
 
 type Props = {
-	id: number,
-	title: string,
+	column: ColumnType,
 	onTopClick: (event: Event) => void,
 	onClose: () => void
 };
@@ -32,7 +32,8 @@ class ColumnHeader extends React.Component {
 	}
 
 	render() {
-		const {title, onClose, onTopClick, id} = this.props
+		const {onClose, onTopClick, column} = this.props
+		const {title} = column
 		return (
 			<div className={styles.wrap}>
 				<div className={styles.header}>
@@ -50,7 +51,11 @@ class ColumnHeader extends React.Component {
 						</IconButton>
 					</div>
 				</div>
-				<ColumnSetting open={this.state.open} id={id}/>
+				<ColumnSetting
+					open={this.state.open}
+					id={column.id}
+					minBookmarks={column.minBookmarks}
+					/>
 			</div>
 		)
 	}

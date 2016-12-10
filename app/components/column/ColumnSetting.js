@@ -6,26 +6,32 @@ import styles from './ColumnSetting.css'
 
 type Props = {
 	setColumnMinBookmarks: (value: number) => void,
+	minBookmarks: number;
 	open: bool;
 };
 
 type State = {
-	slider: number;
+	minBookmarks: number;
 };
 
 class ColumnSetting extends React.Component {
 	props: Props
+
 	state: State = {
-		slider: 0,
+		minBookmarks: 0,
+	}
+
+	componentWillMount() {
+		this.setState({minBookmarks: this.props.minBookmarks})
 	}
 
 	handleSlider = (event: Event, value: number) => {
-		this.setState({slider: value})
+		this.setState({minBookmarks: value})
 		this._sendBookmark()
 	}
 
 	_sendBookmark = debounce(() => {
-		this.props.setColumnMinBookmarks(this.state.slider)
+		this.props.setColumnMinBookmarks(this.state.minBookmarks)
 	}, 400)
 
 	handleMove = (e: Event) => {
@@ -34,7 +40,12 @@ class ColumnSetting extends React.Component {
 
 	render() {
 		const {open} = this.props
+		const {
+			minBookmarks,
+		} = this.state
+
 		const popovarStyle = open ? styles.popovar : styles.popovarRetracted
+
 		return (
 			<div
 				className={popovarStyle}
@@ -42,13 +53,13 @@ class ColumnSetting extends React.Component {
 				onTouchStart={this.handleMove}
 				>
 				<div className={styles.wrap}>
-					ブックマークフィルタ {this.state.slider}
+					ブックマークフィルタ {minBookmarks}
 					<Slider
 						min={0}
 						max={1000}
 						step={10}
-						defaultValue={0}
-						value={this.state.slider}
+						defaultValue={minBookmarks}
+						value={minBookmarks}
 						onChange={this.handleSlider}
 						/>
 				</div>
