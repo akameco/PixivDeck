@@ -53,8 +53,7 @@ export default class Column extends Component {
 		return (
 			<div className={styles.wrap}>
 				<ColumnHeader
-					id={column.id}
-					title={column.title}
+					column={column}
 					onClose={onClose}
 					onTopClick={this.handleTopClick}
 					/>
