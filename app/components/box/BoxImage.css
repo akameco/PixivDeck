@@ -31,10 +31,10 @@
 }
 
 .loaded {
-	animation: fade-in 0.3s both;
+	animation: fadeIn 0.3s both;
 }
 
-@keyframes fade-in {
+@keyframes fadeIn {
 	0% {
 		filter: blur(10px);
 		margin: -10px;
