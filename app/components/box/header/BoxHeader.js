@@ -1,12 +1,13 @@
 // @flow
 import React from 'react'
 import Avater from '../../common/Avater'
+import BookmarkButton from '../../BookmarkButton'
 import styles from './BoxHeader.css'
 import Caption from './Caption'
 import Profile from './Profile'
-import BookmarkButton from './BookmarkButton'
 
 type Props = {
+	id: number,
 	name: string,
 	account: string,
 	img: string,
@@ -23,7 +24,17 @@ export default class BoxHeader extends React.PureComponent {
 	props: Props;
 
 	render() {
-		const {name, account, img, title, caption, isIllustComment, onClick, isBookmarked} = this.props
+		const {
+			id,
+			name,
+			account,
+			img,
+			title,
+			caption,
+			isIllustComment,
+			onClick,
+			isBookmarked,
+		} = this.props
 		return (
 			<div className={styles.base}>
 				<a onClick={this.props.onClick} style={{margin: 5}}>
@@ -32,7 +43,12 @@ export default class BoxHeader extends React.PureComponent {
 				<div className={styles.wrap}>
 					<Title title={title}/>
 					<Profile name={name} account={account} onClick={onClick}/>
-					<BookmarkButton isBookmarked={isBookmarked}/>
+					<div style={{position: 'absolute', top: 5, right: 10}}>
+						<BookmarkButton
+							id={id}
+							isBookmarked={isBookmarked}
+							/>
+					</div>
 					{isIllustComment && caption && <Caption caption={caption}/>}
 				</div>
 			</div>

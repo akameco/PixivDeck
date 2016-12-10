@@ -44,6 +44,7 @@ const Box = ({
 		<div className={styles.box} onContextMenu={onContextMenu}>
 			{!isIllustOnly &&
 				<BoxHeader
+					id={illust.id}
 					name={name}
 					account={account}
 					img={profileImageUrls.medium}
