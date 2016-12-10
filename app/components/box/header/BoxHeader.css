@@ -3,6 +3,7 @@
 	height: 100%;
 	color: #e1e8ed;
 	display: flex;
+	justify-content: space-between;
 }
 
 .wrap {

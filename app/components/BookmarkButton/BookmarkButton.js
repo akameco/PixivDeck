@@ -3,28 +3,37 @@ import React from 'react'
 import IconButton from 'material-ui/IconButton'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
 
+const iconSize = 18
+
 const styles = {
+	button: {
+		width: 32,
+		height: 32,
+	},
 	icon: {
-		width: 16,
-		height: 16,
+		width: iconSize,
+		height: iconSize,
 	},
 }
 
 const hoverColor = '#b94343'
 
 type Props = {
-	isBookmarked: bool
+	onClick: () => void;
+	isBookmarked: bool;
 };
 
-const BookmarkButton = ({isBookmarked}: Props) => {
-	const color = isBookmarked ? hoverColor : '#777'
-	return (
-		<IconButton
-			iconStyle={styles.icon}
-			>
-			<FavoriteIcon color={color} hoverColor={hoverColor}/>
-		</IconButton>
-	)
-}
+const BookmarkButton = ({isBookmarked, onClick}: Props) => (
+	<IconButton
+		onClick={onClick}
+		style={styles.button}
+		iconStyle={styles.icon}
+		>
+		<FavoriteIcon
+			color={isBookmarked ? hoverColor : '#777'}
+			hoverColor={hoverColor}
+			/>
+	</IconButton>
+)
 
 export default BookmarkButton
