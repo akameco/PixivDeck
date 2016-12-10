@@ -1,6 +1,7 @@
 // @flow
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import type {Connector} from 'react-redux'
 import type {State, Dispatch} from '../../types'
 import type {ModalType} from '../../types/manage'
 import {closeModal} from '../../actions'
@@ -43,12 +44,11 @@ const mapStateToProps = ({manage: {modalType}}: State) => ({
 	modalType,
 })
 
-const mapDispatchToProps = (dispatch: Dispatch) => (
-	{
-		closeModal() {
-			dispatch(closeModal())
-		},
-	}
-)
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+	closeModal() {
+		dispatch(closeModal())
+	},
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(Modal)
+const connector: Connector<{}, Props> = connect(mapStateToProps, mapDispatchToProps)
+export default connector(Modal)

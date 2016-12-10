@@ -7,7 +7,7 @@ import Toggle from 'material-ui/Toggle'
 import VisibilityOffIcon from 'material-ui/svg-icons/action/visibility-off'
 import styles from './SettingModal.css'
 
-type Props = {
+export type Props = {
 	onDelete: (tag: string) => void,
 	onSubmit: (tag: string) => void,
 	onCheckShowText: (isShow: bool) => void,
@@ -117,7 +117,7 @@ export default class SettingFilterModal extends Component {
 	}
 }
 
-const Card = ({children}: {children?: any}) => (
+const Card = ({children}: {children?: React$Element<any>}) => (
 	<div className={styles.card}>
 		{children}
 	</div>

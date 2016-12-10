@@ -7,7 +7,7 @@ import styles from './Infinite.css'
 type Props = {
 	rootMargin?: string,
 	onIntersect: () => void,
-	children?: any,
+	children?: React$Element<any>,
 	root?: any,
 	targetRef?: (c: Component<*, *, *>) => void,
 	style?: Object

@@ -1,10 +1,10 @@
 // @flow
 import React from 'react'
 
-type Props = {
+export type Props = {
 	isDrawer: bool,
 	closeDrawer: () => void,
-	children: React$Component<*, *, *>,
+	children?: React$Element<any>,
 };
 
 const defaultStyle = {

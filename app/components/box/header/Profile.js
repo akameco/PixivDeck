@@ -3,11 +3,10 @@ import styles from './Profile.css'
 
 type Props = {
 	name: string,
-	account: string,
 	onClick: () => void,
 };
 
-const Profile = ({name, account, onClick}: Props) => (
+const Profile = ({name, onClick}: Props) => (
 	<div>
 		<div className={styles.Profile}>
 			<p className={styles.profileAreaLine}>

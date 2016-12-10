@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import Loading from '../common/Loading'
 import styles from './LoginModal.css'
 
-type Props = {
+export type Props = {
 	username: string,
 	password: string,
 	isLoginFailure: bool,

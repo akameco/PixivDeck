@@ -1,5 +1,6 @@
 // @flow
 import {connect} from 'react-redux'
+import type {Connector} from 'react-redux'
 import type {State, Dispatch} from '../../types'
 import {
 	addTagFilter,
@@ -8,24 +9,29 @@ import {
 	setOnlyIllust,
 } from '../../actions'
 import Modal from './SettingModal'
+import type {Props} from './SettingModal'
 
-function mapStateToProps(state: State) {
-	const {isIllustComment, isIllustOnly} = state.config
-	const {tags} = state.filter
-	return {
-		tags,
-		isIllustComment,
-		isIllustOnly,
-	}
-}
+const mapStateToProps = ({filter, config}: State) => ({
+	tags: filter.tags,
+	isIllustComment: config.isIllustComment,
+	isIllustOnly: config.isIllustOnly,
+})
 
-function mapDispatchToProps(dispatch: Dispatch) {
-	return {
-		onSubmit: (tag: string) => dispatch(addTagFilter(tag)),
-		onDelete: (tag: string) => dispatch(removeTagFilter(tag)),
-		onCheckShowText: (isShow: bool) => dispatch(setCaptionShow(isShow)),
-		onCheckIllustOnly: (isShow: bool) => dispatch(setOnlyIllust(isShow)),
-	}
-}
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+	onSubmit(tag: string) {
+		dispatch(addTagFilter(tag))
+	},
+	onDelete(tag: string) {
+		dispatch(removeTagFilter(tag))
+	},
+	onCheckShowText(isShow: bool) {
+		dispatch(setCaptionShow(isShow))
+	},
+	onCheckIllustOnly(isShow: bool) {
+		dispatch(setOnlyIllust(isShow))
+	},
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(Modal)
+const connector: Connector<{}, Props> = connect(mapStateToProps, mapDispatchToProps)
+
+export default connector(Modal)

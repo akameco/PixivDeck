@@ -1,6 +1,7 @@
 // @flow
 import {shell, remote, ipcRenderer} from 'electron'
 import React, {Component} from 'react'
+import type {Connector} from 'react-redux'
 import {download} from 'electron-dl'
 import {connect} from 'react-redux'
 import type {Dispatch, State} from '../../types/'
@@ -23,30 +24,25 @@ type Props = {
 	illust: Illust,
 	user: User,
 	isIllustOnly: bool,
-	dispatch: Dispatch,
-	addBookmark: (id: number, isPublic: bool) => void,
+	openUserDrawer: () => void,
+	openPreview: () => void,
+	addSearchIllustColumn: (tag: string) => void,
+	addBookmark: (isPublic: bool) => void,
 };
 
 class BoxContainer extends Component {
 	props: Props;
 
 	handleTagClick = (tag: string) => {
-		this.props.dispatch(addSearchIllustColumn(tag))
+		this.props.addSearchIllustColumn(tag)
 	}
 
 	handleClickUser = () => {
-		const {user} = this.props
-		this.props.dispatch(openUserDrawer(user.id))
+		this.props.openUserDrawer()
 	}
 
 	handleClick = () => {
-		const {id, pageCount} = this.props.illust
-		this.props.dispatch(currentIllust(id))
-		if (pageCount > 1) {
-			this.props.dispatch(openMangaPreview())
-		} else {
-			this.props.dispatch(openImageView())
-		}
+		this.props.openPreview()
 	}
 
 	handleContextMenu = (e: Event) => {
@@ -80,15 +76,15 @@ class BoxContainer extends Component {
 
 		menu.append(new MenuItem({
 			label: 'ブックマーク',
-			click: () => {
-				addBookmark(id, true)
+			click() {
+				addBookmark(true)
 			},
 		}))
 
 		menu.append(new MenuItem({
 			label: '非公開ブックマーク',
-			click: () => {
-				addBookmark(id, false)
+			click() {
+				addBookmark(false)
 			},
 		}))
 
@@ -149,20 +145,38 @@ class BoxContainer extends Component {
 	}
 }
 
-const mapStateToProps = (state: State, {illust}: Props) => {
-	const user = getUser(state, illust.user)
-	const {config: {isIllustOnly}} = state
+type OwnProps = {
+	illust: Illust
+};
+
+const mapStateToProps = (state: State, {illust}) => ({
+	user: getUser(state, illust.user),
+	isIllustOnly: state.config.isIllustOnly,
+})
+
+const mapDispatchToProps = (dispatch: Dispatch, {illust}) => {
+	const illustId = illust.id
+	const userId = illust.user
 	return {
-		user,
-		isIllustOnly,
+		openPreview() {
+			dispatch(currentIllust(illustId))
+			if (illust.pageCount > 1) {
+				dispatch(openMangaPreview())
+			} else {
+				dispatch(openImageView())
+			}
+		},
+		addBookmark(isPublic: bool) {
+			dispatch(addBookmark(illustId, isPublic))
+		},
+		openUserDrawer() {
+			dispatch(openUserDrawer(userId))
+		},
+		addSearchIllustColumn(tag: string) {
+			dispatch(addSearchIllustColumn(tag))
+		},
 	}
 }
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
-	return {
-		dispatch,
-		addBookmark: (id: number, isPublic: bool) => dispatch(addBookmark(id, isPublic)),
-	}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(BoxContainer)
+const connector: Connector<OwnProps, Props> = connect(mapStateToProps, mapDispatchToProps)
+export default connector(BoxContainer)

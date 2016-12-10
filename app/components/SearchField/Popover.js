@@ -15,7 +15,7 @@ export const Item = ({start, end, onClick}: ItemProps) =>
 
 type Props = {
 	title: string,
-	children?: any,
+	children?: React$Element<any>,
 };
 
 const Popover = ({children, title}: Props) =>

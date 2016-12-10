@@ -1,5 +1,6 @@
 // @flow
 import {connect} from 'react-redux'
+import type {Connector} from 'react-redux'
 import type {Dispatch, State} from '../../types'
 import {
 	logout,
@@ -9,23 +10,33 @@ import {
 	closeSearchField,
  } from '../../actions'
 import Header from './header'
+import type {Props} from './header'
 
-const mapStateToProps = ({manage: {isDropdown, isSearchField}}: State) => (
-	{
-		isDropdown,
-		isSearchField,
-	}
-)
+const mapStateToProps = ({manage: {isDropdown, isSearchField}}: State) => ({
+	isDropdown,
+	isSearchField,
+})
 
-function mapDispatchToProps(dispatch: Dispatch) {
-	return {
-		onLogout: () => dispatch(logout()),
-		onClickAdd: () => dispatch(openModal()),
-		onToggleDropdown: () => dispatch(toggleDropdown()),
-		onOpenFilterModal: () => dispatch(openModal('FILTER_TAG')),
-		toggleSearchField: () => dispatch(toggleSearchField()),
-		closeSearchField: () => dispatch(closeSearchField()),
-	}
-}
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+	onLogout() {
+		dispatch(logout())
+	},
+	onClickAdd() {
+		dispatch(openModal())
+	},
+	onToggleDropdown() {
+		dispatch(toggleDropdown())
+	},
+	onOpenFilterModal() {
+		dispatch(openModal('FILTER_TAG'))
+	},
+	toggleSearchField() {
+		dispatch(toggleSearchField())
+	},
+	closeSearchField() {
+		dispatch(closeSearchField())
+	},
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+const connector: Connector<{}, Props> = connect(mapStateToProps, mapDispatchToProps)
+export default connector(Header)

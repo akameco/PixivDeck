@@ -1,8 +1,10 @@
 // @flow
 import {connect} from 'react-redux'
+import type {Connector} from 'react-redux'
 import type {Dispatch, State} from '../../types'
 import {login} from '../../actions'
 import LoginModal from './LoginModal'
+import type {Props} from './LoginModal'
 
 const mapStateToProps = ({auth}: State) => ({...auth})
 
@@ -12,4 +14,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 	},
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginModal)
+const connector: Connector<{}, Props> = connect(mapStateToProps, mapDispatchToProps)
+
+export default connector(LoginModal)

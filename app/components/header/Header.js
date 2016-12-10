@@ -5,7 +5,7 @@ import HeaderButton from './HeaderButton'
 import HeaderBottom from './HeaderBottom'
 import styles from './Header.css'
 
-type Props = {
+export type Props = {
 	isDropdown: bool,
 	isSearchField: bool,
 	toggleSearchField: () => void,
