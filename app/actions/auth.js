@@ -4,6 +4,13 @@ import type {Action, Dispatch, State} from '../types'
 
 export const logout = (): Action => ({type: 'LOGOUT'})
 
+export const loginIfNotLogined = async ({auth: {username, password}}: State) => {
+	const authInfo = Pixiv.authInfo()
+	if (!authInfo && username && password) {
+		await Pixiv.login(username, password)
+	}
+}
+
 export function init() {
 	return async (
 		dispatch: Dispatch,
