@@ -1,10 +1,24 @@
 // @flow
-import type {Dispatch} from '../types'
+import type {Dispatch, Action} from '../types'
 import Pixiv from '../util/pixiv'
+import type {Params, Endpoint} from '../types/column'
 import type {User} from '../types/user'
 import * as endpoint from '../constants/endpoint'
 import * as ranking from '../constants/ranking'
-import {addColumn} from './column'
+
+const addColumn = (
+	endpoint: Endpoint,
+	params: $Subtype<Params>,
+	title: string,
+	timer: number,
+): Action => ({
+	type: 'ADD_COLUMN',
+	endpoint,
+	id: Date.now(),
+	title,
+	timer,
+	params,
+})
 
 export const addBookmarkColumn = (isPublic: bool) => {
 	return (dispatch: Dispatch) => {

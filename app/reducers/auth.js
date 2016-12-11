@@ -11,12 +11,14 @@ const initState = {
 
 export default function auth(state: Auth = initState, action: Action): Auth {
 	switch (action.type) {
-		case 'LOGIN_REQUEST':
-			return {...state, isLoading: true}
-		case 'LOGIN_SUCCESS':
-			return {username: action.username, password: action.password, isLoginFailure: false, isLoading: false}
+		case 'SET_AUTH':
+			return {...state, username: action.username, password: action.password}
+		case 'AUTH_SENDING_REQUEST':
+			return {...state, isLoading: action.sending}
+		case 'CLEAR_ERROR':
+			return {...state, isLoginFailure: false}
 		case 'LOGIN_FAILURE':
-			return {...state, isLoginFailure: true, isLoading: false}
+			return {...state, isLoginFailure: true}
 		default:
 			return state
 	}

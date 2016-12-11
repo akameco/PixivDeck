@@ -11,8 +11,12 @@ export type Auth = {
 
 export type AuthAction =
 	| {|type: 'INIT'|}
-	| {|type: 'LOGIN_REQUEST'|}
-	| {|type: 'LOGIN_SUCCESS', username: Username, password: Password|}
+	| {|type: 'LOGIN_SUCCESS'|}
+	| {|type: 'LOGIN_REQUEST', username: Username, password: Password|}
+	| {|type: 'SET_AUTH', username: Username, password: Password|}
+	| {|type: 'AUTH_SENDING_REQUEST', sending: bool|}
 	| {|type: 'LOGIN_FAILURE'|}
 	| {|type: 'LOGOUT'|}
+	| {|type: 'CLEAR_ERROR'|}
+	| {|type: 'AUTO_LOGIN'|}
 ;

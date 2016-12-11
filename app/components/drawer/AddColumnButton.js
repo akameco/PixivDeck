@@ -1,6 +1,7 @@
 // @flow
 import React from 'react'
 import {connect} from 'react-redux'
+import type {Connector} from 'react-redux'
 import type {Dispatch} from '../../types'
 import type {User} from '../../types/user'
 import {addUserIllusts} from '../../actions'
@@ -10,16 +11,20 @@ type Props = {
 	onClick: () => void,
 };
 
-const AddColumnButton = ({onClick}: Props) => {
-	return (
-		<a style={{margin: '0 10px'}} onClick={onClick}>
-			<Button text="カラムに追加"/>
-		</a>
-	)
-}
+const AddColumnButton = ({onClick}: Props) =>
+	<a style={{margin: '0 10px'}} onClick={onClick}>
+		<Button text="カラムに追加"/>
+	</a>
 
-export default connect(undefined, (dispatch: Dispatch, {user}: {user: User}) => ({
+type OwnProps = {
+	user: User
+};
+
+const mapDispatchToProps = (dispatch: Dispatch, {user}) => ({
 	onClick() {
 		dispatch(addUserIllusts(user))
 	},
-}))(AddColumnButton)
+})
+
+const connector: Connector<OwnProps, Props> = connect(undefined, mapDispatchToProps)
+export default connector(AddColumnButton)

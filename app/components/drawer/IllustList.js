@@ -1,15 +1,13 @@
 // @flow
 import React from 'react'
 import type {Illust} from '../../types/illust'
-import type {DrawerType} from '../../types/drawer'
 import Loading from '../common/Loading'
 import Infinite from '../common/Infinite'
 import Box from '../box'
 
-type Props = {
-	type: DrawerType,
+export type Props = {
 	illusts: Illust[],
-	onIntersect: (type: DrawerType) => void,
+	onIntersect: () => void,
 };
 
 const styles = {
@@ -18,7 +16,7 @@ const styles = {
 	backgroundColor: '#222426',
 }
 
-const IllstList = ({illusts, onIntersect, type}: Props) => {
+const IllstList = ({illusts, onIntersect}: Props) => {
 	const List = illusts.map(illust => (
 		<Box
 			key={illust.id}
@@ -30,12 +28,9 @@ const IllstList = ({illusts, onIntersect, type}: Props) => {
 	if (illusts.length === 0) {
 		return <Loading wrapStyle={styles}/>
 	}
-	const handleIntersect = () => {
-		onIntersect(type)
-	}
 	return (
 		<div style={styles}>
-			<Infinite onIntersect={handleIntersect}>
+			<Infinite onIntersect={onIntersect}>
 				{List}
 			</Infinite>
 		</div>

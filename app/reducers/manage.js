@@ -75,8 +75,6 @@ export default function (state: Manage = initManageState, action: Action): $Shap
 	switch (action.type) {
 		case 'INIT':
 			return {...state, ...closeState}
-		case 'LOGOUT':
-			return {...state, ...closeState, isModal: true, modalType: 'LOGIN'}
 		case 'TOGGLE_DROPDOWN':
 			return {...state, ...closeState, isDropdown: !state.isDropdown}
 		case 'TOGGLE_SEARCH_FIELD':
