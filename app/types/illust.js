@@ -39,3 +39,9 @@ export type Illust = {|
 |};
 
 export type Illusts = {[key: number]: Illust};
+
+type ID = number;
+
+export type IllustAction =
+	| {|type: 'ADD_BOOKMARK', id: ID, isPublic: bool|}
+;

@@ -4,7 +4,7 @@ import type {ColumnType, ColumnAction} from './column'
 import type {Manage, ManageAction} from './manage'
 import type {Filter, FilterAction} from './filter'
 import type {ApiAction} from './api'
-import type {Illusts} from './illust'
+import type {Illusts, IllustAction} from './illust'
 import type {Users} from './user'
 import type {Auth, AuthAction} from './auth'
 import type {Config, ConfigAction} from './config'
@@ -30,6 +30,7 @@ export type Action =
 	| AuthAction
 	| ConfigAction
 	| DrawerAction
+	| IllustAction
 ;
 
 export type State = {

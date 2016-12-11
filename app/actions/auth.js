@@ -1,42 +1,25 @@
 // @flow
-import Pixiv from '../util/pixiv'
-import type {Action, Dispatch, State} from '../types'
+import type {Action} from '../types'
+import * as Actions from '../constants/auth'
 
-export const logout = (): Action => ({type: 'LOGOUT'})
+export const logout = (): Action => ({type: Actions.LOGOUT})
+export const loginFailure = (): Action => ({type: Actions.LOGIN_FAILURE})
+export const clearError = (): Action => ({type: Actions.CLEAR_ERROR})
+export const autoLogin = (): Action => ({type: Actions.AUTO_LOGIN})
 
-export const loginIfNotLogined = async ({auth: {username, password}}: State) => {
-	const authInfo = Pixiv.authInfo()
-	if (!authInfo && username && password) {
-		await Pixiv.login(username, password)
-	}
-}
+export const login = (username: string, password: string): Action => ({
+	type: Actions.LOGIN_REQUEST,
+	username,
+	password,
+})
 
-export function init() {
-	return async (
-		dispatch: Dispatch,
-		getState: () => State
-	): Promise<void> | Action => {
-		const {username, password} = getState().auth
-		if (username && password) {
-			await dispatch(login(username, password))
-		} else {
-			dispatch(logout())
-			dispatch({type: 'INIT'})
-		}
-	}
-}
+export const setAuth = (username: string, password: string): Action => ({
+	type: Actions.SET_AUTH,
+	username,
+	password,
+})
 
-export function login(username: string, password: string): (
-	dispatch: Dispatch
-) => Promise<Action> {
-	return async dispatch => {
-		dispatch({type: 'LOGIN_REQUEST'})
-		try {
-			await Pixiv.login(username, password)
-			dispatch({type: 'LOGIN_SUCCESS', username, password})
-			return dispatch({type: 'CLOSE_MODAL'})
-		} catch (err) {
-			return dispatch({type: 'LOGIN_FAILURE'})
-		}
-	}
-}
+export const authSending = (sending: bool): Action => ({
+	type: Actions.AUTH_SENDING_REQUEST,
+	sending,
+})
