@@ -1,6 +1,6 @@
 // @flow
-import Pixiv, {normalizeIllusts, parseUrl} from '../util/pixiv'
 import type {Endpoint, Params} from '../types/column'
+import Pixiv, {normalizeIllusts, parseUrl} from './pixiv'
 
 type FetchResponse = {
 	response: Object,

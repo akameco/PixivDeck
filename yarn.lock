@@ -5543,9 +5543,9 @@ webpack-dev-server@^1.16.2:
     supports-color "^3.1.1"
     webpack-dev-middleware "^1.4.0"
 
-webpack-merge@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/webpack-merge/-/webpack-merge-1.1.0.tgz#e51d941c75f180219e73cc514cbf709f109ea26f"
+webpack-merge@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/webpack-merge/-/webpack-merge-1.1.1.tgz#2816dce279f38fe05d62b6411144b7638553e61c"
   dependencies:
     lodash.clonedeep "^4.5.0"
     lodash.differencewith "^4.5.0"
