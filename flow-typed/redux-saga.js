@@ -199,7 +199,7 @@ declare module 'redux-saga/effects' {
 
   declare type SelectEffect<Fn, Args> = $npm$ReduxSaga$IOEffect & {
     SELECT: {
-      selector?: Fn,
+      selector: Fn,
       args: Args,
     }
   }
@@ -477,7 +477,8 @@ declare module 'redux-saga/effects' {
     spawn: SpawnFn,
     join: JoinFn,
     cancel: CancelFn,
-    select: SelectFn,
+    // select: SelectFn,
+    select: Function,
     actionChannel: ActionChannelFn,
     race: RaceFn,
     cancelled: () => CancelledEffect,
