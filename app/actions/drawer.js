@@ -2,7 +2,7 @@
 import type {Action, Dispatch, State} from '../types'
 import type {User, Profile} from '../types/user'
 import type {DrawerType} from '../types/drawer'
-import Pixiv, {normalizeIllusts} from '../util/pixiv'
+import Pixiv, {normalizeIllusts} from '../api/pixiv'
 import {getNextUrl} from '../reducers/drawer'
 import {apiRequestSuccess} from './api'
 

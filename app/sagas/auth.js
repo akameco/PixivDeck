@@ -25,11 +25,14 @@ function * authorize(username: string, password: string): Generator<*, *, *> {
 
 export function * autoLogin(): Generator<*, *, *> {
 	const {username, password} = yield select((state: State) => state.auth)
-	if (username && password) {
-		yield call(Api.login, username, password)
-	} else {
+	try {
+		if (username && password) {
+			yield call(Api.login, username, password)
+			return true
+		}
 		yield put(logout())
-	}
+		return false
+	} catch (err) { }
 }
 
 function * loginFlow(): Generator<*, *, *> {

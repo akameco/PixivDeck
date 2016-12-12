@@ -2,7 +2,7 @@
 import React, {Component} from 'react'
 import {findDOMNode} from 'react-dom'
 import throttle from 'lodash.throttle'
-import Pixiv from '../../util/pixiv'
+import Pixiv from '../../api/pixiv'
 import PopoverAuto from './PopoverAuto'
 import UsersOver from './UsersOver'
 import styles from './SearchField.css'

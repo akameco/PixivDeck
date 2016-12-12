@@ -1,6 +1,7 @@
 // @flow
 import {fork, take, call, select, put} from 'redux-saga/effects'
 import * as Actions from '../constants/column'
+import * as endpoint from '../constants/endpoint'
 import {getColumn} from '../reducers'
 import type {Endpoint, Params} from '../types/column'
 import {
@@ -23,24 +24,44 @@ export function * refreshAllColumns(): Generator<*, *, *> {
 }
 
 function * add(id: Id, endpoint: Endpoint, inputParams: Params): Generator<*, *, *> {
-	const {response, params} = yield call(Api.fetch, endpoint, inputParams)
-	yield put(apiRequestSuccess(response))
-	yield put(addColumnIllusts(id, response.result))
-	return {response, params}
+	try {
+		const {response, params} = yield call(Api.fetch, endpoint, inputParams)
+		yield put(apiRequestSuccess(response))
+		yield put(addColumnIllusts(id, response.result))
+		return {response, params}
+	} catch (err) {
+		console.error(err)
+	}
 }
 
+const checkEndpoint = (target: Endpoint) => target === endpoint.FOLLOW || target === endpoint.FOLLOW
+
 function * checkUpdate(id: Id): Generator<*, *, *> {
-	yield call(autoLogin)
 	const state = yield select()
 	const column = getColumn(state, id)
+
+	if (checkEndpoint(column.endpoint)) {
+		const isLogin = yield call(autoLogin)
+		if (!isLogin) {
+			return false
+		}
+	}
+
 	const opts = {...column.params, ...resetParam}
 	yield call(add, id, column.endpoint, opts)
 }
 
 function * fetchColumn(id: Id) {
-	yield call(autoLogin)
 	const state = yield select()
 	const column = getColumn(state, id)
+
+	if (checkEndpoint(column.endpoint)) {
+		const isLogin = yield call(autoLogin)
+		if (!isLogin) {
+			return false
+		}
+	}
+
 	const {params} = yield call(add, id, column.endpoint, column.params)
 
 	if (params) {

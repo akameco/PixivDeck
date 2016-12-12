@@ -1,3 +1,4 @@
+// @flow
 import React from 'react'
 import {render} from 'react-dom'
 import {Provider} from 'react-redux'
@@ -6,23 +7,19 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import type {State} from './types'
 import configureStore from './store'
 import App from './components'
-import Pixiv from './util/pixiv'
+import Api from './api'
 import './app.global.css'; // eslint-disable-line
 
 injectTapEventPlugin()
 
 async function init() {
-	const storage: State = localStorage.getItem('store')
-	let initialState: State = storage ? JSON.parse(storage) : {}
+	const storage: ?string = localStorage.getItem('store')
+	let initialState: $Shape<State> = storage ? JSON.parse(storage) : {}
 
-	const {auth, manage, columns} = initialState
+	const {auth, columns} = initialState
 
-	if (auth && manage) {
-		const {username, password} = auth
-		const {isLogin} = manage
-		if (username && password && isLogin) {
-			await Pixiv.login(username, password)
-		}
+	if (auth && auth.username && auth.password) {
+		await Api.login(auth.username, auth.password)
 	} else if (columns) {
 		initialState = {columns: initialState.columns}
 	}
