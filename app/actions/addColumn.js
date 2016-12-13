@@ -20,6 +20,9 @@ const addColumn = (
 	params,
 })
 
+const M = 1000 * 60
+const H = 1000 * 60 * 60
+
 export const addBookmarkColumn = (isPublic: bool) => {
 	return (dispatch: Dispatch) => {
 		const userId = Pixiv.authInfo().user.id
@@ -31,7 +34,7 @@ export const addBookmarkColumn = (isPublic: bool) => {
 			restrict,
 		}
 
-		dispatch(addColumn(endpoint.BOOKMARKS_ILLUST, opts, title, 1000 * 60))
+		dispatch(addColumn(endpoint.BOOKMARKS_ILLUST, opts, title, H))
 	}
 }
 
@@ -43,28 +46,28 @@ export const addFollowColumn = (isPublic: bool) => {
 			restrict,
 		}
 
-		dispatch(addColumn(endpoint.FOLLOW, opts, title, 1000 * 60))
+		dispatch(addColumn(endpoint.FOLLOW, opts, title, M))
 	}
 }
 
 export const addIllustRankingColumn = (mode: $Keys<typeof ranking.ILLUST_RANKING>) =>
 	(dispatch: Dispatch) => {
-		dispatch(addColumn(endpoint.RANKING, {mode}, `${ranking.ILLUST_RANKING[mode]}ランキング`, 1000 * 60))
+		dispatch(addColumn(endpoint.RANKING, {mode}, `${ranking.ILLUST_RANKING[mode]}ランキング`, 3 * H))
 	}
 
 export const addIllustR18RankingColumn = (mode: $Keys<typeof ranking.ILLUST_R18_RANKING>) =>
 	(dispatch: Dispatch) => {
-		dispatch(addColumn(endpoint.RANKING, {mode}, `${ranking.ILLUST_R18_RANKING[mode]}ランキング`, 1000 * 60))
+		dispatch(addColumn(endpoint.RANKING, {mode}, `${ranking.ILLUST_R18_RANKING[mode]}ランキング`, 3 * H))
 	}
 
 export const addSearchIllustColumn = (word: string) => {
 	return (dispatch: Dispatch) => {
-		dispatch(addColumn(endpoint.SEARCH, {word}, word, 1000 * 60))
+		dispatch(addColumn(endpoint.SEARCH, {word}, word, M))
 	}
 }
 
 export const addUserIllusts = ({id, name, account}: User) => {
 	return (dispatch: Dispatch) => {
-		dispatch(addColumn(endpoint.USER_ILLUSTS, {userId: id}, `${name}(${account})`, 1000 * 60 * 60))
+		dispatch(addColumn(endpoint.USER_ILLUSTS, {userId: id}, `${name}(${account})`, 3 * H))
 	}
 }

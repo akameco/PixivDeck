@@ -5,8 +5,6 @@ import * as Actions from '../constants/column'
 import {getIllusts} from '../reducers'
 import {nextPage} from './nextColumnPage'
 
-type Id = number;
-
 function * fetchUntilLimit(id: Id): Generator<*, *, *> {
 	const state = yield select()
 	let illusts = getIllusts(state, id)

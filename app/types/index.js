@@ -9,6 +9,8 @@ import type {Users} from './user'
 import type {Auth, AuthAction} from './auth'
 import type {Config, ConfigAction} from './config'
 import type {Drawer, DrawerAction} from './drawer'
+import type {Popover, PopoverAction} from './popover'
+import type {MiscAction} from './misc'
 
 export type Entities = {
 	users: Users,
@@ -31,6 +33,8 @@ export type Action =
 	| ConfigAction
 	| DrawerAction
 	| IllustAction
+	| MiscAction
+	| PopoverAction
 ;
 
 export type State = {
@@ -43,6 +47,7 @@ export type State = {
 	illustById: Illusts,
 	userById: Users,
 	drawer: Drawer,
+	popover: Popover,
 };
 
 export type Dispatch = ReduxDispatch<State, Action>;

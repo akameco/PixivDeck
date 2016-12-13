@@ -34,17 +34,15 @@ export type ColumnType = {
 
 export type Columns = {[key: number]: ColumnType};
 
-type ID = number;
-
 export type ColumnAction =
-	| {|type: 'ADD_COLUMN', id: ID, title: string, endpoint: Endpoint, params: Params, timer: ID|}
-	| {|type: 'ADD_COLUMN_ILLUSTS', id: ID, ids: Ids|}
-	| {|type: 'NEXT_COLUMN_ILLUSTS', id: ID, ids: Ids|}
-	| {|type: 'SET_PARAMS', id: ID, params: Params|}
-	| {|type: 'SET_COLUMN_MIN_BOOKMARKS', id: ID, minBookmarks: ID|}
-	| {|type: 'CLOSE_COLUMN', id: ID|}
+	| {|type: 'ADD_COLUMN', id: Id, title: string, endpoint: Endpoint, params: Params, timer: number|}
+	| {|type: 'ADD_COLUMN_ILLUSTS', id: Id, ids: Ids|}
+	| {|type: 'NEXT_COLUMN_ILLUSTS', id: Id, ids: Ids|}
+	| {|type: 'SET_PARAMS', id: Id, params: Params|}
+	| {|type: 'SET_COLUMN_MIN_BOOKMARKS', id: Id, minBookmarks: number|}
+	| {|type: 'CLOSE_COLUMN', id: Id|}
 	| {|type: 'REFRESH_ALL_COLUMNS'|}
-	| {|type: 'NEXT_COLUMN_PAGE', id: ID|}
-	| {|type: 'CHECK_COLUMN_UPDATE', id: ID|}
-	| {|type: 'FETCH_COLUMN', id: ID|}
+	| {|type: 'NEXT_COLUMN_PAGE', id: Id|}
+	| {|type: 'CHECK_COLUMN_UPDATE', id: Id|}
+	| {|type: 'FETCH_COLUMN', id: Id|}
 ;

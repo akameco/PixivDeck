@@ -2,7 +2,7 @@
 import React from 'react'
 import type {User} from '../../types/user'
 import type {Illust} from '../../types/illust'
-import BoxHeader from './BoxHeaderContainer'
+import BoxHeader from './header/BoxHeader'
 import BoxFooter from './footer/BoxFooter'
 import BoxImage from './BoxImage'
 import styles from './Box.css'
@@ -11,6 +11,7 @@ type Props = {
 	illust: Illust,
 	user: User,
 	isIllustOnly: bool,
+	isIllustComment: bool,
 	onClick: () => void,
 	onClickUser: () => void,
 	onClickTag: (tag: string) => void,
@@ -24,33 +25,18 @@ const Box = ({
 	onClickTag,
 	onClickUser,
 	isIllustOnly,
+	isIllustComment,
 	onContextMenu,
 }: Props) => {
-	const {
-		name,
-		account,
-		profileImageUrls,
-	} = user
-
-	const {
-		title,
-		caption,
-		isBookmarked,
-	} = illust
-
 	const tags = illust.tags.map(x => x.name)
 
 	return (
 		<div className={styles.box} onContextMenu={onContextMenu}>
 			{!isIllustOnly &&
 				<BoxHeader
-					id={illust.id}
-					name={name}
-					account={account}
-					img={profileImageUrls.medium}
-					title={title}
-					isBookmarked={isBookmarked}
-					caption={caption}
+					user={user}
+					illust={illust}
+					isIllustComment={isIllustComment}
 					onClick={onClickUser}
 					/>
 			}

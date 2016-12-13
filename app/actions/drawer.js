@@ -6,7 +6,9 @@ import Pixiv, {normalizeIllusts} from '../api/pixiv'
 import {getNextUrl} from '../reducers/drawer'
 import {apiRequestSuccess} from './api'
 
-export const openUserDrawer = (id: number): Action => ({type: 'OPEN_DRAWER', id})
+export const openUserDrawer = (id: number): Action => (
+	{type: 'OPEN_DRAWER', id}
+)
 
 const addDrawerIllusts = (ids: number[], drawerType: DrawerType): Action => (
 	{type: 'DRAWER_ADD_ILLUSTS', ids, drawerType}
@@ -16,8 +18,16 @@ const setNextUrl = (url: string, drawerType: DrawerType): Action => (
 	{type: 'DRAWER_SET_NEXT_URL', url, drawerType}
 )
 
-const addDrawerUser = (user: User): Action => ({type: 'DRAWER_ADD_USER', user})
-const addDrawerProfile = (profile: Profile): Action => ({type: 'DRAWER_ADD_PROFILE', profile})
+export const follow = (id: number): Action => ({type: 'FOLLOW', id})
+export const unFollow = (id: number) => ({type: 'UN_FOLLOW', id})
+
+const addDrawerUser = (user: User): Action => (
+	{type: 'DRAWER_ADD_USER', user}
+)
+
+const addDrawerProfile = (profile: Profile): Action => (
+	{type: 'DRAWER_ADD_PROFILE', profile}
+)
 
 const fetchDrawerData = (data: Object, type: DrawerType) => {
 	return async (dispatch: Dispatch): Promise<Object> => {
@@ -55,19 +65,5 @@ export const fetchUserDetail = (id: number) => {
 		const {user, profile} = await Pixiv.userDetail(id)
 		dispatch(addDrawerUser(user))
 		dispatch(addDrawerProfile(profile))
-	}
-}
-
-export const follow = (id: number) => {
-	return async (dispatch: Dispatch) => {
-		await Pixiv.userFollowAdd(id)
-		dispatch(fetchUserDetail(id))
-	}
-}
-
-export const unFollow = (id: number) => {
-	return async (dispatch: Dispatch) => {
-		await Pixiv.userFollowDelete(id)
-		dispatch(fetchUserDetail(id))
 	}
 }

@@ -23,6 +23,16 @@ class Api {
 		}
 	}
 
+	static async userFollowAdd(id: number) {
+		return await Pixiv.userFollowAdd(id)
+	}
+
+	static async userFollowDelete(id: number) {
+		return await Pixiv.userFollowDelete(id)
+	}
+	static async userIllusts(id, type) {
+		return await Pixiv.userIllusts(id, {type})
+	}
 	static async illustBookmarkAdd(id: number, isPublic: bool = true): Promise<Object> {
 		const restrict = isPublic ? 'public' : 'private'
 		return await Pixiv.illustBookmarkAdd(id, {restrict})
