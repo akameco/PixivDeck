@@ -2,8 +2,6 @@
 import type {Action} from '../types'
 import type {Params} from '../types/column'
 
-type Id = number;
-
 export const setPrams = (id: Id, params: Params): Action => (
 	{type: 'SET_PARAMS', id, params}
 )

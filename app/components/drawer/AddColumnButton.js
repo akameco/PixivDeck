@@ -5,7 +5,7 @@ import type {Connector} from 'react-redux'
 import type {Dispatch} from '../../types'
 import type {User} from '../../types/user'
 import {addUserIllusts} from '../../actions'
-import Button from '../common/button'
+import Button from '../common/Button'
 
 type Props = {
 	onClick: () => void,
@@ -13,7 +13,7 @@ type Props = {
 
 const AddColumnButton = ({onClick}: Props) =>
 	<a style={{margin: '0 10px'}} onClick={onClick}>
-		<Button text="カラムに追加"/>
+		<Button label="カラムに追加"/>
 	</a>
 
 type OwnProps = {

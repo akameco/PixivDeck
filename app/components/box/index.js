@@ -15,10 +15,10 @@ import {
 	openUserDrawer,
 	addBookmark,
 	addSearchIllustColumn,
+	setWallpaper,
+	shareTwitter,
+	openPixiv,
 } from '../../actions'
-import {openPixiv} from '../../actions/openPixiv'
-import {shareTwitter} from '../../actions/shareTwitter'
-import {setWallpaper} from '../../actions/setWallpaper'
 import Box from './Box'
 
 const {Menu, MenuItem} = remote
@@ -27,6 +27,7 @@ type Props = {
 	illust: Illust,
 	user: User,
 	isIllustOnly: bool,
+	isIllustComment: bool,
 	openUserDrawer: () => void,
 	openPreview: () => void,
 	addSearchIllustColumn: (tag: string) => void,
@@ -125,6 +126,7 @@ class BoxContainer extends Component {
 			isIllustOnly,
 			openPreview,
 			openUserDrawer,
+			isIllustComment,
 		} = this.props
 
 		return (
@@ -132,6 +134,7 @@ class BoxContainer extends Component {
 				user={user}
 				illust={illust}
 				isIllustOnly={isIllustOnly}
+				isIllustComment={isIllustComment}
 				onClick={openPreview}
 				onClickUser={openUserDrawer}
 				onClickTag={this.handleTagClick}
@@ -148,6 +151,7 @@ type OwnProps = {
 const mapStateToProps = (state: State, {illust}) => ({
 	user: getUser(state, illust.user),
 	isIllustOnly: state.config.isIllustOnly,
+	isIllustComment: state.config.isIllustComment,
 })
 
 const mapDispatchToProps = (dispatch: Dispatch, {illust}) => {

@@ -11,6 +11,7 @@ import config from './config'
 import illustById, * as fromIllustById from './illustById'
 import userById, * as fromUserById from './userById'
 import drawer from './drawer'
+import popover from './popover'
 
 const rootReducer = combineReducers({
 	manage,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
 	illustById,
 	userById,
 	drawer,
+	popover,
 })
 
 export const getColumn = ({columns}: State, id: number) =>
@@ -39,8 +41,7 @@ export const getIllusts = (state: State, columnId: number) => {
 	const column = getColumn(state, columnId)
 	return column.ids.map(id =>
 		getIllust(state, id))
-		.filter(v => filterByTags(v, state.filter.tags))
-		.filter(v => filterByMinBookmarks(v, column.minBookmarks))
+		.filter(v => filterByTags(v, state.filter.tags) && filterByMinBookmarks(v, column.minBookmarks))
 }
 
 export const getDrawerIllusts = (state: State) =>
