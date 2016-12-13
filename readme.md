@@ -22,6 +22,18 @@
 
 <img src="https://i.gyazo.com/af0a101f26b4603289b2496c0162193f.gif"/>
 
+### Popover
+
+<img src="https://i.gyazo.com/bf3064f4737bef0d1add2cd659f1926f.gif">
+
+### Bookmarks Filter
+
+<img src="https://i.gyazo.com/9c9a84d53c0a64301d1f25431b40d77f.gif">
+
+### Tag Filter
+
+<img src="https://i.gyazo.com/dd4f22ed5e441e2a73b2092dce169f0b.gif">
+
 ## Download
 
 ### MacOS
