@@ -2,9 +2,10 @@
 import React from 'react'
 
 export type Props = {
-	isDrawer: bool,
-	closeDrawer: () => void,
+	open: bool,
 	children?: React$Element<any>,
+	onRequestClose: () => void,
+	width?: number,
 };
 
 const defaultStyle = {
@@ -31,7 +32,6 @@ const defaultStyle = {
 	},
 	drawer: {
 		zIndex: 900,
-		width: 600,
 		position: 'absolute',
 		top: 0,
 		bottom: 0,
@@ -45,25 +45,37 @@ const defaultStyle = {
 	},
 }
 
-const Drawer = ({isDrawer, closeDrawer, children}: Props) => {
-	const overlayStyle = {...defaultStyle.overlay}
-	const drawerStyle = {...defaultStyle.drawer}
-	drawerStyle.right = `-${drawerStyle.width}px`
+class Drawer extends React.PureComponent {
+	props: Props
 
-	if (isDrawer) {
-		drawerStyle.transform = `translateX(-${drawerStyle.width}px)`
-		overlayStyle.opacity = 1
-		overlayStyle.visibility = 'visible'
-	}
+	render() {
+		const {
+			open,
+			onRequestClose,
+			children,
+			width,
+		} = this.props
 
-	return (
-		<div style={defaultStyle.root}>
-			<div style={overlayStyle} onClick={closeDrawer}/>
-			<div style={drawerStyle}>
-				{children}
+		const overlayStyle = {...defaultStyle.overlay}
+		const drawerStyle = {...defaultStyle.drawer}
+		drawerStyle.width = width || 600
+		drawerStyle.right = `-${drawerStyle.width}px`
+
+		if (open) {
+			drawerStyle.transform = `translateX(-${drawerStyle.width}px)`
+			overlayStyle.opacity = 1
+			overlayStyle.visibility = 'visible'
+		}
+
+		return (
+			<div style={defaultStyle.root}>
+				<div style={overlayStyle} onClick={onRequestClose}/>
+				<div style={drawerStyle}>
+					{open && children}
+				</div>
 			</div>
-		</div>
-	)
+		)
+	}
 }
 
 export default Drawer

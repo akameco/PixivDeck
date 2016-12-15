@@ -4,17 +4,19 @@ import {connect} from 'react-redux'
 import type {State} from '../types'
 import type {Manage} from '../types/manage'
 import type {ColumnType} from '../types/column'
+import {closeDrawer} from '../actions'
 import IllustPreview from './preview/illust'
 import MangaPreview from './preview/manga'
 import Modal from './modal'
 import Header from './header'
 import Columns from './columns'
 import Drawer from './drawer'
-import UserDrawer from './drawer/UserDrawerContainer'
+import UserDrawer from './UserDrawer'
 
 type Props = {
 	columns: Array<ColumnType>,
-	manage: Manage
+	manage: Manage,
+	dispatch: Dispatch,
 };
 
 class App extends Component {
@@ -29,17 +31,24 @@ class App extends Component {
 		}
 	}
 
+	handleClose = () => {
+		this.props.dispatch(closeDrawer())
+	}
+
 	render() {
-		const {manage, columns} = this.props
-		const {isModal, isDrawer} = manage
+		const {columns, manage} = this.props
 
 		return (
 			<div>
 				<Header/>
 				<Columns columns={columns}/>
 				{this.renderPreview()}
-				<Drawer>
-					{isDrawer && <UserDrawer/>}
+				<Drawer
+					open={manage.isDrawer}
+					onRequestClose={this.handleClose}
+					width={600}
+					>
+					<UserDrawer/>
 				</Drawer>
 				{isModal && <Modal/>}
 			</div>
@@ -47,7 +56,7 @@ class App extends Component {
 	}
 }
 
-function mapStateToProps(state: State) {
+const mapStateToProps = (state: State) => {
 	const {manage, columns} = state
 
 	return {
