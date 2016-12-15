@@ -12,6 +12,7 @@ import ModalWrapper from './ModalWrapper'
 
 type Props = {
 	modalType: ModalType,
+	open: bool,
 	closeModal: () => void,
 };
 
@@ -31,17 +32,27 @@ class Modal extends Component {
 	}
 
 	render() {
-		const {modalType, closeModal} = this.props
+		const {
+			modalType,
+			closeModal,
+			open,
+		} = this.props
+
 		return (
-			<ModalWrapper onClose={closeModal} title={'select'}>
+			<ModalWrapper
+				onClose={closeModal}
+				title={'select'}
+				open={open}
+				>
 				{this.renderModal(modalType)}
 			</ModalWrapper>
 		)
 	}
 }
 
-const mapStateToProps = ({manage: {modalType}}: State) => ({
+const mapStateToProps = ({manage: {modalType, isModal}}: State) => ({
 	modalType,
+	open: isModal,
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({

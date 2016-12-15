@@ -50,7 +50,7 @@ class App extends Component {
 					>
 					<UserDrawer/>
 				</Drawer>
-				{isModal && <Modal/>}
+				<Modal/>
 			</div>
 		)
 	}
