@@ -21,36 +21,62 @@ const Title = ({title}: {title: string}) => <div className={styles.title}>{title
 
 type State = {
 	open: bool,
+	focus: bool,
 	anchorEl: ?EventTarget
 };
 
 export default class BoxHeader extends React.PureComponent {
 	props: Props
+	delayTimer: ?number
 	state: State = {
 		open: false,
+		focus: false,
 		anchorEl: null,
 	}
 
 	handleMouseEnter = (event: Event) => {
 		event.preventDefault()
-		this.setState({
-			open: true,
-			anchorEl: event.target,
-		})
+		this.delaySetPopup(true, 0.2)
+		this.setState({anchorEl: event.target})
 	}
 
 	handlePopoverEnter = () => {
-		this.setState({open: true})
+		this.setPopupVisible(true)
 	}
 
 	handleMouseLeave = (event: MouseEvent) => {
 		event.preventDefault()
-		this.setState({open: false})
+		this.setPopupVisible(false)
 	}
 
 	handleClick = () => {
-		this.setState({open: false})
+		this.setPopupVisible(false)
 		this.props.onClick()
+	}
+
+	clearDelayTimer() {
+		if (this.delayTimer) {
+			clearTimeout(this.delayTimer)
+			this.delayTimer = null
+		}
+	}
+
+	setPopupVisible(open: bool) {
+		this.clearDelayTimer()
+		this.setState({
+			open,
+		})
+	}
+
+	delaySetPopup(open: bool, ms?: number) {
+		if (!ms) {
+			this.setPopupVisible(open)
+			return false
+		}
+		const delay = ms * 1000
+		this.delayTimer = setTimeout(() => {
+			this.setPopupVisible(open)
+		}, delay)
 	}
 
 	render() {
