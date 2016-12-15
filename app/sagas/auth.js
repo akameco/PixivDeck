@@ -1,6 +1,6 @@
 // @flow
 import {put, fork, take, call, select} from 'redux-saga/effects'
-import * as Actions from '../constants/auth'
+import * as Actions from '../types/auth'
 import {loginFailure, authSending, clearError, setAuth, logout} from '../actions/auth'
 import {openModal, closeModal} from '../actions/manage'
 import type {State} from '../types'
