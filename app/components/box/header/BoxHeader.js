@@ -74,7 +74,7 @@ export default class BoxHeader extends React.PureComponent {
 			<div className={styles.base}>
 				<div
 					onClick={this.handleClick}
-					style={{margin: 5}}
+					style={{margin: 5, cursor: 'pointer'}}
 					onMouseEnter={this.handleMouseEnter}
 					onMouseLeave={this.handleMouseLeave}
 					>
