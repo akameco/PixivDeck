@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import EventListener from 'react-event-listener'
 import keycode from 'keycode'
 import CloseButton from '../common/CloseButton'
+import Overlay from '../common/Overlay'
 import styles from './ModalWrapper.css'
 
 type Props = {
@@ -15,20 +16,6 @@ type Props = {
 export default class ModalWrapper extends Component {
 	props: Props;
 	_content: typeof Component;
-
-	handleOverlayClick = (event: any) => {
-		let node = event.target
-
-		// モーダル内をクリックしたときは閉じない
-		while (node) {
-			if (node === this._content) {
-				return
-			}
-			node = node.parentNode
-		}
-
-		this.props.onClose()
-	}
 
 	requestClose(buttonClicked: bool) {
 		this.props.onClose()
@@ -56,7 +43,7 @@ export default class ModalWrapper extends Component {
 		}
 
 		return (
-			<div className={styles.wrap} onClick={this.handleOverlayClick}>
+			<div className={styles.root}>
 				{open &&
 					<EventListener
 						target="window"
@@ -72,6 +59,11 @@ export default class ModalWrapper extends Component {
 					<CloseButton onClick={onClose}/>
 					{open && children}
 				</div>
+				<Overlay
+					show={open}
+					style={{zIndex: 800}}
+					onClick={onClose}
+					/>
 			</div>
 		)
 	}

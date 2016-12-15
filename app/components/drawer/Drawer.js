@@ -1,5 +1,8 @@
 // @flow
 import React from 'react'
+import keycode from 'keycode'
+import EventListener from 'react-event-listener'
+import Overlay from '../common/Overlay'
 
 export type Props = {
 	open: bool,
@@ -19,16 +22,6 @@ const defaultStyle = {
 	},
 	overlay: {
 		zIndex: 800,
-		position: 'fixed',
-		top: 0,
-		bottom: 0,
-		left: 0,
-		right: 0,
-		opacity: 0,
-		visibility: 'hidden',
-		transition: 'opacity .2s ease-out',
-		WebkitTransition: '-webkit-transform .2s ease-out',
-		backgroundColor: 'rgba(41, 47, 51, 0.9)',
 	},
 	drawer: {
 		zIndex: 900,
@@ -47,6 +40,12 @@ const defaultStyle = {
 
 class Drawer extends React.PureComponent {
 	props: Props
+
+	handleKeyUp = (event: Event) => {
+		if (keycode(event) === 'esc') {
+			this.props.onRequestClose()
+		}
+	}
 
 	render() {
 		const {
@@ -69,10 +68,20 @@ class Drawer extends React.PureComponent {
 
 		return (
 			<div style={defaultStyle.root}>
-				<div style={overlayStyle} onClick={onRequestClose}/>
+				{open &&
+					<EventListener
+						target="window"
+						onKeyUp={this.handleKeyUp}
+						/>
+				}
 				<div style={drawerStyle}>
 					{open && children}
 				</div>
+				<Overlay
+					show={open}
+					style={defaultStyle.overlay}
+					onClick={onRequestClose}
+					/>
 			</div>
 		)
 	}

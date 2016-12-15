@@ -39,11 +39,7 @@ class Modal extends Component {
 		} = this.props
 
 		return (
-			<ModalWrapper
-				onClose={closeModal}
-				title={'select'}
-				open={open}
-				>
+			<ModalWrapper onClose={closeModal} open={open}>
 				{this.renderModal(modalType)}
 			</ModalWrapper>
 		)
