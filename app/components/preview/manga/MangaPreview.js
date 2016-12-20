@@ -1,5 +1,5 @@
 // @flow
-import React, {Component} from 'react'
+import React from 'react'
 import styles from './MangaPreview.css'
 
 type Props = {
@@ -11,13 +11,9 @@ type State = {
 	isLoad: bool
 };
 
-export default class MangaPreview extends Component {
+export default class MangaPreview extends React.PureComponent {
 	props: Props;
 	state: State = {isLoad: false};
-
-	shouldComponentUpdate(nextProps: Props, nextState: State) {
-		return this.state.isLoad !== nextState.isLoad
-	}
 
 	handleClose = () => {
 		this.props.onClose()

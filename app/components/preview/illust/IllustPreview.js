@@ -1,5 +1,5 @@
 // @flow
-import React, {Component} from 'react'
+import React from 'react'
 import LazyImg from './LazyImg'
 import styles from './IllustPreview.css'
 
@@ -14,12 +14,8 @@ type Props = {
 	onClose: () => void
 };
 
-export default class IllustPreview extends Component {
+export default class IllustPreview extends React.PureComponent {
 	props: Props;
-
-	shouldComponentUpdate(nextProps: Props) {
-		return this.props.isLoaded !== nextProps.isLoaded
-	}
 
 	componentWillUnmount() {
 		this.props.onUnLoad()

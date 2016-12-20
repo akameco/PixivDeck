@@ -1,8 +1,7 @@
 // @flow
 import React, {Component} from 'react'
-import type {Connector} from 'react-redux'
 import {connect} from 'react-redux'
-import isEqual from 'lodash.isequal'
+import type {Connector} from 'react-redux'
 import type {Dispatch, State as ReduxState} from '../../types'
 import type {Illust} from '../../types/illust'
 import type {ColumnType} from '../../types/column'
@@ -30,12 +29,6 @@ class ColumnContainer extends Component {
 
 	componentDidMount() {
 		this.init()
-	}
-
-	shouldComponentUpdate(nextProps, nextState) {
-		const propsDiff = isEqual(nextProps, this.props)
-		const stateDiff = isEqual(nextState, this.state)
-		return !(propsDiff && stateDiff)
 	}
 
 	componentWillUnmount() {
