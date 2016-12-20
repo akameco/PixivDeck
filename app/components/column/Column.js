@@ -1,7 +1,6 @@
 // @flow
 import React, {Component} from 'react'
 import {findDOMNode} from 'react-dom'
-import isEqual from 'lodash.isequal'
 import type {Illust} from '../../types/illust'
 import type {ColumnType} from '../../types/column'
 import Loading from '../common/Loading'
@@ -28,10 +27,6 @@ export default class Column extends Component {
 
 	state: State = {
 		toTop: false,
-	}
-
-	shouldComponentUpdate(nextProps: Props) {
-		return !isEqual(this.props.illusts, nextProps.illusts)
 	}
 
 	handleTopClick = (e: Event) => {

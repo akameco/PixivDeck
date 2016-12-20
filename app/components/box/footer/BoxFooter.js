@@ -1,5 +1,5 @@
 // @flow
-import React, {Component} from 'react'
+import React from 'react'
 import union from 'lodash.union'
 import Tag from './Tag'
 import styles from './BoxFooter.css'
@@ -9,12 +9,8 @@ type Props = {
 	tags: Array<string>
 };
 
-export default class BoxFooter extends Component {
+export default class BoxFooter extends React.PureComponent {
 	props: Props;
-
-	shouldComponentUpdate(nextProps: Props) {
-		return nextProps.tags.length !== this.props.tags.length
-	}
 
 	render() {
 		const Tags = union(this.props.tags).map(item =>

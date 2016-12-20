@@ -15,7 +15,7 @@ type State = {
 	isLoaded: bool
 };
 
-export default class BoxImage extends Component {
+export default class BoxImage extends React.PureComponent {
 	props: Props;
 	target: Component<*, *, *>;
 	io: Object;
@@ -26,16 +26,6 @@ export default class BoxImage extends Component {
 
 	componentDidMount() {
 		this.init()
-	}
-
-	shouldComponentUpdate(nextProps: Props, nextState: State) {
-		if (this.state.isLoaded !== nextState.isLoaded) {
-			return true
-		}
-		if (this.state.isVisible !== nextState.isVisible) {
-			return true
-		}
-		return false
 	}
 
 	componentWillUnmount() {
