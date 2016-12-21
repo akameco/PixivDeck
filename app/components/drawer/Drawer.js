@@ -19,6 +19,7 @@ const defaultStyle = {
 		right: 0,
 		bottom: 0,
 		overflow: 'hidden',
+		backgroundColor: '#222426',
 	},
 	overlay: {
 		zIndex: 800,

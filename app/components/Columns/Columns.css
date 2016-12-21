@@ -3,6 +3,6 @@
 	left: 50px;
 	width: calc(100% - 50px);
 	height: 100%;
-	background-color: #444448;
 	overflow-y: hidden;
+	background-color: #222426;
 }
