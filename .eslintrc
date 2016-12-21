@@ -40,6 +40,7 @@
 			]
 		}],
 		"react/forbid-component-props": 0,
+		"react/prop-types": 0,
 		"flowtype/boolean-style": ["error", "bool"],
 		"flowtype/define-flow-type": "error",
 		"flowtype/semi": ["error", "always"],

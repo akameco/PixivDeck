@@ -41,9 +41,12 @@ function getStyles({show}: Props): StyleType {
 	return style
 }
 
-class Overlay extends React.Component {
-	props: Props;
+type DefaultProps = {
+	autoLockScrolling: bool,
+	style: Object,
+};
 
+class Overlay extends React.Component<DefaultProps, Props, void> {
 	static defaultProps = {
 		autoLockScrolling: true,
 		style: {},
