@@ -56,44 +56,44 @@ Only MacOS.
 Run this two commands simultaneously in different console tabs.
 
 ```
-$ npm run watch
-$ npm start
+$ yarn run watch
+$ yarn start
 ```
 
 ### Commands
 
-- Init: `$ npm install`
-- Run: `$ npm start`
-- Build renderer process: `$ npm run watch`
+- Init: `$ yarn`
+- Run: `$ yarn start`
+- Build renderer process: `$ yarn run watch`
 
 ## Build
 
 Build renderer process and main process.
 
 ```
-$ npm run build
+$ yarn run build
 ```
 
 ## Package
 Package for your OS.
 
 ```
-$ npm run pack:macos
-$ npm run pack:windows
-$ npm run pack:linux
+$ yarn run pack:macos
+$ yarn run pack:windows
+$ yarn run pack:linux
 ```
 
 Package all(MacOS).
 
 ```
 $ brew install wine
-$ npm run pack
+$ yarn run pack
 ```
 
 remove release directory && Package all && zip all.
 
 ```
-$ npm run release
+$ yarn run release
 ```
 
 
