@@ -2,40 +2,35 @@
 import isEqual from 'lodash.isequal'
 import union from 'lodash.union'
 import type {Action} from '../types'
-import type {ColumnType as Column, Params} from '../types/column'
+import type {ColumnType as Column} from '../types/column'
 import initState from './default-column-state'
 
 type State = Array<Column>;
 
-const resetParams = (state: Params): $Shape<Params> => {
-	if (state && state.maxBookmarkId) {
-		return {...state, offset: 0, maxBookmarkId: null}
-	}
-	return {...state, offset: 0}
-}
-
-function params(state: Params, action: Action): $Shape<Params> {
-	switch (action.type) {
-		case 'INIT':
-		case 'ADD_COLUMN':
-			return {...state, ...resetParams(state)}
-		case 'SET_PARAMS':
-			return {...state, ...action.params}
-		default:
-			return state
-	}
-}
-
-function column(state: Column, action: Action): $Shape<Column> {
+function column(state: Column, action: Action): Column {
 	if (action.id && state.id !== action.id) {
 		return state
 	}
 
 	switch (action.type) {
 		case 'INIT':
-			return {...state, params: params(state.params, action), ids: []}
+			return {
+				...state,
+				params: {
+					...state.params,
+					offset: 0,
+					maxBookmarkId: null,
+				},
+				ids: [],
+			}
 		case 'SET_PARAMS':
-			return {...state, params: params(state.params, action)}
+			return {
+				...state,
+				params: {
+					...state.params,
+					...action.params,
+				},
+			}
 		case 'ADD_COLUMN_ILLUSTS': {
 			const ids = union([], action.ids, state.ids)
 			return isEqual(ids, state.ids) ? state : {...state, ids}
@@ -66,7 +61,7 @@ export default function columns(state: State = initState, action: Action): State
 			}
 			return [
 				...state,
-				{...defaultState, id, endpoint, params: params(action.params, action), title, timer},
+				{...defaultState, id, endpoint, params: {...action.params, ...action.params}, title, timer},
 			]
 		}
 		case 'CLOSE_COLUMN': {
