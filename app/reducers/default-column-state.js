@@ -4,42 +4,40 @@ import * as endpoint from '../constants/endpoint'
 
 const hour = 1000 * 60 * 60
 
+const defaultState = {
+	endpoint: endpoint.RANKING,
+	timer: hour,
+	ids: [],
+	minBookmarks: 0,
+}
+
 const initState: Array<Column> = [
 	{
 		id: 1,
-		endpoint: endpoint.RANKING,
-		timer: hour,
 		title: 'デイリーランキング',
 		params: {
 			mode: 'day',
 			offset: 0,
 		},
-		ids: [],
-		minBookmarks: 0,
+		...defaultState,
 	},
 	{
 		id: 2,
-		endpoint: endpoint.RANKING,
-		timer: hour,
 		title: 'ウィークリーランキング',
 		params: {
 			mode: 'week',
 			offset: 0,
 		},
-		ids: [],
-		minBookmarks: 0,
+		...defaultState,
 	},
 	{
 		id: 3,
-		endpoint: endpoint.RANKING,
-		timer: hour,
 		title: 'マンスリーランキング',
 		params: {
 			mode: 'month',
 			offset: 0,
 		},
-		ids: [],
-		minBookmarks: 0,
+		...defaultState,
 	},
 ]
 
