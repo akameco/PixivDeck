@@ -45,7 +45,7 @@
     "lodash.union": "^4.6.0",
     "lodash.unionby": "^4.8.0",
     "material-ui": "^0.16.5",
-    "normalizr": "^2.3.0",
+    "normalizr": "^3.1.0",
     "pify": "^2.3.0",
     "pixiv-app-api": "^0.9.1",
     "react": "^15.4.1",
