@@ -11,7 +11,7 @@ import {getUser} from '../../reducers'
 import {
 	openImageView,
 	openMangaPreview,
-	currentIllust,
+	setCurrentIllust,
 	openUserDrawer,
 	addBookmark,
 	addSearchIllustColumn,
@@ -159,7 +159,7 @@ const mapDispatchToProps = (dispatch: Dispatch, {illust}) => {
 	const userId = illust.user
 	return {
 		openPreview() {
-			dispatch(currentIllust(illustId))
+			dispatch(setCurrentIllust(illustId))
 			if (illust.pageCount > 1) {
 				dispatch(openMangaPreview())
 			} else {
