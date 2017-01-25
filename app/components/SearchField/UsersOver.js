@@ -8,7 +8,8 @@ type Props = {
 };
 
 const UsersOver = ({value, onClick}: Props) => {
-	const list = [100, 500, 1000, 3000, 5000, 10000].map(v => {
+	const bookmarkNumbers = [100, 500, 1000, 3000, 5000, 10000]
+	const list = bookmarkNumbers.map(v => {
 		const handleClick = () => onClick(`${value}${v}users入り`)
 		return (
 			<Item key={v} onClick={handleClick} start={value} end={`${v}users入り`}/>
