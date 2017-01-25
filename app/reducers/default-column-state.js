@@ -15,28 +15,19 @@ const initState: Array<Column> = [
 	{
 		id: 1,
 		title: 'デイリーランキング',
-		params: {
-			mode: 'day',
-			offset: 0,
-		},
+		params: {mode: 'day', offset: 0},
 		...defaultState,
 	},
 	{
 		id: 2,
 		title: 'ウィークリーランキング',
-		params: {
-			mode: 'week',
-			offset: 0,
-		},
+		params: {mode: 'week', offset: 0},
 		...defaultState,
 	},
 	{
 		id: 3,
 		title: 'マンスリーランキング',
-		params: {
-			mode: 'month',
-			offset: 0,
-		},
+		params: {mode: 'month', offset: 0},
 		...defaultState,
 	},
 ]
