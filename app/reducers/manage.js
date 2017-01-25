@@ -81,9 +81,9 @@ export default function (state: Manage = initManageState, action: Action): $Shap
 			return {...state, ...closeState, isSearchField: !state.isSearchField}
 		case 'START_IMG_LOADING':
 			return {...state, isImgLoaded: false}
-		case 'SET_IMG_LOADED':
+		case 'FINISH_IMG_LOADED':
 			return {...state, isImgLoaded: true}
-		case 'SELECT_WORK':
+		case 'SET_CURRENT_ILLUST':
 			return {...state, currentIllustId: action.id}
 		case 'START_LOADING':
 			return {...state, isLoading: true}
