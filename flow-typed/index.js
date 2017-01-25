@@ -53,6 +53,10 @@ declare module 'wallpaper' {
 	declare var exports: any;
 }
 
+declare module 'normalizr' {
+	declare var exports: any;
+}
+
 declare type Id = number;
 declare type Username = string;
 declare type Password = string;

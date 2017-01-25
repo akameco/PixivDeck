@@ -5,6 +5,7 @@ import type {Params, Endpoint} from '../types/column'
 import type {User} from '../types/user'
 import * as endpoint from '../constants/endpoint'
 import * as ranking from '../constants/ranking'
+import {HOUR, MINUTE} from '../constants/time'
 
 const addColumn = (
 	endpoint: Endpoint,
@@ -20,9 +21,6 @@ const addColumn = (
 	params,
 })
 
-const M = 1000 * 60
-const H = 1000 * 60 * 60
-
 export const addBookmarkColumn = (isPublic: bool) => {
 	return (dispatch: Dispatch) => {
 		const userId = Pixiv.authInfo().user.id
@@ -34,7 +32,7 @@ export const addBookmarkColumn = (isPublic: bool) => {
 			restrict,
 		}
 
-		dispatch(addColumn(endpoint.BOOKMARKS_ILLUST, opts, title, H))
+		dispatch(addColumn(endpoint.BOOKMARKS_ILLUST, opts, title, HOUR))
 	}
 }
 
@@ -46,28 +44,30 @@ export const addFollowColumn = (isPublic: bool) => {
 			restrict,
 		}
 
-		dispatch(addColumn(endpoint.FOLLOW, opts, title, M))
+		dispatch(addColumn(endpoint.FOLLOW, opts, title, MINUTE))
 	}
 }
 
+const THREE_HOUR = 3 * HOUR
+
 export const addIllustRankingColumn = (mode: $Keys<typeof ranking.ILLUST_RANKING>) =>
 	(dispatch: Dispatch) => {
-		dispatch(addColumn(endpoint.RANKING, {mode}, `${ranking.ILLUST_RANKING[mode]}ランキング`, 3 * H))
+		dispatch(addColumn(endpoint.RANKING, {mode}, `${ranking.ILLUST_RANKING[mode]}ランキング`, THREE_HOUR))
 	}
 
 export const addIllustR18RankingColumn = (mode: $Keys<typeof ranking.ILLUST_R18_RANKING>) =>
 	(dispatch: Dispatch) => {
-		dispatch(addColumn(endpoint.RANKING, {mode}, `${ranking.ILLUST_R18_RANKING[mode]}ランキング`, 3 * H))
+		dispatch(addColumn(endpoint.RANKING, {mode}, `${ranking.ILLUST_R18_RANKING[mode]}ランキング`, THREE_HOUR))
 	}
 
 export const addSearchIllustColumn = (word: string) => {
 	return (dispatch: Dispatch) => {
-		dispatch(addColumn(endpoint.SEARCH, {word}, word, M))
+		dispatch(addColumn(endpoint.SEARCH, {word}, word, MINUTE))
 	}
 }
 
 export const addUserIllusts = ({id, name, account}: User) => {
 	return (dispatch: Dispatch) => {
-		dispatch(addColumn(endpoint.USER_ILLUSTS, {userId: id}, `${name}(${account})`, 3 * H))
+		dispatch(addColumn(endpoint.USER_ILLUSTS, {userId: id}, `${name}(${account})`, THREE_HOUR))
 	}
 }

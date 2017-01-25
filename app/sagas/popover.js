@@ -18,8 +18,9 @@ function * popover({id}: {id: Id}): Generator<IOEffect, *, *> {
 		const {illusts} = yield call(Api.userIllusts, id, type)
 
 		// 3件取得しストアに反映
-		const take3 = illusts.slice(0, 3)
-		yield put(addUserPopoverIllust(take3))
+		const limit = 3
+		const popoverIllust = illusts.slice(0, limit)
+		yield put(addUserPopoverIllust(popoverIllust))
 	} catch (err) {}
 }
 
