@@ -7,6 +7,15 @@ import initState from './default-column-state'
 
 type State = Array<Column>;
 
+const resetParams = {
+	offset: 0,
+	maxBookmarkId: null,
+}
+
+function returnNewColumnIfNeeded(ids: number[], state: Column): Column {
+	return isEqual(ids, state.ids) ? state : {...state, ids}
+}
+
 function column(state: Column, action: Action): Column {
 	if (action.id && state.id !== action.id) {
 		return state
@@ -14,30 +23,16 @@ function column(state: Column, action: Action): Column {
 
 	switch (action.type) {
 		case 'INIT':
-			return {
-				...state,
-				params: {
-					...state.params,
-					offset: 0,
-					maxBookmarkId: null,
-				},
-				ids: [],
-			}
+			return {...state, params: {...state.params, ...resetParams}, ids: []}
 		case 'SET_PARAMS':
-			return {
-				...state,
-				params: {
-					...state.params,
-					...action.params,
-				},
-			}
+			return {...state, params: {...state.params, ...action.params}}
 		case 'ADD_COLUMN_ILLUSTS': {
 			const ids = union([], action.ids, state.ids)
-			return isEqual(ids, state.ids) ? state : {...state, ids}
+			return returnNewColumnIfNeeded(ids, state)
 		}
 		case 'NEXT_COLUMN_ILLUSTS': {
 			const ids = union([], state.ids, action.ids)
-			return isEqual(ids, state.ids) ? state : {...state, ids}
+			return returnNewColumnIfNeeded(ids, state)
 		}
 		case 'SET_COLUMN_MIN_BOOKMARKS':
 			return {...state, minBookmarks: action.minBookmarks}
@@ -61,7 +56,7 @@ export default function columns(state: State = initState, action: Action): State
 			}
 			return [
 				...state,
-				{...defaultState, id, endpoint, params: {...action.params, ...action.params}, title, timer},
+				{...defaultState, id, endpoint, params: {...action.params}, title, timer},
 			]
 		}
 		case 'CLOSE_COLUMN': {
