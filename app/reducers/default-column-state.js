@@ -1,12 +1,11 @@
 // @flow
 import type {ColumnType as Column} from '../types/column'
 import * as endpoint from '../constants/endpoint'
-
-const hour = 1000 * 60 * 60
+import {HOUR} from '../constants/time'
 
 const defaultState = {
 	endpoint: endpoint.RANKING,
-	timer: hour,
+	timer: HOUR,
 	ids: [],
 	minBookmarks: 0,
 }

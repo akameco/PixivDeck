@@ -3,6 +3,7 @@ import isEqual from 'lodash.isequal'
 import union from 'lodash.union'
 import type {Action} from '../types'
 import type {ColumnType as Column} from '../types/column'
+import {MINUTE} from '../constants/time'
 import initState from './default-column-state'
 
 type State = Array<Column>;
@@ -43,7 +44,7 @@ function column(state: Column, action: Action): Column {
 
 const defaultState: $Shape<Column> = {
 	ids: [],
-	timer: 1000 * 60 * 5,
+	timer: 5 * MINUTE,
 	minBookmarks: 0,
 }
 
