@@ -21,7 +21,7 @@ type Props = {
 	onClose: () => void,
 	fetchColumn: () => void,
 	checkColumnUpdate: () => void,
-};
+}
 
 class ColumnContainer extends Component {
 	props: Props;
@@ -68,7 +68,7 @@ class ColumnContainer extends Component {
 
 type OwnProps = {
 	id: number
-};
+}
 
 const mapStateToProps = (state: ReduxState, {id}) => ({
 	column: getColumn(state, id),

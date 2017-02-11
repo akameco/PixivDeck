@@ -6,7 +6,7 @@ import {parseUrl} from './util'
 type FetchResponse = {
 	response: Object,
 	params: ?Params
-};
+}
 
 class Api {
 	static login(username, password) {

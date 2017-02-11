@@ -9,7 +9,7 @@ export type Props = {
 	children?: React$Element<any>,
 	onRequestClose: () => void,
 	width?: number,
-};
+}
 
 const defaultStyle = {
 	root: {

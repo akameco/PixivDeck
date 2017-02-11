@@ -5,7 +5,7 @@ import styles from './HeaderTop.css'
 type Props = {
 	onClickAdd: () => void,
 	onOpenSearchModal: () => void,
-};
+}
 
 const HeaderTop = ({onClickAdd, onOpenSearchModal}: Props) => (
 	<div className={styles.top}>

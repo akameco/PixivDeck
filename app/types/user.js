@@ -8,7 +8,7 @@ export type User = {|
 	|},
 	isFollowed: bool,
 	comment?: string
-|};
+|}
 
 export type Profile = {
 	backgroundImageUrl: string,
@@ -26,6 +26,6 @@ export type Profile = {
 	twitterAccounts: string,
 	twitterUrl: ?string,
 	webpage: string
-};
+}
 
-export type Users = {[key: number]: User};
+export type Users = {[key: number]: User}

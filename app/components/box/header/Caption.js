@@ -5,7 +5,7 @@ import styles from './Caption.css'
 
 type Props = {
 	caption: string,
-};
+}
 
 const Caption = ({caption}: Props) => (
 	<div className={styles.Caption}>

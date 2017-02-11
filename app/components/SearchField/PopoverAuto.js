@@ -6,7 +6,7 @@ type Props = {
 	value: string,
 	keywords: string[],
 	onClick: (word: string) => void,
-};
+}
 
 const PopoverAuto = ({value, keywords, onClick}: Props) => {
 	const list = keywords.map(keyword => {

@@ -10,7 +10,7 @@ export type Props = {
 	addFollowPrivate: () => void,
 	addIllustRanking: (mode: $Keys<typeof ranking.ILLUST_RANKING>) => void,
 	addIllustR18Ranking: (mode: $Keys<typeof ranking.ILLUST_R18_RANKING>) => void,
-};
+}
 
 export default class SelectColumnModal extends Component {
 	props: Props;

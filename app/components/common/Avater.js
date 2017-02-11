@@ -7,7 +7,7 @@ type Props = {
 	style?: Object,
 	className?: string,
 	color?: string,
-};
+}
 
 const getStyles = ({color, size}: $Shape<Props>): Object => {
 	const styles = {

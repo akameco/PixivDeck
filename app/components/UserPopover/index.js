@@ -11,7 +11,7 @@ type Props = {
 	onClick: () => void,
 	illusts: Array<Illust>,
 	dispatch: Dispatch,
-};
+}
 
 class UserPopoverContainer extends React.PureComponent {
 	props: Props

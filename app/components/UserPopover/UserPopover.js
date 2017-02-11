@@ -11,7 +11,7 @@ export type Props = {
 	onClick: () => void;
 	illusts: Array<Illust>;
 	user: User;
-};
+}
 
 const UserPopover = ({user, onClick, illusts}: Props) => {
 	const Images = illusts.map(v =>

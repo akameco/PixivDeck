@@ -9,12 +9,12 @@ export type Props = {
 	isLoginFailure: bool,
 	isLoading: bool,
 	onClick: (username: string, password: string) => void
-};
+}
 
 type State = {
 	username: string,
 	password: string,
-};
+}
 
 export default class LoginModal extends Component {
 	props: Props;

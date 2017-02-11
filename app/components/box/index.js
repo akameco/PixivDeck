@@ -35,7 +35,7 @@ type Props = {
 	openPixiv: () => void,
 	shareTwitter: () => void,
 	setWallpaper: () => void,
-};
+}
 
 class BoxContainer extends Component {
 	props: Props;
@@ -146,7 +146,7 @@ class BoxContainer extends Component {
 
 type OwnProps = {
 	illust: Illust
-};
+}
 
 const mapStateToProps = (state: State, {illust}) => ({
 	user: getUser(state, illust.user),

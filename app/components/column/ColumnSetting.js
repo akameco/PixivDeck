@@ -8,11 +8,11 @@ type Props = {
 	setColumnMinBookmarks: (value: number) => void,
 	minBookmarks: number;
 	open: bool;
-};
+}
 
 type State = {
 	minBookmarks: number;
-};
+}
 
 class ColumnSetting extends React.Component {
 	props: Props

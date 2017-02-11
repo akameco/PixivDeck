@@ -15,7 +15,7 @@ type Props = {
 	illust: Illust,
 	onClick: () => void,
 	isIllustComment: bool,
-};
+}
 
 const Title = ({title}: {title: string}) => <div className={styles.title}>{title}</div>
 
@@ -23,7 +23,7 @@ type State = {
 	open: bool,
 	focus: bool,
 	anchorEl: ?EventTarget
-};
+}
 
 export default class BoxHeader extends React.PureComponent {
 	props: Props

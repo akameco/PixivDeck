@@ -23,7 +23,7 @@ type CloseState = {
 	isMangaView: bool,
 	isModal: bool,
 	isDropdown: bool
-};
+}
 
 const closeState: CloseState = {
 	isImageView: false,

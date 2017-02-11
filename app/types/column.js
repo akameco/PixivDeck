@@ -10,7 +10,7 @@ export type Params = {
 	max_bookmark_id?: ?number,
 	maxBookmarkId?: ?number,
 	word?: string,
-};
+}
 
 export type Endpoint =
 	'/v1/search/illust'
@@ -18,9 +18,8 @@ export type Endpoint =
 	| '/v1/user/bookmarks/illust'
 	| '/v1/user/illusts'
 	| '/v2/illust/follow'
-;
 
-type Ids = number[];
+type Ids = number[]
 
 export type ColumnType = {
 	id: number,
@@ -30,9 +29,9 @@ export type ColumnType = {
 	timer: number,
 	ids: Ids,
 	minBookmarks: number,
-};
+}
 
-export type Columns = {[key: number]: ColumnType};
+export type Columns = {[key: number]: ColumnType}
 
 export type ColumnAction =
 	| {|type: 'ADD_COLUMN', id: Id, title: string, endpoint: Endpoint, params: Params, timer: number|}
@@ -45,4 +44,4 @@ export type ColumnAction =
 	| {|type: 'NEXT_COLUMN_PAGE', id: Id|}
 	| {|type: 'CHECK_COLUMN_UPDATE', id: Id|}
 	| {|type: 'FETCH_COLUMN', id: Id|}
-;
+

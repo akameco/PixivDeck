@@ -16,7 +16,7 @@ type Props = {
 	illusts: Array<Illust>,
 	mangas: Array<Illust>,
 	dispatch: Dispatch
-};
+}
 
 class UserDrawerContainer extends Component {
 	props: Props;

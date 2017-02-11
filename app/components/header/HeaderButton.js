@@ -6,7 +6,7 @@ type Props = {
 	iconType: 'add' | 'searchIllust' | 'setting',
 	onClick: () => void,
 	IconStyle: Object,
-};
+}
 
 const HeaderButton = ({iconType, onClick, IconStyle}: Props) => {
 	const handleClick = (evnet: Event) => {

@@ -6,11 +6,11 @@ type Props = {
 	show: bool,
 	autoLockScrolling: bool,
 	style: Object
-};
+}
 
 type StyleType = {
 	root: Object;
-};
+}
 
 function getStyles({show}: Props): StyleType {
 	const style = {
@@ -44,7 +44,7 @@ function getStyles({show}: Props): StyleType {
 type DefaultProps = {
 	autoLockScrolling: bool,
 	style: Object,
-};
+}
 
 class Overlay extends React.Component<DefaultProps, Props, void> {
 	static defaultProps = {

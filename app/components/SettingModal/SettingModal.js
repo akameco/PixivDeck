@@ -15,11 +15,11 @@ export type Props = {
 	tags: Array<string>,
 	isIllustComment: bool,
 	isIllustOnly: bool,
-};
+}
 
 type State = {
 	value: string
-};
+}
 
 export default class SettingFilterModal extends Component {
 	props: Props;

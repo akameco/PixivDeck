@@ -11,7 +11,7 @@ import type {Props} from './IllustList'
 type OwnProps = {
 	illusts: Illust[],
 	type: DrawerType,
-};
+}
 
 const mapDispatchToProps = (dispatch: Dispatch, {type}) => ({
 	onIntersect() {

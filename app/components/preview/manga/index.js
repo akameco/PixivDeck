@@ -11,7 +11,7 @@ type Props = {
 	illust: Illust,
 	show: bool,
 	dispatch: Dispatch
-};
+}
 
 class MangaPreviewContainer extends Component {
 	props: Props;

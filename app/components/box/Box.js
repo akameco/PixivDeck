@@ -16,7 +16,7 @@ type Props = {
 	onClickUser: () => void,
 	onClickTag: (tag: string) => void,
 	onContextMenu: (event: Event) => void,
-};
+}
 
 const Box = ({
 	illust,

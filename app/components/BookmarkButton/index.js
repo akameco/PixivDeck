@@ -9,7 +9,7 @@ import type {Props} from './BookmarkButton'
 
 type OwnProps = {
 	id: number
-};
+}
 
 const mapStateToProps = (state: State, {id}) => {
 	const {isBookmarked} = getIllust(state, id)

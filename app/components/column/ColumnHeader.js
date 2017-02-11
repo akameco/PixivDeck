@@ -15,11 +15,11 @@ type Props = {
 	column: ColumnType,
 	onTopClick: (event: Event) => void,
 	onClose: () => void
-};
+}
 
 type State = {
 	open: bool;
-};
+}
 
 class ColumnHeader extends React.Component {
 	props: Props

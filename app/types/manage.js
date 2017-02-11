@@ -4,7 +4,6 @@ export type ModalType =
 	| 'ADD_COLUMN'
 	| 'FILTER_TAG'
 	| 'LOGIN'
-;
 
 export type Manage = {|
 	isLoading: bool,
@@ -18,7 +17,7 @@ export type Manage = {|
 	currentIllustId: ?number,
 	userId: ?number,
 	modalType: ModalType
-|};
+|}
 
 export type ManageAction =
 	| {|type: 'OPEN_IMAGE_VIEW'|}
@@ -40,4 +39,4 @@ export type ManageAction =
 	| {|type: 'OPEN_SEARCH_FIELD'|}
 	| {|type: 'CLOSE_SEARCH_FIELD'|}
 	| {|type: 'TOGGLE_SEARCH_FIELD'|}
-;
+

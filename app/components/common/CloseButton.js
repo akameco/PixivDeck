@@ -7,7 +7,7 @@ type Props = {
 	style?: Object,
 	iconStyle?: Object,
 	onClick: () => void
-};
+}
 
 const CloseButton = ({onClick, style, iconStyle}: Props) => (
 	<a

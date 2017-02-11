@@ -8,7 +8,7 @@ type Props = {
 	targetRef?: (c: Component<*, *, *>) => void,
 	onIntersect: () => void,
 	illusts: Array<Illust>,
-};
+}
 
 const ColumnContent = ({root, onIntersect, illusts, targetRef}: Props) => {
 	const handleMove = (e: Event) => {

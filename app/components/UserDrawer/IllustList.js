@@ -8,7 +8,7 @@ import Box from '../box'
 export type Props = {
 	illusts: Illust[],
 	onIntersect: () => void,
-};
+}
 
 const styles = {
 	height: '100%',

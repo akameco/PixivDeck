@@ -7,7 +7,7 @@ import styles from './Columns.css'
 
 type Props = {
 	columns: Array<ColumnType>
-};
+}
 
 const Columns = ({columns}: Props) => {
 	const handleOnResize = () => null

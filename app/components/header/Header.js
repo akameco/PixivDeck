@@ -13,7 +13,7 @@ export type Props = {
 	onToggleDropdown: () => void,
 	onOpenFilterModal: () => void,
 	onLogout: () => void
-};
+}
 
 export default class Header extends React.PureComponent {
 	props: Props;

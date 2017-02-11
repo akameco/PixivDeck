@@ -7,7 +7,7 @@ import Api from '../api'
 
 type hasId = {
 	id: number
-};
+}
 
 function * follow({id}: hasId): Generator<IOEffect, *, *> {
 	try {

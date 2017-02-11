@@ -6,7 +6,7 @@ import type {ColumnType as Column} from '../types/column'
 import {MINUTE} from '../constants/time'
 import initState from './default-column-state'
 
-type State = Array<Column>;
+type State = Array<Column>
 
 const resetParams = {
 	offset: 0,
