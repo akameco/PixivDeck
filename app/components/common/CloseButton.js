@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
+import styled from 'styled-components'
 import ClearIcon from 'material-ui/svg-icons/content/clear'
-import styles from './CloseButton.css'
 
 type Props = {
 	style?: Object,
@@ -9,14 +9,26 @@ type Props = {
 	onClick: () => void
 }
 
+const A = styled.a`
+	position: absolute;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	width: 24px;
+	height: 24px;
+	cursor: pointer;
+	top: 15px;
+	right: 15px;
+	font-size: 24px;
+`
+
 const CloseButton = ({onClick, style, iconStyle}: Props) => (
-	<a
-		className={styles.closeButton}
+	<A
 		onClick={onClick}
 		style={style}
 		>
 		<ClearIcon style={iconStyle}/>
-	</a>
+	</A>
 )
 
 export default CloseButton

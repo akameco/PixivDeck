@@ -1,7 +1,11 @@
 // @flow
 import React, {Component} from 'react'
-import Loading from '../common/Loading'
-import styles from './LoginModal.css'
+import styled from 'styled-components'
+import LoginButton from './LoginButton'
+import Loading from './Loading'
+import ErrorNotify from './ErrorNotify'
+import Input from './Input'
+import Feild from './Feild'
 
 export type Props = {
 	username: string,
@@ -43,59 +47,38 @@ export default class LoginModal extends Component {
 		const {isLoginFailure, isLoading} = this.props
 
 		if (isLoading) {
-			return <LoginLoading/>
+			return <Loading/>
 		}
 
 		const {username, password} = this.state
 
 		return (
-			<div className={styles.wrap}>
+			<Wrap>
 				{isLoginFailure && <ErrorNotify/>}
-				<div className={styles.feild}>
-					<input
+				<Feild>
+					<Input
 						placeholder="ユーザー名"
 						type="text"
 						value={username}
 						onChange={this.handleChangeName}
-						className={styles.input}
 						/>
-					<input
+					<Input
 						placeholder="パスワード"
 						type="password"
 						value={password}
 						onChange={this.handleChangePassword}
-						className={styles.input}
 						/>
 					<LoginButton onClick={this.handleClick}/>
-				</div>
-			</div>
+				</Feild>
+			</Wrap>
 		)
 	}
 }
 
-const LoginButton = ({onClick}: {onClick: () => void}) => (
-	<button onClick={onClick} className={styles.submit}>
-		ログイン
-	</button>
-)
-
-const LoginLoading = () => (
-	<div className={styles.wrap}>
-		<div className={styles.feild}>
-			<Loading/>
-			<button className={styles.submit}>
-				ログイン中...
-			</button>
-		</div>
-	</div>
-)
-
-const ErrorNotify = () => (
-	<div className={styles.notice}>
-		<p>
-			ログインに失敗しました。
-			<br/>
-			ユーザ名とパスワードを確認してください。
-		</p>
-	</div>
-)
+const Wrap = styled.div`
+	position: relative;
+	max-width: 100%;
+	margin-top: 2rem;
+	margin-left: 3rem;
+	margin-right: 3rem;
+`
