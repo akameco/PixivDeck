@@ -19,7 +19,7 @@
     "zip:linux": "cd release/PixivDeck-linux-x64 && zip -ryq9 ../PixivDeck-linux-${npm_package_version}.zip *",
     "zip": "npm run zip:macos && npm run zip:windows && npm run zip:linux",
     "release": "rm -fr release && npm run build && npm run pack && npm run zip",
-    "test": "eslint . && flow"
+    "lint": "eslint . && flow"
   },
   "keywords": [
     "electron",

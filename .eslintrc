@@ -43,7 +43,7 @@
 		"react/prop-types": 0,
 		"flowtype/boolean-style": ["error", "bool"],
 		"flowtype/define-flow-type": "error",
-		"flowtype/semi": ["error", "always"],
+		"flowtype/semi": ["error", "never"],
 		"flowtype/space-after-type-colon": ["error", "always"],
 		"flowtype/union-intersection-spacing": ["error", "always"],
 		"flowtype/use-flow-type": "error",
@@ -56,7 +56,7 @@
 			"jsx": "never"
 		}],
 		"import/first": "error",
-		"import/named": "error",
+		"import/named": 0,
 		"import/namespace": ["error", {"allowComputed": true}],
 		"import/no-absolute-path": "error",
 		"import/no-dynamic-require": "error",
