@@ -1,8 +1,8 @@
 // @flow
 import React, {Component} from 'react'
+import styled from 'styled-components'
 import {findDOMNode} from 'react-dom'
 import Loading from '../common/Loading'
-import styles from './Infinite.css'
 
 type Props = {
 	rootMargin?: string,
@@ -41,9 +41,8 @@ export default class Infinite extends Component {
 	render() {
 		const {style, children, targetRef} = this.props
 		return (
-			<div
+			<Wrap
 				style={style}
-				className={styles.wrap}
 				ref={targetRef}
 				>
 				{children}
@@ -54,7 +53,13 @@ export default class Infinite extends Component {
 					>
 					<Loading wrapStyle={{background: '#222426', display: 'flex'}}/>
 				</div>
-			</div>
+			</Wrap>
 		)
 	}
 }
+
+const Wrap = styled.div`
+	overflow-y: scroll;
+	overflow-x: hidden;
+	height: 100%;
+`

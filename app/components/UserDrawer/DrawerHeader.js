@@ -1,28 +1,48 @@
 // @flow
 import React from 'react'
-import {link} from 'autolinker'
+import styled from 'styled-components'
 import Avater from '../common/Avater'
+import AutoLinker from '../AutoLinker'
 import type {User, Profile} from '../../types/user'
 import Navigation from './Navigation'
-import styles from './DrawerHeader.css'
 
 const Header = ({user, profile}: {user: User, profile: Profile}) => (
-	<div className={styles.root}>
+	<Wrap>
 		<Navigation user={user} profile={profile}/>
-		<div className={styles.imgWrap}>
+		<ImageWrap>
 			<Avater src={user.profileImageUrls.medium} size={140}/>
-		</div>
-		<div className={styles.info}>
-			<h1>{user.name}</h1>
-		</div>
-		<div className={styles.caption}>
-			<span
-				dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
-					__html: link(user.comment),
-				}}
-				/>
-		</div>
-	</div>
+		</ImageWrap>
+		<Info><h1>{user.name}</h1></Info>
+		<Caption>
+			{user.comment && <AutoLinker text={user.comment}/>}
+		</Caption>
+	</Wrap>
 )
+
+const Wrap = styled.div`
+	background-color: #eee;
+	padding-bottom: 30px;
+`
+
+const ImageWrap = styled.div`
+	position: relative;
+	width: 100%;
+	height: 100%;
+	margin: 20px auto;
+	text-align: center;
+`
+
+const Info = styled.div`
+	text-align: center;
+`
+
+const Caption = styled.div`
+	background-color: #fff;
+	border-radius: 2px;
+	margin: 10px 20px;
+	padding: 10px 20px;
+	line-height: 21px;
+	font-size: 14px;
+`
 
 export default Header

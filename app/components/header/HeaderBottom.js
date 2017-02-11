@@ -1,7 +1,15 @@
+// @flow
 import React from 'react'
+import styled from 'styled-components'
 import Dropdwon from './Dropdown'
 import HeaderButton from './HeaderButton'
-import styles from './HeaderBottom.css'
+
+const Wrap = styled.div`
+	width: 100%;
+	position: absolute;
+	left: 0;
+	bottom: 20px;
+`
 
 type Props = {
 	onToggleDropdown: () => void,
@@ -10,8 +18,13 @@ type Props = {
 	isDropdown: bool,
 }
 
-const HeaderBottom = ({onLogout, onToggleDropdown, onOpenFilterModal, isDropdown}: Props) => (
-	<div className={styles.bottom}>
+const HeaderBottom = ({
+	onLogout,
+	onToggleDropdown,
+	onOpenFilterModal,
+	isDropdown,
+}: Props) => (
+	<Wrap>
 		<HeaderButton iconType="setting" onClick={onToggleDropdown}/>
 		{isDropdown &&
 			<Dropdwon
@@ -19,7 +32,7 @@ const HeaderBottom = ({onLogout, onToggleDropdown, onOpenFilterModal, isDropdown
 				onOpenFilterModal={onOpenFilterModal}
 				/>
 		}
-	</div>
+	</Wrap>
 )
 
 export default HeaderBottom

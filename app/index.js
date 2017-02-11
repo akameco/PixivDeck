@@ -8,7 +8,8 @@ import type {State} from './types'
 import configureStore from './store'
 import App from './components'
 import Api from './api'
-import './app.global.css'; // eslint-disable-line
+
+import './global-styles' // eslint-disable-line
 
 injectTapEventPlugin()
 

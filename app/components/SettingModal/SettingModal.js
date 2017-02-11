@@ -1,11 +1,13 @@
 // @flow
 import React, {Component} from 'react'
+import styled from 'styled-components'
 import Chip from 'material-ui/Chip'
 import {List, ListItem} from 'material-ui/List'
 import Subheader from 'material-ui/Subheader'
 import Toggle from 'material-ui/Toggle'
 import VisibilityOffIcon from 'material-ui/svg-icons/action/visibility-off'
-import styles from './SettingModal.css'
+import Card from './Card'
+import LimitSetting from './LimitSetting'
 
 export type Props = {
 	onDelete: (tag: string) => void,
@@ -65,12 +67,10 @@ export default class SettingFilterModal extends Component {
 	render() {
 		const {isIllustComment, isIllustOnly} = this.props
 		return (
-			<div className={styles.wrap}>
+			<Wrap>
 				<Card>
 					<List>
-						<Subheader>
-							UI 設定
-						</Subheader>
+						<Subheader>UI 設定</Subheader>
 						<ListItem
 							primaryText="キャプションを表示"
 							rightToggle={
@@ -92,51 +92,73 @@ export default class SettingFilterModal extends Component {
 					</List>
 				</Card>
 				<Card>
-					<div className={styles.tagFilter}>
+					<TagFilter>
 						<Subheader>タグフィルター</Subheader>
-						<div className={styles.field}>
-							<div className={styles.icon}>
-								<VisibilityOffIcon/>
-							</div>
-							<input
+						<Field>
+							<Icon><VisibilityOffIcon/></Icon>
+							<Input
 								type="text"
-								className={styles.input}
 								value={this.state.value}
 								onChange={this.handleCangeInput}
 								onKeyDown={this.handleSubmit}
 								/>
-						</div>
-						<div style={{display: 'flex', flexWrap: 'wrap'}}>
+						</Field>
+						<ChipWrap>
 							{this.props.tags.map(this.renderChip, this)}
-						</div>
-					</div>
+						</ChipWrap>
+					</TagFilter>
 				</Card>
 				<LimitSetting/>
-			</div>
+			</Wrap>
 		)
 	}
 }
 
-const Card = ({children}: {children?: React$Element<any>}) => (
-	<div className={styles.card}>
-		{children}
-	</div>
-)
+const ChipWrap = styled.div`
+	display: flex;
+	flex-wrap: wrap;
+`
 
-const LimitSetting = () => (
-	<Card>
-		<Subheader>閲覧制限</Subheader>
-		<div className={styles.discription}>
-			R-18タグをフィルターするのがもっとも簡単です。
-			どうしても閲覧制限を設定はpixivのサイト上にて変更する必要があります。
-			<br/>
-			<a
-				href="http://www.pixiv.net/setting_user.php"
-				target="_brank"
-				className={styles.openLink}
-				>
-				pixiv - R-18設定
-			</a>
-		</div>
-	</Card>
-)
+const Input = styled.input`
+	font-size: 1.1rem;
+	height: 30px;
+	width: calc(100% - 2.5rem);
+	margin-top: 10px;
+	padding-left: 2.5rem;
+	border: 1px solid rgba(0, 0, 0, 0.09);
+	border-radius: 17px;
+
+	&:focus {
+		border: 1px solid rgba(82, 158, 204, 0.7);
+	}
+`
+
+const Field = styled.div`
+	position: relative;
+	width: 100%;
+	margin-bottom: 2rem;
+`
+
+const Wrap = styled.div`
+	max-width: 100%;
+	margin-top: 2rem;
+	margin-left: 1rem;
+	margin-right: 1rem;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+`
+
+const TagFilter = styled.div`
+	padding-left: 10px;
+	padding-right: 10px;
+`
+
+const Icon = styled.div`
+	position: absolute;
+	top: 1rem;
+	left: 0.5rem;
+	width: 1.5rem;
+	height: 1.5rem;
+`

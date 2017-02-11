@@ -1,9 +1,9 @@
 // @flow
 import React from 'react'
+import styled from 'styled-components'
 import {SortablePane, Pane} from 'react-sortable-pane'
 import type {ColumnType} from '../../types/column'
 import Column from '../column'
-import styles from './Columns.css'
 
 type Props = {
 	columns: Array<ColumnType>
@@ -23,15 +23,24 @@ const Columns = ({columns}: Props) => {
 		</Pane>
 	))
 	return (
-		<div className={styles.content}>
+		<Wrap>
 			<SortablePane
 				disableEffect
 				onResize={handleOnResize}
 				>
 				{panes}
 			</SortablePane>
-		</div>
+		</Wrap>
 	)
 }
+
+const Wrap = styled.div`
+	position: absolute;
+	left: 50px;
+	width: calc(100% - 50px);
+	height: 100%;
+	overflow-y: hidden;
+	background-color: #222426;
+`
 
 export default Columns

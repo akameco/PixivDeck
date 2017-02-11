@@ -21,14 +21,23 @@ const UserDrawer = ({user, profile, illusts, mangas}: Props) => {
 			<Header user={user} profile={profile}/>
 			<div>
 				<Tabs>
-					<TabList className={styles.tabList} activeTabClassName={styles.tabListActive}>
+					<TabList
+						className={styles.tabList}
+						activeTabClassName={styles.tabListActive}
+						>
 						{totalIllusts > 0 &&
-							<Tab className={styles.tabLink} activeTabClassName={styles.tabLinkActive}>
+							<Tab
+								className={styles.tabLink}
+								activeTabClassName={styles.tabLinkActive}
+								>
 								イラスト ( {totalIllusts} )
 							</Tab>
 						}
 						{totalManga > 0 &&
-							<Tab className={styles.tabLink} activeTabClassName={styles.tabLinkActive}>
+							<Tab
+								className={styles.tabLink}
+								activeTabClassName={styles.tabLinkActive}
+								>
 								マンガ ( {totalManga} )
 							</Tab>
 						}
