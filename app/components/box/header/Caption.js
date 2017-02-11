@@ -1,15 +1,7 @@
 // @flow
 import React from 'react'
 import styled from 'styled-components'
-import {link} from 'autolinker'
-
-const renderLink = (text: string) => (
-	<span
-		dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
-			__html: link(text),
-		}}
-		/>
-)
+import Autolink from 'components/Autolink'
 
 const Wrapper = styled.div`
 	color: #c4c4c4;
@@ -29,7 +21,7 @@ type Props = {
 
 const Caption = ({caption}: Props) => (
 	<Wrapper>
-		{renderLink(caption)}
+		<Autolink text={caption}/>
 	</Wrapper>
 )
 
