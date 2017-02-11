@@ -5,7 +5,7 @@ import type {Illust} from '../../types/illust'
 import BoxHeader from './header/BoxHeader'
 import BoxFooter from './footer/BoxFooter'
 import BoxImage from './BoxImage'
-import styles from './Box.css'
+import BoxWrapper from './boxStyles'
 
 type Props = {
 	illust: Illust,
@@ -31,7 +31,7 @@ const Box = ({
 	const tags = illust.tags.map(x => x.name)
 
 	return (
-		<div className={styles.box} onContextMenu={onContextMenu}>
+		<BoxWrapper onContextMenu={onContextMenu}>
 			{!isIllustOnly &&
 				<BoxHeader
 					user={user}
@@ -44,7 +44,7 @@ const Box = ({
 			{!isIllustOnly &&
 				<BoxFooter tags={tags} onClickTag={onClickTag}/>
 			}
-		</div>
+		</BoxWrapper>
 	)
 }
 

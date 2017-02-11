@@ -1,11 +1,10 @@
 // @flow
-import {shell} from 'electron'
 import React from 'react'
-import Button from '../common/Button'
+import styled from 'styled-components'
 import type {User, Profile} from '../../types/user'
 import FollowButton from '../FollowButton'
 import AddColumnButton from './AddColumnButton'
-import styles from './Navigation.css'
+import TwitterButton from './TwitterButton'
 
 type Props = {
 	user: User,
@@ -14,23 +13,31 @@ type Props = {
 
 const Navigation = ({user, profile}: Props) => {
 	return (
-		<div className={styles.root}>
-			<div className={styles.wrap}>
+		<NavigationWrap>
+			<Wrap>
 				{profile.twitterUrl && <TwitterButton url={profile.twitterUrl}/>}
 				<FollowButton user={user}/>
 				<AddColumnButton user={user}/>
-			</div>
-		</div>
+			</Wrap>
+		</NavigationWrap>
 	)
 }
+
+const NavigationWrap = styled.div`
+	width: 100%;
+	position: flex;
+	left: auto;
+	transform: translateZ(0);
+	height: 50px;
+	top: 0;
+	z-index: 10;
+`
+
+const Wrap = styled.div`
+	display: flex;
+	text-align: left;
+	justify-content: flex-end;
+	padding: 10px;
+`
 
 export default Navigation
-
-const TwitterButton = ({url}: {url: string}) => {
-	const onClick = () => shell.openExternal(url)
-	return (
-		<a style={{margin: '0 10px'}} onClick={onClick}>
-			<Button label="twitter"/>
-		</a>
-	)
-}

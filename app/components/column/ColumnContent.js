@@ -1,7 +1,7 @@
 import React from 'react'
+import styled from 'styled-components'
 import Box from '../box'
 import Infinite from '../common/Infinite'
-import styles from './ColumnContent.css'
 
 type Props = {
 	root: any,
@@ -20,11 +20,7 @@ const ColumnContent = ({root, onIntersect, illusts, targetRef}: Props) => {
 	)
 
 	return (
-		<div
-			className={styles.content}
-			onMouseDown={handleMove}
-			onTouchStart={handleMove}
-			>
+		<Wrap onMouseDown={handleMove} onTouchStart={handleMove}>
 			<Infinite
 				root={root}
 				onIntersect={onIntersect}
@@ -32,8 +28,14 @@ const ColumnContent = ({root, onIntersect, illusts, targetRef}: Props) => {
 				>
 				{List}
 			</Infinite>
-		</div>
+		</Wrap>
 	)
 }
+
+const Wrap = styled.div`
+	overflow-y: auto;
+	overflow-x: hidden;
+	height: calc(100% - 50px);
+`
 
 export default ColumnContent
