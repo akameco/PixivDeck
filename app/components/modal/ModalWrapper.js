@@ -11,7 +11,7 @@ type Props = {
 	onRequestClose?: () => void,
 	children?: React$Element<any>,
 	onClose: () => void,
-};
+}
 
 export default class ModalWrapper extends Component {
 	props: Props;

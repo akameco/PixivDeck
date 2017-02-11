@@ -14,7 +14,7 @@ type Props = {
 	modalType: ModalType,
 	open: bool,
 	closeModal: () => void,
-};
+}
 
 class Modal extends Component {
 	props: Props;

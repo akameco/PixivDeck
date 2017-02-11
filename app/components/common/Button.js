@@ -11,11 +11,11 @@ type Props = {
 	onClick?: Function,
 	onMouseEnter: (event: Event) => void,
 	onMouseLeave: (event: Event) => void,
-};
+}
 
 type State = {
 	hoverd: bool,
-};
+}
 
 export default class Button extends Component {
 	props: Props

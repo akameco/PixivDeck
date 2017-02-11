@@ -8,7 +8,6 @@ type IconType = 'setting'
 	| 'close'
 	| 'visible-off'
 	| 'favorite'
-;
 
 type Props = {
 	type: IconType,
@@ -20,7 +19,7 @@ type Props = {
 	style?: Object,
 	onMouseEnter: (event: Event) => void,
 	onMouseLeave: (event: Event) => void,
-};
+}
 
 const SelectIcon = ({type}: {type: IconType}) => {
 	switch (type) {

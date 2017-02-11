@@ -21,7 +21,7 @@ const hoverColor = '#b94343'
 export type Props = {
 	onClick: () => void;
 	isBookmarked: bool;
-};
+}
 
 const BookmarkButton = ({isBookmarked, onClick}: Props) => (
 	<IconButton

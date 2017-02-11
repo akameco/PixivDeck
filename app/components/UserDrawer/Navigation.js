@@ -10,7 +10,7 @@ import styles from './Navigation.css'
 type Props = {
 	user: User,
 	profile: Profile,
-};
+}
 
 const Navigation = ({user, profile}: Props) => {
 	return (

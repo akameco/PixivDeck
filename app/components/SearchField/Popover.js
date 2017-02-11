@@ -6,7 +6,7 @@ type ItemProps = {
 	start: string,
 	end: string,
 	onClick: () => void,
-};
+}
 
 export const Item = ({start, end, onClick}: ItemProps) =>
 	<div className={styles.item} onClick={onClick}>
@@ -16,7 +16,7 @@ export const Item = ({start, end, onClick}: ItemProps) =>
 type Props = {
 	title: string,
 	children?: React$Element<any>,
-};
+}
 
 const Popover = ({children, title}: Props) =>
 	<div className={styles.wrap}>

@@ -6,7 +6,7 @@ import {follow, unFollow} from '../../actions'
 import FollowButton from './FollowButton'
 import type {Props} from './FollowButton'
 
-type OwnProps = {user: User};
+type OwnProps = {user: User}
 
 const mapDispatchToProps = (dispatch: Dispatch, {user}) => ({
 	onClick() {

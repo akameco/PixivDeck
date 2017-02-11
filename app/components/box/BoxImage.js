@@ -8,12 +8,12 @@ import styles from './BoxImage.css'
 type Props = {
 	illust: Illust,
 	onClick: () => void
-};
+}
 
 type State = {
 	isVisible: bool,
 	isLoaded: bool
-};
+}
 
 export default class BoxImage extends React.PureComponent {
 	props: Props;

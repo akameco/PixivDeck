@@ -4,7 +4,7 @@ import styles from './Profile.css'
 type Props = {
 	name: string,
 	onClick: () => void,
-};
+}
 
 const Profile = ({name, onClick}: Props) => (
 	<div className={styles.Profile}>

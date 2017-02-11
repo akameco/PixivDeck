@@ -7,7 +7,7 @@ import styles from './MultiPreview.css'
 type Props = {
 	pages: MetaPages,
 	onClose: () => void
-};
+}
 
 export default class MultiPreview extends Component {
 	props: Props;

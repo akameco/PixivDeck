@@ -15,11 +15,11 @@ type Props = {
 	onClose: () => void,
 	onReload: () => void,
 	onNextPage: () => void
-};
+}
 
 type State = {
 	toTop: bool;
-};
+}
 
 export default class Column extends Component<void, Props, State> {
 	target: Component<*, *, *>

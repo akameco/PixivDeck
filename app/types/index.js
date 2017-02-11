@@ -15,14 +15,14 @@ import type {MiscAction} from './misc'
 export type Entities = {
 	users: Users,
 	illusts: Illusts
-};
+}
 
 export type Response = {
 	response: {
 		entities: Entities,
 		result: Array<number>
 	}
-};
+}
 
 export type Action =
 	| ColumnAction
@@ -35,7 +35,6 @@ export type Action =
 	| IllustAction
 	| MiscAction
 	| PopoverAction
-;
 
 export type State = {
 	columns: Array<ColumnType>,
@@ -48,7 +47,7 @@ export type State = {
 	userById: Users,
 	drawer: Drawer,
 	popover: Popover,
-};
+}
 
-export type Dispatch = ReduxDispatch<State, Action>;
-export type Store = ReduxStore<State, Action>;
+export type Dispatch = ReduxDispatch<State, Action>
+export type Store = ReduxStore<State, Action>

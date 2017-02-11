@@ -1,5 +1,5 @@
 // @flow
-type Id = number;
+type Id = number
 
 export const setWallpaper = (id: Id) => (
 	{type: 'SET_WALLPAPER', id}

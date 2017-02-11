@@ -5,11 +5,11 @@ import styles from './MangaPreview.css'
 type Props = {
 	img: string,
 	onClose: () => void
-};
+}
 
 type State = {
 	isLoad: bool
-};
+}
 
 export default class MangaPreview extends React.PureComponent {
 	props: Props;

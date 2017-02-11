@@ -5,7 +5,7 @@ import styles from './Tag.css'
 type Props = {
 	onClick: (tag: string) => void,
 	name: string
-};
+}
 
 const Tag = ({name, onClick}: Props) => {
 	const handleClick = () => onClick(name)

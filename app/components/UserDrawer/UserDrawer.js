@@ -12,7 +12,7 @@ type Props = {
 	profile: Profile,
 	illusts: Array<Illust>,
 	mangas: Array<Illust>,
-};
+}
 
 const UserDrawer = ({user, profile, illusts, mangas}: Props) => {
 	const {totalIllusts, totalManga} = profile

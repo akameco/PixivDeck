@@ -7,7 +7,7 @@ import styles from './BoxFooter.css'
 type Props = {
 	onClickTag: (tag: string) => void,
 	tags: Array<string>
-};
+}
 
 export default class BoxFooter extends React.PureComponent {
 	props: Props;

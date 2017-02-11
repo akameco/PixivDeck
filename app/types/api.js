@@ -4,4 +4,4 @@ export type ApiAction =
 	| {|type: 'API_REQUEST_SUCCESS', response: Object|}
 	| {|type: 'FOLLOW', id: Id|}
 	| {|type: 'UN_FOLLOW', id: Id|}
-;
+

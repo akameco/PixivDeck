@@ -11,7 +11,7 @@ type Props = {
 	root?: any,
 	targetRef?: (c: Component<*, *, *>) => void,
 	style?: Object
-};
+}
 
 export default class Infinite extends Component {
 	props: Props;

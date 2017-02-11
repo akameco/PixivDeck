@@ -10,12 +10,12 @@ import styles from './SearchField.css'
 export type Props = {
 	onClose: () => void,
 	onSubmit: (tag: string) => void
-};
+}
 
 type State = {
 	value: string,
 	keywords: string[],
-};
+}
 
 class SearchField extends Component {
 	props: Props;

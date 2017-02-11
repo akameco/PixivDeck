@@ -5,7 +5,7 @@ import styles from './dropdown.css'
 type Props = {
 	onOpenFilterModal: () => void,
 	onLogout: () => void
-};
+}
 
 const Dropdwon = ({onOpenFilterModal, onLogout}: Props) => (
 	<div className={styles.dropdown}>
@@ -24,7 +24,7 @@ const Dropdwon = ({onOpenFilterModal, onLogout}: Props) => (
 type ItemProps = {
 	text: string;
 	onClick: () => void;
-};
+}
 
 const Item = ({text, onClick}: ItemProps) => (
 	<div className={styles.item} onClick={onClick}>

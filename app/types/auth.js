@@ -4,7 +4,7 @@ export type Auth = {
 	password: Password,
 	isLoginFailure: bool,
 	isLoading: bool
-};
+}
 
 export const LOGOUT = 'LOGOUT'
 export const LOGIN_REQUEST = 'LOGIN_REQUEST'
@@ -25,4 +25,4 @@ export type AuthAction =
 	| {|type: 'LOGOUT'|}
 	| {|type: 'CLEAR_ERROR'|}
 	| {|type: 'AUTO_LOGIN'|}
-;
+

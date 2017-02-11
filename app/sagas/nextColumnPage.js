@@ -11,7 +11,7 @@ import {
 import type {Illust} from '../types/illust'
 import Api from '../api'
 
-type Id = number;
+type Id = number
 const LIMIT = 10
 
 const filterByMinBookmarks = (illust: Illust, bookmarks: number): bool =>

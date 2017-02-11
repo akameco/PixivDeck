@@ -12,7 +12,7 @@ type Props = {
 	onLoad: () => void,
 	onUnLoad: () => void,
 	onClose: () => void
-};
+}
 
 export default class IllustPreview extends React.PureComponent {
 	props: Props;

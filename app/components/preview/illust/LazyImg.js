@@ -7,17 +7,17 @@ import styles from './Lazyimg.css'
 type Size = {
 	width: number | 'auto',
 	height: number | 'auto'
-};
+}
 
 function calcSize(width: number, height: number): Size {
 	const {innerWidth, innerHeight} = window
 	if (height > innerHeight && width > innerWidth) {
 		return (width * innerHeight < height * innerWidth) ?
 			{width: 'auto', height: innerHeight} :
-			{
-				width: innerWidth,
-				height: 'auto',
-			}
+		{
+			width: innerWidth,
+			height: 'auto',
+		}
 	}
 	if (height > innerHeight) {
 		return {width: 'auto', height: innerHeight}
@@ -37,13 +37,13 @@ type Props = {
 	isLoaded: bool,
 	onLoad: () => void,
 	onClose: () => void
-};
+}
 
 type State = {
 	isClicked: bool,
 	fromMarginTop: number,
 	toMarginTop: number
-};
+}
 
 export default class LazyImg extends Component {
 	props: Props;

@@ -15,7 +15,7 @@ const defaultStyle = {
 type Props = {
 	wrapStyle?: Object,
 	style?: Object,
-};
+}
 
 export default class Loading extends Component {
 	props: Props;

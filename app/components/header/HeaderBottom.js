@@ -8,7 +8,7 @@ type Props = {
 	onOpenFilterModal: () => void,
 	onLogout: () => void,
 	isDropdown: bool,
-};
+}
 
 const HeaderBottom = ({onLogout, onToggleDropdown, onOpenFilterModal, isDropdown}: Props) => (
 	<div className={styles.bottom}>

@@ -17,7 +17,7 @@ type Props = {
 	columns: Array<ColumnType>,
 	manage: Manage,
 	dispatch: Dispatch,
-};
+}
 
 class App extends Component {
 	props: Props;

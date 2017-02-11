@@ -9,7 +9,7 @@ import Button from '../common/Button'
 
 type Props = {
 	onClick: () => void,
-};
+}
 
 const AddColumnButton = ({onClick}: Props) =>
 	<a style={{margin: '0 10px'}} onClick={onClick}>
@@ -18,7 +18,7 @@ const AddColumnButton = ({onClick}: Props) =>
 
 type OwnProps = {
 	user: User
-};
+}
 
 const mapDispatchToProps = (dispatch: Dispatch, {user}) => ({
 	onClick() {

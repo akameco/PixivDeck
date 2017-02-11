@@ -6,7 +6,7 @@ import Button from '../common/Button'
 export type Props = {
 	user: User,
 	onClick: () => void,
-};
+}
 
 const unFollowText = 'フォロー解除'
 const followText = 'フォローする'
@@ -15,7 +15,7 @@ const followingText = 'フォロー中'
 type State = {
 	label: string,
 	isFollowed: bool,
-};
+}
 
 class FollowButton extends React.PureComponent {
 	props: Props

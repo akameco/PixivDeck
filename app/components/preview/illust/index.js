@@ -11,7 +11,7 @@ type Props = {
 	show: bool,
 	isLoaded: bool,
 	dispatch: Dispatch
-};
+}
 
 class IllustPreviewContainer extends Component {
 	props: Props;

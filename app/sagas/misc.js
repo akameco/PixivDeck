@@ -9,7 +9,7 @@ import * as Actions from '../constants/misc'
 
 type hasId = {
 	id: number
-};
+}
 
 function * setWallpaper({id}: hasId): Generator<IOEffect, *, *> {
 	try {
