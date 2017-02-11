@@ -3,11 +3,13 @@ import type { Dispatch, Store } from 'redux'
 declare module 'react-redux' {
 
   /*
+
     S = State
     A = Action
     OP = OwnProps
     SP = StateProps
     DP = DispatchProps
+
   */
 
   declare type MapStateToProps<S, OP: Object, SP: Object> = (state: S, ownProps: OP) => SP | MapStateToProps<S, OP, SP>;
@@ -80,4 +82,5 @@ declare module 'react-redux' {
     mergeProps: MergeProps<SP, DP, OP, P>,
     options?: ConnectOptions
   ): Connector<OP, P>;
+
 }
