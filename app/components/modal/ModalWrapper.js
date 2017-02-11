@@ -3,8 +3,8 @@ import React, {Component} from 'react'
 import styled, {keyframes} from 'styled-components'
 import EventListener from 'react-event-listener'
 import keycode from 'keycode'
+import Overlay from 'components/Overlay'
 import CloseButton from '../common/CloseButton'
-import Overlay from '../common/Overlay'
 
 type Props = {
 	open: bool,
