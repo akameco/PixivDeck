@@ -4,9 +4,9 @@ import {render} from 'react-dom'
 import {Provider} from 'react-redux'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import type {State} from './types'
+import type {State} from 'types'
+import App from 'containers/App/'
 import configureStore from './store'
-import App from './components'
 import Api from './api'
 
 import './global-styles' // eslint-disable-line
