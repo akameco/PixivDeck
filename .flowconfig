@@ -2,10 +2,19 @@
 .*/dist/.*
 .*/release/.*
 .*/node_modules/electron-packager/*
+.*/styled-components/src/.*
+.*/styled-components/dangerfile.js
+.*/styled-components/lib/models/InlineStyle.js.flow
 
 [include]
 
 [libs]
+flow-typed
+node_modules/styled-components/flow-typed/react-native.js
+node_modules/styled-components/flow-typed/glamor_vx.x.x.js
+node_modules/styled-components/flow-typed/lodash_v4.x.x.js
+node_modules/styled-components/flow-typed/inline-style-prefixer_vx.x.x.js
 
 [options]
 esproposal.class_instance_fields=enable
+unsafe.enable_getters_and_setters=true
