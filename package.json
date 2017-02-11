@@ -19,7 +19,14 @@
     "zip:linux": "cd release/PixivDeck-linux-x64 && zip -ryq9 ../PixivDeck-linux-${npm_package_version}.zip *",
     "zip": "npm run zip:macos && npm run zip:windows && npm run zip:linux",
     "release": "rm -fr release && npm run build && npm run pack && npm run zip",
+    "test": "cross-env NODE_ENV=test jest",
+    "test:watch": "cross-env NODE_ENV=test jest --watch",
     "lint": "eslint . && flow"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   },
   "keywords": [
     "electron",
@@ -36,6 +43,7 @@
     "electron-debug": "^1.1.0",
     "electron-dl": "^1.6.0",
     "electron-referer": "^0.3.0",
+    "enzyme": "^2.7.1",
     "json-loader": "^0.5.4",
     "keycode": "^2.1.8",
     "lodash.debounce": "^4.0.8",
@@ -59,6 +67,7 @@
     "redux-saga": "^0.14.3",
     "redux-thunk": "^2.2.0",
     "residual-scroll-top": "^0.1.0",
+    "styled-components": "^1.4.3",
     "wallpaper": "^2.3.0"
   },
   "devDependencies": {
@@ -80,6 +89,7 @@
     "electron": "^1.4.15",
     "electron-devtools-installer": "^2.0.1",
     "electron-packager": "^8.5.1",
+    "enzyme-to-json": "^1.4.5",
     "eslint": "^3.14.0",
     "eslint-config-xo": "^0.17.0",
     "eslint-config-xo-react": "^0.10.0",
@@ -91,8 +101,11 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "flow-bin": "^0.38.0",
     "hard-rejection": "^1.0.0",
+    "jest": "^18.1.0",
     "postcss-cssnext": "^2.9.0",
     "postcss-loader": "^1.2.2",
+    "react-addons-test-utils": "^15.4.2",
+    "react-test-renderer": "^15.4.2",
     "redux-logger": "^2.7.4",
     "style-loader": "^0.13.1",
     "webpack": "^1.14.0",
