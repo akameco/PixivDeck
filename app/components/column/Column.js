@@ -1,5 +1,6 @@
 // @flow
 import React, {Component} from 'react'
+import styled from 'styled-components'
 import {findDOMNode} from 'react-dom'
 import scrollTop from 'residual-scroll-top'
 import type {Illust} from '../../types/illust'
@@ -7,7 +8,18 @@ import type {ColumnType} from '../../types/column'
 import Loading from '../common/Loading'
 import ColumnHeader from './ColumnHeader'
 import ColumnContent from './ColumnContent'
-import styles from './Column.css'
+
+const Wrap = styled.div`
+	margin: 0;
+	width: 100%;
+	height: calc(100% - 2px);
+	min-width: 300px;
+	max-height: 100vh;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	background-color: #222426;
+	border: 2px solid #444448;
+`
 
 type Props = {
 	illusts: Array<Illust>,
@@ -48,7 +60,7 @@ export default class Column extends Component<void, Props, State> {
 			onNextPage,
 		} = this.props
 		return (
-			<div className={styles.wrap}>
+			<Wrap>
 				<ColumnHeader
 					column={column}
 					onClose={onClose}
@@ -66,13 +78,20 @@ export default class Column extends Component<void, Props, State> {
 						illusts={illusts}
 						/> : <ColumnLoading/>
 				}
-			</div>
+			</Wrap>
 		)
 	}
 }
 
+const LoadingWrap = styled.div`
+	display: flex;
+	justify-content: center;
+	background: #4a4a4a;
+	height: 100%;
+`
+
 const ColumnLoading = () => (
-	<div className={styles.loading}>
+	<LoadingWrap>
 		<Loading wrapStyle={{background: '#121212'}}/>
-	</div>
+	</LoadingWrap>
 )

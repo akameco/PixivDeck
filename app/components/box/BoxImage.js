@@ -1,9 +1,9 @@
 // @flow
 import React, {Component} from 'react'
+import styled, {keyframes} from 'styled-components'
 import {findDOMNode} from 'react-dom'
 import type {Illust} from '../../types/illust'
 import Icon from '../common/Icon'
-import styles from './BoxImage.css'
 
 type Props = {
 	illust: Illust,
@@ -14,6 +14,55 @@ type State = {
 	isVisible: bool,
 	isLoaded: bool
 }
+
+const BoxImageWrapper = styled.div`
+	position: relative;
+	width: 100%;
+	min-height: 20px;
+	text-align: center;
+	cursor: zoom-in;
+	overflow: hidden;
+	border-radius: 3px;
+
+	img {
+		max-width: 100%;
+		max-height: 100%;
+		min-height: 100px;
+		margin: -10px;
+		overflow: hidden;
+	}
+
+	svg {
+		position: absolute;
+		width: 25px;
+		height: 25px;
+		padding: 2px;
+		fill: white;
+		background-color: rgba(180, 180, 180, 0.5);
+		border-radius: 4px;
+		margin-top: 5px;
+		margin-left: 5px;
+		z-index: 100;
+	}
+`
+
+const fadeIn = keyframes`
+	0% {
+		filter: blur(10px);
+		margin: -10px;
+		opacity: 0;
+	}
+
+	100% {
+		filter: blur(0);
+		margin: 0;
+		opacity: 1;
+	}
+`
+
+const LoadedImg = styled.img`
+	animation: ${fadeIn} 0.3s both;
+`
 
 export default class BoxImage extends React.PureComponent {
 	props: Props;
@@ -64,21 +113,19 @@ export default class BoxImage extends React.PureComponent {
 		const {imageUrls, pageCount} = this.props.illust
 		const {isVisible, isLoaded} = this.state
 		return (
-			<div
+			<BoxImageWrapper
 				ref={this.handleRefs}
-				className={styles.base}
 				>
 				{isVisible && isLoaded && pageCount > 1 &&
 					<Icon type="manga" color="#fff"/>
 				}
 				{isVisible && isLoaded ?
-					<img
-						className={styles.loaded}
+					<LoadedImg
 						src={imageUrls.large}
 						onClick={this.props.onClick}
 						/> : <img height={200}/>
 				}
-			</div>
+			</BoxImageWrapper>
 		)
 	}
 }

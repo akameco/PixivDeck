@@ -1,7 +1,28 @@
 // @flow
 import React, {Component} from 'react'
+import styled from 'styled-components'
 import * as ranking from '../../constants/ranking'
-import styles from './AddColumnModal.css'
+import Card from './Card'
+import LinkButton from './LinkButton'
+
+const Wrap = styled.div`
+	height: calc(100% - 1rem);
+	padding: 1rem;
+`
+
+const Content = styled.div`
+	display: flex;
+	flex-direction: row;
+	background: #f5f5f5;
+	padding-bottom: 10px;
+	overflow-y: auto;
+`
+
+const Header = styled.div`
+	font-weight: 500;
+	margin-left: 10px;
+	margin-bottom: 10px;
+`
 
 export type Props = {
 	addBookmark: () => void,
@@ -34,11 +55,9 @@ export default class SelectColumnModal extends Component {
 		} = this.props
 
 		return (
-			<div className={styles.wrap}>
-				<div className={styles.header}>
-					追加するカラムを選択
-				</div>
-				<div className={styles.content}>
+			<Wrap>
+				<Header>追加するカラムを選択</Header>
+				<Content>
 					<Card title="ランキング">
 						{IllustRankingLinks}
 					</Card>
@@ -53,31 +72,8 @@ export default class SelectColumnModal extends Component {
 					<Card title="R18 ランキング">
 						{IllustR18RankingLinks}
 					</Card>
-				</div>
-			</div>
+				</Content>
+			</Wrap>
 		)
 	}
 }
-
-const Card = ({title, children}: {title: string, children?: React$Element<any>}) => (
-	<div className={styles.card}>
-		<div className={styles.title}>{title}</div>
-		<List>
-			{children}
-		</List>
-	</div>
-)
-
-const LinkButton = ({text, onClick}: {text: string, onClick: () => void}) => (
-	<div onClick={onClick} className={styles.linkButton}>
-		<div className={styles.innerButton}>
-			{text}
-		</div>
-	</div>
-)
-
-const List = ({children}: {children?: React$Element<any>}) => (
-	<div className={styles.list}>
-		{children}
-	</div>
-)

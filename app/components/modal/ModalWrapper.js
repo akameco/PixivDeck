@@ -1,10 +1,10 @@
 // @flow
 import React, {Component} from 'react'
+import styled, {keyframes} from 'styled-components'
 import EventListener from 'react-event-listener'
 import keycode from 'keycode'
 import CloseButton from '../common/CloseButton'
 import Overlay from '../common/Overlay'
-import styles from './ModalWrapper.css'
 
 type Props = {
 	open: bool,
@@ -43,28 +43,72 @@ export default class ModalWrapper extends Component {
 		}
 
 		return (
-			<div className={styles.root}>
+			<Wrap>
 				{open &&
 					<EventListener
 						target="window"
 						onKeyUp={this.handleKeyUp}
 						/>
 				}
-				<div
-					className={styles.modal}
+				<Content
 					ref={c => { // eslint-disable-line react/jsx-no-bind
 						this._content = c
 					}}
 					>
 					<CloseButton onClick={onClose}/>
 					{open && children}
-				</div>
+				</Content>
 				<Overlay
 					show={open}
 					style={{zIndex: 800}}
 					onClick={onClose}
 					/>
-			</div>
+			</Wrap>
 		)
 	}
 }
+
+const Wrap = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	align-content: center;
+	box-sizing: border-box;
+	top: 0;
+	left: 0;
+	z-index: 700;
+`
+
+const fadeIn = keyframes`
+	0% {
+		opacity: 0;
+		margin-top: -1000px;
+	}
+
+	20% {
+		opacity: 100;
+	}
+
+	100% {
+		margin-top: 0;
+	}
+`
+
+const Content = styled.div`
+	z-index: 900;
+	position: relative;
+	background: #f5f5f5;
+	max-width: 90%;
+	max-height: 90%;
+	width: auto;
+	height: auto;
+	overflow-y: hidden;
+	box-shadow: 0 0 10px rgba(17, 17, 17, 0.5);
+	border-radius: 3px;
+	padding-top: 10px;
+	padding-bottom: 15px;
+	animation: ${fadeIn} 0.2s ease-out 0.1s both;
+`

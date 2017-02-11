@@ -1,17 +1,22 @@
 import React from 'react'
+import styled from 'styled-components'
 import HeaderButton from './HeaderButton'
-import styles from './HeaderTop.css'
 
 type Props = {
 	onClickAdd: () => void,
 	onOpenSearchModal: () => void,
 }
 
+const Wrap = styled.div`
+	width: 100%;
+	text-align: center;
+`
+
 const HeaderTop = ({onClickAdd, onOpenSearchModal}: Props) => (
-	<div className={styles.top}>
+	<Wrap>
 		<HeaderButton iconType="add" onClick={onClickAdd}/>
 		<HeaderButton iconType="searchIllust" onClick={onOpenSearchModal}/>
-	</div>
+	</Wrap>
 )
 
 export default HeaderTop

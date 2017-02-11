@@ -1,14 +1,26 @@
 // @flow
 import React from 'react'
+import styled from 'styled-components'
 import Popover from 'material-ui/Popover'
 import type {User} from '../../../types/user'
 import type {Illust} from '../../../types/illust'
 import Avater from '../../common/Avater'
 import BookmarkButton from '../../BookmarkButton'
 import UserPopover from '../../UserPopover'
-import styles from './BoxHeader.css'
+import Title from './Title'
 import Caption from './Caption'
 import Profile from './Profile'
+import Wrapper from './BoxHeaderWrapper'
+
+const AvaterWrapper = styled.div`
+	margin: 5;
+	cursor: pointer;
+`
+
+const ProfileWrapper = styled.div`
+	position: relative;
+	width: calc(100% - 56px);
+`
 
 type Props = {
 	user: User,
@@ -16,8 +28,6 @@ type Props = {
 	onClick: () => void,
 	isIllustComment: bool,
 }
-
-const Title = ({title}: {title: string}) => <div className={styles.title}>{title}</div>
 
 type State = {
 	open: bool,
@@ -97,10 +107,9 @@ export default class BoxHeader extends React.PureComponent {
 		const {name, profileImageUrls} = user
 
 		return (
-			<div className={styles.base}>
-				<div
+			<Wrapper>
+				<AvaterWrapper
 					onClick={this.handleClick}
-					style={{margin: 5, cursor: 'pointer'}}
 					onMouseEnter={this.handleMouseEnter}
 					onMouseLeave={this.handleMouseLeave}
 					>
@@ -117,8 +126,8 @@ export default class BoxHeader extends React.PureComponent {
 							<UserPopover user={user} onClick={this.handleClick}/>
 						</div>
 					</Popover>
-				</div>
-				<div className={styles.wrap}>
+				</AvaterWrapper>
+				<ProfileWrapper>
 					<Title title={title}/>
 					<Profile name={name} onClick={onClick}/>
 					<div style={{position: 'absolute', top: 5, right: 10}}>
@@ -128,8 +137,8 @@ export default class BoxHeader extends React.PureComponent {
 							/>
 					</div>
 					{isIllustComment && caption && <Caption caption={caption}/>}
-				</div>
-			</div>
+				</ProfileWrapper>
+			</Wrapper>
 		)
 	}
 }

@@ -1,9 +1,9 @@
 // @flow
 import React from 'react'
+import styled from 'styled-components'
 import SearchField from '../SearchField'
 import HeaderButton from './HeaderButton'
 import HeaderBottom from './HeaderBottom'
-import styles from './Header.css'
 
 export type Props = {
 	isDropdown: bool,
@@ -30,27 +30,51 @@ export default class Header extends React.PureComponent {
 		const {isSearchField, toggleSearchField} = this.props
 
 		return (
-			<header className={styles.header}>
-				<div className={styles.top}>
+			<Wrap>
+				<Top>
 					<HeaderButton iconType="add" onClick={onClickAdd}/>
 					<HeaderButton
 						iconType="searchIllust"
 						onClick={toggleSearchField}
 						IconStyle={isSearchField ? {color: '#dedede'} : {}}
 						/>
-				</div>
-				{isSearchField && (
-					<div className={styles.search}>
-						<SearchField/>
-					</div>
-				)}
+				</Top>
+				{isSearchField && <SearchWrap><SearchField/></SearchWrap>}
 				<HeaderBottom
 					isDropdown={isDropdown}
 					onLogout={onLogout}
 					onToggleDropdown={onToggleDropdown}
 					onOpenFilterModal={onOpenFilterModal}
 					/>
-			</header>
+			</Wrap>
 		)
 	}
 }
+
+const Wrap = styled.header`
+	display: flex;
+	position: fixed;
+	z-index: 300;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	text-align: center;
+	flex-direction: column;
+	flex-flow: nowrap;
+	width: 50px;
+	height: 100%;
+	background-color: #292f33;
+`
+
+const Top = styled.div`
+`
+
+const SearchWrap = styled.div`
+	position: fixed;
+	top: 35px;
+	left: 50px;
+	width: auto;
+	min-width: 260px;
+	height: 100%;
+`
