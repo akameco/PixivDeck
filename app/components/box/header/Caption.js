@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import styled from 'styled-components'
-import Autolink from 'components/Autolink'
+import TextAutoLink from 'components/TextAutoLink'
 
 const Wrapper = styled.div`
 	color: #c4c4c4;
@@ -21,7 +21,7 @@ type Props = {
 
 const Caption = ({caption}: Props) => (
 	<Wrapper>
-		<Autolink text={caption}/>
+		<TextAutoLink text={caption}/>
 	</Wrapper>
 )
 

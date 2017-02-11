@@ -6,7 +6,7 @@ type Props = {
 	text: string
 }
 
-const AutoLink = ({text}: Props) => (
+const TextAutoLink = ({text}: Props) => (
 	<span
 		dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
 			__html: link(text),
@@ -14,4 +14,4 @@ const AutoLink = ({text}: Props) => (
 		/>
 )
 
-export default AutoLink
+export default TextAutoLink
