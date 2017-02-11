@@ -2,7 +2,7 @@
 import React from 'react'
 import keycode from 'keycode'
 import EventListener from 'react-event-listener'
-import Overlay from '../common/Overlay'
+import Overlay from 'components/Overlay'
 
 export type Props = {
 	open: bool,
