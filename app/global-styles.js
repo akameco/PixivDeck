@@ -62,17 +62,17 @@ injectGlobal`
 		overflow-y: hidden;
 	}
 
-	:global .react-tabs [role=tablist] {
+	.react-tabs [role=tablist] {
 		margin: 0;
 		border: none;
 	}
 
-	:global .react-tabs [role=tab] {
+	.react-tabs [role=tab] {
 		border-radius: 0;
 		padding: 10px 12px;
 	}
 
-	:global .react-tabs [role=tab][aria-selected=true] {
+	.react-tabs [role=tab][aria-selected=true] {
 		border-radius: 0;
 		padding: 10px 12px;
 	}
