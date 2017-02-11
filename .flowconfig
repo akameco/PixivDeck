@@ -18,3 +18,12 @@ node_modules/styled-components/flow-typed/inline-style-prefixer_vx.x.x.js
 [options]
 esproposal.class_instance_fields=enable
 unsafe.enable_getters_and_setters=true
+
+module.name_mapper='^components\/\(.*\)$' -> '<PROJECT_ROOT>/app/components/\1'
+module.name_mapper='^components$' -> '<PROJECT_ROOT>/app/components'
+module.name_mapper='^containers\/\(.*\)$' -> '<PROJECT_ROOT>/app/containers/\1'
+module.name_mapper='^containers$' -> '<PROJECT_ROOT>/app/containers'
+module.name_mapper='^actions\/\(.*\)$' -> '<PROJECT_ROOT>/app/actions/\1'
+module.name_mapper='^actions$' -> '<PROJECT_ROOT>/app/actions'
+module.name_mapper='^types\/\(.*\)$' -> '<PROJECT_ROOT>/app/types/\1'
+module.name_mapper='^types$' -> '<PROJECT_ROOT>/app/types'

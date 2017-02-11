@@ -2,7 +2,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Avater from '../common/Avater'
-import AutoLinker from '../AutoLinker'
+import AutoLink from '../AutoLink'
 import type {User, Profile} from '../../types/user'
 import Navigation from './Navigation'
 
@@ -14,7 +14,7 @@ const Header = ({user, profile}: {user: User, profile: Profile}) => (
 		</ImageWrap>
 		<Info><h1>{user.name}</h1></Info>
 		<Caption>
-			{user.comment && <AutoLinker text={user.comment}/>}
+			{user.comment && <AutoLink text={user.comment}/>}
 		</Caption>
 	</Wrap>
 )
