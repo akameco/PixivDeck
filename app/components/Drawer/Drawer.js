@@ -41,7 +41,7 @@ class Drawer extends React.PureComponent<DefaultProps, Props, void> {
 		return (
 			<DrawerWrapper>
 				{open && <EventListener target="window" onKeyUp={this.handleKeyUp}/>}
-				<StyledDrawer open={open} width={width}>
+				<StyledDrawer open={open} x={width}>
 					{open && children}
 				</StyledDrawer>
 				<Overlay show={open} style={{zIndex: 800}} onClick={onRequestClose}/>
