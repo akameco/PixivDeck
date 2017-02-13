@@ -1,8 +1,9 @@
 // @flow
 import React, {Component} from 'react'
 import {findDOMNode} from 'react-dom'
-import CloseButton from '../../common/CloseButton'
-import styles from './Lazyimg.css'
+import styled, {keyframes} from 'styled-components'
+import CloseButton from 'components/common/CloseButton'
+import Wrapper from './LazyImgWrapper'
 
 type Size = {
 	width: number | 'auto',
@@ -14,10 +15,10 @@ function calcSize(width: number, height: number): Size {
 	if (height > innerHeight && width > innerWidth) {
 		return (width * innerHeight < height * innerWidth) ?
 			{width: 'auto', height: innerHeight} :
-		{
-			width: innerWidth,
-			height: 'auto',
-		}
+			{
+				width: innerWidth,
+				height: 'auto',
+			}
 	}
 	if (height > innerHeight) {
 		return {width: 'auto', height: innerHeight}
@@ -100,16 +101,6 @@ export default class LazyImg extends Component {
 		return 0
 	}
 
-	selectStyle(isLoaded: bool, isClick: bool): string {
-		if (isLoaded && isClick) {
-			return 'isClick'
-		}
-		if (isLoaded) {
-			return 'loaded'
-		}
-		return 'loading'
-	}
-
 	handleClick = (event: SyntheticEvent) => { // eslint-disable-line no-undef
 		event.stopPropagation()
 		this.setState({isClicked: !this.state.isClicked})
@@ -118,51 +109,77 @@ export default class LazyImg extends Component {
 	render() {
 		const {width, height, isLoaded, onClose} = this.props
 		const {isClicked} = this.state
-
-		const style = this.selectStyle(isLoaded, isClicked)
-		const toStyle = {marginTop: `${this.state.toMarginTop}px`}
-		const fromStyle = Object.assign(
-			{},
-			calcSize(width, height),
-			{marginTop: `${this.state.fromMarginTop}px`}
-		)
+		const fromStyle = calcSize(width, height)
 
 		if (isLoaded) {
 			return (
-				<div className={styles.wrap}>
+				<Wrapper>
 					<CloseButton
 						style={{color: '#676767', top: '10px', right: '10px'}}
 						iconStyle={{fill: 'white'}}
 						onClick={onClose}
 						/>
-					<img
+					<Img
 						src={this.props.to}
 						width={width}
 						height={height}
-						style={toStyle}
-						className={styles[style]}
+						marginTop={this.state.toMarginTop}
+						isClicked={isClicked}
 						onClick={this.handleClick}
 						ref={c => { // eslint-disable-line react/jsx-no-bind
 							this.to = c
 						}}
 						/>
-				</div>
+				</Wrapper>
 			)
 		}
 
 		return (
-			<div className={styles.wrap}>
+			<Wrapper>
 				<CloseButton onClick={onClose} iconStyle={{fill: 'white'}}/>
-				<img
+				<FromImg
 					src={this.props.from}
-					className={styles.from}
+					marginTop={this.state.fromMarginTop}
 					style={fromStyle}
 					onLoad={this.handleLoad}
 					ref={c => { // eslint-disable-line react/jsx-no-bind
 						this.from = c
 					}}
 					/>
-			</div>
+			</Wrapper>
 		)
 	}
 }
+
+const FromImg = styled.img`
+	width: auto;
+	height: auto;
+	max-width: 100vw;
+	max-height: 100vh;
+	margin: auto;
+	margin-top: ${props => props.marginTop}px;
+	user-select: none;
+	cursor: wait;
+`
+
+const fadeIn = keyframes`
+	0% {
+		filter: blur(1px);
+	}
+
+	100% {
+		filter: none;
+	}
+`
+
+const Img = styled.img`
+	width: auto;
+	height: auto;
+	margin: auto;
+	margin-top: ${props => props.marginTop}px;
+	max-width: ${props => props.isClicked ? 'none' : '100vw'};
+	max-height: ${props => props.isClicked ? 'none' : '100vh'};
+	cursor: ${props => props.isClicked ? 'zoom-out' : 'zoom-in'};
+	animation: ${fadeIn} 600ms forwards;
+	user-select: none;
+`

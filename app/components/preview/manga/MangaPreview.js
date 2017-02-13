@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import styles from './MangaPreview.css'
+import styled, {keyframes} from 'styled-components'
 
 type Props = {
 	img: string,
@@ -24,15 +24,49 @@ export default class MangaPreview extends React.PureComponent {
 	}
 
 	render() {
-		const imgStyle = this.state.isLoad ? 'loaded' : ''
 		return (
-			<div className={styles.base} onClick={this.handleClose}>
-				<img
+			<Wrapper onClick={this.handleClose}>
+				<Img
 					src={this.props.img}
 					onLoad={this.handleImgLoad}
-					className={imgStyle}
+					loaded={this.state.isLoad}
 					/>
-			</div>
+			</Wrapper>
 		)
 	}
 }
+
+const Wrapper = styled.div`
+	display: flex;
+	position: fixed;
+	top: 0;
+	left: 0;
+	text-align: center;
+	background: rgba(24, 24, 24, 0.95);
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+`
+
+const fadeIn = keyframes`
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+`
+
+const Img = styled.img`
+	width: auto;
+	height: auto;
+	max-width: 100vw;
+	max-height: 100vh;
+	margin: auto;
+	user-select: none;
+	opacity: 0;
+	cursor: zoom-out;
+	animation: ${props => props.loaded && `${fadeIn} 500ms both`};
+`
