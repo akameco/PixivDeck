@@ -61,19 +61,4 @@ injectGlobal`
 		padding: 0;
 		overflow-y: hidden;
 	}
-
-	.react-tabs [role=tablist] {
-		margin: 0;
-		border: none;
-	}
-
-	.react-tabs [role=tab] {
-		border-radius: 0;
-		padding: 10px 12px;
-	}
-
-	.react-tabs [role=tab][aria-selected=true] {
-		border-radius: 0;
-		padding: 10px 12px;
-	}
 `
