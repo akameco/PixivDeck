@@ -1,11 +1,10 @@
 // @flow
 import React from 'react'
-import {Tab, Tabs, TabList, TabPanel} from 'react-tabs'
-import type {User, Profile} from '../../types/user'
-import type {Illust} from '../../types/illust'
+import {Tabs, Tab} from 'material-ui/Tabs'
+import type {User, Profile} from 'types/user'
+import type {Illust} from 'types/illust'
 import Header from './DrawerHeader'
 import IllstList from './IllustListContainer'
-import styles from './UserDrawer.css'
 
 type Props = {
 	user: User,
@@ -14,46 +13,28 @@ type Props = {
 	mangas: Array<Illust>,
 }
 
+const tabProps = {
+	tabItemContainerStyle: {
+		backgroundColor: 'rgb(54, 75, 78)',
+	},
+	inkBarStyle: {
+		backgroundColor: '#afafaf',
+	},
+}
+
 const UserDrawer = ({user, profile, illusts, mangas}: Props) => {
 	const {totalIllusts, totalManga} = profile
 	return (
 		<div>
 			<Header user={user} profile={profile}/>
-			<div>
-				<Tabs>
-					<TabList
-						className={styles.tabList}
-						activeTabClassName={styles.tabListActive}
-						>
-						{totalIllusts > 0 &&
-							<Tab
-								className={styles.tabLink}
-								activeTabClassName={styles.tabLinkActive}
-								>
-								イラスト ( {totalIllusts} )
-							</Tab>
-						}
-						{totalManga > 0 &&
-							<Tab
-								className={styles.tabLink}
-								activeTabClassName={styles.tabLinkActive}
-								>
-								マンガ ( {totalManga} )
-							</Tab>
-						}
-					</TabList>
-					{totalIllusts > 0 &&
-						<TabPanel>
-							<IllstList illusts={illusts} type="illust"/>
-						</TabPanel>
-					}
-					{totalManga > 0 &&
-						<TabPanel>
-							<IllstList illusts={mangas} type="manga"/>
-						</TabPanel>
-					}
-				</Tabs>
-			</div>
+			<Tabs {...tabProps}>
+				<Tab label={`イラスト (${totalIllusts})`}>
+					<IllstList illusts={illusts} type="illust"/>
+				</Tab>
+				<Tab label={`マンガ (${totalManga})`}>
+					<IllstList illusts={mangas} type="manga"/>
+				</Tab>
+			</Tabs>
 		</div>
 	)
 }
