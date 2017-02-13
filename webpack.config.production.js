@@ -1,6 +1,5 @@
 'use strict'
 const webpack = require('webpack')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const merge = require('webpack-merge')
 const baseConfig = require('./webpack.config.base')
 
@@ -16,25 +15,6 @@ module.exports = merge(baseConfig, {
 		publicPath: '../dist/',
 	},
 
-	module: {
-		loaders: [
-			{
-				test: /\.global\.css$/,
-				loader: ExtractTextPlugin.extract(
-					'style-loader',
-					'css-loader'
-				),
-			},
-			{
-				test: /^((?!\.global).)*\.css$/,
-				loader: ExtractTextPlugin.extract(
-					'style-loader',
-					'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
-				),
-			},
-		],
-	},
-
 	plugins: [
 		new webpack.optimize.OccurrenceOrderPlugin(),
 		new webpack.DefinePlugin({
@@ -46,7 +26,6 @@ module.exports = merge(baseConfig, {
 				warnings: false,
 			},
 		}),
-		new ExtractTextPlugin('style.css', {allChunks: true}),
 	],
 
 	target: 'electron-renderer',
