@@ -42,6 +42,5 @@ module.exports = merge(baseConfig, {
 		'electron-context-menu',
 		'electron-dl',
 		'pify',
-		'wallpaper',
 	],
 })

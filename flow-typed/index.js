@@ -45,10 +45,6 @@ declare module 'electron-dl' {
 	declare var exports: any;
 }
 
-declare module 'wallpaper' {
-	declare var exports: any;
-}
-
 declare module 'normalizr' {
 	declare var exports: any;
 }

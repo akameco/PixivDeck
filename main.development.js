@@ -3,8 +3,6 @@
 import electron from 'electron'
 import Config from 'electron-config'
 import referer from 'electron-referer'
-import wallpaper from 'wallpaper'
-import {download} from 'electron-dl'
 import appMenu from './menu'
 
 const {app, BrowserWindow, ipcMain, shell} = electron
@@ -110,11 +108,6 @@ app.on('ready', () => {
 
 	ipcMain.on('tweet', (ev, url) => {
 		openTweet(url)
-	})
-
-	ipcMain.on('wallpaper', async (ev, img) => {
-		const dl = await download(mainWindow, img)
-		await wallpaper.set(dl.getSavePath())
 	})
 
 	app.on('before-quit', () => {
