@@ -1,13 +1,13 @@
 // @flow
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import type {Dispatch, State} from '../../types'
-import type {User, Profile} from '../../types/user'
-import type {Illust} from '../../types/illust'
-import {fetchUserDetail} from '../../actions'
-import {fetchDrawerIllust} from '../../actions/drawer'
-import {getCurrentUser, getDrawerIllusts, getDrawerMangas} from '../../reducers'
-import Loading from '../common/Loading'
+import type {Dispatch, State} from 'types'
+import type {User, Profile} from 'types/user'
+import type {Illust} from 'types/illust'
+import {fetchUserDetail} from 'actions'
+import {fetchDrawerIllust} from 'actions/drawer'
+import {getCurrentUser, getDrawerIllusts, getDrawerMangas} from 'reducers'
+import Loading from 'components/Loading'
 import UserDrawer from './UserDrawer'
 
 type Props = {

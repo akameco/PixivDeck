@@ -1,0 +1,16 @@
+exports[`test snapshot 1`] = `
+<styled.div>
+  <styled.div>
+    <styled.div
+      delay={0} />
+    <styled.div
+      delay={-1.1} />
+    <styled.div
+      delay={-1} />
+    <styled.div
+      delay={-0.9} />
+    <styled.div
+      delay={-0.8} />
+  </styled.div>
+</styled.div>
+`;
