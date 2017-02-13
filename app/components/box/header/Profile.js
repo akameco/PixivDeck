@@ -1,21 +1,19 @@
 // @flow
 import React from 'react'
 import styled from 'styled-components'
+import A from 'components/A'
 
 type Props = {
 	name: string,
 	onClick: () => void,
 }
 
-const Name = styled.a`
+const Name = styled(A)`
 	color: #74787c;
 	line-height: 1;
 	margin-left: 0.5rem;
 	font-size: 0.9rem;
 	margin-right: 5px;
-	&:hover {
-		color: #7af;
-	}
 `
 
 const Line = styled.p`
