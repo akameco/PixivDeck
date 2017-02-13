@@ -1,7 +1,3 @@
-declare module 'react-css-modules' {
-	declare var exports: any;
-}
-
 declare module 'babel-polyfill' {
 	declare var exports: any;
 }
