@@ -4,10 +4,10 @@ import React, {Component} from 'react'
 import type {Connector} from 'react-redux'
 import {download} from 'electron-dl'
 import {connect} from 'react-redux'
-import type {Dispatch, State} from '../../types/'
-import type {Illust} from '../../types/illust'
-import type {User} from '../../types/user'
-import {getUser} from '../../reducers'
+import type {Dispatch, State} from 'types/'
+import type {Illust} from 'types/illust'
+import type {User} from 'types/user'
+import {getUser} from 'reducers'
 import {
 	openImageView,
 	openMangaPreview,
@@ -15,7 +15,6 @@ import {
 	openUserDrawer,
 	addBookmark,
 	addSearchIllustColumn,
-	setWallpaper,
 	shareTwitter,
 	openPixiv,
 } from '../../actions'
@@ -34,7 +33,6 @@ type Props = {
 	addBookmark: (isPublic: bool) => void,
 	openPixiv: () => void,
 	shareTwitter: () => void,
-	setWallpaper: () => void,
 }
 
 class BoxContainer extends Component {
@@ -53,7 +51,6 @@ class BoxContainer extends Component {
 			openPixiv,
 			openUserDrawer,
 			shareTwitter,
-			setWallpaper,
 		} = this.props
 
 		const menu = new Menu()
@@ -104,15 +101,6 @@ class BoxContainer extends Component {
 			label: 'pixivで開く',
 			click() {
 				openPixiv()
-			},
-		}))
-
-		menu.append(new MenuItem({type: 'separator'}))
-
-		menu.append(new MenuItem({
-			label: '壁紙に設定',
-			click() {
-				setWallpaper()
 			},
 		}))
 
@@ -180,9 +168,6 @@ const mapDispatchToProps = (dispatch: Dispatch, {illust}) => {
 		},
 		shareTwitter() {
 			dispatch(shareTwitter(illustId))
-		},
-		setWallpaper() {
-			dispatch(setWallpaper(illustId))
 		},
 	}
 }

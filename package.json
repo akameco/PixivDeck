@@ -66,8 +66,7 @@
     "redux-saga": "^0.14.3",
     "redux-thunk": "^2.2.0",
     "residual-scroll-top": "^0.1.0",
-    "styled-components": "^1.4.3",
-    "wallpaper": "^2.3.0"
+    "styled-components": "^1.4.3"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",

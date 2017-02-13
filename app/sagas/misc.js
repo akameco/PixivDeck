@@ -11,14 +11,6 @@ type hasId = {
 	id: number
 }
 
-function * setWallpaper({id}: hasId): Generator<IOEffect, *, *> {
-	try {
-		const illust = getIllust(yield select(), id)
-		const img = illust.metaSinglePage.originalImageUrl
-		ipcRenderer.send('wallpaper', img ? img : illust.imageUrls.large)
-	} catch (err) {}
-}
-
 function * shareTwitter({id}: hasId): Generator<IOEffect, *, *> {
 	try {
 		const state: State = yield select()
@@ -35,10 +27,6 @@ function * openPixiv({id}: hasId): Generator<IOEffect, *, *> {
 	yield call(shell.openExternal, `http://www.pixiv.net/member_illust.php?mode=medium&illust_id=${id}`)
 }
 
-function * setWallpaperSaga(): Generator<*, *, *> {
-	yield * takeEvery(Actions.SET_WALLPAPER, setWallpaper)
-}
-
 function * shareTwitterSage(): Generator<*, *, *> {
 	yield * takeEvery(Actions.SHARE_TWITTER, shareTwitter)
 }
@@ -48,7 +36,6 @@ function * openPixivSage(): Generator<*, *, *> {
 }
 
 function * root(): Generator<*, *, *> {
-	yield fork(setWallpaperSaga)
 	yield fork(shareTwitterSage)
 	yield fork(openPixivSage)
 }
