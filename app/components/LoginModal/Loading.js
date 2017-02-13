@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import styled from 'styled-components'
-import Loading from '../common/Loading'
+import Loading from 'components/Loading'
 import Feild from './Feild'
 import Submit from './Submit'
 

@@ -2,7 +2,7 @@
 import React, {Component} from 'react'
 import styled from 'styled-components'
 import {findDOMNode} from 'react-dom'
-import Loading from '../common/Loading'
+import Loading from 'components/Loading'
 
 type Props = {
 	rootMargin?: string,
