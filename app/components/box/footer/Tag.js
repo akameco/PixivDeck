@@ -1,9 +1,9 @@
 // @flow
 import React from 'react'
 import styled from 'styled-components'
+import A from 'components/A'
 
-const A = styled.a`
-	color: #5d89a8;
+const StyledTag = styled(A)`
 	margin-left: 5px;
 	cursor: pointer;
 `
@@ -13,13 +13,10 @@ type Props = {
 	name: string
 }
 
-const Tag = ({name, onClick}: Props) => {
-	const handleClick = () => onClick(name)
-	return (
-		<A onClick={handleClick}>
-			#{name}
-		</A>
-	)
-}
+const Tag = ({name, onClick}: Props) => (
+	<StyledTag onClick={() => onClick(name)}>
+		#{name}
+	</StyledTag>
+)
 
 export default Tag
