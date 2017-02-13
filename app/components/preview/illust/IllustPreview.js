@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
+import styled from 'styled-components'
 import LazyImg from './LazyImg'
-import styles from './IllustPreview.css'
 
 type Props = {
 	from: string,
@@ -29,7 +29,7 @@ export default class IllustPreview extends React.PureComponent {
 		const {width, height, from, to} = this.props
 
 		return (
-			<div className={styles.base} onClick={this.handleOnClose}>
+			<StyledPreview onClick={this.handleOnClose}>
 				<LazyImg
 					from={from}
 					to={to}
@@ -39,7 +39,22 @@ export default class IllustPreview extends React.PureComponent {
 					onLoad={this.props.onLoad}
 					onClose={this.props.onClose}
 					/>
-			</div>
+			</StyledPreview>
 		)
 	}
 }
+
+const StyledPreview = styled.div`
+	display: flex;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	top: 0;
+	left: 0;
+	background: rgba(24, 24, 24, 0.97);
+	cursor: pointer;
+	overflow: auto;
+	z-index: 999;
+`

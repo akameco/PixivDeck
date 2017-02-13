@@ -1,9 +1,9 @@
 // @flow
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import type {Dispatch, State} from '../../../types'
-import type {Illust} from '../../../types/illust'
-import {closeImageView, finishImgLoaded, startImgLoading} from '../../../actions/manage'
+import type {Dispatch, State} from 'types'
+import type {Illust} from 'types/illust'
+import {closeImageView, finishImgLoaded, startImgLoading} from 'actions/manage'
 import Preview from './IllustPreview'
 
 type Props = {
