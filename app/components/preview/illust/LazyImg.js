@@ -15,10 +15,10 @@ function calcSize(width: number, height: number): Size {
 	if (height > innerHeight && width > innerWidth) {
 		return (width * innerHeight < height * innerWidth) ?
 			{width: 'auto', height: innerHeight} :
-			{
-				width: innerWidth,
-				height: 'auto',
-			}
+		{
+			width: innerWidth,
+			height: 'auto',
+		}
 	}
 	if (height > innerHeight) {
 		return {width: 'auto', height: innerHeight}
