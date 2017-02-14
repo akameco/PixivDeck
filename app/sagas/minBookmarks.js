@@ -1,11 +1,10 @@
-// @flow
 import {delay} from 'redux-saga'
 import {fork, take, select, call} from 'redux-saga/effects'
 import * as Actions from '../constants/column'
 import {getIllusts} from '../reducers'
 import {nextPage} from './nextColumnPage'
 
-function * fetchUntilLimit(id: Id): Generator<*, *, *> {
+function * fetchUntilLimit(id: Id) {
 	const state = yield select()
 	let illusts = getIllusts(state, id)
 	try {
@@ -25,14 +24,14 @@ function * fetchUntilLimit(id: Id): Generator<*, *, *> {
 	}
 }
 
-function * setMinBookmarksFlow(): Generator<*, *, *> {
+function * setMinBookmarksFlow() {
 	while (true) {
 		const {id} = yield take(Actions.SET_COLUMN_MIN_BOOKMARKS)
 		yield call(fetchUntilLimit, id)
 	}
 }
 
-function * root(): Generator<*, *, *> {
+function * root() {
 	yield fork(setMinBookmarksFlow)
 }
 

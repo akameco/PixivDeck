@@ -1,9 +1,5 @@
-// @flow
 import {ipcRenderer, shell} from 'electron'
-import {takeEvery} from 'redux-saga'
-import {select, fork, call} from 'redux-saga/effects'
-import type {IOEffect} from 'redux-saga/effects'
-import type {State} from '../types'
+import {select, fork, call, takeEvery} from 'redux-saga/effects'
 import {getIllust, getUser} from '../reducers'
 import * as Actions from '../constants/misc'
 
@@ -11,9 +7,9 @@ type hasId = {
 	id: number
 }
 
-function * shareTwitter({id}: hasId): Generator<IOEffect, *, *> {
+function * shareTwitter({id}: hasId) {
 	try {
-		const state: State = yield select()
+		const state = yield select()
 		const illust = getIllust(state, id)
 		const user = getUser(state, illust.user)
 		const encodedTitle = encodeURIComponent(illust.title)
@@ -23,19 +19,19 @@ function * shareTwitter({id}: hasId): Generator<IOEffect, *, *> {
 	} catch (err) { }
 }
 
-function * openPixiv({id}: hasId): Generator<IOEffect, *, *> {
+function * openPixiv({id}: hasId) {
 	yield call(shell.openExternal, `http://www.pixiv.net/member_illust.php?mode=medium&illust_id=${id}`)
 }
 
-function * shareTwitterSage(): Generator<*, *, *> {
+function * shareTwitterSage() {
 	yield * takeEvery(Actions.SHARE_TWITTER, shareTwitter)
 }
 
-function * openPixivSage(): Generator<*, *, *> {
+function * openPixivSage() {
 	yield * takeEvery(Actions.OPEN_PIXIV, openPixiv)
 }
 
-function * root(): Generator<*, *, *> {
+function * root() {
 	yield fork(shareTwitterSage)
 	yield fork(openPixivSage)
 }
