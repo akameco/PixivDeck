@@ -1,7 +1,4 @@
-// @flow
-import {takeEvery} from 'redux-saga'
-import {put, fork, call} from 'redux-saga/effects'
-import type {IOEffect} from 'redux-saga/effects'
+import {put, fork, call, takeEvery} from 'redux-saga/effects'
 import * as Actions from '../constants/popover'
 import {
 	clearUserPopoverIllust,
@@ -9,7 +6,7 @@ import {
 } from '../actions/popover'
 import Api from '../api'
 
-function * popover({id}: {id: Id}): Generator<IOEffect, *, *> {
+function * popover({id}: {id: Id}) {
 	// クリア
 	yield put(clearUserPopoverIllust())
 	try {
@@ -24,11 +21,11 @@ function * popover({id}: {id: Id}): Generator<IOEffect, *, *> {
 	} catch (err) {}
 }
 
-function * popoverFlow(): Generator<IOEffect, *, *> {
+function * popoverFlow() {
 	yield * takeEvery(Actions.OPEN_USER_POPOVER, popover)
 }
 
-function * root(): Generator<*, *, *> {
+function * root() {
 	yield fork(popoverFlow)
 }
 

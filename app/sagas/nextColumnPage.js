@@ -1,4 +1,3 @@
-// @flow
 import {delay} from 'redux-saga'
 import {fork, take, select, call, put} from 'redux-saga/effects'
 import * as Actions from '../constants/column'
@@ -17,7 +16,7 @@ const LIMIT = 10
 const filterByMinBookmarks = (illust: Illust, bookmarks: number): bool =>
 	illust.totalBookmarks >= bookmarks
 
-export function * nextPage(id: number): Generator<*, *, *> {
+export function * nextPage(id: number) {
 	let state = yield select()
 	const column = getColumn(state, id)
 	const {response, params} = yield call(Api.fetch, column.endpoint, column.params)
@@ -37,7 +36,7 @@ export function * nextPage(id: number): Generator<*, *, *> {
 	return nums.length
 }
 
-function * nextColumnPageUntilLimit(id: Id): Generator<*, *, *> {
+function * nextColumnPageUntilLimit(id: Id) {
 	let n = 0
 	while (true) {
 		const len = yield call(nextPage, id)
@@ -49,7 +48,7 @@ function * nextColumnPageUntilLimit(id: Id): Generator<*, *, *> {
 	}
 }
 
-function * nextColumnPageFlow(): Generator<*, *, *> {
+function * nextColumnPageFlow() {
 	while (true) {
 		const {id} = yield take(Actions.NEXT_COLUMN_PAGE)
 		try {
@@ -60,7 +59,7 @@ function * nextColumnPageFlow(): Generator<*, *, *> {
 	}
 }
 
-function * root(): Generator<*, *, *> {
+function * root() {
 	yield fork(nextColumnPageFlow)
 }
 
