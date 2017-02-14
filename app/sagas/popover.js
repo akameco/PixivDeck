@@ -1,12 +1,12 @@
-import {put, fork, call, takeEvery} from 'redux-saga/effects'
-import * as Actions from '../constants/popover'
+import {put, fork, call, take} from 'redux-saga/effects'
 import {
 	clearUserPopoverIllust,
 	addUserPopoverIllust,
-} from '../actions/popover'
+} from 'actions/popover'
+import * as Actions from '../constants/popover'
 import Api from '../api'
 
-function * popover({id}: {id: Id}) {
+function * popover(id) {
 	// クリア
 	yield put(clearUserPopoverIllust())
 	try {
@@ -22,7 +22,14 @@ function * popover({id}: {id: Id}) {
 }
 
 function * popoverFlow() {
-	yield * takeEvery(Actions.OPEN_USER_POPOVER, popover)
+	while (true) {
+		const {id} = yield take(Actions.OPEN_USER_POPOVER)
+		try {
+			yield call(popover, id)
+		} catch (err) {
+			console.error(err)
+		}
+	}
 }
 
 function * root() {
