@@ -54,7 +54,7 @@
     "material-ui": "^0.16.7",
     "normalizr": "^3.1.0",
     "pify": "^2.3.0",
-    "pixiv-app-api": "^0.9.1",
+    "pixiv-app-api": "^0.10.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-event-listener": "^0.4.1",
