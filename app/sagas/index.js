@@ -1,4 +1,3 @@
-// @flow
 import {fork} from 'redux-saga/effects'
 import auth from './auth'
 import minBookmarks from './minBookmarks'
@@ -9,7 +8,7 @@ import followUser from './followUser'
 import popover from './popover'
 import misc from './misc'
 
-function * root(): Generator<*, *, *> {
+function * root() {
 	yield fork(auth)
 	yield fork(minBookmarks)
 	yield fork(nextColumnPage)
