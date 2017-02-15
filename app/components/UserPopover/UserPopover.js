@@ -1,11 +1,11 @@
 // @flow
 import React from 'react'
 import styled from 'styled-components'
-import Avater from '../common/Avater'
-import type {User} from '../../types/user'
-import type {Illust} from '../../types/illust'
-import FollowButton from '../FollowButton'
-import Profile from '../box/header/Profile'
+import type {User} from 'types/user'
+import type {Illust} from 'types/illust'
+import Avater from 'components/Avater'
+import FollowButton from 'components/FollowButton'
+import Profile from 'components/box/header/Profile'
 
 export type Props = {
 	onClick: () => void;
