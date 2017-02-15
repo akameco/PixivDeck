@@ -14,7 +14,7 @@ const Wrap = styled.div`
 	color: rgba(0, 0, 0, 0.85);
 	transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0;
 
-	&:hover{
+	&:hover {
 		background-color: rgba(0, 0, 0, 0.098);
 	}
 `
