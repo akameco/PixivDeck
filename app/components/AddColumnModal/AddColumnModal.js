@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react'
 import styled from 'styled-components'
-import * as ranking from '../../constants/ranking'
+import * as ranking from 'constants/ranking'
 import Card from './Card'
 import LinkButton from './LinkButton'
 

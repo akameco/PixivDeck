@@ -1,9 +1,9 @@
 // @flow
 import React from 'react'
 import styled from 'styled-components'
-import Avater from '../common/Avater'
-import TextAutoLink from '../TextAutoLink'
-import type {User, Profile} from '../../types/user'
+import type {User, Profile} from 'types/user'
+import Avater from 'components/Avater'
+import TextAutoLink from 'components/TextAutoLink'
 import Navigation from './Navigation'
 
 const Header = ({user, profile}: {user: User, profile: Profile}) => (

@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
-import type {User} from '../../types/user'
-import type {Illust} from '../../types/illust'
+import type {User} from 'types/user'
+import type {Illust} from 'types/illust'
 import BoxHeader from './header/BoxHeader'
 import BoxFooter from './footer/BoxFooter'
 import BoxImage from './BoxImage'

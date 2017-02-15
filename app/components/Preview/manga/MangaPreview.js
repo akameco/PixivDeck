@@ -56,7 +56,6 @@ const fadeIn = keyframes`
 	100% {
 		opacity: 1;
 	}
-}
 `
 
 const Img = styled.img`

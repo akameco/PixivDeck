@@ -1,5 +1,5 @@
 // @flow
-import type {Endpoint} from '../types/column'
+import type {Endpoint} from 'types/column'
 
 export const RANKING: Endpoint = '/v1/illust/ranking'
 export const SEARCH: Endpoint = '/v1/search/illust'

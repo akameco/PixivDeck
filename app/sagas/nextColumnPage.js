@@ -1,13 +1,13 @@
 import {delay} from 'redux-saga'
 import {fork, take, select, call, put} from 'redux-saga/effects'
-import * as Actions from '../constants/column'
-import {getColumn, getIllust} from '../reducers'
+import * as Actions from 'constants/column'
+import {getColumn, getIllust} from 'reducers'
 import {
 	apiRequestSuccess,
 	nextColumnIllusts,
 	setPrams,
-} from '../actions'
-import type {Illust} from '../types/illust'
+} from 'actions'
+import type {Illust} from 'types/illust'
 import Api from '../api'
 
 type Id = number

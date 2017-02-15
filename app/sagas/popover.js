@@ -3,7 +3,7 @@ import {
 	clearUserPopoverIllust,
 	addUserPopoverIllust,
 } from 'actions/popover'
-import * as Actions from '../constants/popover'
+import * as Actions from 'constants/popover'
 import Api from '../api'
 
 function * popover(id) {

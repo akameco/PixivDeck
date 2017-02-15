@@ -2,10 +2,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import type {Connector} from 'react-redux'
-import type {Dispatch} from '../../types'
-import type {User} from '../../types/user'
-import {addUserIllusts} from '../../actions'
-import Button from '../common/Button'
+import type {Dispatch} from 'types'
+import type {User} from 'types/user'
+import {addUserIllusts} from 'actions'
+import Button from 'components/common/Button'
 
 type Props = {
 	onClick: () => void,

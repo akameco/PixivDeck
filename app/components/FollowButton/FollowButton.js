@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
-import type {User} from '../../types/user'
-import Button from '../common/Button'
+import type {User} from 'types/user'
+import Button from 'components/common/Button'
 
 export type Props = {
 	user: User,

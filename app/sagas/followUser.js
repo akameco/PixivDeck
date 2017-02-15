@@ -1,5 +1,5 @@
 import {call, fork, takeEvery} from 'redux-saga/effects'
-import * as Actions from '../constants/user'
+import * as Actions from 'constants/user'
 import Api from '../api'
 
 type hasId = {

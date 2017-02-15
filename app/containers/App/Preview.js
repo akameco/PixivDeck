@@ -1,8 +1,8 @@
 // @flow
 import React from 'react'
 
-import IllustPreview from 'components/preview/illust'
-import MangaPreview from 'components/preview/manga'
+import IllustPreview from 'components/Preview/illust'
+import MangaPreview from 'components/Preview/manga'
 
 type Props = {
 	currentIllustId?: ?number,

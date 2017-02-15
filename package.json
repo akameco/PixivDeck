@@ -22,12 +22,24 @@
     "test": "cross-env NODE_ENV=test jest",
     "test:watch": "cross-env NODE_ENV=test jest --watch",
     "flow": "flow check",
-    "lint": "eslint ."
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint .",
+    "lint:css": "stylelint \"app/components/**/*.js\""
   },
   "jest": {
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ]
+  },
+  "stylelint": {
+    "processors": ["stylelint-processor-styled-components"],
+    "extends": "stylelint-config-standard",
+    "syntax": "scss",
+    "rules": {
+      "indentation": ["tab"],
+      "rule-empty-line-before": null,
+      "at-rule-empty-line-before": null
+    }
   },
   "keywords": [
     "electron",
@@ -102,6 +114,9 @@
     "react-addons-test-utils": "^15.4.2",
     "react-test-renderer": "^15.4.2",
     "redux-logger": "^2.7.4",
+    "stylelint": "^7.8.0",
+    "stylelint-config-standard": "^16.0.0",
+    "stylelint-processor-styled-components": "^0.0.4",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2",
     "webpack-merge": "^2.4.0"

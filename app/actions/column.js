@@ -1,7 +1,7 @@
 // @flow
-import type {Action} from '../types'
-import type {Params} from '../types/column'
-import * as Actions from '../constants/column'
+import type {Action} from 'types'
+import type {Params} from 'types/column'
+import * as Actions from 'constants/column'
 
 export const setPrams = (id: Id, params: Params): Action => (
 	{type: Actions.SET_PARAMS, id, params}

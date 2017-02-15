@@ -1,9 +1,9 @@
 // @flow
 import React from 'react'
 import {connect} from 'react-redux'
-import type {State, Dispatch} from '../../types'
-import type {User} from '../../types/user'
-import type {Illust} from '../../types/illust'
+import type {State, Dispatch} from 'types'
+import type {User} from 'types/user'
+import type {Illust} from 'types/illust'
 import UserPopover from './UserPopover'
 
 type Props = {

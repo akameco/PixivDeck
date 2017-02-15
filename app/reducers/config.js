@@ -1,6 +1,6 @@
 // @flow
-import type {Action} from '../types'
-import type {Config} from '../types/config'
+import type {Action} from 'types'
+import type {Config} from 'types/config'
 
 const initState = {
 	isIllustComment: false,

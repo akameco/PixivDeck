@@ -2,8 +2,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import {SortablePane, Pane} from 'react-sortable-pane'
-import type {ColumnType} from '../../types/column'
-import Column from '../column'
+import type {ColumnType} from 'types/column'
+import Column from 'components/Column'
 
 type Props = {
 	columns: Array<ColumnType>

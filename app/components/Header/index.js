@@ -1,14 +1,14 @@
 // @flow
 import {connect} from 'react-redux'
 import type {Connector} from 'react-redux'
-import type {Dispatch, State} from '../../types'
+import type {Dispatch, State} from 'types'
 import {
 	logout,
 	toggleDropdown,
 	openModal,
 	toggleSearchField,
 	closeSearchField,
- } from '../../actions'
+ } from 'actions'
 import Header from './header'
 import type {Props} from './header'
 

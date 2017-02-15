@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Icon from '../common/Icon'
+import Icon from 'components/common/Icon'
 
 const A = styled.a`
 	display: block;

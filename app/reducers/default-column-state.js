@@ -1,7 +1,7 @@
 // @flow
-import type {ColumnType as Column} from '../types/column'
-import * as endpoint from '../constants/endpoint'
-import {HOUR} from '../constants/time'
+import type {ColumnType as Column} from 'types/column'
+import * as endpoint from 'constants/endpoint'
+import {HOUR} from 'constants/time'
 
 const commonState = {
 	endpoint: endpoint.RANKING,

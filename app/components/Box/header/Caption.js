@@ -10,6 +10,7 @@ const Wrapper = styled.div`
 	font-size: 0.85rem;
 	margin-bottom: 10px;
 	padding: 0 5px;
+
 	a {
 		color: #51769f;
 	}

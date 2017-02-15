@@ -9,8 +9,8 @@ const StyledDrawer = styled.div`
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	transition: transform .2s ease-out;
-	-webkit-transition: -webkit-transform .2s ease-out;
+	transition: transform 0.2s ease-out;
+	-webkit-transition: -webkit-transform 0.2s ease-out;
 	will-change: transform;
 	overflow-y: auto;
 	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);

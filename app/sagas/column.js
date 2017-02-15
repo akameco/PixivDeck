@@ -1,13 +1,13 @@
 import {fork, take, call, select, put} from 'redux-saga/effects'
-import * as Actions from '../constants/column'
-import * as endpoint from '../constants/endpoint'
-import {getColumn} from '../reducers'
-import type {Endpoint, Params, ColumnType} from '../types/column'
+import * as Actions from 'constants/column'
+import * as endpoint from 'constants/endpoint'
+import {getColumn} from 'reducers'
+import type {Endpoint, Params, ColumnType} from 'types/column'
 import {
 	apiRequestSuccess,
 	addColumnIllusts,
 	setPrams,
-} from '../actions'
+} from 'actions'
 import Api from '../api'
 import {autoLogin} from './auth'
 
