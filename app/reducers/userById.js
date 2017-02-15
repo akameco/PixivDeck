@@ -1,6 +1,6 @@
 // @flow
-import type {Action, State} from '../types'
-import type {User, Users} from '../types/user'
+import type {Action, State} from 'types'
+import type {User, Users} from 'types/user'
 
 const userById = (state: Users = {}, action: Action) => {
 	if (action.response && action.response.entities.users) {

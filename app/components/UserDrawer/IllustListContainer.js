@@ -1,10 +1,10 @@
 // @flow
 import {connect} from 'react-redux'
 import type {Connector} from 'react-redux'
-import type {Dispatch} from '../../types'
-import type {Illust} from '../../types/illust'
-import type {DrawerType} from '../../types/drawer'
-import {nextDrawerPage} from '../../actions/drawer'
+import type {Dispatch} from 'types'
+import type {Illust} from 'types/illust'
+import type {DrawerType} from 'types/drawer'
+import {nextDrawerPage} from 'actions/drawer'
 import IllustList from './IllustList'
 import type {Props} from './IllustList'
 

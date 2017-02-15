@@ -17,7 +17,7 @@ import {
 	addSearchIllustColumn,
 	shareTwitter,
 	openPixiv,
-} from '../../actions'
+} from 'actions'
 import Box from './Box'
 
 const {Menu, MenuItem} = remote

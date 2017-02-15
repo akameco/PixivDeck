@@ -15,10 +15,7 @@ function calcSize(width: number, height: number): Size {
 	if (height > innerHeight && width > innerWidth) {
 		return (width * innerHeight < height * innerWidth) ?
 			{width: 'auto', height: innerHeight} :
-		{
-			width: innerWidth,
-			height: 'auto',
-		}
+			{width: innerWidth, height: 'auto'}
 	}
 	if (height > innerHeight) {
 		return {width: 'auto', height: innerHeight}
@@ -163,23 +160,19 @@ const FromImg = styled.img`
 `
 
 const fadeIn = keyframes`
-	0% {
-		filter: blur(1px);
-	}
+	0% { filter: blur(1px); }
 
-	100% {
-		filter: none;
-	}
+	100% { filter: none; }
 `
 
 const Img = styled.img`
 	width: auto;
 	height: auto;
 	margin: auto;
+	user-select: none;
 	margin-top: ${props => props.marginTop}px;
 	max-width: ${props => props.isClicked ? 'none' : '100vw'};
 	max-height: ${props => props.isClicked ? 'none' : '100vh'};
 	cursor: ${props => props.isClicked ? 'zoom-out' : 'zoom-in'};
 	animation: ${fadeIn} 600ms forwards;
-	user-select: none;
 `

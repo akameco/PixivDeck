@@ -3,7 +3,7 @@ import React from 'react'
 import type {Illust} from 'types/illust'
 import Loading from 'components/Loading'
 import Infinite from 'components/common/Infinite'
-import Box from '../box'
+import Box from 'components/Box'
 
 export type Props = {
 	illusts: Illust[],

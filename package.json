@@ -22,7 +22,8 @@
     "test": "cross-env NODE_ENV=test jest",
     "test:watch": "cross-env NODE_ENV=test jest --watch",
     "flow": "flow check",
-    "lint": "eslint .",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint .",
     "lint:css": "stylelint \"app/components/**/*.js\""
   },
   "jest": {
@@ -35,7 +36,9 @@
     "extends": "stylelint-config-standard",
     "syntax": "scss",
     "rules": {
-      "indentation": ["tab"]
+      "indentation": ["tab"],
+      "rule-empty-line-before": null,
+      "at-rule-empty-line-before": null
     }
   },
   "keywords": [

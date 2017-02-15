@@ -2,8 +2,8 @@
 import React, {Component} from 'react'
 import styled, {keyframes} from 'styled-components'
 import {findDOMNode} from 'react-dom'
-import type {Illust} from '../../types/illust'
-import Icon from '../common/Icon'
+import type {Illust} from 'types/illust'
+import Icon from 'components/common/Icon'
 
 type Props = {
 	illust: Illust,

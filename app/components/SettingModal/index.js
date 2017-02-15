@@ -1,13 +1,13 @@
 // @flow
 import {connect} from 'react-redux'
 import type {Connector} from 'react-redux'
-import type {State, Dispatch} from '../../types'
+import type {State, Dispatch} from 'types'
 import {
 	addTagFilter,
 	removeTagFilter,
 	setCaptionShow,
 	setOnlyIllust,
-} from '../../actions'
+} from 'actions'
 import Modal from './SettingModal'
 import type {Props} from './SettingModal'
 

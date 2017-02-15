@@ -1,7 +1,7 @@
 // @flow
 import union from 'lodash.union'
-import type {Action, State} from '../types'
-import type {Drawer, DrawerType} from '../types/drawer'
+import type {Action, State} from 'types'
+import type {Drawer, DrawerType} from 'types/drawer'
 
 const initState = {
 	illusts: [],
