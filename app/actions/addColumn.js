@@ -1,11 +1,11 @@
 // @flow
-import type {Dispatch, Action} from '../types'
+import type {Dispatch, Action} from 'types'
+import type {Params, Endpoint} from 'types/column'
+import type {User} from 'types/user'
+import * as endpoint from 'constants/endpoint'
+import * as ranking from 'constants/ranking'
+import {HOUR, MINUTE} from 'constants/time'
 import Pixiv from '../api/pixiv'
-import type {Params, Endpoint} from '../types/column'
-import type {User} from '../types/user'
-import * as endpoint from '../constants/endpoint'
-import * as ranking from '../constants/ranking'
-import {HOUR, MINUTE} from '../constants/time'
 
 const addColumn = (
 	endpoint: Endpoint,

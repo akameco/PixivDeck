@@ -1,5 +1,5 @@
 // @flow
-import type {Endpoint, Params} from '../types/column'
+import type {Endpoint, Params} from 'types/column'
 import Pixiv, {normalizeIllusts} from './pixiv'
 import {parseUrl} from './util'
 

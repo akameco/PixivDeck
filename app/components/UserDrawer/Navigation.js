@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import styled from 'styled-components'
-import type {User, Profile} from '../../types/user'
+import type {User, Profile} from 'types/user'
 import FollowButton from '../FollowButton'
 import AddColumnButton from './AddColumnButton'
 import TwitterButton from './TwitterButton'

@@ -1,5 +1,5 @@
 // @flow
-import type {Store} from '../types'
+import type {Store} from 'types'
 import keyEvent from './key-event'
 import save from './save'
 

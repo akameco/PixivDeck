@@ -1,7 +1,7 @@
 import {ipcRenderer, shell} from 'electron'
 import {select, fork, call, takeEvery} from 'redux-saga/effects'
-import {getIllust, getUser} from '../reducers'
-import * as Actions from '../constants/misc'
+import {getIllust, getUser} from 'reducers'
+import * as Actions from 'constants/misc'
 
 type hasId = {
 	id: number

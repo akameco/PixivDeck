@@ -1,14 +1,14 @@
 // @flow
 import {connect} from 'react-redux'
 import type {Connector} from 'react-redux'
-import type {Dispatch} from '../../types'
+import type {Dispatch} from 'types'
 import {
 	addBookmarkColumn,
 	addFollowColumn,
 	addIllustRankingColumn,
 	addIllustR18RankingColumn,
-} from '../../actions'
-import * as ranking from '../../constants/ranking'
+} from 'actions'
+import * as ranking from 'constants/ranking'
 import Modal from './AddColumnModal'
 import type {Props} from './AddColumnModal'
 

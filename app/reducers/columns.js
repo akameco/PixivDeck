@@ -1,9 +1,9 @@
 // @flow
 import isEqual from 'lodash.isequal'
 import union from 'lodash.union'
-import type {Action} from '../types'
-import type {ColumnType as Column} from '../types/column'
-import {MINUTE} from '../constants/time'
+import type {Action} from 'types'
+import type {ColumnType as Column} from 'types/column'
+import {MINUTE} from 'constants/time'
 import initState from './default-column-state'
 
 type State = Array<Column>

@@ -1,8 +1,8 @@
 // @flow
 import {connect} from 'react-redux'
 import type {Connector} from 'react-redux'
-import type {User} from '../../types/user'
-import {follow, unFollow} from '../../actions'
+import type {User} from 'types/user'
+import {follow, unFollow} from 'actions'
 import FollowButton from './FollowButton'
 import type {Props} from './FollowButton'
 

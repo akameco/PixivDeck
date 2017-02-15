@@ -5,7 +5,7 @@ import type {User} from 'types/user'
 import type {Illust} from 'types/illust'
 import Avater from 'components/Avater'
 import FollowButton from 'components/FollowButton'
-import Profile from 'components/box/header/Profile'
+import Profile from 'components/Box/header/Profile'
 
 export type Props = {
 	onClick: () => void;

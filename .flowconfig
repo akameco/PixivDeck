@@ -5,6 +5,7 @@
 .*/styled-components/src/.*
 .*/styled-components/dangerfile.js
 .*/styled-components/lib/models/InlineStyle.js.flow
+.*/stylelint/lib/.*
 
 [include]
 
@@ -33,3 +34,6 @@ module.name_mapper='^reducers$' -> '<PROJECT_ROOT>/app/reducers'
 
 module.name_mapper='^types\/\(.*\)$' -> '<PROJECT_ROOT>/app/types/\1'
 module.name_mapper='^types$' -> '<PROJECT_ROOT>/app/types'
+
+module.name_mapper='^constans/\(.*\)$' -> '<PROJECT_ROOT>/app/constans\1'
+module.name_mapper='^constans' -> '<PROJECT_ROOT>/appconstans/
