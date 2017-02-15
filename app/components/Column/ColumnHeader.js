@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import IconButton from 'material-ui/IconButton'
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu'
 import NavigationClose from 'material-ui/svg-icons/navigation/close'
-import type {ColumnType} from '../../types/column'
+import type {ColumnType} from 'types/column'
 import ColumnSetting from './ColumnSettinContainer'
 
 const style = {

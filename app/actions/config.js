@@ -1,5 +1,5 @@
 // @flow
-import type {Action} from '../types'
+import type {Action} from 'types'
 
 export const setCaptionShow = (isShow: bool): Action => ({
 	type: 'ILLUST_CAPTION_SHOW',

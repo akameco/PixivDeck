@@ -1,6 +1,6 @@
 // @flow
-import type {Action} from '../types'
-import * as Actions from '../types/auth'
+import type {Action} from 'types'
+import * as Actions from 'types/auth'
 
 export const logout = (): Action => ({type: Actions.LOGOUT})
 export const loginFailure = (): Action => ({type: Actions.LOGIN_FAILURE})

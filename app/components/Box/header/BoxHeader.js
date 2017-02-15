@@ -2,18 +2,18 @@
 import React from 'react'
 import styled from 'styled-components'
 import Popover from 'material-ui/Popover'
-import type {User} from '../../../types/user'
-import type {Illust} from '../../../types/illust'
-import Avater from '../../common/Avater'
-import BookmarkButton from '../../BookmarkButton'
-import UserPopover from '../../UserPopover'
+import type {User} from 'types/user'
+import type {Illust} from 'types/illust'
+import Avater from 'components/Avater'
+import BookmarkButton from 'components/BookmarkButton'
+import UserPopover from 'components/UserPopover'
 import Title from './Title'
 import Caption from './Caption'
 import Profile from './Profile'
 import Wrapper from './BoxHeaderWrapper'
 
 const AvaterWrapper = styled.div`
-	margin: 5;
+	margin: 5px;
 	cursor: pointer;
 `
 

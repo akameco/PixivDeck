@@ -2,16 +2,16 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import type {Connector} from 'react-redux'
-import type {Dispatch, State as ReduxState} from '../../types'
-import type {Illust} from '../../types/illust'
-import type {ColumnType} from '../../types/column'
+import type {Dispatch, State as ReduxState} from 'types'
+import type {Illust} from 'types/illust'
+import type {ColumnType} from 'types/column'
 import {
 	fetchColumn,
 	closeColumn,
 	nextColumnPage,
 	checkColumnUpdate,
-} from '../../actions'
-import {getIllusts, getColumn} from '../../reducers'
+} from 'actions'
+import {getIllusts, getColumn} from 'reducers'
 import Column from './Column'
 
 type Props = {

@@ -1,6 +1,6 @@
 // @flow
 import {ipcRenderer} from 'electron'
-import type {Store, Dispatch} from '../types'
+import type {Store, Dispatch} from 'types'
 
 export default (store: Store) => {
 	const dispatch: Dispatch = store.dispatch

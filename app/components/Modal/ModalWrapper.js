@@ -4,7 +4,7 @@ import styled, {keyframes} from 'styled-components'
 import EventListener from 'react-event-listener'
 import keycode from 'keycode'
 import Overlay from 'components/Overlay'
-import CloseButton from '../common/CloseButton'
+import CloseButton from 'components/common/CloseButton'
 
 type Props = {
 	open: bool,
@@ -91,7 +91,6 @@ const fadeIn = keyframes`
 	20% {
 		opacity: 100;
 	}
-
 	100% {
 		margin-top: 0;
 	}

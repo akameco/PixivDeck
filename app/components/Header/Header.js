@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import styled from 'styled-components'
-import SearchField from '../SearchField'
+import SearchField from 'components/SearchField'
 import HeaderButton from './HeaderButton'
 import HeaderBottom from './HeaderBottom'
 
@@ -31,14 +31,14 @@ export default class Header extends React.PureComponent {
 
 		return (
 			<Wrap>
-				<Top>
+				<div>
 					<HeaderButton iconType="add" onClick={onClickAdd}/>
 					<HeaderButton
 						iconType="searchIllust"
 						onClick={toggleSearchField}
 						IconStyle={isSearchField ? {color: '#dedede'} : {}}
 						/>
-				</Top>
+				</div>
 				{isSearchField && <SearchWrap><SearchField/></SearchWrap>}
 				<HeaderBottom
 					isDropdown={isDropdown}
@@ -65,9 +65,6 @@ const Wrap = styled.header`
 	width: 50px;
 	height: 100%;
 	background-color: #292f33;
-`
-
-const Top = styled.div`
 `
 
 const SearchWrap = styled.div`

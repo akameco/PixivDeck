@@ -1,7 +1,7 @@
 import {delay} from 'redux-saga'
 import {fork, take, select, call} from 'redux-saga/effects'
-import * as Actions from '../constants/column'
-import {getIllusts} from '../reducers'
+import * as Actions from 'constants/column'
+import {getIllusts} from 'reducers'
 import {nextPage} from './nextColumnPage'
 
 function * fetchUntilLimit(id: Id) {

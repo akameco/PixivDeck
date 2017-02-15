@@ -1,5 +1,5 @@
 // @flow
-import type {Action} from '../types'
+import type {Action} from 'types'
 
 export const addTagFilter = (tag: string): Action => (
 	{type: 'ADD_TAG_FILTER', tag}

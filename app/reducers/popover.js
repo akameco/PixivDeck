@@ -1,6 +1,6 @@
 // @flow
-import type {Action} from '../types'
-import type {Popover} from '../types/popover'
+import type {Action} from 'types'
+import type {Popover} from 'types/popover'
 
 const init: Popover = {
 	illusts: [],

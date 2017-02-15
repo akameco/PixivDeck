@@ -1,9 +1,9 @@
 // @flow
 import {connect} from 'react-redux'
 import type {Connector} from 'react-redux'
-import type {State, Dispatch} from '../../types'
-import {addBookmark} from '../../actions'
-import {getIllust} from '../../reducers'
+import type {State, Dispatch} from 'types'
+import {addBookmark} from 'actions'
+import {getIllust} from 'reducers'
 import BookmarkButton from './BookmarkButton'
 import type {Props} from './BookmarkButton'
 

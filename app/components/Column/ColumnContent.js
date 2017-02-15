@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import Box from '../box'
-import Infinite from '../common/Infinite'
+import Box from 'components/Box'
+import Infinite from 'components/common/Infinite'
 
 type Props = {
 	root: any,
