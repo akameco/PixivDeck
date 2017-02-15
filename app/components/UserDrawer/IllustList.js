@@ -3,6 +3,7 @@ import React from 'react'
 import type {Illust} from 'types/illust'
 import Loading from 'components/Loading'
 import Infinite from 'components/common/Infinite'
+import * as colors from 'constants/colors'
 import Box from 'components/Box'
 
 export type Props = {
@@ -13,7 +14,7 @@ export type Props = {
 const styles = {
 	height: '100%',
 	minHeight: '1500px',
-	backgroundColor: '#222426',
+	backgroundColor: colors.background,
 }
 
 const IllstList = ({illusts, onIntersect}: Props) => {

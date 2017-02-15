@@ -5,6 +5,7 @@ import {findDOMNode} from 'react-dom'
 import scrollTop from 'residual-scroll-top'
 import type {Illust} from 'types/illust'
 import type {ColumnType} from 'types/column'
+import * as colors from 'constants/colors'
 import Loading from 'components/Loading'
 import ColumnHeader from './ColumnHeader'
 import ColumnContent from './ColumnContent'
@@ -17,7 +18,7 @@ const Wrap = styled.div`
 	max-height: 100vh;
 	overflow-x: hidden;
 	overflow-y: hidden;
-	background-color: #222426;
+	background-color: ${colors.background};
 	border: 2px solid #444448;
 `
 

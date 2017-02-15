@@ -2,6 +2,7 @@
 import React, {Component} from 'react'
 import styled from 'styled-components'
 import {findDOMNode} from 'react-dom'
+import * as colors from 'constants/colors'
 import Loading from 'components/Loading'
 
 type Props = {
@@ -51,7 +52,7 @@ export default class Infinite extends Component {
 						this.sentinel = c
 					}}
 					>
-					<Loading wrapStyle={{background: '#222426', display: 'flex'}}/>
+					<Loading wrapStyle={{background: colors.background}}/>
 				</div>
 			</Wrap>
 		)
