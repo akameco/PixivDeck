@@ -3,6 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 import {SortablePane, Pane} from 'react-sortable-pane'
 import type {ColumnType} from 'types/column'
+import * as colors from 'constants/colors'
 import Column from 'components/Column'
 
 type Props = {
@@ -40,7 +41,7 @@ const Wrap = styled.div`
 	width: calc(100% - 50px);
 	height: 100%;
 	overflow-y: hidden;
-	background-color: #222426;
+	background-color: ${colors.background};
 `
 
 export default Columns
