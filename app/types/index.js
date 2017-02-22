@@ -11,6 +11,7 @@ import type {Config, ConfigAction} from './config'
 import type {Drawer, DrawerAction} from './drawer'
 import type {Popover, PopoverAction} from './popover'
 import type {MiscAction} from './misc'
+import type {AddColumnAction} from './addColumn'
 
 export type Entities = {
 	users: Users,
@@ -35,6 +36,7 @@ export type Action =
 	| IllustAction
 	| MiscAction
 	| PopoverAction
+	| AddColumnAction
 
 export type State = {
 	columns: Array<ColumnType>,
