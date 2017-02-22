@@ -241,9 +241,9 @@ asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
 
-autolinker@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/autolinker/-/autolinker-1.4.0.tgz#a158e90c82fc57f81232fd19c12b10eb538de881"
+autolinker@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/autolinker/-/autolinker-1.4.1.tgz#382cccb2cba111377ac8512b74426c28384561ca"
 
 autoprefixer@^6.0.0:
   version "6.7.2"
