@@ -7,6 +7,7 @@ import illust from './illust'
 import followUser from './followUser'
 import popover from './popover'
 import misc from './misc'
+import addColumn from './addColumn'
 
 function * root() {
 	yield fork(auth)
@@ -17,6 +18,7 @@ function * root() {
 	yield fork(followUser)
 	yield fork(misc)
 	yield fork(popover)
+	yield fork(addColumn)
 }
 
 export default root
