@@ -24,11 +24,11 @@ function * openPixiv({id}: hasId) {
 }
 
 function * shareTwitterSage() {
-	yield * takeEvery(Actions.SHARE_TWITTER, shareTwitter)
+	yield takeEvery(Actions.SHARE_TWITTER, shareTwitter)
 }
 
 function * openPixivSage() {
-	yield * takeEvery(Actions.OPEN_PIXIV, openPixiv)
+	yield takeEvery(Actions.OPEN_PIXIV, openPixiv)
 }
 
 function * root() {
