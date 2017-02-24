@@ -1,5 +1,4 @@
 // @flow
-import type {ThunkAction} from 'redux'; // eslint-disable-line
 import type {Action} from 'types'
 import type {ModalType} from 'types/manage'
 import * as Actions from 'constants/manage'

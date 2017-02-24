@@ -8,6 +8,7 @@ import followUser from './followUser'
 import popover from './popover'
 import misc from './misc'
 import addColumn from './addColumn'
+import drawer from './drawer'
 
 function * root() {
 	yield fork(auth)
@@ -19,6 +20,7 @@ function * root() {
 	yield fork(misc)
 	yield fork(popover)
 	yield fork(addColumn)
+	yield fork(drawer)
 }
 
 export default root
