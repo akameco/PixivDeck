@@ -17,4 +17,6 @@ export type DrawerAction =
 	| {|type: 'DRAWER_ADD_USER', user: User|}
 	| {|type: 'DRAWER_ADD_PROFILE', profile: Profile|}
 	| {|type: 'DRAWER_SET_NEXT_URL', url: string, drawerType: DrawerType|}
-
+	| {|type: 'DRAWER_FETCH_ILLUST', id: number, drawerType: DrawerType|}
+	| {|type: 'DRAWER_NEXT_PAGE', drawerType: DrawerType|}
+	| {|type: 'FETCH_USER_DETAIL', id: number|}
