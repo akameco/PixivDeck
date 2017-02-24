@@ -1,6 +1,5 @@
 import {createStore, applyMiddleware, compose} from 'redux'
 import createSagaMiddleware from 'redux-saga'
-import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 import reducer from 'reducers'
 import mySaga from '../sagas'
@@ -15,7 +14,6 @@ export default function configureStore(initialState: Object) {
 
 	const enhancer = compose(
 		applyMiddleware(
-			thunk,
 			sagaMiddleware,
 			logger
 		), window.devToolsExtension ? window.devToolsExtension() : f => f
