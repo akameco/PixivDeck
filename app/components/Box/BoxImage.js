@@ -105,7 +105,7 @@ export default class BoxImage extends React.PureComponent {
 		img.src = this.props.illust.imageUrls.medium
 	}
 
-	handleRefs = (c: Component<*, *, *>) => {
+	onHandleRefs = (c: Component<*, *, *>) => {
 		this.target = c
 	}
 
@@ -113,9 +113,7 @@ export default class BoxImage extends React.PureComponent {
 		const {imageUrls, pageCount} = this.props.illust
 		const {isVisible, isLoaded} = this.state
 		return (
-			<BoxImageWrapper
-				ref={this.handleRefs}
-				>
+			<BoxImageWrapper innerRef={this.onHandleRefs}>
 				{isVisible && isLoaded && pageCount > 1 &&
 					<Icon type="manga" color="#fff"/>
 				}

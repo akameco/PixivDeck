@@ -51,7 +51,7 @@ export default class ModalWrapper extends Component {
 						/>
 				}
 				<Content
-					ref={c => { // eslint-disable-line react/jsx-no-bind
+					innerRef={c => { // eslint-disable-line react/jsx-no-bind
 						this._content = c
 					}}
 					>

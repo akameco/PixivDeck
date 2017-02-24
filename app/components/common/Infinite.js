@@ -42,10 +42,7 @@ export default class Infinite extends Component {
 	render() {
 		const {style, children, targetRef} = this.props
 		return (
-			<Wrap
-				style={style}
-				ref={targetRef}
-				>
+			<Wrap style={style} innerRef={targetRef}>
 				{children}
 				<div
 					ref={c => { // eslint-disable-line react/jsx-no-bind
