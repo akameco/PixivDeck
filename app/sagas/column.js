@@ -11,8 +11,6 @@ import {
 import Api from '../api'
 import {autoLogin} from './auth'
 
-type Id = number
-
 const resetParam = {offset: 0, maxBookmarkId: null}
 
 export function * refreshAllColumns() {
