@@ -123,7 +123,7 @@ export default class LazyImg extends Component {
 						marginTop={this.state.toMarginTop}
 						isClicked={isClicked}
 						onClick={this.handleClick}
-						ref={c => { // eslint-disable-line react/jsx-no-bind
+						innerRef={c => { // eslint-disable-line react/jsx-no-bind
 							this.to = c
 						}}
 						/>
@@ -139,7 +139,7 @@ export default class LazyImg extends Component {
 					marginTop={this.state.fromMarginTop}
 					style={fromStyle}
 					onLoad={this.handleLoad}
-					ref={c => { // eslint-disable-line react/jsx-no-bind
+					innerRef={c => { // eslint-disable-line react/jsx-no-bind
 						this.from = c
 					}}
 					/>
