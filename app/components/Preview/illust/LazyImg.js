@@ -87,8 +87,8 @@ export default class LazyImg extends Component {
 		img.src = to
 	}
 
-	calcMarginTop(node: HTMLElement): number {
-		if (node) {
+	calcMarginTop(node: ?Element | Text): number {
+		if (node && node instanceof Element) {
 			const height = node && node.clientHeight
 			if (window.innerHeight > height) {
 				const top = (window.innerHeight - height) / 2

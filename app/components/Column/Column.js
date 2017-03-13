@@ -42,8 +42,8 @@ export default class Column extends Component<void, Props, State> {
 
 	handleTopClick = (e: Event) => {
 		e.preventDefault()
-		const node: HTMLElement = findDOMNode(this.root)
-		if (node.scrollTop === 0) {
+		const node = findDOMNode(this.root)
+		if (node && node.scrollTop === 0) {
 			return
 		}
 		if (node) {
