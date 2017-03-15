@@ -1,6 +1,6 @@
 // @flow
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 const Notice = styled.div`
 	display: block;
@@ -11,16 +11,16 @@ const Notice = styled.div`
 	border-radius: 2px;
 	text-align: center;
 	vertical-align: bottom;
-`
+`;
 
 const ErrorNotify = () => (
-	<Notice>
-		<p>
-			ログインに失敗しました。
-			<br/>
-			ユーザ名とパスワードを確認してください。
-		</p>
-	</Notice>
-)
+  <Notice>
+    <p>
+      ログインに失敗しました。
+      <br />
+      ユーザ名とパスワードを確認してください。
+    </p>
+  </Notice>
+);
 
-export default ErrorNotify
+export default ErrorNotify;

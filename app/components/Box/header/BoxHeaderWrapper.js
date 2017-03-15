@@ -1,5 +1,5 @@
 // @flow
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
 	width: 100%;
@@ -7,6 +7,6 @@ const Wrapper = styled.div`
 	color: #e1e8ed;
 	display: flex;
 	justify-content: space-between;
-`
+`;
 
-export default Wrapper
+export default Wrapper;

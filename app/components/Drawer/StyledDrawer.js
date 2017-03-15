@@ -1,5 +1,5 @@
 // @flow
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const StyledDrawer = styled.div`
 	width: ${props => props.x}px;
@@ -15,6 +15,6 @@ const StyledDrawer = styled.div`
 	overflow-y: auto;
 	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
 	background-color: #fff;
-`
+`;
 
-export default StyledDrawer
+export default StyledDrawer;

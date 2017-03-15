@@ -1,10 +1,9 @@
 // @flow
 export type Config = {
-	isIllustComment: bool,
-	isIllustOnly: bool,
-}
+  isIllustComment: boolean,
+  isIllustOnly: boolean,
+};
 
 export type ConfigAction =
-	| {|type: 'ILLUST_CAPTION_SHOW', isShow: bool|}
-	| {|type: 'ILLUST_ONLY', isShow: bool|}
-
+  | {|type: 'ILLUST_CAPTION_SHOW', isShow: boolean|}
+  | {|type: 'ILLUST_ONLY', isShow: boolean|};

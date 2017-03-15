@@ -1,5 +1,5 @@
 // @flow
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Submit = styled.button`
 	text-align: center;
@@ -20,6 +20,6 @@ const Submit = styled.button`
 	width: 100%;
 	background-color: #529ecc;
 	border-color: #529ecc;
-`
+`;
 
-export default Submit
+export default Submit;

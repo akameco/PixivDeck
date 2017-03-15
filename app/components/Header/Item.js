@@ -1,6 +1,6 @@
 // @flow
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 const Wrap = styled.div`
 	margin: 0;
@@ -16,17 +16,17 @@ const Wrap = styled.div`
 		color: white;
 		background-color: #3f9f94;
 	}
-`
+`;
 
 type Props = {
-	text: string;
-	onClick: () => void;
-}
+  text: string,
+  onClick: () => void,
+};
 
 const Item = ({text, onClick}: Props) => (
-	<Wrap onClick={onClick}>
-		{text}
-	</Wrap>
-)
+  <Wrap onClick={onClick}>
+    {text}
+  </Wrap>
+);
 
-export default Item
+export default Item;

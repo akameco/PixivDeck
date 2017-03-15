@@ -1,74 +1,74 @@
 // @flow
-import React from 'react'
+import React from 'react';
 
 type Props = {
-	lock: bool
-}
+  lock: boolean,
+};
 
-let lockingCounter: number = 1
-let originalBodyOverflow = null
+let lockingCounter: number = 1;
+let originalBodyOverflow = null;
 
 function getElementBody() {
-	return document.getElementsByTagName('body')[0]
+  return document.getElementsByTagName('body')[0];
 }
 
 class AutoLockScroll extends React.Component<void, Props, void> {
-	componentDidMount() {
-		if (this.props.lock === true) {
-			this.preventScrolling()
-		}
-	}
+  componentDidMount() {
+    if (this.props.lock === true) {
+      this.preventScrolling();
+    }
+  }
 
-	componentWillReceiveProps(nextProps: Props) {
-		if (this.props.lock === nextProps.lock) {
-			return
-		}
+  componentWillReceiveProps(nextProps: Props) {
+    if (this.props.lock === nextProps.lock) {
+      return;
+    }
 
-		if (nextProps.lock) {
-			this.preventScrolling()
-		} else {
-			this.allowScrolling()
-		}
-	}
+    if (nextProps.lock) {
+      this.preventScrolling();
+    } else {
+      this.allowScrolling();
+    }
+  }
 
-	componentWillUnmount() {
-		this.allowScrolling()
-	}
+  componentWillUnmount() {
+    this.allowScrolling();
+  }
 
-	locked: bool = false
+  locked: boolean = false;
 
-	preventScrolling() {
-		if (this.locked) {
-			return
-		}
+  preventScrolling() {
+    if (this.locked) {
+      return;
+    }
 
-		lockingCounter += 1
+    lockingCounter += 1;
 
-		this.locked = true
+    this.locked = true;
 
-		if (lockingCounter === 1) {
-			const body = getElementBody()
-			originalBodyOverflow = body.style.overflow
-			body.style.overflow = 'hidden'
-		}
-	}
+    if (lockingCounter === 1) {
+      const body = getElementBody();
+      originalBodyOverflow = body.style.overflow;
+      body.style.overflow = 'hidden';
+    }
+  }
 
-	allowScrolling() {
-		if (this.locked) {
-			lockingCounter -= 1
-			this.locked = false
-		}
+  allowScrolling() {
+    if (this.locked) {
+      lockingCounter -= 1;
+      this.locked = false;
+    }
 
-		if (lockingCounter === 0 && originalBodyOverflow !== null) {
-			const body = getElementBody()
-			body.style.overflow = originalBodyOverflow || ''
-			originalBodyOverflow = null
-		}
-	}
+    if (lockingCounter === 0 && originalBodyOverflow !== null) {
+      const body = getElementBody();
+      body.style.overflow = originalBodyOverflow || '';
+      originalBodyOverflow = null;
+    }
+  }
 
-	render() {
-		return null
-	}
+  render() {
+    return null;
+  }
 }
 
-export default AutoLockScroll
+export default AutoLockScroll;

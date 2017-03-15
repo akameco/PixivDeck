@@ -1,15 +1,15 @@
 // @flow
-import React from 'react'
-import Submit from './Submit'
+import React from 'react';
+import Submit from './Submit';
 
 type Props = {
-	onClick: () => void
-}
+  onClick: () => void,
+};
 
 const LoginButton = ({onClick}: Props) => (
-	<Submit onClick={onClick}>
-		ログイン
-	</Submit>
-)
+  <Submit onClick={onClick}>
+    ログイン
+  </Submit>
+);
 
-export default LoginButton
+export default LoginButton;

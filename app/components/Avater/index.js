@@ -1,14 +1,14 @@
 // @flow
-import styled from 'styled-components'
-import React from 'react'
+import styled from 'styled-components';
+import React from 'react';
 
 type Props = {
-	size: number,
-	src: string,
-	style?: Object,
-	className?: string,
-	color?: string,
-}
+  size: number,
+  src: string,
+  style?: Object,
+  className?: string,
+  color?: string,
+};
 
 const StyledAvater = styled.img`
 	user-select: none;
@@ -19,10 +19,8 @@ const StyledAvater = styled.img`
 	width: ${props => props.size}px;
 	height: ${props => props.size}px;
 	color: ${props => props.color || '#fff'};
-`
+`;
 
-const Avater = (props: Props) => (
-	<StyledAvater {...props}/>
-)
+const Avater = (props: Props) => <StyledAvater {...props} />;
 
-export default Avater
+export default Avater;

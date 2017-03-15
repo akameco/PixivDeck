@@ -1,15 +1,15 @@
 // @flow
-import {schema} from 'normalizr'
+import {schema} from 'normalizr';
 
-const user = new schema.Entity('users', {idAttribute: 'id'})
+const user = new schema.Entity('users', {idAttribute: 'id'});
 const illusts = new schema.Entity('illusts', {
-	user,
-	idAttribute: 'id',
-})
+  user,
+  idAttribute: 'id',
+});
 
 const mySchema = {
-	ILLUST: illusts,
-	ILLUSTS: [illusts],
-}
+  ILLUST: illusts,
+  ILLUSTS: [illusts],
+};
 
-export default mySchema
+export default mySchema;
