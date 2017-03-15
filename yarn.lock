@@ -75,7 +75,7 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5
 
-ansi-escapes@^1.1.0, ansi-escapes@^1.4.0:
+ansi-escapes@^1.0.0, ansi-escapes@^1.1.0, ansi-escapes@^1.4.0:
   version "1.4.0"
   resolved ansi-escapes-1.4.0.tgz#d3a8a83b319aa67793662b13e761c7911422306e
 
@@ -103,6 +103,10 @@ anymatch@^1.3.0:
   dependencies:
     arrify "^1.0.0"
     micromatch "^2.1.5"
+
+app-root-path@^2.0.0:
+  version "2.0.1"
+  resolved app-root-path-2.0.1.tgz#cd62dcf8e4fd5a417efc664d2e5b10653c651b46
 
 append-transform@^0.4.0:
   version "0.4.0"
@@ -1328,17 +1332,28 @@ circular-json@^0.3.1:
   version "0.3.1"
   resolved circular-json-0.3.1.tgz#be8b36aefccde8b3ca7aa2d6afc07a37242c0d2d
 
-cli-cursor@^1.0.1:
+cli-cursor@^1.0.1, cli-cursor@^1.0.2:
   version "1.0.2"
   resolved cli-cursor-1.0.2.tgz#64da3f7d56a54412e59794bd62dc35295e8f2987
   dependencies:
     restore-cursor "^1.0.1"
+
+cli-spinners@^0.1.2:
+  version "0.1.2"
+  resolved cli-spinners-0.1.2.tgz#bb764d88e185fb9e1e6a2a1f19772318f605e31c
 
 cli-table@^0.3.1:
   version "0.3.1"
   resolved cli-table-0.3.1.tgz#f53b05266a8b1a0b934b3d0821e6e2dc5914ae23
   dependencies:
     colors "1.0.3"
+
+cli-truncate@^0.2.1:
+  version "0.2.1"
+  resolved cli-truncate-0.2.1.tgz#9f15cfbb0705005369216c626ac7d05ab90dd574
+  dependencies:
+    slice-ansi "0.0.4"
+    string-width "^1.0.1"
 
 cli-usage@^0.1.1:
   version "0.1.4"
@@ -1478,7 +1493,7 @@ concat-stream@1.5.0:
     readable-stream "~2.0.0"
     typedarray "~0.0.5"
 
-concat-stream@^1.4.6:
+concat-stream@^1.4.6, concat-stream@^1.4.7:
   version "1.6.0"
   resolved concat-stream-1.6.0.tgz#0aac662fd52be78964d5532f694784e70110acf7
   dependencies:
@@ -1553,6 +1568,19 @@ core-util-is@~1.0.0:
   version "1.0.2"
   resolved core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7
 
+cosmiconfig@^1.1.0:
+  version "1.1.0"
+  resolved cosmiconfig-1.1.0.tgz#0dea0f9804efdfb929fbb1b188e25553ea053d37
+  dependencies:
+    graceful-fs "^4.1.2"
+    js-yaml "^3.4.3"
+    minimist "^1.2.0"
+    object-assign "^4.0.1"
+    os-homedir "^1.0.1"
+    parse-json "^2.2.0"
+    pinkie-promise "^2.0.0"
+    require-from-string "^1.1.0"
+
 cosmiconfig@^2.1.1:
   version "2.1.1"
   resolved cosmiconfig-2.1.1.tgz#817f2c2039347a1e9bf7d090c0923e53f749ca82
@@ -1575,6 +1603,14 @@ cross-spawn@^3.0.1:
   resolved cross-spawn-3.0.1.tgz#1256037ecb9f0c5f79e3d6ef135e30770184b982
   dependencies:
     lru-cache "^4.0.1"
+    which "^1.2.9"
+
+cross-spawn@^5.0.1:
+  version "5.1.0"
+  resolved cross-spawn-5.1.0.tgz#e8bd0efee58fcff6f8f94510a0a554bbfa235449
+  dependencies:
+    lru-cache "^4.0.1"
+    shebang-command "^1.2.0"
     which "^1.2.9"
 
 cross-unzip@0.0.2:
@@ -1682,6 +1718,10 @@ dashdash@^1.12.0:
   resolved dashdash-1.14.1.tgz#853cfa0f7cbe2fed5de20326b8dd581035f6e2f0
   dependencies:
     assert-plus "^1.0.0"
+
+date-fns@^1.27.2:
+  version "1.28.0"
+  resolved date-fns-1.28.0.tgz#3b12f54b66467807bb95e5930caf7bfb4170bc1a
 
 date-now@^0.1.4:
   version "0.1.4"
@@ -2007,6 +2047,10 @@ electron@^1.4.15:
   dependencies:
     electron-download "^3.0.1"
     extract-zip "^1.0.3"
+
+elegant-spinner@^1.0.1:
+  version "1.0.1"
+  resolved elegant-spinner-1.0.1.tgz#db043521c95d7e303fd8f345bedc3349cfb0729e
 
 emojis-list@^2.0.0:
   version "2.1.0"
@@ -2369,6 +2413,18 @@ exec-sh@^0.2.0:
   dependencies:
     merge "^1.1.3"
 
+execa@^0.6.0:
+  version "0.6.1"
+  resolved execa-0.6.1.tgz#79eda42ade78c387718b0aad48e0f573b5525cde
+  dependencies:
+    cross-spawn "^5.0.1"
+    get-stream "^3.0.0"
+    is-stream "^1.1.0"
+    npm-run-path "^2.0.0"
+    p-finally "^1.0.0"
+    signal-exit "^3.0.0"
+    strip-eof "^1.0.0"
+
 execall@^1.0.0:
   version "1.0.0"
   resolved execall-1.0.0.tgz#73d0904e395b3cab0658b08d09ec25307f29bb73
@@ -2485,7 +2541,7 @@ fd-slicer@~1.0.1:
   dependencies:
     pend "~1.2.0"
 
-figures@^1.3.5:
+figures@^1.3.5, figures@^1.7.0:
   version "1.7.0"
   resolved figures-1.7.0.tgz#cbe1e3affcf1cd44b80cadfed28dc793a9701d2e
   dependencies:
@@ -2738,6 +2794,10 @@ get-stdin@5.0.1, get-stdin@^5.0.0, get-stdin@^5.0.1:
 get-stdin@^4.0.1:
   version "4.0.1"
   resolved get-stdin-4.0.1.tgz#b968c6b0a04384324902e8bf1a5df32579a450fe
+
+get-stream@^3.0.0:
+  version "3.0.0"
+  resolved get-stream-3.0.0.tgz#8e943d1358dc37555054ecbe2edb05aa174ede14
 
 getpass@^0.1.1:
   version "0.1.6"
@@ -3031,6 +3091,10 @@ indent-string@^2.1.0:
   dependencies:
     repeating "^2.0.0"
 
+indent-string@^3.0.0:
+  version "3.1.0"
+  resolved indent-string-3.1.0.tgz#08ff4334603388399b329e6b9538dc7a3cf5de7d
+
 indexes-of@^1.0.1:
   version "1.0.1"
   resolved indexes-of-1.0.1.tgz#f30f716c8e2bd346c7b67d3df3915566a7c05607
@@ -3246,6 +3310,10 @@ is-primitive@^2.0.0:
   version "2.0.0"
   resolved is-primitive-2.0.0.tgz#207bab91638499c07b2adf240a41a87210034575
 
+is-promise@^2.1.0:
+  version "2.1.0"
+  resolved is-promise-2.1.0.tgz#79a2a9ece7f096e80f36d2b2f3bc16c1ff4bf3fa
+
 is-property@^1.0.0:
   version "1.0.2"
   resolved is-property-1.0.2.tgz#57fe1c4e48474edd65b09911f26b1cd4095dda84
@@ -3266,7 +3334,7 @@ is-resolvable@^1.0.0:
   dependencies:
     tryit "^1.0.1"
 
-is-stream@^1.0.1:
+is-stream@^1.0.1, is-stream@^1.1.0:
   version "1.1.0"
   resolved is-stream-1.1.0.tgz#12d4a3dd4e68e0b79ceb8dbc84173ae80d91ca44
 
@@ -3761,6 +3829,64 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
+lint-staged@^3.4.0:
+  version "3.4.0"
+  resolved lint-staged-3.4.0.tgz#52fa85dfc92bb1c6fe8ad0d0d98ca13924e03e4b
+  dependencies:
+    app-root-path "^2.0.0"
+    cosmiconfig "^1.1.0"
+    execa "^0.6.0"
+    listr "^0.11.0"
+    minimatch "^3.0.0"
+    npm-which "^3.0.1"
+    staged-git-files "0.0.4"
+
+listr-silent-renderer@^1.1.1:
+  version "1.1.1"
+  resolved listr-silent-renderer-1.1.1.tgz#924b5a3757153770bf1a8e3fbf74b8bbf3f9242e
+
+listr-update-renderer@^0.2.0:
+  version "0.2.0"
+  resolved listr-update-renderer-0.2.0.tgz#ca80e1779b4e70266807e8eed1ad6abe398550f9
+  dependencies:
+    chalk "^1.1.3"
+    cli-truncate "^0.2.1"
+    elegant-spinner "^1.0.1"
+    figures "^1.7.0"
+    indent-string "^3.0.0"
+    log-symbols "^1.0.2"
+    log-update "^1.0.2"
+    strip-ansi "^3.0.1"
+
+listr-verbose-renderer@^0.4.0:
+  version "0.4.0"
+  resolved listr-verbose-renderer-0.4.0.tgz#44dc01bb0c34a03c572154d4d08cde9b1dc5620f
+  dependencies:
+    chalk "^1.1.3"
+    cli-cursor "^1.0.2"
+    date-fns "^1.27.2"
+    figures "^1.7.0"
+
+listr@^0.11.0:
+  version "0.11.0"
+  resolved listr-0.11.0.tgz#5e778bc23806ac3ab984ed75564458151f39b03e
+  dependencies:
+    chalk "^1.1.3"
+    cli-truncate "^0.2.1"
+    figures "^1.7.0"
+    indent-string "^2.1.0"
+    is-promise "^2.1.0"
+    is-stream "^1.1.0"
+    listr-silent-renderer "^1.1.1"
+    listr-update-renderer "^0.2.0"
+    listr-verbose-renderer "^0.4.0"
+    log-symbols "^1.0.2"
+    log-update "^1.0.2"
+    ora "^0.2.3"
+    rxjs "^5.0.0-beta.11"
+    stream-to-observable "^0.1.0"
+    strip-ansi "^3.0.1"
+
 load-json-file@^1.0.0:
   version "1.1.0"
   resolved load-json-file-1.1.0.tgz#956905708d58b4bab4c2261b04f59f31c99374c0
@@ -3974,6 +4100,13 @@ log-symbols@^1.0.2:
   resolved log-symbols-1.0.2.tgz#376ff7b58ea3086a0f09facc74617eca501e1a18
   dependencies:
     chalk "^1.0.0"
+
+log-update@^1.0.2:
+  version "1.0.2"
+  resolved log-update-1.0.2.tgz#19929f64c4093d2d2e7075a1dad8af59c296b8d1
+  dependencies:
+    ansi-escapes "^1.0.0"
+    cli-cursor "^1.0.2"
 
 longest@^1.0.1:
   version "1.0.1"
@@ -4342,6 +4475,26 @@ normalizr@^3.1.0:
   version "3.2.1"
   resolved normalizr-3.2.1.tgz#85a2d3d0ffb9c3b08f4131cb8d8fbfb7e9211b35
 
+npm-path@^2.0.2:
+  version "2.0.3"
+  resolved npm-path-2.0.3.tgz#15cff4e1c89a38da77f56f6055b24f975dfb2bbe
+  dependencies:
+    which "^1.2.10"
+
+npm-run-path@^2.0.0:
+  version "2.0.2"
+  resolved npm-run-path-2.0.2.tgz#35a9232dfa35d7067b4cb2ddf2357b1871536c5f
+  dependencies:
+    path-key "^2.0.0"
+
+npm-which@^3.0.1:
+  version "3.0.1"
+  resolved npm-which-3.0.1.tgz#9225f26ec3a285c209cae67c3b11a6b4ab7140aa
+  dependencies:
+    commander "^2.9.0"
+    npm-path "^2.0.2"
+    which "^1.2.10"
+
 npmlog@^4.0.1:
   version "4.0.2"
   resolved npmlog-4.0.2.tgz#d03950e0e78ce1527ba26d2a7592e9348ac3e75f
@@ -4494,6 +4647,15 @@ optionator@^0.8.1, optionator@^0.8.2:
     type-check "~0.3.2"
     wordwrap "~1.0.0"
 
+ora@^0.2.3:
+  version "0.2.3"
+  resolved ora-0.2.3.tgz#37527d220adcd53c39b73571d754156d5db657a4
+  dependencies:
+    chalk "^1.1.1"
+    cli-cursor "^1.0.2"
+    cli-spinners "^0.1.2"
+    object-assign "^4.0.1"
+
 original@>=0.0.5:
   version "1.0.0"
   resolved original-1.0.0.tgz#9147f93fa1696d04be61e01bd50baeaca656bd3b
@@ -4514,9 +4676,17 @@ os-locale@^1.4.0:
   dependencies:
     lcid "^1.0.0"
 
+os-shim@^0.1.2:
+  version "0.1.3"
+  resolved os-shim-0.1.3.tgz#6b62c3791cf7909ea35ed46e17658bb417cb3917
+
 os-tmpdir@^1.0.0, os-tmpdir@^1.0.1, os-tmpdir@~1.0.1:
   version "1.0.2"
   resolved os-tmpdir-1.0.2.tgz#bbe67406c79aa85c5cfec766fe5734555dfa1274
+
+p-finally@^1.0.0:
+  version "1.0.0"
+  resolved p-finally-1.0.0.tgz#3fbcfb15b899a44123b34b6dcc18b724336a2cae
 
 p-limit@^1.1.0:
   version "1.1.0"
@@ -4576,6 +4746,10 @@ path-is-absolute@^1.0.0:
 path-is-inside@^1.0.1:
   version "1.0.2"
   resolved path-is-inside-1.0.2.tgz#365417dede44430d1c11af61027facf074bdfc53
+
+path-key@^2.0.0:
+  version "2.0.1"
+  resolved path-key-2.0.1.tgz#411cadb574c5a140d3a4b1910d40d80cc9f40b40
 
 path-parse@^1.0.5:
   version "1.0.5"
@@ -4728,6 +4902,14 @@ postcss@^5.0.0, postcss@^5.0.18, postcss@^5.0.20, postcss@^5.0.21, postcss@^5.0.
     js-base64 "^2.1.9"
     source-map "^0.5.6"
     supports-color "^3.2.3"
+
+pre-commit@^1.2.2:
+  version "1.2.2"
+  resolved pre-commit-1.2.2.tgz#dbcee0ee9de7235e57f79c56d7ce94641a69eec6
+  dependencies:
+    cross-spawn "^5.0.1"
+    spawn-sync "^1.0.15"
+    which "1.2.x"
 
 prelude-ls@~1.1.2:
   version "1.1.2"
@@ -5375,6 +5557,12 @@ rx-lite@^3.1.2:
   version "3.1.2"
   resolved rx-lite-3.1.2.tgz#19ce502ca572665f3b647b10939f97fd1615f102
 
+rxjs@^5.0.0-beta.11:
+  version "5.2.0"
+  resolved rxjs-5.2.0.tgz#db537de8767c05fa73721587a29e0085307d318b
+  dependencies:
+    symbol-observable "^1.0.1"
+
 sane@~1.4.1:
   version "1.4.1"
   resolved sane-1.4.1.tgz#88f763d74040f5f0c256b6163db399bf110ac715
@@ -5458,6 +5646,16 @@ setprototypeof@1.0.2:
 sha.js@2.2.6:
   version "2.2.6"
   resolved sha.js-2.2.6.tgz#17ddeddc5f722fb66501658895461977867315ba
+
+shebang-command@^1.2.0:
+  version "1.2.0"
+  resolved shebang-command-1.2.0.tgz#44aac65b695b03398968c39f363fee5deafdf1ea
+  dependencies:
+    shebang-regex "^1.0.0"
+
+shebang-regex@^1.0.0:
+  version "1.0.0"
+  resolved shebang-regex-1.0.0.tgz#da42f49740c0b42db2ca9728571cb190c98efea3
 
 shelljs@^0.7.5:
   version "0.7.6"
@@ -5543,6 +5741,13 @@ source-map@~0.2.0:
   dependencies:
     amdefine ">=0.0.4"
 
+spawn-sync@^1.0.15:
+  version "1.0.15"
+  resolved spawn-sync-1.0.15.tgz#b00799557eb7fb0c8376c29d44e8a1ea67e57476
+  dependencies:
+    concat-stream "^1.4.7"
+    os-shim "^0.1.2"
+
 spdx-correct@~1.0.0:
   version "1.0.2"
   resolved spdx-correct-1.0.2.tgz#4b3073d933ff51f3912f03ac5519498a4150db40
@@ -5594,6 +5799,10 @@ stackframe@^0.3.1:
   version "0.3.1"
   resolved stackframe-0.3.1.tgz#33aa84f1177a5548c8935533cbfeb3420975f5a4
 
+staged-git-files@0.0.4:
+  version "0.0.4"
+  resolved staged-git-files-0.0.4.tgz#d797e1b551ca7a639dec0237dc6eb4bb9be17d35
+
 "statuses@>= 1.3.1 < 2", statuses@~1.3.1:
   version "1.3.1"
   resolved statuses-1.3.1.tgz#faf51b9eb74aaef3b3acf4ad5f61abf24cb7b93e
@@ -5625,6 +5834,10 @@ stream-http@^2.3.1:
     readable-stream "^2.1.0"
     to-arraybuffer "^1.0.0"
     xtend "^4.0.0"
+
+stream-to-observable@^0.1.0:
+  version "0.1.0"
+  resolved stream-to-observable-0.1.0.tgz#45bf1d9f2d7dc09bed81f1c307c430e68b84cffe
 
 string-width@^1.0.1, string-width@^1.0.2:
   version "1.0.2"
@@ -5668,6 +5881,10 @@ strip-bom@^2.0.0:
 strip-bom@^3.0.0:
   version "3.0.0"
   resolved strip-bom-3.0.0.tgz#2334c18e9c759f7bdd56fdef7e9ae3d588e68ed3
+
+strip-eof@^1.0.0:
+  version "1.0.0"
+  resolved strip-eof-1.0.0.tgz#bb43ff5598a6eb05d89b59fcd129c983313606bf
 
 strip-indent@^1.0.1:
   version "1.0.1"
@@ -5795,7 +6012,7 @@ svg-tags@^1.0.0:
   version "1.0.0"
   resolved svg-tags-1.0.0.tgz#58f71cee3bd519b59d4b2a843b6c7de64ac04764
 
-symbol-observable@^1.0.2, symbol-observable@^1.0.4:
+symbol-observable@^1.0.1, symbol-observable@^1.0.2, symbol-observable@^1.0.4:
   version "1.0.4"
   resolved symbol-observable-1.0.4.tgz#29bf615d4aa7121bdd898b22d4b3f9bc4e2aa03d
 
@@ -6233,7 +6450,7 @@ which-module@^1.0.0:
   version "1.0.0"
   resolved which-module-1.0.0.tgz#bba63ca861948994ff307736089e3b96026c2a4f
 
-which@^1.0.5, which@^1.1.1, which@^1.2.9:
+which@1.2.x, which@^1.0.5, which@^1.1.1, which@^1.2.10, which@^1.2.9:
   version "1.2.12"
   resolved which-1.2.12.tgz#de67b5e450269f194909ef23ece4ebe416fa1192
   dependencies:
