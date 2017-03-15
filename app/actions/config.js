@@ -1,12 +1,12 @@
 // @flow
-import type {Action} from 'types'
+import type {Action} from 'types';
 
-export const setCaptionShow = (isShow: bool): Action => ({
-	type: 'ILLUST_CAPTION_SHOW',
-	isShow,
-})
+export const setCaptionShow = (isShow: boolean): Action => ({
+  type: 'ILLUST_CAPTION_SHOW',
+  isShow,
+});
 
-export const setOnlyIllust = (isShow: bool): Action => ({
-	type: 'ILLUST_ONLY',
-	isShow,
-})
+export const setOnlyIllust = (isShow: boolean): Action => ({
+  type: 'ILLUST_ONLY',
+  isShow,
+});

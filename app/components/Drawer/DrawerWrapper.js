@@ -1,6 +1,6 @@
 // @flow
-import styled from 'styled-components'
-import * as colors from 'constants/colors'
+import styled from 'styled-components';
+import * as colors from 'constants/colors';
 
 const DrawerWrapper = styled.div`
 	position: absolute;
@@ -10,6 +10,6 @@ const DrawerWrapper = styled.div`
 	bottom: 0;
 	overflow: hidden;
 	background-color: ${colors.background};
-`
+`;
 
-export default DrawerWrapper
+export default DrawerWrapper;
