@@ -1,6 +1,6 @@
 // @flow
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 const Wrap = styled.div`
 	display: block;
@@ -15,7 +15,7 @@ const Wrap = styled.div`
 	margin: 0 10px;
 	background: #fff;
 	overflow-y: auto;
-`
+`;
 
 const Title = styled.div`
 	font-size: 14px;
@@ -25,31 +25,31 @@ const Title = styled.div`
 	width: 100%;
 	box-sizing: border-box;
 	line-height: 40px;
-`
+`;
 
 const ListWrap = styled.div`
 	padding: 0;
 	margin: 0;
 	overflow: hidden;
-`
+`;
 const List = ({children}: {children?: React$Element<any>}) => (
-	<ListWrap>
-		{children}
-	</ListWrap>
-)
+  <ListWrap>
+    {children}
+  </ListWrap>
+);
 
 type Props = {
-	title: string,
-	children?: React$Element<any>
-}
+  title: string,
+  children?: React$Element<any>,
+};
 
 const Card = ({title, children}: Props) => (
-	<Wrap>
-		<Title>{title}</Title>
-		<List>
-			{children}
-		</List>
-	</Wrap>
-)
+  <Wrap>
+    <Title>{title}</Title>
+    <List>
+      {children}
+    </List>
+  </Wrap>
+);
 
-export default Card
+export default Card;

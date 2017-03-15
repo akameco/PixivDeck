@@ -1,3 +1,3 @@
 // @flow
 
-export const background = '#222426'
+export const background = '#222426';

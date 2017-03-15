@@ -1,14 +1,12 @@
-import React from 'react'
-import {shallow} from 'enzyme'
-import {shallowToJson} from 'enzyme-to-json'
+import React from 'react';
+import {shallow} from 'enzyme';
+import {shallowToJson} from 'enzyme-to-json';
 
-import Avater from '../'
+import Avater from '../';
 
-const renderComponent = (props = {}) => shallow(
-	<Avater {...props}/>
-)
+const renderComponent = (props = {}) => shallow(<Avater {...props} />);
 
 test('snapshot', () => {
-	const c = renderComponent()
-	expect(shallowToJson(c)).toMatchSnapshot()
-})
+  const c = renderComponent();
+  expect(shallowToJson(c)).toMatchSnapshot();
+});

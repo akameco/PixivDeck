@@ -1,2 +1,2 @@
 // @flow
-export const ADD_BOOKMARK = 'ADD_BOOKMARK'
+export const ADD_BOOKMARK = 'ADD_BOOKMARK';
