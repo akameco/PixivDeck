@@ -1,39 +1,36 @@
-import {put, fork, call, take} from 'redux-saga/effects'
-import {
-	clearUserPopoverIllust,
-	addUserPopoverIllust,
-} from 'actions/popover'
-import * as Actions from 'constants/popover'
-import Api from '../api'
+import {put, fork, call, take} from 'redux-saga/effects';
+import {clearUserPopoverIllust, addUserPopoverIllust} from 'actions/popover';
+import * as Actions from 'constants/popover';
+import Api from '../api';
 
-function * popover(id) {
-	// クリア
-	yield put(clearUserPopoverIllust())
-	try {
-		const type = 'illust'
-		// ユーザのイラストを取得
-		const {illusts} = yield call(Api.userIllusts, id, type)
+function* popover(id) {
+  // クリア
+  yield put(clearUserPopoverIllust());
+  try {
+    const type = 'illust';
+    // ユーザのイラストを取得
+    const {illusts} = yield call(Api.userIllusts, id, type);
 
-		// 3件取得しストアに反映
-		const limit = 3
-		const popoverIllust = illusts.slice(0, limit)
-		yield put(addUserPopoverIllust(popoverIllust))
-	} catch (err) {}
+    // 3件取得しストアに反映
+    const limit = 3;
+    const popoverIllust = illusts.slice(0, limit);
+    yield put(addUserPopoverIllust(popoverIllust));
+  } catch (err) {}
 }
 
-function * popoverFlow() {
-	while (true) {
-		const {id} = yield take(Actions.OPEN_USER_POPOVER)
-		try {
-			yield call(popover, id)
-		} catch (err) {
-			console.error(err)
-		}
-	}
+function* popoverFlow() {
+  while (true) {
+    const {id} = yield take(Actions.OPEN_USER_POPOVER);
+    try {
+      yield call(popover, id);
+    } catch (err) {
+      console.error(err);
+    }
+  }
 }
 
-function * root() {
-	yield fork(popoverFlow)
+function* root() {
+  yield fork(popoverFlow);
 }
 
-export default root
+export default root;

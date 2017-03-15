@@ -1,6 +1,6 @@
 // @flow
-import url from 'url'
-import camelizeKeys from 'camelcase-keys'
+import url from 'url';
+import camelizeKeys from 'camelcase-keys';
 
 export const parseUrl = (nextUrl: string) =>
-	camelizeKeys(url.parse(nextUrl, true).query)
+  camelizeKeys(url.parse(nextUrl, true).query);

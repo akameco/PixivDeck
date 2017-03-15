@@ -1,47 +1,47 @@
 // @flow
-import React from 'react'
-import styled from 'styled-components'
-import LazyImg from './LazyImg'
+import React from 'react';
+import styled from 'styled-components';
+import LazyImg from './LazyImg';
 
 type Props = {
-	from: string,
-	to: string,
-	width: number,
-	height: number,
-	isLoaded: bool,
-	onLoad: () => void,
-	onUnLoad: () => void,
-	onClose: () => void
-}
+  from: string,
+  to: string,
+  width: number,
+  height: number,
+  isLoaded: boolean,
+  onLoad: () => void,
+  onUnLoad: () => void,
+  onClose: () => void,
+};
 
 export default class IllustPreview extends React.PureComponent {
-	props: Props;
+  props: Props;
 
-	componentWillUnmount() {
-		this.props.onUnLoad()
-	}
+  componentWillUnmount() {
+    this.props.onUnLoad();
+  }
 
-	handleOnClose = () => {
-		this.props.onClose()
-	}
+  handleOnClose = () => {
+    this.props.onClose();
+  };
 
-	render() {
-		const {width, height, from, to} = this.props
+  render() {
+    const {width, height, from, to} = this.props;
 
-		return (
-			<StyledPreview onClick={this.handleOnClose}>
-				<LazyImg
-					from={from}
-					to={to}
-					width={width}
-					height={height}
-					isLoaded={this.props.isLoaded}
-					onLoad={this.props.onLoad}
-					onClose={this.props.onClose}
-					/>
-			</StyledPreview>
-		)
-	}
+    return (
+      <StyledPreview onClick={this.handleOnClose}>
+        <LazyImg
+          from={from}
+          to={to}
+          width={width}
+          height={height}
+          isLoaded={this.props.isLoaded}
+          onLoad={this.props.onLoad}
+          onClose={this.props.onClose}
+        />
+      </StyledPreview>
+    );
+  }
 }
 
 const StyledPreview = styled.div`
@@ -57,4 +57,4 @@ const StyledPreview = styled.div`
 	cursor: pointer;
 	overflow: auto;
 	z-index: 999;
-`
+`;

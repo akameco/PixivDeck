@@ -1,5 +1,5 @@
 // @flow
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Input = styled.input`
 	font-size: 1.1rem;
@@ -11,6 +11,6 @@ const Input = styled.input`
 	padding-left: 5px;
 	text-align: center;
 	box-sizing: border-box;
-`
+`;
 
-export default Input
+export default Input;

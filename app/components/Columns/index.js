@@ -1,4 +1,4 @@
 // @flow
-import Columns from './Columns'
+import Columns from './Columns';
 
-export default Columns
+export default Columns;

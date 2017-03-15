@@ -1,25 +1,25 @@
 // @flow
-import type {Action} from 'types'
-import * as Actions from 'types/auth'
+import type {Action} from 'types';
+import * as Actions from 'types/auth';
 
-export const logout = (): Action => ({type: Actions.LOGOUT})
-export const loginFailure = (): Action => ({type: Actions.LOGIN_FAILURE})
-export const clearError = (): Action => ({type: Actions.CLEAR_ERROR})
-export const autoLogin = (): Action => ({type: Actions.AUTO_LOGIN})
+export const logout = (): Action => ({type: Actions.LOGOUT});
+export const loginFailure = (): Action => ({type: Actions.LOGIN_FAILURE});
+export const clearError = (): Action => ({type: Actions.CLEAR_ERROR});
+export const autoLogin = (): Action => ({type: Actions.AUTO_LOGIN});
 
 export const login = (username: string, password: string): Action => ({
-	type: Actions.LOGIN_REQUEST,
-	username,
-	password,
-})
+  type: Actions.LOGIN_REQUEST,
+  username,
+  password,
+});
 
 export const setAuth = (username: string, password: string): Action => ({
-	type: Actions.SET_AUTH,
-	username,
-	password,
-})
+  type: Actions.SET_AUTH,
+  username,
+  password,
+});
 
-export const authSending = (sending: bool): Action => ({
-	type: Actions.AUTH_SENDING_REQUEST,
-	sending,
-})
+export const authSending = (sending: boolean): Action => ({
+  type: Actions.AUTH_SENDING_REQUEST,
+  sending,
+});
