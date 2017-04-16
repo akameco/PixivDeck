@@ -46,13 +46,6 @@
       "at-rule-empty-line-before": null
     }
   },
-  "pre-commit": "lint-staged",
-  "lint-staged": {
-    "*.js": [
-      "prettier",
-      "git add"
-    ]
-  },
   "keywords": [
     "electron",
     "pixiv"
@@ -83,6 +76,7 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-event-listener": "^0.4.1",
+    "react-intl": "^2.2.3",
     "react-redux": "^5.0.2",
     "react-sortable-pane": "^0.5.4",
     "react-tap-event-plugin": "^2.0.1",
