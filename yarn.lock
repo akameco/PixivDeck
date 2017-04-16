@@ -3155,7 +3155,27 @@ interpret@^1.0.0:
   version "1.0.1"
   resolved interpret-1.0.1.tgz#d579fb7f693b858004947af39fa0db49f795602c
 
-invariant@^2.0.0, invariant@^2.2.0:
+intl-format-cache@^2.0.5:
+  version "2.0.5"
+  resolved intl-format-cache-2.0.5.tgz#b484cefcb9353f374f25de389a3ceea1af18d7c9
+
+intl-messageformat-parser@1.2.0:
+  version "1.2.0"
+  resolved intl-messageformat-parser-1.2.0.tgz#5906b7f953ab7470e0dc8549097b648b991892ff
+
+intl-messageformat@1.3.0, intl-messageformat@^1.3.0:
+  version "1.3.0"
+  resolved intl-messageformat-1.3.0.tgz#f7d926aded7a3ab19b2dc601efd54e99a4bd4eae
+  dependencies:
+    intl-messageformat-parser "1.2.0"
+
+intl-relativeformat@^1.3.0:
+  version "1.3.0"
+  resolved intl-relativeformat-1.3.0.tgz#893dc7076fccd380cf091a2300c380fa57ace45b
+  dependencies:
+    intl-messageformat "1.3.0"
+
+invariant@^2.0.0, invariant@^2.1.1, invariant@^2.2.0:
   version "2.2.2"
   resolved invariant-2.2.2.tgz#9e1f56ac0acdb6bf303306f338be3b204ae60360
   dependencies:
@@ -5129,6 +5149,15 @@ react-event-listener@^0.4.0, react-event-listener@^0.4.1:
     babel-runtime "^6.20.0"
     react-addons-shallow-compare "^15.4.2"
     warning "^3.0.0"
+
+react-intl@^2.2.3:
+  version "2.2.3"
+  resolved react-intl-2.2.3.tgz#8eebb03cddc38b337ed22fab78037ab53a594270
+  dependencies:
+    intl-format-cache "^2.0.5"
+    intl-messageformat "^1.3.0"
+    intl-relativeformat "^1.3.0"
+    invariant "^2.1.1"
 
 react-motion@^0.4.4:
   version "0.4.7"
