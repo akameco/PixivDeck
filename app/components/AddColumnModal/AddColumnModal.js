@@ -1,9 +1,11 @@
 // @flow
 import React, {Component} from 'react';
 import styled from 'styled-components';
+import {FormattedMessage} from 'react-intl';
 import * as ranking from 'constants/ranking';
 import Card from './Card';
 import LinkButton from './LinkButton';
+import messages from './messages';
 
 const Wrap = styled.div`
 	height: calc(100% - 1rem);
@@ -70,12 +72,14 @@ export default class SelectColumnModal extends Component {
 
     return (
       <Wrap>
-        <Header>追加するカラムを選択</Header>
+        <Header>
+          <FormattedMessage {...messages.header} />
+        </Header>
         <Content>
-          <Card title="ランキング">
+          <Card title={(<FormattedMessage {...messages.ranking} />: string)}>
             {IllustRankingLinks}
           </Card>
-          <Card title="ブックマーク">
+          <Card title={<FormattedMessage {...messages.bookmark} />}>
             <LinkButton text="公開" onClick={addBookmark} />
             <LinkButton text="非公開" onClick={addBookmarkPrivate} />
           </Card>

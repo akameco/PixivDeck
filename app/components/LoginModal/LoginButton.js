@@ -1,6 +1,8 @@
 // @flow
 import React from 'react';
+import {FormattedMessage} from 'react-intl';
 import Submit from './Submit';
+import messages from './messages';
 
 type Props = {
   onClick: () => void,
@@ -8,7 +10,7 @@ type Props = {
 
 const LoginButton = ({onClick}: Props) => (
   <Submit onClick={onClick}>
-    ログイン
+    <FormattedMessage {...messages.login} />
   </Submit>
 );
 

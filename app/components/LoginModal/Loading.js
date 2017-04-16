@@ -1,9 +1,11 @@
 // @flow
 import React from 'react';
 import styled from 'styled-components';
+import {FormattedMessage} from 'react-intl';
 import Loading from 'components/Loading';
 import Feild from './Feild';
 import Submit from './Submit';
+import messages from './messages';
 
 const Wrap = styled.div`
 	position: relative;
@@ -17,7 +19,9 @@ const LoginLoading = () => (
   <Wrap>
     <Feild>
       <Loading />
-      <Submit>ログイン中...</Submit>
+      <Submit>
+        <FormattedMessage {...messages.loginLoading} />
+      </Submit>
     </Feild>
   </Wrap>
 );

@@ -1,6 +1,8 @@
 // @flow
 import React from 'react';
 import styled from 'styled-components';
+import {FormattedMessage} from 'react-intl';
+import messages from './messages';
 
 const Notice = styled.div`
 	display: block;
@@ -16,9 +18,9 @@ const Notice = styled.div`
 const ErrorNotify = () => (
   <Notice>
     <p>
-      ログインに失敗しました。
+      <FormattedMessage {...messages.error} />
       <br />
-      ユーザ名とパスワードを確認してください。
+      <FormattedMessage {...messages.errorInfo} />
     </p>
   </Notice>
 );
