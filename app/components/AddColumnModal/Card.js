@@ -32,6 +32,7 @@ const ListWrap = styled.div`
 	margin: 0;
 	overflow: hidden;
 `;
+
 const List = ({children}: {children?: React$Element<any>}) => (
   <ListWrap>
     {children}
@@ -39,7 +40,7 @@ const List = ({children}: {children?: React$Element<any>}) => (
 );
 
 type Props = {
-  title: string,
+  title: string | React$Element<any>,
   children?: React$Element<any>,
 };
 

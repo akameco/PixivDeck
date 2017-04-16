@@ -3,6 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 import debounce from 'lodash.debounce';
 import Slider from 'material-ui/Slider';
+import {FormattedMessage} from 'react-intl';
+import messages from './messages';
 
 type Props = {
   setColumnMinBookmarks: (value: number) => void,
@@ -53,7 +55,7 @@ class ColumnSetting extends React.Component {
         onMouseDown={this.handleMove}
         onTouchStart={this.handleMove}>
         <Wrap>
-          ブックマークフィルタ {minBookmarks}
+          <FormattedMessage {...messages.bookmarkFilter} /> {minBookmarks}
           <Slider
             min={0}
             max={1000}
