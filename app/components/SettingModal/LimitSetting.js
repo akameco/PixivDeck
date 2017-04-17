@@ -2,7 +2,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import Subheader from 'material-ui/Subheader';
+import {FormattedMessage} from 'react-intl';
 import Card from './Card';
+import messages from './messages';
 
 const Discription = styled.div`
 	color: rgba(0, 0, 0, 0.5);
@@ -25,13 +27,14 @@ const A = styled.a`
 
 const LimitSetting = () => (
   <Card>
-    <Subheader>閲覧制限</Subheader>
+    <Subheader>
+      <FormattedMessage {...messages.limit} />
+    </Subheader>
     <Discription>
-      R-18タグをフィルターするのがもっとも簡単です。
-      どうしても閲覧制限を設定はpixivのサイト上にて変更する必要があります。
+      <FormattedMessage {...messages.r18FilterDesc} />
       <br />
       <A href="http://www.pixiv.net/setting_user.php" target="_brank">
-        pixiv - R-18設定
+        <FormattedMessage {...messages.r18Link} />
       </A>
     </Discription>
   </Card>

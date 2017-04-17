@@ -1,6 +1,8 @@
 // @flow
 import React from 'react';
+import {FormattedMessage} from 'react-intl';
 import Popover, {Item} from './Popover';
+import messages from './messages';
 
 type Props = {
   value: string,
@@ -16,7 +18,7 @@ const PopoverAuto = ({value, keywords, onClick}: Props) => {
     return <Item key={keyword} onClick={handleClick} start={start} end={end} />;
   });
   return (
-    <Popover title="検索">
+    <Popover title={<FormattedMessage {...messages.search} />}>
       {list}
     </Popover>
   );

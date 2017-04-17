@@ -2,42 +2,49 @@
 import React from 'react';
 import type {User} from 'types/user';
 import Button from 'components/common/Button';
+import {FormattedMessage} from 'react-intl';
+import messages from './messages';
 
 export type Props = {
   user: User,
   onClick: () => void,
 };
 
-const unFollowText = 'フォロー解除';
-const followText = 'フォローする';
-const followingText = 'フォロー中';
-
 type State = {
-  label: string,
+  isFollowing: boolean,
   isFollowed: boolean,
 };
+
+function selectLabel(
+  isFollowed: boolean = false,
+  isFollowing: boolean = false,
+): React$Component<void, void> {
+  if (isFollowed) {
+    return <FormattedMessage {...messages.unFollow} />;
+  } else if (!isFollowed && isFollowing) {
+    return <FormattedMessage {...messages.following} />;
+  }
+  return <FormattedMessage {...messages.follow} />;
+}
 
 class FollowButton extends React.PureComponent {
   props: Props;
   state: State = {
-    label: followText,
+    isFollowing: false,
     isFollowed: false,
   };
 
   componentWillMount() {
     const {user: {isFollowed}} = this.props;
-    this.setState({
-      isFollowed,
-      label: isFollowed ? followingText : followText,
-    });
+    this.setState({isFollowed});
   }
 
   handleMouseEnter = () => {
-    this.setState({label: unFollowText});
+    this.setState({isFollowing: false});
   };
 
   handleMouseLeave = () => {
-    this.setState({label: followingText});
+    this.setState({isFollowing: true});
   };
 
   handleClickUnFollow = () => {
@@ -46,15 +53,13 @@ class FollowButton extends React.PureComponent {
   };
 
   handleClickFollow = () => {
-    this.setState({
-      isFollowed: true,
-      label: followingText,
-    });
+    this.setState({isFollowing: true});
     this.props.onClick();
   };
 
   render() {
-    const {isFollowed, label} = this.state;
+    const {isFollowed, isFollowing} = this.state;
+    const label = selectLabel(isFollowed, isFollowing);
 
     if (isFollowed) {
       return (
@@ -67,7 +72,7 @@ class FollowButton extends React.PureComponent {
         />
       );
     }
-    return <Button onClick={this.handleClickFollow} label="フォローする" />;
+    return <Button onClick={this.handleClickFollow} label={label} />;
   }
 }
 
