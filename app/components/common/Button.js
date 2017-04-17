@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 
 type Props = {
   children?: React$Component<*, *, *>,
-  label?: string,
+  label?: string | React$Component<*, *, *>,
   style?: Object,
   color?: string,
   hoverdColor?: string,

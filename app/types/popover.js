@@ -1,5 +1,6 @@
 // @flow
 import type {Illust} from './illust';
+type Id = number;
 
 export type Popover = {
   illusts: Array<Illust>,

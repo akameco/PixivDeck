@@ -6,6 +6,7 @@
 .*/styled-components/dangerfile.js
 .*/styled-components/lib/models/InlineStyle.js.flow
 .*/stylelint/lib/.*
+.*/react-event-listener/.*
 
 [include]
 

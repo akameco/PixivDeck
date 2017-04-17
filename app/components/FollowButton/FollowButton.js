@@ -18,7 +18,7 @@ type State = {
 function selectLabel(
   isFollowed: boolean = false,
   isFollowing: boolean = false,
-): React$Component<void, void> {
+): React$Component<void, void, void> {
   if (isFollowed) {
     return <FormattedMessage {...messages.unFollow} />;
   } else if (!isFollowed && isFollowing) {

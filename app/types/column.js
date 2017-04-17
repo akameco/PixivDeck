@@ -1,5 +1,4 @@
 // @flow
-
 export type Params = {
   mode?: string,
   restrict?: 'public' | 'private',
@@ -19,6 +18,7 @@ export type Endpoint =
   | '/v1/user/illusts'
   | '/v2/illust/follow';
 
+type Id = number;
 type Ids = number[];
 
 export type ColumnType = {

@@ -2620,9 +2620,9 @@ flatten@^1.0.2:
   version "1.0.2"
   resolved flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782
 
-flow-bin@^0.39.0:
-  version "0.39.0"
-  resolved flow-bin-0.39.0.tgz#b1012a14460df1aa79d3a728e10f93c6944226d0
+flow-bin@^0.44.0:
+  version "0.44.0"
+  resolved flow-bin-0.44.0.tgz#b291f147e5dae1cc8a116f834f24d9402ed96a52
 
 flow-parser@0.40.0:
   version "0.40.0"
