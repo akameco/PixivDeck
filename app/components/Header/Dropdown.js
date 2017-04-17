@@ -1,7 +1,9 @@
 // @flow
 import React from 'react';
 import styled, {keyframes} from 'styled-components';
+import {FormattedMessage} from 'react-intl';
 import Item from './Item';
+import messages from './messages';
 
 const fadeIn = keyframes`
 	0% {
@@ -37,9 +39,12 @@ type Props = {
 
 const Dropdwon = ({onOpenFilterModal, onLogout}: Props) => (
   <Wrap>
-    <Item onClick={onOpenFilterModal} text="設定" />
+    <Item
+      onClick={onOpenFilterModal}
+      text={<FormattedMessage {...messages.setting} />}
+    />
     <H />
-    <Item onClick={onLogout} text="ログアウト" />
+    <Item onClick={onLogout} text={<FormattedMessage {...messages.logout} />} />
   </Wrap>
 );
 

@@ -1,10 +1,12 @@
 // @flow
 import React from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
+import {FormattedMessage} from 'react-intl';
 import type {User, Profile} from 'types/user';
 import type {Illust} from 'types/illust';
 import Header from './DrawerHeader';
 import IllstList from './IllustListContainer';
+import messages from './messages';
 
 type Props = {
   user: User,
@@ -28,10 +30,22 @@ const UserDrawer = ({user, profile, illusts, mangas}: Props) => {
     <div>
       <Header user={user} profile={profile} />
       <Tabs {...tabProps}>
-        <Tab label={`イラスト (${totalIllusts})`}>
+        <Tab
+          label={
+            <FormattedMessage
+              {...messages.tabIllust}
+              values={{count: totalIllusts}}
+            />
+          }>
           <IllstList illusts={illusts} type="illust" />
         </Tab>
-        <Tab label={`マンガ (${totalManga})`}>
+        <Tab
+          label={
+            <FormattedMessage
+              {...messages.tabManga}
+              values={{count: totalManga}}
+            />
+          }>
           <IllstList illusts={mangas} type="manga" />
         </Tab>
       </Tabs>

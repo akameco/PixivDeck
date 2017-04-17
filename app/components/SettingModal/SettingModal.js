@@ -6,8 +6,10 @@ import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import Toggle from 'material-ui/Toggle';
 import VisibilityOffIcon from 'material-ui/svg-icons/action/visibility-off';
+import {FormattedMessage} from 'react-intl';
 import Card from './Card';
 import LimitSetting from './LimitSetting';
+import messages from './messages';
 
 export type Props = {
   onDelete: (tag: string) => void,
@@ -68,9 +70,11 @@ export default class SettingFilterModal extends Component {
       <Wrap>
         <Card>
           <List>
-            <Subheader>UI 設定</Subheader>
+            <Subheader>
+              <FormattedMessage {...messages.uiSetting} />
+            </Subheader>
             <ListItem
-              primaryText="キャプションを表示"
+              primaryText={<FormattedMessage {...messages.showCaption} />}
               rightToggle={
                 <Toggle
                   onToggle={this.handleCheckShowText}
@@ -79,7 +83,7 @@ export default class SettingFilterModal extends Component {
               }
             />
             <ListItem
-              primaryText="画像のみ表示"
+              primaryText={<FormattedMessage {...messages.showOnlyImg} />}
               rightToggle={
                 <Toggle
                   onToggle={this.handleCheckSetOnlyIllust}
@@ -91,7 +95,9 @@ export default class SettingFilterModal extends Component {
         </Card>
         <Card>
           <TagFilter>
-            <Subheader>タグフィルター</Subheader>
+            <Subheader>
+              <FormattedMessage {...messages.tagFilter} />
+            </Subheader>
             <Field>
               <Icon><VisibilityOffIcon /></Icon>
               <Input
