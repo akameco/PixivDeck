@@ -8,10 +8,10 @@ export default defineMessages({
   },
   keywordSearch: {
     id: 'components.SearchField.SearchField.keywordSearch',
-    defineMessages: 'キーワード検索',
+    defaultMessage: 'キーワード検索',
   },
   users: {
     id: 'components.SearchField.UsersOver.users',
-    defineMessages: 'users入り',
+    defaultMessage: 'users入り',
   },
 });

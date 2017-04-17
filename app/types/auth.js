@@ -1,4 +1,7 @@
 // @flow
+type Username = string;
+type Password = string;
+
 export type Auth = {
   username: Username,
   password: Password,
