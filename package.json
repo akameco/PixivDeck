@@ -6,9 +6,9 @@
   "main": "main.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development electron -r babel-register -r babel-polyfill main.development.js",
-    "watch": "cross-env NODE_ENV=development webpack-dev-server --hot --inline --progress --colors --port 3000",
-    "build:r": "cross-env NODE_ENV=production webpack --config webpack.config.production.js --progress --colors",
-    "build:m": "cross-env NODE_ENV=production webpack --config webpack.config.electron.js --progress --colors",
+    "watch": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack/webpack.config.js --hot --inline --progress --colors --port 3000",
+    "build:r": "cross-env NODE_ENV=production webpack --config config/webpack/webpack.config.production.js --progress --colors",
+    "build:m": "cross-env NODE_ENV=production webpack --config config/webpack/webpack.config.electron.js --progress --colors",
     "build": "npm run build:r && npm run build:m",
     "pack:macos": "node pack.js macos",
     "pack:windows": "node pack.js windows",
