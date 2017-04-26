@@ -1,13 +1,13 @@
 // @flow
-import {remote} from 'electron';
-import React, {Component} from 'react';
-import type {Connector} from 'react-redux';
-import {download} from 'electron-dl';
-import {connect} from 'react-redux';
-import type {Dispatch, State} from 'types/';
-import type {Illust} from 'types/illust';
-import type {User} from 'types/user';
-import {getUser} from 'reducers';
+import { remote } from 'electron'
+import React, { Component } from 'react'
+import type { Connector } from 'react-redux'
+import { download } from 'electron-dl'
+import { connect } from 'react-redux'
+import type { Dispatch, State } from 'types/'
+import type { Illust } from 'types/illust'
+import type { User } from 'types/user'
+import { getUser } from 'reducers'
 import {
   openImageView,
   openMangaPreview,
@@ -17,10 +17,10 @@ import {
   addSearchIllustColumn,
   shareTwitter,
   openPixiv,
-} from 'actions';
-import Box from './Box';
+} from 'actions'
+import Box from './Box'
 
-const {Menu, MenuItem} = remote;
+const { Menu, MenuItem } = remote
 
 type Props = {
   illust: Illust,
@@ -33,17 +33,17 @@ type Props = {
   addBookmark: (isPublic: boolean) => void,
   openPixiv: () => void,
   shareTwitter: () => void,
-};
+}
 
 class BoxContainer extends Component {
-  props: Props;
+  props: Props
 
   handleTagClick = (tag: string) => {
-    this.props.addSearchIllustColumn(tag);
-  };
+    this.props.addSearchIllustColumn(tag)
+  }
 
   handleContextMenu = (e: Event) => {
-    e.preventDefault();
+    e.preventDefault()
 
     const {
       illust,
@@ -51,73 +51,73 @@ class BoxContainer extends Component {
       openPixiv,
       openUserDrawer,
       shareTwitter,
-    } = this.props;
+    } = this.props
 
-    const menu = new Menu();
+    const menu = new Menu()
 
     menu.append(
       new MenuItem({
         label: 'オリジナルサイズの画像を保存',
         click(item, win) {
-          const img = illust.metaSinglePage.originalImageUrl;
-          download(win, img ? img : illust.imageUrls.large);
+          const img = illust.metaSinglePage.originalImageUrl
+          download(win, img ? img : illust.imageUrls.large)
         },
-      }),
-    );
+      })
+    )
 
-    menu.append(new MenuItem({type: 'separator'}));
+    menu.append(new MenuItem({ type: 'separator' }))
 
     menu.append(
       new MenuItem({
         label: 'このユーザの情報を見る',
         click() {
-          openUserDrawer();
+          openUserDrawer()
         },
-      }),
-    );
+      })
+    )
 
-    menu.append(new MenuItem({type: 'separator'}));
+    menu.append(new MenuItem({ type: 'separator' }))
 
     menu.append(
       new MenuItem({
         label: 'ブックマーク',
         click() {
-          addBookmark(true);
+          addBookmark(true)
         },
-      }),
-    );
+      })
+    )
 
     menu.append(
       new MenuItem({
         label: '非公開ブックマーク',
         click() {
-          addBookmark(false);
+          addBookmark(false)
         },
-      }),
-    );
+      })
+    )
 
-    menu.append(new MenuItem({type: 'separator'}));
+    menu.append(new MenuItem({ type: 'separator' }))
 
     menu.append(
       new MenuItem({
         label: 'Twitterで共有',
         click() {
-          shareTwitter(illust.id);
+          shareTwitter(illust.id)
         },
-      }),
-    );
+      })
+    )
 
     menu.append(
       new MenuItem({
         label: 'pixivで開く',
         click() {
-          openPixiv();
+          openPixiv()
         },
-      }),
-    );
+      })
+    )
 
-    menu.popup(remote.getCurrentWindow());
-  };
+    menu.popup(remote.getCurrentWindow())
+  }
 
   render() {
     const {
@@ -127,7 +127,7 @@ class BoxContainer extends Component {
       openPreview,
       openUserDrawer,
       isIllustComment,
-    } = this.props;
+    } = this.props
 
     return (
       <Box
@@ -140,52 +140,52 @@ class BoxContainer extends Component {
         onClickTag={this.handleTagClick}
         onContextMenu={this.handleContextMenu}
       />
-    );
+    )
   }
 }
 
 type OwnProps = {
   illust: Illust,
-};
+}
 
-const mapStateToProps = (state: State, {illust}) => ({
+const mapStateToProps = (state: State, { illust }) => ({
   user: getUser(state, illust.user),
   isIllustOnly: state.config.isIllustOnly,
   isIllustComment: state.config.isIllustComment,
-});
+})
 
-const mapDispatchToProps = (dispatch: Dispatch, {illust}) => {
-  const illustId = illust.id;
-  const userId = illust.user;
+const mapDispatchToProps = (dispatch: Dispatch, { illust }) => {
+  const illustId = illust.id
+  const userId = illust.user
   return {
     openPreview() {
-      dispatch(setCurrentIllust(illustId));
+      dispatch(setCurrentIllust(illustId))
       if (illust.pageCount > 1) {
-        dispatch(openMangaPreview());
+        dispatch(openMangaPreview())
       } else {
-        dispatch(openImageView());
+        dispatch(openImageView())
       }
     },
     addBookmark(isPublic: boolean) {
-      dispatch(addBookmark(illustId, isPublic));
+      dispatch(addBookmark(illustId, isPublic))
     },
     openUserDrawer() {
-      dispatch(openUserDrawer(userId));
+      dispatch(openUserDrawer(userId))
     },
     addSearchIllustColumn(tag: string) {
-      dispatch(addSearchIllustColumn(tag));
+      dispatch(addSearchIllustColumn(tag))
     },
     openPixiv() {
-      dispatch(openPixiv(illustId));
+      dispatch(openPixiv(illustId))
     },
     shareTwitter() {
-      dispatch(shareTwitter(illustId));
+      dispatch(shareTwitter(illustId))
     },
-  };
-};
+  }
+}
 
 const connector: Connector<OwnProps, Props> = connect(
   mapStateToProps,
-  mapDispatchToProps,
-);
-export default connector(BoxContainer);
+  mapDispatchToProps
+)
+export default connector(BoxContainer)

@@ -1,15 +1,15 @@
 // @flow
-import React from 'react';
-import LoadingWrapper from './LoadingWrapper';
-import Spinner from './Spinner';
-import Rect from './Rect';
+import React from 'react'
+import LoadingWrapper from './LoadingWrapper'
+import Spinner from './Spinner'
+import Rect from './Rect'
 
 type Props = {
   wrapStyle?: Object,
   style?: Object,
-};
+}
 
-function Loading({style, wrapStyle}: Props) {
+function Loading({ style, wrapStyle }: Props) {
   return (
     <LoadingWrapper style={wrapStyle}>
       <Spinner style={style}>
@@ -20,7 +20,7 @@ function Loading({style, wrapStyle}: Props) {
         <Rect delay={-0.8} />
       </Spinner>
     </LoadingWrapper>
-  );
+  )
 }
 
-export default Loading;
+export default Loading

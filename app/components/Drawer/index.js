@@ -1,4 +1,4 @@
 // @flow
-import Drawer from './Drawer';
+import Drawer from './Drawer'
 
-export default Drawer;
+export default Drawer

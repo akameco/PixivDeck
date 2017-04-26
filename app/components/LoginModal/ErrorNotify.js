@@ -1,8 +1,8 @@
 // @flow
-import React from 'react';
-import styled from 'styled-components';
-import {FormattedMessage} from 'react-intl';
-import messages from './messages';
+import React from 'react'
+import styled from 'styled-components'
+import { FormattedMessage } from 'react-intl'
+import messages from './messages'
 
 const Notice = styled.div`
 	display: block;
@@ -13,7 +13,7 @@ const Notice = styled.div`
 	border-radius: 2px;
 	text-align: center;
 	vertical-align: bottom;
-`;
+`
 
 const ErrorNotify = () => (
   <Notice>
@@ -23,6 +23,6 @@ const ErrorNotify = () => (
       <FormattedMessage {...messages.errorInfo} />
     </p>
   </Notice>
-);
+)
 
-export default ErrorNotify;
+export default ErrorNotify

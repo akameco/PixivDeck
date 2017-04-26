@@ -1,14 +1,14 @@
 // @flow
-import React, {Component} from 'react';
-import styled from 'styled-components';
-import {findDOMNode} from 'react-dom';
-import scrollTop from 'residual-scroll-top';
-import type {Illust} from 'types/illust';
-import type {ColumnType} from 'types/column';
-import * as colors from 'constants/colors';
-import Loading from 'components/Loading';
-import ColumnHeader from './ColumnHeader';
-import ColumnContent from './ColumnContent';
+import React, { Component } from 'react'
+import styled from 'styled-components'
+import { findDOMNode } from 'react-dom'
+import scrollTop from 'residual-scroll-top'
+import type { Illust } from 'types/illust'
+import type { ColumnType } from 'types/column'
+import * as colors from 'constants/colors'
+import Loading from 'components/Loading'
+import ColumnHeader from './ColumnHeader'
+import ColumnContent from './ColumnContent'
 
 const Wrap = styled.div`
 	margin: 0;
@@ -20,7 +20,7 @@ const Wrap = styled.div`
 	overflow-y: hidden;
 	background-color: ${colors.background};
 	border: 2px solid #444448;
-`;
+`
 
 type Props = {
   illusts: Array<Illust>,
@@ -28,38 +28,33 @@ type Props = {
   onClose: () => void,
   onReload: () => void,
   onNextPage: () => void,
-};
+}
 
 type State = {
   toTop: boolean,
-};
+}
 
 export default class Column extends Component<void, Props, State> {
-  target: Component<*, *, *>;
-  root: typeof ColumnContent;
+  target: Component<*, *, *>
+  root: typeof ColumnContent
 
-  state = {toTop: false};
+  state = { toTop: false }
 
   handleTopClick = (e: Event) => {
-    e.preventDefault();
-    const node = findDOMNode(this.root);
+    e.preventDefault()
+    const node = findDOMNode(this.root)
     if (node && node.scrollTop === 0) {
-      return;
+      return
     }
     if (node) {
       scrollTop(node, () => {
-        this.props.onReload();
-      });
+        this.props.onReload()
+      })
     }
-  };
+  }
 
   render() {
-    const {
-      column,
-      illusts,
-      onClose,
-      onNextPage,
-    } = this.props;
+    const { column, illusts, onClose, onNextPage } = this.props
     return (
       <Wrap>
         <ColumnHeader
@@ -71,18 +66,18 @@ export default class Column extends Component<void, Props, State> {
           ? <ColumnContent
               root={c => {
                 // eslint-disable-line react/jsx-no-bind
-                this.target = c;
+                this.target = c
               }}
               targetRef={c => {
                 // eslint-disable-line react/jsx-no-bind
-                this.root = c;
+                this.root = c
               }}
               onIntersect={onNextPage}
               illusts={illusts}
             />
           : <ColumnLoading />}
       </Wrap>
-    );
+    )
   }
 }
 
@@ -91,10 +86,10 @@ const LoadingWrap = styled.div`
 	justify-content: center;
 	background: #4a4a4a;
 	height: 100%;
-`;
+`
 
 const ColumnLoading = () => (
   <LoadingWrap>
-    <Loading wrapStyle={{background: '#121212'}} />
+    <Loading wrapStyle={{ background: '#121212' }} />
   </LoadingWrap>
-);
+)

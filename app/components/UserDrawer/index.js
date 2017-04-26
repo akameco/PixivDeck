@@ -1,14 +1,14 @@
 // @flow
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import type {Dispatch, State} from 'types';
-import type {User, Profile} from 'types/user';
-import type {Illust} from 'types/illust';
-import {fetchUserDetail} from 'actions';
-import {fetchDrawerIllust} from 'actions/drawer';
-import {getCurrentUser, getDrawerIllusts, getDrawerMangas} from 'reducers';
-import Loading from 'components/Loading';
-import UserDrawer from './UserDrawer';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import type { Dispatch, State } from 'types'
+import type { User, Profile } from 'types/user'
+import type { Illust } from 'types/illust'
+import { fetchUserDetail } from 'actions'
+import { fetchDrawerIllust } from 'actions/drawer'
+import { getCurrentUser, getDrawerIllusts, getDrawerMangas } from 'reducers'
+import Loading from 'components/Loading'
+import UserDrawer from './UserDrawer'
 
 type Props = {
   user: User,
@@ -16,27 +16,27 @@ type Props = {
   illusts: Array<Illust>,
   mangas: Array<Illust>,
   dispatch: Dispatch,
-};
+}
 
 class UserDrawerContainer extends Component {
-  props: Props;
+  props: Props
 
   componentDidMount() {
-    this.init();
+    this.init()
   }
 
   async init() {
-    const {dispatch, user: {id}} = this.props;
+    const { dispatch, user: { id } } = this.props
 
     await Promise.all([
       dispatch(fetchUserDetail(id)),
       dispatch(fetchDrawerIllust(id, 'illust')),
       dispatch(fetchDrawerIllust(id, 'manga')),
-    ]);
+    ])
   }
 
   render() {
-    const {user, profile, illusts, mangas} = this.props;
+    const { user, profile, illusts, mangas } = this.props
     if (profile && user) {
       return (
         <UserDrawer
@@ -45,9 +45,9 @@ class UserDrawerContainer extends Component {
           profile={profile}
           user={user}
         />
-      );
+      )
     }
-    return <Loading />;
+    return <Loading />
   }
 }
 
@@ -56,6 +56,6 @@ const mapStateToProps = (state: State) => ({
   illusts: getDrawerIllusts(state),
   mangas: getDrawerMangas(state),
   profile: state.drawer.profile,
-});
+})
 
-export default connect(mapStateToProps)(UserDrawerContainer);
+export default connect(mapStateToProps)(UserDrawerContainer)

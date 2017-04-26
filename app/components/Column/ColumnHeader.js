@@ -1,39 +1,39 @@
 // @flow
-import React from 'react';
-import styled from 'styled-components';
-import IconButton from 'material-ui/IconButton';
-import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
-import NavigationClose from 'material-ui/svg-icons/navigation/close';
-import type {ColumnType} from 'types/column';
-import ColumnSetting from './ColumnSettinContainer';
+import React from 'react'
+import styled from 'styled-components'
+import IconButton from 'material-ui/IconButton'
+import NavigationMenu from 'material-ui/svg-icons/navigation/menu'
+import NavigationClose from 'material-ui/svg-icons/navigation/close'
+import type { ColumnType } from 'types/column'
+import ColumnSetting from './ColumnSettinContainer'
 
 const style = {
   color: '#999999',
-};
+}
 
 type Props = {
   column: ColumnType,
   onTopClick: (event: Event) => void,
   onClose: () => void,
-};
+}
 
 type State = {
   open: boolean,
-};
+}
 
 class ColumnHeader extends React.Component {
-  props: Props;
+  props: Props
   state: State = {
     open: false,
-  };
+  }
 
   handleClick = () => {
-    this.setState({open: !this.state.open});
-  };
+    this.setState({ open: !this.state.open })
+  }
 
   render() {
-    const {onClose, onTopClick, column} = this.props;
-    const {title} = column;
+    const { onClose, onTopClick, column } = this.props
+    const { title } = column
     return (
       <Wrap>
         <Header>
@@ -57,7 +57,7 @@ class ColumnHeader extends React.Component {
           minBookmarks={column.minBookmarks}
         />
       </Wrap>
-    );
+    )
   }
 }
 
@@ -67,7 +67,7 @@ const Wrap = styled.div`
 	margin: 0;
 	padding: 0;
 	flex-direction: column;
-`;
+`
 
 const Header = styled.div`
 	position: relative;
@@ -81,14 +81,14 @@ const Header = styled.div`
 	background: #292f33;
 	width: 100%;
 	cursor: pointer;
-`;
+`
 
 const Item = styled.div`
 	display: flex;
 	position: relative;
 	justify-content: space-between;
 	align-items: center;
-`;
+`
 
 const Title = styled.div`
 	color: #e1e8ed;
@@ -100,6 +100,6 @@ const Title = styled.div`
 	&::-webkit-scrollbar {
 		display: none;
 	}
-`;
+`
 
-export default ColumnHeader;
+export default ColumnHeader

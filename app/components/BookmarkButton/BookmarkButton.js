@@ -1,9 +1,9 @@
 // @flow
-import React from 'react';
-import IconButton from 'material-ui/IconButton';
-import FavoriteIcon from 'material-ui/svg-icons/action/favorite';
+import React from 'react'
+import IconButton from 'material-ui/IconButton'
+import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
 
-const iconSize = 18;
+const iconSize = 18
 
 const styles = {
   button: {
@@ -14,22 +14,22 @@ const styles = {
     width: iconSize,
     height: iconSize,
   },
-};
+}
 
-const hoverColor = '#b94343';
+const hoverColor = '#b94343'
 
 export type Props = {
   onClick: () => void,
   isBookmarked: boolean,
-};
+}
 
-const BookmarkButton = ({isBookmarked, onClick}: Props) => (
+const BookmarkButton = ({ isBookmarked, onClick }: Props) => (
   <IconButton onClick={onClick} style={styles.button} iconStyle={styles.icon}>
     <FavoriteIcon
       color={isBookmarked ? hoverColor : '#777'}
       hoverColor={hoverColor}
     />
   </IconButton>
-);
+)
 
-export default BookmarkButton;
+export default BookmarkButton

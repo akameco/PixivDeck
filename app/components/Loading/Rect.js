@@ -1,5 +1,5 @@
 // @flow
-import styled, {keyframes} from 'styled-components';
+import styled, { keyframes } from 'styled-components'
 
 const loading = keyframes`
 	0%,
@@ -11,7 +11,7 @@ const loading = keyframes`
 	20% {
 		transform: scaleY(1);
 	}
-`;
+`
 
 const Rect = styled.div`
 	background-color: #333;
@@ -21,6 +21,6 @@ const Rect = styled.div`
 	margin: 1px;
 	animation: ${loading} 1.2s infinite ease-in-out;
 	animation-delay: ${props => props.delay}s;
-`;
+`
 
-export default Rect;
+export default Rect

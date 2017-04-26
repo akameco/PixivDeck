@@ -1,9 +1,9 @@
 // @flow
-import React from 'react';
-import styled from 'styled-components';
-import SearchField from 'components/SearchField';
-import HeaderButton from './HeaderButton';
-import HeaderBottom from './HeaderBottom';
+import React from 'react'
+import styled from 'styled-components'
+import SearchField from 'components/SearchField'
+import HeaderButton from './HeaderButton'
+import HeaderBottom from './HeaderBottom'
 
 export type Props = {
   isDropdown: boolean,
@@ -13,10 +13,10 @@ export type Props = {
   onToggleDropdown: () => void,
   onOpenFilterModal: () => void,
   onLogout: () => void,
-};
+}
 
 export default class Header extends React.PureComponent {
-  props: Props;
+  props: Props
 
   render() {
     const {
@@ -25,9 +25,9 @@ export default class Header extends React.PureComponent {
       onLogout,
       onOpenFilterModal,
       isDropdown,
-    } = this.props;
+    } = this.props
 
-    const {isSearchField, toggleSearchField} = this.props;
+    const { isSearchField, toggleSearchField } = this.props
 
     return (
       <Wrap>
@@ -36,7 +36,7 @@ export default class Header extends React.PureComponent {
           <HeaderButton
             iconType="searchIllust"
             onClick={toggleSearchField}
-            IconStyle={isSearchField ? {color: '#dedede'} : {}}
+            IconStyle={isSearchField ? { color: '#dedede' } : {}}
           />
         </div>
         {isSearchField && <SearchWrap><SearchField /></SearchWrap>}
@@ -47,7 +47,7 @@ export default class Header extends React.PureComponent {
           onOpenFilterModal={onOpenFilterModal}
         />
       </Wrap>
-    );
+    )
   }
 }
 
@@ -65,7 +65,7 @@ const Wrap = styled.header`
 	width: 50px;
 	height: 100%;
 	background-color: #292f33;
-`;
+`
 
 const SearchWrap = styled.div`
 	position: fixed;
@@ -74,4 +74,4 @@ const SearchWrap = styled.div`
 	width: auto;
 	min-width: 260px;
 	height: 100%;
-`;
+`

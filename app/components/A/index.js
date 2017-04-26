@@ -1,5 +1,5 @@
 // @flow
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const A = styled.a`
 	color: #5d89a8;
@@ -7,6 +7,6 @@ const A = styled.a`
 	&:hover {
 		color: #6cc0e5;
 	}
-`;
+`
 
-export default A;
+export default A

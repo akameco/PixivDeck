@@ -1,9 +1,9 @@
 // @flow
-import React, {Component} from 'react';
+import React, { Component } from 'react'
 
 type Props = {
   children?: React$Component<*, *, *>,
-  label?: string | React$Component<*, *, *>,
+  label?: string | React$Element<*>,
   style?: Object,
   color?: string,
   hoverdColor?: string,
@@ -11,53 +11,44 @@ type Props = {
   onClick?: Function,
   onMouseEnter: (event: Event) => void,
   onMouseLeave: (event: Event) => void,
-};
+}
 
 type State = {
   hoverd: boolean,
-};
+}
 
 export default class Button extends Component {
-  props: Props;
+  props: Props
   static defaultProps = {
     onMouseEnter: () => {},
     onMouseLeave: () => {},
-  };
+  }
 
   state: State = {
     hoverd: false,
-  };
+  }
 
   handleMouseEnter = (event: Event) => {
-    this.setState({hoverd: true});
-    this.props.onMouseEnter(event);
-  };
+    this.setState({ hoverd: true })
+    this.props.onMouseEnter(event)
+  }
 
   handleMouseLeave = (event: Event) => {
-    this.setState({hoverd: false});
-    this.props.onMouseLeave(event);
-  };
+    this.setState({ hoverd: false })
+    this.props.onMouseLeave(event)
+  }
 
   render() {
-    const {
-      label,
-      color,
-      hoverdColor,
-      children,
-      reverse,
-      onClick,
-    } = this.props;
+    const { label, color, hoverdColor, children, reverse, onClick } = this.props
 
-    const {
-      hoverd,
-    } = this.state;
+    const { hoverd } = this.state
 
-    let buttonColor = color || '#fff';
-    let buttonHoverdColor = hoverdColor || '#7898cf';
-    const borderColor = buttonHoverdColor;
+    let buttonColor = color || '#fff'
+    let buttonHoverdColor = hoverdColor || '#7898cf'
+    const borderColor = buttonHoverdColor
 
     if (reverse) {
-      [buttonColor, buttonHoverdColor] = [buttonHoverdColor, buttonColor];
+      ;[buttonColor, buttonHoverdColor] = [buttonHoverdColor, buttonColor]
     }
 
     const styles = {
@@ -73,9 +64,9 @@ export default class Button extends Component {
         borderRadius: 20,
         fontSize: 13,
       },
-    };
+    }
 
-    const mergedStyle = {...styles.root, ...this.props.style};
+    const mergedStyle = { ...styles.root, ...this.props.style }
 
     return (
       <button
@@ -85,6 +76,6 @@ export default class Button extends Component {
         onClick={onClick}>
         {label || children}
       </button>
-    );
+    )
   }
 }

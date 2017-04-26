@@ -1,31 +1,31 @@
 // @flow
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import type {State, Dispatch} from 'types';
-import type {Illust} from 'types/illust';
-import {closeMnagaPreview} from 'actions';
-import Preview from './MangaPreview';
-import MultiPreview from './MultiPreview';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import type { State, Dispatch } from 'types'
+import type { Illust } from 'types/illust'
+import { closeMnagaPreview } from 'actions'
+import Preview from './MangaPreview'
+import MultiPreview from './MultiPreview'
 
 type Props = {
   illust: Illust,
   show: boolean,
   dispatch: Dispatch,
-};
+}
 
 class MangaPreviewContainer extends Component {
-  props: Props;
+  props: Props
 
   handleClose = () => {
-    this.props.dispatch(closeMnagaPreview());
-  };
+    this.props.dispatch(closeMnagaPreview())
+  }
 
   render() {
-    const {illust, show} = this.props;
+    const { illust, show } = this.props
     if (illust.metaPages) {
       return (
         <MultiPreview pages={illust.metaPages} onClose={this.handleClose} />
-      );
+      )
     }
 
     return (
@@ -34,17 +34,20 @@ class MangaPreviewContainer extends Component {
         img={illust.imageUrls.large}
         onClose={this.handleClose}
       />
-    );
+    )
   }
 }
 
-function mapStateToProps({illustById, manage: {isMangaView}}: State, {id}) {
-  const illust = illustById[id];
+function mapStateToProps(
+  { illustById, manage: { isMangaView } }: State,
+  { id }
+) {
+  const illust = illustById[id]
 
   return {
     illust,
     show: isMangaView,
-  };
+  }
 }
 
-export default connect(mapStateToProps)(MangaPreviewContainer);
+export default connect(mapStateToProps)(MangaPreviewContainer)

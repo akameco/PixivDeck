@@ -1,10 +1,10 @@
 // @flow
-import React from 'react';
-import styled from 'styled-components';
-import Subheader from 'material-ui/Subheader';
-import {FormattedMessage} from 'react-intl';
-import Card from './Card';
-import messages from './messages';
+import React from 'react'
+import styled from 'styled-components'
+import Subheader from 'material-ui/Subheader'
+import { FormattedMessage } from 'react-intl'
+import Card from './Card'
+import messages from './messages'
 
 const Discription = styled.div`
 	color: rgba(0, 0, 0, 0.5);
@@ -15,7 +15,7 @@ const Discription = styled.div`
 	text-overflow: ellipsis;
 	white-space: wrap;
 	padding: 5px 20px;
-`;
+`
 
 const A = styled.a`
 	color: rgba(37, 143, 233, 0.8);
@@ -23,7 +23,7 @@ const A = styled.a`
 	display: inline-flex;
 	align-items: flex-end;
 	margin: 2px;
-`;
+`
 
 const LimitSetting = () => (
   <Card>
@@ -38,6 +38,6 @@ const LimitSetting = () => (
       </A>
     </Discription>
   </Card>
-);
+)
 
-export default LimitSetting;
+export default LimitSetting

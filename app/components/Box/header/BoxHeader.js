@@ -1,113 +1,100 @@
 // @flow
-import React from 'react';
-import styled from 'styled-components';
-import Popover from 'material-ui/Popover';
-import type {User} from 'types/user';
-import type {Illust} from 'types/illust';
-import Avater from 'components/Avater';
-import BookmarkButton from 'components/BookmarkButton';
-import UserPopover from 'components/UserPopover';
-import Title from './Title';
-import Caption from './Caption';
-import Profile from './Profile';
-import Wrapper from './BoxHeaderWrapper';
+import React from 'react'
+import styled from 'styled-components'
+import Popover from 'material-ui/Popover'
+import type { User } from 'types/user'
+import type { Illust } from 'types/illust'
+import Avater from 'components/Avater'
+import BookmarkButton from 'components/BookmarkButton'
+import UserPopover from 'components/UserPopover'
+import Title from './Title'
+import Caption from './Caption'
+import Profile from './Profile'
+import Wrapper from './BoxHeaderWrapper'
 
 const AvaterWrapper = styled.div`
 	margin: 5px;
 	cursor: pointer;
-`;
+`
 
 const ProfileWrapper = styled.div`
 	position: relative;
 	width: calc(100% - 56px);
-`;
+`
 
 type Props = {
   user: User,
   illust: Illust,
   onClick: () => void,
   isIllustComment: boolean,
-};
+}
 
 type State = {
   open: boolean,
   focus: boolean,
   anchorEl: ?EventTarget,
-};
+}
 
 export default class BoxHeader extends React.PureComponent {
-  props: Props;
-  delayTimer: ?number;
+  props: Props
+  delayTimer: ?number
   state: State = {
     open: false,
     focus: false,
     anchorEl: null,
-  };
+  }
 
   handleMouseEnter = (event: Event) => {
-    event.preventDefault();
-    this.delaySetPopup(true, 0.2);
-    this.setState({anchorEl: event.target});
-  };
+    event.preventDefault()
+    this.delaySetPopup(true, 0.2)
+    this.setState({ anchorEl: event.target })
+  }
 
   handlePopoverEnter = () => {
-    this.setPopupVisible(true);
-  };
+    this.setPopupVisible(true)
+  }
 
   handleMouseLeave = (event: MouseEvent) => {
-    event.preventDefault();
-    this.setPopupVisible(false);
-  };
+    event.preventDefault()
+    this.setPopupVisible(false)
+  }
 
   handleClick = () => {
-    this.setPopupVisible(false);
-    this.props.onClick();
-  };
+    this.setPopupVisible(false)
+    this.props.onClick()
+  }
 
   clearDelayTimer() {
     if (this.delayTimer) {
-      clearTimeout(this.delayTimer);
-      this.delayTimer = null;
+      clearTimeout(this.delayTimer)
+      this.delayTimer = null
     }
   }
 
   setPopupVisible(open: boolean) {
-    this.clearDelayTimer();
+    this.clearDelayTimer()
     this.setState({
       open,
-    });
+    })
   }
 
   delaySetPopup(open: boolean, ms?: number) {
     if (!ms) {
-      this.setPopupVisible(open);
-      return false;
+      this.setPopupVisible(open)
+      return false
     }
-    const delay = ms * 1000;
-    this.delayTimer = setTimeout(
-      () => {
-        this.setPopupVisible(open);
-      },
-      delay,
-    );
+    const delay = ms * 1000
+    this.delayTimer = setTimeout(() => {
+      this.setPopupVisible(open)
+    }, delay)
   }
 
   render() {
-    const {
-      illust,
-      user,
-      isIllustComment,
-      onClick,
-    } = this.props;
+    const { illust, user, isIllustComment, onClick } = this.props
 
-    const {
-      id,
-      title,
-      caption,
-      isBookmarked,
-    } = illust;
+    const { id, title, caption, isBookmarked } = illust
 
-    const {name, profileImageUrls} = user;
+    const { name, profileImageUrls } = user
 
     return (
       <Wrapper>
@@ -130,12 +117,12 @@ export default class BoxHeader extends React.PureComponent {
         <ProfileWrapper>
           <Title title={title} />
           <Profile name={name} onClick={onClick} />
-          <div style={{position: 'absolute', top: 5, right: 10}}>
+          <div style={{ position: 'absolute', top: 5, right: 10 }}>
             <BookmarkButton id={id} isBookmarked={isBookmarked} />
           </div>
           {isIllustComment && caption && <Caption caption={caption} />}
         </ProfileWrapper>
       </Wrapper>
-    );
+    )
   }
 }
