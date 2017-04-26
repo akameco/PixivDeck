@@ -1,4 +1,5 @@
 import { ipcRenderer, shell } from 'electron'
+// eslint-disable-next-line import/order
 import { select, fork, call, takeEvery } from 'redux-saga/effects'
 import { getIllust, getUser } from 'reducers'
 import * as Actions from 'constants/misc'

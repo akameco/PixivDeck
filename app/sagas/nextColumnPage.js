@@ -1,4 +1,5 @@
 import { delay } from 'redux-saga'
+// eslint-disable-next-line import/order
 import { fork, take, select, call, put } from 'redux-saga/effects'
 import * as Actions from 'constants/column'
 import { getColumn, getIllust } from 'reducers'

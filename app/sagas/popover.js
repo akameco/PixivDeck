@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/order
 import { put, fork, call, take } from 'redux-saga/effects'
 import { clearUserPopoverIllust, addUserPopoverIllust } from 'actions/popover'
 import { OPEN_USER_POPOVER } from 'containers/UserPopoverContainer/constants'

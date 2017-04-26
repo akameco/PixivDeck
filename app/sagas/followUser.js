@@ -1,6 +1,7 @@
+import { call, fork, takeEvery } from 'redux-saga/effects'
+// eslint-disable-next-line import/order
 import * as Actions from 'constants/user'
 import Api from '../api'
-import { call, fork, takeEvery } from 'redux-saga/effects'
 
 type hasId = {
   id: number,
