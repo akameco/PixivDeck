@@ -1,45 +1,41 @@
 // @flow
-import React, {Component} from 'react';
-import styled, {keyframes} from 'styled-components';
-import EventListener from 'react-event-listener';
-import keycode from 'keycode';
-import Overlay from 'components/Overlay';
-import CloseButton from 'components/common/CloseButton';
+import React, { Component } from 'react'
+import styled, { keyframes } from 'styled-components'
+import EventListener from 'react-event-listener'
+import keycode from 'keycode'
+import Overlay from 'components/Overlay'
+import CloseButton from 'components/common/CloseButton'
 
 type Props = {
   open: boolean,
   onRequestClose?: () => void,
   children?: React$Element<any>,
   onClose: () => void,
-};
+}
 
 export default class ModalWrapper extends Component {
-  props: Props;
-  _content: typeof Component;
+  props: Props
+  _content: typeof Component
 
   requestClose(buttonClicked: boolean) {
-    this.props.onClose();
-    const {onRequestClose} = this.props;
+    this.props.onClose()
+    const { onRequestClose } = this.props
     if (onRequestClose) {
-      onRequestClose(buttonClicked);
+      onRequestClose(buttonClicked)
     }
   }
 
   handleKeyUp = (event: Event) => {
     if (keycode(event) === 'esc') {
-      this.requestClose(false);
+      this.requestClose(false)
     }
-  };
+  }
 
   render() {
-    const {
-      onClose,
-      children,
-      open,
-    } = this.props;
+    const { onClose, children, open } = this.props
 
     if (!open) {
-      return null;
+      return null
     }
 
     return (
@@ -48,14 +44,14 @@ export default class ModalWrapper extends Component {
         <Content
           innerRef={c => {
             // eslint-disable-line react/jsx-no-bind
-            this._content = c;
+            this._content = c
           }}>
           <CloseButton onClick={onClose} />
           {open && children}
         </Content>
-        <Overlay show={open} style={{zIndex: 800}} onClick={onClose} />
+        <Overlay show={open} style={{ zIndex: 800 }} onClick={onClose} />
       </Wrap>
-    );
+    )
   }
 }
 
@@ -71,7 +67,7 @@ const Wrap = styled.div`
 	top: 0;
 	left: 0;
 	z-index: 700;
-`;
+`
 
 const fadeIn = keyframes`
 	0% {
@@ -85,7 +81,7 @@ const fadeIn = keyframes`
 	100% {
 		margin-top: 0;
 	}
-`;
+`
 
 const Content = styled.div`
 	z-index: 900;
@@ -101,4 +97,4 @@ const Content = styled.div`
 	padding-top: 10px;
 	padding-bottom: 15px;
 	animation: ${fadeIn} 0.2s ease-out 0.1s both;
-`;
+`

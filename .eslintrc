@@ -32,6 +32,7 @@
       }
     },
     "rules": {
+      "semi": [2, "never"],
       "no-duplicate-imports": 0,
       "no-constant-condition": 0,
       "react/jsx-uses-react": "error",
@@ -51,7 +52,7 @@
         "json": "never",
         "jsx": "never"
       }],
-      "flowtype/union-intersection-spacing": ["error", "always"],
+      "flowtype/semi": ["error", "never"],
       "flowtype/define-flow-type": "error",
       "flowtype/use-flow-type": "error",
       "import/default": "error",
@@ -60,7 +61,6 @@
       "import/no-absolute-path": "error",
       "import/no-dynamic-require": "error",
       "import/no-webpack-loader-syntax": "error",
-      "import/newline-after-import": "error",
       "import/no-amd": "error",
       "import/no-extraneous-dependencies": 0,
       "import/no-mutable-exports": "error",

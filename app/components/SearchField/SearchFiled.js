@@ -1,84 +1,79 @@
 // @flow
-import React, {Component} from 'react';
-import styled from 'styled-components';
-import {findDOMNode} from 'react-dom';
-import throttle from 'lodash.throttle';
-import Pixiv from '../../api/pixiv';
-import PopoverAuto from './PopoverAuto';
-import UsersOver from './UsersOver';
+import React, { Component } from 'react'
+import styled from 'styled-components'
+import { findDOMNode } from 'react-dom'
+import throttle from 'lodash.throttle'
+import Pixiv from '../../api/pixiv'
+import PopoverAuto from './PopoverAuto'
+import UsersOver from './UsersOver'
 
 export type Props = {
   onClose: () => void,
   onSubmit: (tag: string) => void,
-};
+}
 
 type State = {
   value: string,
   keywords: string[],
-};
+}
 
 class SearchField extends Component {
-  props: Props;
-  state: State = {value: '', keywords: []};
+  props: Props
+  state: State = { value: '', keywords: [] }
 
   componentDidMount() {
-    window.addEventListener('click', this._handleClose);
+    window.addEventListener('click', this._handleClose)
   }
 
   componentWillUnmount() {
-    window.removeEventListener('click', this._handleClose);
+    window.removeEventListener('click', this._handleClose)
   }
 
-  handleChange = ({target}: Event) => {
+  handleChange = ({ target }: Event) => {
     if (target instanceof HTMLInputElement) {
-      this.setState({value: target.value});
-      this._autoComplte();
+      this.setState({ value: target.value })
+      this._autoComplte()
     }
-  };
+  }
 
   _handleClose = (event: any) => {
-    event.preventDefault();
-    let node = event.target;
+    event.preventDefault()
+    let node = event.target
     while (node) {
       if (node === findDOMNode(this)) {
-        return;
+        return
       }
-      node = node.parentNode;
+      node = node.parentNode
     }
-    this.props.onClose();
-  };
+    this.props.onClose()
+  }
 
-  _autoComplte = throttle(
-    async () => {
-      const {value} = this.state;
-      if (value === '') {
-        return;
-      }
-      const {searchAutoCompleteKeywords} = await Pixiv.searchAutoComplete(
-        value,
-      );
-      this.setState({keywords: searchAutoCompleteKeywords});
-    },
-    200,
-  );
+  _autoComplte = throttle(async () => {
+    const { value } = this.state
+    if (value === '') {
+      return
+    }
+    const { searchAutoCompleteKeywords } = await Pixiv.searchAutoComplete(value)
+    this.setState({ keywords: searchAutoCompleteKeywords })
+  }, 200)
 
   handleSubmit = (event: SyntheticKeyboardEvent) => {
     // eslint-disable-line no-undef
-    const text = this.state.value.trim();
+    const text = this.state.value.trim()
     if (event.which === 13 && text !== '') {
-      this.props.onSubmit(text);
-      this.setState({value: ''});
+      this.props.onSubmit(text)
+      this.setState({ value: '' })
     }
-  };
+  }
 
   handleClick = (keyword: string) => {
     if (keyword !== '') {
-      this.props.onSubmit(keyword);
+      this.props.onSubmit(keyword)
     }
-  };
+  }
 
   render() {
-    const {keywords, value} = this.state;
+    const { keywords, value } = this.state
     return (
       <Wrap>
         <Field>
@@ -102,20 +97,20 @@ class SearchField extends Component {
             <UsersOver value={value} onClick={this.handleClick} />
           </Popup>}
       </Wrap>
-    );
+    )
   }
 }
 
 const Wrap = styled.div`
 	position: relative;
 	height: auto;
-`;
+`
 
 const Field = styled.div`
 	position: relative;
 	max-width: 400px;
 	margin-bottom: 5px;
-`;
+`
 
 const Input = styled.input`
 	font-size: 1.1rem;
@@ -126,7 +121,7 @@ const Input = styled.input`
 	border-radius: 3px;
 	padding-left: 1rem;
 	box-sizing: border-box;
-`;
+`
 
 const Popup = styled.div`
 	height: calc(100% - 50px);
@@ -136,6 +131,6 @@ const Popup = styled.div`
 	overflow-y: scroll;
 	margin: 0;
 	box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
-`;
+`
 
-export default SearchField;
+export default SearchField

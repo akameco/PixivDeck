@@ -1,18 +1,18 @@
 // @flow
-import {connect} from 'react-redux';
-import type {State} from 'types/';
-import {closeDrawer} from 'actions/';
-import App from './App';
+import { connect } from 'react-redux'
+import type { State } from 'types/'
+import { closeDrawer } from 'actions/'
+import App from './App'
 
-const mapStateToProps = ({manage, columns}: State) => ({
+const mapStateToProps = ({ manage, columns }: State) => ({
   manage,
   columns,
-});
+})
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   onClose: () => {
-    dispatch(closeDrawer());
+    dispatch(closeDrawer())
   },
-});
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App)

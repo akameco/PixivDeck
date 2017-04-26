@@ -1,27 +1,27 @@
 // @flow
-import React from 'react';
-import styled, {keyframes} from 'styled-components';
+import React from 'react'
+import styled, { keyframes } from 'styled-components'
 
 type Props = {
   img: string,
   onClose: () => void,
-};
+}
 
 type State = {
   isLoad: boolean,
-};
+}
 
 export default class MangaPreview extends React.PureComponent {
-  props: Props;
-  state: State = {isLoad: false};
+  props: Props
+  state: State = { isLoad: false }
 
   handleClose = () => {
-    this.props.onClose();
-  };
+    this.props.onClose()
+  }
 
   handleImgLoad = () => {
-    this.setState({isLoad: true});
-  };
+    this.setState({ isLoad: true })
+  }
 
   render() {
     return (
@@ -32,7 +32,7 @@ export default class MangaPreview extends React.PureComponent {
           loaded={this.state.isLoad}
         />
       </Wrapper>
-    );
+    )
   }
 }
 
@@ -46,7 +46,7 @@ const Wrapper = styled.div`
 	z-index: 999;
 	width: 100%;
 	height: 100%;
-`;
+`
 
 const fadeIn = keyframes`
 	0% {
@@ -56,7 +56,7 @@ const fadeIn = keyframes`
 	100% {
 		opacity: 1;
 	}
-`;
+`
 
 const Img = styled.img`
 	width: auto;
@@ -68,4 +68,4 @@ const Img = styled.img`
 	opacity: 0;
 	cursor: zoom-out;
 	animation: ${props => props.loaded && `${fadeIn} 500ms both`};
-`;
+`

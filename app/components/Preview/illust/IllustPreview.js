@@ -1,7 +1,7 @@
 // @flow
-import React from 'react';
-import styled from 'styled-components';
-import LazyImg from './LazyImg';
+import React from 'react'
+import styled from 'styled-components'
+import LazyImg from './LazyImg'
 
 type Props = {
   from: string,
@@ -12,21 +12,21 @@ type Props = {
   onLoad: () => void,
   onUnLoad: () => void,
   onClose: () => void,
-};
+}
 
 export default class IllustPreview extends React.PureComponent {
-  props: Props;
+  props: Props
 
   componentWillUnmount() {
-    this.props.onUnLoad();
+    this.props.onUnLoad()
   }
 
   handleOnClose = () => {
-    this.props.onClose();
-  };
+    this.props.onClose()
+  }
 
   render() {
-    const {width, height, from, to} = this.props;
+    const { width, height, from, to } = this.props
 
     return (
       <StyledPreview onClick={this.handleOnClose}>
@@ -40,7 +40,7 @@ export default class IllustPreview extends React.PureComponent {
           onClose={this.props.onClose}
         />
       </StyledPreview>
-    );
+    )
   }
 }
 
@@ -57,4 +57,4 @@ const StyledPreview = styled.div`
 	cursor: pointer;
 	overflow: auto;
 	z-index: 999;
-`;
+`
