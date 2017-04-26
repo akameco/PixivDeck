@@ -4,7 +4,11 @@ logs
 *.log
 npm-debug.log*
 
+dll
 dist
 release
 *.map
 main.js
+
+# flow-typed
+flow-typed/npm/*
