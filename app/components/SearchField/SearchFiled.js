@@ -1,11 +1,18 @@
 // @flow
 import React, { Component } from 'react'
+import { injectIntl } from 'react-intl'
+import type { IntlShape } from 'react-intl'
 import styled from 'styled-components'
 import { findDOMNode } from 'react-dom'
 import throttle from 'lodash.throttle'
 import Pixiv from '../../api/pixiv'
 import PopoverAuto from './PopoverAuto'
 import UsersOver from './UsersOver'
+import messages from './messages'
+
+type InjectProp = {
+  intl: IntlShape,
+}
 
 export type Props = {
   onClose: () => void,
@@ -18,7 +25,7 @@ type State = {
 }
 
 class SearchField extends Component {
-  props: Props
+  props: Props & InjectProp
   state: State = { value: '', keywords: [] }
 
   componentDidMount() {
@@ -73,13 +80,14 @@ class SearchField extends Component {
   }
 
   render() {
+    const { formatMessage } = this.props.intl
     const { keywords, value } = this.state
     return (
       <Wrap>
         <Field>
           <Input
             type="text"
-            placeholder="キーワード検索"
+            placeholder={formatMessage(messages.keywordSearch)}
             autoFocus
             value={value}
             onChange={this.handleChange}
@@ -133,4 +141,4 @@ const Popup = styled.div`
 	box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
 `
 
-export default SearchField
+export default (injectIntl(SearchField): any)

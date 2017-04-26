@@ -86,6 +86,16 @@ type PluralCategoryString = 'zero' | 'one' | 'two' | 'few' | 'many' | 'other'
 
 type $DateParseable = number | string | Date
 
+declare class ConnectedComponent<OP, P, Def, St> extends React$Component<void, OP, void> {
+  static WrappedComponent: Class<React$Component<Def, P, St>>;
+  getWrappedInstance(): React$Component<Def, P, St>;
+  static defaultProps: void;
+  props: OP;
+  state: void;
+}
+
+declare type ConnectedComponentClass<OP, P, Def, St> = Class<ConnectedComponent<OP, P, Def, St>>;
+
 declare module 'react-intl' {
   // PropType checker
   declare function intlShape(
@@ -97,6 +107,7 @@ declare module 'react-intl' {
   declare function defineMessages(
     messageDescriptors: MessageDescriptorMap
   ): MessageDescriptorMap
+
   declare function injectIntl(
     WrappedComponent: ReactClass<*>,
     options?: {
@@ -104,6 +115,7 @@ declare module 'react-intl' {
       withRef: boolean,
     }
   ): ReactClass<*>
+
   declare function formatMessage(
     messageDescriptor: MessageDescriptor,
     values?: Object

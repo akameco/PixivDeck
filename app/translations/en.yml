@@ -31,6 +31,7 @@ components:
     r18FilterDesc: |-
       It is easiest to filter R18 tags.
       Inevitably you need to change browsing restrictions on pixiv's site'
+    language: Language
   UserDrawer:
     addColumn: Add to column
     tabIllust: 'Illustration ({count})'
