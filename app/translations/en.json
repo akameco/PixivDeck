@@ -23,7 +23,6 @@
   "components.SettingModal.r18Link": "pixiv - R18 link",
   "components.SettingModal.r18FilterDesc": "It is easiest to filter R18 tags.\n Inevitably you need to change browsing restrictions on pixiv's site",
   "components.UserDrawer.addColumn": "Add to column",
-  "components.UserDrawer.tabIllust": "Illustration
- ({count})",
+  "components.UserDrawer.tabIllust": "Illustration ({count})",
   "components.UserDrawer.tabManga": "Manga ({count})",
 }

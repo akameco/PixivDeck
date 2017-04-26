@@ -62,6 +62,7 @@
     "electron-debug": "^1.1.0",
     "electron-dl": "^1.6.0",
     "electron-referer": "^0.3.0",
+    "extract-react-intl": "^0.2.1",
     "keycode": "^2.1.8",
     "lodash.debounce": "^4.0.8",
     "lodash.isequal": "^4.5.0",
@@ -118,6 +119,7 @@
     "eslint-plugin-prettier": "^2.0.1",
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-react": "^6.9.0",
+    "extract-react-intl-messages": "^0.3.0",
     "flow-bin": "^0.44.0",
     "hard-rejection": "^1.0.0",
     "jest": "^18.1.0",
@@ -132,6 +134,7 @@
     "stylelint-processor-styled-components": "^0.0.4",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2",
-    "webpack-merge": "^2.4.0"
+    "webpack-merge": "^2.4.0",
+    "yaml-loader": "^0.4.0"
   }
 }

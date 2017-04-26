@@ -1,0 +1,37 @@
+components:
+  AddColumnModal:
+    header: 追加するカラムを選択
+    ranking: ランキング
+    bookmark: ブックマーク
+  Column:
+    bookmarkFilter: ブックマークフィルタ
+  FollowButton:
+    follow: フォローする
+    following: フォロー中
+    unFollow: フォロー解除
+  Header:
+    logout: ログアウト
+    setting: 設定
+  LoginModal:
+    error: ログインに失敗しました。
+    errorInfo: ユーザ名とパスワードを確認してください。
+    login: ログイン
+    loginLoading: ログイン中..
+  SearchField:
+    search: 検索
+    keywordSearch: キーワード検索
+    users: users入り
+  SettingModal:
+    tagFilter: タグフィルター
+    uiSetting: UI 設定
+    showCaption: キャプションを表示
+    showOnlyImg: 画像のみ表示
+    limit: 閲覧制限
+    r18Link: pixiv - R-18設定
+    r18FilterDesc: |-
+      R-18タグをフィルターするのがもっとも簡単です。
+      どうしても閲覧制限を設定はpixivのサイト上にて変更する必要があります。
+  UserDrawer:
+    addColumn: カラムに追加
+    tabIllust: 'イラスト ({count})'
+    tabManga: 'マンガ ({count})'
