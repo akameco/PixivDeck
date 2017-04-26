@@ -32,7 +32,7 @@ type MessageDescriptor = {
   description?: string
 };
 
-type MessageDescriptorMap = {[key: string]: MessageDescriptor};
+type MessageDescriptorMap = {[key: string]: any};
 
 type IntlFormat = {
   formatDate: (value: any, options?: Object) => string,
