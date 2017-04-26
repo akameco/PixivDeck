@@ -41,10 +41,10 @@
       "react/sort-comp": ["error", {
         "order": [
           "type-annotations",
-        "static-methods",
-        "lifecycle",
-        "everything-else",
-        "render"
+          "static-methods",
+          "lifecycle",
+          "everything-else",
+          "render"
         ]
       }],
       "import/export": "error",
@@ -67,7 +67,7 @@
       "import/no-mutable-exports": "error",
       "import/no-named-as-default-member": "error",
       "import/no-named-as-default": "error",
-      "import/order": "error",
-      "import/no-unassigned-import": "error"
+      "import/no-unassigned-import": "error",
+      "import/order": ["error", {"groups": ["builtin", "external", "internal", "parent", "sibling", "index"]}]
     }
 }
