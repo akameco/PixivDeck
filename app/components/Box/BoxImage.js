@@ -1,19 +1,19 @@
 // @flow
-import React, {Component} from 'react';
-import styled, {keyframes} from 'styled-components';
-import {findDOMNode} from 'react-dom';
-import type {Illust} from 'types/illust';
-import Icon from 'components/common/Icon';
+import React, { Component } from 'react'
+import styled, { keyframes } from 'styled-components'
+import { findDOMNode } from 'react-dom'
+import type { Illust } from 'types/illust'
+import Icon from 'components/common/Icon'
 
 type Props = {
   illust: Illust,
   onClick: () => void,
-};
+}
 
 type State = {
   isVisible: boolean,
   isLoaded: boolean,
-};
+}
 
 const BoxImageWrapper = styled.div`
 	position: relative;
@@ -44,7 +44,7 @@ const BoxImageWrapper = styled.div`
 		margin-left: 5px;
 		z-index: 100;
 	}
-`;
+`
 
 const fadeIn = keyframes`
 	0% {
@@ -58,64 +58,64 @@ const fadeIn = keyframes`
 		margin: 0;
 		opacity: 1;
 	}
-`;
+`
 
 const LoadedImg = styled.img`
 	animation: ${fadeIn} 0.3s both;
-`;
+`
 
 export default class BoxImage extends React.PureComponent {
-  props: Props;
-  target: Component<*, *, *>;
-  io: Object;
+  props: Props
+  target: Component<*, *, *>
+  io: Object
   state: State = {
     isVisible: false,
     isLoaded: false,
-  };
+  }
 
   componentDidMount() {
-    this.init();
+    this.init()
   }
 
   componentWillUnmount() {
-    this.io.unobserve(findDOMNode(this.target));
+    this.io.unobserve(findDOMNode(this.target))
   }
 
   init() {
-    const target = this.target;
+    const target = this.target
     this.io = new IntersectionObserver(
       entries => {
         // eslint-disable-line no-undef
-        const intersectionRatio = entries[0].intersectionRatio;
+        const intersectionRatio = entries[0].intersectionRatio
         if (intersectionRatio <= 0) {
-          this.setState({isVisible: false});
+          this.setState({ isVisible: false })
         }
-        this.update();
+        this.update()
       },
       {
-        rootMargin: '500px',
-      },
-    );
-    this.io.observe(findDOMNode(target));
+        rootMargin: '1000px',
+      }
+    )
+    this.io.observe(findDOMNode(target))
   }
 
   update() {
-    this.setState({isVisible: true});
+    this.setState({ isVisible: true })
 
-    const img = new Image();
+    const img = new Image()
     img.onload = () => {
-      this.setState({isLoaded: true});
-    };
-    img.src = this.props.illust.imageUrls.medium;
+      this.setState({ isLoaded: true })
+    }
+    img.src = this.props.illust.imageUrls.squareMedium
   }
 
   onHandleRefs = (c: Component<*, *, *>) => {
-    this.target = c;
-  };
+    this.target = c
+  }
 
   render() {
-    const {imageUrls, pageCount} = this.props.illust;
-    const {isVisible, isLoaded} = this.state;
+    const { imageUrls, pageCount } = this.props.illust
+    const { isVisible, isLoaded } = this.state
     return (
       <BoxImageWrapper innerRef={this.onHandleRefs}>
         {isVisible &&
@@ -123,9 +123,9 @@ export default class BoxImage extends React.PureComponent {
           pageCount > 1 &&
           <Icon type="manga" color="#fff" />}
         {isVisible && isLoaded
-          ? <LoadedImg src={imageUrls.large} onClick={this.props.onClick} />
+          ? <LoadedImg src={imageUrls.medium} onClick={this.props.onClick} />
           : <img height={200} />}
       </BoxImageWrapper>
-    );
+    )
   }
 }

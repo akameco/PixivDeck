@@ -1,17 +1,19 @@
 // @flow
-import React from 'react';
-import {Tabs, Tab} from 'material-ui/Tabs';
-import type {User, Profile} from 'types/user';
-import type {Illust} from 'types/illust';
-import Header from './DrawerHeader';
-import IllstList from './IllustListContainer';
+import React from 'react'
+import { Tabs, Tab } from 'material-ui/Tabs'
+import { FormattedMessage } from 'react-intl'
+import type { User, Profile } from 'types/user'
+import type { Illust } from 'types/illust'
+import Header from './DrawerHeader'
+import IllstList from './IllustListContainer'
+import messages from './messages'
 
 type Props = {
   user: User,
   profile: Profile,
   illusts: Array<Illust>,
   mangas: Array<Illust>,
-};
+}
 
 const tabProps = {
   tabItemContainerStyle: {
@@ -20,23 +22,35 @@ const tabProps = {
   inkBarStyle: {
     backgroundColor: '#afafaf',
   },
-};
+}
 
-const UserDrawer = ({user, profile, illusts, mangas}: Props) => {
-  const {totalIllusts, totalManga} = profile;
+const UserDrawer = ({ user, profile, illusts, mangas }: Props) => {
+  const { totalIllusts, totalManga } = profile
   return (
     <div>
       <Header user={user} profile={profile} />
       <Tabs {...tabProps}>
-        <Tab label={`イラスト (${totalIllusts})`}>
+        <Tab
+          label={
+            <FormattedMessage
+              {...messages.tabIllust}
+              values={{ count: totalIllusts }}
+            />
+          }>
           <IllstList illusts={illusts} type="illust" />
         </Tab>
-        <Tab label={`マンガ (${totalManga})`}>
+        <Tab
+          label={
+            <FormattedMessage
+              {...messages.tabManga}
+              values={{ count: totalManga }}
+            />
+          }>
           <IllstList illusts={mangas} type="manga" />
         </Tab>
       </Tabs>
     </div>
-  );
-};
+  )
+}
 
-export default UserDrawer;
+export default UserDrawer

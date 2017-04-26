@@ -1,28 +1,28 @@
 // @flow
-import React from 'react';
-import type {Illust} from 'types/illust';
-import Loading from 'components/Loading';
-import Infinite from 'components/common/Infinite';
-import * as colors from 'constants/colors';
-import Box from 'components/Box';
+import React from 'react'
+import type { Illust } from 'types/illust'
+import Loading from 'components/Loading'
+import Infinite from 'components/common/Infinite'
+import * as colors from 'constants/colors'
+import Box from 'components/Box'
 
 export type Props = {
   illusts: Illust[],
   onIntersect: () => void,
-};
+}
 
 const styles = {
   height: '100%',
   minHeight: '1500px',
   backgroundColor: colors.background,
-};
+}
 
-const IllstList = ({illusts, onIntersect}: Props) => {
+const IllstList = ({ illusts, onIntersect }: Props) => {
   const List = illusts.map(illust => (
     <Box key={illust.id} user={illust.user} illust={illust} />
-  ));
+  ))
   if (illusts.length === 0) {
-    return <Loading wrapStyle={styles} />;
+    return <Loading wrapStyle={styles} />
   }
   return (
     <div style={styles}>
@@ -30,7 +30,7 @@ const IllstList = ({illusts, onIntersect}: Props) => {
         {List}
       </Infinite>
     </div>
-  );
-};
+  )
+}
 
-export default IllstList;
+export default IllstList

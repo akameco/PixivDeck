@@ -1,5 +1,5 @@
 // @flow
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const Spinner = styled.div`
 	margin: 100px auto;
@@ -7,6 +7,6 @@ const Spinner = styled.div`
 	height: 40px;
 	text-align: center;
 	font-size: 10px;
-`;
+`
 
-export default Spinner;
+export default Spinner

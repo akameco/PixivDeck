@@ -1,18 +1,18 @@
 // @flow
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 type ItemProps = {
   start: string,
   end: string,
   onClick: () => void,
-};
+}
 
-export const Item = ({start, end, onClick}: ItemProps) => (
+export const Item = ({ start, end, onClick }: ItemProps) => (
   <ItemWrap onClick={onClick}>
     <u>{start}</u>{end}
   </ItemWrap>
-);
+)
 
 const ItemWrap = styled.div`
 	height: 45px;
@@ -23,21 +23,21 @@ const ItemWrap = styled.div`
 	&:hover {
 		background-color: rgb(230, 239, 247);
 	}
-`;
+`
 
 type Props = {
-  title: string,
+  title: string | React$Element<*>,
   children?: React$Element<any>,
-};
+}
 
 const Wrap = styled.div`
 	box-sizing: border-box;
 	background: white;
-`;
+`
 
 const Content = styled.div`
 	padding-top: 4px;
-`;
+`
 
 const Title = styled.div`
 	background-color: #e7e7e7;
@@ -46,15 +46,15 @@ const Title = styled.div`
 	color: #8f8f8f;
 	margin: -4px 0 0;
 	border: 0;
-`;
+`
 
-const Popover = ({children, title}: Props) => (
+const Popover = ({ children, title }: Props) => (
   <Wrap>
     <Content>
       <Title>{title}</Title>
       <div>{children}</div>
     </Content>
   </Wrap>
-);
+)
 
-export default Popover;
+export default Popover

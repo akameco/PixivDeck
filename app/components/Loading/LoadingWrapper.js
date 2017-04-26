@@ -1,5 +1,5 @@
 // @flow
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const LoadingWrapper = styled.div`
 	display: flex;
@@ -7,6 +7,6 @@ const LoadingWrapper = styled.div`
 	background: #eee;
 	width: 100%;
 	height: 100%;
-`;
+`
 
-export default LoadingWrapper;
+export default LoadingWrapper

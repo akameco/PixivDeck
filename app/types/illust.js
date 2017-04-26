@@ -3,7 +3,9 @@ export type ImageUrls = {|
   squareMedium: string,
   medium: string,
   large: string,
-|};
+|}
+
+type Id = number
 
 export type MetaPages = Array<{|
   imageUrls: {|
@@ -12,7 +14,7 @@ export type MetaPages = Array<{|
     large: string,
     original: string,
   |},
-|}>;
+|}>
 
 export type Illust = {|
   id: number,
@@ -22,7 +24,7 @@ export type Illust = {|
   caption: string,
   restrict: number,
   user: number,
-  tags: Array<{name: string}>,
+  tags: Array<{ name: string }>,
   tools: Array<string>,
   createDate: string,
   pageCount: number,
@@ -36,8 +38,12 @@ export type Illust = {|
   totalBookmarks: number,
   isBookmarked: boolean,
   visible: boolean,
-|};
+|}
 
-export type Illusts = {[key: number]: Illust};
+export type Illusts = { [key: number]: Illust }
 
-export type IllustAction = {|type: 'ADD_BOOKMARK', id: Id, isPublic: boolean|};
+export type IllustAction = {|
+  type: 'ADD_BOOKMARK',
+  id: Id,
+  isPublic: boolean,
+|}

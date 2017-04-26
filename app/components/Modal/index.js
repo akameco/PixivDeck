@@ -1,64 +1,60 @@
 // @flow
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import type {Connector} from 'react-redux';
-import type {State, Dispatch} from 'types';
-import type {ModalType} from 'types/manage';
-import {closeModal} from 'actions';
-import LoginModal from '../LoginModal';
-import SettingModal from '../SettingModal';
-import AddColumnModal from '../AddColumnModal';
-import ModalWrapper from './ModalWrapper';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import type { Connector } from 'react-redux'
+import type { State, Dispatch } from 'types'
+import type { ModalType } from 'types/manage'
+import { closeModal } from 'actions'
+import LoginModal from '../LoginModal'
+import SettingModal from '../SettingModal'
+import AddColumnModal from '../AddColumnModal'
+import ModalWrapper from './ModalWrapper'
 
 type Props = {
   modalType: ModalType,
   open: boolean,
   closeModal: () => void,
-};
+}
 
 class Modal extends Component {
-  props: Props;
+  props: Props
 
   renderModal(type: ModalType) {
     if (type === 'ADD_COLUMN') {
-      return <AddColumnModal />;
+      return <AddColumnModal />
     } else if (type === 'FILTER_TAG') {
-      return <SettingModal />;
+      return <SettingModal />
     } else if (type === 'LOGIN') {
-      return <LoginModal />;
+      return <LoginModal />
     } else if (type === 'DEFAULT') {
-      return <AddColumnModal />;
+      return <AddColumnModal />
     }
   }
 
   render() {
-    const {
-      modalType,
-      closeModal,
-      open,
-    } = this.props;
+    const { modalType, closeModal, open } = this.props
 
     return (
       <ModalWrapper onClose={closeModal} open={open}>
         {this.renderModal(modalType)}
       </ModalWrapper>
-    );
+    )
   }
 }
 
-const mapStateToProps = ({manage: {modalType, isModal}}: State) => ({
+const mapStateToProps = ({ manage: { modalType, isModal } }: State) => ({
   modalType,
   open: isModal,
-});
+})
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   closeModal() {
-    dispatch(closeModal());
+    dispatch(closeModal())
   },
-});
+})
 
 const connector: Connector<{}, Props> = connect(
   mapStateToProps,
-  mapDispatchToProps,
-);
-export default connector(Modal);
+  mapDispatchToProps
+)
+export default connector(Modal)
