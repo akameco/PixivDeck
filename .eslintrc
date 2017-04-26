@@ -32,7 +32,7 @@
       }
     },
     "rules": {
-      "semi": [2, "never"],
+      "semi": ["error", "never"],
       "no-duplicate-imports": 0,
       "no-constant-condition": 0,
       "react/jsx-uses-react": "error",

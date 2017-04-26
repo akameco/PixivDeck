@@ -1,35 +1,47 @@
 // @flow
 import React from 'react'
-import { connect } from 'react-redux'
-import type { State, Dispatch } from 'types'
 import type { User } from 'types/user'
 import type { Illust } from 'types/illust'
-import UserPopover from './UserPopover'
+import Avater from 'components/Avater'
+import FollowButton from 'components/FollowButton'
+import Profile from 'components/Box/header/Profile'
+import Wrap from './Wrap'
+import ImageWrap from './ImageWrap'
+import Top from './Top'
+import TopRight from './TopRight'
 
-type Props = {
-  user: User,
+export type Props = {
   onClick: () => void,
   illusts: Array<Illust>,
-  dispatch: Dispatch,
+  user: User,
 }
 
-class UserPopoverContainer extends React.PureComponent {
-  props: Props
-
-  componentWillMount() {
-    const { user: { id }, dispatch } = this.props
-    dispatch({ type: 'OPEN_USER_POPOVER', id })
-  }
-
-  render() {
-    const { user, illusts, onClick } = this.props
-    return <UserPopover user={user} illusts={illusts} onClick={onClick} />
-  }
+const UserPopover = ({ user, onClick, illusts }: Props) => {
+  const Images = illusts.map(v => (
+    <img key={v.id} src={v.imageUrls.squareMedium} width={150} height={150} />
+  ))
+  return (
+    <Wrap>
+      <Top>
+        <TopRight>
+          <Avater
+            src={user.profileImageUrls.medium}
+            onClick={onClick}
+            size={48}
+          />
+          <Profile
+            name={user.name}
+            onClick={onClick}
+            style={{ color: '#222' }}
+          />
+        </TopRight>
+        <FollowButton user={user} />
+      </Top>
+      <ImageWrap>
+        {Images}
+      </ImageWrap>
+    </Wrap>
+  )
 }
 
-const mapStateToProps = (state: State) => ({
-  illusts: state.popover.illusts,
-})
-
-const connector = connect(mapStateToProps)
-export default connector(UserPopoverContainer)
+export default UserPopover

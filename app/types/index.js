@@ -4,6 +4,9 @@ import type {
   State as LanguageProviderState,
   Action as LanguageProviderAction,
 } from 'containers/LanguageProvider/type'
+import type {
+  Action as UserPopoverContainerAction,
+} from 'containers/UserPopoverContainer/type'
 import type { ColumnType, ColumnAction } from './column'
 import type { Manage, ManageAction } from './manage'
 import type { Filter, FilterAction } from './filter'
@@ -41,6 +44,7 @@ export type Action =
   | MiscAction
   | PopoverAction
   | LanguageProviderAction
+  | UserPopoverContainerAction
   | AddColumnAction
 
 export type State = {

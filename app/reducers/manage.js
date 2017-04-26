@@ -70,9 +70,9 @@ export default function(
   state: Manage = initManageState,
   action: Action
 ): $Shape<Manage> {
-  if (/^OPEN/.test(action.type)) {
+  if (action.type.startsWith('OPEN')) {
     return { ...state, ...open(state, action) }
-  } else if (/^CLOSE/.test(action.type)) {
+  } else if (action.type.startsWith('CLOSE')) {
     return close(state, action)
   }
   switch (action.type) {

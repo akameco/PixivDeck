@@ -1,6 +1,6 @@
 import { put, fork, call, take } from 'redux-saga/effects'
 import { clearUserPopoverIllust, addUserPopoverIllust } from 'actions/popover'
-import * as Actions from 'constants/popover'
+import { OPEN_USER_POPOVER } from 'containers/UserPopoverContainer/constants'
 import Api from '../api'
 
 function* popover(id) {
@@ -20,7 +20,7 @@ function* popover(id) {
 
 function* popoverFlow() {
   while (true) {
-    const { id } = yield take(Actions.OPEN_USER_POPOVER)
+    const { id } = yield take(OPEN_USER_POPOVER)
     try {
       yield call(popover, id)
     } catch (err) {

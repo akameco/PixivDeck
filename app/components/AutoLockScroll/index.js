@@ -12,7 +12,9 @@ function getElementBody() {
   return document.getElementsByTagName('body')[0]
 }
 
-class AutoLockScroll extends React.Component<void, Props, void> {
+class AutoLockScroll extends React.Component {
+  props: Props
+
   componentDidMount() {
     if (this.props.lock === true) {
       this.preventScrolling()
