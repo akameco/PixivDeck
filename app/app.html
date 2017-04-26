@@ -8,13 +8,25 @@
   <div id="root"></div>
   <script>
 {
-  const script = document.createElement('script');
-  const port = process.env.PORT || 3000;
-  script.src = process.env.NODE_ENV === 'development'
-    ? `http://localhost:${port}/dist/bundle.js`
-    : '../dist/bundle.js';
-  document.body.appendChild(script);
+  const scripts = []
+  // Dynamically insert the DLL script in development env in the
+  // renderer process
+  if (process.env.NODE_ENV === 'development') {
+    scripts.push('../dll/vendor.dll.js')
+  }
+  // Dynamically insert the bundled app script in the renderer process
+  const port = process.env.PORT || 1212
+  scripts.push(
+    process.env.HOT
+      ? 'http://localhost:' + port + '/dist/bundle.js'
+      : './dist/bundle.js'
+  )
+  document.write(
+    scripts
+      .map(script => '<script defer src="' + script + '"><\/script>')
+      .join('')
+  )
 }
-  </script>
+</script>
 </body>
 </html>

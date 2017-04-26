@@ -1,6 +1,6 @@
-import { call, fork, takeEvery } from 'redux-saga/effects'
 import * as Actions from 'constants/user'
 import Api from '../api'
+import { call, fork, takeEvery } from 'redux-saga/effects'
 
 type hasId = {
   id: number,
@@ -19,11 +19,11 @@ function* unfollow({ id }: hasId) {
 }
 
 function* followWatch() {
-  yield* takeEvery(Actions.FOLLOW, follow)
+  yield takeEvery(Actions.FOLLOW, follow)
 }
 
 function* unfollowWatch() {
-  yield* takeEvery(Actions.UN_FOLLOW, unfollow)
+  yield takeEvery(Actions.UN_FOLLOW, unfollow)
 }
 
 function* root() {

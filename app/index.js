@@ -12,7 +12,7 @@ import Api from './api'
 
 import { translationMessages } from './i18n'
 
-import './global-styles'
+import './global-styles' // eslint-disable-line
 
 injectTapEventPlugin()
 
