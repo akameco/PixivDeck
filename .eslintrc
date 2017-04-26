@@ -33,6 +33,7 @@
     },
     "rules": {
       "semi": ["error", "never"],
+      "no-compare-neg-zero": 0,
       "no-duplicate-imports": 0,
       "no-constant-condition": 0,
       "react/jsx-uses-react": "error",
