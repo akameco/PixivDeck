@@ -93,7 +93,7 @@ export default class BoxImage extends React.PureComponent {
         this.update();
       },
       {
-        rootMargin: '500px',
+        rootMargin: '1000px',
       },
     );
     this.io.observe(findDOMNode(target));
@@ -106,7 +106,7 @@ export default class BoxImage extends React.PureComponent {
     img.onload = () => {
       this.setState({isLoaded: true});
     };
-    img.src = this.props.illust.imageUrls.medium;
+    img.src = this.props.illust.imageUrls.squareMedium;
   }
 
   onHandleRefs = (c: Component<*, *, *>) => {
@@ -123,7 +123,7 @@ export default class BoxImage extends React.PureComponent {
           pageCount > 1 &&
           <Icon type="manga" color="#fff" />}
         {isVisible && isLoaded
-          ? <LoadedImg src={imageUrls.large} onClick={this.props.onClick} />
+          ? <LoadedImg src={imageUrls.medium} onClick={this.props.onClick} />
           : <img height={200} />}
       </BoxImageWrapper>
     );

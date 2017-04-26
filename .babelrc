@@ -1,7 +1,10 @@
 {
 	"presets": ["es2015", "stage-1", "react"],
 	"plugins": [
-		"add-module-exports"
+		"add-module-exports",
+    ["babel-plugin-react-intl-auto", {
+      "removePrefix": "app/"
+    }]
 	],
 	"env": {
 		"production": {
