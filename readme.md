@@ -53,18 +53,9 @@ Built with [Electron](http://electron.atom.io/).
 
 Only MacOS.
 
-Run this two commands simultaneously in different console tabs.
-
 ```
-$ yarn run watch
-$ yarn start
+$ yarn dev
 ```
-
-### Commands
-
-- Init: `$ yarn`
-- Run: `$ yarn start`
-- Build renderer process: `$ yarn run watch`
 
 ## Build
 
