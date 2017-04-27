@@ -1,25 +1,53 @@
 sudo: false
-os: osx
+
 language: node_js
+
 node_js:
-  - '7'
-cache: yarn
-before_deploy:
-  - brew update
-  - brew install wine
-  - wine --version
-  - brew install makensis
-  - npm run release
-deploy:
-  provider: releases
-  api_key:
-    secure: ynd0y7IKuVhvZJwP4vtWzS4tvotGk74IvM34bgSt77m0mGVOuu6EJtca6+G05Hmcq1ccxhugfAJTt2Fe9ifLxWSMePBuk9LjC3PVrE/krZ+yJVWfd0KzICi1DYedcdlTR1SgCIqNebxPIB0FZwRzs2nCI4uFnPLya0ORdBxUICu6qUYOUFWA+7pGmCbQnX75MbuMaU0YtBKYcDU5Dc01GMKaUdTkcuUsGtD6hgvrKtL3vIa0NZ+So0KMVQ50EiVe4S3W1JOVV+ORNiuXuZTuZpEyBA+lQKQ0gv5y4hmySonZh9hoHgEAqBIcXeK12rnJMzpX+Sf0NwG6stksAG9FMLzzNGSP86t05RkZ98C8Cj/fEWGAaEbUb37N24ES+14VmXs+cN/r5GQV1G80DMrSm79P1eyw95M/J+sjOb4ZXEQpfWDesIvs2iwtDADY1H+HEN+DX2E1VYwGz2rB6pSY8CozYcFSkxJ7AlRXmU0ye+SCnueYOHnPOXUgTdSqTn7VgmYxqPUAqk2WOqNLucYsOEdxe1b5A271+OrsMKLNTiRIYAzH7Js+BjVPpWUw6/okSTyAcAnT0EsV65iQgu0JuAUjmc9kXL7mHGfGJHbolGtDIk7IF0PhIFFfqCuHmYs3BLTjW08ofsgaV8oF8eTPw3tnddMa7Bss/3iXa+pbdxU=
-  file:
-    - release/PixivDeck-macos-0.9.0.zip
-    - release/PixivDeck-linux-0.9.0.zip
-    - release/PixivDeck-linux-0.9.0.zip
-  on:
-    repo: akameco/PixivDeck
-    tags: true
-    all_branches: true
-  skip_cleanup: true
+  - 7
+  - 6
+
+cache:
+  directories:
+    - node_modules
+
+# Enable when https://github.com/yarnpkg/yarn/issues/1233 and
+# https://github.com/yarnpkg/yarn/issues/1059 are resolved and disable npm cache
+#
+# cache:
+#   directories:
+#   - $HOME/.yarn-cache
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+      - icnsutils
+      - graphicsmagick
+      - xz-utils
+      - xorriso
+
+install:
+  - export CXX="g++-4.8"
+  - npm install -g npm@latest
+  - npm install
+  - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
+
+# Enable when https://github.com/yarnpkg/yarn/issues/1233 and
+# https://github.com/yarnpkg/yarn/issues/1059 are resolved and disable npm cache
+#
+# install:
+#   - export CXX="g++-4.8"
+#   - npm install -g yarnpkg
+#   - yarn
+#   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
+
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start &
+  - sleep 3
+
+script:
+  - npm run build
+  - npm run package
