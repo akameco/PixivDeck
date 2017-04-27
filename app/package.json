@@ -1,7 +1,22 @@
 {
   "name": "PixivDeck",
-  "version": "0.0.0",
-  "main": "./main.js",
+  "version": "0.13.0",
   "productName": "PixivDeck",
-  "license": "MIT"
+  "description": "pixiv client for desktop",
+  "license": "MIT",
+  "author": {
+    "name": "akameco",
+    "email": "akameco.t@gmail.com",
+    "url": "akameco.github.io"
+  },
+  "main": "main.js",
+  "scripts": {
+    "postinstall": "npm rebuild --runtime=electron --target=1.6.1 --disturl=https://atom.io/download/atom-shell --build-from-source"
+  },
+  "dependencies": {
+    "electron-config": "^0.2.1",
+    "electron-context-menu": "^0.9.0",
+    "electron-dl": "^1.9.0",
+    "electron-referer": "^0.3.0"
+  }
 }
