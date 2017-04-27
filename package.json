@@ -16,7 +16,7 @@
     "jest": "cross-env NODE_ENV=test jest",
     "test:watch": "cross-env NODE_ENV=test jest --watch",
     "flow": "flow",
-    "fmt": "prettier --write --single-quote --semi=false --jsx-bracket-same-line --trailing-comma es5 --print-width 80 \"{app,config}/**/*.js\"",
+    "fmt": "node ./config/scripts/format.js",
     "build": "npm run build-main && npm run build-renderer",
     "build-dll": "cross-env NODE_ENV=development node --trace-warnings -r babel-register ./node_modules/webpack/bin/webpack --config ./config/webpack/webpack.config.renderer.dev.dll.js --progress --profile --colors",
     "build-main": "cross-env NODE_ENV=production node --trace-warnings -r babel-register ./node_modules/webpack/bin/webpack --config ./config/webpack/webpack.config.main.prod.js --progress --profile --colors",
