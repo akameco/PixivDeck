@@ -13,7 +13,7 @@ export default merge.smart(baseConfig, {
 
   // 'main.js' in root
   output: {
-    path: __dirname,
+    path: process.cwd(),
     filename: './app/main.js',
   },
 

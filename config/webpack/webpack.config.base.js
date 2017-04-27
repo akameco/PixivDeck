@@ -2,6 +2,7 @@ import path from 'path'
 import webpack from 'webpack'
 import readPkgUp from 'read-pkg-up'
 
+const appPath = path.resolve(process.cwd(), 'app')
 const { pkg: dependencies = {} } = readPkgUp.sync()
 
 export default {
@@ -23,14 +24,14 @@ export default {
   },
 
   output: {
-    path: path.join(__dirname, 'app'),
+    path: appPath,
     filename: 'bundle.js',
     libraryTarget: 'commonjs2',
   },
 
   resolve: {
     extensions: ['.js', '.json'],
-    modules: [path.join(__dirname, 'app'), 'node_modules'],
+    modules: [appPath, 'node_modules'],
   },
 
   plugins: [new webpack.NamedModulesPlugin()],
