@@ -3,6 +3,12 @@
   "productName": "PixivDeck",
   "version": "0.12.1",
   "description": "pixiv client for desktop",
+  "keywords": [
+    "electron",
+    "pixiv"
+  ],
+  "author": "akameco <akameco.t@gmail.com>",
+  "license": "MIT",
   "main": "main.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development electron -r babel-register -r babel-polyfill main.development.js",
@@ -10,15 +16,6 @@
     "build:r": "cross-env NODE_ENV=production webpack --config webpack.config.production.js --progress --colors",
     "build:m": "cross-env NODE_ENV=production webpack --config webpack.config.electron.js --progress --colors",
     "build": "npm run build:r && npm run build:m",
-    "pack:macos": "node pack.js macos",
-    "pack:windows": "node pack.js windows",
-    "pack:linux": "node pack.js linux",
-    "pack": "npm run pack:macos && npm run pack:windows && npm run pack:linux",
-    "zip:macos": "cd release/PixivDeck-darwin-x64 && zip -ryXq9 ../PixivDeck-macos-${npm_package_version}.zip PixivDeck.app",
-    "zip:windows": "cd release/PixivDeck-win32-ia32 && zip -ryq9 ../PixivDeck-windows-${npm_package_version}.zip *",
-    "zip:linux": "cd release/PixivDeck-linux-x64 && zip -ryq9 ../PixivDeck-linux-${npm_package_version}.zip *",
-    "zip": "npm run zip:macos && npm run zip:windows && npm run zip:linux",
-    "release": "rm -fr release && npm run build && npm run pack && npm run zip",
     "test": "npm run prettier && npm run jest",
     "jest": "cross-env NODE_ENV=test jest",
     "test:watch": "cross-env NODE_ENV=test jest --watch",
@@ -33,6 +30,50 @@
     "flow-typed": "rm -fr flow-typed/npm && flow-typed install --overwrite || true",
     "postinstall": "npm run flow-typed",
     "lint:css": "stylelint \"app/components/**/*.js\""
+    "package": "npm run build && build --publish never",
+    "package-win": "npm run build && build --win --x64",
+    "package-linux": "npm run build && build --linux",
+    "package-all": "npm run build && build -mwl"
+  "build": {
+    "productName": "PixivDeck",
+    "appId": "io.github.akameco.pixivdeck",
+    "files": [
+      "dist/",
+      "node_modules/",
+      "app.html",
+      "main.js",
+      "main.js.map",
+      "package.json"
+    ],
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "AppImage"
+      ]
+    },
+    "directories": {
+      "buildResources": "res",
+      "output": "release"
+    }
   },
   "jest": {
     "snapshotSerializers": [
@@ -53,12 +94,6 @@
       "at-rule-empty-line-before": null
     }
   },
-  "keywords": [
-    "electron",
-    "pixiv"
-  ],
-  "author": "akameco <akameco.t@gmail.com>",
-  "license": "MIT",
   "dependencies": {
     "autolinker": "^1.4.3",
     "babel-polyfill": "^6.23.0",
@@ -121,6 +156,7 @@
     "del": "^2.2.2",
     "devtron": "^1.4.0",
     "electron": "^1.6.6",
+    "electron-builder": "^17.1.1",
     "electron-devtools-installer": "^2.2.0",
     "electron-packager": "^8.6.0",
     "enzyme": "^2.8.2",
