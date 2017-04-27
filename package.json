@@ -164,6 +164,7 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^6.10.3",
     "eslint-plugin-xo": "^1.0.0",
+    "execa": "^0.6.3",
     "extract-react-intl": "^0.3.0",
     "extract-react-intl-messages": "^0.3.0",
     "fbjs-scripts": "^0.7.1",
