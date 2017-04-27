@@ -3,3 +3,8 @@ dist/*
 flow-typed/*
 main.js
 app/node_modules/*
+node_modules/*
+bundle.js
+app/main.js
+app/main.js.map
+dll/vendor.dll.js
