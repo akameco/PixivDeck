@@ -1,33 +1,39 @@
 // @flow
-/* eslint-disable camelcase */
+/* eslint global-require: 0, flowtype-errors/show-errors: 0, camelcase: 1 */
 import electron from 'electron'
-import Config from 'electron-config'
 import referer from 'electron-referer'
 import appMenu from './menu'
+
+const Config = require('electron-config')
 
 const { app, BrowserWindow, ipcMain, shell } = electron
 let mainWindow
 
-require('electron-context-menu')()
-
-function openTweet(url: string) {
-  const tweetWin = new BrowserWindow({ width: 600, height: 400 })
-
-  const page = tweetWin.webContents
-
-  page.on('will-navigate', (event, url) => {
-    if (/twitter\.com\/intent\/tweet\/complete/.test(url)) {
-      tweetWin.close()
-    }
-
-    event.preventDefault()
-  })
-
-  tweetWin.loadURL(url, { httpReferrer: 'https://twitter.com' })
+if (process.env.NODE_ENV === 'production') {
+  const sourceMapSupport = require('source-map-support')
+  sourceMapSupport.install()
 }
 
-if (process.env.NODE_ENV === 'development') {
+if (
+  process.env.NODE_ENV === 'development' ||
+  process.env.DEBUG_PROD === 'true'
+) {
   require('electron-debug')()
+  const path = require('path')
+  const p = path.join(__dirname, '..', 'app', 'node_modules')
+  require('module').globalPaths.push(p)
+}
+
+require('electron-context-menu')()
+
+const installExtensions = async () => {
+  const installer = require('electron-devtools-installer')
+  const forceDownload = Boolean(process.env.UPGRADE_EXTENSIONS)
+  const extensions = ['REACT_DEVELOPER_TOOLS', 'REDUX_DEVTOOLS']
+
+  return Promise.all(
+    extensions.map(name => installer.default(installer[name], forceDownload))
+  ).catch(console.log)
 }
 
 const config = new Config({
@@ -41,23 +47,14 @@ const config = new Config({
 
 function createMainWindow() {
   const { width, height, x, y } = config.get('bounds')
-  const win = new BrowserWindow({ title: 'PixivDeck', width, height, x, y })
-
-  if (process.env.NODE_ENV === 'development') {
-    const loadExtensions = async () => {
-      const installExtension = require('electron-devtools-installer')
-
-      const install = installExtension.default
-      try {
-        await install(installExtension.REACT_DEVELOPER_TOOLS)
-        await install(installExtension.REDUX_DEVTOOLS)
-      } catch (err) {
-        console.error(err)
-      }
-    }
-
-    loadExtensions()
-  }
+  const win = new BrowserWindow({
+    title: 'PixivDeck',
+    width,
+    height,
+    x,
+    y,
+    show: false,
+  })
 
   win.loadURL(`file://${__dirname}/app.html`)
 
@@ -99,8 +96,18 @@ app.on('activate', () => {
   }
 })
 
-app.on('ready', () => {
+app.on('ready', async () => {
+  if (
+    process.env.NODE_ENV === 'development' ||
+    process.env.DEBUG_PROD === 'true'
+  ) {
+    await installExtensions()
+  }
+
   mainWindow = createMainWindow()
+  mainWindow.show()
+  mainWindow.focus()
+
   const page = mainWindow.webContents
 
   electron.Menu.setApplicationMenu(appMenu)
@@ -113,3 +120,19 @@ app.on('ready', () => {
     page.send('save')
   })
 })
+
+function openTweet(url: string) {
+  const tweetWin = new BrowserWindow({ width: 600, height: 400 })
+
+  const page = tweetWin.webContents
+
+  page.on('will-navigate', (event, url) => {
+    if (/twitter\.com\/intent\/tweet\/complete/.test(url)) {
+      tweetWin.close()
+    }
+
+    event.preventDefault()
+  })
+
+  tweetWin.loadURL(url, { httpReferrer: 'https://twitter.com' })
+}
