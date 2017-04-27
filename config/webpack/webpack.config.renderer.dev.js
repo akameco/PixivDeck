@@ -32,7 +32,7 @@ export default merge.smart(baseConfig, {
     'react-hot-loader/patch',
     `webpack-dev-server/client?http://localhost:${port}/`,
     'webpack/hot/only-dev-server',
-    path.join(__dirname, 'app/index.js'),
+    path.resolve(process.cwd(), 'app/index.js'),
   ],
 
   output: {
@@ -154,7 +154,7 @@ export default merge.smart(baseConfig, {
     lazy: false,
     hot: true,
     headers: { 'Access-Control-Allow-Origin': '*' },
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.resolve(process.cwd(), 'dist'),
     watchOptions: {
       aggregateTimeout: 300,
       poll: 100,
