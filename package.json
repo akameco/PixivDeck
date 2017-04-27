@@ -24,7 +24,7 @@
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint .",
     "hot-updates-server": "node ./config/scripts/webpack hot-server",
-    "start-hot-renderer": "cross-env HOT=1 NODE_ENV=development electron -r babel-register -r babel-polyfill ./app/main.development",
+    "start-hot-renderer": "node ./config/scripts/hot-renderer",
     "dev": "cross-env START_HOT=1 npm run hot-updates-server",
     "flow-typed": "rm -fr flow-typed/npm && flow-typed install --overwrite || true",
     "postinstall": "node ./config/scripts/post-install",
