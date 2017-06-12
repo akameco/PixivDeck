@@ -14,7 +14,7 @@
     "start": "cross-env NODE_ENV=production electron ./app/",
     "dev": "cross-env START_HOT=1 npm run hot-updates-server",
     "d": "npm run dev",
-    "test": "npm run prettier && npm run jest",
+    "test": "npm run format && npm run jest",
     "format": "node config/scripts/format.js",
     "f": "npm run format",
     "jest": "cross-env NODE_ENV=test jest",

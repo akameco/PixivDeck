@@ -8,7 +8,6 @@ const cmd = [
   '--write',
   '--single-quote',
   '--semi=false',
-  '--jsx-bracket-same-line',
   '--trailing-comma',
   'es5',
   `"${files}"`,
