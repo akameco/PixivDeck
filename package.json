@@ -167,7 +167,6 @@
     "react-hot-loader": "next",
     "react-test-renderer": "^15.5.4",
     "read-pkg-up": "^2.0.0",
-    "redux-logger": "^3.0.1",
     "stylelint": "^7.10.1",
     "stylelint-config-standard": "^16.0.0",
     "stylelint-processor-styled-components": "^0.1.0",
