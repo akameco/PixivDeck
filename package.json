@@ -30,7 +30,6 @@
     "test:watch": "cross-env NODE_ENV=test jest --watch",
     "hot-updates-server": "node config/scripts/webpack hot-server",
     "start-hot-renderer": "node config/scripts/hot-renderer",
-    "flow-typed": "rm -fr flow-typed/npm && flow-typed install --overwrite || true",
     "postinstall": "node config/scripts/post-install",
     "package-win": "npm run build && build --win --x64",
     "package-linux": "npm run build && build --linux",
