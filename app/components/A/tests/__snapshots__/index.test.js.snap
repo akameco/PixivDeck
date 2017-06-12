@@ -1,7 +1,10 @@
-exports[`test snapshot 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
 <a
-  className="svQEm"
-  href="https://akameco.github.io">
+  className="sc-bdVaJa ovhPf"
+  href="https://akameco.github.io"
+>
   <h1>
     Test
   </h1>

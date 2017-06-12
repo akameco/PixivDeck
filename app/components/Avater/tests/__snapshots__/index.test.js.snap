@@ -1,1 +1,3 @@
-exports[`test snapshot 1`] = `<styled.img />`;
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `<styled.img />`;
