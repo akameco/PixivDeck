@@ -73,7 +73,8 @@ export default class Button extends Component {
         style={mergedStyle}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
-        onClick={onClick}>
+        onClick={onClick}
+      >
         {label || children}
       </button>
     )

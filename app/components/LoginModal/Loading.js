@@ -15,7 +15,7 @@ const Wrap = styled.div`
 	margin-right: 3rem;
 `
 
-const LoginLoading = () => (
+const LoginLoading = () =>
   <Wrap>
     <Feild>
       <Loading />
@@ -24,6 +24,5 @@ const LoginLoading = () => (
       </Submit>
     </Feild>
   </Wrap>
-)
 
 export default LoginLoading

@@ -122,7 +122,8 @@ export default class SettingFilterModal extends Component {
           </Subheader>
           <SelectField
             value={this.props.locale}
-            onChange={(ev, i, value) => this.props.onSelectLanguage(value)}>
+            onChange={(ev, i, value) => this.props.onSelectLanguage(value)}
+          >
             <MenuItem value={'ja'} primaryText="日本語" />
             <MenuItem value={'en'} primaryText="English" />
           </SelectField>

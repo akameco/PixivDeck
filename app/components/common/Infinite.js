@@ -49,7 +49,8 @@ export default class Infinite extends Component {
           ref={c => {
             // eslint-disable-line react/jsx-no-bind
             this.sentinel = c
-          }}>
+          }}
+        >
           <Loading wrapStyle={{ background: colors.background }} />
         </div>
       </Wrap>

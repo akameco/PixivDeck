@@ -1,5 +1,4 @@
-import { call, fork, takeEvery } from 'redux-saga/effects'
-// eslint-disable-next-line import/order
+import { call, fork, takeEvery } from 'redux-saga/effects' // eslint-disable-line
 import * as Actions from 'constants/user'
 import Api from '../api'
 

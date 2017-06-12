@@ -13,10 +13,9 @@ type Props = {
   name: string,
 }
 
-const Tag = ({ name, onClick }: Props) => (
+const Tag = ({ name, onClick }: Props) =>
   <StyledTag onClick={() => onClick(name)}>
     #{name}
   </StyledTag>
-)
 
 export default Tag

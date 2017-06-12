@@ -9,10 +9,9 @@ const TitleWrapper = styled.div`
 	font-size: 1rem;
 	margin: 0;
 `
-const Title = ({ title }: { title: string }) => (
+const Title = ({ title }: { title: string }) =>
   <TitleWrapper>
     {title}
   </TitleWrapper>
-)
 
 export default Title

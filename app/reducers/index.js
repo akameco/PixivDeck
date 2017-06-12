@@ -63,6 +63,7 @@ export const getCurrentUser = (state: State): ?User => {
   if (state.manage.userId) {
     return state.userById[state.manage.userId]
   }
+  return null
 }
 
 export default rootReducer

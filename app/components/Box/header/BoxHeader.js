@@ -13,13 +13,13 @@ import Profile from './Profile'
 import Wrapper from './BoxHeaderWrapper'
 
 const AvaterWrapper = styled.div`
-	margin: 5px;
-	cursor: pointer;
+  margin: 5px;
+  cursor: pointer;
 `
 
 const ProfileWrapper = styled.div`
-	position: relative;
-	width: calc(100% - 56px);
+  position: relative;
+  width: calc(100% - 56px);
 `
 
 type Props = {
@@ -78,10 +78,10 @@ export default class BoxHeader extends React.PureComponent {
     })
   }
 
-  delaySetPopup(open: boolean, ms?: number) {
+  delaySetPopup(open: boolean, ms?: number): void {
     if (!ms) {
       this.setPopupVisible(open)
-      return false
+      return
     }
     const delay = ms * 1000
     this.delayTimer = setTimeout(() => {
@@ -101,15 +101,18 @@ export default class BoxHeader extends React.PureComponent {
         <AvaterWrapper
           onClick={this.handleClick}
           onMouseEnter={this.handleMouseEnter}
-          onMouseLeave={this.handleMouseLeave}>
+          onMouseLeave={this.handleMouseLeave}
+        >
           <Avater src={profileImageUrls.medium} size={48} />
           <Popover
             open={this.state.open}
             useLayerForClickAway={false}
-            anchorEl={this.state.anchorEl}>
+            anchorEl={this.state.anchorEl}
+          >
             <div
               onMouseEnter={this.handlePopoverEnter}
-              onMouseLeave={this.handleMouseLeave}>
+              onMouseLeave={this.handleMouseLeave}
+            >
               <UserPopover user={user} onClick={this.handleClick} />
             </div>
           </Popover>

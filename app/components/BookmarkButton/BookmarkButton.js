@@ -23,13 +23,12 @@ export type Props = {
   isBookmarked: boolean,
 }
 
-const BookmarkButton = ({ isBookmarked, onClick }: Props) => (
+const BookmarkButton = ({ isBookmarked, onClick }: Props) =>
   <IconButton onClick={onClick} style={styles.button} iconStyle={styles.icon}>
     <FavoriteIcon
       color={isBookmarked ? hoverColor : '#777'}
       hoverColor={hoverColor}
     />
   </IconButton>
-)
 
 export default BookmarkButton

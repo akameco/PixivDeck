@@ -1,4 +1,3 @@
-// @flow
 /* eslint global-require: 0, flowtype-errors/show-errors: 0, camelcase: 1 */
 import electron from 'electron'
 import referer from 'electron-referer'

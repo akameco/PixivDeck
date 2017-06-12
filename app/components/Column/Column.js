@@ -34,7 +34,9 @@ type State = {
   toTop: boolean,
 }
 
-export default class Column extends Component<void, Props, State> {
+export default class Column extends Component {
+  props: Props
+  state: State
   target: Component<*, *, *>
   root: typeof ColumnContent
 
@@ -88,8 +90,7 @@ const LoadingWrap = styled.div`
 	height: 100%;
 `
 
-const ColumnLoading = () => (
+const ColumnLoading = () =>
   <LoadingWrap>
     <Loading wrapStyle={{ background: '#121212' }} />
   </LoadingWrap>
-)

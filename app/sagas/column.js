@@ -17,7 +17,8 @@ export function* refreshAllColumns() {
   }
 }
 
-function* add(id: Id, endpoint: Endpoint, inputParams: Params) {
+// eslint-disable-next-line
+function* add(id: number, endpoint: Endpoint, inputParams: Params) {
   try {
     const { response, params } = yield call(Api.fetch, endpoint, inputParams)
     yield put(apiRequestSuccess(response))
@@ -31,7 +32,8 @@ function* add(id: Id, endpoint: Endpoint, inputParams: Params) {
 const checkEndpoint = (target: Endpoint) =>
   target === endpoint.FOLLOW || target === endpoint.FOLLOW
 
-function* checkUpdate(id: Id) {
+// eslint-disable-next-line
+function* checkUpdate(id: number) {
   const state = yield select()
   const column = getColumn(state, id)
 
@@ -46,7 +48,8 @@ function* checkUpdate(id: Id) {
   yield call(add, id, column.endpoint, opts)
 }
 
-function* fetchColumn(id: Id) {
+// eslint-disable-next-line
+function* fetchColumn(id: number) {
   const state = yield select()
   const column = getColumn(state, id)
 

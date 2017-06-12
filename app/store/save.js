@@ -11,6 +11,7 @@ export default (store: Store) => {
   }
 
   // 終了時に状態を保存
+  // $FlowFixMe
   ipcRenderer.on('save', () => {
     dispatch({ type: 'INIT' })
     saveState()

@@ -1,4 +1,5 @@
 // @flow
+// $FlowFixMe
 import { schema } from 'normalizr'
 
 const user = new schema.Entity('users', { idAttribute: 'id' })

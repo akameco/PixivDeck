@@ -1,4 +1,3 @@
-// @flow
 // eslint-disable-next-line import/order
 import { put, fork, take, call, select } from 'redux-saga/effects'
 import * as Actions from 'types/auth'
@@ -13,7 +12,8 @@ import { openModal, closeModal } from 'actions/manage'
 import type { State } from 'types'
 import Api from '../api'
 
-function* authorize(username: string, password: string): Generator<*, *, *> {
+// eslint-disable-next-line
+function* authorize(username: string, password: string) {
   // エラーを非表示
   yield put(clearError())
   yield put(authSending(true))
@@ -30,7 +30,8 @@ function* authorize(username: string, password: string): Generator<*, *, *> {
   }
 }
 
-export function* autoLogin(): Generator<*, *, *> {
+// eslint-disable-next-line
+export function* autoLogin() {
   const { username, password } = yield select((state: State) => state.auth)
   try {
     if (username && password) {
@@ -42,14 +43,14 @@ export function* autoLogin(): Generator<*, *, *> {
   } catch (err) {}
 }
 
-function* loginFlow(): Generator<*, *, *> {
+function* loginFlow() {
   while (true) {
     const { username, password } = yield take(Actions.LOGIN_REQUEST)
     yield call(authorize, username, password)
   }
 }
 
-function* logoutFlow(): Generator<*, *, *> {
+function* logoutFlow() {
   while (true) {
     yield take(Actions.LOGOUT)
     yield put(authSending(false))
@@ -58,14 +59,14 @@ function* logoutFlow(): Generator<*, *, *> {
   }
 }
 
-function* autoLoginFlow(): Generator<*, *, *> {
+function* autoLoginFlow() {
   while (true) {
     yield take(Actions.AUTO_LOGIN)
     yield fork(autoLogin)
   }
 }
 
-function* root(): Generator<*, *, *> {
+function* root() {
   yield fork(logoutFlow)
   yield fork(loginFlow)
   yield fork(autoLoginFlow)

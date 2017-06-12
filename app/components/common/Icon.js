@@ -108,7 +108,8 @@ export default class Icon extends Component {
         style={mergedStyles}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
-        className={className}>
+        className={className}
+      >
         <g><SelectIcon type={type} /></g>
       </svg>
     )

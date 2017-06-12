@@ -17,11 +17,10 @@ const addDrawerIllusts = (
   illusts: number[],
   ids: number[]
 ) => {
-  if (type === 'illust') {
-    return { illusts: union(illusts, ids) }
-  } else if (type === 'manga') {
+  if (type === 'manga') {
     return { mangas: union(illusts, ids) }
   }
+  return { illusts: union(illusts, ids) }
 }
 
 const setNextUrl = (type: DrawerType, nextUrl: string) => {
@@ -62,4 +61,5 @@ export const getNextUrl = (
   } else if (type === 'manga') {
     return nextMangaUrl
   }
+  return null
 }

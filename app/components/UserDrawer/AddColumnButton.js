@@ -13,11 +13,10 @@ type Props = {
   onClick: () => void,
 }
 
-const AddColumnButton = ({ onClick }: Props) => (
+const AddColumnButton = ({ onClick }: Props) =>
   <a style={{ margin: '0 10px' }} onClick={onClick}>
     <Button label={<FormattedMessage {...messages.addColumn} />} />
   </a>
-)
 
 type OwnProps = {
   user: User,

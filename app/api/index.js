@@ -30,24 +30,29 @@ class Api {
   }
 
   static async userFollowAdd(id: number) {
-    return await Pixiv.userFollowAdd(id)
+    const result = await Pixiv.userFollowAdd(id)
+    return result
   }
 
   static async userFollowDelete(id: number) {
-    return await Pixiv.userFollowDelete(id)
+    const r = await Pixiv.userFollowDelete(id)
+    return r
   }
   static async userIllusts(id: number, type) {
-    return await Pixiv.userIllusts(id, { type })
+    const r = await Pixiv.userIllusts(id, { type })
+    return r
   }
   static async illustBookmarkAdd(
     id: number,
     isPublic: boolean = true
   ): Promise<Object> {
     const restrict = isPublic ? 'public' : 'private'
-    return await Pixiv.illustBookmarkAdd(id, { restrict })
+    const r = await Pixiv.illustBookmarkAdd(id, { restrict })
+    return r
   }
   static async userDetail(id: number) {
-    return await Pixiv.userDetail(id)
+    const r = await Pixiv.userDetail(id)
+    return r
   }
 }
 

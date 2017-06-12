@@ -37,7 +37,7 @@ type Props = {
   onLogout: () => void,
 }
 
-const Dropdwon = ({ onOpenFilterModal, onLogout }: Props) => (
+const Dropdwon = ({ onOpenFilterModal, onLogout }: Props) =>
   <Wrap>
     <Item
       onClick={onOpenFilterModal}
@@ -46,6 +46,5 @@ const Dropdwon = ({ onOpenFilterModal, onLogout }: Props) => (
     <H />
     <Item onClick={onLogout} text={<FormattedMessage {...messages.logout} />} />
   </Wrap>
-)
 
 export default Dropdwon

@@ -1,6 +1,6 @@
 // @flow
-import { connect } from 'react-redux'
-import type { Connector } from 'react-redux'
+import { connect, type Connector } from 'react-redux'
+// import type { Connector } from 'react-redux'
 import type { Dispatch } from 'types'
 import {
   addBookmarkColumn,

@@ -25,7 +25,7 @@ const A = styled.a`
 	margin: 2px;
 `
 
-const LimitSetting = () => (
+const LimitSetting = () =>
   <Card>
     <Subheader>
       <FormattedMessage {...messages.limit} />
@@ -38,6 +38,5 @@ const LimitSetting = () => (
       </A>
     </Discription>
   </Card>
-)
 
 export default LimitSetting

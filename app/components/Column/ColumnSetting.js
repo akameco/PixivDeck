@@ -48,7 +48,8 @@ class ColumnSetting extends React.Component {
       <Popover
         open={open}
         onMouseDown={this.handleMove}
-        onTouchStart={this.handleMove}>
+        onTouchStart={this.handleMove}
+      >
         <Wrap>
           <FormattedMessage {...messages.bookmarkFilter} /> {minBookmarks}
           <Slider
@@ -71,7 +72,10 @@ const Popover = styled.div`
 	margin: 0;
 	padding: 0 10px;
 	max-height: ${props => (props.open ? '400px' : 0)};
-	transition: ${props => (props.open ? 'max-height, 0.6s, 0ms, ease-out' : 'max-height, 0.4s, 0ms, ease-in')};
+	transition: ${props =>
+    props.open
+      ? 'max-height, 0.6s, 0ms, ease-out'
+      : 'max-height, 0.4s, 0ms, ease-in'};
 `
 
 const Wrap = styled.div`

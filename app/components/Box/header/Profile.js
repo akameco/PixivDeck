@@ -30,7 +30,7 @@ const ProfileWrapper = styled.div`
 	cursor: pointer;
 `
 
-const Profile = ({ name, onClick }: Props) => (
+const Profile = ({ name, onClick }: Props) =>
   <ProfileWrapper>
     <Line>
       <Name onClick={onClick}>
@@ -38,6 +38,5 @@ const Profile = ({ name, onClick }: Props) => (
       </Name>
     </Line>
   </ProfileWrapper>
-)
 
 export default Profile

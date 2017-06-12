@@ -36,7 +36,8 @@ const UserDrawer = ({ user, profile, illusts, mangas }: Props) => {
               {...messages.tabIllust}
               values={{ count: totalIllusts }}
             />
-          }>
+          }
+        >
           <IllstList illusts={illusts} type="illust" />
         </Tab>
         <Tab
@@ -45,7 +46,8 @@ const UserDrawer = ({ user, profile, illusts, mangas }: Props) => {
               {...messages.tabManga}
               values={{ count: totalManga }}
             />
-          }>
+          }
+        >
           <IllstList illusts={mangas} type="manga" />
         </Tab>
       </Tabs>

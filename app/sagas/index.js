@@ -1,4 +1,4 @@
-import { fork } from 'redux-saga/effects'
+import { fork } from 'redux-saga/effects' // eslint-disable-line
 import auth from './auth'
 import minBookmarks from './minBookmarks'
 import nextColumnPage from './nextColumnPage'

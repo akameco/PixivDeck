@@ -19,16 +19,15 @@ type Props = {
 class Modal extends Component {
   props: Props
 
-  renderModal(type: ModalType) {
+  renderModal = (type: ModalType) => {
     if (type === 'ADD_COLUMN') {
       return <AddColumnModal />
     } else if (type === 'FILTER_TAG') {
       return <SettingModal />
     } else if (type === 'LOGIN') {
       return <LoginModal />
-    } else if (type === 'DEFAULT') {
-      return <AddColumnModal />
     }
+    return <AddColumnModal />
   }
 
   render() {

@@ -1,9 +1,8 @@
 // @flow
-import { remote } from 'electron'
+import { remote, type electron$Menu } from 'electron'
 import React, { Component } from 'react'
-import type { Connector } from 'react-redux'
 import { download } from 'electron-dl'
-import { connect } from 'react-redux'
+import { connect, type Connector } from 'react-redux'
 import type { Dispatch, State } from 'types/'
 import type { Illust } from 'types/illust'
 import type { User } from 'types/user'
@@ -20,6 +19,7 @@ import {
 } from 'actions'
 import Box from './Box'
 
+// $FlowFixMe
 const { Menu, MenuItem } = remote
 
 type Props = {
@@ -32,7 +32,7 @@ type Props = {
   addSearchIllustColumn: (tag: string) => void,
   addBookmark: (isPublic: boolean) => void,
   openPixiv: () => void,
-  shareTwitter: () => void,
+  shareTwitter: (id: number) => void,
 }
 
 class BoxContainer extends Component {
@@ -116,6 +116,7 @@ class BoxContainer extends Component {
       })
     )
 
+    // $FlowFixMe
     menu.popup(remote.getCurrentWindow())
   }
 

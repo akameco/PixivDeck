@@ -22,10 +22,9 @@ const A = styled.a`
 	font-size: 24px;
 `
 
-const CloseButton = ({ onClick, style, iconStyle }: Props) => (
+const CloseButton = ({ onClick, style, iconStyle }: Props) =>
   <A onClick={onClick} style={style}>
     <ClearIcon style={iconStyle} />
   </A>
-)
 
 export default CloseButton

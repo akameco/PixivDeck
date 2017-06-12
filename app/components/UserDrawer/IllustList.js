@@ -18,9 +18,9 @@ const styles = {
 }
 
 const IllstList = ({ illusts, onIntersect }: Props) => {
-  const List = illusts.map(illust => (
+  const List = illusts.map(illust =>
     <Box key={illust.id} user={illust.user} illust={illust} />
-  ))
+  )
   if (illusts.length === 0) {
     return <Loading wrapStyle={styles} />
   }

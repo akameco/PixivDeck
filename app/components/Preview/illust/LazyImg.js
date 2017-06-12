@@ -87,6 +87,7 @@ export default class LazyImg extends Component {
     img.src = to
   }
 
+  // eslint-disable-next-line
   calcMarginTop(node: ?Element | Text): number {
     if (node && node instanceof Element) {
       const height = node && node.clientHeight

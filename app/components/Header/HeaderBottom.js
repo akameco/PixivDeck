@@ -23,12 +23,11 @@ const HeaderBottom = ({
   onToggleDropdown,
   onOpenFilterModal,
   isDropdown,
-}: Props) => (
+}: Props) =>
   <Wrap>
     <HeaderButton iconType="setting" onClick={onToggleDropdown} />
     {isDropdown &&
       <Dropdwon onLogout={onLogout} onOpenFilterModal={onOpenFilterModal} />}
   </Wrap>
-)
 
 export default HeaderBottom

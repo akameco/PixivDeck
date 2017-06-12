@@ -8,10 +8,9 @@ type Props = {
   onClick: () => void,
 }
 
-const LoginButton = ({ onClick }: Props) => (
+const LoginButton = ({ onClick }: Props) =>
   <Submit onClick={onClick}>
     <FormattedMessage {...messages.login} />
   </Submit>
-)
 
 export default LoginButton

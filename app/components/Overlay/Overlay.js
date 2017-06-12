@@ -14,6 +14,7 @@ type DefaultProps = {
 }
 
 class Overlay extends React.Component<DefaultProps, Props, void> {
+  props: Props
   static defaultProps = { autoLockScrolling: true }
 
   render() {

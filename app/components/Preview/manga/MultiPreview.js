@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import type { MetaPages } from 'types/illust'
 import CloseButton from 'components/common/CloseButton'
@@ -9,23 +9,19 @@ type Props = {
   onClose: () => void,
 }
 
-export default class MultiPreview extends Component {
-  props: Props
-
-  render() {
-    const { pages, onClose } = this.props
-    const imgs = pages.map(page => (
-      <Item key={page.imageUrls.medium}>
-        <Img src={page.imageUrls.large} />
-      </Item>
-    ))
-    return (
-      <Wrapper onClick={onClose}>
-        <CloseButton onClick={onClose} style={{ position: 'fixed' }} />
-        {imgs}
-      </Wrapper>
-    )
-  }
+export default function MultiPreview(props: Props) {
+  const { pages, onClose } = props
+  const imgs = pages.map(page =>
+    <Item key={page.imageUrls.medium}>
+      <Img src={page.imageUrls.large} />
+    </Item>
+  )
+  return (
+    <Wrapper onClick={onClose}>
+      <CloseButton onClick={onClose} style={{ position: 'fixed' }} />
+      {imgs}
+    </Wrapper>
+  )
 }
 
 const Item = styled.div`

@@ -20,10 +20,9 @@ type Props = {
   caption: string,
 }
 
-const Caption = ({ caption }: Props) => (
+const Caption = ({ caption }: Props) =>
   <Wrapper>
     <TextAutoLink text={caption} />
   </Wrapper>
-)
 
 export default Caption

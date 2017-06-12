@@ -4,7 +4,8 @@ import styled from 'styled-components'
 const StyledDrawer = styled.div`
 	width: ${props => props.x}px;
 	right: ${props => -props.x}px;
-	transform: ${props => (props.open ? `translateX(-${props.x}px)` : 'translateX(0)')};
+	transform: ${props =>
+    props.open ? `translateX(-${props.x}px)` : 'translateX(0)'};
 	z-index: 900;
 	position: absolute;
 	top: 0;

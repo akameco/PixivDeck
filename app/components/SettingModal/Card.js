@@ -6,11 +6,10 @@ type Props = {
   children?: React$Element<any>,
 }
 
-const Card = ({ children }: Props) => (
+const Card = ({ children }: Props) =>
   <Wrap>
     {children}
   </Wrap>
-)
 
 const Wrap = styled.div`
 	width: 360px;

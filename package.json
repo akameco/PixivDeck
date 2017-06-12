@@ -106,7 +106,7 @@
     "lodash.throttle": "^4.1.1",
     "lodash.union": "^4.6.0",
     "lodash.unionby": "^4.8.0",
-    "material-ui": "^0.17.4",
+    "material-ui": "^0.18.3",
     "normalizr": "^3.2.2",
     "pixiv-app-api": "^0.10.0",
     "react": "^15.5.4",
@@ -117,11 +117,11 @@
     "react-sortable-pane": "^0.5.5",
     "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0",
-    "redux-saga": "^0.14.8",
+    "redux-saga": "^0.15.3",
     "reselect": "^3.0.0",
     "residual-scroll-top": "^0.1.0",
     "source-map-support": "^0.4.14",
-    "styled-components": "^1.4.5"
+    "styled-components": "^2.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",

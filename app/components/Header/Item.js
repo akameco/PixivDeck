@@ -23,10 +23,9 @@ type Props = {
   onClick: () => void,
 }
 
-const Item = ({ text, onClick }: Props) => (
+const Item = ({ text, onClick }: Props) =>
   <Wrap onClick={onClick}>
     {text}
   </Wrap>
-)
 
 export default Item

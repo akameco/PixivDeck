@@ -84,7 +84,7 @@ export default class BoxImage extends React.PureComponent {
   init() {
     const target = this.target
     this.io = new IntersectionObserver(
-      entries => {
+      (entries: Array<{ intersectionRatio: number }>) => {
         // eslint-disable-line no-undef
         const intersectionRatio = entries[0].intersectionRatio
         if (intersectionRatio <= 0) {

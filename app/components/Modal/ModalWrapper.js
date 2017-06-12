@@ -1,6 +1,7 @@
 // @flow
 import React, { Component } from 'react'
 import styled, { keyframes } from 'styled-components'
+// eslint-disable-next-line
 import EventListener from 'react-event-listener'
 import keycode from 'keycode'
 import Overlay from 'components/Overlay'
@@ -8,9 +9,9 @@ import CloseButton from 'components/common/CloseButton'
 
 type Props = {
   open: boolean,
-  onRequestClose?: () => void,
+  onRequestClose?: Function,
   children?: React$Element<any>,
-  onClose: () => void,
+  onClose: Function,
 }
 
 export default class ModalWrapper extends Component {
@@ -45,7 +46,8 @@ export default class ModalWrapper extends Component {
           innerRef={c => {
             // eslint-disable-line react/jsx-no-bind
             this._content = c
-          }}>
+          }}
+        >
           <CloseButton onClick={onClose} />
           {open && children}
         </Content>

@@ -10,17 +10,15 @@ import UserPopover from 'components/UserPopover'
 import { openUserPopover } from './actions'
 import { makeSelectIllusts } from './selectors'
 
-type OwnProps = {
+type OP = {
   onClick: () => void,
   user: User,
 }
 
 type Props = {
-  user: User,
-  onClick: () => void,
   illusts: Array<Illust>,
   dispatch: Dispatch,
-}
+} & OP
 
 class UserPopoverContainer extends React.PureComponent {
   props: Props
@@ -40,5 +38,5 @@ const mapStateToProps = createSelector(makeSelectIllusts(), illusts => ({
   illusts,
 }))
 
-const connector: Connector<OwnProps, Props> = connect(mapStateToProps)
+const connector: Connector<OP, Props> = connect(mapStateToProps)
 export default connector(UserPopoverContainer)

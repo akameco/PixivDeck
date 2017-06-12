@@ -17,9 +17,9 @@ export type Props = {
 }
 
 const UserPopover = ({ user, onClick, illusts }: Props) => {
-  const Images = illusts.map(v => (
+  const Images = illusts.map(v =>
     <img key={v.id} src={v.imageUrls.squareMedium} width={150} height={150} />
-  ))
+  )
   return (
     <Wrap>
       <Top>

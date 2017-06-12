@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { type Component } from 'react'
 import styled from 'styled-components'
 import Box from 'components/Box'
 import Infinite from 'components/common/Infinite'
+import type Illust from 'types'
 
 type Props = {
   root: any,
@@ -27,9 +28,9 @@ const ColumnContent = ({ root, onIntersect, illusts, targetRef }: Props) => {
 }
 
 const Wrap = styled.div`
-	overflow-y: auto;
-	overflow-x: hidden;
-	height: calc(100% - 50px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: calc(100% - 50px);
 `
 
 export default ColumnContent

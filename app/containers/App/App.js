@@ -18,7 +18,7 @@ type Props = {
   onClose: () => void,
 }
 
-const App = ({ columns, manage, onClose }: Props) => (
+const App = ({ columns, manage, onClose }: Props) =>
   <div>
     <Header />
     <Columns columns={columns} />
@@ -28,6 +28,5 @@ const App = ({ columns, manage, onClose }: Props) => (
     </Drawer>
     <Modal />
   </div>
-)
 
 export default App

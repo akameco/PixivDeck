@@ -28,12 +28,11 @@ type Props = {
   onClick: () => void,
 }
 
-const LinkButton = ({ text, onClick }: Props) => (
+const LinkButton = ({ text, onClick }: Props) =>
   <Wrap onClick={onClick}>
     <InnerButton>
       {text}
     </InnerButton>
   </Wrap>
-)
 
 export default LinkButton

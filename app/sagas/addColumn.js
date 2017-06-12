@@ -12,7 +12,7 @@ const THREE_HOUR = 3 * HOUR
 
 const addColumn = (
   endpoint: Endpoint,
-  params: $Subtype<Params>,
+  params: $Subtype<Params>, // eslint-disable-line
   title: string,
   timer: number
 ): Action => ({
