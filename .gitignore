@@ -9,6 +9,3 @@ dist
 release
 *.map
 main.js
-
-# flow-typed
-flow-typed/npm/*

@@ -1,73 +1,25 @@
 {
-  "parser": "babel-eslint",
-    "extends": [
-      "xo/esnext",
-      "prettier",
-      "prettier/flowtype",
-      "prettier/react",
-    ],
-    "env": {
-      "node": true,
-      "browser": true,
-      "jest": true
-    },
-    "settings": {
-      "import/core-modules": [
-        "electron",
-        "atom"
-      ]
-    },
-    "plugins": [
-      "prettier",
-      "babel",
-      "react",
-      "flowtype",
-      "import"
-    ],
-    "parserOptions": {
-      "ecmaVersion": 2017,
-      "sourceType": "module",
-      "ecmaFeatures": {
-        "jsx": true
-      }
-    },
-    "rules": {
-      "semi": ["error", "never"],
-      "no-compare-neg-zero": 0,
-      "no-duplicate-imports": 0,
-      "no-constant-condition": 0,
-      "react/jsx-uses-react": "error",
-      "react/jsx-uses-vars": "error",
-      "react/sort-comp": ["error", {
-        "order": [
-          "type-annotations",
-          "static-methods",
-          "lifecycle",
-          "everything-else",
-          "render"
-        ]
-      }],
-      "import/export": "error",
-      "import/extensions": ["error", {
-        "js": "never",
-        "json": "never",
-        "jsx": "never"
-      }],
-      "flowtype/semi": ["error", "never"],
-      "flowtype/define-flow-type": "error",
-      "flowtype/use-flow-type": "error",
-      "import/default": "error",
-      "import/first": "error",
-      "import/namespace": ["error", {"allowComputed": true}],
-      "import/no-absolute-path": "error",
-      "import/no-dynamic-require": "error",
-      "import/no-webpack-loader-syntax": "error",
-      "import/no-amd": "error",
-      "import/no-extraneous-dependencies": 0,
-      "import/no-mutable-exports": "error",
-      "import/no-named-as-default-member": "error",
-      "import/no-named-as-default": "error",
-      "import/no-unassigned-import": "error",
-      "import/order": ["error", {"groups": ["builtin", "external", "internal", "parent", "sibling", "index"]}]
-    }
+  "extends": [
+    "precure"
+  ],
+  "env": {
+    "node": true,
+    "browser": true,
+    "jest": true
+  },
+  "settings": {
+    "import/core-modules": [
+      "electron",
+      "atom"
+    ]
+  },
+  "rules": {
+    "import/prefer-default-export": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/no-unresolved": 0,
+    "import/named": 0,
+    "no-constant-condition": 0,
+    "flowtype/no-types-missing-file-annotation": 0,
+    "flowtype/require-parameter-type": 0,
+  }
 }
