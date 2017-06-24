@@ -17,6 +17,7 @@ import type { Drawer, DrawerAction } from './drawer'
 import type { Popover, PopoverAction } from './popover'
 import type { MiscAction } from './misc'
 import type { AddColumnAction } from './addColumn'
+import type { Action as NextAction } from '../action'
 
 export type Entities = {
   users: Users,
@@ -44,6 +45,7 @@ export type Action =
   | LanguageProviderAction
   | UserPopoverContainerAction
   | AddColumnAction
+  | NextAction
 
 export type State = {
   language: LanguageProviderState,

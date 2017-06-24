@@ -2,13 +2,13 @@
 import React, { Component } from 'react'
 import { injectIntl } from 'react-intl'
 import type { IntlShape } from 'react-intl'
-import styled from 'styled-components'
 import { findDOMNode } from 'react-dom'
 import throttle from 'lodash.throttle'
 import Pixiv from '../../api/pixiv'
 import PopoverAuto from './PopoverAuto'
 import UsersOver from './UsersOver'
 import messages from './messages'
+import { Field, Input, Popup, Wrap } from './styles'
 
 type InjectProp = {
   intl: IntlShape,
@@ -108,37 +108,5 @@ class SearchField extends Component {
     )
   }
 }
-
-const Wrap = styled.div`
-	position: relative;
-	height: auto;
-`
-
-const Field = styled.div`
-	position: relative;
-	max-width: 400px;
-	margin-bottom: 5px;
-`
-
-const Input = styled.input`
-	font-size: 1.1rem;
-	height: 40px;
-	width: 100%;
-	border: 0;
-	margin-top: 10px;
-	border-radius: 3px;
-	padding-left: 1rem;
-	box-sizing: border-box;
-`
-
-const Popup = styled.div`
-	height: calc(100% - 50px);
-	padding: 1px;
-	border-radius: 3px;
-	background: rgba(0, 0, 0, 0.1);
-	overflow-y: scroll;
-	margin: 0;
-	box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
-`
 
 export default (injectIntl(SearchField): any)

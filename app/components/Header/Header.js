@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import styled from 'styled-components'
-import SearchField from 'components/SearchField'
+import SearchField from 'containers/SearchField'
 import HeaderButton from './HeaderButton'
 import HeaderBottom from './HeaderBottom'
 
