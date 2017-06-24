@@ -1,9 +1,9 @@
 // @flow
 import React from 'react'
-import styled from 'styled-components'
 import SearchField from 'containers/SearchField'
 import HeaderButton from './HeaderButton'
 import HeaderBottom from './HeaderBottom'
+import { SearchWrap, Wrap } from './styles'
 
 export type Props = {
   isDropdown: boolean,
@@ -46,28 +46,3 @@ export default function Header(props: Props) {
     </Wrap>
   )
 }
-
-const Wrap = styled.header`
-  display: flex;
-  position: fixed;
-  z-index: 300;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  text-align: center;
-  flex-direction: column;
-  flex-flow: nowrap;
-  width: 50px;
-  height: 100%;
-  background-color: #292f33;
-`
-
-const SearchWrap = styled.div`
-  position: fixed;
-  top: 35px;
-  left: 50px;
-  width: auto;
-  min-width: 260px;
-  height: 100%;
-`

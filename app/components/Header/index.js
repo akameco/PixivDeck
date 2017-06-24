@@ -8,8 +8,8 @@ import {
   toggleSearchField,
   closeSearchField,
 } from 'actions'
-import Header from './header'
 import { openModal } from '../../containers/ModalManeger/actions'
+import Header from './header'
 import type { Props } from './header'
 
 const mapStateToProps = ({ manage: { isDropdown, isSearchField } }: State) => ({
