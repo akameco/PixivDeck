@@ -13,6 +13,7 @@ import illustById, * as fromIllustById from './illustById'
 import userById, * as fromUserById from './userById'
 import drawer from './drawer'
 import popover from './popover'
+import ModalManeger from '../containers/ModalManeger/reducer'
 
 const rootReducer = combineReducers({
   language: LanguageProvider,
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   userById,
   drawer,
   popover,
+  ModalManeger,
 })
 
 export const getColumn = ({ columns }: State, id: number) =>
@@ -46,7 +48,7 @@ export const getIllusts = (state: State, columnId: number) => {
     .filter(
       v =>
         filterByTags(v, state.filter.tags) &&
-        filterByMinBookmarks(v, column.minBookmarks)
+        filterByMinBookmarks(v, column.minBookmarks),
     )
 }
 

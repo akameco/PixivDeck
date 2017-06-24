@@ -1,35 +1,23 @@
 // @flow
 import type { Store as ReduxStore, Dispatch as ReduxDispatch } from 'redux' // eslint-disable-line
-import type {
-  State as LanguageProviderState,
-  Action as LanguageProviderAction,
-} from 'containers/LanguageProvider/type'
+import type { Action as LanguageProviderAction } from 'containers/LanguageProvider/type'
 import type { Action as UserPopoverContainerAction } from 'containers/UserPopoverContainer/type'
-import type { ColumnType, ColumnAction } from './column'
-import type { Manage, ManageAction } from './manage'
-import type { Filter, FilterAction } from './filter'
+import type { ColumnAction } from './column'
+import type { ManageAction } from './manage'
+import type { FilterAction } from './filter'
 import type { ApiAction } from './api'
-import type { Illusts, IllustAction } from './illust'
+import type { IllustAction } from './illust'
 import type { Users } from './user'
-import type { Auth, AuthAction } from './auth'
-import type { Config, ConfigAction } from './config'
-import type { Drawer, DrawerAction } from './drawer'
-import type { Popover, PopoverAction } from './popover'
+import type { AuthAction } from './auth'
+import type { ConfigAction } from './config'
+import type { DrawerAction } from './drawer'
+import type { PopoverAction } from './popover'
 import type { MiscAction } from './misc'
 import type { AddColumnAction } from './addColumn'
 import type { Action as NextAction } from '../action'
+import type { State as BaseState } from './state'
 
-export type Entities = {
-  users: Users,
-  illusts: Illusts,
-}
-
-export type Response = {
-  response: {
-    entities: Entities,
-    result: Array<number>,
-  },
-}
+export type State = BaseState
 
 export type Action =
   | ColumnAction
@@ -46,20 +34,6 @@ export type Action =
   | UserPopoverContainerAction
   | AddColumnAction
   | NextAction
-
-export type State = {
-  language: LanguageProviderState,
-  columns: Array<ColumnType>,
-  auth: Auth,
-  entities: Entities,
-  manage: Manage,
-  filter: Filter,
-  config: Config,
-  illustById: Illusts,
-  userById: Users,
-  drawer: Drawer,
-  popover: Popover,
-}
 
 export type Store = ReduxStore<State, Action>
 

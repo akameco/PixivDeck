@@ -3,12 +3,6 @@ import type { Action } from 'types'
 import type { ModalType } from 'types/manage'
 import * as Actions from 'constants/manage'
 
-export const openModal = (modal?: ModalType = 'DEFAULT'): Action => ({
-  type: Actions.OPEN_MODAL,
-  modal,
-})
-export const closeModal = (): Action => ({ type: Actions.CLOSE_MODAL })
-
 export const openDrawer = (id: number): Action => ({
   type: Actions.OPEN_DRAWER,
   id,

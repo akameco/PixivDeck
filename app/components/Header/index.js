@@ -5,11 +5,11 @@ import type { Dispatch, State } from 'types'
 import {
   logout,
   toggleDropdown,
-  openModal,
   toggleSearchField,
   closeSearchField,
 } from 'actions'
 import Header from './header'
+import { openModal } from '../../containers/ModalManeger/actions'
 import type { Props } from './header'
 
 const mapStateToProps = ({ manage: { isDropdown, isSearchField } }: State) => ({
@@ -22,13 +22,13 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
     dispatch(logout())
   },
   onClickAdd() {
-    dispatch(openModal())
+    dispatch(openModal('AddColumn'))
   },
   onToggleDropdown() {
     dispatch(toggleDropdown())
   },
   onOpenFilterModal() {
-    dispatch(openModal('FILTER_TAG'))
+    dispatch(openModal('Setting'))
   },
   toggleSearchField() {
     dispatch(toggleSearchField())
@@ -40,6 +40,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 
 const connector: Connector<{}, Props> = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )
 export default connector(Header)

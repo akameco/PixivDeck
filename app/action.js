@@ -5,7 +5,10 @@ import type { Action as LanguageProviderAction } from './containers/LanguageProv
 
 import type { Action as SearchFieldAction } from './containers/SearchField/actionTypes'
 
+import type { Action as ModalManegerAction } from './containers/ModalManeger/actionTypes'
+
 export type Action =
   | UserPopoverContainerAction
   | LanguageProviderAction
   | SearchFieldAction
+  | ModalManegerAction

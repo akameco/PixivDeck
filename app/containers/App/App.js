@@ -4,7 +4,8 @@ import React from 'react'
 import type { Manage } from 'types/manage'
 import type { ColumnType } from 'types/column'
 
-import Modal from 'components/Modal'
+import ModalManeger from '../ModalManeger'
+
 import Header from 'components/Header'
 import Columns from 'components/Columns'
 import Drawer from 'components/Drawer'
@@ -26,7 +27,7 @@ const App = ({ columns, manage, onClose }: Props) =>
     <Drawer open={manage.isDrawer} onRequestClose={onClose} width={600}>
       <UserDrawer />
     </Drawer>
-    <Modal />
+    <ModalManeger />
   </div>
 
 export default App

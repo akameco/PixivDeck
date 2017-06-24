@@ -1,4 +1,6 @@
+// @flow
 // eslint-disable-next-line import/order
+import type { IOEffect } from 'redux-saga'
 import { put, fork, take, call, select } from 'redux-saga/effects'
 import * as Actions from 'types/auth'
 import {
@@ -8,7 +10,7 @@ import {
   setAuth,
   logout,
 } from 'actions/auth'
-import { openModal, closeModal } from 'actions/manage'
+import { openModal, closeModal } from '../containers/ModalManeger/actions'
 import type { State } from 'types'
 import Api from '../api'
 
@@ -31,16 +33,14 @@ function* authorize(username: string, password: string) {
 }
 
 // eslint-disable-next-line
-export function* autoLogin() {
+export function* autoLogin(): Generator<IOEffect, boolean, *> {
   const { username, password } = yield select((state: State) => state.auth)
-  try {
-    if (username && password) {
-      yield call(Api.login, username, password)
-      return true
-    }
-    yield put(logout())
-    return false
-  } catch (err) {}
+  if (username && password) {
+    yield call(Api.login, username, password)
+    return true
+  }
+  yield put(logout())
+  return false
 }
 
 function* loginFlow() {
@@ -55,7 +55,7 @@ function* logoutFlow() {
     yield take(Actions.LOGOUT)
     yield put(authSending(false))
     // ログインモーダルを表示
-    yield put(openModal('LOGIN'))
+    yield put(openModal('Login'))
   }
 }
 
@@ -66,7 +66,7 @@ function* autoLoginFlow() {
   }
 }
 
-function* root() {
+function* root(): Generator<*, *, *> {
   yield fork(logoutFlow)
   yield fork(loginFlow)
   yield fork(autoLoginFlow)
