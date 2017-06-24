@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { IntlProvider } from 'react-intl'
 import { createSelector } from 'reselect'
 import { makeSelectLocale } from './selectors'
-import { DEFAULT_LOCALE } from './constants'
+import { DEFAULT_LOCALE } from './reducer'
 
 type OP = {
   messages: Object,

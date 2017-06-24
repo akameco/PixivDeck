@@ -1,11 +1,11 @@
 // @flow
-import { CHNAGE_LOCALE } from './constants'
+import { CHANGE_LOCALE } from './constants'
 
 export type State = {|
   +locale: string,
 |}
 
 export type Action = {|
-  type: typeof CHNAGE_LOCALE,
+  type: typeof CHANGE_LOCALE,
   +locale: string,
 |}

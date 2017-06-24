@@ -1,4 +1,5 @@
 // @flow
-export const DEFAULT_LOCALE: string = 'ja'
-export const CHNAGE_LOCALE: 'LanguageProvider/CHNAGE_LOCALE' =
-  'LanguageProvider/CHNAGE_LOCALE'
+import type { CHANGE_LOCALE_TYPE } from './actionTypes.js'
+
+export const CHANGE_LOCALE: CHANGE_LOCALE_TYPE =
+  'LanguageProvider/CHANGE_LOCALE'
