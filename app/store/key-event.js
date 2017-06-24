@@ -1,5 +1,6 @@
 // @flow
 import type { Store, Dispatch } from 'types'
+import { closeModal } from '../containers/ModalManeger/actions'
 
 export default (store: Store) => {
   const dispatch: Dispatch = store.dispatch
@@ -9,8 +10,9 @@ export default (store: Store) => {
     (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         dispatch({ type: 'CLOSE_ALL' })
+        dispatch(closeModal())
       }
     },
-    false
+    false,
   )
 }

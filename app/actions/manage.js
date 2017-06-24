@@ -1,6 +1,5 @@
 // @flow
 import type { Action } from 'types'
-import type { ModalType } from 'types/manage'
 import * as Actions from 'constants/manage'
 
 export const openDrawer = (id: number): Action => ({

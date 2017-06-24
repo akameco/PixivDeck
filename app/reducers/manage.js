@@ -12,8 +12,6 @@ const initManageState: Manage = {
   isDropdown: false,
   currentIllustId: null,
   userId: null,
-  isModal: true,
-  modalType: 'LOGIN',
 }
 
 type CloseState = {
@@ -21,7 +19,6 @@ type CloseState = {
   isDrawer: boolean,
   isSearchField: boolean,
   isMangaView: boolean,
-  isModal: boolean,
   isDropdown: boolean,
 }
 
@@ -30,7 +27,6 @@ const closeState: CloseState = {
   isDrawer: false,
   isSearchField: false,
   isMangaView: false,
-  isModal: false,
   isDropdown: false,
 }
 
@@ -40,8 +36,6 @@ function open(state: Manage, action: Action): $Shape<Manage> {
       return { isImageView: Boolean(state.currentIllustId) }
     case 'OPEN_MANGA_PREVIEW':
       return { isMangaView: Boolean(state.currentIllustId) }
-    case 'OPEN_MODAL':
-      return { ...closeState, isModal: true, modalType: action.modal }
     case 'OPEN_DROPDOWN':
       return { ...closeState, isDropdown: true }
     case 'OPEN_SEARCH_FIELD':

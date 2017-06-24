@@ -1,9 +1,6 @@
 // @flow
-export type ModalType = 'DEFAULT' | 'ADD_COLUMN' | 'FILTER_TAG' | 'LOGIN'
-
 export type Manage = {|
   isLoading: boolean,
-  isModal: boolean,
   isDrawer: boolean,
   isSearchField: boolean,
   isImageView: boolean,
@@ -12,7 +9,6 @@ export type Manage = {|
   isDropdown: boolean,
   currentIllustId: ?number,
   userId: ?number,
-  modalType: ModalType,
 |}
 
 export type ManageAction =
@@ -20,8 +16,6 @@ export type ManageAction =
   | {| type: 'CLOSE_IMAGE_VIEW' |}
   | {| type: 'OPEN_MANGA_PREVIEW' |}
   | {| type: 'CLOSE_MANGA_PREVIEW' |}
-  | {| type: 'OPEN_MODAL', modal?: ModalType |}
-  | {| type: 'CLOSE_MODAL' |}
   | {| type: 'OPEN_DRAWER', id: number |}
   | {| type: 'CLOSE_DRAWER' |}
   | {| type: 'OPEN_DROPDOWN' |}
