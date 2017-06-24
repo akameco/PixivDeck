@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import styled from 'styled-components'
-import Dropdwon from './Dropdown'
+import Dropdwon from '../Dropdown'
 import HeaderButton from './HeaderButton'
 
 const Wrap = styled.div`

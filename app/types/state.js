@@ -2,6 +2,8 @@
 import type { State as LanguageProviderState } from 'containers/LanguageProvider/type'
 import type { State as ModalManeger } from '../containers/ModalManeger/reducer'
 import type { State as SettingModal } from '../containers/SettingModal/reducer'
+import type { State as HeaderContainer } from '../containers/HeaderContainer/reducer'
+
 import type { ColumnType } from './column'
 import type { Manage } from './manage'
 import type { Illusts } from './illust'
@@ -34,4 +36,5 @@ export type State = {
   popover: Popover,
   ModalManeger: ModalManeger,
   SettingModal: SettingModal,
+  HeaderContainer: HeaderContainer,
 }

@@ -9,9 +9,12 @@ import type { Action as ModalManegerAction } from './containers/ModalManeger/act
 
 import type { Action as SettingModalAction } from './containers/SettingModal/actionTypes'
 
+import type { Action as HeaderContainerAction } from './containers/HeaderContainer/actionTypes'
+
 export type Action =
   | UserPopoverContainerAction
   | LanguageProviderAction
   | SearchFieldAction
   | ModalManegerAction
   | SettingModalAction
+  | HeaderContainerAction

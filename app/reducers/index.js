@@ -6,6 +6,7 @@ import type { Illust } from 'types/illust'
 import LanguageProvider from '../containers/LanguageProvider/reducer'
 import ModalManeger from '../containers/ModalManeger/reducer'
 import SettingModal from '../containers/SettingModal/reducer'
+import HeaderContainer from '../containers/HeaderContainer/reducer'
 import manage from './manage'
 import columns from './columns'
 import auth from './auth'
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   popover,
   ModalManeger,
   SettingModal,
+  HeaderContainer,
 })
 
 export const getColumn = ({ columns }: State, id: number) =>

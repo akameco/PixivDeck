@@ -4,12 +4,12 @@ import React from 'react'
 import type { Manage } from 'types/manage'
 import type { ColumnType } from 'types/column'
 
-import ModalManeger from '../ModalManeger'
-
-import Header from 'components/Header'
 import Columns from 'components/Columns'
 import Drawer from 'components/Drawer'
 import UserDrawer from 'components/UserDrawer'
+
+import ModalManeger from '../ModalManeger'
+import Header from '../HeaderContainer'
 
 import Preview from './Preview'
 
