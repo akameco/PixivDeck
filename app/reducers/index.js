@@ -48,7 +48,7 @@ export const getIllusts = (state: State, columnId: number) => {
     .filter(
       v =>
         filterByTags(v, state.filter.tags) &&
-        filterByMinBookmarks(v, column.minBookmarks),
+        filterByMinBookmarks(v, column.minBookmarks)
     )
 }
 

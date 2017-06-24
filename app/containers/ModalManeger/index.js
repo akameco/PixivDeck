@@ -49,6 +49,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 
 const connector: Connector<{}, Props> = connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )
 export default connector(Modal)

@@ -62,7 +62,7 @@ function close(state: Manage, action: Action): $Shape<Manage> {
 
 export default function(
   state: Manage = initManageState,
-  action: Action,
+  action: Action
 ): $Shape<Manage> {
   if (action.type.startsWith('OPEN')) {
     return { ...state, ...open(state, action) }

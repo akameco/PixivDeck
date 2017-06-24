@@ -62,7 +62,7 @@ class BoxContainer extends Component {
           const img = illust.metaSinglePage.originalImageUrl
           download(win, img ? img : illust.imageUrls.large)
         },
-      }),
+      })
     )
 
     menu.append(new MenuItem({ type: 'separator' }))
@@ -73,7 +73,7 @@ class BoxContainer extends Component {
         click() {
           openUserDrawer()
         },
-      }),
+      })
     )
 
     menu.append(new MenuItem({ type: 'separator' }))
@@ -84,7 +84,7 @@ class BoxContainer extends Component {
         click() {
           addBookmark(true)
         },
-      }),
+      })
     )
 
     menu.append(
@@ -93,7 +93,7 @@ class BoxContainer extends Component {
         click() {
           addBookmark(false)
         },
-      }),
+      })
     )
 
     menu.append(new MenuItem({ type: 'separator' }))
@@ -104,7 +104,7 @@ class BoxContainer extends Component {
         click() {
           shareTwitter(illust.id)
         },
-      }),
+      })
     )
 
     menu.append(
@@ -113,7 +113,7 @@ class BoxContainer extends Component {
         click() {
           openPixiv()
         },
-      }),
+      })
     )
 
     // $FlowFixMe
@@ -187,6 +187,6 @@ const mapDispatchToProps = (dispatch: Dispatch, { illust }) => {
 
 const connector: Connector<OwnProps, Props> = connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )
 export default connector(BoxContainer)

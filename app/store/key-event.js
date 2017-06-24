@@ -13,6 +13,6 @@ export default (store: Store) => {
         dispatch(closeModal())
       }
     },
-    false,
+    false
   )
 }
