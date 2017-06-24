@@ -2,11 +2,9 @@
 export type Manage = {|
   isLoading: boolean,
   isDrawer: boolean,
-  isSearchField: boolean,
   isImageView: boolean,
   isImgLoaded: boolean,
   isMangaView: boolean,
-  isDropdown: boolean,
   currentIllustId: ?number,
   userId: ?number,
 |}
@@ -18,14 +16,8 @@ export type ManageAction =
   | {| type: 'CLOSE_MANGA_PREVIEW' |}
   | {| type: 'OPEN_DRAWER', id: number |}
   | {| type: 'CLOSE_DRAWER' |}
-  | {| type: 'OPEN_DROPDOWN' |}
-  | {| type: 'CLOSE_DROPDOWN' |}
-  | {| type: 'TOGGLE_DROPDOWN' |}
   | {| type: 'SET_CURRENT_ILLUST', id: number |}
   | {| type: 'CLOSE_ALL' |}
   | {| type: 'START_IMG_LOADING' |}
   | {| type: 'FINISH_IMG_LOADED' |}
   | {| type: 'START_LOADING' |}
-  | {| type: 'OPEN_SEARCH_FIELD' |}
-  | {| type: 'CLOSE_SEARCH_FIELD' |}
-  | {| type: 'TOGGLE_SEARCH_FIELD' |}

@@ -8,20 +8,6 @@ export const openDrawer = (id: number): Action => ({
 })
 export const closeDrawer = (): Action => ({ type: Actions.CLOSE_DRAWER })
 
-export const openSearchField = (): Action => ({
-  type: Actions.OPEN_SEARCH_FIELD,
-})
-export const closeSearchField = (): Action => ({
-  type: Actions.CLOSE_SEARCH_FIELD,
-})
-export const toggleSearchField = (): Action => ({
-  type: Actions.TOGGLE_SEARCH_FIELD,
-})
-
-export const openDropdown = (): Action => ({ type: Actions.OPEN_DROPDOWN })
-export const toggleDropdown = (): Action => ({ type: Actions.TOGGLE_DROPDOWN })
-export const closeDropdown = (): Action => ({ type: Actions.CLOSE_DROPDOWN })
-
 export const openImageView = (): Action => ({ type: Actions.OPEN_IMAGE_VIEW })
 export const closeImageView = (): Action => ({
   type: Actions.CLOSE_IMAGE_VIEW,

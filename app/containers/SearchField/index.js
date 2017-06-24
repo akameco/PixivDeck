@@ -2,7 +2,8 @@
 import { connect } from 'react-redux'
 import type { Connector } from 'react-redux'
 import type { Dispatch } from 'types'
-import { addColumnSearchIllust, closeSearchField } from './actions'
+import { closeSearchField } from '../HeaderContainer/actions'
+import { addColumnSearchIllust } from './actions'
 import SearchField from './SearchFiled'
 import type { Props } from './SearchFiled'
 

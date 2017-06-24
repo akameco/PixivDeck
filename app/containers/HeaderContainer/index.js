@@ -1,19 +1,20 @@
 // @flow
 import { connect } from 'react-redux'
 import type { Connector } from 'react-redux'
-import type { Dispatch, State } from 'types'
-import {
-  logout,
-  toggleDropdown,
-  toggleSearchField,
-  closeSearchField,
-} from 'actions'
+import { createStructuredSelector } from 'reselect'
+import type { Dispatch } from 'types'
+import { logout } from 'actions'
 import Header, { type Props } from 'components/header/Header'
 import { openModal } from '../ModalManeger/actions'
+import { toggleSearchField, closeSearchField, toggleDropdown } from './actions'
+import {
+  makeSelectisOpenDropdown,
+  makeSelectisOpenSearchField,
+} from './selectors'
 
-const mapStateToProps = ({ manage: { isDropdown, isSearchField } }: State) => ({
-  isDropdown,
-  isSearchField,
+const mapStateToProps = createStructuredSelector({
+  isDropdown: makeSelectisOpenDropdown(),
+  isSearchField: makeSelectisOpenSearchField(),
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
