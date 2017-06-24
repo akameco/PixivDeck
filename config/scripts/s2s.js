@@ -1,4 +1,5 @@
 // @flow
+import path from 'path'
 import { transformFileSync } from 'babel-core'
 import funcPlugin from 'babel-plugin-create-redux-action-func'
 import typePlugin from 'babel-plugin-create-redux-action-type'
@@ -8,6 +9,7 @@ const fs = require('fs')
 const { basename, resolve, dirname } = require('path')
 const chokidar = require('chokidar')
 const prettier = require('prettier')
+const cpFile = require('cp-file')
 
 const watcher = chokidar.watch('app/**/*.js', {
   cwd: process.cwd(),
@@ -51,5 +53,15 @@ watcher.on('change', (input /* : string */) => {
 
     const x = resolve(process.cwd(), 'app/action.js')
     transfromWrite(x, x, [actionComposePlugin, { inputPath: input }])
+  }
+})
+
+watcher.on('add', async (input /* : string */) => {
+  if (basename(input).includes('reducer')) {
+    try {
+      await cpFile(path.resolve(__dirname, '../templates/reducer.js'), input)
+    } catch (err) {
+      console.log(err)
+    }
   }
 })
