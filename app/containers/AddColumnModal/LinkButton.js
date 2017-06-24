@@ -24,7 +24,7 @@ const InnerButton = styled.div`
 `
 
 type Props = {
-  text: string,
+  text: string | React$Element<*>,
   onClick: () => void,
 }
 

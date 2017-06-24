@@ -1,15 +1,19 @@
 import React from 'react'
 
-// Mostly from https://github.com/yahoo/react-intl/wiki/API#react-intl-api
+// Mostly from yahoo/react-intl/wiki/API#react-intl-api
 
 type LocaleData = {
   [key: string]: any,
   locale: string,
 }
 
-type MessageDescriptor = any
+type MessageDescriptor = {
+  id: string,
+  defaultMessage: string,
+  description?: string | Object
+}
 
-type MessageDescriptorMap = { [key: string]: any }
+type MessageDescriptorMap = { [key: string]: string }
 
 type IntlConfig = {
   locale: string,
@@ -104,9 +108,9 @@ declare module 'react-intl' {
     componentName: string
   ): void
   declare function addLocaleData(data: LocaleData | Array<LocaleData>): void
-  declare function defineMessages(
-    messageDescriptors: MessageDescriptorMap
-  ): MessageDescriptorMap
+  declare function defineMessages<T: {[key: string]: string}>(
+    messageDescriptors: T
+  ): $ObjMap<T, string => MessageDescriptor>
 
   declare function injectIntl(
     WrappedComponent: ReactClass<*>,

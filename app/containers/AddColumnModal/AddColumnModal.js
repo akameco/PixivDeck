@@ -53,14 +53,26 @@ export default function SelectColumnModal(props: Props) {
           {IllustRankingLinks}
         </Card>
         <Card title={<FormattedMessage {...messages.bookmark} />}>
-          <LinkButton text="公開" onClick={addBookmark} />
-          <LinkButton text="非公開" onClick={addBookmarkPrivate} />
+          <LinkButton
+            text={<FormattedMessage {...messages.public} />}
+            onClick={addBookmark}
+          />
+          <LinkButton
+            text={<FormattedMessage {...messages.private} />}
+            onClick={addBookmarkPrivate}
+          />
         </Card>
-        <Card title="新着">
-          <LinkButton text="公開" onClick={addFollow} />
-          <LinkButton text="非公開" onClick={addFollowPrivate} />
+        <Card title={<FormattedMessage {...messages.new} />}>
+          <LinkButton
+            text={<FormattedMessage {...messages.public} />}
+            onClick={addFollow}
+          />
+          <LinkButton
+            text={<FormattedMessage {...messages.private} />}
+            onClick={addFollowPrivate}
+          />
         </Card>
-        <Card title="R18 ランキング">
+        <Card title={<FormattedMessage {...messages.r18ranking} />}>
           {IllustR18RankingLinks}
         </Card>
       </Content>

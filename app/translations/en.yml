@@ -1,8 +1,4 @@
 components:
-  AddColumnModal:
-    header: Select Colum
-    ranking: Ranking
-    bookmark: Bookmark
   Column:
     bookmarkFilter: Filter Bookmark
   FollowButton:
@@ -17,22 +13,31 @@ components:
     errorInfo: Check your usernaem and password.
     login: Login
     loginLoading: Logining..
-  SearchField:
-    search: Search
-    keywordSearch: Keyword Serach
-    users: users in
-  SettingModal:
-    tagFilter: Filter Tag
-    uiSetting: UI Settings
-    showCaption: Swho Caption
-    showOnlyImg: Show only Image
-    limit: Restrict access
-    r18Link: pixiv - R18 link
-    r18FilterDesc: |-
-      It is easiest to filter R18 tags.
-      Inevitably you need to change browsing restrictions on pixiv's site'
-    language: Language
   UserDrawer:
     addColumn: Add to column
     tabIllust: 'Illustration ({count})'
     tabManga: 'Manga ({count})'
+containers:
+  AddColumnModal:
+    header: Select Colum
+    ranking: ranking
+    r18ranking: r18 ranking
+    bookmark: bookmark
+    public: public
+    private: private
+    new: new
+  SearchField:
+    search: search
+    keywordSearch: keyword search
+    users: users in
+  SettingModal:
+    tagFilter: tag filter
+    uiSetting: UI setting
+    showCaption: show Caption
+    showOnlyImg: only image
+    limit: Restrict access
+    r18Link: pixiv - r18
+    r18FilterDesc: |-
+      It is easiest to filter R-18 tags.
+      Inevitably you need to change browsing restrictions on pixiv's site.
+    language: language
