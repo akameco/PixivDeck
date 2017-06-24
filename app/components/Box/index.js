@@ -26,7 +26,7 @@ type Props = {
   illust: Illust,
   user: User,
   isIllustOnly: boolean,
-  isIllustComment: boolean,
+  isShowCaption: boolean,
   openUserDrawer: () => void,
   openPreview: () => void,
   addColumnSearchIllust: Function,
@@ -127,7 +127,7 @@ class BoxContainer extends Component {
       isIllustOnly,
       openPreview,
       openUserDrawer,
-      isIllustComment,
+      isShowCaption,
     } = this.props
 
     return (
@@ -135,7 +135,7 @@ class BoxContainer extends Component {
         user={user}
         illust={illust}
         isIllustOnly={isIllustOnly}
-        isIllustComment={isIllustComment}
+        isShowCaption={isShowCaption}
         onClick={openPreview}
         onClickUser={openUserDrawer}
         onClickTag={this.handleTagClick}
@@ -152,7 +152,7 @@ type OwnProps = {
 const mapStateToProps = (state: State, { illust }) => ({
   user: getUser(state, illust.user),
   isIllustOnly: state.SettingModal.isShowOnlyIllust,
-  isIllustComment: state.SettingModal.isShowCaption,
+  isShowCaption: state.SettingModal.isShowCaption,
 })
 
 const mapDispatchToProps = (dispatch: Dispatch, { illust }) => {

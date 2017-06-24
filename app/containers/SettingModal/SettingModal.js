@@ -20,7 +20,7 @@ export type Props = {
   onCheckIllustOnly: (isShow: boolean) => void,
   onSelectLanguage: (locale: string) => void,
   tags: Array<string>,
-  isIllustComment: boolean,
+  isShowCaption: boolean,
   isIllustOnly: boolean,
   locale: string,
 }
@@ -51,7 +51,7 @@ export default class SettingFilterModal extends Component {
   }
 
   handleCheckShowText = () => {
-    this.props.onCheckShowText(!this.props.isIllustComment)
+    this.props.onCheckShowText(!this.props.isShowCaption)
   }
 
   handleCheckSetOnlyIllust = () => {
@@ -69,7 +69,7 @@ export default class SettingFilterModal extends Component {
   }
 
   render() {
-    const { isIllustComment, isIllustOnly } = this.props
+    const { isShowCaption, isIllustOnly } = this.props
     return (
       <Wrap>
         <Card>
@@ -82,7 +82,7 @@ export default class SettingFilterModal extends Component {
               rightToggle={
                 <Toggle
                   onToggle={this.handleCheckShowText}
-                  toggled={isIllustComment}
+                  toggled={isShowCaption}
                 />
               }
             />

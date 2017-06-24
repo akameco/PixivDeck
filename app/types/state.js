@@ -4,7 +4,6 @@ import type { State as ModalManeger } from '../containers/ModalManeger/reducer'
 import type { State as SettingModal } from '../containers/SettingModal/reducer'
 import type { ColumnType } from './column'
 import type { Manage } from './manage'
-import type { Filter } from './filter'
 import type { Illusts } from './illust'
 import type { Users } from './user'
 import type { Auth } from './auth'
@@ -29,7 +28,6 @@ export type State = {
   auth: Auth,
   entities: Entities,
   manage: Manage,
-  filter: Filter,
   illustById: Illusts,
   userById: Users,
   drawer: Drawer,

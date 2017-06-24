@@ -26,7 +26,7 @@ type Props = {
   user: User,
   illust: Illust,
   onClick: () => void,
-  isIllustComment: boolean,
+  isShowCaption: boolean,
 }
 
 type State = {
@@ -90,7 +90,7 @@ export default class BoxHeader extends React.PureComponent {
   }
 
   render() {
-    const { illust, user, isIllustComment, onClick } = this.props
+    const { illust, user, isShowCaption, onClick } = this.props
 
     const { id, title, caption, isBookmarked } = illust
 
@@ -123,7 +123,7 @@ export default class BoxHeader extends React.PureComponent {
           <div style={{ position: 'absolute', top: 5, right: 10 }}>
             <BookmarkButton id={id} isBookmarked={isBookmarked} />
           </div>
-          {isIllustComment && caption && <Caption caption={caption} />}
+          {isShowCaption && caption && <Caption caption={caption} />}
         </ProfileWrapper>
       </Wrapper>
     )

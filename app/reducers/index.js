@@ -8,7 +8,6 @@ import ModalManeger from '../containers/ModalManeger/reducer'
 import SettingModal from '../containers/SettingModal/reducer'
 import manage from './manage'
 import columns from './columns'
-import filter from './filter'
 import auth from './auth'
 import illustById, * as fromIllustById from './illustById'
 import userById, * as fromUserById from './userById'
@@ -19,7 +18,6 @@ const rootReducer = combineReducers({
   language: LanguageProvider,
   manage,
   columns,
-  filter,
   auth,
   illustById,
   userById,
@@ -47,7 +45,7 @@ export const getIllusts = (state: State, columnId: number) => {
     .map(id => getIllust(state, id))
     .filter(
       v =>
-        filterByTags(v, state.filter.tags) &&
+        filterByTags(v, state.SettingModal.tags) &&
         filterByMinBookmarks(v, column.minBookmarks)
     )
 }

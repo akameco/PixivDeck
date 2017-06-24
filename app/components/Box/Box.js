@@ -11,7 +11,7 @@ type Props = {
   illust: Illust,
   user: User,
   isIllustOnly: boolean,
-  isIllustComment: boolean,
+  isShowCaption: boolean,
   onClick: () => void,
   onClickUser: () => void,
   onClickTag: (tag: string) => void,
@@ -25,7 +25,7 @@ const Box = ({
   onClickTag,
   onClickUser,
   isIllustOnly,
-  isIllustComment,
+  isShowCaption,
   onContextMenu,
 }: Props) => {
   const tags = illust.tags.map(x => x.name)
@@ -36,7 +36,7 @@ const Box = ({
         <BoxHeader
           user={user}
           illust={illust}
-          isIllustComment={isIllustComment}
+          isShowCaption={isShowCaption}
           onClick={onClickUser}
         />}
       <BoxImage illust={illust} onClick={onClick} />

@@ -10,8 +10,12 @@ const makeSelectIsShowCaption = () =>
 const makeSelectIsShowOnlyIllust = () =>
   createSelector(selectSettingModal, state => state.isShowOnlyIllust)
 
+const makeSelectTags = () =>
+  createSelector(selectSettingModal, state => state.tags)
+
 export {
   selectSettingModal,
   makeSelectIsShowCaption,
   makeSelectIsShowOnlyIllust,
+  makeSelectTags,
 }

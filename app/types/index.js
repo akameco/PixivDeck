@@ -5,7 +5,6 @@ import type { Action as UserPopoverContainerAction } from 'containers/UserPopove
 import type { Action as NextAction } from '../action'
 import type { ColumnAction } from './column'
 import type { ManageAction } from './manage'
-import type { FilterAction } from './filter'
 import type { ApiAction } from './api'
 import type { IllustAction } from './illust'
 import type { AuthAction } from './auth'
@@ -21,7 +20,6 @@ export type Action =
   | ColumnAction
   | ManageAction
   | ApiAction
-  | FilterAction
   | AuthAction
   | DrawerAction
   | IllustAction

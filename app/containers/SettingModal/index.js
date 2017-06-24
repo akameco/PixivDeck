@@ -1,22 +1,28 @@
 // @flow
-import { connect } from 'react-redux'
-import type { Connector } from 'react-redux'
-import type { State, Dispatch } from 'types'
-import { addTagFilter, removeTagFilter } from 'actions'
+import { connect, type Connector } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
+import type { Dispatch } from 'types'
 import { changeLocale } from 'containers/LanguageProvider/actions'
-import { setShowCaption, setShowOnlyIllust } from './actions'
+import { makeSelectLocale } from '../LanguageProvider/selectors'
+import {
+  setShowCaption,
+  setShowOnlyIllust,
+  addTagFilter,
+  removeTagFilter,
+} from './actions'
 import Modal from './SettingModal'
 import type { Props } from './SettingModal'
-// import {
-//   makeSelectIsShowCaption,
-//   makeSelectIsShowOnlyIllust,
-// } from './selectors'
+import {
+  makeSelectIsShowCaption,
+  makeSelectIsShowOnlyIllust,
+  makeSelectTags,
+} from './selectors'
 
-const mapStateToProps = ({ filter, language, SettingModal }: State) => ({
-  locale: language.locale,
-  tags: filter.tags,
-  isIllustComment: SettingModal.isShowCaption,
-  isIllustOnly: SettingModal.isShowOnlyIllust,
+const mapStateToProps = createStructuredSelector({
+  locale: makeSelectLocale(),
+  tags: makeSelectTags(),
+  isShowCaption: makeSelectIsShowCaption(),
+  isIllustOnly: makeSelectIsShowOnlyIllust(),
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
