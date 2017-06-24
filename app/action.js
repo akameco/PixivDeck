@@ -3,4 +3,9 @@ import type { Action as UserPopoverContainerAction } from './containers/UserPopo
 
 import type { Action as LanguageProviderAction } from './containers/LanguageProvider/actionTypes'
 
-export type Action = UserPopoverContainerAction | LanguageProviderAction
+import type { Action as SearchFieldAction } from './containers/SearchField/actionTypes'
+
+export type Action =
+  | UserPopoverContainerAction
+  | LanguageProviderAction
+  | SearchFieldAction

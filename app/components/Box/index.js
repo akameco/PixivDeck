@@ -13,10 +13,10 @@ import {
   setCurrentIllust,
   openUserDrawer,
   addBookmark,
-  addSearchIllustColumn,
   shareTwitter,
   openPixiv,
 } from 'actions'
+import { addColumnSearchIllust } from '../../containers/SearchField/actions'
 import Box from './Box'
 
 // $FlowFixMe
@@ -29,7 +29,7 @@ type Props = {
   isIllustComment: boolean,
   openUserDrawer: () => void,
   openPreview: () => void,
-  addSearchIllustColumn: (tag: string) => void,
+  addColumnSearchIllust: Function,
   addBookmark: (isPublic: boolean) => void,
   openPixiv: () => void,
   shareTwitter: (id: number) => void,
@@ -39,7 +39,7 @@ class BoxContainer extends Component {
   props: Props
 
   handleTagClick = (tag: string) => {
-    this.props.addSearchIllustColumn(tag)
+    this.props.addColumnSearchIllust(tag)
   }
 
   handleContextMenu = (e: Event) => {
@@ -62,7 +62,7 @@ class BoxContainer extends Component {
           const img = illust.metaSinglePage.originalImageUrl
           download(win, img ? img : illust.imageUrls.large)
         },
-      })
+      }),
     )
 
     menu.append(new MenuItem({ type: 'separator' }))
@@ -73,7 +73,7 @@ class BoxContainer extends Component {
         click() {
           openUserDrawer()
         },
-      })
+      }),
     )
 
     menu.append(new MenuItem({ type: 'separator' }))
@@ -84,7 +84,7 @@ class BoxContainer extends Component {
         click() {
           addBookmark(true)
         },
-      })
+      }),
     )
 
     menu.append(
@@ -93,7 +93,7 @@ class BoxContainer extends Component {
         click() {
           addBookmark(false)
         },
-      })
+      }),
     )
 
     menu.append(new MenuItem({ type: 'separator' }))
@@ -104,7 +104,7 @@ class BoxContainer extends Component {
         click() {
           shareTwitter(illust.id)
         },
-      })
+      }),
     )
 
     menu.append(
@@ -113,7 +113,7 @@ class BoxContainer extends Component {
         click() {
           openPixiv()
         },
-      })
+      }),
     )
 
     // $FlowFixMe
@@ -173,8 +173,8 @@ const mapDispatchToProps = (dispatch: Dispatch, { illust }) => {
     openUserDrawer() {
       dispatch(openUserDrawer(userId))
     },
-    addSearchIllustColumn(tag: string) {
-      dispatch(addSearchIllustColumn(tag))
+    addColumnSearchIllust(tag: string) {
+      dispatch(addColumnSearchIllust(tag))
     },
     openPixiv() {
       dispatch(openPixiv(illustId))
@@ -187,6 +187,6 @@ const mapDispatchToProps = (dispatch: Dispatch, { illust }) => {
 
 const connector: Connector<OwnProps, Props> = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )
 export default connector(BoxContainer)

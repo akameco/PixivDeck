@@ -15,22 +15,17 @@ export const addFollowColumn = (isPublic: boolean): Action => ({
 })
 
 export const addIllustRankingColumn = (
-  mode: $Keys<typeof ranking.ILLUST_RANKING>
+  mode: $Keys<typeof ranking.ILLUST_RANKING>,
 ): Action => ({
   type: Actions.ADD_COLUMN_RANKING,
   mode,
 })
 
 export const addIllustR18RankingColumn = (
-  mode: $Keys<typeof ranking.ILLUST_R18_RANKING>
+  mode: $Keys<typeof ranking.ILLUST_R18_RANKING>,
 ): Action => ({
   type: Actions.ADD_COLUMN_R18_RANKING,
   mode,
-})
-
-export const addSearchIllustColumn = (word: string): Action => ({
-  type: Actions.ADD_COLUMN_SEARCH_ILLUST,
-  word,
 })
 
 export const addUserIllusts = ({ id, name, account }: User): Action => ({
