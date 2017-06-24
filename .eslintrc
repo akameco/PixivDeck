@@ -1,6 +1,5 @@
 {
   "extends": [
-    "pritter",
     "precure"
   ],
   "env": {
