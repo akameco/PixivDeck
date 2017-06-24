@@ -29,8 +29,8 @@ class UserPopoverContainer extends React.PureComponent {
   }
 
   render() {
-    const { dispatch, ...rest } = this.props
-    return <UserPopover {...rest} />
+    const { onClick, user, illusts } = this.props
+    return <UserPopover onClick={onClick} user={user} illusts={illusts} />
   }
 }
 
