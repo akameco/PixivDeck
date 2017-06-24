@@ -4,16 +4,16 @@ import type { State } from 'types'
 import type { User } from 'types/user'
 import type { Illust } from 'types/illust'
 import LanguageProvider from '../containers/LanguageProvider/reducer'
+import ModalManeger from '../containers/ModalManeger/reducer'
+import SettingModal from '../containers/SettingModal/reducer'
 import manage from './manage'
 import columns from './columns'
 import filter from './filter'
 import auth from './auth'
-import config from './config'
 import illustById, * as fromIllustById from './illustById'
 import userById, * as fromUserById from './userById'
 import drawer from './drawer'
 import popover from './popover'
-import ModalManeger from '../containers/ModalManeger/reducer'
 
 const rootReducer = combineReducers({
   language: LanguageProvider,
@@ -21,12 +21,12 @@ const rootReducer = combineReducers({
   columns,
   filter,
   auth,
-  config,
   illustById,
   userById,
   drawer,
   popover,
   ModalManeger,
+  SettingModal,
 })
 
 export const getColumn = ({ columns }: State, id: number) =>

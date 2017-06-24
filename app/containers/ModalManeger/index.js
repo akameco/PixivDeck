@@ -1,13 +1,13 @@
 // @flow
-import React, { Component } from 'react'
+import React from 'react'
 import { connect, type Connector } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
-import type { State, Dispatch } from 'types'
-import type { ModalType } from './reducer'
-import { closeModal } from './actions'
+import type { Dispatch } from 'types'
 import LoginModal from '../../components/LoginModal'
 import AddColumnModal from '../../components/AddColumnModal'
 import SettingModal from '../SettingModal'
+import type { ModalType } from './reducer'
+import { closeModal } from './actions'
 import ModalWrapper from './ModalWrapper'
 import { makeSelectType, makeSelectOpen } from './selector'
 

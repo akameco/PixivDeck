@@ -7,8 +7,11 @@ import type { Action as SearchFieldAction } from './containers/SearchField/actio
 
 import type { Action as ModalManegerAction } from './containers/ModalManeger/actionTypes'
 
+import type { Action as SettingModalAction } from './containers/SettingModal/actionTypes'
+
 export type Action =
   | UserPopoverContainerAction
   | LanguageProviderAction
   | SearchFieldAction
   | ModalManegerAction
+  | SettingModalAction

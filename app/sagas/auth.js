@@ -1,7 +1,8 @@
 // @flow
 // eslint-disable-next-line import/order
-import type { IOEffect } from 'redux-saga'
 import { put, fork, take, call, select } from 'redux-saga/effects'
+// eslint-disable-next-line import/order
+import type { IOEffect } from 'redux-saga/effects'
 import * as Actions from 'types/auth'
 import {
   loginFailure,
@@ -10,8 +11,8 @@ import {
   setAuth,
   logout,
 } from 'actions/auth'
-import { openModal, closeModal } from '../containers/ModalManeger/actions'
 import type { State } from 'types'
+import { openModal, closeModal } from '../containers/ModalManeger/actions'
 import Api from '../api'
 
 // eslint-disable-next-line
@@ -43,14 +44,14 @@ export function* autoLogin(): Generator<IOEffect, boolean, *> {
   return false
 }
 
-function* loginFlow() {
+function* loginFlow(): Generator<IOEffect, void, *> {
   while (true) {
     const { username, password } = yield take(Actions.LOGIN_REQUEST)
     yield call(authorize, username, password)
   }
 }
 
-function* logoutFlow() {
+function* logoutFlow(): Generator<IOEffect, void, void> {
   while (true) {
     yield take(Actions.LOGOUT)
     yield put(authSending(false))
@@ -59,7 +60,7 @@ function* logoutFlow() {
   }
 }
 
-function* autoLoginFlow() {
+function* autoLoginFlow(): Generator<IOEffect, *, *> {
   while (true) {
     yield take(Actions.AUTO_LOGIN)
     yield fork(autoLogin)

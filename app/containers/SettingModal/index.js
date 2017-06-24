@@ -2,29 +2,29 @@
 import { connect } from 'react-redux'
 import type { Connector } from 'react-redux'
 import type { State, Dispatch } from 'types'
-import {
-  addTagFilter,
-  removeTagFilter,
-  setCaptionShow,
-  setOnlyIllust,
-} from 'actions'
+import { addTagFilter, removeTagFilter } from 'actions'
 import { changeLocale } from 'containers/LanguageProvider/actions'
+import { setShowCaption, setShowOnlyIllust } from './actions'
 import Modal from './SettingModal'
 import type { Props } from './SettingModal'
+// import {
+//   makeSelectIsShowCaption,
+//   makeSelectIsShowOnlyIllust,
+// } from './selectors'
 
-const mapStateToProps = ({ filter, config, language }: State) => ({
+const mapStateToProps = ({ filter, language, SettingModal }: State) => ({
   locale: language.locale,
   tags: filter.tags,
-  isIllustComment: config.isIllustComment,
-  isIllustOnly: config.isIllustOnly,
+  isIllustComment: SettingModal.isShowCaption,
+  isIllustOnly: SettingModal.isShowOnlyIllust,
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   onSubmit: (tag: string) => dispatch(addTagFilter(tag)),
   onDelete: (tag: string) => dispatch(removeTagFilter(tag)),
-  onCheckShowText: (isShow: boolean) => dispatch(setCaptionShow(isShow)),
   onSelectLanguage: (locale: string) => dispatch(changeLocale(locale)),
-  onCheckIllustOnly: (isShow: boolean) => dispatch(setOnlyIllust(isShow)),
+  onCheckShowText: (show: boolean) => dispatch(setShowCaption(show)),
+  onCheckIllustOnly: (show: boolean) => dispatch(setShowOnlyIllust(show)),
 })
 
 const connector: Connector<*, Props> = connect(

@@ -1,15 +1,15 @@
 // @flow
 import type { State as LanguageProviderState } from 'containers/LanguageProvider/type'
+import type { State as ModalManeger } from '../containers/ModalManeger/reducer'
+import type { State as SettingModal } from '../containers/SettingModal/reducer'
 import type { ColumnType } from './column'
 import type { Manage } from './manage'
 import type { Filter } from './filter'
 import type { Illusts } from './illust'
 import type { Users } from './user'
 import type { Auth } from './auth'
-import type { Config } from './config'
 import type { Drawer } from './drawer'
 import type { Popover } from './popover'
-import type { State as ModalManeger } from '../containers/ModalManeger/reducer'
 
 export type Entities = {
   users: Users,
@@ -30,10 +30,10 @@ export type State = {
   entities: Entities,
   manage: Manage,
   filter: Filter,
-  config: Config,
   illustById: Illusts,
   userById: Users,
   drawer: Drawer,
   popover: Popover,
   ModalManeger: ModalManeger,
+  SettingModal: SettingModal,
 }

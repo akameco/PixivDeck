@@ -1,5 +1,5 @@
 // @flow
-import { remote, type electron$Menu } from 'electron'
+import { remote } from 'electron'
 import React, { Component } from 'react'
 import { download } from 'electron-dl'
 import { connect, type Connector } from 'react-redux'
@@ -151,8 +151,8 @@ type OwnProps = {
 
 const mapStateToProps = (state: State, { illust }) => ({
   user: getUser(state, illust.user),
-  isIllustOnly: state.config.isIllustOnly,
-  isIllustComment: state.config.isIllustComment,
+  isIllustOnly: state.SettingModal.isShowOnlyIllust,
+  isIllustComment: state.SettingModal.isShowCaption,
 })
 
 const mapDispatchToProps = (dispatch: Dispatch, { illust }) => {
