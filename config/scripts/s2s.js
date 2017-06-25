@@ -59,7 +59,10 @@ watcher.on('change', (input /* : string */) => {
 watcher.on('add', async (input /* : string */) => {
   if (basename(input).includes('reducer')) {
     try {
-      await cpFile(path.resolve(__dirname, '../templates/reducer.js'), input)
+      await cpFile(
+        path.resolve(__dirname, '../templates/reducer.js.tmp'),
+        input
+      )
     } catch (err) {
       console.log(err)
     }
