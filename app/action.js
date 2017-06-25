@@ -13,6 +13,8 @@ import type { Action as HeaderContainerAction } from './containers/HeaderContain
 
 import type { Action as MangaPreviewAction } from './containers/MangaPreview/actionTypes'
 
+import type { Action as LoginModalAction } from './containers/LoginModal/actionTypes'
+
 export type Action =
   | UserPopoverContainerAction
   | LanguageAction
@@ -21,3 +23,4 @@ export type Action =
   | SettingModalAction
   | HeaderContainerAction
   | MangaPreviewAction
+  | LoginModalAction

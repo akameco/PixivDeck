@@ -5,7 +5,6 @@ import type { ColumnType } from './column'
 import type { Manage } from './manage'
 import type { Illusts } from './illust'
 import type { Users } from './user'
-import type { Auth } from './auth'
 import type { Drawer } from './drawer'
 import type { Popover } from './popover'
 
@@ -23,7 +22,6 @@ export type Response = {
 
 export type State = {
   columns: Array<ColumnType>,
-  auth: Auth,
   entities: Entities,
   manage: Manage,
   illustById: Illusts,

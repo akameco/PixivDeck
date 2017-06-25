@@ -3,15 +3,15 @@
 import { put, fork, take, call, select } from 'redux-saga/effects'
 // eslint-disable-next-line import/order
 import type { IOEffect } from 'redux-saga/effects'
-import * as Actions from 'types/auth'
+import type { State } from 'types'
 import {
   loginFailure,
-  authSending,
+  endLoading,
   clearError,
   setAuth,
   logout,
-} from 'actions/auth'
-import type { State } from 'types'
+} from '../containers/LoginModal/actions'
+import * as Actions from '../containers/LoginModal/constants'
 import { openModal, closeModal } from '../containers/ModalManeger/actions'
 import Api from '../api'
 
@@ -19,7 +19,6 @@ import Api from '../api'
 function* authorize(username: string, password: string) {
   // エラーを非表示
   yield put(clearError())
-  yield put(authSending(true))
   try {
     yield call(Api.login, username, password)
     yield put(setAuth(username, password))
@@ -29,13 +28,15 @@ function* authorize(username: string, password: string) {
 
     return false
   } finally {
-    yield put(authSending(false))
+    yield put(endLoading())
   }
 }
 
 // eslint-disable-next-line
 export function* autoLogin(): Generator<IOEffect, boolean, *> {
-  const { username, password } = yield select((state: State) => state.auth)
+  const { username, password } = yield select(
+    (state: State) => state.LoginModal
+  )
   if (username && password) {
     yield call(Api.login, username, password)
     return true
@@ -54,7 +55,7 @@ function* loginFlow(): Generator<IOEffect, void, *> {
 function* logoutFlow(): Generator<IOEffect, void, void> {
   while (true) {
     yield take(Actions.LOGOUT)
-    yield put(authSending(false))
+    yield put(endLoading())
     // ログインモーダルを表示
     yield put(openModal('Login'))
   }
@@ -62,7 +63,7 @@ function* logoutFlow(): Generator<IOEffect, void, void> {
 
 function* autoLoginFlow(): Generator<IOEffect, *, *> {
   while (true) {
-    yield take(Actions.AUTO_LOGIN)
+    yield take(Actions.AUTO_LOGIN_REQUEST)
     yield fork(autoLogin)
   }
 }

@@ -20,7 +20,7 @@ async function init() {
   const storage: ?string = localStorage.getItem('store')
   let initialState: $Shape<State> = storage ? JSON.parse(storage) : {}
 
-  const { auth, columns } = initialState
+  const { LoginModal: auth, columns } = initialState
 
   if (auth && auth.username && auth.password) {
     await Api.login(auth.username, auth.password)
