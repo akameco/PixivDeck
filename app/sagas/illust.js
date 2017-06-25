@@ -1,7 +1,8 @@
+// @flow
 // eslint-disable-next-line import/order
-import { fork, take, call, put } from 'redux-saga/effects'
-import * as Actions from 'constants/illust'
+import { fork, take, call, put, type IOEffect } from 'redux-saga/effects'
 import { refreshAllColumns } from 'actions'
+import { ADD_BOOKMARK_REQUEST } from '../containers/BookmarkButton/constants'
 import Api from '../api'
 
 function* addBookmark(id: number, isPublic: boolean = true) {
@@ -10,14 +11,14 @@ function* addBookmark(id: number, isPublic: boolean = true) {
   yield put(refreshAllColumns())
 }
 
-function* addBookmarkFlow() {
+function* addBookmarkFlow(): Generator<IOEffect, void, *> {
   while (true) {
-    const { id, isPublic } = yield take(Actions.ADD_BOOKMARK)
+    const { id, isPublic } = yield take(ADD_BOOKMARK_REQUEST)
     yield call(addBookmark, id, isPublic)
   }
 }
 
-function* root() {
+function* root(): Generator<IOEffect, void, *> {
   yield fork(addBookmarkFlow)
 }
 

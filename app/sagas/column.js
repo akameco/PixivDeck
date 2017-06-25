@@ -1,5 +1,13 @@
+// @flow
 // eslint-disable-next-line import/order
-import { fork, take, call, select, put } from 'redux-saga/effects'
+import {
+  fork,
+  take,
+  call,
+  select,
+  put,
+  type IOEffect,
+} from 'redux-saga/effects'
 import * as Actions from 'constants/column'
 import * as endpoint from 'constants/endpoint'
 import { getColumn } from 'reducers'
@@ -10,7 +18,8 @@ import { autoLogin } from './auth'
 
 const resetParam = { offset: 0, maxBookmarkId: null }
 
-export function* refreshAllColumns() {
+export function* refreshAllColumns(): Generator<IOEffect, void, *> {
+  // $FlowFixMe
   const columns: Array<ColumnType> = yield select(state => state.columns)
   for (const { id } of columns) {
     yield call(checkUpdate, id)
@@ -18,7 +27,11 @@ export function* refreshAllColumns() {
 }
 
 // eslint-disable-next-line
-function* add(id: number, endpoint: Endpoint, inputParams: Params) {
+function* add(
+  id: number,
+  endpoint: Endpoint,
+  inputParams: Params
+): Generator<IOEffect, *, *> {
   try {
     const { response, params } = yield call(Api.fetch, endpoint, inputParams)
     yield put(apiRequestSuccess(response))
@@ -33,7 +46,7 @@ const checkEndpoint = (target: Endpoint) =>
   target === endpoint.FOLLOW || target === endpoint.FOLLOW
 
 // eslint-disable-next-line
-function* checkUpdate(id: number) {
+function* checkUpdate(id: number): Generator<IOEffect, void | boolean, *> {
   const state = yield select()
   const column = getColumn(state, id)
 
@@ -49,7 +62,7 @@ function* checkUpdate(id: number) {
 }
 
 // eslint-disable-next-line
-function* fetchColumn(id: number) {
+function* fetchColumn(id: number): Generator<IOEffect, void | boolean, *> {
   const state = yield select()
   const column = getColumn(state, id)
 
@@ -67,28 +80,28 @@ function* fetchColumn(id: number) {
   }
 }
 
-function* checkUpdateFlow() {
+function* checkUpdateFlow(): Generator<IOEffect, void, *> {
   while (true) {
     const { id } = yield take(Actions.CHECK_COLUMN_UPDATE)
     yield fork(checkUpdate, id)
   }
 }
 
-function* fetchColumnFlow() {
+function* fetchColumnFlow(): Generator<IOEffect, void, *> {
   while (true) {
     const { id } = yield take(Actions.FETCH_COLUMN)
     yield fork(fetchColumn, id)
   }
 }
 
-function* refreshAllColumnsFlow() {
+function* refreshAllColumnsFlow(): Generator<IOEffect, void, *> {
   while (true) {
     yield take(Actions.REFRESH_ALL_COLUMNS)
     yield fork(refreshAllColumns)
   }
 }
 
-function* root() {
+function* root(): Generator<IOEffect, void, *> {
   yield fork(checkUpdateFlow)
   yield fork(refreshAllColumnsFlow)
   yield fork(fetchColumnFlow)

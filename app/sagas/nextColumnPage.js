@@ -1,6 +1,14 @@
+// @flow
 import { delay } from 'redux-saga'
 // eslint-disable-next-line import/order
-import { fork, take, select, call, put } from 'redux-saga/effects'
+import {
+  fork,
+  take,
+  select,
+  call,
+  put,
+  type IOEffect,
+} from 'redux-saga/effects'
 import * as Actions from 'constants/column'
 import { getColumn, getIllust } from 'reducers'
 import { apiRequestSuccess, nextColumnIllusts, setPrams } from 'actions'
@@ -13,7 +21,7 @@ const LIMIT = 10
 const filterByMinBookmarks = (illust: Illust, bookmarks: number): boolean =>
   illust.totalBookmarks >= bookmarks
 
-export function* nextPage(id: number) {
+export function* nextPage(id: number): Generator<IOEffect, number, *> {
   let state = yield select()
   const column = getColumn(state, id)
   const { response, params } = yield call(
@@ -37,7 +45,7 @@ export function* nextPage(id: number) {
   return nums.length
 }
 
-function* nextColumnPageUntilLimit(id: Id) {
+function* nextColumnPageUntilLimit(id: Id): Generator<IOEffect, void, *> {
   let n = 0
   while (true) {
     const len = yield call(nextPage, id)
@@ -49,7 +57,7 @@ function* nextColumnPageUntilLimit(id: Id) {
   }
 }
 
-function* nextColumnPageFlow() {
+function* nextColumnPageFlow(): Generator<IOEffect, void, *> {
   while (true) {
     const { id } = yield take(Actions.NEXT_COLUMN_PAGE)
     try {
@@ -60,7 +68,7 @@ function* nextColumnPageFlow() {
   }
 }
 
-function* root() {
+function* root(): Generator<IOEffect, void, *> {
   yield fork(nextColumnPageFlow)
 }
 

@@ -1,6 +1,7 @@
+// @flow
 import { delay } from 'redux-saga'
 // eslint-disable-next-line import/order
-import { fork, take, select, call } from 'redux-saga/effects'
+import { fork, take, select, call, type IOEffect } from 'redux-saga/effects'
 import * as Actions from 'constants/column'
 import { getIllusts } from 'reducers'
 import { nextPage } from './nextColumnPage'
@@ -25,14 +26,14 @@ function* fetchUntilLimit(id: number) {
   }
 }
 
-function* setMinBookmarksFlow() {
+function* setMinBookmarksFlow(): Generator<IOEffect, void, *> {
   while (true) {
     const { id } = yield take(Actions.SET_COLUMN_MIN_BOOKMARKS)
     yield call(fetchUntilLimit, id)
   }
 }
 
-function* root() {
+function* root(): Generator<IOEffect, void, *> {
   yield fork(setMinBookmarksFlow)
 }
 

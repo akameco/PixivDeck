@@ -15,7 +15,7 @@ class Api {
   }
 
   static async fetch(
-    endpoint: Endpoint,
+    endpoint: Endpoint | string,
     opts: ?Params
   ): Promise<FetchResponse> {
     const res = await Pixiv.fetch(endpoint, { params: opts })
