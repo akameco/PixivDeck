@@ -6,7 +6,7 @@ import type { ColumnType } from 'types/column'
 
 import Columns from 'components/Columns'
 import Drawer from 'components/Drawer'
-import UserDrawer from 'components/UserDrawer'
+import UserDrawerContainer from 'containers/UserDrawerContainer'
 
 import ModalManeger from '../ModalManeger'
 import Header from '../HeaderContainer'
@@ -25,7 +25,7 @@ const App = ({ columns, manage, onClose }: Props) =>
     <Columns columns={columns} />
     <PreviewManager />
     <Drawer open={manage.isDrawer} onRequestClose={onClose} width={600}>
-      <UserDrawer />
+      <UserDrawerContainer />
     </Drawer>
     <ModalManeger />
   </div>
