@@ -4,7 +4,6 @@ import type { Action as NextAction } from '../action'
 import type { ColumnAction } from './column'
 import type { ManageAction } from './manage'
 import type { ApiAction } from './api'
-import type { IllustAction } from './illust'
 import type { DrawerAction } from './drawer'
 import type { MiscAction } from './misc'
 import type { AddColumnAction } from './addColumn'
@@ -17,7 +16,6 @@ export type Action =
   | ManageAction
   | ApiAction
   | DrawerAction
-  | IllustAction
   | MiscAction
   | AddColumnAction
   | NextAction

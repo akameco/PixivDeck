@@ -10,10 +10,10 @@ import { getUser } from 'reducers'
 import {
   setCurrentIllust,
   openUserDrawer,
-  addBookmark,
   shareTwitter,
   openPixiv,
 } from 'actions'
+import { addBookmarkRequest as addBookmark } from '../../containers/BookmarkButton/actions'
 
 import { openIllustViewer } from '../../containers/IllustPreview/actions'
 import { addColumnSearchIllust } from '../../containers/SearchField/actions'

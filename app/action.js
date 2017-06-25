@@ -21,6 +21,8 @@ import type { Action as IllustPreviewAction } from './containers/IllustPreview/a
 
 import type { Action as AddNewColumnButtonAction } from './containers/AddNewColumnButton/actionTypes'
 
+import type { Action as BookmarkButtonAction } from './containers/BookmarkButton/actionTypes'
+
 export type Action =
   | UserPopoverContainerAction
   | LanguageAction
@@ -33,3 +35,4 @@ export type Action =
   | FollowButtonAction
   | IllustPreviewAction
   | AddNewColumnButtonAction
+  | BookmarkButtonAction

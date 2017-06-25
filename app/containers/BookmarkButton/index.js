@@ -1,28 +1,26 @@
 // @flow
 import { connect, type Connector } from 'react-redux'
-import type { State, Dispatch } from 'types'
-import { addBookmark } from 'actions'
-import { getIllust } from 'reducers'
+import { createSelector } from 'reselect'
+import type { Dispatch } from 'types'
 import BookmarkButton, { type Props } from './BookmarkButton'
+import { addBookmarkRequest } from './actions'
+import { makeIsBookmarked } from './selectors'
 
-type OwnProps = {
-  id: number,
-}
-
-const mapStateToProps = (state: State, { id }) => {
-  const { isBookmarked } = getIllust(state, id)
-  return {
-    isBookmarked,
-  }
-}
+const mapStateToProps = createSelector(makeIsBookmarked(), isBookmarked => ({
+  isBookmarked,
+}))
 
 const mapDispatchToProps = (dispatch: Dispatch, { id }) => ({
   onClick() {
-    dispatch(addBookmark(id, true))
+    dispatch(addBookmarkRequest(id, true))
   },
 })
 
-const connector: Connector<OwnProps, Props> = connect(
+type OP = {
+  id: number,
+}
+
+const connector: Connector<OP, Props> = connect(
   mapStateToProps,
   mapDispatchToProps
 )
