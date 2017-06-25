@@ -4,8 +4,8 @@ import { Tabs, Tab } from 'material-ui/Tabs'
 import { FormattedMessage } from 'react-intl'
 import type { User, Profile } from 'types/user'
 import type { Illust } from 'types/illust'
+import IllstList from 'containers/IllustListContainer'
 import Header from './DrawerHeader'
-import IllstList from './IllustListContainer'
 import messages from './messages'
 
 type Props = {
