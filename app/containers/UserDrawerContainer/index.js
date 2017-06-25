@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import { connect, type Connector } from 'react-redux'
 import type { Dispatch, State } from 'types'
 import type { User, Profile } from 'types/user'
 import type { Illust } from 'types/illust'
@@ -11,8 +11,8 @@ import Loading from 'components/Loading'
 import UserDrawer from 'components/UserDrawer'
 
 type Props = {
-  user: User,
-  profile: Profile,
+  user: ?User,
+  profile: ?Profile,
   illusts: Array<Illust>,
   mangas: Array<Illust>,
   dispatch: Dispatch,
@@ -26,13 +26,14 @@ class UserDrawerContainer extends Component {
   }
 
   async init() {
-    const { dispatch, user: { id } } = this.props
-
-    await Promise.all([
-      dispatch(fetchUserDetail(id)),
-      dispatch(fetchDrawerIllust(id, 'illust')),
-      dispatch(fetchDrawerIllust(id, 'manga')),
-    ])
+    const { dispatch, user } = this.props
+    if (user && user.id) {
+      await Promise.all([
+        dispatch(fetchUserDetail(user.id)),
+        dispatch(fetchDrawerIllust(user.id, 'illust')),
+        dispatch(fetchDrawerIllust(user.id, 'manga')),
+      ])
+    }
   }
 
   render() {
@@ -58,4 +59,5 @@ const mapStateToProps = (state: State) => ({
   profile: state.drawer.profile,
 })
 
-export default connect(mapStateToProps)(UserDrawerContainer)
+const connector: Connector<{}, Props> = connect(mapStateToProps)
+export default connector(UserDrawerContainer)
