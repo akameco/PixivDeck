@@ -1,19 +1,21 @@
 // @flow
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import type { Dispatch, State } from 'types'
+import { connect, type Connector } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
+import type { Dispatch } from 'types'
 import type { Illust } from 'types/illust'
 import {
   coloseIllustViewer,
   startImgLoading,
   finishImgLoading,
 } from './actions'
+import * as selectors from './selectors'
 import Preview from './IllustPreview'
 
 type Props = {
   illust: Illust,
   show: boolean,
-  isLoaded: boolean,
+  isImgLoading: boolean,
   dispatch: Dispatch,
 }
 
@@ -39,7 +41,7 @@ class IllustPreviewContainer extends Component {
   }
 
   render() {
-    const { illust, show } = this.props
+    const { illust, show, isImgLoading } = this.props
     return (
       <Preview
         show={show}
@@ -47,7 +49,7 @@ class IllustPreviewContainer extends Component {
         width={illust.width}
         height={illust.height}
         to={illust.metaSinglePage.originalImageUrl}
-        isLoaded={this.props.isLoaded}
+        isLoaded={!isImgLoading}
         onLoad={this.handleLoad}
         onUnLoad={this.handleUnLoad}
         onClose={this.handleClose}
@@ -56,10 +58,15 @@ class IllustPreviewContainer extends Component {
   }
 }
 
-const mapStateToProps = (state: State, { id }) => ({
-  illust: state.illustById[id],
-  show: state.IllustPreview.open,
-  isLoaded: !state.IllustPreview.isImgLoading,
+type OP = {
+  id: number,
+}
+
+const mapStateToProps = createStructuredSelector({
+  illust: selectors.makeSelectIllust(),
+  show: selectors.makeSelectIsImage(),
+  isImgLoading: selectors.makeSelectIsImgLoding(),
 })
 
-export default connect(mapStateToProps)(IllustPreviewContainer)
+const connecter: Connector<OP, Props> = connect(mapStateToProps)
+export default connecter(IllustPreviewContainer)
