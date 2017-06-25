@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { findDOMNode } from 'react-dom'
 import styled, { keyframes } from 'styled-components'
 import CloseButton from 'components/common/CloseButton'
-import Wrapper from './LazyImgWrapper'
+import { LazyImgWrapper as Wrapper } from './styles'
 
 type Size = {
   width: number | 'auto',

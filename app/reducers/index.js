@@ -11,6 +11,7 @@ import HeaderContainer from '../containers/HeaderContainer/reducer'
 import MangaPreview from '../containers/MangaPreview/reducer'
 import LoginModal from '../containers/LoginModal/reducer'
 import UserPopoverContainer from '../containers/UserPopoverContainer/reducer'
+import IllustPreview from '../containers/IllustPreview/reducer'
 
 import manage from './manage'
 import columns from './columns'
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
   MangaPreview,
   LoginModal,
   UserPopoverContainer,
+  IllustPreview,
 })
 
 export const getColumn = ({ columns }: State, id: number) =>

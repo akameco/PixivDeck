@@ -8,11 +8,6 @@ export const openDrawer = (id: number): Action => ({
 })
 export const closeDrawer = (): Action => ({ type: Actions.CLOSE_DRAWER })
 
-export const openImageView = (): Action => ({ type: Actions.OPEN_IMAGE_VIEW })
-export const closeImageView = (): Action => ({
-  type: Actions.CLOSE_IMAGE_VIEW,
-})
-
 export const startImgLoading = (): Action => ({
   type: Actions.START_IMG_LOADING,
 })

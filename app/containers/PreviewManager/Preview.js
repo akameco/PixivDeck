@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 
-import IllustPreview from 'components/Preview/illust'
+import IllustPreview from '../IllustPreview'
 import MangaPreview from '../MangaPreview'
 
 export type Props = {

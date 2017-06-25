@@ -1,7 +1,7 @@
 // @flow
 import styled from 'styled-components'
 
-const LazyImgWrapper = styled.div`
+export const LazyImgWrapper = styled.div`
 	width: 100%;
 	height: auto;
 	margin: 10px;
@@ -14,5 +14,3 @@ const LazyImgWrapper = styled.div`
 		background: rgba(24, 24, 24, 0.3);
 	}
 `
-
-export default LazyImgWrapper

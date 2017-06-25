@@ -1,5 +1,6 @@
 // @flow
 import type { State as HeaderContainerState } from './containers/HeaderContainer/reducer'
+import type { State as IllustPreviewState } from './containers/IllustPreview/reducer'
 import type { State as LanguageState } from './containers/Language/reducer'
 import type { State as LoginModalState } from './containers/LoginModal/reducer'
 import type { State as MangaPreviewState } from './containers/MangaPreview/reducer'
@@ -9,6 +10,7 @@ import type { State as UserPopoverContainerState } from './containers/UserPopove
 
 export type State = {
   HeaderContainer: HeaderContainerState,
+  IllustPreview: IllustPreviewState,
   Language: LanguageState,
   LoginModal: LoginModalState,
   MangaPreview: MangaPreviewState,

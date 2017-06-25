@@ -8,15 +8,17 @@ import type { Illust } from 'types/illust'
 import type { User } from 'types/user'
 import { getUser } from 'reducers'
 import {
-  openImageView,
   setCurrentIllust,
   openUserDrawer,
   addBookmark,
   shareTwitter,
   openPixiv,
 } from 'actions'
+
+import { openIllustViewer } from '../../containers/IllustPreview/actions'
 import { addColumnSearchIllust } from '../../containers/SearchField/actions'
 import { openMangaPreview } from '../../containers/MangaPreview/actions'
+
 import Box from './Box'
 
 // $FlowFixMe
@@ -164,7 +166,7 @@ const mapDispatchToProps = (dispatch: Dispatch, { illust }) => {
       if (illust.pageCount > 1) {
         dispatch(openMangaPreview())
       } else {
-        dispatch(openImageView())
+        dispatch(openIllustViewer())
       }
     },
     addBookmark(isPublic: boolean) {

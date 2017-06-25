@@ -3,11 +3,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import type { Dispatch, State } from 'types'
 import type { Illust } from 'types/illust'
-import {
-  closeImageView,
-  finishImgLoaded,
-  startImgLoading,
-} from 'actions/manage'
+import { finishImgLoaded, startImgLoading } from 'actions/manage'
+import { coloseIllustViewer } from './actions'
 import Preview from './IllustPreview'
 
 type Props = {
@@ -22,12 +19,12 @@ class IllustPreviewContainer extends Component {
 
   componentWillMount() {
     if (!this.props.illust) {
-      this.props.dispatch(closeImageView())
+      this.props.dispatch(coloseIllustViewer())
     }
   }
 
   handleClose = () => {
-    this.props.dispatch(closeImageView())
+    this.props.dispatch(coloseIllustViewer())
   }
 
   handleLoad = () => {
@@ -56,13 +53,10 @@ class IllustPreviewContainer extends Component {
   }
 }
 
-const mapStateToProps = (
-  { illustById, manage: { isImageView, isImgLoaded } }: State,
-  { id }
-) => ({
-  illust: illustById[id],
-  show: isImageView,
-  isLoaded: isImgLoaded,
+const mapStateToProps = (state: State, { id }) => ({
+  illust: state.illustById[id],
+  show: state.IllustPreview.open,
+  isLoaded: state.manage.isImgLoaded,
 })
 
 export default connect(mapStateToProps)(IllustPreviewContainer)

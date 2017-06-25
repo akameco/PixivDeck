@@ -4,7 +4,6 @@ import type { Manage } from 'types/manage'
 
 const initManageState: Manage = {
   isLoading: false,
-  isImageView: false,
   isImgLoaded: false,
   isDrawer: false,
   currentIllustId: null,
@@ -12,19 +11,15 @@ const initManageState: Manage = {
 }
 
 type CloseState = {
-  isImageView: boolean,
   isDrawer: boolean,
 }
 
 const closeState: CloseState = {
-  isImageView: false,
   isDrawer: false,
 }
 
 function open(state: Manage, action: Action): $Shape<Manage> {
   switch (action.type) {
-    case 'OPEN_IMAGE_VIEW':
-      return { isImageView: Boolean(state.currentIllustId) }
     case 'OPEN_DRAWER':
       return { ...closeState, isDrawer: Boolean(action.id), userId: action.id }
     default:
@@ -34,8 +29,6 @@ function open(state: Manage, action: Action): $Shape<Manage> {
 
 function close(state: Manage, action: Action): $Shape<Manage> {
   switch (action.type) {
-    case 'CLOSE_IMAGE_VIEW':
-      return { ...state, isImageView: false }
     case 'CLOSE_ALL':
       return { ...state, ...closeState }
     default:
