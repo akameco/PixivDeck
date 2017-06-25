@@ -13,20 +13,3 @@ export type Action =
       +type: ADD_TAG_FILTER_TYPE | REMOVE_TAG_FILTER_TYPE,
       +tag: string,
     }
-
-// import {
-//   addTagFilter,
-//   removeTagFilter,
-//   setCaptionShow,
-//   setOnlyIllust,
-// } from 'actions'
-
-// export const setCaptionShow = (isShow: boolean): Action => ({
-//   type: 'ILLUST_CAPTION_SHOW',
-//   isShow,
-// })
-//
-// export const setOnlyIllust = (isShow: boolean): Action => ({
-//   type: 'ILLUST_ONLY',
-//   isShow,
-// })
