@@ -2,7 +2,6 @@
 import * as ranking from 'constants/ranking'
 import * as Actions from 'constants/addColumn'
 import type { Action } from 'types'
-import type { User } from 'types/user'
 
 export const addBookmarkColumn = (isPublic: boolean): Action => ({
   type: Actions.ADD_COLUMN_BOOKMARK,
@@ -26,11 +25,4 @@ export const addIllustR18RankingColumn = (
 ): Action => ({
   type: Actions.ADD_COLUMN_R18_RANKING,
   mode,
-})
-
-export const addUserIllusts = ({ id, name, account }: User): Action => ({
-  type: Actions.ADD_COLUMN_USER_ILLUSTS,
-  userId: id,
-  name,
-  account,
 })

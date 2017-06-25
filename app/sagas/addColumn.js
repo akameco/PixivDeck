@@ -1,11 +1,13 @@
+// @flow
 // eslint-disable-next-line import/order
-import { put, fork, takeEvery } from 'redux-saga/effects'
+import { put, fork, takeEvery, type IOEffect } from 'redux-saga/effects'
 import type { Action } from 'types'
 import type { Params, Endpoint } from 'types/column'
 import * as Actions from 'constants/addColumn'
 import * as ENDPOINT from 'constants/endpoint'
 import * as RANKING from 'constants/ranking'
 import { HOUR, MINUTE } from 'constants/time'
+import { ADD_USER_ILLUST } from '../containers/AddNewColumnButton/constants'
 import Pixiv from '../api/pixiv'
 
 const THREE_HOUR = 3 * HOUR
@@ -64,42 +66,42 @@ function* r18Ranking({ mode }) {
   )
 }
 
-function* userIllust({ userId, name, account }) {
+function* userIllust({ user }) {
   yield put(
     addColumn(
       ENDPOINT.USER_ILLUSTS,
-      { userId },
-      `${name}(${account})`,
+      { userId: user.id },
+      `${user.name}(${user.account})`,
       THREE_HOUR
     )
   )
 }
 
-function* bookmarkWatch() {
+function* bookmarkWatch(): Generator<IOEffect, void, *> {
   yield takeEvery(Actions.ADD_COLUMN_BOOKMARK, bookmark)
 }
 
-function* followWatch() {
+function* followWatch(): Generator<IOEffect, void, *> {
   yield takeEvery(Actions.ADD_COLUMN_FOLLOW, follow)
 }
 
-function* searchIllustWatch() {
+function* searchIllustWatch(): Generator<IOEffect, void, *> {
   yield takeEvery(Actions.ADD_COLUMN_SEARCH_ILLUST, searchIllust)
 }
 
-function* rankingWatch() {
+function* rankingWatch(): Generator<IOEffect, void, *> {
   yield takeEvery(Actions.ADD_COLUMN_RANKING, ranking)
 }
 
-function* r18RankingWatch() {
+function* r18RankingWatch(): Generator<IOEffect, void, *> {
   yield takeEvery(Actions.ADD_COLUMN_R18_RANKING, r18Ranking)
 }
 
-function* userIllustWatch() {
-  yield takeEvery(Actions.ADD_COLUMN_USER_ILLUSTS, userIllust)
+function* userIllustWatch(): Generator<IOEffect, void, *> {
+  yield takeEvery(ADD_USER_ILLUST, userIllust)
 }
 
-export default function* root() {
+export default function* root(): Generator<*, void, void> {
   yield fork(bookmarkWatch)
   yield fork(followWatch)
   yield fork(searchIllustWatch)

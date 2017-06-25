@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 import type { User, Profile } from 'types/user'
 import FollowButton from 'containers/FollowButton'
-import AddColumnButton from './AddColumnButton'
+import AddNewColumnButton from 'containers/AddNewColumnButton'
 import TwitterButton from './TwitterButton'
 
 type Props = {
@@ -17,7 +17,7 @@ const Navigation = ({ user, profile }: Props) => {
       <Wrap>
         {profile.twitterUrl && <TwitterButton url={profile.twitterUrl} />}
         <FollowButton user={user} />
-        <AddColumnButton user={user} />
+        <AddNewColumnButton user={user} />
       </Wrap>
     </NavigationWrap>
   )

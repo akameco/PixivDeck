@@ -19,6 +19,8 @@ import type { Action as FollowButtonAction } from './containers/FollowButton/act
 
 import type { Action as IllustPreviewAction } from './containers/IllustPreview/actionTypes'
 
+import type { Action as AddNewColumnButtonAction } from './containers/AddNewColumnButton/actionTypes'
+
 export type Action =
   | UserPopoverContainerAction
   | LanguageAction
@@ -30,3 +32,4 @@ export type Action =
   | LoginModalAction
   | FollowButtonAction
   | IllustPreviewAction
+  | AddNewColumnButtonAction
