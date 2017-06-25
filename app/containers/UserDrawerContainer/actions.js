@@ -3,7 +3,8 @@ import type { Action } from './actionTypes.js'
 import {
   FETCH_DRAWER_ILLUST,
   ADD_DRAWER_ILLUSTS,
-  SET_NEXT_URL,
+  SET_NEXT_ILLUST_URL,
+  SET_NEXT_MANGA_URL,
   ADD_DRAWER_USER,
   ADD_DRAWER_PROFILE,
   FETCH_USER_DETAIL,
@@ -31,11 +32,17 @@ export function addDrawerIllusts(
   }
 }
 
-export function setNextUrl(url: string, drawerType: DrawerType): Action {
+export function setNextIllustUrl(url: string): Action {
   return {
-    type: SET_NEXT_URL,
+    type: SET_NEXT_ILLUST_URL,
     url,
-    drawerType,
+  }
+}
+
+export function setNextMangaUrl(url: string): Action {
+  return {
+    type: SET_NEXT_MANGA_URL,
+    url,
   }
 }
 

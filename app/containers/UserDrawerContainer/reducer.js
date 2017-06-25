@@ -27,12 +27,6 @@ const initialState: State = {
   isLoading: false,
 }
 
-const setNextUrl = (type: DrawerType, nextUrl: string) => {
-  return type === 'illust'
-    ? { nextIllustUrl: nextUrl }
-    : { nextMangaUrl: nextUrl }
-}
-
 function addDrawerIllusts(type: DrawerType, illusts: number[], ids: number[]) {
   if (type === 'manga') {
     return { mangaList: union(illusts, ids) }
@@ -57,8 +51,10 @@ export default function(
         ...state,
         ...addDrawerIllusts(action.drawerType, state.illustList, action.ids),
       }
-    case Actions.SET_NEXT_URL:
-      return { ...state, ...setNextUrl(action.drawerType, action.url) }
+    case Actions.SET_NEXT_ILLUST_URL:
+      return { ...state, nextIllustUrl: action.url }
+    case Actions.SET_NEXT_MANGA_URL:
+      return { ...state, nextMangaUrl: action.url }
     default:
       return state
   }

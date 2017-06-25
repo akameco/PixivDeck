@@ -17,7 +17,8 @@ import {
   addDrawerUser,
   addDrawerProfile,
   addDrawerIllusts,
-  setNextUrl,
+  setNextIllustUrl,
+  setNextMangaUrl,
 } from '../containers/UserDrawerContainer/actions'
 import * as Actions from '../containers/UserDrawerContainer/constants'
 
@@ -33,10 +34,17 @@ function* fetchDrawerData(
 ): Generator<IOEffect, Object, *> {
   const response = normalizeIllusts(data)
   const { nextUrl } = data
+
   yield put(apiRequestSuccess(response))
+
   if (nextUrl) {
-    yield put(setNextUrl(nextUrl, type))
+    if (type === 'manga') {
+      yield put(setNextMangaUrl(nextUrl))
+    } else if (type === 'illust') {
+      yield put(setNextIllustUrl(nextUrl))
+    }
   }
+
   return response
 }
 
@@ -53,9 +61,15 @@ function* nextDrawerPage({ drawerType }): Generator<IOEffect, void, *> {
   if (url) {
     const { response, nextUrl } = yield call(Api.fetch, url)
     yield put(apiRequestSuccess(response))
+
     if (nextUrl) {
-      yield put(setNextUrl(nextUrl, drawerType))
+      if (drawerType === 'manga') {
+        yield put(setNextMangaUrl(nextUrl))
+      } else if (drawerType === 'illust') {
+        yield put(setNextIllustUrl(nextUrl))
+      }
     }
+
     yield put(addDrawerIllusts(response.result, drawerType))
   }
 }

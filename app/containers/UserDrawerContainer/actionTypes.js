@@ -12,7 +12,8 @@ export type ADD_DRAWER_USER_TYPE = 'UserDrawer/ADD_DRAWER_USER'
 export type ADD_DRAWER_ILLUSTS_TYPE = 'UserDrawer/ADD_DRAWER_ILLUSTS'
 export type ADD_DRAWER_PROFILE_TYPE = 'UserDrawer/ADD_DRAWER_PROFILE'
 
-export type SET_NEXT_URL_TYPE = 'UserDrawer/SET_NEXT_URL'
+export type SET_NEXT_ILLUST_URL_TYPE = 'UserDrawer/SET_NEXT_ILLUST_URL'
+export type SET_NEXT_MANGA_URL_TYPE = 'UserDrawer/SET_NEXT_MANGA_URL'
 
 export type FETCH_USER_DETAIL_TYPE = 'UserDrawer/FETCH_USER_DETAIL'
 export type FETCH_USER_DETAIL_SUCCESS_TYPE =
@@ -37,7 +38,10 @@ export type Action =
       +ids: number[],
       +drawerType: DrawerType,
     |}
-  | {| +type: SET_NEXT_URL_TYPE, +url: string, +drawerType: DrawerType |}
+  | {|
+      +type: SET_NEXT_ILLUST_URL_TYPE | SET_NEXT_MANGA_URL_TYPE,
+      +url: string,
+    |}
   | {| +type: ADD_DRAWER_USER_TYPE, +user: User |}
   | {| +type: ADD_DRAWER_PROFILE_TYPE, +profile: Profile |}
   | {| +type: FETCH_USER_DETAIL_TYPE, +id: number |}
