@@ -4,7 +4,6 @@ import type { Manage } from 'types/manage'
 
 const initManageState: Manage = {
   isLoading: false,
-  isImgLoaded: false,
   isDrawer: false,
   currentIllustId: null,
   userId: null,
@@ -48,10 +47,6 @@ export default function(
   switch (action.type) {
     case 'INIT':
       return { ...state, ...closeState }
-    case 'START_IMG_LOADING':
-      return { ...state, isImgLoaded: false }
-    case 'FINISH_IMG_LOADED':
-      return { ...state, isImgLoaded: true }
     case 'SET_CURRENT_ILLUST':
       return { ...state, currentIllustId: action.id }
     case 'START_LOADING':
