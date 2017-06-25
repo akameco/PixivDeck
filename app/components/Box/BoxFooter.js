@@ -2,7 +2,7 @@
 import React from 'react'
 import union from 'lodash.union'
 import styled from 'styled-components'
-import Tag from './Tag'
+import Tag from '../Tag'
 
 const FooterWrapper = styled.div`
   margin-top: 0.5rem;
