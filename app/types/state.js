@@ -5,7 +5,6 @@ import type { ColumnType } from './column'
 import type { Manage } from './manage'
 import type { Illusts } from './illust'
 import type { Users } from './user'
-import type { Drawer } from './drawer'
 
 export type Entities = {
   users: Users,
@@ -25,5 +24,4 @@ export type State = {
   manage: Manage,
   illustById: Illusts,
   userById: Users,
-  drawer: Drawer,
 } & AppState

@@ -11,6 +11,9 @@ const makeSelectIllustList = () => createSelector(selectRoot, s => s.illustList)
 
 const makeSelectMangaList = () => createSelector(selectRoot, s => s.mangaList)
 
+export const getNextIllustUrl = createSelector(selectRoot, s => s.nextIllustUrl)
+export const getNextMangaUrl = createSelector(selectRoot, s => s.nextMangaUrl)
+
 export const makeSelectUser = () => createSelector(selectRoot, s => s.user)
 
 const getSelectUser = (state: State, { id }: { id: number }) =>

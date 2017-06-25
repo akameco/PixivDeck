@@ -2,7 +2,7 @@
 import { type User } from 'types/user'
 import { OPEN_DRAWER } from '../DrawerManager/constants'
 import { makeSelectUserById } from './selectors'
-import { fetchUserDetail, fetchDrawerIllust } from './actions'
+import { fetchUserDetail, fetchIllust, fetchManga } from './actions'
 import { put, select, fork, takeEvery, type IOEffect } from 'redux-saga/effects'
 
 function* watchOpenDrawer(): Generator<IOEffect, void, *> {
@@ -11,8 +11,8 @@ function* watchOpenDrawer(): Generator<IOEffect, void, *> {
       const user: User = yield select(makeSelectUserById(), { id })
       // todo 非同期
       yield put(fetchUserDetail(user.id))
-      yield put(fetchDrawerIllust(user.id, 'illust'))
-      yield put(fetchDrawerIllust(user.id, 'manga'))
+      yield put(fetchIllust(user.id))
+      yield put(fetchManga(user.id))
       // todo 失敗の通知
     } catch (err) {}
   })

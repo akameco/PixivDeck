@@ -9,18 +9,21 @@ import {
   type IOEffect,
 } from 'redux-saga/effects'
 import { apiRequestSuccess } from 'actions/api'
-import { getNextUrl } from 'reducers/drawer'
-import type { DrawerType } from 'types/drawer'
 import Api from '../api'
 import { normalizeIllusts } from '../api/pixiv'
 import {
   addDrawerUser,
   addDrawerProfile,
-  addDrawerIllusts,
+  addDrawerIllustIds,
+  addDrawerMangaIds,
   setNextIllustUrl,
   setNextMangaUrl,
 } from '../containers/UserDrawerContainer/actions'
 import * as Actions from '../containers/UserDrawerContainer/constants'
+import {
+  getNextIllustUrl,
+  getNextMangaUrl,
+} from '../containers/UserDrawerContainer/selectors'
 
 function* fetchUserDetail({ id }): Generator<IOEffect, void, *> {
   const { user, profile } = yield call(Api.userDetail, id)
@@ -28,66 +31,88 @@ function* fetchUserDetail({ id }): Generator<IOEffect, void, *> {
   yield put(addDrawerProfile(profile))
 }
 
-function* fetchDrawerData(
-  data: Object,
-  type: DrawerType
-): Generator<IOEffect, Object, *> {
-  const response = normalizeIllusts(data)
-  const { nextUrl } = data
+function* watchFetchIllust(): Generator<IOEffect, void, *> {
+  yield takeEvery(Actions.FETCH_ILLUST, function*({ id }) {
+    try {
+      const data = yield call(Api.userIllusts, id, 'illust')
 
-  yield put(apiRequestSuccess(response))
+      const response = normalizeIllusts(data)
 
-  if (nextUrl) {
-    if (type === 'manga') {
-      yield put(setNextMangaUrl(nextUrl))
-    } else if (type === 'illust') {
-      yield put(setNextIllustUrl(nextUrl))
-    }
-  }
-
-  return response
-}
-
-function* fetchDrawerIllust({ id, drawerType }): Generator<IOEffect, void, *> {
-  const data = yield call(Api.userIllusts, id, drawerType)
-  const { result } = yield call(fetchDrawerData, data, drawerType)
-  yield put(addDrawerIllusts(result, drawerType))
-}
-
-function* nextDrawerPage({ drawerType }): Generator<IOEffect, void, *> {
-  const state = yield select()
-  const url = getNextUrl(drawerType, state)
-
-  if (url) {
-    const { response, nextUrl } = yield call(Api.fetch, url)
-    yield put(apiRequestSuccess(response))
-
-    if (nextUrl) {
-      if (drawerType === 'manga') {
-        yield put(setNextMangaUrl(nextUrl))
-      } else if (drawerType === 'illust') {
-        yield put(setNextIllustUrl(nextUrl))
+      if (data.nextUrl) {
+        yield put(setNextIllustUrl(data.nextUrl))
       }
-    }
 
-    yield put(addDrawerIllusts(response.result, drawerType))
-  }
+      yield put(apiRequestSuccess(response))
+
+      yield put(addDrawerIllustIds(response.result))
+    } catch (err) {
+      // yield put()
+    }
+  })
 }
 
-function* fetchDrawerIllustWatch(): Generator<IOEffect, void, *> {
-  yield takeEvery(Actions.FETCH_DRAWER_ILLUST, fetchDrawerIllust)
+function* watchFetchManga(): Generator<IOEffect, void, *> {
+  yield takeEvery(Actions.FETCH_MANGA, function*({ id }) {
+    try {
+      const data = yield call(Api.userIllusts, id, 'manga')
+
+      const response = normalizeIllusts(data)
+
+      if (data.nextUrl) {
+        yield put(setNextIllustUrl(data.nextUrl))
+      }
+
+      yield put(apiRequestSuccess(response))
+
+      yield put(addDrawerMangaIds(response.result))
+    } catch (err) {
+      // yield put()
+    }
+  })
 }
 
 function* fetchUserDetailWatch(): Generator<IOEffect, void, *> {
   yield takeEvery(Actions.FETCH_USER_DETAIL, fetchUserDetail)
 }
 
-function* nextDrawerPageWatch(): Generator<IOEffect, void, *> {
-  yield takeEvery(Actions.NEXT_DRAWER_PAGE, nextDrawerPage)
+function* watchNextIllust(): Generator<IOEffect, void, *> {
+  yield takeEvery(Actions.NEXT_ILLUST_PAGE, function*() {
+    const url = yield select(getNextIllustUrl)
+
+    if (url) {
+      const { response, nextUrl } = yield call(Api.fetch, url)
+      yield put(apiRequestSuccess(response))
+
+      if (nextUrl) {
+        yield put(setNextIllustUrl(nextUrl))
+      }
+
+      yield put(addDrawerIllustIds(response.result))
+    }
+  })
+}
+
+function* watchNextManga(): Generator<IOEffect, void, *> {
+  yield takeEvery(Actions.NEXT_MANGA_PAGE, function*() {
+    const url = yield select(getNextMangaUrl)
+
+    if (url) {
+      const { response, nextUrl } = yield call(Api.fetch, url)
+      yield put(apiRequestSuccess(response))
+
+      if (nextUrl) {
+        yield put(setNextMangaUrl(nextUrl))
+      }
+
+      yield put(addDrawerMangaIds(response.result))
+    }
+  })
 }
 
 export default function* root(): Generator<IOEffect, void, *> {
   yield fork(fetchUserDetailWatch)
-  yield fork(fetchDrawerIllustWatch)
-  yield fork(nextDrawerPageWatch)
+  yield fork(watchFetchIllust)
+  yield fork(watchFetchManga)
+  yield fork(watchNextIllust)
+  yield fork(watchNextManga)
 }

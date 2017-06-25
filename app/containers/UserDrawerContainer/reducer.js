@@ -27,13 +27,6 @@ const initialState: State = {
   isLoading: false,
 }
 
-function addDrawerIllusts(type: DrawerType, illusts: number[], ids: number[]) {
-  if (type === 'manga') {
-    return { mangaList: union(illusts, ids) }
-  }
-  return { illustList: union(illusts, ids) }
-}
-
 export default function(
   state: State = initialState,
   action: Action
@@ -45,12 +38,10 @@ export default function(
       return { ...state, user: action.user }
     case Actions.ADD_DRAWER_PROFILE:
       return { ...state, profile: action.profile }
-    case Actions.ADD_DRAWER_ILLUSTS:
-      // todo 分割
-      return {
-        ...state,
-        ...addDrawerIllusts(action.drawerType, state.illustList, action.ids),
-      }
+    case Actions.ADD_DRAWER_ILLUST_IDS:
+      return { ...state, illustList: union(state.illustList, action.ids) }
+    case Actions.ADD_DRAWER_MANGA_IDS:
+      return { ...state, mangaList: union(state.illustList, action.ids) }
     case Actions.SET_NEXT_ILLUST_URL:
       return { ...state, nextIllustUrl: action.url }
     case Actions.SET_NEXT_MANGA_URL:

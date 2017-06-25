@@ -19,7 +19,6 @@ import manage from './manage'
 import columns from './columns'
 import illustById, * as fromIllustById from './illustById'
 import userById, * as fromUserById from './userById'
-import drawer from './drawer'
 
 const rootReducer = combineReducers({
   Language,
@@ -27,7 +26,6 @@ const rootReducer = combineReducers({
   columns,
   illustById,
   userById,
-  drawer,
   ModalManeger,
   SettingModal,
   HeaderContainer,
