@@ -6,7 +6,6 @@ import type { Manage } from './manage'
 import type { Illusts } from './illust'
 import type { Users } from './user'
 import type { Drawer } from './drawer'
-import type { Popover } from './popover'
 
 export type Entities = {
   users: Users,
@@ -27,5 +26,4 @@ export type State = {
   illustById: Illusts,
   userById: Users,
   drawer: Drawer,
-  popover: Popover,
 } & AppState

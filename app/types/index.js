@@ -6,7 +6,6 @@ import type { ManageAction } from './manage'
 import type { ApiAction } from './api'
 import type { IllustAction } from './illust'
 import type { DrawerAction } from './drawer'
-import type { PopoverAction } from './popover'
 import type { MiscAction } from './misc'
 import type { AddColumnAction } from './addColumn'
 import type { State as BaseState } from './state'
@@ -20,7 +19,6 @@ export type Action =
   | DrawerAction
   | IllustAction
   | MiscAction
-  | PopoverAction
   | AddColumnAction
   | NextAction
 

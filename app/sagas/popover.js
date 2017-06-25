@@ -1,12 +1,16 @@
+// @flow
 // eslint-disable-next-line import/order
-import { put, fork, call, take } from 'redux-saga/effects'
-import { clearUserPopoverIllust, addUserPopoverIllust } from 'actions/popover'
-import { OPEN_USER_POPOVER } from 'containers/UserPopoverContainer/constants'
+import { put, fork, call, take, type IOEffect } from 'redux-saga/effects'
+import {
+  addPopover,
+  clearPopover,
+} from '../containers/UserPopoverContainer/actions'
+import * as Actions from '../containers/UserPopoverContainer/constants'
 import Api from '../api'
 
 function* popover(id) {
   // クリア
-  yield put(clearUserPopoverIllust())
+  yield put(clearPopover())
   try {
     const type = 'illust'
     // ユーザのイラストを取得
@@ -15,13 +19,13 @@ function* popover(id) {
     // 3件取得しストアに反映
     const limit = 3
     const popoverIllust = illusts.slice(0, limit)
-    yield put(addUserPopoverIllust(popoverIllust))
+    yield put(addPopover(popoverIllust))
   } catch (err) {}
 }
 
-function* popoverFlow() {
+function* popoverFlow(): Generator<IOEffect, void, *> {
   while (true) {
-    const { id } = yield take(OPEN_USER_POPOVER)
+    const { id } = yield take(Actions.OPEN_USER_POPOVER)
     try {
       yield call(popover, id)
     } catch (err) {
@@ -30,7 +34,7 @@ function* popoverFlow() {
   }
 }
 
-function* root() {
+function* root(): Generator<IOEffect, void, *> {
   yield fork(popoverFlow)
 }
 

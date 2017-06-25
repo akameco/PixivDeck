@@ -5,6 +5,7 @@ import type { State as LoginModalState } from './containers/LoginModal/reducer'
 import type { State as MangaPreviewState } from './containers/MangaPreview/reducer'
 import type { State as ModalManegerState } from './containers/ModalManeger/reducer'
 import type { State as SettingModalState } from './containers/SettingModal/reducer'
+import type { State as UserPopoverContainerState } from './containers/UserPopoverContainer/reducer'
 
 export type State = {
   HeaderContainer: HeaderContainerState,
@@ -13,4 +14,5 @@ export type State = {
   MangaPreview: MangaPreviewState,
   ModalManeger: ModalManegerState,
   SettingModal: SettingModalState,
+  UserPopoverContainer: UserPopoverContainerState,
 }

@@ -10,13 +10,13 @@ import SettingModal from '../containers/SettingModal/reducer'
 import HeaderContainer from '../containers/HeaderContainer/reducer'
 import MangaPreview from '../containers/MangaPreview/reducer'
 import LoginModal from '../containers/LoginModal/reducer'
+import UserPopoverContainer from '../containers/UserPopoverContainer/reducer'
 
 import manage from './manage'
 import columns from './columns'
 import illustById, * as fromIllustById from './illustById'
 import userById, * as fromUserById from './userById'
 import drawer from './drawer'
-import popover from './popover'
 
 const rootReducer = combineReducers({
   Language,
@@ -25,12 +25,12 @@ const rootReducer = combineReducers({
   illustById,
   userById,
   drawer,
-  popover,
   ModalManeger,
   SettingModal,
   HeaderContainer,
   MangaPreview,
   LoginModal,
+  UserPopoverContainer,
 })
 
 export const getColumn = ({ columns }: State, id: number) =>
