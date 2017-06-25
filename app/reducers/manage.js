@@ -7,7 +7,6 @@ const initManageState: Manage = {
   isImageView: false,
   isImgLoaded: false,
   isDrawer: false,
-  isMangaView: false,
   currentIllustId: null,
   userId: null,
 }
@@ -15,21 +14,17 @@ const initManageState: Manage = {
 type CloseState = {
   isImageView: boolean,
   isDrawer: boolean,
-  isMangaView: boolean,
 }
 
 const closeState: CloseState = {
   isImageView: false,
   isDrawer: false,
-  isMangaView: false,
 }
 
 function open(state: Manage, action: Action): $Shape<Manage> {
   switch (action.type) {
     case 'OPEN_IMAGE_VIEW':
       return { isImageView: Boolean(state.currentIllustId) }
-    case 'OPEN_MANGA_PREVIEW':
-      return { isMangaView: Boolean(state.currentIllustId) }
     case 'OPEN_DRAWER':
       return { ...closeState, isDrawer: Boolean(action.id), userId: action.id }
     default:
@@ -41,8 +36,6 @@ function close(state: Manage, action: Action): $Shape<Manage> {
   switch (action.type) {
     case 'CLOSE_IMAGE_VIEW':
       return { ...state, isImageView: false }
-    case 'CLOSE_MANGA_PREVIEW':
-      return { ...state, isMangaView: false }
     case 'CLOSE_ALL':
       return { ...state, ...closeState }
     default:

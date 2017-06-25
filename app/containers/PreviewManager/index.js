@@ -1,13 +1,14 @@
 // @flow
 import { connect, type Connector } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
+import { makeSelectOpen } from '../MangaPreview/selectors'
 import Preview, { type Props } from './Preview'
-import { makeSelectId, makeSelectIsImage, makeSelectIsManga } from './selectors'
+import { makeSelectId, makeSelectIsImage } from './selectors'
 
 const mapStateToProps = createStructuredSelector({
   id: makeSelectId(),
   isOpenImage: makeSelectIsImage(),
-  isOpenManga: makeSelectIsManga(),
+  isOpenManga: makeSelectOpen(),
 })
 
 const connecter: Connector<{}, Props> = connect(mapStateToProps)

@@ -11,6 +11,8 @@ import type { Action as SettingModalAction } from './containers/SettingModal/act
 
 import type { Action as HeaderContainerAction } from './containers/HeaderContainer/actionTypes'
 
+import type { Action as MangaPreviewAction } from './containers/MangaPreview/actionTypes'
+
 export type Action =
   | UserPopoverContainerAction
   | LanguageProviderAction
@@ -18,3 +20,4 @@ export type Action =
   | ModalManegerAction
   | SettingModalAction
   | HeaderContainerAction
+  | MangaPreviewAction

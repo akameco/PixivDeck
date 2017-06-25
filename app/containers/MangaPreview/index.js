@@ -4,7 +4,7 @@ import { connect, type Connector } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import type { Dispatch } from 'types'
 import type { Illust } from 'types/illust'
-import { closeMnagaPreview } from 'actions'
+import { closeMangaPreview } from './actions'
 import MultiPreview from './MultiPreview'
 import { makeSelectIllust } from './selectors'
 
@@ -33,7 +33,7 @@ const connector: Connector<
 > = connect(mapStateToProps, (dispatch: Dispatch) => {
   return {
     close() {
-      dispatch(closeMnagaPreview())
+      dispatch(closeMangaPreview())
     },
   }
 })

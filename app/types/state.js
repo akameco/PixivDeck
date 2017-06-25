@@ -3,6 +3,7 @@ import type { State as LanguageProviderState } from 'containers/LanguageProvider
 import type { State as ModalManeger } from '../containers/ModalManeger/reducer'
 import type { State as SettingModal } from '../containers/SettingModal/reducer'
 import type { State as HeaderContainer } from '../containers/HeaderContainer/reducer'
+import type { State as MangaPreview } from '../containers/MangaPreview/reducer'
 
 import type { ColumnType } from './column'
 import type { Manage } from './manage'
@@ -37,4 +38,5 @@ export type State = {
   ModalManeger: ModalManeger,
   SettingModal: SettingModal,
   HeaderContainer: HeaderContainer,
+  MangaPreview: MangaPreview,
 }

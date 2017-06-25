@@ -7,6 +7,7 @@ import LanguageProvider from '../containers/LanguageProvider/reducer'
 import ModalManeger from '../containers/ModalManeger/reducer'
 import SettingModal from '../containers/SettingModal/reducer'
 import HeaderContainer from '../containers/HeaderContainer/reducer'
+import MangaPreview from '../containers/MangaPreview/reducer'
 import manage from './manage'
 import columns from './columns'
 import auth from './auth'
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
   ModalManeger,
   SettingModal,
   HeaderContainer,
+  MangaPreview,
 })
 
 export const getColumn = ({ columns }: State, id: number) =>

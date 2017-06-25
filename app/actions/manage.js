@@ -13,13 +13,6 @@ export const closeImageView = (): Action => ({
   type: Actions.CLOSE_IMAGE_VIEW,
 })
 
-export const openMangaPreview = (): Action => ({
-  type: Actions.OPEN_MANGA_PREVIEW,
-})
-export const closeMnagaPreview = (): Action => ({
-  type: Actions.CLOSE_MANGA_PREVIEW,
-})
-
 export const startImgLoading = (): Action => ({
   type: Actions.START_IMG_LOADING,
 })

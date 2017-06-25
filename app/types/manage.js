@@ -4,7 +4,6 @@ export type Manage = {|
   isDrawer: boolean,
   isImageView: boolean,
   isImgLoaded: boolean,
-  isMangaView: boolean,
   currentIllustId: ?number,
   userId: ?number,
 |}
@@ -12,8 +11,6 @@ export type Manage = {|
 export type ManageAction =
   | {| type: 'OPEN_IMAGE_VIEW' |}
   | {| type: 'CLOSE_IMAGE_VIEW' |}
-  | {| type: 'OPEN_MANGA_PREVIEW' |}
-  | {| type: 'CLOSE_MANGA_PREVIEW' |}
   | {| type: 'OPEN_DRAWER', id: number |}
   | {| type: 'CLOSE_DRAWER' |}
   | {| type: 'SET_CURRENT_ILLUST', id: number |}

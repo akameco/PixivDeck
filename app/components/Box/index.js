@@ -9,7 +9,6 @@ import type { User } from 'types/user'
 import { getUser } from 'reducers'
 import {
   openImageView,
-  openMangaPreview,
   setCurrentIllust,
   openUserDrawer,
   addBookmark,
@@ -17,6 +16,7 @@ import {
   openPixiv,
 } from 'actions'
 import { addColumnSearchIllust } from '../../containers/SearchField/actions'
+import { openMangaPreview } from '../../containers/MangaPreview/actions'
 import Box from './Box'
 
 // $FlowFixMe
