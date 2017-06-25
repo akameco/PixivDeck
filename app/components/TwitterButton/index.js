@@ -1,17 +1,11 @@
 // @flow
-import { shell } from 'electron'
 import React from 'react'
-import styled from 'styled-components'
 import Button from 'components/common/Button'
-
-const A = styled.a`
-	margin: 0 10px;
-`
+import { A } from './styles'
 
 const TwitterButton = ({ url }: { url: string }) => {
-  const onClick = () => shell.openExternal(url)
   return (
-    <A onClick={onClick}>
+    <A href={url} target="_blank">
       <Button label="twitter" />
     </A>
   )

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import type { User, Profile } from 'types/user'
 import FollowButton from 'containers/FollowButton'
 import AddNewColumnButton from 'containers/AddNewColumnButton'
-import TwitterButton from './TwitterButton'
+import TwitterButton from 'components/TwitterButton'
 
 type Props = {
   user: User,
