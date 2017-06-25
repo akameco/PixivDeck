@@ -5,8 +5,7 @@ import type { Dispatch } from 'types'
 import type { Illust } from 'types/illust'
 import type { DrawerType } from 'types/drawer'
 import { nextDrawerPage } from 'actions/drawer'
-import IllustList from './IllustList'
-import type { Props } from './IllustList'
+import IllustList, { type Props } from 'components/IllustList'
 
 type OwnProps = {
   illusts: Illust[],
