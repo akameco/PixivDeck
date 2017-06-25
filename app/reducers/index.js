@@ -3,7 +3,7 @@ import { combineReducers } from 'redux'
 import type { State } from 'types'
 import type { User } from 'types/user'
 import type { Illust } from 'types/illust'
-import LanguageProvider from '../containers/LanguageProvider/reducer'
+import Language from '../containers/Language/reducer'
 import ModalManeger from '../containers/ModalManeger/reducer'
 import SettingModal from '../containers/SettingModal/reducer'
 import HeaderContainer from '../containers/HeaderContainer/reducer'
@@ -17,7 +17,7 @@ import drawer from './drawer'
 import popover from './popover'
 
 const rootReducer = combineReducers({
-  language: LanguageProvider,
+  language: Language,
   manage,
   columns,
   auth,

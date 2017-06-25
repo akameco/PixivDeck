@@ -16,7 +16,7 @@ type Props = {
   locale: string,
 } & OP
 
-function LanguageProvider(props: Props) {
+function Language(props: Props) {
   const { locale, messages, children } = props
   const localeMessages = (messages && locale && messages[locale]) || {}
   return (
@@ -36,4 +36,4 @@ const mapStateToProps = createSelector(makeSelectLocale(), locale => ({
 }))
 
 const connector: Connector<OP, Props> = connect(mapStateToProps)
-export default connector(LanguageProvider)
+export default connector(Language)

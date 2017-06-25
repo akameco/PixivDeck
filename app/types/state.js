@@ -1,9 +1,5 @@
 // @flow
-import type { State as LanguageProviderState } from 'containers/LanguageProvider/type'
-import type { State as ModalManeger } from '../containers/ModalManeger/reducer'
-import type { State as SettingModal } from '../containers/SettingModal/reducer'
-import type { State as HeaderContainer } from '../containers/HeaderContainer/reducer'
-import type { State as MangaPreview } from '../containers/MangaPreview/reducer'
+import type { State as AppState } from '../state'
 
 import type { ColumnType } from './column'
 import type { Manage } from './manage'
@@ -26,7 +22,6 @@ export type Response = {
 }
 
 export type State = {
-  language: LanguageProviderState,
   columns: Array<ColumnType>,
   auth: Auth,
   entities: Entities,
@@ -35,8 +30,4 @@ export type State = {
   userById: Users,
   drawer: Drawer,
   popover: Popover,
-  ModalManeger: ModalManeger,
-  SettingModal: SettingModal,
-  HeaderContainer: HeaderContainer,
-  MangaPreview: MangaPreview,
-}
+} & AppState

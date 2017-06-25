@@ -2,7 +2,7 @@
 import { createSelector } from 'reselect'
 import type { State } from 'types'
 
-const selectLanguage = (state: State) => state.language
+const selectLanguage = (state: State) => state.Language
 
 const makeSelectLocale = () =>
   createSelector(selectLanguage, languageState => languageState.locale)

@@ -1,6 +1,5 @@
 // @flow
 import type { Store as ReduxStore, Dispatch as ReduxDispatch } from 'redux' // eslint-disable-line
-import type { Action as LanguageProviderAction } from 'containers/LanguageProvider/type'
 import type { Action as UserPopoverContainerAction } from 'containers/UserPopoverContainer/type'
 import type { Action as NextAction } from '../action'
 import type { ColumnAction } from './column'
@@ -25,7 +24,6 @@ export type Action =
   | IllustAction
   | MiscAction
   | PopoverAction
-  | LanguageProviderAction
   | UserPopoverContainerAction
   | AddColumnAction
   | NextAction

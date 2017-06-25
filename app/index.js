@@ -6,7 +6,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import type { State } from 'types'
 import App from 'containers/App/'
-import LanguageProvider from 'containers/LanguageProvider'
+import Language from 'containers/Language'
 import configureStore from './store'
 import Api from './api'
 
@@ -32,11 +32,11 @@ async function init() {
 
   render(
     <Provider store={store}>
-      <LanguageProvider messages={translationMessages}>
+      <Language messages={translationMessages}>
         <MuiThemeProvider>
           <App />
         </MuiThemeProvider>
-      </LanguageProvider>
+      </Language>
     </Provider>,
     document.querySelector('#root')
   )

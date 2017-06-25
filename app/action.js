@@ -1,7 +1,7 @@
 // @flow
 import type { Action as UserPopoverContainerAction } from './containers/UserPopoverContainer/actionTypes'
 
-import type { Action as LanguageProviderAction } from './containers/LanguageProvider/actionTypes'
+import type { Action as LanguageAction } from './containers/Language/actionTypes'
 
 import type { Action as SearchFieldAction } from './containers/SearchField/actionTypes'
 
@@ -15,7 +15,7 @@ import type { Action as MangaPreviewAction } from './containers/MangaPreview/act
 
 export type Action =
   | UserPopoverContainerAction
-  | LanguageProviderAction
+  | LanguageAction
   | SearchFieldAction
   | ModalManegerAction
   | SettingModalAction

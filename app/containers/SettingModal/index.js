@@ -2,8 +2,8 @@
 import { connect, type Connector } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import type { Dispatch } from 'types'
-import { changeLocale } from 'containers/LanguageProvider/actions'
-import { makeSelectLocale } from '../LanguageProvider/selectors'
+import { changeLocale } from 'containers/Language/actions'
+import { makeSelectLocale } from '../Language/selectors'
 import {
   setShowCaption,
   setShowOnlyIllust,
