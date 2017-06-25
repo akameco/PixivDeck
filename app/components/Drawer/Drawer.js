@@ -8,7 +8,7 @@ import DrawerWrapper from './DrawerWrapper'
 
 export type Props = {
   open: boolean,
-  children?: React$Element<any>,
+  children?: React$Element<*>,
   onRequestClose: () => void,
   width?: number,
 }
