@@ -1,51 +1,40 @@
 // @flow
-import React, { Component } from 'react'
+import React from 'react'
 import { connect, type Connector } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import type { Dispatch } from 'types'
 import type { Illust } from 'types/illust'
 import { closeMnagaPreview } from 'actions'
-import Preview from './MangaPreview'
 import MultiPreview from './MultiPreview'
-import { makeSelectIsManga, makeSelectIllust } from './selectors'
+import { makeSelectIllust } from './selectors'
 
 type Props = {
   illust: Illust,
-  show: boolean,
-  dispatch: Dispatch,
+  close: () => void,
 }
 
-class MangaPreviewContainer extends Component {
-  props: Props
-
-  handleClose = () => {
-    this.props.dispatch(closeMnagaPreview())
+function MangaPreviewContainer({ illust, close }: Props) {
+  if (illust.metaPages) {
+    return <MultiPreview pages={illust.metaPages} onClose={close} />
   }
 
-  render() {
-    const { illust, show } = this.props
-    if (illust.metaPages) {
-      return (
-        <MultiPreview pages={illust.metaPages} onClose={this.handleClose} />
-      )
-    }
-
-    return (
-      <Preview
-        show={show}
-        img={illust.imageUrls.large}
-        onClose={this.handleClose}
-      />
-    )
-  }
+  return null
 }
 
 const mapStateToProps = createStructuredSelector({
   illust: makeSelectIllust(),
-  show: makeSelectIsManga(),
 })
 
 type OP = { id: number }
 
-const connector: Connector<OP, Props> = connect(mapStateToProps)
+const connector: Connector<
+  OP,
+  Props
+> = connect(mapStateToProps, (dispatch: Dispatch) => {
+  return {
+    close() {
+      dispatch(closeMnagaPreview())
+    },
+  }
+})
 export default connector(MangaPreviewContainer)
