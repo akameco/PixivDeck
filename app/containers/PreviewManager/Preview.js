@@ -2,7 +2,7 @@
 import React from 'react'
 
 import IllustPreview from 'components/Preview/illust'
-import MangaPreview from 'components/Preview/manga'
+import MangaPreview from '../MangaPreview'
 
 export type Props = {
   id?: ?number,

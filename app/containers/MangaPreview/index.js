@@ -1,11 +1,13 @@
 // @flow
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import type { State, Dispatch } from 'types'
+import { connect, type Connector } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
+import type { Dispatch } from 'types'
 import type { Illust } from 'types/illust'
 import { closeMnagaPreview } from 'actions'
 import Preview from './MangaPreview'
 import MultiPreview from './MultiPreview'
+import { makeSelectIsManga, makeSelectIllust } from './selectors'
 
 type Props = {
   illust: Illust,
@@ -38,16 +40,12 @@ class MangaPreviewContainer extends Component {
   }
 }
 
-function mapStateToProps(
-  { illustById, manage: { isMangaView } }: State,
-  { id }
-) {
-  const illust = illustById[id]
+const mapStateToProps = createStructuredSelector({
+  illust: makeSelectIllust(),
+  show: makeSelectIsManga(),
+})
 
-  return {
-    illust,
-    show: isMangaView,
-  }
-}
+type OP = { id: number }
 
-export default connect(mapStateToProps)(MangaPreviewContainer)
+const connector: Connector<OP, Props> = connect(mapStateToProps)
+export default connector(MangaPreviewContainer)
