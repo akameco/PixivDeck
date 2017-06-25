@@ -15,6 +15,8 @@ import type { Action as MangaPreviewAction } from './containers/MangaPreview/act
 
 import type { Action as LoginModalAction } from './containers/LoginModal/actionTypes'
 
+import type { Action as FollowButtonAction } from './containers/FollowButton/actionTypes'
+
 export type Action =
   | UserPopoverContainerAction
   | LanguageAction
@@ -24,3 +26,4 @@ export type Action =
   | HeaderContainerAction
   | MangaPreviewAction
   | LoginModalAction
+  | FollowButtonAction

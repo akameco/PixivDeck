@@ -1,34 +1,19 @@
-import { call, fork, takeEvery } from 'redux-saga/effects' // eslint-disable-line
-import * as Actions from 'constants/user'
+// @flow
+import { call, fork, takeEvery, type IOEffect } from 'redux-saga/effects' // eslint-disable-line
+import * as Actions from '../containers/FollowButton/constants'
 import Api from '../api'
 
-type hasId = {
-  id: number,
+function* follow({ id }: { id: number }): Generator<IOEffect, void, *> {
+  yield call(Api.userFollowAdd, id)
 }
 
-function* follow({ id }: hasId) {
-  try {
-    yield call(Api.userFollowAdd, id)
-  } catch (err) {}
+function* unfollow({ id }: { id: number }): Generator<IOEffect, void, *> {
+  yield call(Api.userFollowDelete, id)
 }
 
-function* unfollow({ id }: hasId) {
-  try {
-    yield call(Api.userFollowDelete, id)
-  } catch (err) {}
-}
-
-function* followWatch() {
-  yield takeEvery(Actions.FOLLOW, follow)
-}
-
-function* unfollowWatch() {
-  yield takeEvery(Actions.UN_FOLLOW, unfollow)
-}
-
-function* root() {
-  yield fork(followWatch)
-  yield fork(unfollowWatch)
+function* root(): Generator<*, *, *> {
+  yield takeEvery(Actions.FOLLLOW_REQUEST, follow)
+  yield takeEvery(Actions.UN_FOLLLOW_REQUEST, unfollow)
 }
 
 export default root

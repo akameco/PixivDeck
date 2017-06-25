@@ -514,5 +514,7 @@ declare module 'redux-saga/effects' {
     actionChannel: ActionChannelFn,
     cancelled: () => CancelledEffect,
     flush: FlushFn,
+    takeEvery: TakeXFn,
+    takeLatest: TakeXFn,
   }
 }

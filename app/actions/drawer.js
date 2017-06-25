@@ -20,9 +20,6 @@ export const setNextUrl = (url: string, drawerType: DrawerType): Action => ({
   drawerType,
 })
 
-export const follow = (id: number): Action => ({ type: 'FOLLOW', id })
-export const unFollow = (id: number) => ({ type: 'UN_FOLLOW', id })
-
 export const addDrawerUser = (user: User): Action => ({
   type: 'DRAWER_ADD_USER',
   user,
