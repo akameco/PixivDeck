@@ -1,7 +1,7 @@
 // @flow
 import { connect } from 'react-redux'
-import type { State } from 'types/'
-import { closeDrawer } from 'actions/'
+import type { State } from 'types'
+import { closeDrawer } from 'actions'
 import App from './App'
 
 const mapStateToProps = ({ manage, columns }: State) => ({

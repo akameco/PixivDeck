@@ -11,7 +11,7 @@ import UserDrawer from 'components/UserDrawer'
 import ModalManeger from '../ModalManeger'
 import Header from '../HeaderContainer'
 
-import Preview from './Preview'
+import PreviewManager from '../PreviewManager'
 
 type Props = {
   columns: Array<ColumnType>,
@@ -23,7 +23,7 @@ const App = ({ columns, manage, onClose }: Props) =>
   <div>
     <Header />
     <Columns columns={columns} />
-    <Preview {...manage} />
+    <PreviewManager />
     <Drawer open={manage.isDrawer} onRequestClose={onClose} width={600}>
       <UserDrawer />
     </Drawer>
