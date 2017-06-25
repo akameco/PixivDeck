@@ -12,6 +12,8 @@ import MangaPreview from '../containers/MangaPreview/reducer'
 import LoginModal from '../containers/LoginModal/reducer'
 import UserPopoverContainer from '../containers/UserPopoverContainer/reducer'
 import IllustPreview from '../containers/IllustPreview/reducer'
+import DrawerManager from '../containers/DrawerManager/reducer'
+import UserDrawerContainer from '../containers/UserDrawerContainer/reducer'
 
 import manage from './manage'
 import columns from './columns'
@@ -33,6 +35,8 @@ const rootReducer = combineReducers({
   LoginModal,
   UserPopoverContainer,
   IllustPreview,
+  DrawerManager,
+  UserDrawerContainer,
 })
 
 export const getColumn = ({ columns }: State, id: number) =>
@@ -58,20 +62,7 @@ export const getIllusts = (state: State, columnId: number) => {
     )
 }
 
-export const getDrawerIllusts = (state: State) =>
-  state.drawer.illusts.map(id => fromIllustById.getIllust(state.illustById, id))
-
-export const getDrawerMangas = (state: State) =>
-  state.drawer.mangas.map(id => fromIllustById.getIllust(state.illustById, id))
-
 export const getUser = (state: State, userId: number): User =>
   fromUserById.getUser(state, userId)
-
-export const getCurrentUser = (state: State): ?User => {
-  if (state.manage.userId) {
-    return state.userById[state.manage.userId]
-  }
-  return null
-}
 
 export default rootReducer

@@ -3,7 +3,7 @@ import { connect, type Connector } from 'react-redux'
 import type { Dispatch } from 'types'
 import type { Illust } from 'types/illust'
 import type { DrawerType } from 'types/drawer'
-import { nextDrawerPage } from 'actions/drawer'
+import { nextDrawerPage } from 'containers/UserDrawerContainer/actions'
 import IllustList, { type Props } from 'components/IllustList'
 
 const mapDispatchToProps = (dispatch: Dispatch, { type }) => ({

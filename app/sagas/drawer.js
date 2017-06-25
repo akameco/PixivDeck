@@ -8,19 +8,18 @@ import {
   select,
   type IOEffect,
 } from 'redux-saga/effects'
-import * as Actions from 'constants/drawer'
+import { apiRequestSuccess } from 'actions/api'
+import { getNextUrl } from 'reducers/drawer'
+import type { DrawerType } from 'types/drawer'
+import Api from '../api'
+import { normalizeIllusts } from '../api/pixiv'
 import {
   addDrawerUser,
   addDrawerProfile,
   addDrawerIllusts,
   setNextUrl,
-} from 'actions/drawer'
-import { apiRequestSuccess } from 'actions/api'
-import { getNextUrl } from 'reducers/drawer'
-import type { DrawerType } from 'types/drawer'
-import type { Endpoint } from 'types/column'
-import Api from '../api'
-import { normalizeIllusts } from '../api/pixiv'
+} from '../containers/UserDrawerContainer/actions'
+import * as Actions from '../containers/UserDrawerContainer/constants'
 
 function* fetchUserDetail({ id }): Generator<IOEffect, void, *> {
   const { user, profile } = yield call(Api.userDetail, id)
@@ -62,7 +61,7 @@ function* nextDrawerPage({ drawerType }): Generator<IOEffect, void, *> {
 }
 
 function* fetchDrawerIllustWatch(): Generator<IOEffect, void, *> {
-  yield takeEvery(Actions.DRAWER_FETCH_ILLUST, fetchDrawerIllust)
+  yield takeEvery(Actions.FETCH_DRAWER_ILLUST, fetchDrawerIllust)
 }
 
 function* fetchUserDetailWatch(): Generator<IOEffect, void, *> {
@@ -70,7 +69,7 @@ function* fetchUserDetailWatch(): Generator<IOEffect, void, *> {
 }
 
 function* nextDrawerPageWatch(): Generator<IOEffect, void, *> {
-  yield takeEvery(Actions.DRAWER_NEXT_PAGE, nextDrawerPage)
+  yield takeEvery(Actions.NEXT_DRAWER_PAGE, nextDrawerPage)
 }
 
 export default function* root(): Generator<IOEffect, void, *> {

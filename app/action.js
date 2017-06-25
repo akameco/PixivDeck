@@ -23,6 +23,10 @@ import type { Action as AddNewColumnButtonAction } from './containers/AddNewColu
 
 import type { Action as BookmarkButtonAction } from './containers/BookmarkButton/actionTypes'
 
+import type { Action as UserDrawerContainerAction } from './containers/UserDrawerContainer/actionTypes'
+
+import type { Action as DrawerManagerAction } from './containers/DrawerManager/actionTypes'
+
 export type Action =
   | UserPopoverContainerAction
   | LanguageAction
@@ -36,3 +40,5 @@ export type Action =
   | IllustPreviewAction
   | AddNewColumnButtonAction
   | BookmarkButtonAction
+  | UserDrawerContainerAction
+  | DrawerManagerAction

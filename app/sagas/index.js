@@ -1,4 +1,6 @@
+// @flow
 import { fork } from 'redux-saga/effects' // eslint-disable-line
+import UserDrawerContainer from '../containers/UserDrawerContainer/saga'
 import auth from './auth'
 import minBookmarks from './minBookmarks'
 import nextColumnPage from './nextColumnPage'
@@ -10,7 +12,7 @@ import misc from './misc'
 import addColumn from './addColumn'
 import drawer from './drawer'
 
-function* root() {
+function* root(): Generator<*, void, void> {
   yield fork(auth)
   yield fork(minBookmarks)
   yield fork(nextColumnPage)
@@ -21,6 +23,7 @@ function* root() {
   yield fork(popover)
   yield fork(addColumn)
   yield fork(drawer)
+  yield fork(UserDrawerContainer)
 }
 
 export default root

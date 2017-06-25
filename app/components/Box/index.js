@@ -7,13 +7,9 @@ import type { Dispatch, State } from 'types/'
 import type { Illust } from 'types/illust'
 import type { User } from 'types/user'
 import { getUser } from 'reducers'
-import {
-  setCurrentIllust,
-  openUserDrawer,
-  shareTwitter,
-  openPixiv,
-} from 'actions'
+import { setCurrentIllust, shareTwitter, openPixiv } from 'actions'
 import { addBookmarkRequest as addBookmark } from '../../containers/BookmarkButton/actions'
+import { openDrawer } from '../../containers/DrawerManager/actions'
 
 import { openIllustViewer } from '../../containers/IllustPreview/actions'
 import { addColumnSearchIllust } from '../../containers/SearchField/actions'
@@ -173,7 +169,7 @@ const mapDispatchToProps = (dispatch: Dispatch, { illust }) => {
       dispatch(addBookmark(illustId, isPublic))
     },
     openUserDrawer() {
-      dispatch(openUserDrawer(userId))
+      dispatch(openDrawer(userId))
     },
     addColumnSearchIllust(tag: string) {
       dispatch(addColumnSearchIllust(tag))

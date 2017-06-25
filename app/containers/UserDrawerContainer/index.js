@@ -1,14 +1,18 @@
 // @flow
-import React, { Component } from 'react'
+import React from 'react'
 import { connect, type Connector } from 'react-redux'
-import type { Dispatch, State } from 'types'
+import { createStructuredSelector } from 'reselect'
+import type { Dispatch } from 'types'
 import type { User, Profile } from 'types/user'
 import type { Illust } from 'types/illust'
-import { fetchUserDetail } from 'actions'
-import { fetchDrawerIllust } from 'actions/drawer'
-import { getCurrentUser, getDrawerIllusts, getDrawerMangas } from 'reducers'
 import Loading from 'components/Loading'
 import UserDrawer from 'components/UserDrawer'
+import {
+  makeSelectUser,
+  makeSelectProfile,
+  makeGetMangas,
+  makeGetIllusts,
+} from './selectors'
 
 type Props = {
   user: ?User,
@@ -18,45 +22,26 @@ type Props = {
   dispatch: Dispatch,
 }
 
-class UserDrawerContainer extends Component {
-  props: Props
-
-  componentDidMount() {
-    this.init()
+function UserDrawerContainer(props: Props) {
+  const { user, profile, illusts, mangas } = props
+  if (profile && user) {
+    return (
+      <UserDrawer
+        illusts={illusts}
+        mangas={mangas}
+        profile={profile}
+        user={user}
+      />
+    )
   }
-
-  async init() {
-    const { dispatch, user } = this.props
-    if (user && user.id) {
-      await Promise.all([
-        dispatch(fetchUserDetail(user.id)),
-        dispatch(fetchDrawerIllust(user.id, 'illust')),
-        dispatch(fetchDrawerIllust(user.id, 'manga')),
-      ])
-    }
-  }
-
-  render() {
-    const { user, profile, illusts, mangas } = this.props
-    if (profile && user) {
-      return (
-        <UserDrawer
-          illusts={illusts}
-          mangas={mangas}
-          profile={profile}
-          user={user}
-        />
-      )
-    }
-    return <Loading />
-  }
+  return <Loading />
 }
 
-const mapStateToProps = (state: State) => ({
-  user: state.drawer.user || getCurrentUser(state),
-  illusts: getDrawerIllusts(state),
-  mangas: getDrawerMangas(state),
-  profile: state.drawer.profile,
+const mapStateToProps = createStructuredSelector({
+  user: makeSelectUser(),
+  illusts: makeGetIllusts(),
+  mangas: makeGetMangas(),
+  profile: makeSelectProfile(),
 })
 
 const connector: Connector<{}, Props> = connect(mapStateToProps)

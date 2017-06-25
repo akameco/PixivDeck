@@ -1,32 +1,22 @@
 // @flow
 import React from 'react'
-
-import type { Manage } from 'types/manage'
 import type { ColumnType } from 'types/column'
-
 import Columns from 'components/Columns'
-import Drawer from 'components/Drawer'
-import UserDrawerContainer from 'containers/UserDrawerContainer'
+import DrawerManager from 'containers/DrawerManager'
+import ModalManeger from 'containers/ModalManeger'
+import Header from 'containers/HeaderContainer'
+import PreviewManager from 'containers/PreviewManager'
 
-import ModalManeger from '../ModalManeger'
-import Header from '../HeaderContainer'
-
-import PreviewManager from '../PreviewManager'
-
-type Props = {
+export type Props = {
   columns: Array<ColumnType>,
-  manage: Manage,
-  onClose: () => void,
 }
 
-const App = ({ columns, manage, onClose }: Props) =>
+const App = ({ columns }: Props) =>
   <div>
     <Header />
     <Columns columns={columns} />
     <PreviewManager />
-    <Drawer open={manage.isDrawer} onRequestClose={onClose} width={600}>
-      <UserDrawerContainer />
-    </Drawer>
+    <DrawerManager />
     <ModalManeger />
   </div>
 
