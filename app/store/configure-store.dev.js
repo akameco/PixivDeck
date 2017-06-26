@@ -7,7 +7,7 @@ import reducer from 'reducers'
 import mySaga from '../sagas'
 import storeWrapper from './wrapper'
 
-export default function configureStore(initialState: Object) {
+export default function configureStore(initialState: ?Object) {
   const middleware = []
 
   const sagaMiddleware = createSagaMiddleware()
