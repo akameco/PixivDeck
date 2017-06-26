@@ -5,6 +5,7 @@ import IconButton from 'material-ui/IconButton'
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu'
 import NavigationClose from 'material-ui/svg-icons/navigation/close'
 import type { ColumnType } from 'types/column'
+import HeaderPopover from './HeaderPopover'
 import ColumnSetting from './ColumnSettinContainer'
 
 const style = {
@@ -51,11 +52,9 @@ class ColumnHeader extends React.Component {
             </IconButton>
           </Item>
         </Header>
-        <ColumnSetting
-          open={this.state.open}
-          id={column.id}
-          minBookmarks={column.minBookmarks}
-        />
+        <HeaderPopover open={this.state.open}>
+          <ColumnSetting id={column.id} minBookmarks={column.minBookmarks} />
+        </HeaderPopover>
       </Wrap>
     )
   }

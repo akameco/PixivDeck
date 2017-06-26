@@ -6,10 +6,9 @@ import Slider from 'material-ui/Slider'
 import { FormattedMessage } from 'react-intl'
 import messages from './messages'
 
-type Props = {
+export type Props = {
   setColumnMinBookmarks: (value: number) => void,
   minBookmarks: number,
-  open: boolean,
 }
 
 type State = {
@@ -36,47 +35,24 @@ class ColumnSetting extends React.Component {
     this.props.setColumnMinBookmarks(this.state.minBookmarks)
   }, 400)
 
-  handleMove = (e: Event) => {
-    e.stopPropagation()
-  }
-
   render() {
-    const { open } = this.props
     const { minBookmarks } = this.state
 
     return (
-      <Popover
-        open={open}
-        onMouseDown={this.handleMove}
-        onTouchStart={this.handleMove}
-      >
-        <Wrap>
-          <FormattedMessage {...messages.bookmarkFilter} /> {minBookmarks}
-          <Slider
-            min={0}
-            max={1000}
-            step={10}
-            defaultValue={minBookmarks}
-            value={minBookmarks}
-            onChange={this.handleSlider}
-          />
-        </Wrap>
-      </Popover>
+      <Wrap>
+        <FormattedMessage {...messages.bookmarkFilter} /> {minBookmarks}
+        <Slider
+          min={0}
+          max={1000}
+          step={10}
+          defaultValue={minBookmarks}
+          value={minBookmarks}
+          onChange={this.handleSlider}
+        />
+      </Wrap>
     )
   }
 }
-
-const Popover = styled.div`
-	display: flex;
-	overflow: auto;
-	margin: 0;
-	padding: 0 10px;
-	max-height: ${props => (props.open ? '400px' : 0)};
-	transition: ${props =>
-    props.open
-      ? 'max-height, 0.6s, 0ms, ease-out'
-      : 'max-height, 0.4s, 0ms, ease-in'};
-`
 
 const Wrap = styled.div`
 	display: flex;

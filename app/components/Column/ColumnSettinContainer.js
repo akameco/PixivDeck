@@ -1,14 +1,19 @@
 // @flow
-import { connect } from 'react-redux'
+import { connect, type Connector } from 'react-redux'
 import type { Dispatch } from 'types'
 import { setColumnMinBookmarks } from 'actions'
-import ColumnSetting from './ColumnSetting'
+import ColumnSetting, { type Props } from './ColumnSetting'
 
-export default connect(
-  undefined,
-  (dispatch: Dispatch, { id }: { id: number }) => ({
-    setColumnMinBookmarks(value: number) {
-      dispatch(setColumnMinBookmarks(id, value))
-    },
-  })
-)(ColumnSetting)
+type OP = {
+  minBookmarks: number,
+  id: number,
+}
+
+const mapStateToDispatch = (dispatch: Dispatch, { id }: OP) => ({
+  setColumnMinBookmarks(value: number) {
+    dispatch(setColumnMinBookmarks(id, value))
+  },
+})
+
+const connector: Connector<OP, Props> = connect(undefined, mapStateToDispatch)
+export default connector(ColumnSetting)
