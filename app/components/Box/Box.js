@@ -2,7 +2,7 @@
 import React from 'react'
 import type { User } from 'types/user'
 import type { Illust } from 'types/illust'
-import BoxHeader from './header/BoxHeader'
+import BoxHeader from 'components/BoxHeader'
 import BoxFooter from './BoxFooter'
 import BoxImage from './BoxImage'
 import BoxWrapper from './boxStyles'
