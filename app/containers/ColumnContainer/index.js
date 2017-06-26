@@ -26,15 +26,15 @@ class ColumnContainer extends Component {
   props: Props
   timer: number
 
-  // componentDidMount() {
-  //    this.init()
-  // }
+  componentDidMount() {
+    this.init()
+  }
 
   componentWillUnmount() {
     clearInterval(this.timer)
   }
 
-  init() {
+  async init() {
     const { column: { timer }, fetchColumn, checkColumnUpdate } = this.props
 
     fetchColumn()
