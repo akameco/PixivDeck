@@ -2,7 +2,6 @@
 import type { Store as ReduxStore, Dispatch as ReduxDispatch } from 'redux' // eslint-disable-line
 import type { Action as NextAction } from '../action'
 import type { ColumnAction } from './column'
-import type { ManageAction } from './manage'
 import type { ApiAction } from './api'
 import type { MiscAction } from './misc'
 import type { AddColumnAction } from './addColumn'
@@ -12,7 +11,6 @@ export type State = BaseState
 
 export type Action =
   | ColumnAction
-  | ManageAction
   | ApiAction
   | MiscAction
   | AddColumnAction

@@ -15,14 +15,12 @@ import IllustPreview from '../containers/IllustPreview/reducer'
 import DrawerManager from '../containers/DrawerManager/reducer'
 import UserDrawerContainer from '../containers/UserDrawerContainer/reducer'
 
-import manage from './manage'
 import columns from './columns'
 import illustById, * as fromIllustById from './illustById'
 import userById, * as fromUserById from './userById'
 
 const rootReducer = combineReducers({
   Language,
-  manage,
   columns,
   illustById,
   userById,

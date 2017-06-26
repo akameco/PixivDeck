@@ -1,24 +1,18 @@
 // @flow
 import React from 'react'
-
 import IllustPreview from '../IllustPreview'
 import MangaPreview from '../MangaPreview'
 
 export type Props = {
-  id?: ?number,
   isOpenImage: boolean,
   isOpenManga: boolean,
 }
 
-const Preview = ({ id, isOpenImage, isOpenManga }: Props) => {
-  if (!id) {
-    return null
-  }
-
+const Preview = ({ isOpenImage, isOpenManga }: Props) => {
   if (isOpenImage) {
-    return <IllustPreview id={id} />
+    return <IllustPreview />
   } else if (isOpenManga) {
-    return <MangaPreview id={id} />
+    return <MangaPreview />
   }
 
   return null

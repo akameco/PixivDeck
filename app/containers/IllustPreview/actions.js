@@ -1,17 +1,11 @@
 // @flow
 import type { Action } from './actionTypes.js'
 import {
-  OPEN_ILLUST_VIEWER,
   COLOSE_ILLUST_VIEWER,
   START_IMG_LOADING,
   FINISH_IMG_LOADING,
+  OPEN_ILLUST_VIEWER,
 } from './constants'
-
-export function openIllustViewer(): Action {
-  return {
-    type: OPEN_ILLUST_VIEWER,
-  }
-}
 
 export function coloseIllustViewer(): Action {
   return {
@@ -28,5 +22,12 @@ export function startImgLoading(): Action {
 export function finishImgLoading(): Action {
   return {
     type: FINISH_IMG_LOADING,
+  }
+}
+
+export function openIllustViewer(id: number): Action {
+  return {
+    type: OPEN_ILLUST_VIEWER,
+    id,
   }
 }

@@ -25,10 +25,8 @@ const mapStateToProps = createStructuredSelector({
   illust: makeSelectIllust(),
 })
 
-type OP = { id: number }
-
 const connector: Connector<
-  OP,
+  {},
   Props
 > = connect(mapStateToProps, (dispatch: Dispatch) => {
   return {

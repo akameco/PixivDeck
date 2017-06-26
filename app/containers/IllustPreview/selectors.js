@@ -10,7 +10,13 @@ export const makeSelectIsImage = () =>
 export const makeSelectIsImgLoding = () =>
   createSelector(selectIllustPreview, s => s.isImgLoading)
 
-const getSelectIllust = (state: State, { id }: { id: number }) =>
-  state.illustById[id]
+const selectIllustById = (state: State) => state.illustById
 
-export const makeSelectIllust = () => createSelector(getSelectIllust, s => s)
+const getSelectId = createSelector(selectIllustPreview, s => s.id)
+
+export const makeSelectIllust = () =>
+  createSelector(
+    selectIllustById,
+    getSelectId,
+    (illusts, id) => id && illusts[id]
+  )

@@ -7,7 +7,7 @@ import type { Dispatch, State } from 'types/'
 import type { Illust } from 'types/illust'
 import type { User } from 'types/user'
 import { getUser } from 'reducers'
-import { setCurrentIllust, shareTwitter, openPixiv } from 'actions'
+import { shareTwitter, openPixiv } from 'actions'
 import { addBookmarkRequest as addBookmark } from '../../containers/BookmarkButton/actions'
 import { openDrawer } from '../../containers/DrawerManager/actions'
 
@@ -158,11 +158,11 @@ const mapDispatchToProps = (dispatch: Dispatch, { illust }) => {
   const userId = illust.user
   return {
     openPreview() {
-      dispatch(setCurrentIllust(illustId))
+      // dispatch(setCurrentIllust(illustId))
       if (illust.pageCount > 1) {
-        dispatch(openMangaPreview())
+        dispatch(openMangaPreview(illustId))
       } else {
-        dispatch(openIllustViewer())
+        dispatch(openIllustViewer(illustId))
       }
     },
     addBookmark(isPublic: boolean) {

@@ -58,15 +58,11 @@ class IllustPreviewContainer extends Component {
   }
 }
 
-type OP = {
-  id: number,
-}
-
 const mapStateToProps = createStructuredSelector({
   illust: selectors.makeSelectIllust(),
   show: selectors.makeSelectIsImage(),
   isImgLoading: selectors.makeSelectIsImgLoding(),
 })
 
-const connecter: Connector<OP, Props> = connect(mapStateToProps)
+const connecter: Connector<{}, Props> = connect(mapStateToProps)
 export default connecter(IllustPreviewContainer)

@@ -5,8 +5,8 @@ import type { Store, Dispatch } from 'types'
 export default (store: Store) => {
   const dispatch: Dispatch = store.dispatch
   const saveState = () => {
-    const { LoginModal, manage, columns, filter, config } = store.getState()
-    const json = { LoginModal, manage, columns, filter, config }
+    const { LoginModal, columns, filter, config } = store.getState()
+    const json = { LoginModal, columns, filter, config }
     localStorage.setItem('store', JSON.stringify(json))
   }
 
