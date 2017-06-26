@@ -1,5 +1,8 @@
+// @flow
 import { createStore, applyMiddleware, compose } from 'redux'
 import createSagaMiddleware from 'redux-saga'
+import { persistStore, autoRehydrate } from 'redux-persist'
+import localForage from 'localforage'
 import reducer from 'reducers'
 import mySaga from '../sagas'
 import storeWrapper from './wrapper'
@@ -12,16 +15,20 @@ export default function configureStore(initialState: Object) {
 
   const enhancer = compose(
     applyMiddleware(...middleware),
+    autoRehydrate(),
     window.devToolsExtension ? window.devToolsExtension() : f => f
   )
 
   const store = createStore(reducer, initialState, enhancer)
   storeWrapper(store)
 
+  persistStore(store, { storage: localForage })
+
   sagaMiddleware.run(mySaga)
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
+    // $FlowFixMe
     module.hot.accept('../reducers', () => {
       const nextRootReducer = require('../reducers').default
 

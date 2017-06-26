@@ -17,18 +17,11 @@ import './global-styles' // eslint-disable-line
 injectTapEventPlugin()
 
 async function init() {
-  const storage: ?string = localStorage.getItem('store')
-  let initialState: $Shape<State> = storage ? JSON.parse(storage) : {}
-
-  const { LoginModal: auth, columns } = initialState
-
-  if (auth && auth.username && auth.password) {
-    await Api.login(auth.username, auth.password)
-  } else if (columns) {
-    initialState = { columns: initialState.columns }
+  const store = configureStore()
+  const { LoginModal }: State = store.getState()
+  if (LoginModal && LoginModal.username && LoginModal.password) {
+    await Api.login(LoginModal.username, LoginModal.password)
   }
-
-  const store = configureStore(initialState)
 
   render(
     <Provider store={store}>
