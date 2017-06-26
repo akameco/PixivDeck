@@ -156,7 +156,7 @@
     "devtron": "^1.4.0",
     "electron": "^1.6.11",
     "electron-builder": "^19.8.0",
-    "electron-devtools-installer": "^2.2.0",
+    "electron-load-devtool": "^0.5.1",
     "enzyme": "^2.9.1",
     "enzyme-to-json": "^1.5.1",
     "eslint": "^4.1.0",

@@ -26,12 +26,11 @@ if (
 require('electron-context-menu')()
 
 const installExtensions = async () => {
-  const installer = require('electron-devtools-installer')
-  const forceDownload = Boolean(process.env.UPGRADE_EXTENSIONS)
+  const loadDevtool = require('electron-load-devtool')
   const extensions = ['REACT_DEVELOPER_TOOLS', 'REDUX_DEVTOOLS']
 
   return Promise.all(
-    extensions.map(name => installer.default(installer[name], forceDownload))
+    extensions.map(name => loadDevtool(loadDevtool[name]))
   ).catch(console.log)
 }
 
