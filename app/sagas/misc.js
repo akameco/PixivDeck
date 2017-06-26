@@ -1,28 +1,9 @@
 // @flow
-import { ipcRenderer, shell } from 'electron'
-// eslint-disable-next-line import/order
-import { select, call, takeEvery, type IOEffect } from 'redux-saga/effects'
-import { getIllust, getUser } from 'reducers'
-import * as Actions from 'constants/misc'
+import { shell } from 'electron'
+import * as Actions from '../containers/BoxContainer/constants'
+import { call, takeEvery, type IOEffect } from 'redux-saga/effects'
 
-type hasId = {
-  id: number,
-}
-
-function* shareTwitter({ id }: hasId): Generator<IOEffect, void, *> {
-  try {
-    const state = yield select()
-    const illust = getIllust(state, id)
-    const user = getUser(state, illust.user)
-    const encodedTitle = encodeURIComponent(illust.title)
-    const encodedName = encodeURIComponent(user.name)
-    const url = `https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fwww.pixiv.net%2Fmember_illust.php%3Fmode%3Dmedium%26illust_id%3D${id}&ref_src=twsrc%5Etfw&text=${encodedTitle}%20%7C%20${encodedName}%20%23pixiv%20%23PixivDeck&tw_p=tweetbutton&url=http%3A%2F%2Fwww.pixiv.net%2Fmember_illust.php%3Fillust_id%3D${id}%26mode%3Dmedium`
-    // $FlowFixMe
-    ipcRenderer.send('tweet', url)
-  } catch (err) {}
-}
-
-function* openPixiv({ id }: hasId): Generator<IOEffect, void, *> {
+function* openPixiv({ id }: { id: number }): Generator<IOEffect, void, *> {
   yield call(
     shell.openExternal,
     `http://www.pixiv.net/member_illust.php?mode=medium&illust_id=${id}`
@@ -30,6 +11,5 @@ function* openPixiv({ id }: hasId): Generator<IOEffect, void, *> {
 }
 
 export default function* root(): Generator<IOEffect, void, *> {
-  yield takeEvery(Actions.SHARE_TWITTER, shareTwitter)
   yield takeEvery(Actions.OPEN_PIXIV, openPixiv)
 }

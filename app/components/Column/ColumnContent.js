@@ -1,6 +1,6 @@
 import React, { type Component } from 'react'
 import styled from 'styled-components'
-import Box from 'components/Box'
+import Box from 'containers/BoxContainer'
 import Infinite from 'components/common/Infinite'
 import type Illust from 'types'
 

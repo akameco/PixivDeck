@@ -1,190 +1,48 @@
 // @flow
-import { remote } from 'electron'
-import React, { Component } from 'react'
-import { download } from 'electron-dl'
-import { connect, type Connector } from 'react-redux'
-import type { Dispatch, State } from 'types/'
-import type { Illust } from 'types/illust'
+import React from 'react'
 import type { User } from 'types/user'
-import { getUser } from 'reducers'
-import { shareTwitter, openPixiv } from 'actions'
-import { addBookmarkRequest as addBookmark } from '../../containers/BookmarkButton/actions'
-import { openDrawer } from '../../containers/DrawerManager/actions'
-
-import { openIllustViewer } from '../../containers/IllustPreview/actions'
-import { addColumnSearchIllust } from '../../containers/SearchField/actions'
-import { openMangaPreview } from '../../containers/MangaPreview/actions'
-
-import Box from './Box'
-
-// $FlowFixMe
-const { Menu, MenuItem } = remote
+import type { Illust } from 'types/illust'
+import BoxHeader from 'components/BoxHeader'
+import BoxFooter from './BoxFooter'
+import BoxImage from './BoxImage'
+import BoxWrapper from './boxStyles'
 
 type Props = {
   illust: Illust,
   user: User,
   isIllustOnly: boolean,
   isShowCaption: boolean,
-  openUserDrawer: () => void,
-  openPreview: () => void,
-  addColumnSearchIllust: Function,
-  addBookmark: (isPublic: boolean) => void,
-  openPixiv: () => void,
-  shareTwitter: (id: number) => void,
+  onClick: () => void,
+  onClickUser: () => void,
+  onClickTag: (tag: string) => void,
+  onContextMenu: (event: Event) => void,
 }
 
-class BoxContainer extends Component {
-  props: Props
+const Box = ({
+  illust,
+  user,
+  onClick,
+  onClickTag,
+  onClickUser,
+  isIllustOnly,
+  isShowCaption,
+  onContextMenu,
+}: Props) => {
+  const tags = illust.tags.map(x => x.name)
 
-  handleTagClick = (tag: string) => {
-    this.props.addColumnSearchIllust(tag)
-  }
-
-  handleContextMenu = (e: Event) => {
-    e.preventDefault()
-
-    const {
-      illust,
-      addBookmark,
-      openPixiv,
-      openUserDrawer,
-      shareTwitter,
-    } = this.props
-
-    const menu = new Menu()
-
-    menu.append(
-      new MenuItem({
-        label: 'オリジナルサイズの画像を保存',
-        click(item, win) {
-          const img = illust.metaSinglePage.originalImageUrl
-          download(win, img ? img : illust.imageUrls.large)
-        },
-      })
-    )
-
-    menu.append(new MenuItem({ type: 'separator' }))
-
-    menu.append(
-      new MenuItem({
-        label: 'このユーザの情報を見る',
-        click() {
-          openUserDrawer()
-        },
-      })
-    )
-
-    menu.append(new MenuItem({ type: 'separator' }))
-
-    menu.append(
-      new MenuItem({
-        label: 'ブックマーク',
-        click() {
-          addBookmark(true)
-        },
-      })
-    )
-
-    menu.append(
-      new MenuItem({
-        label: '非公開ブックマーク',
-        click() {
-          addBookmark(false)
-        },
-      })
-    )
-
-    menu.append(new MenuItem({ type: 'separator' }))
-
-    menu.append(
-      new MenuItem({
-        label: 'Twitterで共有',
-        click() {
-          shareTwitter(illust.id)
-        },
-      })
-    )
-
-    menu.append(
-      new MenuItem({
-        label: 'pixivで開く',
-        click() {
-          openPixiv()
-        },
-      })
-    )
-
-    // $FlowFixMe
-    menu.popup(remote.getCurrentWindow())
-  }
-
-  render() {
-    const {
-      user,
-      illust,
-      isIllustOnly,
-      openPreview,
-      openUserDrawer,
-      isShowCaption,
-    } = this.props
-
-    return (
-      <Box
-        user={user}
-        illust={illust}
-        isIllustOnly={isIllustOnly}
-        isShowCaption={isShowCaption}
-        onClick={openPreview}
-        onClickUser={openUserDrawer}
-        onClickTag={this.handleTagClick}
-        onContextMenu={this.handleContextMenu}
-      />
-    )
-  }
+  return (
+    <BoxWrapper onContextMenu={onContextMenu}>
+      {!isIllustOnly &&
+        <BoxHeader
+          user={user}
+          illust={illust}
+          isShowCaption={isShowCaption}
+          onClick={onClickUser}
+        />}
+      <BoxImage illust={illust} onClick={onClick} />
+      {!isIllustOnly && <BoxFooter tags={tags} onClickTag={onClickTag} />}
+    </BoxWrapper>
+  )
 }
 
-type OwnProps = {
-  illust: Illust,
-}
-
-const mapStateToProps = (state: State, { illust }) => ({
-  user: getUser(state, illust.user),
-  isIllustOnly: state.SettingModal.isShowOnlyIllust,
-  isShowCaption: state.SettingModal.isShowCaption,
-})
-
-const mapDispatchToProps = (dispatch: Dispatch, { illust }) => {
-  const illustId = illust.id
-  const userId = illust.user
-  return {
-    openPreview() {
-      // dispatch(setCurrentIllust(illustId))
-      if (illust.pageCount > 1) {
-        dispatch(openMangaPreview(illustId))
-      } else {
-        dispatch(openIllustViewer(illustId))
-      }
-    },
-    addBookmark(isPublic: boolean) {
-      dispatch(addBookmark(illustId, isPublic))
-    },
-    openUserDrawer() {
-      dispatch(openDrawer(userId))
-    },
-    addColumnSearchIllust(tag: string) {
-      dispatch(addColumnSearchIllust(tag))
-    },
-    openPixiv() {
-      dispatch(openPixiv(illustId))
-    },
-    shareTwitter() {
-      dispatch(shareTwitter(illustId))
-    },
-  }
-}
-
-const connector: Connector<OwnProps, Props> = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)
-export default connector(BoxContainer)
+export default Box

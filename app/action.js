@@ -27,6 +27,8 @@ import type { Action as UserDrawerContainerAction } from './containers/UserDrawe
 
 import type { Action as DrawerManagerAction } from './containers/DrawerManager/actionTypes'
 
+import type { Action as BoxContainerAction } from './containers/BoxContainer/actionTypes'
+
 export type Action =
   | UserPopoverContainerAction
   | LanguageAction
@@ -42,3 +44,4 @@ export type Action =
   | BookmarkButtonAction
   | UserDrawerContainerAction
   | DrawerManagerAction
+  | BoxContainerAction

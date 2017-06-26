@@ -7,9 +7,9 @@ import type { Illust } from 'types/illust'
 import Avater from 'components/Avater'
 import BookmarkButton from 'containers/BookmarkButton'
 import UserPopover from 'containers/UserPopoverContainer'
+import Profile from 'components/Profile'
 import Title from './Title'
 import Caption from './Caption'
-import Profile from './Profile'
 import Wrapper from './BoxHeaderWrapper'
 
 const AvaterWrapper = styled.div`
@@ -93,6 +93,10 @@ export default class BoxHeader extends React.PureComponent {
     const { illust, user, isShowCaption, onClick } = this.props
 
     const { id, title, caption, isBookmarked } = illust
+
+    if (!user) {
+      return null
+    }
 
     const { name, profileImageUrls } = user
 

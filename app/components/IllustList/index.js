@@ -4,7 +4,7 @@ import type { Illust } from 'types/illust'
 import Loading from 'components/Loading'
 import Infinite from 'components/common/Infinite'
 import * as colors from 'constants/colors'
-import Box from 'components/Box'
+import Box from 'containers/BoxContainer'
 
 export type Props = {
   illusts: Illust[],
