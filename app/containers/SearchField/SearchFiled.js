@@ -4,7 +4,7 @@ import { injectIntl } from 'react-intl'
 import type { IntlShape } from 'react-intl'
 import { findDOMNode } from 'react-dom'
 import throttle from 'lodash.throttle'
-import Pixiv from '../../api/pixiv'
+import pixiv from '../../api'
 import PopoverAuto from './PopoverAuto'
 import UsersOver from './UsersOver'
 import messages from './messages'
@@ -60,7 +60,7 @@ class SearchField extends Component {
     if (value === '') {
       return
     }
-    const { searchAutoCompleteKeywords } = await Pixiv.searchAutoComplete(value)
+    const { searchAutoCompleteKeywords } = await pixiv.searchAutoComplete(value)
     this.setState({ keywords: searchAutoCompleteKeywords })
   }, 200)
 

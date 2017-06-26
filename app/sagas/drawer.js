@@ -10,7 +10,7 @@ import {
 } from 'redux-saga/effects'
 import { apiRequestSuccess } from 'actions/api'
 import Api from '../api'
-import { normalizeIllusts } from '../api/pixiv'
+import { normalizeIllusts } from '../api'
 import {
   addDrawerUser,
   addDrawerProfile,

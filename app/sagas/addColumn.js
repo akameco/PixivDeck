@@ -8,7 +8,7 @@ import * as ENDPOINT from 'constants/endpoint'
 import * as RANKING from 'constants/ranking'
 import { HOUR, MINUTE } from 'constants/time'
 import { ADD_USER_ILLUST } from '../containers/AddNewColumnButton/constants'
-import Pixiv from '../api/pixiv'
+import API from '../api'
 
 const THREE_HOUR = 3 * HOUR
 
@@ -27,7 +27,7 @@ const addColumn = (
 })
 
 function* bookmark({ isPublic }) {
-  const userId = Pixiv.authInfo().user.id
+  const userId = API.authInfo().user.id
   const title = isPublic ? '公開ブックマーク' : '非公開ブックマーク'
   const params = { userId, restrict: isPublic ? 'public' : 'private' }
   yield put(addColumn(ENDPOINT.BOOKMARKS_ILLUST, params, title, MINUTE))
