@@ -1,13 +1,7 @@
 // @flow
 import { ipcRenderer, shell } from 'electron'
 // eslint-disable-next-line import/order
-import {
-  select,
-  fork,
-  call,
-  takeEvery,
-  type IOEffect,
-} from 'redux-saga/effects'
+import { select, call, takeEvery, type IOEffect } from 'redux-saga/effects'
 import { getIllust, getUser } from 'reducers'
 import * as Actions from 'constants/misc'
 
@@ -35,15 +29,7 @@ function* openPixiv({ id }: hasId): Generator<IOEffect, void, *> {
   )
 }
 
-function* shareTwitterSage(): Generator<IOEffect, void, *> {
-  yield takeEvery(Actions.SHARE_TWITTER, shareTwitter)
-}
-
-function* openPixivSage(): Generator<IOEffect, void, *> {
-  yield takeEvery(Actions.OPEN_PIXIV, openPixiv)
-}
-
 export default function* root(): Generator<IOEffect, void, *> {
-  yield fork(shareTwitterSage)
-  yield fork(openPixivSage)
+  yield takeEvery(Actions.SHARE_TWITTER, shareTwitter)
+  yield takeEvery(Actions.OPEN_PIXIV, openPixiv)
 }
