@@ -6,9 +6,9 @@ import scrollTop from 'residual-scroll-top'
 import type { Illust } from 'types/illust'
 import type { ColumnType } from 'types/column'
 import * as colors from 'constants/colors'
-import Loading from 'components/Loading'
 import ColumnHeader from './ColumnHeader'
 import ColumnContent from './ColumnContent'
+import Loading from './Loding'
 
 const Wrap = styled.div`
 	margin: 0;
@@ -77,20 +77,8 @@ export default class Column extends Component {
               onIntersect={onNextPage}
               illusts={illusts}
             />
-          : <ColumnLoading />}
+          : <Loading />}
       </Wrap>
     )
   }
 }
-
-const LoadingWrap = styled.div`
-	display: flex;
-	justify-content: center;
-	background: #4a4a4a;
-	height: 100%;
-`
-
-const ColumnLoading = () =>
-  <LoadingWrap>
-    <Loading wrapStyle={{ background: '#121212' }} />
-  </LoadingWrap>
