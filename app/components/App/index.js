@@ -1,20 +1,18 @@
 // @flow
 import React from 'react'
-import type { ColumnType } from 'types/column'
-import Columns from 'components/Columns'
+import MainView from 'components/MainView'
+import Table from 'containers/Table'
 import DrawerManager from 'containers/DrawerManager'
 import ModalManeger from 'containers/ModalManeger'
 import Header from 'containers/HeaderContainer'
 import PreviewManager from 'containers/PreviewManager'
 
-export type Props = {
-  columns: Array<ColumnType>,
-}
-
-const App = ({ columns }: Props) =>
+const App = () =>
   <div>
     <Header />
-    <Columns columns={columns} />
+    <MainView>
+      <Table />
+    </MainView>
     <PreviewManager />
     <DrawerManager />
     <ModalManeger />

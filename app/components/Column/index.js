@@ -1,93 +1,96 @@
 // @flow
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import type { Connector } from 'react-redux'
-import type { Dispatch, State as ReduxState } from 'types'
+import styled from 'styled-components'
+import { findDOMNode } from 'react-dom'
+import scrollTop from 'residual-scroll-top'
 import type { Illust } from 'types/illust'
 import type { ColumnType } from 'types/column'
-import {
-  fetchColumn,
-  closeColumn,
-  nextColumnPage,
-  checkColumnUpdate,
-} from 'actions'
-import { getIllusts, getColumn } from 'reducers'
-import Column from './Column'
+import * as colors from 'constants/colors'
+import Loading from 'components/Loading'
+import ColumnHeader from './ColumnHeader'
+import ColumnContent from './ColumnContent'
+
+const Wrap = styled.div`
+	margin: 0;
+	width: 100%;
+	height: calc(100% - 2px);
+	min-width: 300px;
+	max-height: 100vh;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	background-color: ${colors.background};
+	border: 2px solid #444448;
+`
 
 type Props = {
-  column: ColumnType,
   illusts: Array<Illust>,
-  onNextPage: () => void,
+  column: ColumnType,
   onClose: () => void,
-  fetchColumn: () => void,
-  checkColumnUpdate: () => void,
+  onReload: () => void,
+  onNextPage: () => void,
 }
 
-class ColumnContainer extends Component {
+type State = {
+  toTop: boolean,
+}
+
+export default class Column extends Component {
   props: Props
-  timer: number
+  state: State
+  target: Component<*, *, *>
+  root: typeof ColumnContent
 
-  componentDidMount() {
-    this.init()
-  }
+  state = { toTop: false }
 
-  componentWillUnmount() {
-    clearInterval(this.timer)
-  }
-
-  init() {
-    const { column: { timer }, fetchColumn, checkColumnUpdate } = this.props
-
-    fetchColumn()
-
-    this.timer = setInterval(() => {
-      checkColumnUpdate()
-    }, timer)
-  }
-
-  handleReload = () => {
-    this.props.checkColumnUpdate()
+  handleTopClick = (e: Event) => {
+    e.preventDefault()
+    const node = findDOMNode(this.root)
+    if (node && node.scrollTop === 0) {
+      return
+    }
+    if (node) {
+      scrollTop(node, () => {
+        this.props.onReload()
+      })
+    }
   }
 
   render() {
-    const { column, illusts, ...other } = this.props
+    const { column, illusts, onClose, onNextPage } = this.props
     return (
-      <Column
-        illusts={illusts}
-        column={column}
-        onReload={this.handleReload}
-        {...other}
-      />
+      <Wrap>
+        <ColumnHeader
+          column={column}
+          onClose={onClose}
+          onTopClick={this.handleTopClick}
+        />
+        {illusts.length > 0
+          ? <ColumnContent
+              root={c => {
+                // eslint-disable-line react/jsx-no-bind
+                this.target = c
+              }}
+              targetRef={c => {
+                // eslint-disable-line react/jsx-no-bind
+                this.root = c
+              }}
+              onIntersect={onNextPage}
+              illusts={illusts}
+            />
+          : <ColumnLoading />}
+      </Wrap>
     )
   }
 }
 
-type OwnProps = {
-  id: number,
-}
+const LoadingWrap = styled.div`
+	display: flex;
+	justify-content: center;
+	background: #4a4a4a;
+	height: 100%;
+`
 
-const mapStateToProps = (state: ReduxState, { id }) => ({
-  column: getColumn(state, id),
-  illusts: getIllusts(state, id),
-})
-
-const mapDispatchToProps = (dispatch: Dispatch, { id }) => ({
-  fetchColumn() {
-    dispatch(fetchColumn(id))
-  },
-  checkColumnUpdate() {
-    dispatch(checkColumnUpdate(id))
-  },
-  onNextPage() {
-    dispatch(nextColumnPage(id))
-  },
-  onClose() {
-    dispatch(closeColumn(id))
-  },
-})
-
-const connector: Connector<OwnProps, Props> = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)
-export default connector(ColumnContainer)
+const ColumnLoading = () =>
+  <LoadingWrap>
+    <Loading wrapStyle={{ background: '#121212' }} />
+  </LoadingWrap>

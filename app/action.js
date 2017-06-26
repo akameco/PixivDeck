@@ -29,6 +29,8 @@ import type { Action as DrawerManagerAction } from './containers/DrawerManager/a
 
 import type { Action as BoxContainerAction } from './containers/BoxContainer/actionTypes'
 
+import type { Action as ColumnContainerAction } from './containers/ColumnContainer/actionTypes'
+
 export type Action =
   | UserPopoverContainerAction
   | LanguageAction
@@ -45,3 +47,4 @@ export type Action =
   | UserDrawerContainerAction
   | DrawerManagerAction
   | BoxContainerAction
+  | ColumnContainerAction
