@@ -24,7 +24,14 @@ export default function configureStore(initialState: ?Object) {
 
   persistStore(store, {
     storage: localForage,
-    whitelist: ['Language', 'LoginModal', 'ModalManeger', 'SettingModal'],
+    whitelist: [
+      'columns',
+      'Table',
+      'Language',
+      'LoginModal',
+      'ModalManeger',
+      'SettingModal',
+    ],
   })
 
   sagaMiddleware.run(mySaga)

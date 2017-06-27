@@ -15,7 +15,17 @@ export default function configureStore(initialState: ?Object) {
   const store = createStore(reducer, initialState, enhancer)
   storeWrapper(store)
 
-  persistStore(store, { storage: localForage })
+  persistStore(store, {
+    storage: localForage,
+    whitelist: [
+      'columns',
+      'Table',
+      'Language',
+      'LoginModal',
+      'ModalManeger',
+      'SettingModal',
+    ],
+  })
 
   sagaMiddleware.run(mySaga)
 

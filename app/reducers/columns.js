@@ -4,6 +4,7 @@ import union from 'lodash.union'
 import type { Action } from 'types'
 import type { ColumnType as Column } from 'types/column'
 import { MINUTE } from 'constants/time'
+import { REHYDRATE } from 'redux-persist/constants'
 // import initState from './default-column-state'
 
 type State = Array<Column>
@@ -23,6 +24,7 @@ function column(state: Column, action: Action): Column {
   }
 
   switch (action.type) {
+    case REHYDRATE:
     case 'INIT':
       return { ...state, params: { ...state.params, ...resetParams }, ids: [] }
     case 'SET_PARAMS':
@@ -50,6 +52,14 @@ const defaultState: $Shape<Column> = {
 
 export default function columns(state: State = [], action: Action): State {
   switch (action.type) {
+    case REHYDRATE: {
+      // $FlowFixMe
+      const columns = action.payload.columns
+      if (columns) {
+        return columns.map(t => column(t, action))
+      }
+      return state
+    }
     case 'ADD_COLUMN': {
       const { id, title, endpoint, timer } = action
       // if (state.some(t => t.title === title)) {
