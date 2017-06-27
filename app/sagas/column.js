@@ -28,7 +28,7 @@ export function* refreshAllColumns(): Generator<IOEffect, void, *> {
 
 // eslint-disable-next-line
 function* add(
-  id: number,
+  id: string,
   endpoint: Endpoint,
   inputParams: Params
 ): Generator<IOEffect, *, *> {
@@ -46,7 +46,7 @@ const checkEndpoint = (target: Endpoint) =>
   target === endpoint.FOLLOW || target === endpoint.FOLLOW
 
 // eslint-disable-next-line
-function* checkUpdate(id: number): Generator<IOEffect, void | boolean, *> {
+function* checkUpdate(id: string): Generator<IOEffect, void | boolean, *> {
   const state = yield select()
   const column = getColumn(state, id)
 
@@ -62,7 +62,7 @@ function* checkUpdate(id: number): Generator<IOEffect, void | boolean, *> {
 }
 
 // eslint-disable-next-line
-function* fetchColumn(id: number): Generator<IOEffect, void | boolean, *> {
+function* fetchColumn(id: string): Generator<IOEffect, void | boolean, *> {
   const state = yield select()
   const column = getColumn(state, id)
 

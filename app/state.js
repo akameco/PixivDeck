@@ -8,6 +8,7 @@ import type { State as LoginModalState } from './containers/LoginModal/reducer'
 import type { State as MangaPreviewState } from './containers/MangaPreview/reducer'
 import type { State as ModalManegerState } from './containers/ModalManeger/reducer'
 import type { State as SettingModalState } from './containers/SettingModal/reducer'
+import type { State as TableState } from './containers/Table/reducer'
 import type { State as UserDrawerContainerState } from './containers/UserDrawerContainer/reducer'
 import type { State as UserPopoverContainerState } from './containers/UserPopoverContainer/reducer'
 
@@ -21,6 +22,7 @@ export type State = {
   MangaPreview: MangaPreviewState,
   ModalManeger: ModalManegerState,
   SettingModal: SettingModalState,
+  Table: TableState,
   UserDrawerContainer: UserDrawerContainerState,
   UserPopoverContainer: UserPopoverContainerState,
 }

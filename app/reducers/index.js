@@ -14,6 +14,7 @@ import UserPopoverContainer from '../containers/UserPopoverContainer/reducer'
 import IllustPreview from '../containers/IllustPreview/reducer'
 import DrawerManager from '../containers/DrawerManager/reducer'
 import UserDrawerContainer from '../containers/UserDrawerContainer/reducer'
+import Table from '../containers/Table/reducer'
 
 import columns from './columns'
 import illustById, * as fromIllustById from './illustById'
@@ -33,9 +34,10 @@ const rootReducer = combineReducers({
   IllustPreview,
   DrawerManager,
   UserDrawerContainer,
+  Table,
 })
 
-export const getColumn = ({ columns }: State, id: number) =>
+export const getColumn = ({ columns }: State, id: string) =>
   columns.filter(c => c.id === id)[0]
 
 const filterByMinBookmarks = (illust: Illust, bookmarks: number): boolean =>
@@ -47,7 +49,7 @@ const filterByTags = (illust: Illust, tags: Array<string>): boolean =>
 export const getIllust = ({ illustById }: State, id: number): Illust =>
   fromIllustById.getIllust(illustById, id)
 
-export const getIllusts = (state: State, columnId: number) => {
+export const getIllusts = (state: State, columnId: string) => {
   const column = getColumn(state, columnId)
   return column.ids
     .map(id => getIllust(state, id))

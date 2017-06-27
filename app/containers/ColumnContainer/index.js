@@ -62,7 +62,7 @@ class ColumnContainer extends Component {
 }
 
 type OwnProps = {
-  id: number,
+  id: string,
 }
 
 const mapStateToProps = (state: ReduxState, { id }) => ({

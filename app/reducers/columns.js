@@ -4,7 +4,7 @@ import union from 'lodash.union'
 import type { Action } from 'types'
 import type { ColumnType as Column } from 'types/column'
 import { MINUTE } from 'constants/time'
-import initState from './default-column-state'
+// import initState from './default-column-state'
 
 type State = Array<Column>
 
@@ -48,16 +48,13 @@ const defaultState: $Shape<Column> = {
   minBookmarks: 0,
 }
 
-export default function columns(
-  state: State = initState,
-  action: Action
-): State {
+export default function columns(state: State = [], action: Action): State {
   switch (action.type) {
     case 'ADD_COLUMN': {
       const { id, title, endpoint, timer } = action
-      if (state.some(t => t.title === title)) {
-        return state
-      }
+      // if (state.some(t => t.title === title)) {
+      //   return state
+      // }
       return [
         ...state,
         {

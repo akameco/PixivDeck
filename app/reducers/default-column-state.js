@@ -12,19 +12,19 @@ const commonState = {
 
 const initState: Array<Column> = [
   {
-    id: 1,
+    id: '1',
     title: 'デイリーランキング',
     params: { mode: 'day', offset: 0 },
     ...commonState,
   },
   {
-    id: 2,
+    id: '2',
     title: 'ウィークリーランキング',
     params: { mode: 'week', offset: 0 },
     ...commonState,
   },
   {
-    id: 3,
+    id: '3',
     title: 'マンスリーランキング',
     params: { mode: 'month', offset: 0 },
     ...commonState,

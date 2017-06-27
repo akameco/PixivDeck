@@ -2,7 +2,6 @@
 import { createSelector } from 'reselect'
 import type { State } from 'types/state'
 
-const selectRoot = (state: State) => state.columns
+const selectRoot = (state: State) => state.Table
 
-export const makeSelectIds = () =>
-  createSelector(selectRoot, s => s.map(v => v.id))
+export const makeSelectNames = () => createSelector(selectRoot, s => s.names)

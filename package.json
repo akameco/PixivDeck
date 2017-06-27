@@ -121,7 +121,8 @@
     "reselect": "^3.0.1",
     "residual-scroll-top": "^0.1.0",
     "source-map-support": "^0.4.15",
-    "styled-components": "^2.1.0"
+    "styled-components": "^2.1.0",
+    "uuid": "^3.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",

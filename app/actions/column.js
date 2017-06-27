@@ -3,7 +3,7 @@ import type { Action } from 'types'
 import type { Params } from 'types/column'
 import * as Actions from 'constants/column'
 
-type Id = number
+type Id = string
 
 export const setPrams = (id: Id, params: Params): Action => ({
   type: Actions.SET_PARAMS,
@@ -11,13 +11,13 @@ export const setPrams = (id: Id, params: Params): Action => ({
   params,
 })
 
-export const addColumnIllusts = (id: Id, ids: Id[]): Action => ({
+export const addColumnIllusts = (id: Id, ids: Array<number>): Action => ({
   type: Actions.ADD_COLUMN_ILLUSTS,
   id,
   ids,
 })
 
-export const nextColumnIllusts = (id: Id, ids: Id[]): Action => ({
+export const nextColumnIllusts = (id: Id, ids: Array<number>): Action => ({
   type: Actions.NEXT_COLUMN_ILLUSTS,
   id,
   ids,

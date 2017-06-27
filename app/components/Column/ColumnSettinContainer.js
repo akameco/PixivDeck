@@ -6,7 +6,7 @@ import ColumnSetting, { type Props } from './ColumnSetting'
 
 type OP = {
   minBookmarks: number,
-  id: number,
+  id: string,
 }
 
 const mapStateToDispatch = (dispatch: Dispatch, { id }: OP) => ({

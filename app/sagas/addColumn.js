@@ -1,6 +1,5 @@
 // @flow
-// eslint-disable-next-line import/order
-import { put, fork, takeEvery, type IOEffect } from 'redux-saga/effects'
+import uuid from 'uuid'
 import type { Action } from 'types'
 import type { Params, Endpoint } from 'types/column'
 import * as Actions from 'constants/addColumn'
@@ -9,10 +8,13 @@ import * as RANKING from 'constants/ranking'
 import { HOUR, MINUTE } from 'constants/time'
 import { ADD_USER_ILLUST } from '../containers/AddNewColumnButton/constants'
 import API from '../api'
+import { add as addTable } from '../containers/Table/actions'
+import { put, fork, takeEvery, type IOEffect } from 'redux-saga/effects'
 
 const THREE_HOUR = 3 * HOUR
 
 const addColumn = (
+  id: string,
   endpoint: Endpoint,
   params: $Subtype<Params>, // eslint-disable-line
   title: string,
@@ -20,7 +22,7 @@ const addColumn = (
 ): Action => ({
   type: 'ADD_COLUMN',
   endpoint,
-  id: Date.now(),
+  id,
   title,
   timer,
   params,
@@ -30,23 +32,26 @@ function* bookmark({ isPublic }) {
   const userId = API.authInfo().user.id
   const title = isPublic ? '公開ブックマーク' : '非公開ブックマーク'
   const params = { userId, restrict: isPublic ? 'public' : 'private' }
-  yield put(addColumn(ENDPOINT.BOOKMARKS_ILLUST, params, title, MINUTE))
+  yield put(addColumn(uuid(), ENDPOINT.BOOKMARKS_ILLUST, params, title, MINUTE))
 }
 
 function* follow({ isPublic }) {
   const restrict = isPublic ? 'public' : 'private'
   const title = isPublic ? '新着 公開' : '新着 非公開'
   const opts = { restrict }
-  yield put(addColumn(ENDPOINT.FOLLOW, opts, title, MINUTE))
+  yield put(addColumn(uuid(), ENDPOINT.FOLLOW, opts, title, MINUTE))
 }
 
 function* searchIllust({ word }) {
-  yield put(addColumn(ENDPOINT.SEARCH, { word }, word, MINUTE))
+  yield put(addColumn(uuid(), ENDPOINT.SEARCH, { word }, word, MINUTE))
 }
 
 function* ranking({ mode }) {
+  const id = uuid()
+  yield put(addTable(id))
   yield put(
     addColumn(
+      id,
       ENDPOINT.RANKING,
       { mode },
       `${RANKING.ILLUST_RANKING[mode]}ランキング`,
@@ -58,6 +63,7 @@ function* ranking({ mode }) {
 function* r18Ranking({ mode }) {
   yield put(
     addColumn(
+      uuid(),
       ENDPOINT.RANKING,
       { mode },
       `${RANKING.ILLUST_R18_RANKING[mode]}ランキング`,
@@ -69,6 +75,7 @@ function* r18Ranking({ mode }) {
 function* userIllust({ user }) {
   yield put(
     addColumn(
+      uuid(),
       ENDPOINT.USER_ILLUSTS,
       { userId: user.id },
       `${user.name}(${user.account})`,

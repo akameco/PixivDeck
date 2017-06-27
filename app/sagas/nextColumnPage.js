@@ -15,13 +15,13 @@ import { apiRequestSuccess, nextColumnIllusts, setPrams } from 'actions'
 import type { Illust } from 'types/illust'
 import Api from '../api'
 
-type Id = number
+type Id = string
 const LIMIT = 10
 
 const filterByMinBookmarks = (illust: Illust, bookmarks: number): boolean =>
   illust.totalBookmarks >= bookmarks
 
-export function* nextPage(id: number): Generator<IOEffect, number, *> {
+export function* nextPage(id: string): Generator<IOEffect, number, *> {
   let state = yield select()
   const column = getColumn(state, id)
   const { response, params } = yield call(

@@ -31,6 +31,8 @@ import type { Action as BoxContainerAction } from './containers/BoxContainer/act
 
 import type { Action as ColumnContainerAction } from './containers/ColumnContainer/actionTypes'
 
+import type { Action as TableAction } from './containers/Table/actionTypes'
+
 export type Action =
   | UserPopoverContainerAction
   | LanguageAction
@@ -48,3 +50,4 @@ export type Action =
   | DrawerManagerAction
   | BoxContainerAction
   | ColumnContainerAction
+  | TableAction

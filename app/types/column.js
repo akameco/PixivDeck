@@ -18,11 +18,11 @@ export type Endpoint =
   | '/v1/user/illusts'
   | '/v2/illust/follow'
 
-type Id = number
+type Id = string
 type Ids = number[]
 
 export type ColumnType = {
-  id: number,
+  id: Id,
   endpoint: Endpoint,
   title: string,
   params: Params,
@@ -36,7 +36,7 @@ export type Columns = { [key: number]: ColumnType }
 export type ColumnAction =
   | {|
       type: 'ADD_COLUMN',
-      id: Id,
+      id: string,
       title: string,
       endpoint: Endpoint,
       params: Params,

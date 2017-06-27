@@ -4,13 +4,17 @@ import { SortablePane, Pane } from 'react-sortable-pane'
 import Column from 'containers/ColumnContainer'
 
 export type Props = {
-  ids: Array<number>,
+  names: Array<string>,
 }
 
-const Table = ({ ids }: Props) => {
+const Table = ({ names }: Props) => {
   const handleOnResize = () => null
 
-  const panes = ids.map(id =>
+  if (names.length === 0) {
+    return null
+  }
+
+  const panes = names.map(id =>
     <Pane
       key={id}
       width={300}

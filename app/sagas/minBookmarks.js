@@ -6,7 +6,7 @@ import * as Actions from 'constants/column'
 import { getIllusts } from 'reducers'
 import { nextPage } from './nextColumnPage'
 
-function* fetchUntilLimit(id: number) {
+function* fetchUntilLimit(id: string) {
   const state = yield select()
   let illusts = getIllusts(state, id)
   try {

@@ -2,10 +2,10 @@
 import { connect, type Connector } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import Tabel, { type Props } from './Table'
-import { makeSelectIds } from './selectors'
+import { makeSelectNames } from './selectors'
 
 const mapStateToProps = createStructuredSelector({
-  ids: makeSelectIds(),
+  names: makeSelectNames(),
 })
 
 const connector: Connector<{}, Props> = connect(mapStateToProps)
