@@ -4,8 +4,8 @@
       "targets": { "node": 6 },
       "useBuiltIns": true
     }],
-    "stage-0",
-    "react"
+    "react",
+    "stage-0"
   ],
   "plugins": [
     "add-module-exports",
