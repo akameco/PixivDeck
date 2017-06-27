@@ -5,7 +5,7 @@ import Table from 'containers/Table'
 import DrawerManager from 'containers/DrawerManager'
 import ModalManeger from 'containers/ModalManeger'
 import Header from 'containers/HeaderContainer'
-import PreviewManager from 'containers/PreviewManager'
+import PreviewFactory from 'containers/PreviewFactory'
 
 const App = () =>
   <div>
@@ -13,7 +13,7 @@ const App = () =>
     <MainView>
       <Table />
     </MainView>
-    <PreviewManager />
+    <PreviewFactory />
     <DrawerManager />
     <ModalManeger />
   </div>
