@@ -1,6 +1,8 @@
 // @flow
 import React, { Component } from 'react'
 import { connect, type Connector } from 'react-redux'
+import { findDOMNode } from 'react-dom'
+import scrollTop from 'residual-scroll-top'
 import type { Dispatch, State as ReduxState } from 'types'
 import type { Illust } from 'types/illust'
 import type { ColumnType } from 'types/column'
@@ -12,6 +14,8 @@ import {
 } from 'actions'
 import { getIllusts, getColumn } from 'reducers'
 import Column from 'components/Column'
+import ColumnContent from '../../components/Column/ColumnContent'
+import Loading from './Loding'
 
 type Props = {
   column: ColumnType,
@@ -25,6 +29,8 @@ type Props = {
 class ColumnContainer extends Component {
   props: Props
   timer: number
+  target: HTMLElement
+  root: HTMLElement
 
   componentDidMount() {
     this.init()
@@ -48,15 +54,41 @@ class ColumnContainer extends Component {
     this.props.checkColumnUpdate()
   }
 
+  handleTopClick = (e: Event) => {
+    e.preventDefault()
+    const node = findDOMNode(this.root)
+    if (node && node.scrollTop === 0) {
+      return
+    }
+    if (node) {
+      scrollTop(node, () => {
+        this.handleReload()
+      })
+    }
+  }
+
   render() {
-    const { column, illusts, ...other } = this.props
+    const { column, illusts, onNextPage, onClose } = this.props
     return (
       <Column
-        illusts={illusts}
         column={column}
         onReload={this.handleReload}
-        {...other}
-      />
+        onClose={onClose}
+        onClickHeader={this.handleTopClick}
+      >
+        {illusts.length > 0
+          ? <ColumnContent
+              root={c => {
+                this.target = c
+              }}
+              targetRef={c => {
+                this.root = c
+              }}
+              onIntersect={onNextPage}
+              illusts={illusts}
+            />
+          : <Loading />}
+      </Column>
     )
   }
 }
