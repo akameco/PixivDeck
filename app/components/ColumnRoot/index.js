@@ -1,6 +1,7 @@
 // @flow
 import React from 'react'
 import styled from 'styled-components'
+import { key } from 'styleTheme'
 
 const View = styled.div`
   margin: 0;
@@ -10,7 +11,7 @@ const View = styled.div`
   max-height: 100vh;
   overflow-x: hidden;
   overflow-y: hidden;
-  background-color: #222426;
+  background-color: ${key('base')};
   border: 2px solid #444448;
 `
 

@@ -25,6 +25,9 @@
         "transform-es2015-classes",
         "react-hot-loader/babel"
       ]
+    },
+    "test": {
+      "plugins": ["transform-es2015-modules-commonjs"]
     }
   }
 }

@@ -1,9 +1,9 @@
 // @flow
 import styled from 'styled-components'
-import * as colors from 'constants/colors'
+import { key } from 'styleTheme'
 
 const Wrapper = styled.div`
-  background-color: ${colors.background};
+  background-color: ${key('base')};
   border-bottom: 1px solid #292f33;
 `
 

@@ -1,5 +1,6 @@
 // @flow
 import styled, { keyframes } from 'styled-components'
+import { key } from 'styleTheme'
 
 const loading = keyframes`
 	0%,
@@ -14,7 +15,7 @@ const loading = keyframes`
 `
 
 const Rect = styled.div`
-  background-color: #333;
+  background-color: ${key('gray')};
   height: 100%;
   width: 6px;
   display: inline-block;

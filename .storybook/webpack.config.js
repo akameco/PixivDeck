@@ -5,6 +5,9 @@
 // IMPORTANT
 // When you add this file, we won't add the default configurations which is similar
 // to "React Create App". This only has babel loader to load JavaScript.
+const path = require('path')
+
+const appPath = path.resolve(process.cwd(), 'app')
 
 module.exports = {
   plugins: [
@@ -15,4 +18,8 @@ module.exports = {
       // add your custom loaders.
     ],
   },
-};
+  resolve: {
+    extensions: ['.js', '.json'],
+    modules: [appPath, 'node_modules'],
+  },
+}

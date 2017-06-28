@@ -44,3 +44,5 @@ module.name_mapper='^types$' -> '<PROJECT_ROOT>/app/types'
 
 module.name_mapper='^constants/\(.*\)$' -> '<PROJECT_ROOT>/app/constants/\1'
 module.name_mapper='^constants$' -> '<PROJECT_ROOT>/appconstans/constants'
+
+module.name_mapper='^styleTheme$' -> '<PROJECT_ROOT>/app/styleTheme'

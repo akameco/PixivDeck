@@ -1,8 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`snapshot 1`] = `
+.lMhgY {
+  color: #68a3c9;
+  cursor: pointer;
+}
+
+.lMhgY:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
 <a
-  className="sc-bdVaJa gNSvMe"
+  className="sc-bdVaJa lMhgY"
   href="https://akameco.github.io"
 >
   <h1>

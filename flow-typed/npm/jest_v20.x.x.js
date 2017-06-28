@@ -236,6 +236,9 @@ type JestExpectType = {
    * This ensures that a React component matches the most recent snapshot.
    */
   toMatchSnapshot(name?: string): void,
+
+  // for styled-components
+  toMatchStyledComponentsSnapshot(name?: string): void,
   /**
    * Use .toThrow to test that a function throws when it is called.
    * If you want to test that a specific error gets thrown, you can provide an

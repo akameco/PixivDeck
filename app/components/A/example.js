@@ -4,5 +4,9 @@ import { storiesOf } from '@storybook/react'
 import A from './index'
 
 storiesOf('A', module).add('basic', () => {
-  return <A>Hello</A>
+  return (
+    <div>
+      Hello<A>Hello</A>Hello
+    </div>
+  )
 })

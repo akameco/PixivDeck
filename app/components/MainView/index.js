@@ -1,6 +1,6 @@
 // @flow
 import styled from 'styled-components'
-import * as colors from 'constants/colors'
+import { key } from 'styleTheme'
 
 const MainView = styled.div`
   position: absolute;
@@ -8,7 +8,7 @@ const MainView = styled.div`
   width: calc(100% - 50px);
   height: 100%;
   overflow-y: hidden;
-  background-color: ${colors.background};
+  background-color: ${key('base')};
 `
 
 export default MainView
