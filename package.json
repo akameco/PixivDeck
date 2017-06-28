@@ -96,6 +96,7 @@
   },
   "dependencies": {
     "autolinker": "^1.4.3",
+    "axios": "^0.16.2",
     "camelcase-keys": "^4.1.0",
     "electron-debug": "^1.2.0",
     "keycode": "^2.1.9",
@@ -181,6 +182,7 @@
     "flow-runtime": "^0.12.0",
     "flow-typed": "^2.1.2",
     "jest": "^20.0.4",
+    "jest-cli": "^20.0.4",
     "json-loader": "^0.5.4",
     "prettier": "^1.5.2",
     "react-addons-test-utils": "^15.6.0",
