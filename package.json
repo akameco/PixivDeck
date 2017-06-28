@@ -98,6 +98,7 @@
     "autolinker": "^1.4.3",
     "axios": "^0.16.2",
     "camelcase-keys": "^4.1.0",
+    "decamelize-keys": "^1.1.0",
     "electron-debug": "^1.2.0",
     "keycode": "^2.1.9",
     "localforage": "^1.5.0",
