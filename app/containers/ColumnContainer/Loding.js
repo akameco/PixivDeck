@@ -4,10 +4,10 @@ import styled from 'styled-components'
 import Loading from 'components/Loading'
 
 const LoadingWrap = styled.div`
-	display: flex;
-	justify-content: center;
-	background: #4a4a4a;
-	height: 100%;
+  display: flex;
+  justify-content: center;
+  background: #4a4a4a;
+  height: 100%;
 `
 
 const ColumnLoading = () =>

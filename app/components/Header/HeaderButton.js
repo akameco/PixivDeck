@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import Icon from 'components/common/Icon'
 
 const A = styled.a`
-	display: block;
-	width: 80%;
-	height: 45px;
-	margin: 0 auto;
+  display: block;
+  width: 80%;
+  height: 45px;
+  margin: 0 auto;
 `
 
 type Props = {

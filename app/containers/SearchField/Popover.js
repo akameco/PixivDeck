@@ -10,18 +10,21 @@ type ItemProps = {
 
 export const Item = ({ start, end, onClick }: ItemProps) =>
   <ItemWrap onClick={onClick}>
-    <u>{start}</u>{end}
+    <u>
+      {start}
+    </u>
+    {end}
   </ItemWrap>
 
 const ItemWrap = styled.div`
-	height: 45px;
-	padding: 0 12px;
-	display: flex;
-	align-items: center;
-	cursor: pointer;
-	&:hover {
-		background-color: rgb(230, 239, 247);
-	}
+  height: 45px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(230, 239, 247);
+  }
 `
 
 type Props = {
@@ -30,28 +33,30 @@ type Props = {
 }
 
 const Wrap = styled.div`
-	box-sizing: border-box;
-	background: white;
+  box-sizing: border-box;
+  background: white;
 `
 
-const Content = styled.div`
-	padding-top: 4px;
-`
+const Content = styled.div`padding-top: 4px;`
 
 const Title = styled.div`
-	background-color: #e7e7e7;
-	font-size: 0.8rem;
-	padding: 0 12px;
-	color: #8f8f8f;
-	margin: -4px 0 0;
-	border: 0;
+  background-color: #e7e7e7;
+  font-size: 0.8rem;
+  padding: 0 12px;
+  color: #8f8f8f;
+  margin: -4px 0 0;
+  border: 0;
 `
 
 const Popover = ({ children, title }: Props) =>
   <Wrap>
     <Content>
-      <Title>{title}</Title>
-      <div>{children}</div>
+      <Title>
+        {title}
+      </Title>
+      <div>
+        {children}
+      </div>
     </Content>
   </Wrap>
 

@@ -8,8 +8,8 @@ type Props = {
 }
 
 const Wrap = styled.div`
-	width: 100%;
-	text-align: center;
+  width: 100%;
+  text-align: center;
 `
 
 const HeaderTop = ({ onClickAdd, onOpenSearchModal }: Props) =>

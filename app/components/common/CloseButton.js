@@ -10,16 +10,16 @@ type Props = {
 }
 
 const A = styled.a`
-	position: absolute;
-	text-align: center;
-	margin: 0;
-	padding: 0;
-	width: 24px;
-	height: 24px;
-	cursor: pointer;
-	top: 15px;
-	right: 15px;
-	font-size: 24px;
+  position: absolute;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
 `
 
 const CloseButton = ({ onClick, style, iconStyle }: Props) =>

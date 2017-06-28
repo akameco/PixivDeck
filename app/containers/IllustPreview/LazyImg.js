@@ -153,14 +153,14 @@ export default class LazyImg extends Component {
 }
 
 const FromImg = styled.img`
-	width: auto;
-	height: auto;
-	max-width: 100vw;
-	max-height: 100vh;
-	margin: auto;
-	margin-top: ${props => props.marginTop}px;
-	user-select: none;
-	cursor: wait;
+  width: auto;
+  height: auto;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: auto;
+  margin-top: ${props => props.marginTop}px;
+  user-select: none;
+  cursor: wait;
 `
 
 const fadeIn = keyframes`
@@ -170,13 +170,13 @@ const fadeIn = keyframes`
 `
 
 const Img = styled.img`
-	width: auto;
-	height: auto;
-	margin: auto;
-	user-select: none;
-	margin-top: ${props => props.marginTop}px;
-	max-width: ${props => (props.isClicked ? 'none' : '100vw')};
-	max-height: ${props => (props.isClicked ? 'none' : '100vh')};
-	cursor: ${props => (props.isClicked ? 'zoom-out' : 'zoom-in')};
-	animation: ${fadeIn} 600ms forwards;
+  width: auto;
+  height: auto;
+  margin: auto;
+  user-select: none;
+  margin-top: ${props => props.marginTop}px;
+  max-width: ${props => (props.isClicked ? 'none' : '100vw')};
+  max-height: ${props => (props.isClicked ? 'none' : '100vh')};
+  cursor: ${props => (props.isClicked ? 'zoom-out' : 'zoom-in')};
+  animation: ${fadeIn} 600ms forwards;
 `

@@ -55,12 +55,12 @@ class ColumnSetting extends React.Component {
 }
 
 const Wrap = styled.div`
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	padding: 10px;
-	color: #eee;
-	width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  color: #eee;
+  width: 100%;
 `
 
 export default ColumnSetting

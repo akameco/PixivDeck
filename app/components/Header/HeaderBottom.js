@@ -5,10 +5,10 @@ import Dropdwon from '../Dropdown'
 import HeaderButton from './HeaderButton'
 
 const Wrap = styled.div`
-	width: 100%;
-	position: absolute;
-	left: 0;
-	bottom: 20px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 20px;
 `
 
 type Props = {

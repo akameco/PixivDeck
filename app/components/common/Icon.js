@@ -110,7 +110,9 @@ export default class Icon extends Component {
         onMouseLeave={this.handleMouseLeave}
         className={className}
       >
-        <g><SelectIcon type={type} /></g>
+        <g>
+          <SelectIcon type={type} />
+        </g>
       </svg>
     )
   }

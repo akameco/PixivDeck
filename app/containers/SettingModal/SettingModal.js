@@ -103,7 +103,9 @@ export default class SettingFilterModal extends Component {
               <FormattedMessage {...messages.tagFilter} />
             </Subheader>
             <Field>
-              <Icon><VisibilityOffIcon /></Icon>
+              <Icon>
+                <VisibilityOffIcon />
+              </Icon>
               <Input
                 type="text"
                 value={this.state.value}
@@ -135,50 +137,50 @@ export default class SettingFilterModal extends Component {
 }
 
 const ChipWrap = styled.div`
-	display: flex;
-	flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 `
 
 const Input = styled.input`
-	font-size: 1.1rem;
-	height: 30px;
-	width: calc(100% - 2.5rem);
-	margin-top: 10px;
-	padding-left: 2.5rem;
-	border: 1px solid rgba(0, 0, 0, 0.09);
-	border-radius: 17px;
+  font-size: 1.1rem;
+  height: 30px;
+  width: calc(100% - 2.5rem);
+  margin-top: 10px;
+  padding-left: 2.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  border-radius: 17px;
 
-	&:focus {
-		border: 1px solid rgba(82, 158, 204, 0.7);
-	}
+  &:focus {
+    border: 1px solid rgba(82, 158, 204, 0.7);
+  }
 `
 
 const Field = styled.div`
-	position: relative;
-	width: 100%;
-	margin-bottom: 2rem;
+  position: relative;
+  width: 100%;
+  margin-bottom: 2rem;
 `
 
 const Wrap = styled.div`
-	max-width: 100%;
-	margin-top: 2rem;
-	margin-left: 1rem;
-	margin-right: 1rem;
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	align-items: center;
+  max-width: 100%;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 `
 
 const TagFilter = styled.div`
-	padding-left: 10px;
-	padding-right: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 `
 
 const Icon = styled.div`
-	position: absolute;
-	top: 1rem;
-	left: 0.5rem;
-	width: 1.5rem;
-	height: 1.5rem;
+  position: absolute;
+  top: 1rem;
+  left: 0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
 `

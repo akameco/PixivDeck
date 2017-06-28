@@ -45,16 +45,16 @@ export default class IllustPreview extends React.PureComponent {
 }
 
 const StyledPreview = styled.div`
-	display: flex;
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	top: 0;
-	left: 0;
-	background: rgba(24, 24, 24, 0.97);
-	cursor: pointer;
-	overflow: auto;
-	z-index: 999;
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+  background: rgba(24, 24, 24, 0.97);
+  cursor: pointer;
+  overflow: auto;
+  z-index: 999;
 `

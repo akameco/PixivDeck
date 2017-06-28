@@ -14,13 +14,13 @@ const loading = keyframes`
 `
 
 const Rect = styled.div`
-	background-color: #333;
-	height: 100%;
-	width: 6px;
-	display: inline-block;
-	margin: 1px;
-	animation: ${loading} 1.2s infinite ease-in-out;
-	animation-delay: ${props => props.delay}s;
+  background-color: #333;
+  height: 100%;
+  width: 6px;
+  display: inline-block;
+  margin: 1px;
+  animation: ${loading} 1.2s infinite ease-in-out;
+  animation-delay: ${props => props.delay}s;
 `
 
 export default Rect

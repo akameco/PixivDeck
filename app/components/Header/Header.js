@@ -36,7 +36,10 @@ export default function Header(props: Props) {
           IconStyle={isSearchField ? { color: '#dedede' } : {}}
         />
       </div>
-      {isSearchField && <SearchWrap><SearchField /></SearchWrap>}
+      {isSearchField &&
+        <SearchWrap>
+          <SearchField />
+        </SearchWrap>}
       <HeaderBottom
         isDropdown={isDropdown}
         onLogout={onLogout}

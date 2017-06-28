@@ -16,18 +16,16 @@ const Name = styled(A)`
 	margin-right: 5px;
 `
 
-const Line = styled.p`
-	margin: 0;
-`
+const Line = styled.p`margin: 0;`
 
 const ProfileWrapper = styled.div`
-	display: inline-flex;
-	margin-top: 2px;
-	white-space: nowrap;
-	word-wrap: break-word;
-	overflow: hidden;
-	margin-bottom: 10px;
-	cursor: pointer;
+  display: inline-flex;
+  margin-top: 2px;
+  white-space: nowrap;
+  word-wrap: break-word;
+  overflow: hidden;
+  margin-bottom: 10px;
+  cursor: pointer;
 `
 
 const Profile = ({ name, onClick }: Props) =>

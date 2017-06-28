@@ -12,10 +12,10 @@ const Card = ({ children }: Props) =>
   </Wrap>
 
 const Wrap = styled.div`
-	width: 360px;
-	background: white;
-	margin: 10px;
-	padding: 10px;
+  width: 360px;
+  background: white;
+  margin: 10px;
+  padding: 10px;
 `
 
 export default Card

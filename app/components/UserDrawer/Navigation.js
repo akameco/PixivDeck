@@ -24,20 +24,20 @@ const Navigation = ({ user, profile }: Props) => {
 }
 
 const NavigationWrap = styled.div`
-	width: 100%;
-	position: flex;
-	left: auto;
-	transform: translateZ(0);
-	height: 50px;
-	top: 0;
-	z-index: 10;
+  width: 100%;
+  position: flex;
+  left: auto;
+  transform: translateZ(0);
+  height: 50px;
+  top: 0;
+  z-index: 10;
 `
 
 const Wrap = styled.div`
-	display: flex;
-	text-align: left;
-	justify-content: flex-end;
-	padding: 10px;
+  display: flex;
+  text-align: left;
+  justify-content: flex-end;
+  padding: 10px;
 `
 
 export default Navigation
