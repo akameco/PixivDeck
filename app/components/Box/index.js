@@ -3,8 +3,8 @@ import React from 'react'
 import type { User } from 'types/user'
 import type { Illust } from 'types/illust'
 import BoxHeader from 'components/BoxHeader'
+import LazyLoadImg from 'components/LazyLoadImg'
 import BoxFooter from './BoxFooter'
-import BoxImage from './BoxImage'
 import BoxWrapper from './boxStyles'
 
 export type Props = {
@@ -52,7 +52,7 @@ class Box extends React.PureComponent {
             isShowCaption={isShowCaption}
             onClick={onClickUser}
           />}
-        <BoxImage
+        <LazyLoadImg
           src={illust.imageUrls.medium}
           isManga={illust.pageCount > 1}
           onClick={onClick}
