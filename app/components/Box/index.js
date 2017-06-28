@@ -7,7 +7,8 @@ import BoxFooter from './BoxFooter'
 import BoxImage from './BoxImage'
 import BoxWrapper from './boxStyles'
 
-type Props = {
+export type Props = {
+  id: number | string,
   illust: Illust,
   user: User,
   isIllustOnly: boolean,
@@ -18,35 +19,48 @@ type Props = {
   onContextMenu: (event: Event) => void,
 }
 
-const Box = ({
-  illust,
-  user,
-  onClick,
-  onClickTag,
-  onClickUser,
-  isIllustOnly,
-  isShowCaption,
-  onContextMenu,
-}: Props) => {
-  const tags = illust.tags.map(x => x.name)
+class Box extends React.PureComponent {
+  props: Props
 
-  return (
-    <BoxWrapper onContextMenu={onContextMenu}>
-      {!isIllustOnly &&
-        <BoxHeader
-          user={user}
-          illust={illust}
-          isShowCaption={isShowCaption}
-          onClick={onClickUser}
-        />}
-      <BoxImage
-        src={illust.imageUrls.medium}
-        isManga={illust.pageCount > 1}
-        onClick={onClick}
-      />
-      {!isIllustOnly && <BoxFooter tags={tags} onClickTag={onClickTag} />}
-    </BoxWrapper>
-  )
+  shouldComponentUpdate() {
+    return false
+  }
+
+  render() {
+    const {
+      id,
+      illust,
+      user,
+      onClick,
+      onClickTag,
+      onClickUser,
+      isIllustOnly,
+      isShowCaption,
+      onContextMenu,
+    } = this.props
+
+    // const { isIntersecting, isHidden } = this.state
+
+    const tags = illust.tags.map(x => x.name)
+
+    return (
+      <BoxWrapper onContextMenu={onContextMenu} data-id={id}>
+        {!isIllustOnly &&
+          <BoxHeader
+            user={user}
+            illust={illust}
+            isShowCaption={isShowCaption}
+            onClick={onClickUser}
+          />}
+        <BoxImage
+          src={illust.imageUrls.medium}
+          isManga={illust.pageCount > 1}
+          onClick={onClick}
+        />
+        {!isIllustOnly && <BoxFooter tags={tags} onClickTag={onClickTag} />}
+      </BoxWrapper>
+    )
+  }
 }
 
 export default Box

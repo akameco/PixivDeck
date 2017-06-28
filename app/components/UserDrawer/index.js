@@ -4,7 +4,7 @@ import { Tabs, Tab } from 'material-ui/Tabs'
 import { FormattedMessage } from 'react-intl'
 import type { User, Profile } from 'types/user'
 import type { Illust } from 'types/illust'
-import IllstList from 'containers/IllustListContainer'
+import IllustListContainer from 'containers/IllustListContainer'
 import Header from './DrawerHeader'
 import messages from './messages'
 
@@ -24,7 +24,7 @@ const tabProps = {
   },
 }
 
-const UserDrawer = ({ user, profile, illusts, mangas }: Props) => {
+const UserDrawer = ({ user, profile }: Props) => {
   const { totalIllusts, totalManga } = profile
   return (
     <div>
@@ -38,7 +38,7 @@ const UserDrawer = ({ user, profile, illusts, mangas }: Props) => {
             />
           }
         >
-          <IllstList illusts={illusts} type="illust" />
+          <IllustListContainer type="illust" />
         </Tab>
         <Tab
           label={
@@ -48,7 +48,7 @@ const UserDrawer = ({ user, profile, illusts, mangas }: Props) => {
             />
           }
         >
-          <IllstList illusts={mangas} type="manga" />
+          <IllustListContainer type="manga" />
         </Tab>
       </Tabs>
     </div>

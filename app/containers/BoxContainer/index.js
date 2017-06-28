@@ -1,6 +1,6 @@
 // @flow
 import { remote } from 'electron'
-import React, { Component } from 'react'
+import React from 'react'
 import { connect, type Connector } from 'react-redux'
 import type { Dispatch, State } from 'types/'
 import type { Illust } from 'types/illust'
@@ -24,7 +24,7 @@ type Props = {
   dispatch: Dispatch,
 }
 
-class BoxContainer extends Component {
+class BoxContainer extends React.PureComponent {
   props: Props
 
   handleTagClick = (tag: string) => {
@@ -42,25 +42,16 @@ class BoxContainer extends Component {
   }
 
   render() {
-    const {
-      user,
-      illust,
-      isIllustOnly,
-      openPreview,
-      openUserDrawer,
-      isShowCaption,
-    } = this.props
+    const { openPreview, openUserDrawer, illust } = this.props
 
     return (
       <Box
-        user={user}
-        illust={illust}
-        isIllustOnly={isIllustOnly}
-        isShowCaption={isShowCaption}
+        id={illust.id}
         onClick={openPreview}
         onClickUser={openUserDrawer}
         onClickTag={this.handleTagClick}
         onContextMenu={this.handleContextMenu}
+        {...this.props}
       />
     )
   }

@@ -17,7 +17,7 @@ type State = {
   open: boolean,
 }
 
-class ColumnHeader extends React.Component {
+class ColumnHeader extends React.PureComponent {
   props: Props
   state: State = {
     open: false,

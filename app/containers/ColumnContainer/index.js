@@ -1,7 +1,6 @@
 // @flow
-import React, { Component } from 'react'
+import React from 'react'
 import { connect, type Connector } from 'react-redux'
-import { findDOMNode } from 'react-dom'
 import scrollTop from 'residual-scroll-top'
 import type { Dispatch, State as ReduxState } from 'types'
 import type { Illust } from 'types/illust'
@@ -14,7 +13,7 @@ import {
 } from 'actions'
 import { getIllusts, getColumn } from 'reducers'
 import Column from 'components/Column'
-import ColumnContent from '../../components/Column/ColumnContent'
+import IllustList from 'components/IllustList'
 import Loading from './Loding'
 
 type Props = {
@@ -26,11 +25,11 @@ type Props = {
   checkColumnUpdate: () => void,
 }
 
-class ColumnContainer extends Component {
+class ColumnContainer extends React.PureComponent {
   props: Props
   timer: number
   target: HTMLElement
-  root: HTMLElement
+  node: HTMLElement
 
   componentDidMount() {
     this.init()
@@ -50,42 +49,47 @@ class ColumnContainer extends Component {
     }, timer)
   }
 
-  handleReload = () => {
-    this.props.checkColumnUpdate()
-  }
-
-  handleTopClick = (e: Event) => {
+  handleHeaderClick = (e: Event) => {
     e.preventDefault()
-    const node = findDOMNode(this.root)
-    if (node && node.scrollTop === 0) {
+    if (this.node && this.node.scrollTop === 0) {
       return
     }
-    if (node) {
-      scrollTop(node, () => {
-        this.handleReload()
+    if (this.node) {
+      scrollTop(this.node, () => {
+        this.props.checkColumnUpdate()
       })
     }
   }
 
+  _setNode = node => {
+    this.node = node
+  }
+
   render() {
-    const { column, illusts, onNextPage, onClose } = this.props
+    const {
+      column,
+      illusts,
+      onNextPage,
+      onClose,
+      checkColumnUpdate,
+    } = this.props
+
+    const hasMore = illusts.length < 100
+
     return (
       <Column
         column={column}
-        onReload={this.handleReload}
+        onReload={checkColumnUpdate}
         onClose={onClose}
-        onClickHeader={this.handleTopClick}
+        onClickHeader={this.handleHeaderClick}
       >
         {illusts.length > 0
-          ? <ColumnContent
-              root={c => {
-                this.target = c
-              }}
-              targetRef={c => {
-                this.root = c
-              }}
-              onIntersect={onNextPage}
+          ? <IllustList
+              id={column.id}
+              node={this._setNode}
               illusts={illusts}
+              onNext={onNextPage}
+              hasMore={hasMore}
             />
           : <Loading />}
       </Column>
