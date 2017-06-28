@@ -1,5 +1,6 @@
 // @flow
 import React from 'react'
+import Loading from 'components/Loading'
 import IntersectionObserverWrapper from 'components/common/intersectionObserverWrapper'
 
 export type Props = {
@@ -50,9 +51,14 @@ export default class LoadMore extends React.PureComponent {
       <div
         ref={this._setNode}
         data-id={this.props.id}
-        style={{ height: '100px' }}
+        style={{
+          height: '100px',
+          display: 'flex',
+          justifyContent: 'center',
+          backgroundColor: 'inherit',
+        }}
       >
-        LoadMore
+        <Loading wrapStyle={{ background: 'inherit' }} />
       </div>
     )
   }

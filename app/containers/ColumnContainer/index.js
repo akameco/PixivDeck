@@ -74,7 +74,8 @@ class ColumnContainer extends React.PureComponent {
       checkColumnUpdate,
     } = this.props
 
-    const hasMore = illusts.length < 100
+    // TODO リミットをstoreに保存
+    const hasMore = illusts.length < 200
 
     return (
       <Column
