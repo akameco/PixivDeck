@@ -25,8 +25,8 @@ export default function configureStore(initialState: ?Object) {
   persistStore(store, {
     storage: localForage,
     whitelist: [
-      'columns',
-      'Table',
+      // 'columns',
+      // 'Table',
       'Language',
       'LoginModal',
       'ModalManeger',
