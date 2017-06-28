@@ -9,3 +9,5 @@ dist
 release
 *.map
 main.js
+
+coverage
