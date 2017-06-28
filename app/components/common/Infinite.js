@@ -14,7 +14,13 @@ type Props = {
   style?: Object,
 }
 
-export default class Infinite extends Component {
+const Wrap = styled.div`
+	overflow-y: scroll;
+	overflow-x: hidden;
+	height: 100%;
+`
+
+export default class Infinite extends React.PureComponent {
   props: Props
   sentinel: Component<*, *, *>
   io: Object
@@ -57,9 +63,3 @@ export default class Infinite extends Component {
     )
   }
 }
-
-const Wrap = styled.div`
-	overflow-y: scroll;
-	overflow-x: hidden;
-	height: 100%;
-`
