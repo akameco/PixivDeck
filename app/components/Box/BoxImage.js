@@ -1,21 +1,9 @@
 // @flow
-import React, { Component } from 'react'
-import styled, { keyframes } from 'styled-components'
-import { findDOMNode } from 'react-dom'
-import type { Illust } from 'types/illust'
+import React from 'react'
+import styled from 'styled-components'
 import Icon from 'components/common/Icon'
 
-type Props = {
-  illust: Illust,
-  onClick: () => void,
-}
-
-type State = {
-  isVisible: boolean,
-  isLoaded: boolean,
-}
-
-const BoxImageWrapper = styled.div`
+const StyledImg = styled.div`
 	position: relative;
 	width: 100%;
 	min-height: 20px;
@@ -46,86 +34,17 @@ const BoxImageWrapper = styled.div`
 	}
 `
 
-const fadeIn = keyframes`
-	0% {
-		filter: blur(10px);
-		margin: -10px;
-		opacity: 0;
-	}
+type Props = {
+  src: string,
+  isManga?: boolean,
+  onClick: () => void,
+}
 
-	100% {
-		filter: blur(0);
-		margin: 0;
-		opacity: 1;
-	}
-`
-
-const LoadedImg = styled.img`
-	animation: ${fadeIn} 0.3s both;
-`
-
-export default class BoxImage extends React.PureComponent {
-  props: Props
-  target: Component<*, *, *>
-  io: Object
-  state: State = {
-    isVisible: false,
-    isLoaded: false,
-  }
-
-  componentDidMount() {
-    this.init()
-  }
-
-  componentWillUnmount() {
-    this.io.unobserve(findDOMNode(this.target))
-  }
-
-  init() {
-    const target = this.target
-    this.io = new IntersectionObserver(
-      (entries: Array<{ intersectionRatio: number }>) => {
-        // eslint-disable-line no-undef
-        const intersectionRatio = entries[0].intersectionRatio
-        if (intersectionRatio <= 0) {
-          this.setState({ isVisible: false })
-        }
-        this.update()
-      },
-      {
-        rootMargin: '1000px',
-      }
-    )
-    this.io.observe(findDOMNode(target))
-  }
-
-  update() {
-    this.setState({ isVisible: true })
-
-    const img = new Image()
-    img.onload = () => {
-      this.setState({ isLoaded: true })
-    }
-    img.src = this.props.illust.imageUrls.squareMedium
-  }
-
-  onHandleRefs = (c: Component<*, *, *>) => {
-    this.target = c
-  }
-
-  render() {
-    const { imageUrls, pageCount } = this.props.illust
-    const { isVisible, isLoaded } = this.state
-    return (
-      <BoxImageWrapper innerRef={this.onHandleRefs}>
-        {isVisible &&
-          isLoaded &&
-          pageCount > 1 &&
-          <Icon type="manga" color="#fff" />}
-        {isVisible && isLoaded
-          ? <LoadedImg src={imageUrls.medium} onClick={this.props.onClick} />
-          : <img height={200} />}
-      </BoxImageWrapper>
-    )
-  }
+export default function BoxImage({ src, isManga = false, onClick }: Props) {
+  return (
+    <StyledImg>
+      {isManga && <Icon type="manga" color="#fff" />}
+      <img src={src} onClick={onClick} />
+    </StyledImg>
+  )
 }

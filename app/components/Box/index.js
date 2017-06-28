@@ -39,7 +39,11 @@ const Box = ({
           isShowCaption={isShowCaption}
           onClick={onClickUser}
         />}
-      <BoxImage illust={illust} onClick={onClick} />
+      <BoxImage
+        src={illust.imageUrls.medium}
+        isManga={illust.pageCount > 1}
+        onClick={onClick}
+      />
       {!isIllustOnly && <BoxFooter tags={tags} onClickTag={onClickTag} />}
     </BoxWrapper>
   )

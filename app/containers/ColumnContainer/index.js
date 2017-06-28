@@ -93,7 +93,7 @@ class ColumnContainer extends Component {
   }
 }
 
-type OwnProps = {
+type OP = {
   id: string,
 }
 
@@ -117,7 +117,7 @@ const mapDispatchToProps = (dispatch: Dispatch, { id }) => ({
   },
 })
 
-const connector: Connector<OwnProps, Props> = connect(
+const connector: Connector<OP, Props> = connect(
   mapStateToProps,
   mapDispatchToProps
 )
