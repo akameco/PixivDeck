@@ -42,7 +42,7 @@ const UserDrawer = ({ user, profile, illusts, mangas }: Props) => {
             illusts={illusts}
             type="illust"
             id="illust-user-drawer"
-            hasMore
+            hasMore={illusts.length < totalIllusts}
           />
         </Tab>
         <Tab
@@ -57,7 +57,7 @@ const UserDrawer = ({ user, profile, illusts, mangas }: Props) => {
             illusts={mangas}
             type="manga"
             id="manga-user-drawer"
-            hasMore
+            hasMore={mangas.length < totalManga}
           />
         </Tab>
       </Tabs>
