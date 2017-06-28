@@ -2,6 +2,7 @@
 import React from 'react'
 import { SortablePane, Pane } from 'react-sortable-pane'
 import Column from 'containers/ColumnContainer'
+import Column2 from 'containers/Column2'
 
 export type Props = {
   names: Array<string>,
@@ -23,6 +24,7 @@ const Table = ({ names }: Props) => {
       isResizable={{ x: false, y: false, xy: false }}
     >
       <Column id={id} />
+      <Column2 id={id} />
     </Pane>
   )
 

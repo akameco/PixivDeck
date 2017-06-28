@@ -9,6 +9,7 @@ import { HOUR, MINUTE } from 'constants/time'
 import { ADD_USER_ILLUST } from '../containers/AddNewColumnButton/constants'
 import API from '../api'
 import { add as addTable } from '../containers/Table/actions'
+import { addColumn as addColumn2 } from '../containers/Column2/actions'
 import { put, fork, takeEvery, type IOEffect } from 'redux-saga/effects'
 
 const THREE_HOUR = 3 * HOUR
@@ -49,6 +50,7 @@ function* searchIllust({ word }) {
 function* ranking({ mode }) {
   const id = uuid()
   yield put(addTable(id))
+  yield put(addColumn2(id, { id: 'ranking', type: 'RANKING' }))
   yield put(
     addColumn(
       id,

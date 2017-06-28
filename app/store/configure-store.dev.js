@@ -27,6 +27,7 @@ export default function configureStore(initialState: ?Object) {
     whitelist: [
       // 'columns',
       // 'Table',
+      // 'Column2',
       'Language',
       'LoginModal',
       'ModalManeger',

@@ -15,6 +15,7 @@ import IllustPreview from '../containers/IllustPreview/reducer'
 import DrawerManager from '../containers/DrawerManager/reducer'
 import UserDrawerContainer from '../containers/UserDrawerContainer/reducer'
 import Table from '../containers/Table/reducer'
+import Column2 from '../containers/Column2/reducer'
 
 import columns from './columns'
 import illustById, * as fromIllustById from './illustById'
@@ -35,6 +36,7 @@ const rootReducer = combineReducers({
   DrawerManager,
   UserDrawerContainer,
   Table,
+  Column2,
 })
 
 export const getColumn = ({ columns }: State, id: string) =>
