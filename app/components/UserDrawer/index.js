@@ -24,7 +24,7 @@ const tabProps = {
   },
 }
 
-const UserDrawer = ({ user, profile }: Props) => {
+const UserDrawer = ({ user, profile, illusts, mangas }: Props) => {
   const { totalIllusts, totalManga } = profile
   return (
     <div>
@@ -38,7 +38,12 @@ const UserDrawer = ({ user, profile }: Props) => {
             />
           }
         >
-          <IllustListContainer type="illust" />
+          <IllustListContainer
+            illusts={illusts}
+            type="illust"
+            id="illust-user-drawer"
+            hasMore
+          />
         </Tab>
         <Tab
           label={
@@ -48,7 +53,12 @@ const UserDrawer = ({ user, profile }: Props) => {
             />
           }
         >
-          <IllustListContainer type="manga" />
+          <IllustListContainer
+            illusts={mangas}
+            type="manga"
+            id="manga-user-drawer"
+            hasMore
+          />
         </Tab>
       </Tabs>
     </div>

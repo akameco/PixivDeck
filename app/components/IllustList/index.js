@@ -10,7 +10,7 @@ export type Props = {
   id: string,
   hasMore: boolean,
   illusts: Array<Illust>,
-  node: HTMLElement => void,
+  node?: HTMLElement => void,
   onNext: Function,
 }
 

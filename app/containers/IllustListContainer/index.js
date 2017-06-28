@@ -11,7 +11,7 @@ import IllustList, { type Props } from 'components/IllustList'
 type DrawerType = 'manga' | 'illust'
 
 const mapDispatchToProps = (dispatch: Dispatch, { type }) => ({
-  onIntersect() {
+  onNext() {
     // todo
     if (type === 'manga') {
       dispatch(nextMangaPage())
@@ -22,6 +22,8 @@ const mapDispatchToProps = (dispatch: Dispatch, { type }) => ({
 })
 
 type OP = {
+  id: string,
+  hasMore: boolean,
   illusts: Illust[],
   type: DrawerType,
 }
