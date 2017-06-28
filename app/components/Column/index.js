@@ -3,7 +3,7 @@ import React from 'react'
 import type { ColumnType } from 'types/column'
 import ColumnRoot from 'components/ColumnRoot'
 import ColumnHeader from 'components/ColumnHeader'
-import ColumnSetting from './ColumnSettinContainer'
+import ColumnSetting from 'containers/ColumnHeaderSetting'
 
 type Props = {
   children?: React$Element<*>,
