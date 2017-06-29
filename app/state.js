@@ -1,5 +1,4 @@
 // @flow
-import type { State as ColumnContainerState } from './containers/ColumnContainer/reducer'
 import type { State as ColumnManagerState } from './containers/ColumnManager/reducer'
 import type { State as ColumnRankingState } from './containers/ColumnRanking/reducer'
 import type { State as ColumnRankingR18State } from './containers/ColumnRankingR18/reducer'
@@ -16,7 +15,6 @@ import type { State as UserDrawerContainerState } from './containers/UserDrawerC
 import type { State as UserPopoverContainerState } from './containers/UserPopoverContainer/reducer'
 
 export type State = {
-  ColumnContainer: ColumnContainerState,
   ColumnManager: ColumnManagerState,
   ColumnRankingR18: ColumnRankingR18State,
   ColumnRanking: ColumnRankingState,

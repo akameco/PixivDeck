@@ -29,8 +29,6 @@ import type { Action as DrawerManagerAction } from './containers/DrawerManager/a
 
 import type { Action as BoxContainerAction } from './containers/BoxContainer/actionTypes'
 
-import type { Action as ColumnContainerAction } from './containers/ColumnContainer/actionTypes'
-
 import type { Action as TableAction } from './containers/Table/actionTypes'
 
 import type { Action as ColumnManagerAction } from './containers/ColumnManager/actionTypes'
@@ -55,7 +53,6 @@ export type Action =
   | UserDrawerContainerAction
   | DrawerManagerAction
   | BoxContainerAction
-  | ColumnContainerAction
   | TableAction
   | ColumnManagerAction
   | ColumnRankingAction
