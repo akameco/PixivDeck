@@ -8,7 +8,7 @@ import type { Mode } from './reducer'
 import { makeSelectColumn, makeSelectModes } from './selectors'
 import { put, select, call, takeEvery } from 'redux-saga/effects'
 
-function* addRakingColumn({ mode }: { mode: Mode }) {
+function* addRankingColumn({ mode }: { mode: Mode }) {
   const modes: Array<?Mode> = yield select(makeSelectModes())
   if (modes.every(v => v !== mode)) {
     yield put(actions.addRankingColumnSuccess(mode))
@@ -58,7 +58,7 @@ function* fetchNextRanking(props: Props) {
 }
 
 export default function* root(): Generator<*, void, void> {
-  yield takeEvery(Actions.ADD_RANKING_COLUMN, addRakingColumn)
+  yield takeEvery(Actions.ADD_RANKING_COLUMN, addRankingColumn)
   yield takeEvery(Actions.FETCH_RANKING, fetchRanking)
   yield takeEvery(Actions.FETCH_NEXT_RANKING, fetchNextRanking)
 }
