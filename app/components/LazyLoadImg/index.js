@@ -50,7 +50,7 @@ type State = {
   isLoaded: boolean,
 }
 
-export default class BoxImage extends React.PureComponent {
+export default class LazyLoadImg extends React.PureComponent {
   props: Props
   state: State = {
     isVisible: false,
@@ -63,7 +63,15 @@ export default class BoxImage extends React.PureComponent {
     this.init()
   }
 
+  componentWillUnmount() {
+    this.io.unobserve(this.node)
+  }
+
   init() {
+    if (!this.node) {
+      return
+    }
+
     this.io = new IntersectionObserver(
       (entries: Array<{ intersectionRatio: number }>) => {
         // eslint-disable-line no-undef
