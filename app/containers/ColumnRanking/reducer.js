@@ -38,7 +38,8 @@ export default function(state: State = initialState, action: Action): State {
       }
     }
 
-    case Actions.FETCH_RANKING_SUCCESS: {
+    case Actions.FETCH_RANKING_SUCCESS:
+    case Actions.FETCH_NEXT_RANKING_SUCCESS: {
       const id = action.id
       return {
         ...state,
@@ -46,6 +47,7 @@ export default function(state: State = initialState, action: Action): State {
       }
     }
 
+    // TODO REHYDRATEをまとめる
     case REHYDRATE: {
       // $FlowFixMe
       const oldState = action.payload.ColumnRanking

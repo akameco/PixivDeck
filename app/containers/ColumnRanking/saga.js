@@ -17,7 +17,9 @@ function* addRakingColumn({ mode }: { mode: Mode }) {
   yield put(addColumn(`ranking-${mode}`, { columnId: mode, type: 'RANKING' }))
 }
 
-function* fetchRanking(props: { id: Mode }) {
+type Props = { id: Mode }
+
+function* fetchRanking(props: Props) {
   const { id } = props
   const { illustIds } = yield select(makeSelectColumn(), props)
 
@@ -27,14 +29,36 @@ function* fetchRanking(props: { id: Mode }) {
 
     yield put(actions.setNextUrl(id, result.nextUrl))
 
-    const nextIds = union(result.illusts, illustIds)
+    const nextIds = union(illustIds, result.illusts)
     yield put(actions.fetchRankingSuccess(id, response, nextIds))
   } catch (err) {
     yield put(actions.fetchRankingFailre(id))
   }
 }
 
+function* fetchNextRanking(props: Props) {
+  const { id } = props
+  const { illustIds, nextUrl } = yield select(makeSelectColumn(), props)
+
+  try {
+    if (!nextUrl) {
+      return
+    }
+
+    const response = yield call(getRequest, nextUrl)
+    const { result } = response
+
+    yield put(actions.setNextUrl(id, result.nextUrl))
+
+    const nextIds = union(illustIds, result.illusts)
+    yield put(actions.fetchRankingSuccess(id, response, nextIds))
+  } catch (err) {
+    yield put(actions.fetchNextRankingFailre(id))
+  }
+}
+
 export default function* root(): Generator<*, void, void> {
   yield takeEvery(Actions.ADD_RANKING_COLUMN, addRakingColumn)
   yield takeEvery(Actions.FETCH_RANKING, fetchRanking)
+  yield takeEvery(Actions.FETCH_NEXT_RANKING, fetchNextRanking)
 }
