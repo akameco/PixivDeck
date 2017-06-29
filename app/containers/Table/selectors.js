@@ -4,4 +4,4 @@ import type { State } from 'types/state'
 
 const selectRoot = (state: State) => state.Table
 
-export const makeSelectNames = () => createSelector(selectRoot, s => s.names)
+export const makeSelectIds = () => createSelector(selectRoot, s => s.ids)

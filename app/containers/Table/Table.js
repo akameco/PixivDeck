@@ -1,20 +1,20 @@
 // @flow
 import React from 'react'
 import { SortablePane, Pane } from 'react-sortable-pane'
-import Column from 'containers/ColumnContainer'
+import ColumnManager from 'containers/ColumnManager'
 
 export type Props = {
-  names: Array<string>,
+  ids: Array<string>,
 }
 
-const Table = ({ names }: Props) => {
+const Table = ({ ids }: Props) => {
   const handleOnResize = () => null
 
-  if (names.length === 0) {
+  if (ids.length === 0) {
     return null
   }
 
-  const panes = names.map(id =>
+  const panes = ids.map(id =>
     <Pane
       key={id}
       width={300}
@@ -22,7 +22,7 @@ const Table = ({ names }: Props) => {
       height="100%"
       isResizable={{ x: false, y: false, xy: false }}
     >
-      <Column id={id} />
+      <ColumnManager id={id} />
     </Pane>
   )
 

@@ -1,6 +1,9 @@
 // @flow
-import { fork } from 'redux-saga/effects' // eslint-disable-line
+// $FlowFixMe
+import { fork, all } from 'redux-saga/effects' // eslint-disable-line
 import UserDrawerContainer from '../containers/UserDrawerContainer/saga'
+import Table from '../containers/Table/saga'
+import ColumnRanking from '../containers/ColumnRanking/saga'
 import auth from './auth'
 import minBookmarks from './minBookmarks'
 import nextColumnPage from './nextColumnPage'
@@ -13,17 +16,21 @@ import addColumn from './addColumn'
 import drawer from './drawer'
 
 function* root(): Generator<*, void, void> {
-  yield fork(auth)
-  yield fork(minBookmarks)
-  yield fork(nextColumnPage)
-  yield fork(column)
-  yield fork(illust)
-  yield fork(followUser)
-  yield fork(misc)
-  yield fork(popover)
-  yield fork(addColumn)
-  yield fork(drawer)
-  yield fork(UserDrawerContainer)
+  yield all([
+    fork(auth),
+    fork(minBookmarks),
+    fork(nextColumnPage),
+    fork(column),
+    fork(illust),
+    fork(followUser),
+    fork(misc),
+    fork(popover),
+    fork(addColumn),
+    fork(drawer),
+    fork(UserDrawerContainer),
+    fork(Table),
+    fork(ColumnRanking),
+  ])
 }
 
 export default root

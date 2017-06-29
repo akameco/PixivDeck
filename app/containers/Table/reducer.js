@@ -1,14 +1,15 @@
 // @flow
 import { union } from 'lodash'
+import type { ColumnManagerId } from '../ColumnManager/reducer'
 import type { Action } from './actionTypes'
 import * as Actions from './constants'
 
 export type State = {
-  names: Array<string>,
+  ids: Array<ColumnManagerId>,
 }
 
 const initialState: State = {
-  names: [],
+  ids: [],
 }
 
 export default function(
@@ -17,7 +18,7 @@ export default function(
 ): $Shape<State> {
   switch (action.type) {
     case Actions.ADD:
-      return { names: union(state.names, [action.name]) }
+      return { ids: union(state.ids, [action.id]) }
     default:
       return state
   }

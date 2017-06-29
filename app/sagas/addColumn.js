@@ -8,8 +8,6 @@ import * as RANKING from 'constants/ranking'
 import { HOUR, MINUTE } from 'constants/time'
 import { ADD_USER_ILLUST } from '../containers/AddNewColumnButton/constants'
 import API from '../api'
-import { add as addTable } from '../containers/Table/actions'
-import { addColumn as addColumn2 } from '../containers/Column2/actions'
 import { put, fork, takeEvery, type IOEffect } from 'redux-saga/effects'
 
 const THREE_HOUR = 3 * HOUR
@@ -45,21 +43,6 @@ function* follow({ isPublic }) {
 
 function* searchIllust({ word }) {
   yield put(addColumn(uuid(), ENDPOINT.SEARCH, { word }, word, MINUTE))
-}
-
-function* ranking({ mode }) {
-  const id = uuid()
-  yield put(addTable(id))
-  yield put(addColumn2(id, { id: 'ranking', type: 'RANKING' }))
-  yield put(
-    addColumn(
-      id,
-      ENDPOINT.RANKING,
-      { mode },
-      `${RANKING.ILLUST_RANKING[mode]}ランキング`,
-      THREE_HOUR
-    )
-  )
 }
 
 function* r18Ranking({ mode }) {
@@ -98,10 +81,6 @@ function* searchIllustWatch(): Generator<IOEffect, void, *> {
   yield takeEvery(Actions.ADD_COLUMN_SEARCH_ILLUST, searchIllust)
 }
 
-function* rankingWatch(): Generator<IOEffect, void, *> {
-  yield takeEvery(Actions.ADD_COLUMN_RANKING, ranking)
-}
-
 function* r18RankingWatch(): Generator<IOEffect, void, *> {
   yield takeEvery(Actions.ADD_COLUMN_R18_RANKING, r18Ranking)
 }
@@ -114,7 +93,6 @@ export default function* root(): Generator<*, void, void> {
   yield fork(bookmarkWatch)
   yield fork(followWatch)
   yield fork(searchIllustWatch)
-  yield fork(rankingWatch)
   yield fork(r18RankingWatch)
   yield fork(userIllustWatch)
 }

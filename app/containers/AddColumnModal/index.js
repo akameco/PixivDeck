@@ -9,6 +9,7 @@ import {
   addIllustR18RankingColumn,
 } from 'actions'
 import * as ranking from 'constants/ranking'
+import { addRankingColumn } from '../ColumnRanking/actions'
 import Modal from './AddColumnModal'
 import type { Props } from './AddColumnModal'
 
@@ -26,6 +27,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
     dispatch(addFollowColumn(false))
   },
   addIllustRanking(mode: $Keys<typeof ranking.ILLUST_RANKING>) {
+    dispatch(addRankingColumn(mode))
     dispatch(addIllustRankingColumn(mode))
   },
   addIllustR18Ranking(mode: $Keys<typeof ranking.ILLUST_R18_RANKING>) {

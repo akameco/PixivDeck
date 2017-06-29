@@ -27,26 +27,11 @@ type Props = {
 
 class ColumnContainer extends React.PureComponent {
   props: Props
-  timer: number
   target: HTMLElement
   node: HTMLElement
 
   componentDidMount() {
-    this.init()
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timer)
-  }
-
-  async init() {
-    const { column: { timer }, fetchColumn, checkColumnUpdate } = this.props
-
-    fetchColumn()
-
-    this.timer = setInterval(() => {
-      checkColumnUpdate()
-    }, timer)
+    this.props.fetchColumn()
   }
 
   handleHeaderClick = (e: Event) => {
@@ -79,10 +64,11 @@ class ColumnContainer extends React.PureComponent {
 
     return (
       <Column
+        title="hoge"
         column={column}
+        node={this.node}
         onReload={checkColumnUpdate}
         onClose={onClose}
-        onClickHeader={this.handleHeaderClick}
       >
         {illusts.length > 0
           ? <IllustList
