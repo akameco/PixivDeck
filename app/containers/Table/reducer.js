@@ -19,6 +19,8 @@ export default function(
   switch (action.type) {
     case Actions.ADD:
       return { ids: union(state.ids, [action.id]) }
+    case Actions.REMOVE:
+      return { ids: state.ids.filter(v => action.id !== v) }
     default:
       return state
   }

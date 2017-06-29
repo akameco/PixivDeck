@@ -19,6 +19,7 @@ type Props = {
   illusts: Array<Illust>,
   title: string,
   onFetch: () => void,
+  onClose: () => void,
 } & OP
 
 class ColumnRanking extends React.Component {
@@ -34,13 +35,13 @@ class ColumnRanking extends React.Component {
   }
 
   render() {
-    const { illusts, id, title } = this.props
+    const { illusts, id, title, onClose } = this.props
 
     // TODO リミットをstoreに保存
     const hasMore = illusts.length < 200
 
     return (
-      <Column onClose={() => {}} node={this.node} title={title}>
+      <Column onClose={onClose} node={this.node} title={title}>
         {illusts.length > 0
           ? <IllustList
               id={id}
