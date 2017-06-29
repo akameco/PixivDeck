@@ -22,9 +22,9 @@ type Props = { id: ColumnId }
 
 function* fetchFollow(props: Props) {
   const { id } = props
-  const { illustIds } = yield select(makeSelectColumn(), props)
-
   try {
+    const { illustIds } = yield select(makeSelectColumn(), props)
+
     const info = yield select(makeSelectInfo())
     // TODO
     const { accessToken, user: { id: userId } } = yield call(fetchAuth, info)
@@ -48,9 +48,9 @@ function* fetchFollow(props: Props) {
 
 function* fetchNextFollow(props: Props) {
   const { id } = props
-  const { illustIds, nextUrl } = yield select(makeSelectColumn(), props)
-
   try {
+    const { illustIds, nextUrl } = yield select(makeSelectColumn(), props)
+
     if (!nextUrl) {
       return
     }

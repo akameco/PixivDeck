@@ -27,9 +27,9 @@ type Props = {
 
 function* fetchRanking(props: Props) {
   const { id } = props
-  const { illustIds } = yield select(makeSelectColumn(), props)
 
   try {
+    const { illustIds } = yield select(makeSelectColumn(), props)
     // refresh_tokenが効かないので、毎回loginリクエストを飛ばす。もっとやりようはいくらでもあるけど。
     const info = yield select(makeSelectInfo())
     const { accessToken } = yield call(fetchAuth, info)
@@ -53,12 +53,12 @@ function* fetchRanking(props: Props) {
 
 function* fetchNextRanking18(props: Props) {
   const { id } = props
-  const { illustIds, nextUrl } = yield select(makeSelectColumn(), props)
-
-  const info = yield select(makeSelectInfo())
-  const { accessToken } = yield call(fetchAuth, info)
-
   try {
+    const { illustIds, nextUrl } = yield select(makeSelectColumn(), props)
+
+    const info = yield select(makeSelectInfo())
+    const { accessToken } = yield call(fetchAuth, info)
+
     if (!nextUrl) {
       return
     }

@@ -21,9 +21,10 @@ type Props = { id: Mode }
 
 function* fetchRanking(props: Props) {
   const { id } = props
-  const { illustIds } = yield select(makeSelectColumn(), props)
 
   try {
+    const { illustIds } = yield select(makeSelectColumn(), props)
+
     const response = yield call(getRequest, `/v1/illust/ranking?mode=${id}`)
     const { result } = response
 
@@ -38,9 +39,9 @@ function* fetchRanking(props: Props) {
 
 function* fetchNextRanking(props: Props) {
   const { id } = props
-  const { illustIds, nextUrl } = yield select(makeSelectColumn(), props)
 
   try {
+    const { illustIds, nextUrl } = yield select(makeSelectColumn(), props)
     if (!nextUrl) {
       return
     }
