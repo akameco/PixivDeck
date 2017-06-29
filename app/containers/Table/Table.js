@@ -1,10 +1,12 @@
 // @flow
 import React from 'react'
 import { SortablePane, Pane } from 'react-sortable-pane'
-import ColumnManager from 'containers/ColumnManager'
+import ColumnManager, {
+  type Props as ManegerProps,
+} from 'containers/ColumnManager'
 
 export type Props = {
-  ids: Array<string>,
+  ids: Array<$PropertyType<ManegerProps, 'columnId'>>,
 }
 
 const Table = ({ ids }: Props) => {

@@ -1,6 +1,5 @@
 // @flow
-import type { Column, ColumnId } from '../ColumnManager/reducer'
-import type { Action, AddColumnAction } from './actionTypes'
+import type { Action } from './actionTypes'
 import * as Actions from './constants'
 import { REHYDRATE } from 'redux-persist/constants'
 
@@ -15,53 +14,51 @@ export type Mode =
 
 export type Endpoint = '/v1/illust/ranking'
 
-export type ColumnRanking = {|
-  mode: Mode,
-  illustIds: Array<number>,
-  title: string,
-  nextUrl: ?string,
-|} & Column
+export type ColumnId = Mode
 
-export type State = {} | {| [id: ColumnId]: ColumnRanking |}
+export type ColumnRanking = {|
+  illustIds: Array<number>,
+  nextUrl: ?string,
+|}
+
+export type State = $Shape<{ [Mode]: ColumnRanking }>
 
 const initialState: State = {}
-
-// Obj as Mapでflowが効かないので分離. (ex: {[key: strng]: Object})
-// 基本的にtype Actionのみが望ましいが上記の理由より個別のActionTypeを作成
-function add(action: AddColumnAction): ColumnRanking {
-  return {
-    mode: action.mode,
-    illustIds: [],
-    title: action.title,
-    nextUrl: null,
-  }
-}
 
 export default function(state: State = initialState, action: Action): State {
   switch (action.type) {
     case Actions.ADD_RANKING_COLUMN_SUCCESS:
-      return { ...state, [action.id]: add(action) }
+      return { ...state, [action.id]: { illustIds: [], nextUrl: null } }
 
-    case Actions.SET_NEXT_URL:
+    case Actions.SET_NEXT_URL: {
+      const id = action.id
       return {
         ...state,
-        [action.id]: { ...state[action.id], nextUrl: action.nextUrl },
+        [id]: { ...state[id], nextUrl: action.nextUrl },
       }
+    }
 
-    case Actions.FETCH_RANKING_SUCCESS:
+    case Actions.FETCH_RANKING_SUCCESS: {
+      const id = action.id
       return {
         ...state,
-        [action.id]: { ...state[action.id], illustIds: action.ids },
+        [id]: { ...state[id], illustIds: action.ids },
       }
+    }
 
     case REHYDRATE: {
       // $FlowFixMe
-      const oldState: State = action.payload.ColumnRanking
+      const oldState = action.payload.ColumnRanking
+
       if (oldState) {
-        return Object.keys(oldState).reduce((acc, t) => {
-          acc[t] = add({ mode: oldState[t].mode, title: oldState[t].title })
+        const newState = Object.keys(oldState).reduce((acc, key) => {
+          acc[key] = {
+            illustIds: [],
+            nextUrl: null,
+          }
           return acc
         }, {})
+        return newState
       }
       return state
     }

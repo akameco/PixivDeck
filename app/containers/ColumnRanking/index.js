@@ -2,14 +2,16 @@
 import React from 'react'
 import { connect, type Connector } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
+import { injectIntl, type IntlShape } from 'react-intl'
 import type { Dispatch } from 'types'
 import type { Illust } from 'types/illust'
 import IllustList from 'components/IllustList'
 import Column from 'components/Column'
-import type { ColumnId } from '../ColumnManager/reducer'
 import Loading from '../ColumnContainer/Loding'
-import { makeSelectIllusts, makeSelectTitle } from './selectors'
+import type { ColumnId } from './reducer'
+import { makeSelectIllusts } from './selectors'
 import * as actions from './actions'
+import messages from './messages'
 
 type OP = {
   id: ColumnId,
@@ -17,13 +19,16 @@ type OP = {
 
 type Props = {
   illusts: Array<Illust>,
-  title: string,
   onFetch: () => void,
   onClose: () => void,
 } & OP
 
+type InjectProp = {
+  intl: IntlShape,
+}
+
 class ColumnRanking extends React.Component {
-  props: Props
+  props: Props & InjectProp
   node: HTMLElement
 
   componentWillMount() {
@@ -35,13 +40,17 @@ class ColumnRanking extends React.Component {
   }
 
   render() {
-    const { illusts, id, title, onClose } = this.props
+    const { illusts, id, onClose, intl } = this.props
 
     // TODO リミットをstoreに保存
     const hasMore = illusts.length < 200
 
     return (
-      <Column onClose={onClose} node={this.node} title={title}>
+      <Column
+        onClose={onClose}
+        node={this.node}
+        title={intl.formatMessage(messages[id])}
+      >
         {illusts.length > 0
           ? <IllustList
               id={id}
@@ -58,7 +67,6 @@ class ColumnRanking extends React.Component {
 
 const mapStateToProps = createStructuredSelector({
   illusts: makeSelectIllusts(),
-  title: makeSelectTitle(),
 })
 
 function mapDispatchToProps(dispatch: Dispatch, { id }: OP) {
@@ -74,4 +82,4 @@ const connector: Connector<OP, Props> = connect(
   mapDispatchToProps
 )
 
-export default connector(ColumnRanking)
+export default connector(injectIntl(ColumnRanking))

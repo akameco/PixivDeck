@@ -1,32 +1,35 @@
 // @flow
-import uuid from 'uuid'
 import union from 'lodash/union'
 import { addColumn } from 'containers/ColumnManager/actions'
 import { getRequest } from '../../api/client'
 import * as Actions from './constants'
 import * as actions from './actions'
 import type { Mode } from './reducer'
-import { makeSelectColumn } from './selectors'
+import { makeSelectColumn, makeSelectModes } from './selectors'
 import { put, select, call, takeEvery } from 'redux-saga/effects'
 
 function* addRakingColumn({ mode }: { mode: Mode }) {
-  const id = uuid()
+  const id = mode
   // TODO i18n
-  const title = `${mode} ランキング`
+  const title = `${mode}`
 
-  yield put(actions.addRankingColumnSuccess(id, mode, title))
-  yield put(addColumn(uuid(), { columnId: id, type: 'RANKING' }))
+  const modes: Array<?Mode> = yield select(makeSelectModes())
+  if (modes.every(v => v !== mode)) {
+    yield put(actions.addRankingColumnSuccess(id, title))
+  }
+
+  yield put(addColumn(`ranking-${id}`, { columnId: id, type: 'RANKING' }))
 
   // 初期ロード
   yield put(actions.fetchRanking(id))
 }
 
-function* fetchRanking(props: { id: string }) {
+function* fetchRanking(props: { id: Mode }) {
   const { id } = props
-  const { mode, illustIds } = yield select(makeSelectColumn(), props)
+  const { illustIds } = yield select(makeSelectColumn(), props)
 
   try {
-    const response = yield call(getRequest, `/v1/illust/ranking?mode=${mode}`)
+    const response = yield call(getRequest, `/v1/illust/ranking?mode=${id}`)
     const { result } = response
 
     yield put(actions.setNextUrl(id, result.nextUrl))

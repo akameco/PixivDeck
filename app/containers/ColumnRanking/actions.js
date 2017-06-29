@@ -1,34 +1,20 @@
 // @flow
-import type { ColumnId } from '../ColumnManager/reducer'
-import type { Response } from '../../api/schema'
 import type { Action } from './actionTypes.js'
 import {
-  ADD_RANKING_COLUMN,
   ADD_RANKING_COLUMN_SUCCESS,
   FETCH_RANKING,
   FETCH_RANKING_FAILRE,
+  ADD_RANKING_COLUMN,
   SET_NEXT_URL,
   FETCH_RANKING_SUCCESS,
 } from './constants'
-import type { Mode } from './reducer'
+import type { Response } from '../../api/schema'
+import type { ColumnId } from './reducer'
 
-export function addRankingColumn(mode: Mode): Action {
-  return {
-    type: ADD_RANKING_COLUMN,
-    mode,
-  }
-}
-
-export function addRankingColumnSuccess(
-  id: ColumnId,
-  mode: Mode,
-  title: string
-): Action {
+export function addRankingColumnSuccess(id: ColumnId): Action {
   return {
     type: ADD_RANKING_COLUMN_SUCCESS,
     id,
-    mode,
-    title,
   }
 }
 
@@ -43,6 +29,13 @@ export function fetchRankingFailre(id: ColumnId): Action {
   return {
     type: FETCH_RANKING_FAILRE,
     id,
+  }
+}
+
+export function addRankingColumn(mode: ColumnId): Action {
+  return {
+    type: ADD_RANKING_COLUMN,
+    mode,
   }
 }
 

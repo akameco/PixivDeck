@@ -1,17 +1,20 @@
 // @flow
 import { createSelector } from 'reselect'
 import type { State } from 'types/state'
+import type { Mode } from './reducer'
 
 type Props = {
-  id: string,
+  id: Mode,
 }
+
+const getColumns = (state: State) => state.ColumnRanking
+
+export const makeSelectModes = () =>
+  createSelector(getColumns, s => Object.keys(s))
 
 const getColumn = (state: State, { id }: Props) => state.ColumnRanking[id]
 
 export const makeSelectColumn = () => createSelector(getColumn, s => s)
-
-export const makeSelectMode = () => createSelector(getColumn, s => s.mode)
-export const makeSelectTitle = () => createSelector(getColumn, s => s.title)
 
 const makeSelectIllustIds = () => createSelector(getColumn, s => s.illustIds)
 
