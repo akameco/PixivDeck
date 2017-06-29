@@ -20,6 +20,7 @@ type OP = {
 type Props = {
   illusts: Array<Illust>,
   onFetch: () => void,
+  onNext: () => void,
   onClose: () => void,
 } & OP
 
@@ -40,7 +41,7 @@ class ColumnRanking extends React.Component {
   }
 
   render() {
-    const { illusts, id, onClose, intl } = this.props
+    const { illusts, id, onClose, onNext, intl } = this.props
 
     // TODO リミットをstoreに保存
     const hasMore = illusts.length < 200
@@ -57,7 +58,7 @@ class ColumnRanking extends React.Component {
               node={this._setNode}
               hasMore={hasMore}
               illusts={illusts}
-              onNext={() => {}}
+              onNext={onNext}
             />
           : <Loading />}
       </Column>
@@ -73,6 +74,9 @@ function mapDispatchToProps(dispatch: Dispatch, { id }: OP) {
   return {
     onFetch() {
       dispatch(actions.fetchRankingR18(id))
+    },
+    onNext() {
+      dispatch(actions.fetchNextRankingR18(id))
     },
   }
 }

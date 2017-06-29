@@ -20,12 +20,15 @@ function* addRakingColumn({ mode }: { mode: R18Mode }) {
   )
 }
 
-function* fetchRanking(props: { id: R18Mode }) {
+type Props = {
+  id: R18Mode,
+}
+
+function* fetchRanking(props: Props) {
   const { id } = props
   const { illustIds } = yield select(makeSelectColumn(), props)
 
   try {
-    // TODO 認証. 現在おそらくaxiosの機能で認証がうまく行ってしまっている
     const response = yield call(getRequest, `/v1/illust/ranking?mode=${id}`)
     const { result } = response
 
@@ -38,7 +41,29 @@ function* fetchRanking(props: { id: R18Mode }) {
   }
 }
 
+function* fetchNextRanking18(props: Props) {
+  const { id } = props
+  const { illustIds, nextUrl } = yield select(makeSelectColumn(), props)
+
+  try {
+    if (!nextUrl) {
+      return
+    }
+
+    const response = yield call(getRequest, nextUrl)
+    const { result } = response
+
+    yield put(actions.setNextUrl(id, result.nextUrl))
+
+    const nextIds = union(illustIds, result.illusts)
+    yield put(actions.fetchNextRankingR18Success(id, response, nextIds))
+  } catch (err) {
+    yield put(actions.fetchNextRankingR18Failre(id))
+  }
+}
+
 export default function* root(): Generator<*, void, void> {
   yield takeEvery(Actions.ADD_RANKING_R18_COLUMN, addRakingColumn)
   yield takeEvery(Actions.FETCH_RANKING_R18, fetchRanking)
+  yield takeEvery(Actions.FETCH_NEXT_RANKING_R18, fetchNextRanking18)
 }

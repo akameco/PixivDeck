@@ -36,6 +36,7 @@ export default function(state: State = initialState, action: Action): State {
       }
     }
 
+    case Actions.FETCH_NEXT_RANKING_R18_SUCCESS:
     case Actions.FETCH_RANKING_R18_SUCCESS: {
       const id = action.id
       return {
