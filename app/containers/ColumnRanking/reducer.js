@@ -2,6 +2,7 @@
 import type { Column, ColumnId } from '../ColumnManager/reducer'
 import type { Action, AddColumnAction } from './actionTypes'
 import * as Actions from './constants'
+import { REHYDRATE } from 'redux-persist/constants'
 
 export type Mode =
   | 'day'
@@ -40,16 +41,31 @@ export default function(state: State = initialState, action: Action): State {
   switch (action.type) {
     case Actions.ADD_RANKING_COLUMN_SUCCESS:
       return { ...state, [action.id]: add(action) }
+
     case Actions.SET_NEXT_URL:
       return {
         ...state,
         [action.id]: { ...state[action.id], nextUrl: action.nextUrl },
       }
+
     case Actions.FETCH_RANKING_SUCCESS:
       return {
         ...state,
         [action.id]: { ...state[action.id], illustIds: action.ids },
       }
+
+    case REHYDRATE: {
+      // $FlowFixMe
+      const oldState: State = action.payload.ColumnRanking
+      if (oldState) {
+        return Object.keys(oldState).reduce((acc, t) => {
+          acc[t] = add({ mode: oldState[t].mode, title: oldState[t].title })
+          return acc
+        }, {})
+      }
+      return state
+    }
+
     default:
       return state
   }

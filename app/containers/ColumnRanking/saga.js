@@ -16,6 +16,9 @@ function* addRakingColumn({ mode }: { mode: Mode }) {
 
   yield put(actions.addRankingColumnSuccess(id, mode, title))
   yield put(addColumn(uuid(), { columnId: id, type: 'RANKING' }))
+
+  // 初期ロード
+  yield put(actions.fetchRanking(id))
 }
 
 function* fetchRanking(props: { id: string }) {
@@ -37,5 +40,5 @@ function* fetchRanking(props: { id: string }) {
 
 export default function* root(): Generator<*, void, void> {
   yield takeEvery(Actions.ADD_RANKING_COLUMN, addRakingColumn)
-  yield takeEvery(Actions.ADD_RANKING_COLUMN_SUCCESS, fetchRanking)
+  yield takeEvery(Actions.FETCH_RANKING, fetchRanking)
 }
