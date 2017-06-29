@@ -37,6 +37,8 @@ import type { Action as ColumnRankingAction } from './containers/ColumnRanking/a
 
 import type { Action as ColumnRankingR18Action } from './containers/ColumnRankingR18/actionTypes'
 
+import type { Action as ColumnBookmarkAction } from './containers/ColumnBookmark/actionTypes'
+
 export type Action =
   | UserPopoverContainerAction
   | LanguageAction
@@ -57,3 +59,4 @@ export type Action =
   | ColumnManagerAction
   | ColumnRankingAction
   | ColumnRankingR18Action
+  | ColumnBookmarkAction

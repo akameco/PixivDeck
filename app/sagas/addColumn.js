@@ -6,7 +6,6 @@ import * as Actions from 'constants/addColumn'
 import * as ENDPOINT from 'constants/endpoint'
 import { HOUR, MINUTE } from 'constants/time'
 import { ADD_USER_ILLUST } from '../containers/AddNewColumnButton/constants'
-import API from '../api'
 import { put, fork, takeEvery, type IOEffect } from 'redux-saga/effects'
 
 const THREE_HOUR = 3 * HOUR
@@ -25,13 +24,6 @@ const addColumn = (
   timer,
   params,
 })
-
-function* bookmark({ isPublic }) {
-  const userId = API.authInfo().user.id
-  const title = isPublic ? '公開ブックマーク' : '非公開ブックマーク'
-  const params = { userId, restrict: isPublic ? 'public' : 'private' }
-  yield put(addColumn(uuid(), ENDPOINT.BOOKMARKS_ILLUST, params, title, MINUTE))
-}
 
 function* follow({ isPublic }) {
   const restrict = isPublic ? 'public' : 'private'
@@ -56,10 +48,6 @@ function* userIllust({ user }) {
   )
 }
 
-function* bookmarkWatch(): Generator<IOEffect, void, *> {
-  yield takeEvery(Actions.ADD_COLUMN_BOOKMARK, bookmark)
-}
-
 function* followWatch(): Generator<IOEffect, void, *> {
   yield takeEvery(Actions.ADD_COLUMN_FOLLOW, follow)
 }
@@ -73,7 +61,6 @@ function* userIllustWatch(): Generator<IOEffect, void, *> {
 }
 
 export default function* root(): Generator<*, void, void> {
-  yield fork(bookmarkWatch)
   yield fork(followWatch)
   yield fork(searchIllustWatch)
   yield fork(userIllustWatch)

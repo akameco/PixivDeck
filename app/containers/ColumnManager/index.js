@@ -5,6 +5,7 @@ import { createStructuredSelector } from 'reselect'
 import { removeTable } from 'containers/Table/actions'
 import ColumnRanking from '../ColumnRanking'
 import ColumnRankingR18 from '../ColumnRankingR18'
+import ColumnBookmark from '../ColumnBookmark'
 import type { ColumnId as RankingId } from '../ColumnRanking/reducer'
 import type { ColumnId as RankingR18Id } from '../ColumnRankingR18/reducer'
 import type { ColumnManagerId, ColumnId, ColumnType } from './reducer'
@@ -24,6 +25,9 @@ function ColumnManager({ columnId, type, onClose }: Props) {
   } else if (type === 'RANKING_R18') {
     // $FlowFixMe
     return <ColumnRankingR18 id={columnId} onClose={onClose} />
+  } else if (type === 'BOOKMARK') {
+    // $FlowFixMe
+    return <ColumnBookmark id={columnId} onClose={onClose} />
   }
   return null
 }

@@ -29,6 +29,7 @@ export default function configureStore(initialState: ?Object) {
       'ColumnManager',
       'ColumnRanking',
       'ColumnRankingR18',
+      'ColumnBookmark',
       'Language',
       'LoginModal',
       'ModalManeger',
