@@ -22,31 +22,35 @@ describe('API', () => {
     expect(res.user.account).toEqual(USERNAME)
   })
 
-  test('have nextUrl', async () => {
-    const { accessToken } = await fetchAuth(info)
+  test('no params', async () => {
+    const { result } = await getRequest('/v1/illust/ranking?mode=day')
+    expect(result).toHaveProperty('nextUrl')
+  })
 
-    const ranking = await getRequest(accessToken, '/v1/illust/ranking', {
-      mode: 'day',
-    })
-    expect(ranking).toHaveProperty('nextUrl')
+  test('have nextUrl', async () => {
+    const { result } = await getRequest('/v1/illust/ranking', { mode: 'day' })
+    expect(result).toHaveProperty('nextUrl')
   })
 
   test('get success', async () => {
     const { accessToken } = await fetchAuth(info)
 
-    const data = await getRequest(accessToken, '/v1/user/detail', {
-      userId: 471355,
-    })
-    expect(data).toHaveProperty('profile')
+    const { result } = await getRequest(
+      '/v1/user/detail',
+      { userId: 471355 },
+      accessToken
+    )
+    expect(result).toHaveProperty('profile')
   })
 
   test('post success', async () => {
     const { accessToken } = await fetchAuth(info)
 
-    const postData = await postRequest(accessToken, '/v2/illust/bookmark/add', {
-      illustId: 63576594,
-      restrict: 'public',
-    })
+    const postData = await postRequest(
+      '/v2/illust/bookmark/add',
+      { illustId: 63576594, restrict: 'public' },
+      accessToken
+    )
     expect(postData).toEqual({})
   })
 })

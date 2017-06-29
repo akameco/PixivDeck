@@ -4,6 +4,7 @@ import { stringify } from 'querystring'
 import camelcaseKeys from 'camelcase-keys'
 import decamelizeKeys from 'decamelize-keys'
 import axios from 'axios'
+import { normalizeData } from './schema'
 
 type UserInfo = {
   username: string,
@@ -36,38 +37,43 @@ export async function fetchAuth({ username, password }: UserInfo) {
   return camelcaseKeys(response, { deep: true })
 }
 
-function fetchFactory(token: string, opts?: Object) {
+function fetchFactory(opts?: Object) {
   return axios.create({
     baseURL: 'https://app-api.pixiv.net',
     headers: {
       'App-OS': 'ios',
       'App-OS-Version': '9.3.3',
       'App-Version': '6.0.9',
-      Authorization: `Bearer ${token}`,
       ...opts,
     },
   })
 }
 
 export async function getRequest(
-  token: string,
   endpoint: string,
-  params: Object
+  params?: Object,
+  token?: string
 ) {
-  const request = fetchFactory(token)
-  const { data: result } = await request.get(endpoint, {
-    params: decamelizeKeys(params),
-  })
-  return camelcaseKeys(result, { deep: true })
+  const request = fetchFactory(
+    token ? { Authorization: `Bearer ${token}` } : {}
+  )
+  const { data: result } = await request.get(
+    endpoint,
+    params ? { params: decamelizeKeys(params) } : null
+  )
+
+  const camelcasedJSON = camelcaseKeys(result, { deep: true })
+  return normalizeData(camelcasedJSON)
 }
 
 export async function postRequest(
-  token: string,
   endpoint: string,
-  data: Object
+  data: Object,
+  token: string
 ) {
-  const request = fetchFactory(token, {
+  const request = fetchFactory({
     'Content-Type': 'application/x-www-form-urlencoded',
+    Authorization: `Bearer ${token}`,
   })
   const { data: result } = await request.post(
     endpoint,

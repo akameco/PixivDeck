@@ -1,16 +1,25 @@
 // @flow
 // $FlowFixMe
-import { schema } from 'normalizr'
+import { schema, normalize } from 'normalizr'
 
-const user = new schema.Entity('users', { idAttribute: 'id' })
-const illusts = new schema.Entity('illusts', {
-  user,
+const userSchema = new schema.Entity('users', { idAttribute: 'id' })
+
+export const illustSchema = new schema.Entity('illusts', {
+  user: userSchema,
   idAttribute: 'id',
 })
 
 const mySchema = {
-  ILLUST: illusts,
-  ILLUSTS: [illusts],
+  illusts: [illustSchema],
+}
+
+export type Response = {
+  result: Object,
+  entities: Object,
+}
+
+export function normalizeData(response: Object): Response {
+  return normalize(response, mySchema)
 }
 
 export default mySchema
