@@ -1,5 +1,5 @@
 // @flow
-import { createSelector } from 'reselect'
+import { createSelector, createStructuredSelector } from 'reselect'
 import type { State } from 'types/state'
 
 const selectAuth = (state: State) => state.LoginModal
@@ -9,6 +9,12 @@ export const makeSelectUsername = () =>
 
 export const makeSelectPassword = () =>
   createSelector(selectAuth, s => s.password)
+
+export const makeSelectInfo = () =>
+  createStructuredSelector({
+    username: makeSelectUsername(),
+    password: makeSelectPassword(),
+  })
 
 export const makeSelectIsLoading = () =>
   createSelector(selectAuth, s => s.isLoading)
