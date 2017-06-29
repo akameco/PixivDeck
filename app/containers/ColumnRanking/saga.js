@@ -9,16 +9,12 @@ import { makeSelectColumn, makeSelectModes } from './selectors'
 import { put, select, call, takeEvery } from 'redux-saga/effects'
 
 function* addRakingColumn({ mode }: { mode: Mode }) {
-  const id = mode
-  // TODO i18n
-  const title = `${mode}`
-
   const modes: Array<?Mode> = yield select(makeSelectModes())
   if (modes.every(v => v !== mode)) {
-    yield put(actions.addRankingColumnSuccess(id, title))
+    yield put(actions.addRankingColumnSuccess(mode))
   }
 
-  yield put(addColumn(`ranking-${id}`, { columnId: id, type: 'RANKING' }))
+  yield put(addColumn(`ranking-${mode}`, { columnId: mode, type: 'RANKING' }))
 }
 
 function* fetchRanking(props: { id: Mode }) {
