@@ -5,6 +5,7 @@ import { FormattedMessage } from 'react-intl'
 import type { User, Profile } from 'types/user'
 import type { Illust } from 'types/illust'
 import IllustListContainer from 'containers/IllustListContainer'
+import { key } from 'styleTheme'
 import Header from './DrawerHeader'
 import messages from './messages'
 
@@ -17,7 +18,7 @@ type Props = {
 
 const tabProps = {
   tabItemContainerStyle: {
-    backgroundColor: 'rgb(54, 75, 78)',
+    backgroundColor: key('base')(),
   },
   inkBarStyle: {
     backgroundColor: '#afafaf',

@@ -1,10 +1,10 @@
 // @flow
 import React from 'react'
-import styled from 'styled-components'
 import Box from 'containers/BoxContainer'
 import IntersectionObserverWrapper from 'components/common/intersectionObserverWrapper'
 import type { Illust } from 'types/illust'
 import LoadMore from 'components/LoadMore'
+import { ScrollableY } from './styles'
 
 export type Props = {
   id: string,
@@ -13,12 +13,6 @@ export type Props = {
   node?: HTMLElement => void,
   onNext: Function,
 }
-
-const ScrollableY = styled.div`
-  overflow-y: scroll;
-  overflow-x: hidden;
-  height: 100%;
-`
 
 export default class IllustList extends React.PureComponent {
   props: Props

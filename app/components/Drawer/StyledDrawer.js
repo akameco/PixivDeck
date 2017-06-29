@@ -15,7 +15,7 @@ const StyledDrawer = styled.div`
   will-change: transform;
   overflow-y: auto;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
-  background-color: #fff;
+  background-color: inherit;
 `
 
 export default StyledDrawer
