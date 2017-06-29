@@ -22,10 +22,6 @@ export type Props = {
 class Box extends React.PureComponent {
   props: Props
 
-  shouldComponentUpdate() {
-    return false
-  }
-
   render() {
     const {
       id,
