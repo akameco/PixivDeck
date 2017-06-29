@@ -1,5 +1,5 @@
 // @flow
-import type { ADD_TYPE, REMOVE_TYPE } from './actionTypes.js'
+import type { ADD_TABLE_TYPE, REMOVE_TABLE_TYPE } from './actionTypes.js'
 
-export const ADD: ADD_TYPE = 'Table/ADD'
-export const REMOVE: REMOVE_TYPE = 'Table/REMOVE'
+export const ADD_TABLE: ADD_TABLE_TYPE = 'Table/ADD_TABLE'
+export const REMOVE_TABLE: REMOVE_TABLE_TYPE = 'Table/REMOVE_TABLE'

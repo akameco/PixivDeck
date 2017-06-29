@@ -28,6 +28,7 @@ export default function configureStore(initialState: ?Object) {
       'Table',
       'ColumnManager',
       'ColumnRanking',
+      'ColumnRankingR18',
       'Language',
       'LoginModal',
       'ModalManeger',

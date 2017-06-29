@@ -1,8 +1,8 @@
 // @flow
-export type ADD_TYPE = 'Table/ADD'
-export type REMOVE_TYPE = 'Table/REMOVE'
+export type ADD_TABLE_TYPE = 'Table/ADD_TABLE'
+export type REMOVE_TABLE_TYPE = 'Table/REMOVE_TABLE'
 
 export type Action = {|
-  +type: ADD_TYPE | REMOVE_TYPE,
+  +type: ADD_TABLE_TYPE | REMOVE_TABLE_TYPE,
   +id: string,
 |}

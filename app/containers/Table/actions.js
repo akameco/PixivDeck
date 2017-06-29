@@ -1,17 +1,17 @@
 // @flow
 import type { Action } from './actionTypes.js'
-import { ADD, REMOVE } from './constants'
+import { ADD_TABLE, REMOVE_TABLE } from './constants'
 
-export function add(id: string): Action {
+export function addTable(id: string): Action {
   return {
-    type: ADD,
+    type: ADD_TABLE,
     id,
   }
 }
 
-export function remove(id: string): Action {
+export function removeTable(id: string): Action {
   return {
-    type: REMOVE,
+    type: REMOVE_TABLE,
     id,
   }
 }

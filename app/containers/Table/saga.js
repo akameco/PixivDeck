@@ -5,7 +5,7 @@ import * as actions from './actions'
 import { put, takeEvery } from 'redux-saga/effects'
 
 function* addTable({ id }: Action) {
-  yield put(actions.add(id))
+  yield put(actions.addTable(id))
 }
 
 export default function* root(): Generator<*, void, void> {

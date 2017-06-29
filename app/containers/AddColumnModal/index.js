@@ -2,14 +2,11 @@
 import { connect, type Connector } from 'react-redux'
 // import type { Connector } from 'react-redux'
 import type { Dispatch } from 'types'
-import {
-  addBookmarkColumn,
-  addFollowColumn,
-  addIllustRankingColumn,
-  addIllustR18RankingColumn,
-} from 'actions'
-import * as ranking from 'constants/ranking'
-import { addRankingColumn } from '../ColumnRanking/actions'
+import { addBookmarkColumn, addFollowColumn } from 'actions'
+import { addRankingColumn } from 'containers/ColumnRanking/actions'
+import type { Mode } from 'containers/ColumnRanking/reducer'
+import { addRankingR18Column } from 'containers/ColumnRankingR18/actions'
+import type { R18Mode } from 'containers/ColumnRankingR18/reducer'
 import Modal from './AddColumnModal'
 import type { Props } from './AddColumnModal'
 
@@ -26,12 +23,11 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   addFollowPrivate() {
     dispatch(addFollowColumn(false))
   },
-  addIllustRanking(mode: $Keys<typeof ranking.ILLUST_RANKING>) {
+  addIllustRanking(mode: Mode) {
     dispatch(addRankingColumn(mode))
-    dispatch(addIllustRankingColumn(mode))
   },
-  addIllustR18Ranking(mode: $Keys<typeof ranking.ILLUST_R18_RANKING>) {
-    dispatch(addIllustR18RankingColumn(mode))
+  addIllustR18Ranking(mode: R18Mode) {
+    dispatch(addRankingR18Column(mode))
   },
 })
 

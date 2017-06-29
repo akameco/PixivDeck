@@ -4,7 +4,6 @@ import type { Action } from 'types'
 import type { Params, Endpoint } from 'types/column'
 import * as Actions from 'constants/addColumn'
 import * as ENDPOINT from 'constants/endpoint'
-import * as RANKING from 'constants/ranking'
 import { HOUR, MINUTE } from 'constants/time'
 import { ADD_USER_ILLUST } from '../containers/AddNewColumnButton/constants'
 import API from '../api'
@@ -45,18 +44,6 @@ function* searchIllust({ word }) {
   yield put(addColumn(uuid(), ENDPOINT.SEARCH, { word }, word, MINUTE))
 }
 
-function* r18Ranking({ mode }) {
-  yield put(
-    addColumn(
-      uuid(),
-      ENDPOINT.RANKING,
-      { mode },
-      `${RANKING.ILLUST_R18_RANKING[mode]}ランキング`,
-      THREE_HOUR
-    )
-  )
-}
-
 function* userIllust({ user }) {
   yield put(
     addColumn(
@@ -81,10 +68,6 @@ function* searchIllustWatch(): Generator<IOEffect, void, *> {
   yield takeEvery(Actions.ADD_COLUMN_SEARCH_ILLUST, searchIllust)
 }
 
-function* r18RankingWatch(): Generator<IOEffect, void, *> {
-  yield takeEvery(Actions.ADD_COLUMN_R18_RANKING, r18Ranking)
-}
-
 function* userIllustWatch(): Generator<IOEffect, void, *> {
   yield takeEvery(ADD_USER_ILLUST, userIllust)
 }
@@ -93,6 +76,5 @@ export default function* root(): Generator<*, void, void> {
   yield fork(bookmarkWatch)
   yield fork(followWatch)
   yield fork(searchIllustWatch)
-  yield fork(r18RankingWatch)
   yield fork(userIllustWatch)
 }

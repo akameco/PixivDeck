@@ -1,7 +1,11 @@
 // @flow
 import React from 'react'
+import { injectIntl, type IntlShape } from 'react-intl'
 import { FormattedMessage } from 'react-intl'
-import * as ranking from 'constants/ranking'
+import type { Mode } from 'containers/ColumnRanking/reducer'
+import rankingMessages from 'containers/ColumnRanking/messages'
+import type { R18Mode } from 'containers/ColumnRankingR18/reducer'
+import rankingR18Messages from 'containers/ColumnRankingR18/messages'
 import Card from './Card'
 import LinkButton from './LinkButton'
 import messages from './messages'
@@ -12,29 +16,45 @@ export type Props = {
   addBookmarkPrivate: () => void,
   addFollow: () => void,
   addFollowPrivate: () => void,
-  addIllustRanking: (mode: $Keys<typeof ranking.ILLUST_RANKING>) => void,
-  addIllustR18Ranking: (mode: $Keys<typeof ranking.ILLUST_R18_RANKING>) => void,
+  addIllustRanking: (mode: Mode) => void,
+  addIllustR18Ranking: (mode: R18Mode) => void,
 }
 
-export default function SelectColumnModal(props: Props) {
-  const IllustRankingLinks = Object.keys(ranking.ILLUST_RANKING).map(v => {
+const rankingMode = [
+  'day',
+  'week',
+  'month',
+  'day_male',
+  'day_female',
+  'week_original',
+  'week_rookie',
+]
+
+const rankingR18Mode = [
+  'day_r18',
+  'week_r18',
+  'day_male_r18',
+  'day_female_r18',
+  'week_r18g',
+]
+
+function SelectColumnModal(props: Props & { intl: IntlShape }) {
+  const IllustRankingLinks = rankingMode.map(v => {
     const handleClick = () => props.addIllustRanking(v)
     return (
       <LinkButton
-        text={ranking.ILLUST_RANKING[v]}
+        text={props.intl.formatMessage(rankingMessages[v])}
         onClick={handleClick}
         key={v}
       />
     )
   })
 
-  const IllustR18RankingLinks = Object.keys(
-    ranking.ILLUST_R18_RANKING
-  ).map(v => {
+  const IllustR18RankingLinks = rankingR18Mode.map(v => {
     const handleClick = () => props.addIllustR18Ranking(v)
     return (
       <LinkButton
-        text={ranking.ILLUST_R18_RANKING[v]}
+        text={props.intl.formatMessage(rankingR18Messages[v])}
         onClick={handleClick}
         key={v}
       />
@@ -79,3 +99,5 @@ export default function SelectColumnModal(props: Props) {
     </Wrap>
   )
 }
+
+export default injectIntl(SelectColumnModal)

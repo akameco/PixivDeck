@@ -17,6 +17,7 @@ import UserDrawerContainer from '../containers/UserDrawerContainer/reducer'
 import Table from '../containers/Table/reducer'
 import ColumnManager from '../containers/ColumnManager/reducer'
 import ColumnRanking from '../containers/ColumnRanking/reducer'
+import ColumnRankingR18 from '../containers/ColumnRankingR18/reducer'
 
 import columns from './columns'
 import illustById, * as fromIllustById from './illustById'
@@ -39,6 +40,7 @@ const rootReducer = combineReducers({
   Table,
   ColumnManager,
   ColumnRanking,
+  ColumnRankingR18,
 })
 
 export const getColumn = ({ columns }: State, id: string) =>

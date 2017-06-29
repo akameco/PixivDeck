@@ -4,6 +4,7 @@ import { fork, all } from 'redux-saga/effects' // eslint-disable-line
 import UserDrawerContainer from '../containers/UserDrawerContainer/saga'
 import Table from '../containers/Table/saga'
 import ColumnRanking from '../containers/ColumnRanking/saga'
+import ColumnRankingR18 from '../containers/ColumnRankingR18/saga'
 import auth from './auth'
 import minBookmarks from './minBookmarks'
 import nextColumnPage from './nextColumnPage'
@@ -30,6 +31,7 @@ function* root(): Generator<*, void, void> {
     fork(UserDrawerContainer),
     fork(Table),
     fork(ColumnRanking),
+    fork(ColumnRankingR18),
   ])
 }
 

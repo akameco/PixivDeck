@@ -2,14 +2,16 @@
 import React from 'react'
 import { connect, type Connector } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
-import { remove as close } from 'containers/Table/actions'
+import { removeTable } from 'containers/Table/actions'
 import ColumnRanking from '../ColumnRanking'
+import ColumnRankingR18 from '../ColumnRankingR18'
 import type { ColumnId as RankingId } from '../ColumnRanking/reducer'
+import type { ColumnId as RankingR18Id } from '../ColumnRankingR18/reducer'
 import type { ColumnManagerId, ColumnId, ColumnType } from './reducer'
 import { makeSelectColumnId, makeSelectType } from './selectors'
 
 export type Props = {
-  columnId: RankingId | ColumnId,
+  columnId: RankingId | RankingR18Id | ColumnId,
   type: ColumnType,
   onClose: () => void,
 }
@@ -19,6 +21,9 @@ function ColumnManager({ columnId, type, onClose }: Props) {
     // TODO 型がうまく扱えない
     // $FlowFixMe
     return <ColumnRanking id={columnId} onClose={onClose} />
+  } else if (type === 'RANKING_R18') {
+    // $FlowFixMe
+    return <ColumnRankingR18 id={columnId} onClose={onClose} />
   }
   return null
 }
@@ -34,7 +39,7 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = (dispatch: Dispatch, { id }: OP) => ({
   onClose() {
-    dispatch(close(id))
+    dispatch(removeTable(id))
   },
 })
 

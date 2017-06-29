@@ -17,9 +17,9 @@ export default function(
   action: Action
 ): $Shape<State> {
   switch (action.type) {
-    case Actions.ADD:
+    case Actions.ADD_TABLE:
       return { ids: union(state.ids, [action.id]) }
-    case Actions.REMOVE:
+    case Actions.REMOVE_TABLE:
       return { ids: state.ids.filter(v => action.id !== v) }
     default:
       return state
