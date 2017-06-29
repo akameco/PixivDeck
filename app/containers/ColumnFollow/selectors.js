@@ -7,12 +7,12 @@ type Props = {
   id: ColumnId,
 }
 
-const getColumns = (state: State) => state.ColumnBookmark
+const getColumns = (state: State) => state.ColumnFollow
 
 export const makeSelectIds = () =>
   createSelector(getColumns, s => Object.keys(s))
 
-const getColumn = (state: State, { id }: Props) => state.ColumnBookmark[id]
+const getColumn = (state: State, { id }: Props) => state.ColumnFollow[id]
 
 export const makeSelectColumn = () => createSelector(getColumn, s => s)
 

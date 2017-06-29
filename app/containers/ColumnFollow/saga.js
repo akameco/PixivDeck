@@ -9,18 +9,18 @@ import type { ColumnId } from './reducer'
 import { makeSelectColumn, makeSelectIds } from './selectors'
 import { put, select, call, takeEvery } from 'redux-saga/effects'
 
-function* addBookmarkColumn({ id }: { id: ColumnId }) {
+function* addFollowColumn({ id }: { id: ColumnId }) {
   const ids: Array<?ColumnId> = yield select(makeSelectIds())
   if (ids.every(v => v !== id)) {
-    yield put(actions.addBookmarkColumnSuccess(id))
+    yield put(actions.addFollowColumnSuccess(id))
   }
 
-  yield put(addColumn(`bookmark-${id}`, { columnId: id, type: 'BOOKMARK' }))
+  yield put(addColumn(`follow-${id}`, { columnId: id, type: 'FOLLOW' }))
 }
 
 type Props = { id: ColumnId }
 
-function* fetchBookmark(props: Props) {
+function* fetchFollow(props: Props) {
   const { id } = props
   const { illustIds } = yield select(makeSelectColumn(), props)
 
@@ -31,7 +31,7 @@ function* fetchBookmark(props: Props) {
 
     const response = yield call(
       getRequest,
-      `/v1/user/bookmarks/illust?user_id=${userId}&restrict=${id}`,
+      `/v2/illust/follow?user_id=${userId}&restrict=${id}`,
       null,
       accessToken
     )
@@ -39,14 +39,14 @@ function* fetchBookmark(props: Props) {
 
     yield put(actions.setNextUrl(id, result.nextUrl))
 
-    const nextIds = union(result.illusts, illustIds)
-    yield put(actions.fetchBookmarkSuccess(id, response, nextIds))
+    const nextIds = union(illustIds, result.illusts)
+    yield put(actions.fetchFollowSuccess(id, response, nextIds))
   } catch (err) {
-    yield put(actions.fetchBookmarkFailre(id))
+    yield put(actions.fetchFollowFailre(id))
   }
 }
 
-function* fetchNextBookmark(props: Props) {
+function* fetchNextFollow(props: Props) {
   const { id } = props
   const { illustIds, nextUrl } = yield select(makeSelectColumn(), props)
 
@@ -64,14 +64,14 @@ function* fetchNextBookmark(props: Props) {
     yield put(actions.setNextUrl(id, result.nextUrl))
 
     const nextIds = union(illustIds, result.illusts)
-    yield put(actions.fetchBookmarkSuccess(id, response, nextIds))
+    yield put(actions.fetchFollowSuccess(id, response, nextIds))
   } catch (err) {
-    yield put(actions.fetchNextBookmarkFailre(id))
+    yield put(actions.fetchNextFollowFailre(id))
   }
 }
 
 export default function* root(): Generator<*, void, void> {
-  yield takeEvery(Actions.ADD_BOOKMARK_COLUMN, addBookmarkColumn)
-  yield takeEvery(Actions.FETCH_BOOKMARK, fetchBookmark)
-  yield takeEvery(Actions.FETCH_NEXT_BOOKMARK, fetchNextBookmark)
+  yield takeEvery(Actions.ADD_FOLLOW_COLUMN, addFollowColumn)
+  yield takeEvery(Actions.FETCH_FOLLOW, fetchFollow)
+  yield takeEvery(Actions.FETCH_NEXT_FOLLOW, fetchNextFollow)
 }
