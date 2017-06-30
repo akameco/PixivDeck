@@ -21,7 +21,7 @@ export function handleRehydrate<T>(
 
   if (oldState) {
     const newState = Object.keys(oldState).reduce((acc, id) => {
-      acc[id] = defaultState
+      acc[id] = { ...oldState[id], ...defaultState }
       return acc
     }, {})
 
