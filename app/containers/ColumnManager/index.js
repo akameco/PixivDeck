@@ -8,6 +8,7 @@ import ColumnRankingR18 from '../ColumnRankingR18'
 import ColumnBookmark from '../ColumnBookmark'
 import ColumnFollow from '../ColumnFollow'
 import ColumnUserIllust from '../ColumnUserIllust'
+import ColumnSearch from '../ColumnSearch'
 import type { ColumnId as RankingId } from '../ColumnRanking/reducer'
 import type { ColumnId as RankingR18Id } from '../ColumnRankingR18/reducer'
 import type { ColumnManagerId, ColumnId, ColumnType } from './reducer'
@@ -36,6 +37,8 @@ function ColumnManager({ columnId, type, onClose }: Props) {
   } else if (type === 'USER_ILLUST') {
     // $FlowFixMe
     return <ColumnUserIllust id={columnId} onClose={onClose} />
+  } else if (type === 'SEARCH') {
+    return <ColumnSearch id={columnId} onClose={onClose} />
   }
   return null
 }

@@ -1,5 +1,0 @@
-// @flow
-import type { ADD_COLUMN_SEARCH_ILLUST_TYPE } from './actionTypes.js'
-
-export const ADD_COLUMN_SEARCH_ILLUST: ADD_COLUMN_SEARCH_ILLUST_TYPE =
-  'ADD_COLUMN_SEARCH_ILLUST'

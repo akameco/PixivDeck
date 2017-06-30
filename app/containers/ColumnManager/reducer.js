@@ -10,6 +10,7 @@ export type ColumnType =
   | 'BOOKMARK'
   | 'FOLLOW'
   | 'USER_ILLUST'
+  | 'SEARCH'
 
 export type ColumnManager = {
   columnId: ColumnId,

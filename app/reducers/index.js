@@ -21,6 +21,7 @@ import ColumnRankingR18 from '../containers/ColumnRankingR18/reducer'
 import ColumnBookmark from '../containers/ColumnBookmark/reducer'
 import ColumnFollow from '../containers/ColumnFollow/reducer'
 import ColumnUserIllust from '../containers/ColumnUserIllust/reducer'
+import ColumnSearch from '../containers/ColumnSearch/reducer'
 
 import columns from './columns'
 import illustById, * as fromIllustById from './illustById'
@@ -47,6 +48,7 @@ const rootReducer = combineReducers({
   ColumnBookmark,
   ColumnFollow,
   ColumnUserIllust,
+  ColumnSearch,
 })
 
 export const getColumn = ({ columns }: State, id: string) =>

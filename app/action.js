@@ -3,8 +3,6 @@ import type { Action as UserPopoverContainerAction } from './containers/UserPopo
 
 import type { Action as LanguageAction } from './containers/Language/actionTypes'
 
-import type { Action as SearchFieldAction } from './containers/SearchField/actionTypes'
-
 import type { Action as ModalManegerAction } from './containers/ModalManeger/actionTypes'
 
 import type { Action as SettingModalAction } from './containers/SettingModal/actionTypes'
@@ -41,10 +39,11 @@ import type { Action as ColumnFollowAction } from './containers/ColumnFollow/act
 
 import type { Action as ColumnUserIllustAction } from './containers/ColumnUserIllust/actionTypes'
 
+import type { Action as ColumnSearchAction } from './containers/ColumnSearch/actionTypes'
+
 export type Action =
   | UserPopoverContainerAction
   | LanguageAction
-  | SearchFieldAction
   | ModalManegerAction
   | SettingModalAction
   | HeaderContainerAction
@@ -63,3 +62,4 @@ export type Action =
   | ColumnBookmarkAction
   | ColumnFollowAction
   | ColumnUserIllustAction
+  | ColumnSearchAction

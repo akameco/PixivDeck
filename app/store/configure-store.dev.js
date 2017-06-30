@@ -24,6 +24,7 @@ export default function configureStore(initialState: ?Object) {
 
   persistStore(store, {
     storage: localForage,
+    // TODO 移動
     whitelist: [
       'Table',
       'ColumnManager',
@@ -32,6 +33,7 @@ export default function configureStore(initialState: ?Object) {
       'ColumnBookmark',
       'ColumnFollow',
       'ColumnUserIllust',
+      'ColumnSearch',
       'Language',
       'LoginModal',
       'ModalManeger',

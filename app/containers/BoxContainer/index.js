@@ -8,7 +8,7 @@ import type { User } from 'types/user'
 import { getUser } from 'reducers'
 import { openDrawer } from 'containers/DrawerManager/actions'
 import { openIllustViewer } from 'containers/IllustPreview/actions'
-import { addColumnSearchIllust } from 'containers/SearchField/actions'
+import { addColumn } from 'containers/ColumnSearch/actions'
 import { openMangaPreview } from 'containers/MangaPreview/actions'
 import Box from 'components/Box'
 import createMenu from './createMenu'
@@ -84,7 +84,7 @@ const mapDispatchToProps = (dispatch: Dispatch, { illust }) => {
       dispatch(openDrawer(userId))
     },
     addColumnSearchIllust(tag: string) {
-      dispatch(addColumnSearchIllust(tag))
+      dispatch(addColumn(tag))
     },
   }
 }

@@ -11,21 +11,10 @@ export const setPrams = (id: Id, params: Params): Action => ({
   params,
 })
 
-export const addColumnIllusts = (id: Id, ids: Array<number>): Action => ({
-  type: Actions.ADD_COLUMN_ILLUSTS,
-  id,
-  ids,
-})
-
 export const nextColumnIllusts = (id: Id, ids: Array<number>): Action => ({
   type: Actions.NEXT_COLUMN_ILLUSTS,
   id,
   ids,
-})
-
-export const closeColumn = (id: Id): Action => ({
-  type: Actions.CLOSE_COLUMN,
-  id,
 })
 
 export const setColumnMinBookmarks = (

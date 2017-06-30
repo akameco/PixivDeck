@@ -8,6 +8,7 @@ import ColumnRankingR18 from '../containers/ColumnRankingR18/saga'
 import ColumnBookmark from '../containers/ColumnBookmark/saga'
 import ColumnFollow from '../containers/ColumnFollow/saga'
 import ColumnUserIllust from '../containers/ColumnUserIllust/saga'
+import ColumnSearch from '../containers/ColumnSearch/saga'
 
 import auth from './auth'
 import minBookmarks from './minBookmarks'
@@ -17,7 +18,6 @@ import illust from './illust'
 import followUser from './followUser'
 import popover from './popover'
 import misc from './misc'
-import addColumn from './addColumn'
 import drawer from './drawer'
 
 function* root(): Generator<*, void, void> {
@@ -30,7 +30,6 @@ function* root(): Generator<*, void, void> {
     fork(followUser),
     fork(misc),
     fork(popover),
-    fork(addColumn),
     fork(drawer),
     fork(UserDrawerContainer),
     fork(Table),
@@ -39,6 +38,7 @@ function* root(): Generator<*, void, void> {
     fork(ColumnBookmark),
     fork(ColumnFollow),
     fork(ColumnUserIllust),
+    fork(ColumnSearch),
   ])
 }
 
