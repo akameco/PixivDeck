@@ -1,7 +1,7 @@
 // @flow
 import { connect, type Connector } from 'react-redux'
 import type { User } from 'types/user'
-import { folllowRequest, unFolllowRequest } from './actions'
+import { followRequest, unFollowRequest } from './actions'
 import FollowButton, { type Props } from './FollowButton'
 
 type OwnProps = { user: User }
@@ -9,9 +9,9 @@ type OwnProps = { user: User }
 const mapDispatchToProps = (dispatch: Dispatch, { user }) => ({
   onClick() {
     if (user.isFollowed) {
-      dispatch(unFolllowRequest(user.id))
+      dispatch(unFollowRequest(user.id))
     } else {
-      dispatch(folllowRequest(user.id))
+      dispatch(followRequest(user.id))
     }
   },
 })

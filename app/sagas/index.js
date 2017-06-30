@@ -9,13 +9,13 @@ import ColumnBookmark from '../containers/ColumnBookmark/saga'
 import ColumnFollow from '../containers/ColumnFollow/saga'
 import ColumnUserIllust from '../containers/ColumnUserIllust/saga'
 import ColumnSearch from '../containers/ColumnSearch/saga'
+import FollowButton from '../containers/FollowButton/saga'
 
 import auth from './auth'
 import minBookmarks from './minBookmarks'
 import nextColumnPage from './nextColumnPage'
 import column from './column'
 import illust from './illust'
-import followUser from './followUser'
 import popover from './popover'
 import misc from './misc'
 import drawer from './drawer'
@@ -27,7 +27,7 @@ function* root(): Generator<*, void, void> {
     fork(nextColumnPage),
     fork(column),
     fork(illust),
-    fork(followUser),
+    fork(FollowButton),
     fork(misc),
     fork(popover),
     fork(drawer),
