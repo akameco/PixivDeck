@@ -22,6 +22,7 @@ import ColumnBookmark from '../containers/ColumnBookmark/reducer'
 import ColumnFollow from '../containers/ColumnFollow/reducer'
 import ColumnUserIllust from '../containers/ColumnUserIllust/reducer'
 import ColumnSearch from '../containers/ColumnSearch/reducer'
+import SearchField from '../containers/SearchField/reducer'
 
 import columns from './columns'
 import illustById, * as fromIllustById from './illustById'
@@ -49,6 +50,7 @@ const rootReducer = combineReducers({
   ColumnFollow,
   ColumnUserIllust,
   ColumnSearch,
+  SearchField,
 })
 
 export const getColumn = ({ columns }: State, id: string) =>
