@@ -4,16 +4,18 @@ import { Tabs, Tab } from 'material-ui/Tabs'
 import { FormattedMessage } from 'react-intl'
 import type { User, Profile } from 'types/user'
 import type { Illust } from 'types/illust'
-import IllustListContainer from 'containers/IllustListContainer'
 import { key } from 'styleTheme'
+import IllustList from '../IllustList'
 import Header from './DrawerHeader'
 import messages from './messages'
 
-type Props = {
+export type Props = {
   user: User,
   profile: Profile,
   illusts: Array<Illust>,
   mangas: Array<Illust>,
+  onNextIllust: Function,
+  onNextManga: Function,
 }
 
 const tabProps = {
@@ -25,7 +27,14 @@ const tabProps = {
   },
 }
 
-const UserDrawer = ({ user, profile, illusts, mangas }: Props) => {
+const UserDrawer = ({
+  user,
+  profile,
+  illusts,
+  mangas,
+  onNextIllust,
+  onNextManga,
+}: Props) => {
   const { totalIllusts, totalManga } = profile
   return (
     <div>
@@ -39,11 +48,11 @@ const UserDrawer = ({ user, profile, illusts, mangas }: Props) => {
             />
           }
         >
-          <IllustListContainer
+          <IllustList
             illusts={illusts}
-            type="illust"
             id="illust-user-drawer"
             hasMore={illusts.length < totalIllusts}
+            onNext={onNextIllust}
           />
         </Tab>
         <Tab
@@ -54,11 +63,11 @@ const UserDrawer = ({ user, profile, illusts, mangas }: Props) => {
             />
           }
         >
-          <IllustListContainer
+          <IllustList
             illusts={mangas}
-            type="manga"
-            id="manga-user-drawer"
+            id="illust-user-drawer"
             hasMore={mangas.length < totalManga}
+            onNext={onNextManga}
           />
         </Tab>
       </Tabs>

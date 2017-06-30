@@ -1,5 +1,4 @@
 // @flow
-import union from 'lodash.union'
 import type { User, Profile } from 'types/user'
 import type { Action } from '../../action'
 import * as ManegerActions from '../DrawerManager/constants'
@@ -34,18 +33,25 @@ export default function(
   switch (action.type) {
     case ManegerActions.CLOSE_DRAWER:
       return initialState
+
     case Actions.ADD_DRAWER_USER:
       return { ...state, user: action.user }
+
     case Actions.ADD_DRAWER_PROFILE:
       return { ...state, profile: action.profile }
-    case Actions.ADD_DRAWER_ILLUST_IDS:
-      return { ...state, illustList: union(state.illustList, action.ids) }
-    case Actions.ADD_DRAWER_MANGA_IDS:
-      return { ...state, mangaList: union(state.illustList, action.ids) }
+
+    case Actions.FETCH_ILLUST_SUCCESS:
+      return { ...state, illustList: action.ids }
+
+    case Actions.FETCH_MANGA_SUCCESS:
+      return { ...state, mangaList: action.ids }
+
     case Actions.SET_NEXT_ILLUST_URL:
       return { ...state, nextIllustUrl: action.url }
+
     case Actions.SET_NEXT_MANGA_URL:
       return { ...state, nextMangaUrl: action.url }
+
     default:
       return state
   }

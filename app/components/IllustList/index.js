@@ -50,7 +50,7 @@ export default class IllustList extends React.PureComponent {
 
     let loadMore: ?React$Element<*> = null
 
-    if (hasMore) {
+    if (hasMore && illusts.length > 0) {
       loadMore = (
         <LoadMore
           id={id}

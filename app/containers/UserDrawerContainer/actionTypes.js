@@ -1,5 +1,6 @@
 // @flow
 import type { User, Profile } from 'types/user'
+import type { Response } from '../../api/schema'
 
 export type FETCH_ILLUST_TYPE = 'UserDrawer/FETCH_ILLUST'
 export type FETCH_ILLUST_SUCCESS_TYPE = 'UserDrawer/FETCH_ILLUST_SUCCESS'
@@ -24,13 +25,13 @@ export type FETCH_USER_DETAIL_SUCCESS_TYPE =
 export type FETCH_USER_DETAIL_FAILURE_TYPE =
   'UserDrawer/FETCH_USER_DETAIL_FAILURE'
 
-export type NEXT_ILLUST_PAGE_TYPE = 'UserDrawer/NEXT_PAGEILLUST_'
+export type NEXT_ILLUST_PAGE_TYPE = 'UserDrawer/NEXT_PAGE_ILLUST'
 export type NEXT_ILLUST_PAGE_SUCCESS_TYPE =
   'UserDrawer/NEXT_ILLUST_PAGE_SUCCESS'
 export type NEXT_ILLUST_PAGE_FAILURE_TYPE =
   'UserDrawer/NEXT_ILLUST_PAGE_FAILURE'
 
-export type NEXT_MANGA_PAGE_TYPE = 'UserDrawer/NEXT_PAGEMANGA_'
+export type NEXT_MANGA_PAGE_TYPE = 'UserDrawer/NEXT_PAGE_MANGA_'
 export type NEXT_MANGA_PAGE_SUCCESS_TYPE = 'UserDrawer/NEXT_MANGA_PAGE_SUCCESS'
 export type NEXT_MANGA_PAGE_FAILURE_TYPE = 'UserDrawer/NEXT_MANGA_PAGE_FAILURE'
 
@@ -50,3 +51,12 @@ export type Action =
   | {| +type: ADD_DRAWER_USER_TYPE, +user: User |}
   | {| +type: ADD_DRAWER_PROFILE_TYPE, +profile: Profile |}
   | {| +type: NEXT_ILLUST_PAGE_TYPE | NEXT_MANGA_PAGE_TYPE |}
+  | {|
+      +type: FETCH_ILLUST_SUCCESS_TYPE | FETCH_MANGA_SUCCESS_TYPE,
+      +response: Response,
+      +ids: Array<number>,
+    |}
+  | {|
+      +type: FETCH_ILLUST_FAILURE_TYPE | FETCH_MANGA_FAILURE_TYPE,
+      +error: string,
+    |}

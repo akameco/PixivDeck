@@ -19,7 +19,6 @@ import nextColumnPage from './nextColumnPage'
 import column from './column'
 import popover from './popover'
 import misc from './misc'
-import drawer from './drawer'
 
 function* root(): Generator<*, void, void> {
   yield all([
@@ -30,7 +29,6 @@ function* root(): Generator<*, void, void> {
     fork(FollowButton),
     fork(misc),
     fork(popover),
-    fork(drawer),
     fork(UserDrawerContainer),
     fork(Table),
     fork(ColumnRanking),

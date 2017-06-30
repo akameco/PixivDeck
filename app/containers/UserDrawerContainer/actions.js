@@ -1,5 +1,4 @@
 // @flow
-import type { User, Profile } from 'types/user'
 import type { Action } from './actionTypes.js'
 import {
   FETCH_ILLUST,
@@ -13,7 +12,13 @@ import {
   ADD_DRAWER_PROFILE,
   NEXT_ILLUST_PAGE,
   NEXT_MANGA_PAGE,
+  FETCH_ILLUST_SUCCESS,
+  FETCH_MANGA_SUCCESS,
+  FETCH_ILLUST_FAILURE,
+  FETCH_MANGA_FAILURE,
 } from './constants'
+import type { User, Profile } from 'types/user'
+import type { Response } from '../../api/schema'
 
 export function fetchIllust(id: number): Action {
   return {
@@ -87,5 +92,41 @@ export function nextIllustPage(): Action {
 export function nextMangaPage(): Action {
   return {
     type: NEXT_MANGA_PAGE,
+  }
+}
+
+export function fetchIllustSuccess(
+  response: Response,
+  ids: Array<number>
+): Action {
+  return {
+    type: FETCH_ILLUST_SUCCESS,
+    response,
+    ids,
+  }
+}
+
+export function fetchMangaSuccess(
+  response: Response,
+  ids: Array<number>
+): Action {
+  return {
+    type: FETCH_MANGA_SUCCESS,
+    response,
+    ids,
+  }
+}
+
+export function fetchIllustFailure(error: string): Action {
+  return {
+    type: FETCH_ILLUST_FAILURE,
+    error,
+  }
+}
+
+export function fetchMangaFailure(error: string): Action {
+  return {
+    type: FETCH_MANGA_FAILURE,
+    error,
   }
 }

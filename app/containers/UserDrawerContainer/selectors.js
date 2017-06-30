@@ -7,9 +7,11 @@ const selectRoot = (state: State) => state.UserDrawerContainer
 export const makeSelectProfile = () =>
   createSelector(selectRoot, s => s.profile)
 
-const makeSelectIllustList = () => createSelector(selectRoot, s => s.illustList)
+export const makeSelectIllustList = () =>
+  createSelector(selectRoot, s => s.illustList)
 
-const makeSelectMangaList = () => createSelector(selectRoot, s => s.mangaList)
+export const makeSelectMangaList = () =>
+  createSelector(selectRoot, s => s.mangaList)
 
 export const getNextIllustUrl = createSelector(selectRoot, s => s.nextIllustUrl)
 export const getNextMangaUrl = createSelector(selectRoot, s => s.nextMangaUrl)
