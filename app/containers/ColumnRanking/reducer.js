@@ -1,4 +1,5 @@
 // @flow
+import { handleRehydrate } from '../../services/reydrate'
 import type { Action } from './actionTypes'
 import * as Actions from './constants'
 import { REHYDRATE } from 'redux-persist/constants'
@@ -47,24 +48,8 @@ export default function(state: State = initialState, action: Action): State {
       }
     }
 
-    // TODO REHYDRATEをまとめる
-    case REHYDRATE: {
-      // $FlowFixMe
-      const oldState = action.payload.ColumnRanking
-
-      if (oldState) {
-        const newState = Object.keys(oldState).reduce((acc, key) => {
-          acc[key] = {
-            illustIds: [],
-            nextUrl: null,
-          }
-          return acc
-        }, {})
-        return newState
-      }
-      return state
-    }
-
+    case REHYDRATE:
+      return handleRehydrate(state, action, 'ColumnRanking')
     default:
       return state
   }
