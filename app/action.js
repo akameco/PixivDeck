@@ -41,6 +41,8 @@ import type { Action as ColumnUserIllustAction } from './containers/ColumnUserIl
 
 import type { Action as ColumnSearchAction } from './containers/ColumnSearch/actionTypes'
 
+import type { Action as SearchFieldAction } from './containers/SearchField/actionTypes'
+
 export type Action =
   | UserPopoverContainerAction
   | LanguageAction
@@ -63,3 +65,4 @@ export type Action =
   | ColumnFollowAction
   | ColumnUserIllustAction
   | ColumnSearchAction
+  | SearchFieldAction

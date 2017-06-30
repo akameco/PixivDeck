@@ -11,6 +11,7 @@ import ColumnUserIllust from '../containers/ColumnUserIllust/saga'
 import ColumnSearch from '../containers/ColumnSearch/saga'
 import FollowButton from '../containers/FollowButton/saga'
 import BookmarkButton from '../containers/BookmarkButton/saga'
+import SearchField from '../containers/SearchField/saga'
 
 import auth from './auth'
 import minBookmarks from './minBookmarks'
@@ -40,6 +41,7 @@ function* root(): Generator<*, void, void> {
     fork(ColumnSearch),
     fork(FollowButton),
     fork(BookmarkButton),
+    fork(SearchField),
   ])
 }
 

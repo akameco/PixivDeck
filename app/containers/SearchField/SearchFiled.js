@@ -4,7 +4,6 @@ import { injectIntl } from 'react-intl'
 import type { IntlShape } from 'react-intl'
 import { findDOMNode } from 'react-dom'
 import throttle from 'lodash.throttle'
-import pixiv from '../../api'
 import PopoverAuto from './PopoverAuto'
 import UsersOver from './UsersOver'
 import messages from './messages'
@@ -15,13 +14,14 @@ type InjectProp = {
 }
 
 export type Props = {
+  keywords: string[],
   onClose: () => void,
+  onFetch: (word: string) => void,
   onSubmit: (tag: string) => void,
 }
 
 type State = {
   value: string,
-  keywords: string[],
 }
 
 class SearchField extends Component {
@@ -60,8 +60,7 @@ class SearchField extends Component {
     if (value === '') {
       return
     }
-    const { searchAutoCompleteKeywords } = await pixiv.searchAutoComplete(value)
-    this.setState({ keywords: searchAutoCompleteKeywords })
+    this.props.onFetch(value)
   }, 200)
 
   handleSubmit = (event: SyntheticKeyboardEvent) => {
@@ -80,8 +79,10 @@ class SearchField extends Component {
   }
 
   render() {
-    const { formatMessage } = this.props.intl
-    const { keywords, value } = this.state
+    const { intl, keywords } = this.props
+    const { formatMessage } = intl
+    const { value } = this.state
+
     return (
       <Wrap>
         <Field>
@@ -94,19 +95,18 @@ class SearchField extends Component {
             onKeyDown={this.handleSubmit}
           />
         </Field>
-        {value &&
-          <Popup>
-            {keywords.length > 0 &&
-              <PopoverAuto
-                value={value}
-                keywords={keywords}
-                onClick={this.handleClick}
-              />}
-            <UsersOver value={value} onClick={this.handleClick} />
-          </Popup>}
+        <Popup>
+          {keywords.length > 0 &&
+            <PopoverAuto
+              value={value}
+              keywords={keywords}
+              onClick={this.handleClick}
+            />}
+          {value && <UsersOver value={value} onClick={this.handleClick} />}
+        </Popup>
       </Wrap>
     )
   }
 }
 
-export default (injectIntl(SearchField): any)
+export default injectIntl(SearchField)
