@@ -2,7 +2,7 @@
 import union from 'lodash/union'
 import { addColumn } from 'containers/ColumnManager/actions'
 import { getToken } from 'containers/LoginModal/saga'
-import { getRequest } from '../../api/client'
+import { getRequest } from 'services/api'
 import * as Actions from './constants'
 import * as actions from './actions'
 import type { ColumnId } from './reducer'

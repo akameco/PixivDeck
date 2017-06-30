@@ -1,7 +1,7 @@
 // @flow
 import type { Action } from './actionTypes.js'
 import { OPEN, POPOVER_SUCCESS, CLEAR, POPOVER_FAILRE } from './constants'
-import type { Response } from '../../api/schema'
+import type { Response } from 'services/api'
 
 export function open(id: number): Action {
   return {

@@ -1,7 +1,7 @@
 // @flow
 import union from 'lodash/union'
 import { addColumn } from 'containers/ColumnManager/actions'
-import { getRequest } from '../../api/client'
+import { getRequest } from 'services/api'
 import * as Actions from './constants'
 import * as actions from './actions'
 import type { Mode } from './reducer'

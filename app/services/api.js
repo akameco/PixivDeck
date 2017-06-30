@@ -1,10 +1,31 @@
 // @flow
 /* eslint-disable camelcase */
 import { stringify } from 'querystring'
+// $FlowFixMe
+import { schema, normalize } from 'normalizr'
 import camelcaseKeys from 'camelcase-keys'
 import decamelizeKeys from 'decamelize-keys'
 import axios from 'axios'
-import { normalizeData } from './schema'
+
+const userSchema = new schema.Entity('users', { idAttribute: 'id' })
+
+export const illustSchema = new schema.Entity('illusts', {
+  user: userSchema,
+  idAttribute: 'id',
+})
+
+const mySchema = {
+  illusts: [illustSchema],
+}
+
+export type Response = {
+  result: Object,
+  entities: Object,
+}
+
+function normalizeData(response: Object): Response {
+  return normalize(response, mySchema)
+}
 
 type UserInfo = {
   username: string,
@@ -13,7 +34,15 @@ type UserInfo = {
 
 const AUTH_URL = 'https://oauth.secure.pixiv.net/auth/token'
 
-export async function fetchAuth({ username, password }: UserInfo) {
+type AuthResponse = {
+  accessToken: string,
+  user: Object,
+}
+
+export async function fetchAuth({
+  username,
+  password,
+}: UserInfo): Promise<AuthResponse> {
   const data = {
     client_id: 'bYGKuGVw91e0NMfPGp44euvGt59s',
     client_secret: 'HP3RmkgAmEGro0gn1x9ioawQE8WMfvLXDz3ZqxpK',

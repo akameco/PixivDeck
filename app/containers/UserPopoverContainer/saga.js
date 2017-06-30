@@ -1,7 +1,7 @@
 // @flow
 // eslint-disable-next-line import/order
 import { select, put, call, takeEvery, type IOEffect } from 'redux-saga/effects'
-import { getRequest, fetchAuth } from '../../api/client'
+import { getRequest, fetchAuth } from 'services/api'
 import { makeSelectInfo } from '../LoginModal/selectors'
 import * as actions from './actions'
 import * as Actions from './constants'

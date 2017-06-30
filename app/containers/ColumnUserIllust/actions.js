@@ -1,5 +1,4 @@
 // @flow
-import type { Response } from '../../api/schema'
 import type { Action } from './actionTypes.js'
 import {
   ADD_USER_ILLUST_COLUMN,
@@ -12,6 +11,7 @@ import {
   FETCH_USER_ILLUST_SUCCESS,
   FETCH_NEXT_USER_ILLUST_SUCCESS,
 } from './constants'
+import type { Response } from 'services/api'
 import type { ColumnId } from './reducer'
 
 export function addUserIllustColumn(id: ColumnId): Action {

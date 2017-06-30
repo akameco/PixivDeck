@@ -1,5 +1,4 @@
 // @flow
-import type { Response } from '../../api/schema'
 import type { Action } from './actionTypes.js'
 import {
   ADD_RANKING_COLUMN_SUCCESS,
@@ -12,6 +11,7 @@ import {
   FETCH_RANKING_SUCCESS,
   FETCH_NEXT_RANKING_SUCCESS,
 } from './constants'
+import type { Response } from 'services/api'
 import type { ColumnId } from './reducer'
 
 export function addRankingColumnSuccess(id: ColumnId): Action {

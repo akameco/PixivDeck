@@ -1,5 +1,5 @@
 // @flow
-import type { Response } from '../../api/schema'
+import type { Response } from 'services/api'
 
 export type OPEN_TYPE = 'UserPopoverContainer/OPEN'
 export type CLEAR_TYPE = 'UserPopoverContainer/CLEAR'

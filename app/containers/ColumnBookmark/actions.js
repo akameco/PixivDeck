@@ -11,7 +11,7 @@ import {
   FETCH_BOOKMARK_SUCCESS,
   FETCH_NEXT_BOOKMARK_SUCCESS,
 } from './constants'
-import type { Response } from '../../api/schema'
+import type { Response } from 'services/api'
 import type { ColumnId } from './reducer'
 
 export function addBookmarkColumn(id: ColumnId): Action {

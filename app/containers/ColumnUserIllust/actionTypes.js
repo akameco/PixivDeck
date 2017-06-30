@@ -1,5 +1,5 @@
 // @flow
-import type { Response } from '../../api/schema'
+import type { Response } from 'services/api'
 import type { ColumnId } from './reducer'
 
 export type ADD_USER_ILLUST_COLUMN_TYPE = 'ColumnUserIllust/ADD_COLUMN'

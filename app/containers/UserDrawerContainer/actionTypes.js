@@ -1,6 +1,6 @@
 // @flow
 import type { User, Profile } from 'types/user'
-import type { Response } from '../../api/schema'
+import type { Response } from 'services/api'
 
 export type FETCH_ILLUST_TYPE = 'UserDrawer/FETCH_ILLUST'
 export type FETCH_ILLUST_SUCCESS_TYPE = 'UserDrawer/FETCH_ILLUST_SUCCESS'

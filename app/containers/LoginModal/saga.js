@@ -1,7 +1,7 @@
 // @flow
 // eslint-disable-next-line import/order
 import { select, put, call, takeEvery } from 'redux-saga/effects'
-import { fetchAuth } from '../../api/client'
+import { fetchAuth } from 'services/api'
 import { openModal, closeModal } from '../ModalManeger/actions'
 import { loginFailure, endLoading, clearError, setAuth } from './actions'
 import * as Actions from './constants'

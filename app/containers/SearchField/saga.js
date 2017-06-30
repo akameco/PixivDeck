@@ -1,5 +1,5 @@
 // @flow
-import { getRequest, fetchAuth } from '../../api/client'
+import { getRequest, fetchAuth } from 'services/api'
 import { makeSelectInfo } from '../LoginModal/selectors'
 import * as actions from './actions'
 import * as Actions from './constants'

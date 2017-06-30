@@ -24,13 +24,11 @@ import ColumnUserIllust from '../containers/ColumnUserIllust/reducer'
 import ColumnSearch from '../containers/ColumnSearch/reducer'
 import SearchField from '../containers/SearchField/reducer'
 
-import columns from './columns'
 import illustById, * as fromIllustById from './illustById'
 import userById, * as fromUserById from './userById'
 
-const rootReducer = combineReducers({
+export default combineReducers({
   Language,
-  columns,
   illustById,
   userById,
   ModalManeger,
@@ -78,5 +76,3 @@ export const getIllusts = (state: State, columnId: string) => {
 
 export const getUser = (state: State, userId: number): User =>
   fromUserById.getUser(state, userId)
-
-export default rootReducer

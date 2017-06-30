@@ -15,17 +15,10 @@ import SearchField from '../containers/SearchField/saga'
 import UserPopoverContainer from '../containers/UserPopoverContainer/saga'
 import LoginModal from '../containers/LoginModal/saga'
 
-import minBookmarks from './minBookmarks'
-import nextColumnPage from './nextColumnPage'
-import column from './column'
 import misc from './misc'
 
 function* root(): Generator<*, void, void> {
   yield all([
-    fork(minBookmarks),
-    fork(nextColumnPage),
-    fork(column),
-    fork(FollowButton),
     fork(misc),
     fork(UserDrawerContainer),
     fork(Table),

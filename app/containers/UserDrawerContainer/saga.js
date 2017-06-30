@@ -1,8 +1,8 @@
 // @flow
 import union from 'lodash/union'
 import { type User } from 'types/user'
-import { makeSelectInfo } from 'containers/LoginModal/selectors'
-import { getRequest, fetchAuth } from '../../api/client'
+import { getToken } from 'containers/LoginModal/saga'
+import { getRequest } from 'services/api'
 import { OPEN_DRAWER } from '../DrawerManager/constants'
 import { makeSelectUserById } from './selectors'
 import * as actions from './actions'
@@ -40,9 +40,7 @@ function* fetchIllust(props: P): Generator<*, void, *> {
     const { id } = props
     const oldIds = yield select(makeSelectIllustList())
 
-    const info = yield select(makeSelectInfo())
-    // TODO
-    const { accessToken } = yield call(fetchAuth, info)
+    const accessToken = yield call(getToken)
 
     const url = yield select(getNextIllustUrl)
 
@@ -64,9 +62,7 @@ function* fetchManga({ id }: P) {
   try {
     const oldIds = yield select(makeSelectMangaList())
 
-    const info = yield select(makeSelectInfo())
-    // TODO
-    const { accessToken } = yield call(fetchAuth, info)
+    const accessToken = yield call(getToken)
 
     const url = yield select(getNextMangaUrl)
     const endpoint = url ? url : `/v1/user/illusts?type=manga&user_id=${id}`
@@ -87,10 +83,7 @@ function* fetchManga({ id }: P) {
 
 function* fetchUserDetail({ id }: P): Generator<IOEffect, void, *> {
   try {
-    // TODO
-    const info = yield select(makeSelectInfo())
-    const { accessToken } = yield call(fetchAuth, info)
-
+    const accessToken = yield call(getToken)
     const endpoint = `/v1/user/detail?user_id=${id}`
 
     const { result } = yield call(getRequest, endpoint, null, accessToken)

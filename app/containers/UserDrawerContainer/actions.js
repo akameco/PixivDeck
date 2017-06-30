@@ -18,7 +18,7 @@ import {
   FETCH_MANGA_FAILURE,
 } from './constants'
 import type { User, Profile } from 'types/user'
-import type { Response } from '../../api/schema'
+import type { Response } from 'services/api'
 
 export function fetchIllust(id: number): Action {
   return {

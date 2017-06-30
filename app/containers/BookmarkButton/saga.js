@@ -2,7 +2,7 @@
 // eslint-disable-next-line import/order
 import { call, put, takeEvery, type IOEffect } from 'redux-saga/effects'
 import { getToken } from 'containers/LoginModal/saga'
-import { postRequest } from '../../api/client'
+import { postRequest } from 'services/api'
 import * as Actions from './constants'
 import * as actions from './actions'
 import type { Restrict } from './types'

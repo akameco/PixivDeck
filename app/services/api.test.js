@@ -2,7 +2,7 @@
  * @jest-environment node
 */
 // @flow
-import { fetchAuth, getRequest, postRequest } from './client'
+import { fetchAuth, getRequest, postRequest } from './api'
 
 const USERNAME: ?string = process.env.USERNAME
 const PASSWORD: ?string = process.env.PASSWORD

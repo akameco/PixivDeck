@@ -11,7 +11,7 @@ import {
   FETCH_FOLLOW_SUCCESS,
   FETCH_NEXT_FOLLOW_SUCCESS,
 } from './constants'
-import type { Response } from '../../api/schema'
+import type { Response } from 'services/api'
 import type { ColumnId } from './reducer'
 
 export function addFollowColumn(id: ColumnId): Action {
