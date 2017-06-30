@@ -1,24 +1,35 @@
 // @flow
 import type { Action } from './actionTypes.js'
-import { OPEN_USER_POPOVER, ADD_POPOVER, CLEAR_POPOVER } from './constants'
-import type { Illust } from 'types/illust'
+import { OPEN, POPOVER_SUCCESS, CLEAR, POPOVER_FAILRE } from './constants'
+import type { Response } from '../../api/schema'
 
-export function openUserPopover(id: number): Action {
+export function open(id: number): Action {
   return {
-    type: OPEN_USER_POPOVER,
+    type: OPEN,
     id,
   }
 }
 
-export function addPopover(illusts: Array<Illust>): Action {
+export function popoverSuccess(
+  response: Response,
+  illusts: Array<number>
+): Action {
   return {
-    type: ADD_POPOVER,
+    type: POPOVER_SUCCESS,
+    response,
     illusts,
   }
 }
 
-export function clearPopover(): Action {
+export function clear(): Action {
   return {
-    type: CLEAR_POPOVER,
+    type: CLEAR,
+  }
+}
+
+export function popoverFailre(error: string): Action {
+  return {
+    type: POPOVER_FAILRE,
+    error,
   }
 }

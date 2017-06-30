@@ -1,14 +1,13 @@
 // @flow
 import React from 'react'
-import type { Connector } from 'react-redux'
-import { connect } from 'react-redux'
+import { connect, type Connector } from 'react-redux'
 import type { Dispatch } from 'types'
-import { createSelector } from 'reselect'
+import { createStructuredSelector } from 'reselect'
 import type { User } from 'types/user'
 import type { Illust } from 'types/illust'
 import UserPopover from 'components/UserPopover'
-import { openUserPopover } from './actions'
-import { makeSelectIllusts } from './selectors'
+import { open } from './actions'
+import { makeLimitedIllust } from './selectors'
 
 type OP = {
   onClick: () => void,
@@ -17,15 +16,14 @@ type OP = {
 
 type Props = {
   illusts: Array<Illust>,
-  dispatch: Dispatch,
+  open: Function,
 } & OP
 
 class UserPopoverContainer extends React.PureComponent {
   props: Props
 
   componentWillMount() {
-    const { user: { id }, dispatch } = this.props
-    dispatch(openUserPopover(id))
+    this.props.open()
   }
 
   render() {
@@ -34,9 +32,16 @@ class UserPopoverContainer extends React.PureComponent {
   }
 }
 
-const mapStateToProps = createSelector(makeSelectIllusts(), illusts => ({
-  illusts,
-}))
+const mapStateToProps = createStructuredSelector({
+  illusts: makeLimitedIllust(),
+})
 
-const connector: Connector<OP, Props> = connect(mapStateToProps)
+const connector: Connector<
+  OP,
+  Props
+> = connect(mapStateToProps, (dispatch: Dispatch, { user }) => ({
+  open() {
+    dispatch(open(user.id))
+  },
+}))
 export default connector(UserPopoverContainer)

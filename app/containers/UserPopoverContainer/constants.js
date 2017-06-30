@@ -1,12 +1,16 @@
 // @flow
 import type {
-  OPEN_USER_POPOVER_TYPE,
-  ADD_POPOVER_TYPE,
-  CLEAR_POPOVER_TYPE,
+  OPEN_TYPE,
+  CLEAR_TYPE,
+  POPOVER_TYPE,
+  POPOVER_SUCCESS_TYPE,
+  POPOVER_FAILRE_TYPE,
 } from './actionTypes.js'
 
-export const OPEN_USER_POPOVER: OPEN_USER_POPOVER_TYPE =
-  'UserPopoverContainer/OPEN_USER_POPOVER'
-export const ADD_POPOVER: ADD_POPOVER_TYPE = 'UserPopoverContainer/ADD_POPOVER'
-export const CLEAR_POPOVER: CLEAR_POPOVER_TYPE =
-  'UserPopoverContainer/CLEAR_POPOVER'
+export const OPEN: OPEN_TYPE = 'UserPopoverContainer/OPEN'
+export const CLEAR: CLEAR_TYPE = 'UserPopoverContainer/CLEAR'
+export const POPOVER: POPOVER_TYPE = 'UserPopoverContainer/ADD_POPOVER'
+export const POPOVER_SUCCESS: POPOVER_SUCCESS_TYPE =
+  'UserPopoverContainer/ADD_POPOVER_SUCCESS'
+export const POPOVER_FAILRE: POPOVER_FAILRE_TYPE =
+  'UserPopoverContainer/ADD_POPOVER_FAILRE'

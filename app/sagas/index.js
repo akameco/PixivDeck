@@ -12,12 +12,12 @@ import ColumnSearch from '../containers/ColumnSearch/saga'
 import FollowButton from '../containers/FollowButton/saga'
 import BookmarkButton from '../containers/BookmarkButton/saga'
 import SearchField from '../containers/SearchField/saga'
+import UserPopoverContainer from '../containers/UserPopoverContainer/saga'
 
 import auth from './auth'
 import minBookmarks from './minBookmarks'
 import nextColumnPage from './nextColumnPage'
 import column from './column'
-import popover from './popover'
 import misc from './misc'
 
 function* root(): Generator<*, void, void> {
@@ -28,7 +28,6 @@ function* root(): Generator<*, void, void> {
     fork(column),
     fork(FollowButton),
     fork(misc),
-    fork(popover),
     fork(UserDrawerContainer),
     fork(Table),
     fork(ColumnRanking),
@@ -40,6 +39,7 @@ function* root(): Generator<*, void, void> {
     fork(FollowButton),
     fork(BookmarkButton),
     fork(SearchField),
+    fork(UserPopoverContainer),
   ])
 }
 

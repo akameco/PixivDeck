@@ -1,10 +1,9 @@
 // @flow
-import type { Illust } from 'types/illust'
 import type { Action } from './actionTypes'
 import * as Actions from './constants'
 
 export type State = {
-  illusts: Array<Illust>,
+  illusts: Array<number>,
 }
 
 const initialState: State = {
@@ -13,9 +12,9 @@ const initialState: State = {
 
 export default function(state: State = initialState, action: Action): State {
   switch (action.type) {
-    case Actions.ADD_POPOVER:
+    case Actions.POPOVER_SUCCESS:
       return { illusts: action.illusts }
-    case Actions.CLEAR_POPOVER:
+    case Actions.CLEAR:
       return { illusts: [] }
     default:
       return state
