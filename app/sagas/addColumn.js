@@ -25,13 +25,6 @@ const addColumn = (
   params,
 })
 
-function* follow({ isPublic }) {
-  const restrict = isPublic ? 'public' : 'private'
-  const title = isPublic ? '新着 公開' : '新着 非公開'
-  const opts = { restrict }
-  yield put(addColumn(uuid(), ENDPOINT.FOLLOW, opts, title, MINUTE))
-}
-
 function* searchIllust({ word }) {
   yield put(addColumn(uuid(), ENDPOINT.SEARCH, { word }, word, MINUTE))
 }
@@ -48,10 +41,6 @@ function* userIllust({ user }) {
   )
 }
 
-function* followWatch(): Generator<IOEffect, void, *> {
-  yield takeEvery(Actions.ADD_COLUMN_FOLLOW, follow)
-}
-
 function* searchIllustWatch(): Generator<IOEffect, void, *> {
   yield takeEvery(Actions.ADD_COLUMN_SEARCH_ILLUST, searchIllust)
 }
@@ -61,7 +50,6 @@ function* userIllustWatch(): Generator<IOEffect, void, *> {
 }
 
 export default function* root(): Generator<*, void, void> {
-  yield fork(followWatch)
   yield fork(searchIllustWatch)
   yield fork(userIllustWatch)
 }

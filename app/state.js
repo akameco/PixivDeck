@@ -4,6 +4,7 @@ import type { State as ColumnFollowState } from './containers/ColumnFollow/reduc
 import type { State as ColumnManagerState } from './containers/ColumnManager/reducer'
 import type { State as ColumnRankingState } from './containers/ColumnRanking/reducer'
 import type { State as ColumnRankingR18State } from './containers/ColumnRankingR18/reducer'
+import type { State as ColumnUserIllustState } from './containers/ColumnUserIllust/reducer'
 import type { State as DrawerManagerState } from './containers/DrawerManager/reducer'
 import type { State as HeaderContainerState } from './containers/HeaderContainer/reducer'
 import type { State as IllustPreviewState } from './containers/IllustPreview/reducer'
@@ -22,6 +23,7 @@ export type State = {
   ColumnManager: ColumnManagerState,
   ColumnRankingR18: ColumnRankingR18State,
   ColumnRanking: ColumnRankingState,
+  ColumnUserIllust: ColumnUserIllustState,
   DrawerManager: DrawerManagerState,
   HeaderContainer: HeaderContainerState,
   IllustPreview: IllustPreviewState,

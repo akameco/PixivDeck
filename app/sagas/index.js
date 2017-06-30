@@ -7,6 +7,7 @@ import ColumnRanking from '../containers/ColumnRanking/saga'
 import ColumnRankingR18 from '../containers/ColumnRankingR18/saga'
 import ColumnBookmark from '../containers/ColumnBookmark/saga'
 import ColumnFollow from '../containers/ColumnFollow/saga'
+import ColumnUserIllust from '../containers/ColumnUserIllust/saga'
 
 import auth from './auth'
 import minBookmarks from './minBookmarks'
@@ -37,6 +38,7 @@ function* root(): Generator<*, void, void> {
     fork(ColumnRankingR18),
     fork(ColumnBookmark),
     fork(ColumnFollow),
+    fork(ColumnUserIllust),
   ])
 }
 

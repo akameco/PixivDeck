@@ -4,7 +4,12 @@ import * as Actions from './constants'
 
 export type ColumnManagerId = string
 export type ColumnId = string
-export type ColumnType = 'RANKING' | 'RANKING_R18' | 'BOOKMARK' | 'FOLLOW'
+export type ColumnType =
+  | 'RANKING'
+  | 'RANKING_R18'
+  | 'BOOKMARK'
+  | 'FOLLOW'
+  | 'USER_ILLUST'
 
 export type ColumnManager = {
   columnId: ColumnId,
