@@ -2,6 +2,7 @@
 import union from 'lodash/union'
 import { addColumn } from 'containers/ColumnManager/actions'
 import { makeSelectInfo } from 'containers/LoginModal/selectors'
+import { getToken } from 'containers/LoginModal/saga'
 import { getRequest, fetchAuth } from '../../api/client'
 import * as Actions from './constants'
 import * as actions from './actions'
@@ -55,8 +56,7 @@ function* fetchNextBookmark(props: Props) {
       return
     }
 
-    const info = yield select(makeSelectInfo())
-    const { accessToken } = yield call(fetchAuth, info)
+    const accessToken = yield call(getToken)
 
     const response = yield call(getRequest, nextUrl, null, accessToken)
     const { result } = response

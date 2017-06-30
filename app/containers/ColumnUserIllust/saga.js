@@ -2,6 +2,7 @@
 import union from 'lodash/union'
 import { addColumn } from 'containers/ColumnManager/actions'
 import { makeSelectInfo } from 'containers/LoginModal/selectors'
+import { getToken } from 'containers/LoginModal/saga'
 import { getRequest, fetchAuth } from '../../api/client'
 import * as Actions from './constants'
 import * as actions from './actions'
@@ -30,9 +31,7 @@ function* fetchUserIllust(props: Props) {
   try {
     const { illustIds } = yield select(makeSelectColumn(), props)
 
-    const info = yield select(makeSelectInfo())
-    // TODO
-    const { accessToken } = yield call(fetchAuth, info)
+    const accessToken = yield call(getToken)
 
     const response = yield call(
       getRequest,

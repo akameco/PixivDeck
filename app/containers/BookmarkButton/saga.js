@@ -1,8 +1,8 @@
 // @flow
 // eslint-disable-next-line import/order
-import { select, call, put, takeEvery, type IOEffect } from 'redux-saga/effects'
-import { postRequest, fetchAuth } from '../../api/client'
-import { makeSelectInfo } from '../LoginModal/selectors'
+import { call, put, takeEvery, type IOEffect } from 'redux-saga/effects'
+import { getToken } from 'containers/LoginModal/saga'
+import { postRequest } from '../../api/client'
 import * as Actions from './constants'
 import * as actions from './actions'
 import type { Restrict } from './types'
@@ -14,9 +14,7 @@ type Props = {
 
 function* bookmark({ id, restrict }: Props) {
   try {
-    const info = yield select(makeSelectInfo())
-
-    const { accessToken } = yield call(fetchAuth, info)
+    const accessToken = yield call(getToken)
 
     yield call(
       postRequest,

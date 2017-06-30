@@ -1,8 +1,8 @@
 // @flow
 import union from 'lodash/union'
 import { addColumn } from 'containers/ColumnManager/actions'
-import { makeSelectInfo } from 'containers/LoginModal/selectors'
-import { getRequest, fetchAuth } from '../../api/client'
+import { getToken } from 'containers/LoginModal/saga'
+import { getRequest } from '../../api/client'
 import * as Actions from './constants'
 import * as actions from './actions'
 import type { ColumnId } from './reducer'
@@ -30,9 +30,7 @@ function* fetchSearch(props: Props) {
   try {
     const { illustIds } = yield select(makeSelectColumn(), props)
 
-    const info = yield select(makeSelectInfo())
-    // TODO
-    const { accessToken } = yield call(fetchAuth, info)
+    const accessToken = yield call(getToken)
 
     const response = yield call(
       getRequest,
@@ -60,8 +58,7 @@ function* fetchNextSearch(props: Props) {
       return
     }
 
-    const info = yield select(makeSelectInfo())
-    const { accessToken } = yield call(fetchAuth, info)
+    const accessToken = yield call(getToken)
 
     const response = yield call(getRequest, nextUrl, null, accessToken)
     const { result } = response

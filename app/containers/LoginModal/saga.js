@@ -1,10 +1,17 @@
 // @flow
 // eslint-disable-next-line import/order
-import { put, call, takeEvery } from 'redux-saga/effects'
+import { select, put, call, takeEvery } from 'redux-saga/effects'
 import { fetchAuth } from '../../api/client'
 import { openModal, closeModal } from '../ModalManeger/actions'
 import { loginFailure, endLoading, clearError, setAuth } from './actions'
 import * as Actions from './constants'
+import { makeSelectInfo } from './selectors'
+
+export function* getToken(): Generator<*, string, *> {
+  const info = yield select(makeSelectInfo())
+  const { accessToken } = yield call(fetchAuth, info)
+  return accessToken
+}
 
 function* authorize({ username, password }): Generator<*, void, *> {
   // エラーを非表示

@@ -1,8 +1,8 @@
 // @flow
 import union from 'lodash/union'
 import { addColumn } from 'containers/ColumnManager/actions'
-import { makeSelectInfo } from 'containers/LoginModal/selectors'
-import { getRequest, fetchAuth } from '../../api/client'
+import { getToken } from 'containers/LoginModal/saga'
+import { getRequest } from '../../api/client'
 import * as Actions from './constants'
 import * as actions from './actions'
 import type { R18Mode } from './reducer'
@@ -30,9 +30,7 @@ function* fetchRanking(props: Props) {
 
   try {
     const { illustIds } = yield select(makeSelectColumn(), props)
-    // refresh_tokenが効かないので、毎回loginリクエストを飛ばす。もっとやりようはいくらでもあるけど。
-    const info = yield select(makeSelectInfo())
-    const { accessToken } = yield call(fetchAuth, info)
+    const accessToken = yield call(getToken)
 
     const response = yield call(
       getRequest,
@@ -56,8 +54,7 @@ function* fetchNextRanking18(props: Props) {
   try {
     const { illustIds, nextUrl } = yield select(makeSelectColumn(), props)
 
-    const info = yield select(makeSelectInfo())
-    const { accessToken } = yield call(fetchAuth, info)
+    const accessToken = yield call(getToken)
 
     if (!nextUrl) {
       return

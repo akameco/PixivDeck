@@ -1,10 +1,9 @@
 // @flow
 import { connect, type Connector } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
+import LoginModal, { type Props } from 'components/LoginModal'
 import type { Dispatch } from 'types'
 import { loginRequest } from './actions'
-import LoginModal from './LoginModal'
-import type { Props } from './LoginModal'
 import {
   makeSelectIsLoading,
   makeSelectIsLoginFailure,
