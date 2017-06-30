@@ -1,19 +1,24 @@
 // @flow
 // eslint-disable-next-line import/order
-import { put, fork, take, call, select } from 'redux-saga/effects'
-// eslint-disable-next-line import/order
-import type { IOEffect } from 'redux-saga/effects'
+import {
+  put,
+  fork,
+  take,
+  call,
+  select,
+  type IOEffect,
+} from 'redux-saga/effects'
 import type { State } from 'types'
+import Api from '../../api'
+import { openModal, closeModal } from '../ModalManeger/actions'
 import {
   loginFailure,
   endLoading,
   clearError,
   setAuth,
   logout,
-} from '../containers/LoginModal/actions'
-import * as Actions from '../containers/LoginModal/constants'
-import { openModal, closeModal } from '../containers/ModalManeger/actions'
-import Api from '../api'
+} from './actions'
+import * as Actions from './constants'
 
 // eslint-disable-next-line
 function* authorize(username: string, password: string) {
