@@ -19,8 +19,6 @@ import type { Action as FollowButtonAction } from './containers/FollowButton/act
 
 import type { Action as IllustPreviewAction } from './containers/IllustPreview/actionTypes'
 
-import type { Action as AddNewColumnButtonAction } from './containers/AddNewColumnButton/actionTypes'
-
 import type { Action as BookmarkButtonAction } from './containers/BookmarkButton/actionTypes'
 
 import type { Action as UserDrawerContainerAction } from './containers/UserDrawerContainer/actionTypes'
@@ -54,7 +52,6 @@ export type Action =
   | LoginModalAction
   | FollowButtonAction
   | IllustPreviewAction
-  | AddNewColumnButtonAction
   | BookmarkButtonAction
   | UserDrawerContainerAction
   | DrawerManagerAction
