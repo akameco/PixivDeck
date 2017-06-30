@@ -46,7 +46,7 @@ export default function createMenu({
     new MenuItem({
       label: 'ブックマーク',
       click() {
-        dispatch(addBookmark(illust.id, true))
+        dispatch(addBookmark(illust.id, 'public'))
       },
     })
   )
@@ -55,7 +55,7 @@ export default function createMenu({
     new MenuItem({
       label: '非公開ブックマーク',
       click() {
-        dispatch(addBookmark(illust.id, false))
+        dispatch(addBookmark(illust.id, 'private'))
       },
     })
   )

@@ -12,7 +12,7 @@ const mapStateToProps = createSelector(makeIsBookmarked(), isBookmarked => ({
 
 const mapDispatchToProps = (dispatch: Dispatch, { id }) => ({
   onClick() {
-    dispatch(addBookmarkRequest(id, true))
+    dispatch(addBookmarkRequest(id, 'public'))
   },
 })
 
