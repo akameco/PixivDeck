@@ -5,7 +5,6 @@ import { persistStore, autoRehydrate } from 'redux-persist'
 import localForage from 'localforage'
 import reducer from 'reducers'
 import mySaga from '../sagas'
-import storeWrapper from './wrapper'
 
 export default function configureStore(initialState: ?Object) {
   const sagaMiddleware = createSagaMiddleware()
@@ -13,7 +12,6 @@ export default function configureStore(initialState: ?Object) {
   const enhancer = compose(applyMiddleware(sagaMiddleware), autoRehydrate())
 
   const store = createStore(reducer, initialState, enhancer)
-  storeWrapper(store)
 
   persistStore(store, {
     storage: localForage,

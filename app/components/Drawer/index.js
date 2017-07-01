@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
-import keycode from 'keycode'
 import EventListener from 'react-event-listener'
+import handleEscCreater from 'services/handleEscCreater'
 import Overlay from 'components/Overlay'
 import StyledDrawer from './StyledDrawer'
 import DrawerWrapper from './DrawerWrapper'
@@ -24,11 +24,7 @@ class Drawer extends React.PureComponent<DefaultProps, Props, void> {
     width: 600,
   }
 
-  handleKeyUp = (event: Event) => {
-    if (keycode(event) === 'esc') {
-      this.props.onRequestClose()
-    }
-  }
+  handleKeyUp = handleEscCreater(this.props.onRequestClose)
 
   render() {
     const { open, width, children, onRequestClose } = this.props

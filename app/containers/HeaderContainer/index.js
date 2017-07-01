@@ -3,10 +3,15 @@ import { connect } from 'react-redux'
 import type { Connector } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import type { Dispatch } from 'types'
-import Header, { type Props } from 'components/Header'
+import Header, { type Props } from 'components/Sidebar'
 import { logout } from '../LoginModal/actions'
 import { openModal } from '../ModalManeger/actions'
-import { toggleSearchField, closeSearchField, toggleDropdown } from './actions'
+import {
+  toggleSearchField,
+  closeSearchField,
+  toggleDropdown,
+  closeDropdown,
+} from './actions'
 import {
   makeSelectisOpenDropdown,
   makeSelectisOpenSearchField,
@@ -26,6 +31,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   },
   onToggleDropdown() {
     dispatch(toggleDropdown())
+  },
+  onCloseDropdown() {
+    dispatch(closeDropdown())
   },
   onOpenFilterModal() {
     dispatch(openModal('Setting'))
