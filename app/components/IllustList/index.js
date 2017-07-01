@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import Box from 'containers/BoxContainer'
-import IntersectionObserverWrapper from 'components/common/intersectionObserverWrapper'
+import IntersectionObserverWrapper from 'services/intersectionObserverWrapper'
 import type { Illust } from 'types/illust'
 import LoadMore from 'components/LoadMore'
 import { ScrollableY } from './styles'
