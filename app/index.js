@@ -14,19 +14,15 @@ import './global-styles' // eslint-disable-line
 
 injectTapEventPlugin()
 
-async function init() {
-  const store = configureStore()
+const store = configureStore()
 
-  render(
-    <Provider store={store}>
-      <Language messages={translationMessages}>
-        <MuiThemeProvider>
-          <App />
-        </MuiThemeProvider>
-      </Language>
-    </Provider>,
-    document.querySelector('#root')
-  )
-}
-
-init()
+render(
+  <Provider store={store}>
+    <Language messages={translationMessages}>
+      <MuiThemeProvider>
+        <App />
+      </MuiThemeProvider>
+    </Language>
+  </Provider>,
+  document.querySelector('#root')
+)
