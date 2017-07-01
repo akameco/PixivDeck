@@ -13,9 +13,13 @@ type Props = {
   onClose: Function,
 }
 
-  <Wrap>
 const Dropdwon = ({ onOpenFilterModal, onLogout, onClose }: Props) =>
-    <EventListener target="window" onKeyUp={handleEscCreater(onClose)} />
+  <Wrap>
+    <EventListener
+      target="window"
+      onKeyUp={handleEscCreater(onClose)}
+      onClick={onClose}
+    />
     <Item
       onClick={onOpenFilterModal}
       text={<FormattedMessage {...messages.setting} />}
