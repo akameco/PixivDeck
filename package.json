@@ -3,10 +3,7 @@
   "productName": "PixivDeck",
   "version": "0.12.1",
   "description": "pixiv client for desktop",
-  "keywords": [
-    "electron",
-    "pixiv"
-  ],
+  "keywords": ["electron", "pixiv"],
   "author": "akameco <akameco.t@gmail.com>",
   "license": "MIT",
   "main": "main.js",
@@ -34,62 +31,11 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
-  "build": {
-    "productName": "PixivDeck",
-    "appId": "io.github.akameco.pixivdeck",
-    "files": [
-      "dist/",
-      "node_modules/",
-      "app.html",
-      "main.js",
-      "main.js.map",
-      "package.json"
-    ],
-    "dmg": {
-      "contents": [
-        {
-          "x": 130,
-          "y": 220
-        },
-        {
-          "x": 410,
-          "y": 220,
-          "type": "link",
-          "path": "/Applications"
-        }
-      ]
-    },
-    "win": {
-      "target": [
-        "nsis"
-      ]
-    },
-    "linux": {
-      "target": [
-        "deb",
-        "AppImage"
-      ]
-    },
-    "directories": {
-      "buildResources": "res",
-      "output": "release"
-    }
-  },
-  "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
-  },
   "stylelint": {
-    "processors": [
-      "stylelint-processor-styled-components"
-    ],
+    "processors": ["stylelint-processor-styled-components"],
     "extends": "stylelint-config-standard",
     "syntax": "scss",
     "rules": {
-      "indentation": [
-        "tab"
-      ],
       "rule-empty-line-before": null,
       "at-rule-empty-line-before": null
     }
