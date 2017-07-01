@@ -1,6 +1,8 @@
 // @flow
 import React from 'react'
+import EventListener from 'react-event-listener'
 import SearchField from 'containers/SearchField'
+import handleEscCreater from 'services/handleEscCreater'
 import HeaderButton from './HeaderButton'
 import HeaderBottom from './HeaderBottom'
 import { SearchWrap, Wrap } from './styles'
@@ -12,6 +14,7 @@ export type Props = {
   onClickAdd: () => void,
   onToggleDropdown: () => void,
   onOpenFilterModal: () => void,
+  onCloseDropdown: Function,
   onLogout: () => void,
 }
 
@@ -24,7 +27,10 @@ export default function Header(props: Props) {
     isDropdown,
     isSearchField,
     toggleSearchField,
+    onCloseDropdown,
   } = props
+
+  const handleKeyUp = handleEscCreater(toggleSearchField)
 
   return (
     <Wrap>
@@ -38,11 +44,13 @@ export default function Header(props: Props) {
       </div>
       {isSearchField &&
         <SearchWrap>
+          <EventListener target="window" onKeyUp={handleKeyUp} />
           <SearchField />
         </SearchWrap>}
       <HeaderBottom
         isDropdown={isDropdown}
         onLogout={onLogout}
+        onClose={onCloseDropdown}
         onToggleDropdown={onToggleDropdown}
         onOpenFilterModal={onOpenFilterModal}
       />

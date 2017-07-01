@@ -16,6 +16,7 @@ type Props = {
   onOpenFilterModal: () => void,
   onLogout: () => void,
   isDropdown: boolean,
+  onClose: Function,
 }
 
 const HeaderBottom = ({
@@ -23,11 +24,21 @@ const HeaderBottom = ({
   onToggleDropdown,
   onOpenFilterModal,
   isDropdown,
+  onClose,
 }: Props) =>
-  <Wrap>
+  <Wrap
+    onBlur={() => {
+      console.log('blur')
+      onClose()
+    }}
+  >
     <HeaderButton iconType="setting" onClick={onToggleDropdown} />
     {isDropdown &&
-      <Dropdwon onLogout={onLogout} onOpenFilterModal={onOpenFilterModal} />}
+      <Dropdwon
+        onLogout={onLogout}
+        onOpenFilterModal={onOpenFilterModal}
+        onClose={onClose}
+      />}
   </Wrap>
 
 export default HeaderBottom

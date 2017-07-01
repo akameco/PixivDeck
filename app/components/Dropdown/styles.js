@@ -18,7 +18,7 @@ export const Wrap = styled.div`
   left: 50px;
   width: 150px;
   padding: 12px 0;
-  animation: ${fadeIn} 400ms both;
+  animation: ${fadeIn} 200ms both;
 `
 
 export const H = styled.div`
