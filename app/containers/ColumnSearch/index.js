@@ -2,13 +2,15 @@
 import React from 'react'
 import { connect, type Connector } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
-import scrollTop from 'residual-scroll-top'
 import type { Dispatch } from 'types'
 import type { Illust } from 'types/illust'
 import IllustList from 'components/IllustList'
 import ColumnRoot from 'components/ColumnRoot'
 import ColumnBody from 'components/ColumnBody'
 import ColumnHeader from 'components/ColumnHeader'
+import scrollToTopBind, {
+  type HandleHeaderClick,
+} from 'services/scrollToTopBind'
 import Loading from 'components/ColumnLoading'
 import ColumnHeaderBookmark from 'components/ColumnHeaderBookmark'
 import type { ColumnId } from './reducer'
@@ -28,29 +30,20 @@ type Props = {
   setMinBookmarks: number => void,
 } & OP
 
-class ColumnSearch extends React.Component {
+class ColumnSearch extends React.PureComponent {
   props: Props
   node: HTMLElement
-
-  handleHeaderClick = (e: Event) => {
-    e.preventDefault()
-    if (this.node && this.node.scrollTop === 0) {
-      return
-    }
-    if (this.node) {
-      scrollTop(this.node, () => {
-        // TOOD: Callback
-        // props.checkColumnUpdate()
-      })
-    }
-  }
+  handleHeaderClick: HandleHeaderClick
 
   componentWillMount() {
     this.props.onFetch()
   }
 
   _setNode = node => {
-    this.node = node
+    if (node) {
+      this.node = node
+      this.handleHeaderClick = scrollToTopBind(this.node)
+    }
   }
 
   render() {
