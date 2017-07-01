@@ -75,9 +75,9 @@ const mapDispatchToProps = (dispatch: Dispatch, { id }) => {
     dispatch,
     openPreview(type: 'illust' | 'manga') {
       if (type === 'illust') {
-        dispatch(openMangaPreview(id))
-      } else {
         dispatch(openIllustViewer(id))
+      } else if (type === 'manga') {
+        dispatch(openMangaPreview(id))
       }
     },
     openUserDrawer(userId: number) {

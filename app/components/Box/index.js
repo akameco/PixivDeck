@@ -36,6 +36,8 @@ function Box(props: Props) {
 
   const tags = illust.tags.map(x => x.name)
 
+  const isManga = illust.pageCount > 1
+
   return (
     <BoxWrapper onContextMenu={onContextMenu} data-id={id}>
       {!isIllustOnly &&
@@ -47,8 +49,8 @@ function Box(props: Props) {
         />}
       <LazyLoadImg
         src={illust.imageUrls.medium}
-        isManga={illust.pageCount > 1}
-        onClick={onClick}
+        isManga={isManga}
+        onClick={onClick.bind(null, isManga ? 'manga' : 'illust')}
       />
       {!isIllustOnly && <BoxFooter tags={tags} onClickTag={onClickTag} />}
     </BoxWrapper>
