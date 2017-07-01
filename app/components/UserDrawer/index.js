@@ -40,36 +40,38 @@ const UserDrawer = ({
     <div>
       <Header user={user} profile={profile} />
       <Tabs {...tabProps}>
-        <Tab
-          label={
-            <FormattedMessage
-              {...messages.tabIllust}
-              values={{ count: totalIllusts }}
+        {totalIllusts > 0 &&
+          <Tab
+            label={
+              <FormattedMessage
+                {...messages.tabIllust}
+                values={{ count: totalIllusts }}
+              />
+            }
+          >
+            <IllustList
+              illusts={illusts}
+              id="illust-user-drawer"
+              hasMore={illusts.length < totalIllusts}
+              onNext={onNextIllust}
             />
-          }
-        >
-          <IllustList
-            illusts={illusts}
-            id="illust-user-drawer"
-            hasMore={illusts.length < totalIllusts}
-            onNext={onNextIllust}
-          />
-        </Tab>
-        <Tab
-          label={
-            <FormattedMessage
-              {...messages.tabManga}
-              values={{ count: totalManga }}
+          </Tab>}
+        {totalManga > 0 &&
+          <Tab
+            label={
+              <FormattedMessage
+                {...messages.tabManga}
+                values={{ count: totalManga }}
+              />
+            }
+          >
+            <IllustList
+              illusts={mangas}
+              id="illust-user-drawer"
+              hasMore={mangas.length < totalManga}
+              onNext={onNextManga}
             />
-          }
-        >
-          <IllustList
-            illusts={mangas}
-            id="illust-user-drawer"
-            hasMore={mangas.length < totalManga}
-            onNext={onNextManga}
-          />
-        </Tab>
+          </Tab>}
       </Tabs>
     </div>
   )
