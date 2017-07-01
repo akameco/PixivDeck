@@ -1,6 +1,9 @@
 // @flow
 import { createSelector } from 'reselect'
 import type { State } from 'types/state'
+import { getIllustById } from '../IllustById/selectors'
+import { getSelectUser } from '../UserById/selectors'
+
 import type { ColumnId } from './reducer'
 
 type Props = {
@@ -19,13 +22,9 @@ export const makeSelectColumn = () => createSelector(getColumn, s => s)
 const makeSelectIllustIds = () =>
   createSelector(getColumn, s => (s && s.illustIds ? s.illustIds : []))
 
-const getSelectUser = (s: State, { id }: Props) => s.userById[id]
-
 export const makeSelectUser = () => createSelector(getSelectUser, s => s)
 
-const selectIllustById = (state: State) => state.illustById
-
 export const makeSelectIllusts = () =>
-  createSelector(makeSelectIllustIds(), selectIllustById, (s, arr) => {
+  createSelector(makeSelectIllustIds(), getIllustById, (s, arr) => {
     return s.map(v => arr[v])
   })

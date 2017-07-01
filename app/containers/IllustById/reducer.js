@@ -2,7 +2,9 @@
 import type { Action } from 'types'
 import type { Illusts } from 'types/illust'
 
-export default function illustById(state: Illusts = {}, action: Action) {
+export type State = Illusts
+
+export default function IllustById(state: State = {}, action: Action): State {
   // $FlowFixMe
   if (action.response && action.response.entities.illusts) {
     return {

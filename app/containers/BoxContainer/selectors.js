@@ -1,23 +1,15 @@
 // @flow
 import { createSelector } from 'reselect'
 import type { State } from 'types/state'
-
-type Props = {
-  id: number,
-}
-
-const getSelectUserById = (s: State) => s.userById
-
-const getSelectIllust = (s: State, { id }: Props) => s.illustById[id]
-
-export const makeSelectIllust = () => createSelector(getSelectIllust, s => s)
+import { makeSelectIllust } from '../IllustById/selectors'
+import { getUserById } from '../UserById/selectors'
 
 const makeSelectIllustUserId = () =>
   createSelector(makeSelectIllust(), s => s.user)
 
 export const makeSelectUser = () =>
   createSelector(
-    getSelectUserById,
+    getUserById,
     makeSelectIllustUserId(),
     (users, id) => users[id]
   )

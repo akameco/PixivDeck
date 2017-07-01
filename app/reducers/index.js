@@ -19,14 +19,13 @@ import ColumnFollow from '../containers/ColumnFollow/reducer'
 import ColumnUserIllust from '../containers/ColumnUserIllust/reducer'
 import ColumnSearch from '../containers/ColumnSearch/reducer'
 import SearchField from '../containers/SearchField/reducer'
-
-import illustById from './illustById'
-import userById from './userById'
+import IllustById from '../containers/IllustById/reducer'
+import UserById from '../containers/UserById/reducer'
 
 export default combineReducers({
   Language,
-  illustById,
-  userById,
+  IllustById,
+  UserById,
   ModalManeger,
   SettingModal,
   HeaderContainer,
@@ -49,9 +48,3 @@ export default combineReducers({
 
 // const filterByTags = (illust: Illust, tags: Array<string>): boolean =>
 //   illust.tags.every(t => tags.every(tag => !t.name.includes(tag)))
-
-// export const getIllust = ({ illustById }: State, id: number): Illust =>
-// fromIllustById.getIllust(illustById, id)
-
-// export const getUser = (state: State, userId: number): User =>
-// fromUserById.getUser(state, userId)

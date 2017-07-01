@@ -11,6 +11,7 @@ import { openIllustViewer } from 'containers/IllustPreview/actions'
 import { addColumn } from 'containers/ColumnSearch/actions'
 import { openMangaPreview } from 'containers/MangaPreview/actions'
 import Box from 'components/Box'
+import { makeSelectIllust } from 'containers/IllustById/selectors'
 import createMenu from './createMenu'
 import * as selectors from './selectors'
 
@@ -64,7 +65,7 @@ type OP = {
 }
 
 const mapStateToProps = createStructuredSelector({
-  illust: selectors.makeSelectIllust(),
+  illust: makeSelectIllust(),
   user: selectors.makeSelectUser(),
   isIllustOnly: selectors.makeSelectIsIllustOnly(),
   isShowCaption: selectors.makeSelectIsShowOnlyIllust(),

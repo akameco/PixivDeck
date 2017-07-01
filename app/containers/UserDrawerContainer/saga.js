@@ -4,7 +4,7 @@ import { type User } from 'types/user'
 import { getToken } from 'containers/LoginModal/saga'
 import { getRequest } from 'services/api'
 import { OPEN_DRAWER } from '../DrawerManager/constants'
-import { makeSelectUserById } from './selectors'
+import { makeSelectUserById } from '../UserById/selectors'
 import * as actions from './actions'
 import * as Actions from './constants'
 import {
