@@ -14,12 +14,10 @@ import BookmarkButton from '../containers/BookmarkButton/saga'
 import SearchField from '../containers/SearchField/saga'
 import UserPopoverContainer from '../containers/UserPopoverContainer/saga'
 import LoginModal from '../containers/LoginModal/saga'
-
-import misc from './misc'
+import BoxContainer from '../containers/BoxContainer/saga'
 
 function* root(): Generator<*, void, void> {
   yield all([
-    fork(misc),
     fork(UserDrawerContainer),
     fork(Table),
     fork(ColumnRanking),
@@ -33,6 +31,7 @@ function* root(): Generator<*, void, void> {
     fork(SearchField),
     fork(UserPopoverContainer),
     fork(LoginModal),
+    fork(BoxContainer),
   ])
 }
 
