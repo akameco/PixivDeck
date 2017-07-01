@@ -1,8 +1,8 @@
 // @flow
 import type { Action } from 'types'
-import type { Illust, Illusts } from 'types/illust'
+import type { Illusts } from 'types/illust'
 
-const illustById = (state: Illusts = {}, action: Action) => {
+export default function illustById(state: Illusts = {}, action: Action) {
   // $FlowFixMe
   if (action.response && action.response.entities.illusts) {
     return {
@@ -12,7 +12,3 @@ const illustById = (state: Illusts = {}, action: Action) => {
   }
   return state
 }
-
-export default illustById
-
-export const getIllust = (state: Illusts, id: number): Illust => state[id]

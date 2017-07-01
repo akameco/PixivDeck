@@ -1,8 +1,8 @@
 // @flow
-import type { Action, State } from 'types'
-import type { User, Users } from 'types/user'
+import type { Action } from 'types'
+import type { Users } from 'types/user'
 
-const userById = (state: Users = {}, action: Action) => {
+export default function userById(state: Users = {}, action: Action) {
   // $FlowFixMe
   if (action.response && action.response.entities.users) {
     return {
@@ -12,7 +12,3 @@ const userById = (state: Users = {}, action: Action) => {
   }
   return state
 }
-
-export default userById
-
-export const getUser = (state: State, id: number): User => state.userById[id]
