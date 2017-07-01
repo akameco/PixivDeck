@@ -2,25 +2,27 @@
 import { remote } from 'electron'
 import React from 'react'
 import { connect, type Connector } from 'react-redux'
-import type { Dispatch, State } from 'types/'
+import { createStructuredSelector } from 'reselect'
+import type { Dispatch } from 'types'
 import type { Illust } from 'types/illust'
 import type { User } from 'types/user'
-import { getUser } from 'reducers'
 import { openDrawer } from 'containers/DrawerManager/actions'
 import { openIllustViewer } from 'containers/IllustPreview/actions'
 import { addColumn } from 'containers/ColumnSearch/actions'
 import { openMangaPreview } from 'containers/MangaPreview/actions'
 import Box from 'components/Box'
 import createMenu from './createMenu'
+import * as selectors from './selectors'
 
 type Props = {
   illust: Illust,
   user: User,
   isIllustOnly: boolean,
   isShowCaption: boolean,
-  openUserDrawer: () => void,
-  openPreview: () => void,
+  openUserDrawer: (userId: number) => void,
+  openPreview: (type: 'illust' | 'manga') => void,
   addColumnSearchIllust: Function,
+  // for context menu
   dispatch: Dispatch,
 }
 
@@ -57,30 +59,28 @@ class BoxContainer extends React.PureComponent {
   }
 }
 
-type OwnProps = {
-  illust: Illust,
+type OP = {
+  id: number,
 }
 
-const mapStateToProps = (state: State, { illust }) => ({
-  user: getUser(state, illust.user),
-  isIllustOnly: state.SettingModal.isShowOnlyIllust,
-  isShowCaption: state.SettingModal.isShowCaption,
+const mapStateToProps = createStructuredSelector({
+  illust: selectors.makeSelectIllust(),
+  user: selectors.makeSelectUser(),
+  isIllustOnly: selectors.makeSelectIsIllustOnly(),
+  isShowCaption: selectors.makeSelectIsShowOnlyIllust(),
 })
 
-const mapDispatchToProps = (dispatch: Dispatch, { illust }) => {
-  const illustId = illust.id
-  const userId = illust.user
+const mapDispatchToProps = (dispatch: Dispatch, { id }) => {
   return {
     dispatch,
-    openPreview() {
-      // dispatch(setCurrentIllust(illustId))
-      if (illust.pageCount > 1) {
-        dispatch(openMangaPreview(illustId))
+    openPreview(type: 'illust' | 'manga') {
+      if (type === 'illust') {
+        dispatch(openMangaPreview(id))
       } else {
-        dispatch(openIllustViewer(illustId))
+        dispatch(openIllustViewer(id))
       }
     },
-    openUserDrawer() {
+    openUserDrawer(userId: number) {
       dispatch(openDrawer(userId))
     },
     addColumnSearchIllust(tag: string) {
@@ -89,7 +89,7 @@ const mapDispatchToProps = (dispatch: Dispatch, { illust }) => {
   }
 }
 
-const connector: Connector<OwnProps, Props> = connect(
+const connector: Connector<OP, Props> = connect(
   mapStateToProps,
   mapDispatchToProps
 )

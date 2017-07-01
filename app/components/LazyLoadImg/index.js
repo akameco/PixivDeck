@@ -42,7 +42,7 @@ const StyledImg = styled.div`
 type Props = {
   src: string,
   isManga?: boolean,
-  onClick: () => void,
+  onClick: Function,
 }
 
 type State = {

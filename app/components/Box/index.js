@@ -13,50 +13,46 @@ export type Props = {
   user: User,
   isIllustOnly: boolean,
   isShowCaption: boolean,
-  onClick: () => void,
-  onClickUser: () => void,
+  onClick: (type: 'illust' | 'manga') => void,
+  onClickUser: (userId: number) => void,
   onClickTag: (tag: string) => void,
   onContextMenu: (event: Event) => void,
 }
 
-class Box extends React.PureComponent {
-  props: Props
+function Box(props: Props) {
+  const {
+    id,
+    illust,
+    user,
+    onClick,
+    onClickTag,
+    onClickUser,
+    isIllustOnly,
+    isShowCaption,
+    onContextMenu,
+  } = props
 
-  render() {
-    const {
-      id,
-      illust,
-      user,
-      onClick,
-      onClickTag,
-      onClickUser,
-      isIllustOnly,
-      isShowCaption,
-      onContextMenu,
-    } = this.props
+  // const { isIntersecting, isHidden } = this.state
 
-    // const { isIntersecting, isHidden } = this.state
+  const tags = illust.tags.map(x => x.name)
 
-    const tags = illust.tags.map(x => x.name)
-
-    return (
-      <BoxWrapper onContextMenu={onContextMenu} data-id={id}>
-        {!isIllustOnly &&
-          <BoxHeader
-            user={user}
-            illust={illust}
-            isShowCaption={isShowCaption}
-            onClick={onClickUser}
-          />}
-        <LazyLoadImg
-          src={illust.imageUrls.medium}
-          isManga={illust.pageCount > 1}
-          onClick={onClick}
-        />
-        {!isIllustOnly && <BoxFooter tags={tags} onClickTag={onClickTag} />}
-      </BoxWrapper>
-    )
-  }
+  return (
+    <BoxWrapper onContextMenu={onContextMenu} data-id={id}>
+      {!isIllustOnly &&
+        <BoxHeader
+          user={user}
+          illust={illust}
+          isShowCaption={isShowCaption}
+          onClick={onClickUser.bind(null, user.id)}
+        />}
+      <LazyLoadImg
+        src={illust.imageUrls.medium}
+        isManga={illust.pageCount > 1}
+        onClick={onClick}
+      />
+      {!isIllustOnly && <BoxFooter tags={tags} onClickTag={onClickTag} />}
+    </BoxWrapper>
+  )
 }
 
 export default Box
