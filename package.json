@@ -3,10 +3,7 @@
   "productName": "PixivDeck",
   "version": "0.12.1",
   "description": "pixiv client for desktop",
-  "keywords": [
-    "electron",
-    "pixiv"
-  ],
+  "keywords": ["electron", "pixiv"],
   "author": "akameco <akameco.t@gmail.com>",
   "license": "MIT",
   "main": "main.js",
@@ -60,15 +57,10 @@
       ]
     },
     "win": {
-      "target": [
-        "nsis"
-      ]
+      "target": ["nsis"]
     },
     "linux": {
-      "target": [
-        "deb",
-        "AppImage"
-      ]
+      "target": ["deb", "AppImage"]
     },
     "directories": {
       "buildResources": "res",
@@ -76,20 +68,14 @@
     }
   },
   "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
   },
   "stylelint": {
-    "processors": [
-      "stylelint-processor-styled-components"
-    ],
+    "processors": ["stylelint-processor-styled-components"],
     "extends": "stylelint-config-standard",
     "syntax": "scss",
     "rules": {
-      "indentation": [
-        "tab"
-      ],
+      "indentation": ["tab"],
       "rule-empty-line-before": null,
       "at-rule-empty-line-before": null
     }

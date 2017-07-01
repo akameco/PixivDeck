@@ -1,33 +1,39 @@
 {
   "presets": [
-    ["env", {
-      "targets": { "node": 6 },
-      "useBuiltIns": true
-    }],
+    [
+      "env",
+      {
+        "targets": { "node": 6 },
+        "useBuiltIns": true,
+      },
+    ],
     "react",
-    "stage-0"
+    "stage-0",
   ],
   "plugins": [
     "add-module-exports",
     "dynamic-import-webpack",
-    ["react-intl-auto", {
-      "removePrefix": "app/"
-    }]
+    [
+      "react-intl-auto",
+      {
+        "removePrefix": "app/",
+      },
+    ],
   ],
   "env": {
     "production": {
       "presets": ["react-optimize"],
-      "plugins": ["babel-plugin-dev-expression"]
+      "plugins": ["babel-plugin-dev-expression"],
     },
     "development": {
       "plugins": [
         "transform-class-properties",
         "transform-es2015-classes",
-        "react-hot-loader/babel"
-      ]
+        "react-hot-loader/babel",
+      ],
     },
     "test": {
-      "plugins": ["transform-es2015-modules-commonjs"]
-    }
-  }
+      "plugins": ["transform-es2015-modules-commonjs"],
+    },
+  },
 }
