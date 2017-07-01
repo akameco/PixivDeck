@@ -22,9 +22,7 @@ export type Action =
         | ADD_COLUMN_TYPE
         | ADD_COLUMN_SUCCESS_TYPE
         | FETCH_TYPE
-        | FETCH_FAILRE_TYPE
-        | FETCH_NEXT_TYPE
-        | FETCH_NEXT_FAILRE_TYPE,
+        | FETCH_NEXT_TYPE,
       +id: ColumnId,
     |}
   | {| +type: SET_NEXT_URL_TYPE, +id: ColumnId, +nextUrl: string |}
@@ -38,4 +36,9 @@ export type Action =
       +type: SET_MIN_BOOKBOOK_TYPE,
       +id: ColumnId,
       +minBookmarks: number,
+    |}
+  | {|
+      +type: FETCH_FAILRE_TYPE | FETCH_NEXT_FAILRE_TYPE,
+      +id: ColumnId,
+      +error: string,
     |}

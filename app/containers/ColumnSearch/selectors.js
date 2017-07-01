@@ -19,6 +19,9 @@ export const makeSelectColumn = () => createSelector(getColumn, s => s)
 export const makeSelectMinBookmark = () =>
   createSelector(makeSelectColumn(), s => s.minBookmarks)
 
+export const makeSelectNextUrl = () =>
+  createSelector(makeSelectColumn(), s => s.nextUrl)
+
 const makeSelectIllustIds = () =>
   createSelector(getColumn, s => (s && s.illustIds ? s.illustIds : []))
 
@@ -33,3 +36,6 @@ export const makeLimitedSelectIllusts = () =>
   createSelector(makeSelectIllusts(), makeSelectMinBookmark(), (s, limit) =>
     s.filter(s => s.totalBookmarks > limit)
   )
+
+export const makeIllustLength = () =>
+  createSelector(makeLimitedSelectIllusts(), s => s.length)

@@ -7,17 +7,13 @@ import { getRequest } from 'services/api'
 import * as Actions from './constants'
 import * as actions from './actions'
 import type { ColumnId } from './reducer'
-import {
-  makeSelectColumn,
-  makeSelectIds,
-  makeLimitedSelectIllusts,
-} from './selectors'
-import { put, select, call, takeEvery, takeLatest } from 'redux-saga/effects'
+import * as selectors from './selectors'
+import { put, select, call, takeEvery } from 'redux-saga/effects'
 
 type Props = { id: ColumnId }
 
 function* addSearchColumn({ id }: Props) {
-  const ids: Array<?ColumnId> = yield select(makeSelectIds())
+  const ids: Array<?ColumnId> = yield select(selectors.makeSelectIds())
   if (ids.every(v => v !== id)) {
     yield put(actions.addColumnSuccess(id))
   }
@@ -30,19 +26,21 @@ function* addSearchColumn({ id }: Props) {
   )
 }
 
-function* fetchSearch(props: Props) {
+function* fetchSearch(props: Props): Generator<*, void, *> {
   const { id } = props
   try {
-    const { illustIds } = yield select(makeSelectColumn(), props)
+    const { illustIds, nextUrl } = yield select(
+      selectors.makeSelectColumn(),
+      props
+    )
 
     const accessToken = yield call(getToken)
 
-    const response = yield call(
-      getRequest,
-      `/v1/search/illust?word=${id}&search_target=partial_match_for_tags&sort=date_desc`,
-      null,
-      accessToken
-    )
+    const endpoint = nextUrl
+      ? nextUrl
+      : `/v1/search/illust?word=${id}&search_target=partial_match_for_tags&sort=date_desc`
+
+    const response = yield call(getRequest, endpoint, null, accessToken)
     const { result } = response
 
     yield put(actions.setNextUrl(id, result.nextUrl))
@@ -50,51 +48,39 @@ function* fetchSearch(props: Props) {
     const nextIds = union(illustIds, result.illusts)
     yield put(actions.fetchSuccess(id, response, nextIds))
   } catch (err) {
-    yield put(actions.fetchFailre(id))
+    yield put(actions.fetchFailre(id, err))
   }
 }
 
-function* fetchNextSearch(props: Props): Generator<*, void, *> {
-  const { id } = props
+function* fetchUntilLimit(props: Props): Generator<*, void, *> {
   try {
-    const { illustIds, nextUrl } = yield select(makeSelectColumn(), props)
+    const initLen: number = yield select(selectors.makeIllustLength(), props)
 
-    if (!nextUrl) {
-      return
-    }
+    while (true) {
+      yield call(fetchSearch, props)
 
-    const accessToken = yield call(getToken)
+      const len = yield select(selectors.makeIllustLength(), props)
 
-    const response = yield call(getRequest, nextUrl, null, accessToken)
-    const { result } = response
+      const nextUrl = yield select(selectors.makeSelectNextUrl(), props)
 
-    yield put(actions.setNextUrl(id, result.nextUrl))
+      if (!nextUrl) {
+        return
+      }
 
-    const nextIds = union(illustIds, result.illusts)
-    yield put(actions.fetchNextSuccess(id, response, nextIds))
-  } catch (err) {
-    yield put(actions.fetchNextFailre(id))
-  }
-}
+      // 新しく取得したイラスト数が10より少ない場合、データを再fetchする
+      if (len - initLen > 10) {
+        return
+      }
 
-function* checkNextFetch(props: Props) {
-  try {
-    const illusts = yield select(makeLimitedSelectIllusts(), props)
-    // 表示されているイラストが20以下なら再リクエスト
-    if (illusts.length < 10) {
-      yield call(fetchNextSearch, props)
-      yield call(delay, 2000)
+      yield call(delay, 200)
     }
   } catch (err) {
-    throw err
+    yield put(actions.fetchFailre(props.id, err))
   }
 }
 
 export default function* root(): Generator<*, void, void> {
   yield takeEvery(Actions.ADD_COLUMN, addSearchColumn)
-  yield takeEvery(Actions.FETCH, fetchSearch)
-  yield takeEvery(Actions.FETCH_NEXT, fetchNextSearch)
-
-  yield takeLatest(Actions.FETCH_NEXT_SUCCESS, checkNextFetch)
-  yield takeLatest(Actions.FETCH_SUCCESS, checkNextFetch)
+  yield takeEvery(Actions.FETCH, fetchUntilLimit)
+  yield takeEvery(Actions.FETCH_NEXT, fetchUntilLimit)
 }

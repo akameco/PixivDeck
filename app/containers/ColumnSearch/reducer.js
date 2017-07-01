@@ -32,8 +32,7 @@ export default function(state: State = initialState, action: Action): State {
       }
     }
 
-    case Actions.FETCH_SUCCESS:
-    case Actions.FETCH_NEXT_SUCCESS: {
+    case Actions.FETCH_SUCCESS: {
       const id = action.id
       return {
         ...state,
