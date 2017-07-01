@@ -31,11 +31,13 @@ export type Illust = {|
   metaSinglePage: {
     originalImageUrl?: string,
   },
-  metaPages?: $Shape<MetaPages>,
+  metaPages?: MetaPages,
   totalView: number,
   totalBookmarks: number,
   isBookmarked: boolean,
   visible: boolean,
 |}
 
-export type Illusts = { [key: number]: Illust }
+type Key = number | string
+
+export type Illusts = { [key: Key]: Illust }

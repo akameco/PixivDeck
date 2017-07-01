@@ -45,6 +45,3 @@ export default combineReducers({
   ColumnSearch,
   SearchField,
 })
-
-// const filterByTags = (illust: Illust, tags: Array<string>): boolean =>
-//   illust.tags.every(t => tags.every(tag => !t.name.includes(tag)))
