@@ -14,6 +14,8 @@ export type FETCH_NEXT_TYPE = 'ColumnSearch/FETCH_NEXT_USER_ILLUST'
 export type FETCH_NEXT_SUCCESS_TYPE = 'ColumnSearch/FETCH_NEXT_SUCCESS'
 export type FETCH_NEXT_FAILRE_TYPE = 'ColumnSearch/FETCH_NEXT_FAILRE'
 
+export type SET_MIN_BOOKBOOK_TYPE = 'ColumnSearch/SET_MIN_BOOKBOOK'
+
 export type Action =
   | {|
       +type:
@@ -31,4 +33,9 @@ export type Action =
       +id: ColumnId,
       +response: Response,
       +ids: Array<string>,
+    |}
+  | {|
+      +type: SET_MIN_BOOKBOOK_TYPE,
+      +id: ColumnId,
+      +minBookmarks: number,
     |}

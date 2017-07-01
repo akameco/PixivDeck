@@ -10,6 +10,7 @@ import {
   SET_NEXT_URL,
   FETCH_SUCCESS,
   FETCH_NEXT_SUCCESS,
+  SET_MIN_BOOKBOOK,
 } from './constants'
 import type { Response } from 'services/api'
 import type { ColumnId } from './reducer'
@@ -87,5 +88,13 @@ export function fetchNextSuccess(
     id,
     response,
     ids,
+  }
+}
+
+export function setMinBookbook(id: ColumnId, minBookmarks: number): Action {
+  return {
+    type: SET_MIN_BOOKBOOK,
+    id,
+    minBookmarks,
   }
 }

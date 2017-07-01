@@ -7,7 +7,7 @@ import { FormattedMessage } from 'react-intl'
 import messages from './messages'
 
 export type Props = {
-  setColumnMinBookmarks: (value: number) => void,
+  setMinBookmarks: (value: number) => void,
   minBookmarks: number,
 }
 
@@ -15,7 +15,7 @@ type State = {
   minBookmarks: number,
 }
 
-class ColumnSetting extends React.Component {
+class ColumnHeaderSetting extends React.PureComponent {
   props: Props
 
   state: State = {
@@ -32,7 +32,7 @@ class ColumnSetting extends React.Component {
   }
 
   _sendBookmark = debounce(() => {
-    this.props.setColumnMinBookmarks(this.state.minBookmarks)
+    this.props.setMinBookmarks(this.state.minBookmarks)
   }, 400)
 
   render() {
@@ -63,4 +63,4 @@ const Wrap = styled.div`
   width: 100%;
 `
 
-export default ColumnSetting
+export default ColumnHeaderSetting

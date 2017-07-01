@@ -1,4 +1,5 @@
 // @flow
+import { delay } from 'redux-saga'
 import union from 'lodash/union'
 import { addColumn } from 'containers/ColumnManager/actions'
 import { getToken } from 'containers/LoginModal/saga'
@@ -6,8 +7,12 @@ import { getRequest } from 'services/api'
 import * as Actions from './constants'
 import * as actions from './actions'
 import type { ColumnId } from './reducer'
-import { makeSelectColumn, makeSelectIds } from './selectors'
-import { put, select, call, takeEvery } from 'redux-saga/effects'
+import {
+  makeSelectColumn,
+  makeSelectIds,
+  makeLimitedSelectIllusts,
+} from './selectors'
+import { put, select, call, takeEvery, takeLatest } from 'redux-saga/effects'
 
 type Props = { id: ColumnId }
 
@@ -49,7 +54,7 @@ function* fetchSearch(props: Props) {
   }
 }
 
-function* fetchNextSearch(props: Props) {
+function* fetchNextSearch(props: Props): Generator<*, void, *> {
   const { id } = props
   try {
     const { illustIds, nextUrl } = yield select(makeSelectColumn(), props)
@@ -72,8 +77,24 @@ function* fetchNextSearch(props: Props) {
   }
 }
 
+function* checkNextFetch(props: Props) {
+  try {
+    const illusts = yield select(makeLimitedSelectIllusts(), props)
+    // 表示されているイラストが20以下なら再リクエスト
+    if (illusts.length < 10) {
+      yield call(fetchNextSearch, props)
+      yield call(delay, 2000)
+    }
+  } catch (err) {
+    throw err
+  }
+}
+
 export default function* root(): Generator<*, void, void> {
   yield takeEvery(Actions.ADD_COLUMN, addSearchColumn)
   yield takeEvery(Actions.FETCH, fetchSearch)
   yield takeEvery(Actions.FETCH_NEXT, fetchNextSearch)
+
+  yield takeLatest(Actions.FETCH_NEXT_SUCCESS, checkNextFetch)
+  yield takeLatest(Actions.FETCH_SUCCESS, checkNextFetch)
 }

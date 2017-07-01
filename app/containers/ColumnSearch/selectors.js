@@ -16,6 +16,9 @@ const getColumn = (state: State, { id }: Props) => state.ColumnSearch[id]
 
 export const makeSelectColumn = () => createSelector(getColumn, s => s)
 
+export const makeSelectMinBookmark = () =>
+  createSelector(makeSelectColumn(), s => s.minBookmarks)
+
 const makeSelectIllustIds = () =>
   createSelector(getColumn, s => (s && s.illustIds ? s.illustIds : []))
 
@@ -25,3 +28,8 @@ export const makeSelectIllusts = () =>
   createSelector(makeSelectIllustIds(), selectIllustById, (s, arr) => {
     return s.map(v => arr[v])
   })
+
+export const makeLimitedSelectIllusts = () =>
+  createSelector(makeSelectIllusts(), makeSelectMinBookmark(), (s, limit) =>
+    s.filter(s => s.totalBookmarks > limit)
+  )
