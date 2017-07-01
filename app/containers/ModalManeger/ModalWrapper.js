@@ -1,8 +1,7 @@
 // @flow
 import React, { Component } from 'react'
-import styled, { keyframes } from 'styled-components'
 import EventListener from 'react-event-listener'
-import keycode from 'keycode'
+import handleEscCreater from 'services/handleEscCreater'
 import Overlay from 'components/Overlay'
 import CloseButton from 'components/common/CloseButton'
 import { Content, Wrap } from './sytles'
@@ -16,20 +15,20 @@ type Props = {
 
 export default class ModalWrapper extends Component {
   props: Props
-  _content: typeof Component
+  node: HTMLElement
 
-  requestClose(buttonClicked: boolean) {
+  requestClose = () => {
     this.props.onClose()
     const { onRequestClose } = this.props
     if (onRequestClose) {
-      onRequestClose(buttonClicked)
+      onRequestClose(false)
     }
   }
 
-  handleKeyUp = (event: Event) => {
-    if (keycode(event) === 'esc') {
-      this.requestClose(false)
-    }
+  handleKeyUp = handleEscCreater(this.requestClose)
+
+  setNode = (node: HTMLElement) => {
+    this.node = node
   }
 
   render() {
@@ -42,12 +41,7 @@ export default class ModalWrapper extends Component {
     return (
       <Wrap>
         {open && <EventListener target="window" onKeyUp={this.handleKeyUp} />}
-        <Content
-          innerRef={c => {
-            // eslint-disable-line react/jsx-no-bind
-            this._content = c
-          }}
-        >
+        <Content innerRef={this.setNode}>
           <CloseButton onClick={onClose} />
           {open && children}
         </Content>
