@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import EventListener from 'react-event-listener'
-import handleEscCreater from 'services/handleEscCreater'
+import handleEscCreater from 'util/handleEscCreater'
 import Overlay from 'components/Overlay'
 import StyledDrawer from './StyledDrawer'
 import DrawerWrapper from './DrawerWrapper'

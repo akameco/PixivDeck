@@ -33,19 +33,15 @@ module.name_mapper='^components$' -> '<PROJECT_ROOT>/app/components'
 module.name_mapper='^containers\/\(.*\)$' -> '<PROJECT_ROOT>/app/containers/\1'
 module.name_mapper='^containers$' -> '<PROJECT_ROOT>/app/containers'
 
-module.name_mapper='^actions\/\(.*\)$' -> '<PROJECT_ROOT>/app/actions/\1'
-module.name_mapper='^actions$' -> '<PROJECT_ROOT>/app/actions'
-
 module.name_mapper='^reducers\/\(.*\)$' -> '<PROJECT_ROOT>/app/reducers/\1'
 module.name_mapper='^reducers$' -> '<PROJECT_ROOT>/app/reducers'
 
 module.name_mapper='^types\/\(.*\)$' -> '<PROJECT_ROOT>/app/types/\1'
 module.name_mapper='^types$' -> '<PROJECT_ROOT>/app/types'
 
-module.name_mapper='^constants/\(.*\)$' -> '<PROJECT_ROOT>/app/constants/\1'
-module.name_mapper='^constants$' -> '<PROJECT_ROOT>/appconstans/constants'
-
 module.name_mapper='^services/\(.*\)$' -> '<PROJECT_ROOT>/app/services/\1'
 module.name_mapper='^services$' -> '<PROJECT_ROOT>/appconstans/services'
+
+module.name_mapper='^util/\(.*\)$' -> '<PROJECT_ROOT>/app/util/\1'
 
 module.name_mapper='^styleTheme$' -> '<PROJECT_ROOT>/app/styleTheme'

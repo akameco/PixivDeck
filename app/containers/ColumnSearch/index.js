@@ -10,7 +10,7 @@ import ColumnBody from 'components/ColumnBody'
 import ColumnHeader from 'components/ColumnHeader'
 import scrollToTopBind, {
   type HandleHeaderClick,
-} from 'services/scrollToTopBind'
+} from 'util/scrollToTopBind'
 import Loading from 'components/ColumnLoading'
 import ColumnHeaderBookmark from 'components/ColumnHeaderBookmark'
 import type { ColumnId } from './reducer'

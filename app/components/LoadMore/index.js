@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import Loading from 'components/Loading'
-import IntersectionObserverWrapper from 'services/intersectionObserverWrapper'
+import IntersectionObserverWrapper from 'util/intersectionObserverWrapper'
 
 export type Props = {
   id: number | string,
