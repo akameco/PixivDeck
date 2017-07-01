@@ -1,20 +1,20 @@
 components:
   ColumnHeaderBookmark:
-    bookmarkFilter: ''
+    bookmarkFilter: Filter Bookmarks
   Dropdown:
     logout: logout
     setting: Settings
   LoginModal:
-    error: Login Erro
+    error: Login Error
     errorInfo: Check your usernaem and password.
     login: Login
-    loginLoading: Logining..
+    loginLoading: Logining...
   UserDrawer:
     addColumn: Add to column
     tabIllust: 'Illustration ({count})'
     tabManga: 'Manga ({count})'
   Column:
-    bookmarkFilter: Filter Bookmark
+    bookmarkFilter: Filter Bookmarks
   FollowButton:
     follow: Follow
     following: Following
@@ -24,15 +24,15 @@ components:
     setting: Settings
 containers:
   AddColumnModal:
-    header: Select Colum
-    ranking: ranking
-    r18ranking: r18 ranking
-    bookmark: bookmark
-    public: public
-    private: private
+    header: Select Column
+    ranking: Rankings
+    r18ranking: R-18 Rankings
+    bookmark: Bookmarks
+    public: Public
+    private: Private
     new: new
   AddNewColumnButton:
-    addColumn: ''
+    addColumn: Add Column
   ColumnBookmark:
     public: Public Bookmarks
     private: Private Bookmarks
@@ -62,10 +62,10 @@ containers:
     keywordSearch: keyword search
     users: users in
   SettingModal:
-    tagFilter: tag filter
+    tagFilter: Tag filter
     uiSetting: UI setting
-    showCaption: show Caption
-    showOnlyImg: only image
+    showCaption: Show Caption
+    showOnlyImg: Only image
     limit: Restrict access
     r18Link: pixiv - r18
     r18FilterDesc: |-
