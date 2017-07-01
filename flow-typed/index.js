@@ -10,3 +10,9 @@ declare module 'electron-devtools-installer' {
 declare module 'react-event-listener' {
   declare module.exports: any => any;
 }
+
+declare var module: {
+  hot: {
+    accept: (s: string, f: () => void) => void,
+  },
+}

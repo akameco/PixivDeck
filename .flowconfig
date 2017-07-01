@@ -20,6 +20,8 @@ node_modules/styled-components/flow-typed/lodash_v4.x.x.js
 node_modules/styled-components/flow-typed/inline-style-prefixer_vx.x.x.js
 
 [options]
+emoji=true
+
 esproposal.class_instance_fields=enable
 unsafe.enable_getters_and_setters=true
 

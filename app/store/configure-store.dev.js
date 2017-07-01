@@ -43,7 +43,6 @@ export default function configureStore(initialState: ?Object) {
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
-    // $FlowFixMe
     module.hot.accept('../reducers', () => {
       const nextRootReducer = require('../reducers').default
 

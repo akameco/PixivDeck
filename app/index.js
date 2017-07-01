@@ -1,28 +1,32 @@
 // @flow
 import React from 'react'
 import { render } from 'react-dom'
-import { Provider } from 'react-redux'
-import injectTapEventPlugin from 'react-tap-event-plugin'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import App from 'components/App'
-import Language from 'containers/Language'
+import { AppContainer } from 'react-hot-loader'
+import type { Store } from 'types'
 import configureStore from './store'
-
-import { translationMessages } from './i18n'
+import Root from './containers/Root'
 
 import './global-styles' // eslint-disable-line
 
-injectTapEventPlugin()
-
-const store = configureStore()
+const store: Store = configureStore()
+const rootEl = document.getElementById('root')
 
 render(
-  <Provider store={store}>
-    <Language messages={translationMessages}>
-      <MuiThemeProvider>
-        <App />
-      </MuiThemeProvider>
-    </Language>
-  </Provider>,
-  document.querySelector('#root')
+  <AppContainer>
+    <Root store={store} />
+  </AppContainer>,
+  rootEl
 )
+
+if (module.hot) {
+  module.hot.accept('./containers/Root', () => {
+    // $FlowFixMe
+    const NextRoot = require('./containers/Root')
+    render(
+      <AppContainer>
+        <NextRoot store={store} />
+      </AppContainer>,
+      rootEl
+    )
+  })
+}
