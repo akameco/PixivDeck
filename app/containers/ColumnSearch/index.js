@@ -8,10 +8,7 @@ import IllustList from 'components/IllustList'
 import ColumnRoot from 'components/ColumnRoot'
 import ColumnBody from 'components/ColumnBody'
 import ColumnHeader from 'components/ColumnHeader'
-import scrollToTopBind, {
-  type HandleHeaderClick,
-} from 'util/scrollToTopBind'
-import Loading from 'components/ColumnLoading'
+import scrollToTopBind, { type HandleHeaderClick } from 'util/scrollToTopBind'
 import ColumnHeaderBookmark from 'components/ColumnHeaderBookmark'
 import type { ColumnId } from './reducer'
 import * as selectors from './selectors'
@@ -72,16 +69,14 @@ class ColumnSearch extends React.PureComponent {
             setMinBookmarks={setMinBookmarks}
           />
         </ColumnHeader>
-        <ColumnBody>
-          {illusts.length > 0
-            ? <IllustList
-                id={String(id)}
-                node={this._setNode}
-                hasMore={hasMore}
-                illusts={illusts}
-                onNext={onNext}
-              />
-            : <Loading />}
+        <ColumnBody isLoading={illusts.length <= 0}>
+          <IllustList
+            id={String(id)}
+            node={this._setNode}
+            hasMore={hasMore}
+            illusts={illusts}
+            onNext={onNext}
+          />
         </ColumnBody>
       </ColumnRoot>
     )

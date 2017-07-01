@@ -6,8 +6,10 @@ import { createStructuredSelector } from 'reselect'
 import type { Dispatch } from 'types'
 import type { Illust } from 'types/illust'
 import IllustList from 'components/IllustList'
-import Column from 'components/Column'
-import Loading from 'components/ColumnLoading'
+import ColumnRoot from 'components/ColumnRoot'
+import ColumnBody from 'components/ColumnBody'
+import ColumnHeader from 'components/ColumnHeader'
+import scrollToTopBind, { type HandleHeaderClick } from 'util/scrollToTopBind'
 import type { ColumnId } from './reducer'
 import { makeSelectIllusts, makeSelectUser } from './selectors'
 import * as actions from './actions'
@@ -27,21 +29,25 @@ type Props = {
 class ColumnUserIllust extends React.Component {
   props: Props
   node: HTMLElement
+  handleHeaderClick: HandleHeaderClick
 
   componentWillMount() {
     this.props.onFetch()
   }
 
   _setNode = node => {
-    this.node = node
+    if (node) {
+      this.node = node
+      this.handleHeaderClick = scrollToTopBind(this.node)
+    }
   }
 
   render() {
     const { illusts, id, onClose, onNext, user } = this.props
 
-    const title = user && user.name
+    const name = user && user.name
 
-    if (!title) {
+    if (!name) {
       return null
     }
 
@@ -49,17 +55,22 @@ class ColumnUserIllust extends React.Component {
     const hasMore = illusts.length < 200
 
     return (
-      <Column onClose={onClose} node={this.node} title={title}>
-        {illusts.length > 0
-          ? <IllustList
-              id={String(id)}
-              node={this._setNode}
-              hasMore={hasMore}
-              illusts={illusts}
-              onNext={onNext}
-            />
-          : <Loading />}
-      </Column>
+      <ColumnRoot>
+        <ColumnHeader
+          name={name}
+          onClose={onClose}
+          onTopClick={this.handleHeaderClick}
+        />
+        <ColumnBody isLoading={illusts.length <= 0}>
+          <IllustList
+            id={String(id)}
+            node={this._setNode}
+            hasMore={hasMore}
+            illusts={illusts}
+            onNext={onNext}
+          />
+        </ColumnBody>
+      </ColumnRoot>
     )
   }
 }

@@ -6,8 +6,10 @@ import { injectIntl, type IntlShape } from 'react-intl'
 import type { Dispatch } from 'types'
 import type { Illust } from 'types/illust'
 import IllustList from 'components/IllustList'
-import Column from 'components/Column'
-import Loading from 'components/ColumnLoading'
+import ColumnRoot from 'components/ColumnRoot'
+import ColumnBody from 'components/ColumnBody'
+import ColumnHeader from 'components/ColumnHeader'
+import scrollToTopBind, { type HandleHeaderClick } from 'util/scrollToTopBind'
 import type { ColumnId } from './reducer'
 import { makeSelectIllusts } from './selectors'
 import * as actions from './actions'
@@ -31,13 +33,17 @@ type InjectProp = {
 class ColumnBookMark extends React.Component {
   props: Props & InjectProp
   node: HTMLElement
+  handleHeaderClick: HandleHeaderClick
 
   componentWillMount() {
     this.props.onFetch()
   }
 
   _setNode = node => {
-    this.node = node
+    if (node) {
+      this.node = node
+      this.handleHeaderClick = scrollToTopBind(this.node)
+    }
   }
 
   render() {
@@ -47,21 +53,22 @@ class ColumnBookMark extends React.Component {
     const hasMore = illusts.length < 200
 
     return (
-      <Column
-        onClose={onClose}
-        node={this.node}
-        title={intl.formatMessage(messages[id])}
-      >
-        {illusts.length > 0
-          ? <IllustList
-              id={id}
-              node={this._setNode}
-              hasMore={hasMore}
-              illusts={illusts}
-              onNext={onNext}
-            />
-          : <Loading />}
-      </Column>
+      <ColumnRoot>
+        <ColumnHeader
+          name={intl.formatMessage(messages[id])}
+          onClose={onClose}
+          onTopClick={this.handleHeaderClick}
+        />
+        <ColumnBody isLoading={illusts.length <= 0}>
+          <IllustList
+            id={id}
+            node={this._setNode}
+            hasMore={hasMore}
+            illusts={illusts}
+            onNext={onNext}
+          />
+        </ColumnBody>
+      </ColumnRoot>
     )
   }
 }
