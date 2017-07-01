@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import styled from 'styled-components'
-import { key } from 'styleTheme'
+import { key } from 'styles/styleTheme'
 
 const View = styled.div`
   margin: 0;

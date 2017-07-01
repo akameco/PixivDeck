@@ -6,7 +6,7 @@ import type { Store } from 'types'
 import configureStore from './store'
 import Root from './containers/Root'
 
-import './global-styles' // eslint-disable-line
+import './styles/global-styles' // eslint-disable-line
 
 const store: Store = configureStore()
 const rootEl = document.getElementById('root')

@@ -1,6 +1,6 @@
 // @flow
 import styled from 'styled-components'
-import { key } from 'styleTheme'
+import { key } from 'styles/styleTheme'
 
 export const ScrollableY = styled.div`
   background-color: ${key('base')};

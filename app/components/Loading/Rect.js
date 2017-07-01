@@ -1,6 +1,6 @@
 // @flow
 import styled, { keyframes } from 'styled-components'
-import { key } from 'styleTheme'
+import { key } from 'styles/styleTheme'
 
 const loading = keyframes`
 	0%,

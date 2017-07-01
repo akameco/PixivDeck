@@ -1,6 +1,6 @@
 // @flow
 import styled from 'styled-components'
-import { key } from 'styleTheme'
+import { key } from 'styles/styleTheme'
 
 const A = styled.a`
   color: ${key('blue')};

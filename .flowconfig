@@ -46,4 +46,4 @@ module.name_mapper='^services$' -> '<PROJECT_ROOT>/appconstans/services'
 
 module.name_mapper='^util/\(.*\)$' -> '<PROJECT_ROOT>/app/util/\1'
 
-module.name_mapper='^styleTheme$' -> '<PROJECT_ROOT>/app/styleTheme'
+module.name_mapper='^styles/\(.*\)$' -> '<PROJECT_ROOT>/app/styles/\1'

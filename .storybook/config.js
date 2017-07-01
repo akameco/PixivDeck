@@ -6,7 +6,7 @@ import { configure, setAddon, addDecorator } from '@storybook/react'
 // $FlowFixMe
 import { withKnobs } from '@storybook/addon-knobs'
 import styled, { ThemeProvider } from 'styled-components'
-import theme, { key } from '../app/styleTheme'
+import theme, { key } from '../app/styles/styleTheme'
 
 // setDefaults({ inline: true })
 // setAddon(infoAddon)
