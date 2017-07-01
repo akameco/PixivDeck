@@ -1,11 +1,9 @@
 // @flow
 import React from 'react'
 import styled from 'styled-components'
-import scrollTop from 'residual-scroll-top'
-// import type { ColumnType } from 'types/column'
+import scrollToTopBind from 'util/scrollToTopBind'
 import ColumnRoot from 'components/ColumnRoot'
 import ColumnHeader from 'components/ColumnHeader'
-// import ColumnSetting from 'containers/ColumnHeaderSetting'
 
 type Props = {
   children?: React$Element<*>,
@@ -25,18 +23,7 @@ export default function Column({ title, onClose, children, node }: Props) {
     e.stopPropagation()
   }
 
-  const handleHeaderClick = (e: Event) => {
-    e.preventDefault()
-    if (node && node.scrollTop === 0) {
-      return
-    }
-    if (node) {
-      scrollTop(node, () => {
-        // TOOD: Callback
-        // props.checkColumnUpdate()
-      })
-    }
-  }
+  const handleHeaderClick = scrollToTopBind(node)
 
   return (
     <ColumnRoot>
