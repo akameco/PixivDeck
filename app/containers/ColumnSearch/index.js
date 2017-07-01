@@ -21,6 +21,7 @@ type OP = {
 type Props = {
   illusts: Array<Illust>,
   minBookmarks: number,
+  hasMore: boolean,
   onFetch: () => void,
   onNext: () => void,
   onClose: () => void,
@@ -51,10 +52,8 @@ class ColumnSearch extends React.PureComponent {
       onNext,
       minBookmarks,
       setMinBookmarks,
+      hasMore,
     } = this.props
-
-    // TODO リミットをstoreに保存
-    const hasMore = illusts.length < 200
 
     return (
       <ColumnRoot>
@@ -86,6 +85,7 @@ class ColumnSearch extends React.PureComponent {
 const mapStateToProps = createStructuredSelector({
   illusts: selectors.makeLimitedSelectIllusts(),
   minBookmarks: selectors.makeSelectMinBookmark(),
+  hasMore: selectors.makeSelectHasMore(),
 })
 
 function mapDispatchToProps(dispatch: Dispatch, { id }: OP) {

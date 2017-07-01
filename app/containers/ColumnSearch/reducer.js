@@ -21,7 +21,11 @@ export default function(state: State = initialState, action: Action): State {
     case Actions.ADD_COLUMN_SUCCESS:
       return {
         ...state,
-        [action.id]: { illustIds: [], nextUrl: null, minBookmarks: 0 },
+        [action.id]: {
+          illustIds: [],
+          nextUrl: null,
+          minBookmarks: 0,
+        },
       }
 
     case Actions.SET_NEXT_URL: {

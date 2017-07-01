@@ -33,6 +33,12 @@ function* fetchSearch(props: Props): Generator<*, void, *> {
       selectors.makeSelectColumn(),
       props
     )
+    const hasMore = yield select(selectors.makeSelectHasMore(), props)
+
+    // nullのチェックではない
+    if (hasMore === false) {
+      return
+    }
 
     const accessToken = yield call(getToken)
 

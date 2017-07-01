@@ -23,6 +23,18 @@ export const makeSelectMinBookmark = () =>
 export const makeSelectNextUrl = () =>
   createSelector(makeSelectColumn(), s => s.nextUrl)
 
+export const makeSelectHasMore = () =>
+  createSelector(makeSelectColumn(), s => {
+    if (s.nextUrl) {
+      return true
+    } else if (!s.nextUrl && s.illustIds.length > 0) {
+      return false
+    } else if (!s.nextUrl && s.illustIds.length === 0) {
+      return true
+    }
+    return true
+  })
+
 const makeSelectIllustIds = () =>
   createSelector(getColumn, s => (s && s.illustIds ? s.illustIds : []))
 
