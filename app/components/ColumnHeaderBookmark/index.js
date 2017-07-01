@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import styled from 'styled-components'
-import debounce from 'lodash.debounce'
+import { debounce } from 'lodash'
 import Slider from 'material-ui/Slider'
 import { FormattedMessage } from 'react-intl'
 import messages from './messages'

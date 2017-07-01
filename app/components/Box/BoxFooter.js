@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import union from 'lodash.union'
+import { union } from 'lodash'
 import styled from 'styled-components'
 import Tag from '../Tag'
 

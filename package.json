@@ -103,15 +103,8 @@
     "keycode": "^2.1.9",
     "localforage": "^1.5.0",
     "lodash": "^4.17.4",
-    "lodash.debounce": "^4.0.8",
-    "lodash.isequal": "^4.5.0",
-    "lodash.merge": "^4.6.0",
-    "lodash.throttle": "^4.1.1",
-    "lodash.union": "^4.6.0",
-    "lodash.unionby": "^4.8.0",
     "material-ui": "^0.18.4",
     "normalizr": "^3.2.3",
-    "pixiv-app-api": "^0.10.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-event-listener": "^0.4.5",
@@ -124,8 +117,7 @@
     "redux-saga": "^0.15.4",
     "reselect": "^3.0.1",
     "source-map-support": "^0.4.15",
-    "styled-components": "^2.1.0",
-    "uuid": "^3.1.0"
+    "styled-components": "^2.1.0"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.21.0",

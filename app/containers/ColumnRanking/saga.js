@@ -1,5 +1,5 @@
 // @flow
-import union from 'lodash/union'
+import { union } from 'lodash'
 import { addColumn } from 'containers/ColumnManager/actions'
 import { getRequest } from 'services/api'
 import * as Actions from './constants'

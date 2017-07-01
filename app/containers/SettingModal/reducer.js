@@ -1,5 +1,5 @@
 // @flow
-import union from 'lodash.union'
+import { union } from 'lodash'
 import type { Action } from './actionTypes'
 import * as Actions from './constants'
 
