@@ -17,6 +17,11 @@ components:
     addColumn: カラムに追加
     tabIllust: 'イラスト ({count})'
     tabManga: 'マンガ ({count})'
+  ColumnHeaderBookmark:
+    bookmarkFilter: ブックマークフィルタ
+  Dropdown:
+    logout: ログアウト
+    setting: 設定
 containers:
   AddColumnModal:
     header: 追加するカラムを選択
@@ -41,3 +46,29 @@ containers:
       R-18タグをフィルターするのがもっとも簡単です。
       どうしても閲覧制限を設定はpixivのサイト上にて変更する必要があります。
     language: 言語
+  AddNewColumnButton:
+    addColumn: カラムに追加
+  ColumnBookmark:
+    public: 公開ブックマーク
+    private: 非公開ブックマーク
+  ColumnFollow:
+    public: 公開 新着
+    private: 非公開 新着
+  ColumnRanking:
+    day: デイリーランキング
+    week: ウィークリーランキング
+    month: マンスリーランキング
+    day_male: 男子に人気
+    day_female: 女子に人気
+    week_original: オリジナル
+    week_rookie: ルーキー
+  ColumnRankingR18:
+    day_r18: R18 デイリー
+    week_r18: R18 ウィークリー
+    day_male_r18: R18 男子に人気
+    day_female_r18: R18 女子に人気
+    week_r18g: R18 G
+  FollowButton:
+    follow: フォローする
+    following: フォロー中
+    unFollow: フォロー解除

@@ -1,12 +1,8 @@
 components:
-  Column:
-    bookmarkFilter: Filter Bookmark
-  FollowButton:
-    follow: Follow
-    following: Following
-    unFollow: UnFollow
-  Header:
-    logout: Logout
+  ColumnHeaderBookmark:
+    bookmarkFilter: ''
+  Dropdown:
+    logout: logout
     setting: Settings
   LoginModal:
     error: Login Erro
@@ -17,6 +13,15 @@ components:
     addColumn: Add to column
     tabIllust: 'Illustration ({count})'
     tabManga: 'Manga ({count})'
+  Column:
+    bookmarkFilter: Filter Bookmark
+  FollowButton:
+    follow: Follow
+    following: Following
+    unFollow: UnFollow
+  Header:
+    logout: Logout
+    setting: Settings
 containers:
   AddColumnModal:
     header: Select Colum
@@ -26,6 +31,32 @@ containers:
     public: public
     private: private
     new: new
+  AddNewColumnButton:
+    addColumn: ''
+  ColumnBookmark:
+    public: Public Bookmarks
+    private: Private Bookmarks
+  ColumnFollow:
+    public: Public Following
+    private: Private Following
+  ColumnRanking:
+    day: Daily Rankings
+    week: Weekly Rankings
+    month: Monthly Rankings
+    day_male: Popular Male Rankings
+    day_female: Popular Female Rankings
+    week_original: Original Rankings
+    week_rookie: Rookie Rankings
+  ColumnRankingR18:
+    day_r18: R-18 Daily Rankings
+    week_r18: R-18 Weekly Rankings
+    day_male_r18: R-18 Male Rankings
+    day_female_r18: R-18 Female Rankings
+    week_r18g: R-18 G
+  FollowButton:
+    follow: follow
+    following: following
+    unFollow: unfollow
   SearchField:
     search: search
     keywordSearch: keyword search
