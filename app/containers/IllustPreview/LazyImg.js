@@ -1,6 +1,5 @@
 // @flow
 import React, { Component } from 'react'
-import { findDOMNode } from 'react-dom'
 import styled, { keyframes } from 'styled-components'
 import CloseButton from 'components/common/CloseButton'
 import { LazyImgWrapper as Wrapper } from './styles'
@@ -45,8 +44,8 @@ type State = {
 
 export default class LazyImg extends Component {
   props: Props
-  to: Component<*, *, *>
-  from: Component<*, *, *>
+  to: HTMLElement
+  from: HTMLElement
   state: State = {
     isClicked: false,
     fromMarginTop: 0,
@@ -54,17 +53,19 @@ export default class LazyImg extends Component {
   }
 
   componentDidMount() {
-    const to = this.calcMarginTop(findDOMNode(this.to))
-    const from = this.calcMarginTop(findDOMNode(this.from))
-    this.setState({
-      toMarginTop: to,
-      fromMarginTop: from,
-    })
+    if (this.to && this.from) {
+      const to = this.calcMarginTop(this.to)
+      const from = this.calcMarginTop(this.from)
+      this.setState({
+        toMarginTop: to,
+        fromMarginTop: from,
+      })
+    }
   }
 
   componentWillUpdate(nextProps: Props, nextState: State) {
-    const to = this.calcMarginTop(findDOMNode(this.to))
-    const from = this.calcMarginTop(findDOMNode(this.from))
+    const to = this.calcMarginTop(this.to)
+    const from = this.calcMarginTop(this.from)
     if (
       this.props.isLoaded !== nextProps.isLoaded ||
       nextState.isClicked !== this.state.isClicked ||
