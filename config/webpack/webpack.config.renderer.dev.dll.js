@@ -62,7 +62,7 @@ export default merge.smart(baseConfig, {
       },
       {
         test: /\.yml$/,
-        use: [{ loader: 'json-loader' }, { loader: 'yaml-loader' }],
+        use: [{ loader: 'json-loader' }, { loader: 'yaml-flat-loader' }],
       },
     ],
   },
