@@ -55,7 +55,7 @@ watcher.on('change', (input /* : string */) => {
     const x = resolve(process.cwd(), 'app/action.js')
     transfromWrite(x, x, [actionComposePlugin, { inputPath: input }])
   } else if (basename(input).includes('reducer')) {
-    const x = resolve(process.cwd(), 'app/state.js')
+    const x = resolve(process.cwd(), 'app/types/state.js')
     transfromWrite(x, x, [statePlugin, { input }])
   }
 })
