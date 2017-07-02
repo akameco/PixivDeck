@@ -33,16 +33,13 @@ export default class SettingFilterModal extends Component {
   props: Props
   state: State = { value: '' }
 
-  handleCangeInput = (event: SyntheticEvent) => {
-    // eslint-disable-line no-undef
-    const target = event.target
-    if (target instanceof HTMLInputElement) {
-      this.setState({ value: target.value })
+  handleCangeInput = (event: any) => {
+    if (event.target && event.target.value) {
+      this.setState({ value: event.target.value })
     }
   }
 
-  handleSubmit = (event: SyntheticKeyboardEvent) => {
-    // eslint-disable-line no-undef
+  handleSubmit = (event: any) => {
     if (event.keyCode === 13 && this.state.value !== '') {
       event.preventDefault()
       this.props.onSubmit(this.state.value)
@@ -69,7 +66,14 @@ export default class SettingFilterModal extends Component {
   }
 
   render() {
-    const { isShowCaption, isIllustOnly } = this.props
+    const {
+      isShowCaption,
+      isIllustOnly,
+      tags,
+      locale,
+      onSelectLanguage,
+    } = this.props
+
     return (
       <Wrap>
         <Card>
@@ -114,7 +118,7 @@ export default class SettingFilterModal extends Component {
               />
             </Field>
             <ChipWrap>
-              {this.props.tags.map(this.renderChip, this)}
+              {tags.map(this.renderChip, this)}
             </ChipWrap>
           </TagFilter>
         </Card>
@@ -123,8 +127,8 @@ export default class SettingFilterModal extends Component {
             <FormattedMessage {...messages.language} />
           </Subheader>
           <SelectField
-            value={this.props.locale}
-            onChange={(ev, i, value) => this.props.onSelectLanguage(value)}
+            value={locale}
+            onChange={(ev, i, value) => onSelectLanguage(value)}
           >
             <MenuItem value={'ja'} primaryText="日本語" />
             <MenuItem value={'en'} primaryText="English" />
