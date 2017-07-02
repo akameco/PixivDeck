@@ -54,7 +54,7 @@ export function setNextUrl(id: ColumnId, nextUrl: string): Action {
 export function fetchSuccess(
   id: ColumnId,
   response: Response,
-  ids: Array<string>
+  ids: Array<number>
 ): Action {
   return {
     type: FETCH_SUCCESS,
@@ -67,7 +67,7 @@ export function fetchSuccess(
 export function fetchNextSuccess(
   id: ColumnId,
   response: Response,
-  ids: Array<string>
+  ids: Array<number>
 ): Action {
   return {
     type: FETCH_NEXT_SUCCESS,

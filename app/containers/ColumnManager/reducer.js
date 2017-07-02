@@ -1,4 +1,5 @@
 // @flow
+import update from 'util/update'
 import type { Action } from './actionTypes'
 import * as Actions from './constants'
 
@@ -25,15 +26,10 @@ export type State = {
   [id: ColumnManagerId]: ColumnManager,
 }
 
-const initialState: State = {}
-
-export default function(
-  state: State = initialState,
-  action: Action
-): $Shape<State> {
+export default function(state: State = {}, action: Action): $Shape<State> {
   switch (action.type) {
     case Actions.ADD_COLUMN:
-      return { ...state, [action.id]: action.maneger }
+      return update(state, action, action.maneger)
     default:
       return state
   }

@@ -37,5 +37,5 @@ export type Action =
         | FETCH_NEXT_RANKING_R18_SUCCESS_TYPE,
       +id: ColumnId,
       +response: Response,
-      +ids: Array<string>,
+      +ids: Array<number>,
     |}

@@ -30,7 +30,7 @@ export type Action =
       +type: FETCH_SUCCESS_TYPE | FETCH_NEXT_SUCCESS_TYPE,
       +id: ColumnId,
       +response: Response,
-      +ids: Array<string>,
+      +ids: Array<number>,
     |}
   | {|
       +type: SET_MIN_BOOKBOOK_TYPE,

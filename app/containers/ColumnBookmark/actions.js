@@ -67,7 +67,7 @@ export function setNextUrl(id: ColumnId, nextUrl: string): Action {
 export function fetchBookmarkSuccess(
   id: ColumnId,
   response: Response,
-  ids: Array<string>
+  ids: Array<number>
 ): Action {
   return {
     type: FETCH_BOOKMARK_SUCCESS,
@@ -80,7 +80,7 @@ export function fetchBookmarkSuccess(
 export function fetchNextBookmarkSuccess(
   id: ColumnId,
   response: Response,
-  ids: Array<string>
+  ids: Array<number>
 ): Action {
   return {
     type: FETCH_NEXT_BOOKMARK_SUCCESS,

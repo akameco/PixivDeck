@@ -67,7 +67,7 @@ export function setNextUrl(id: ColumnId, nextUrl: string): Action {
 export function fetchUserIllustSuccess(
   id: ColumnId,
   response: Response,
-  ids: Array<string>
+  ids: Array<number>
 ): Action {
   return {
     type: FETCH_USER_ILLUST_SUCCESS,
@@ -80,7 +80,7 @@ export function fetchUserIllustSuccess(
 export function fetchNextUserIllustSuccess(
   id: ColumnId,
   response: Response,
-  ids: Array<string>
+  ids: Array<number>
 ): Action {
   return {
     type: FETCH_NEXT_USER_ILLUST_SUCCESS,

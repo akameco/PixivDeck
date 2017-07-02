@@ -67,7 +67,7 @@ export function setNextUrl(id: ColumnId, nextUrl: string): Action {
 export function fetchRankingSuccess(
   id: ColumnId,
   response: Response,
-  ids: Array<string>
+  ids: Array<number>
 ): Action {
   return {
     type: FETCH_RANKING_SUCCESS,
@@ -80,7 +80,7 @@ export function fetchRankingSuccess(
 export function fetchNextRankingSuccess(
   id: ColumnId,
   response: Response,
-  ids: Array<string>
+  ids: Array<number>
 ): Action {
   return {
     type: FETCH_NEXT_RANKING_SUCCESS,

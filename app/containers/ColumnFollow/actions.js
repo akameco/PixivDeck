@@ -67,7 +67,7 @@ export function setNextUrl(id: ColumnId, nextUrl: string): Action {
 export function fetchFollowSuccess(
   id: ColumnId,
   response: Response,
-  ids: Array<string>
+  ids: Array<number>
 ): Action {
   return {
     type: FETCH_FOLLOW_SUCCESS,
@@ -80,7 +80,7 @@ export function fetchFollowSuccess(
 export function fetchNextFollowSuccess(
   id: ColumnId,
   response: Response,
-  ids: Array<string>
+  ids: Array<number>
 ): Action {
   return {
     type: FETCH_NEXT_FOLLOW_SUCCESS,

@@ -38,5 +38,5 @@ export type Action =
         | FETCH_NEXT_USER_ILLUST_SUCCESS_TYPE,
       +id: ColumnId,
       +response: Response,
-      +ids: Array<string>,
+      +ids: Array<number>,
     |}
