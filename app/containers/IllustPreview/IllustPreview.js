@@ -5,7 +5,7 @@ import LazyImg from './LazyImg'
 
 type Props = {
   from: string,
-  to: string,
+  original: string,
   width: number,
   height: number,
   isLoaded: boolean,
@@ -26,13 +26,13 @@ export default class IllustPreview extends React.PureComponent {
   }
 
   render() {
-    const { width, height, from, to } = this.props
+    const { width, height, from, original } = this.props
 
     return (
       <StyledPreview onClick={this.handleOnClose}>
         <LazyImg
           from={from}
-          original={to}
+          original={original}
           width={width}
           height={height}
           isLoaded={this.props.isLoaded}

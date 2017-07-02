@@ -48,7 +48,7 @@ class IllustPreviewContainer extends Component {
         from={illust.imageUrls.large}
         width={illust.width}
         height={illust.height}
-        to={illust.metaSinglePage.originalImageUrl}
+        original={illust.metaSinglePage.originalImageUrl}
         isLoaded={!isImgLoading}
         onLoad={this.handleLoad}
         onUnLoad={this.handleUnLoad}
