@@ -127,31 +127,14 @@ app.on('ready', async () => {
   })
 })
 
-autoUpdater.on('update-downloaded', () => {
-  setTimeout(() => {
-    autoUpdater.quitAndInstall()
-    app.quit()
-  }, ms('5s'))
-})
-
-autoUpdater.on('checking-for-update', () => {
-  log.info('Checking for update...')
-})
-autoUpdater.on('update-available', (ev, info) => {
-  log.info(`Update available.${info}`)
-})
-autoUpdater.on('update-not-available', (ev, info) => {
-  log.info(`Update not available.\n${info}`)
-})
-autoUpdater.on('error', (ev, err) => {
-  log.info(`Error in auto-updater.\n${err}`)
-})
-autoUpdater.on('download-progress', () => {
-  log.info('Download progress...')
-})
-autoUpdater.on('update-downloaded', () => {
-  log.info('Update downloaded; will install in 5 seconds')
-})
+if (process.env.NODE_ENV === 'production') {
+  autoUpdater.on('update-downloaded', () => {
+    setTimeout(() => {
+      autoUpdater.quitAndInstall()
+      app.quit()
+    }, ms('5s'))
+  })
+}
 
 function openTweet(url: string) {
   const tweetWin = new BrowserWindow({ width: 600, height: 400 })
