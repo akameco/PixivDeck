@@ -16,3 +16,7 @@ declare module '@storybook/react' {
   declare function storiesOf(name: string, module: any): Story;
   declare function action(name: string): Function;
 }
+
+declare module '@storybook/addon-actions' {
+  declare function action(name: string): Function;
+}

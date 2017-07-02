@@ -1,14 +1,14 @@
 // @flow
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import Chip from 'material-ui/Chip'
+import { FormattedMessage } from 'react-intl'
 import { List, ListItem } from 'material-ui/List'
 import SelectField from 'material-ui/SelectField'
 import Subheader from 'material-ui/Subheader'
 import Toggle from 'material-ui/Toggle'
 import MenuItem from 'material-ui/MenuItem'
 import VisibilityOffIcon from 'material-ui/svg-icons/action/visibility-off'
-import { FormattedMessage } from 'react-intl'
+import Chip from 'components/Chip'
 import Card from './Card'
 import LimitSetting from './LimitSetting'
 import messages from './messages'
@@ -54,16 +54,6 @@ export default class SettingFilterModal extends Component {
 
   handleCheckSetOnlyIllust = () => {
     this.props.onCheckIllustOnly(!this.props.isIllustOnly)
-  }
-
-  renderChip(tag: string) {
-    const handleClick = () => this.props.onDelete(tag)
-    const style = { margin: 4 }
-    return (
-      <Chip key={tag} onRequestDelete={handleClick} style={style}>
-        {tag}
-      </Chip>
-    )
   }
 
   render() {
@@ -119,7 +109,14 @@ export default class SettingFilterModal extends Component {
               />
             </Field>
             <ChipWrap>
-              {tags.map(this.renderChip, this)}
+              {tags.map(tag =>
+                <Chip
+                  key={tag}
+                  onRequestDelete={() => this.props.onDelete(tag)}
+                >
+                  {tag}
+                </Chip>
+              )}
             </ChipWrap>
           </TagFilter>
         </Card>
