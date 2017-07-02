@@ -1,4 +1,4 @@
-<h1 align=center><img src="res/Icon.png" width=50/> Pixiv Deck</h1>
+<h1 align=center><img src="res/icon.png" width=50/> Pixiv Deck</h1>
 
 
 > :two_hearts: :two_hearts: pixiv client for Desktop like TweetDeck :two_hearts: :two_hearts:
