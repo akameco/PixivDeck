@@ -1,0 +1,31 @@
+productName: PixivDeck
+appId: io.github.akameco.PixivDeck
+files:
+  - dist/
+  - node_modules/
+  - app.html
+  - main.js
+  - main.js.map
+  - package.json
+mac:
+  category: public.app-category.social-networking
+dmg:
+  contents:
+    - x: 130
+      y: 220
+    - x: 410
+      y: 220
+      type: link
+      path: /Applications
+linux:
+  target:
+    - AppImage
+    - deb
+publish:
+  - provider: github
+    owner: akameco
+directories:
+  buildResources: res
+  output: release
+nsis:
+  perMachine: true

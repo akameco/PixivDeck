@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from 'react'
+import React from 'react'
 
 type IconType =
   | 'setting'
@@ -55,7 +55,7 @@ const SelectIcon = ({ type }: { type: IconType }) => {
   }
 }
 
-export default class Icon extends Component {
+export default class Icon extends React.PureComponent {
   props: Props
 
   static defaultProps = {
@@ -110,7 +110,9 @@ export default class Icon extends Component {
         onMouseLeave={this.handleMouseLeave}
         className={className}
       >
-        <g><SelectIcon type={type} /></g>
+        <g>
+          <SelectIcon type={type} />
+        </g>
       </svg>
     )
   }

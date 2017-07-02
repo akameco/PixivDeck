@@ -3,10 +3,7 @@
   "productName": "PixivDeck",
   "version": "0.12.1",
   "description": "pixiv client for desktop",
-  "keywords": [
-    "electron",
-    "pixiv"
-  ],
+  "keywords": ["electron", "pixiv"],
   "author": "akameco <akameco.t@gmail.com>",
   "license": "MIT",
   "main": "main.js",
@@ -18,6 +15,7 @@
     "jest": "cross-env NODE_ENV=test jest",
     "format": "node config/scripts/format.js",
     "build": "npm run build:main && npm run build:renderer",
+    "s2s": "babel-node ./config/scripts/s2s.js",
     "flow": "flow",
     "build:dll": "node config/scripts/webpack build-dll",
     "build:main": "node config/scripts/webpack build-main",
@@ -29,153 +27,117 @@
     "start-hot-renderer": "node config/scripts/hot-renderer",
     "postinstall": "node config/scripts/post-install",
     "package": "npm run build && build --publish never",
-    "release": "npm run build && build"
-  },
-  "build": {
-    "productName": "PixivDeck",
-    "appId": "io.github.akameco.pixivdeck",
-    "files": [
-      "dist/",
-      "node_modules/",
-      "app.html",
-      "main.js",
-      "main.js.map",
-      "package.json"
-    ],
-    "dmg": {
-      "contents": [
-        {
-          "x": 130,
-          "y": 220
-        },
-        {
-          "x": 410,
-          "y": 220,
-          "type": "link",
-          "path": "/Applications"
-        }
-      ]
-    },
-    "win": {
-      "target": [
-        "nsis"
-      ]
-    },
-    "linux": {
-      "target": [
-        "deb",
-        "AppImage"
-      ]
-    },
-    "directories": {
-      "buildResources": "res",
-      "output": "release"
-    }
-  },
-  "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
+    "release": "npm run build && build",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "stylelint": {
-    "processors": [
-      "stylelint-processor-styled-components"
-    ],
+    "processors": ["stylelint-processor-styled-components"],
     "extends": "stylelint-config-standard",
     "syntax": "scss",
     "rules": {
-      "indentation": [
-        "tab"
-      ],
       "rule-empty-line-before": null,
       "at-rule-empty-line-before": null
     }
   },
   "dependencies": {
     "autolinker": "^1.4.3",
+    "axios": "^0.16.2",
     "camelcase-keys": "^4.1.0",
-    "electron-debug": "^1.1.0",
-    "keycode": "^2.1.8",
-    "lodash.debounce": "^4.0.8",
-    "lodash.isequal": "^4.5.0",
-    "lodash.merge": "^4.6.0",
-    "lodash.throttle": "^4.1.1",
-    "lodash.union": "^4.6.0",
-    "lodash.unionby": "^4.8.0",
-    "material-ui": "^0.18.3",
-    "normalizr": "^3.2.2",
-    "pixiv-app-api": "^0.10.0",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
+    "decamelize-keys": "^1.1.0",
+    "electron-debug": "^1.2.0",
+    "keycode": "^2.1.9",
+    "localforage": "^1.5.0",
+    "lodash": "^4.17.4",
+    "material-ui": "^0.18.5",
+    "normalizr": "^3.2.3",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
     "react-event-listener": "^0.4.5",
-    "react-intl": "^2.2.3",
-    "react-redux": "^5.0.4",
+    "react-intl": "^2.3.0",
+    "react-redux": "^5.0.5",
     "react-sortable-pane": "^0.5.5",
     "react-tap-event-plugin": "^2.0.1",
-    "redux": "^3.6.0",
-    "redux-saga": "^0.15.3",
-    "reselect": "^3.0.0",
-    "residual-scroll-top": "^0.1.0",
-    "source-map-support": "^0.4.14",
-    "styled-components": "^2.0.1"
+    "redux": "^3.7.1",
+    "redux-persist": "^4.8.2",
+    "redux-saga": "^0.15.4",
+    "reselect": "^3.0.1",
+    "source-map-support": "^0.4.15",
+    "styled-components": "^2.1.0"
   },
   "devDependencies": {
-    "babel-core": "^6.24.1",
+    "@kadira/storybook": "^2.35.3",
+    "@storybook/addon-info": "^3.1.6",
+    "@storybook/addon-knobs": "^3.1.6",
+    "@storybook/react": "^3.1.7",
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
     "babel-jest": "^20.0.3",
-    "babel-loader": "^7.0.0",
+    "babel-loader": "^7.1.1",
     "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-create-redux-action-func": "^0.1.4",
+    "babel-plugin-create-redux-action-type": "^0.1.2",
     "babel-plugin-dev-expression": "^0.2.1",
     "babel-plugin-dynamic-import-webpack": "^1.0.1",
     "babel-plugin-react-intl": "^2.3.1",
     "babel-plugin-react-intl-auto": "^0.6.0",
+    "babel-plugin-redux-action-compose": "^0.2.0",
+    "babel-plugin-redux-state-compose": "^0.4.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-es2015-classes": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
     "babel-polyfill": "^6.23.0",
-    "babel-preset-env": "^1.4.0",
+    "babel-preset-env": "^1.5.2",
     "babel-preset-react": "^6.24.1",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-react-optimize": "^1.0.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.24.1",
-    "babili-webpack-plugin": "^0.1.1",
+    "babili-webpack-plugin": "^0.1.2",
     "boiler-room-custodian": "^0.6.2",
-    "chalk": "^1.1.3",
-    "concurrently": "^3.4.0",
+    "chalk": "^2.0.1",
+    "concurrently": "^3.5.0",
+    "cp-file": "^4.2.0",
     "cross-env": "^5.0.1",
     "cross-spawn": "^5.1.0",
     "devtron": "^1.4.0",
-    "electron": "^1.6.6",
-    "electron-builder": "^18.8.1",
-    "electron-devtools-installer": "^2.2.0",
-    "enzyme": "^2.8.2",
+    "electron": "^1.6.11",
+    "electron-builder": "^19.11.1",
+    "electron-load-devtool": "^0.5.1",
+    "enzyme": "^2.9.1",
     "enzyme-to-json": "^1.5.1",
-    "eslint": "^4.0.0",
-    "eslint-config-precure": "^0.5.1",
+    "eslint": "^4.1.1",
+    "eslint-config-precure": "^0.7.1",
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-plugin-prettier": "^2.1.2",
+    "eslint-plugin-react": "^7.1.0",
     "execa": "^0.7.0",
-    "extract-react-intl": "^0.3.0",
-    "extract-react-intl-messages": "^0.4.0",
+    "extract-react-intl": "^0.3.1",
+    "extract-react-intl-messages": "^0.5.0",
     "fbjs-scripts": "^0.8.0",
-    "file-loader": "^0.11.1",
-    "flow-bin": "^0.47.0",
-    "flow-runtime": "^0.12.0",
+    "file-loader": "^0.11.2",
+    "flow-bin": "^0.49.1",
+    "flow-runtime": "^0.13.0",
     "flow-typed": "^2.1.2",
     "jest": "^20.0.4",
+    "jest-cli": "^20.0.4",
+    "jest-styled-components": "^3.1.5",
     "json-loader": "^0.5.4",
-    "prettier": "^1.2.2",
-    "react-addons-test-utils": "^15.5.1",
-    "react-hot-loader": "next",
-    "react-test-renderer": "^15.5.4",
+    "prettier": "^1.5.2",
+    "react-addons-test-utils": "^15.6.0",
+    "react-hot-loader": "^3.0.0-beta.7",
+    "react-test-renderer": "^15.6.1",
     "read-pkg-up": "^2.0.0",
-    "stylelint": "^7.10.1",
+    "stylelint": "^7.12.0",
     "stylelint-config-standard": "^16.0.0",
-    "stylelint-processor-styled-components": "^0.1.0",
-    "url-loader": "^0.5.8",
-    "webpack": "^2.4.1",
-    "webpack-bundle-analyzer": "^2.4.0",
-    "webpack-dev-server": "^2.4.5",
+    "stylelint-processor-styled-components": "^0.1.2",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.0.0",
+    "webpack-bundle-analyzer": "^2.8.2",
+    "webpack-dev-server": "^2.5.0",
     "webpack-merge": "^4.1.0",
-    "yaml-loader": "^0.4.0"
+    "yaml-flat-loader": "^0.1.0"
   },
   "devEngines": {
     "node": ">=7",

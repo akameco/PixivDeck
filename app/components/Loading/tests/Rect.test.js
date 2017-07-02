@@ -1,6 +1,7 @@
+// @flow
 import React from 'react'
 import { shallow, mount } from 'enzyme'
-import { shallowToJson } from 'enzyme-to-json'
+import toJson from 'enzyme-to-json'
 
 import Rect from '../Rect'
 
@@ -12,5 +13,5 @@ test('render a prop', () => {
 
 test('snapshot', () => {
   const c = shallow(<Rect />)
-  expect(shallowToJson(c)).toMatchSnapshot()
+  expect(toJson(c)).toMatchSnapshot()
 })

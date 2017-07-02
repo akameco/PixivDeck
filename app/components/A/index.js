@@ -1,11 +1,13 @@
 // @flow
 import styled from 'styled-components'
+import { key } from 'styles/styleTheme'
 
 const A = styled.a`
-  color: #5d89a8;
+  color: ${key('blue')};
+  cursor: pointer;
 
   &:hover {
-    color: #6cc0e5;
+    text-decoration: underline;
   }
 `
 

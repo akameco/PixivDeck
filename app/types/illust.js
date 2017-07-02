@@ -5,8 +5,6 @@ export type ImageUrls = {|
   large: string,
 |}
 
-type Id = number
-
 export type MetaPages = Array<{|
   imageUrls: {|
     squareMedium: string,
@@ -33,17 +31,13 @@ export type Illust = {|
   metaSinglePage: {
     originalImageUrl?: string,
   },
-  metaPages?: $Shape<MetaPages>,
+  metaPages?: MetaPages,
   totalView: number,
   totalBookmarks: number,
   isBookmarked: boolean,
   visible: boolean,
 |}
 
-export type Illusts = { [key: number]: Illust }
+type Key = number | string
 
-export type IllustAction = {|
-  type: 'ADD_BOOKMARK',
-  id: Id,
-  isPublic: boolean,
-|}
+export type Illusts = { [key: Key]: Illust }

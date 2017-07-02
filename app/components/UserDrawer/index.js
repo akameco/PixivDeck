@@ -1,61 +1,80 @@
 // @flow
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import type { Dispatch, State } from 'types'
+import React from 'react'
+import { Tabs, Tab } from 'material-ui/Tabs'
+import { FormattedMessage } from 'react-intl'
 import type { User, Profile } from 'types/user'
 import type { Illust } from 'types/illust'
-import { fetchUserDetail } from 'actions'
-import { fetchDrawerIllust } from 'actions/drawer'
-import { getCurrentUser, getDrawerIllusts, getDrawerMangas } from 'reducers'
-import Loading from 'components/Loading'
-import UserDrawer from './UserDrawer'
+import { key } from 'styles/styleTheme'
+import IllustList from '../IllustList'
+import Header from './DrawerHeader'
+import messages from './messages'
 
-type Props = {
+export type Props = {
   user: User,
   profile: Profile,
   illusts: Array<Illust>,
   mangas: Array<Illust>,
-  dispatch: Dispatch,
+  onNextIllust: Function,
+  onNextManga: Function,
 }
 
-class UserDrawerContainer extends Component {
-  props: Props
-
-  componentDidMount() {
-    this.init()
-  }
-
-  async init() {
-    const { dispatch, user: { id } } = this.props
-
-    await Promise.all([
-      dispatch(fetchUserDetail(id)),
-      dispatch(fetchDrawerIllust(id, 'illust')),
-      dispatch(fetchDrawerIllust(id, 'manga')),
-    ])
-  }
-
-  render() {
-    const { user, profile, illusts, mangas } = this.props
-    if (profile && user) {
-      return (
-        <UserDrawer
-          illusts={illusts}
-          mangas={mangas}
-          profile={profile}
-          user={user}
-        />
-      )
-    }
-    return <Loading />
-  }
+const tabProps = {
+  tabItemContainerStyle: {
+    backgroundColor: key('base')(),
+  },
+  inkBarStyle: {
+    backgroundColor: '#afafaf',
+  },
 }
 
-const mapStateToProps = (state: State) => ({
-  user: state.drawer.user || getCurrentUser(state),
-  illusts: getDrawerIllusts(state),
-  mangas: getDrawerMangas(state),
-  profile: state.drawer.profile,
-})
+const UserDrawer = ({
+  user,
+  profile,
+  illusts,
+  mangas,
+  onNextIllust,
+  onNextManga,
+}: Props) => {
+  const { totalIllusts, totalManga } = profile
+  return (
+    <div>
+      <Header user={user} profile={profile} />
+      <Tabs {...tabProps}>
+        {totalIllusts > 0 &&
+          <Tab
+            label={
+              <FormattedMessage
+                {...messages.tabIllust}
+                values={{ count: totalIllusts }}
+              />
+            }
+          >
+            <IllustList
+              illusts={illusts}
+              id="illust-user-drawer"
+              hasMore={illusts.length < totalIllusts}
+              onNext={onNextIllust}
+            />
+          </Tab>}
+        {totalManga > 0 &&
+          <Tab
+            label={
+              <FormattedMessage
+                {...messages.tabManga}
+                values={{ count: totalManga }}
+              />
+            }
+          >
+            <IllustList
+              illusts={mangas}
+              id="illust-user-drawer"
+              hasMore={mangas.length < totalManga}
+              onNext={onNextManga}
+            />
+          </Tab>}
+      </Tabs>
+    </div>
+  )
+}
 
-export default connect(mapStateToProps)(UserDrawerContainer)
+export default UserDrawer

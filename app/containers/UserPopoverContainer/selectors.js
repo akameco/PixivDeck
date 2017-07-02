@@ -1,10 +1,14 @@
 // @flow
 import { createSelector } from 'reselect'
 import type { State } from 'types'
+import { getIllustById } from '../IllustById/selectors'
 
-const selectPopover = (state: State) => state.popover
+const selectPopover = (state: State) => state.UserPopoverContainer
 
-const makeSelectIllusts = () =>
-  createSelector(selectPopover, popoverState => popoverState.illusts)
+export const makeSelectIllusts = () =>
+  createSelector(selectPopover, s => s.illusts)
 
-export { selectPopover, makeSelectIllusts }
+export const makeLimitedIllust = () =>
+  createSelector(getIllustById, makeSelectIllusts(), (illusts, ids) =>
+    ids.map(v => illusts[v]).filter(v => v)
+  )

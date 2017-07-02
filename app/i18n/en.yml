@@ -1,0 +1,74 @@
+components:
+  ColumnHeaderBookmark:
+    bookmarkFilter: Filter Bookmarks
+  Dropdown:
+    logout: logout
+    setting: Settings
+  LoginModal:
+    error: Login Error
+    errorInfo: Check your usernaem and password.
+    login: Login
+    loginLoading: Logining...
+  UserDrawer:
+    addColumn: Add to column
+    tabIllust: 'Illustration ({count})'
+    tabManga: 'Manga ({count})'
+  Column:
+    bookmarkFilter: Filter Bookmarks
+  FollowButton:
+    follow: Follow
+    following: Following
+    unFollow: UnFollow
+  Header:
+    logout: Logout
+    setting: Settings
+containers:
+  AddColumnModal:
+    header: Select Column
+    ranking: Rankings
+    r18ranking: R-18 Rankings
+    bookmark: Bookmarks
+    public: Public
+    private: Private
+    new: new
+  AddNewColumnButton:
+    addColumn: Add Column
+  ColumnBookmark:
+    public: Public Bookmarks
+    private: Private Bookmarks
+  ColumnFollow:
+    public: Public Following
+    private: Private Following
+  ColumnRanking:
+    day: Daily Rankings
+    week: Weekly Rankings
+    month: Monthly Rankings
+    day_male: Popular Male Rankings
+    day_female: Popular Female Rankings
+    week_original: Original Rankings
+    week_rookie: Rookie Rankings
+  ColumnRankingR18:
+    day_r18: R-18 Daily Rankings
+    week_r18: R-18 Weekly Rankings
+    day_male_r18: R-18 Male Rankings
+    day_female_r18: R-18 Female Rankings
+    week_r18g: R-18 G
+  FollowButton:
+    follow: follow
+    following: following
+    unFollow: unfollow
+  SearchField:
+    search: search
+    keywordSearch: keyword search
+    users: users in
+  SettingModal:
+    tagFilter: Tag filter
+    uiSetting: UI setting
+    showCaption: Show Caption
+    showOnlyImg: Only image
+    limit: Restrict access
+    r18Link: pixiv - r18
+    r18FilterDesc: |-
+      It is easiest to filter R-18 tags.
+      Inevitably you need to change browsing restrictions on pixiv's site.
+    language: language

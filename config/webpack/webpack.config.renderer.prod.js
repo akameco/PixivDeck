@@ -21,7 +21,7 @@ export default merge.smart(baseConfig, {
     rules: [
       {
         test: /\.yml$/,
-        use: [{ loader: 'json-loader' }, { loader: 'yaml-loader' }],
+        use: [{ loader: 'json-loader' }, { loader: 'yaml-flat-loader' }],
       },
       // WOFF Font
       {
@@ -102,9 +102,8 @@ export default merge.smart(baseConfig, {
     new BabiliPlugin(),
 
     new BundleAnalyzerPlugin({
-      analyzerMode: process.env.OPEN_ANALYZER === 'true'
-        ? 'server'
-        : 'disabled',
+      analyzerMode:
+        process.env.OPEN_ANALYZER === 'true' ? 'server' : 'disabled',
       openAnalyzer: process.env.OPEN_ANALYZER === 'true',
     }),
   ],

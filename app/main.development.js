@@ -1,7 +1,12 @@
 /* eslint global-require: 0, flowtype-errors/show-errors: 0, camelcase: 1 */
 import electron from 'electron'
 import referer from 'electron-referer'
+import { autoUpdater } from 'electron-updater'
+import log from 'electron-log'
 import appMenu from './menu'
+
+autoUpdater.logger = log
+autoUpdater.logger.transports.file.level = 'info'
 
 const Config = require('electron-config')
 
@@ -13,11 +18,13 @@ if (process.env.NODE_ENV === 'production') {
   sourceMapSupport.install()
 }
 
+// 常にbeta版なのでいついかなる時でもデバック可能なのだ...!もちろん配布後であっても...!
+require('electron-debug')({ enabled: true })
+
 if (
   process.env.NODE_ENV === 'development' ||
   process.env.DEBUG_PROD === 'true'
 ) {
-  require('electron-debug')()
   const path = require('path')
   const p = path.join(__dirname, '..', 'app', 'node_modules')
   require('module').globalPaths.push(p)
@@ -26,12 +33,14 @@ if (
 require('electron-context-menu')()
 
 const installExtensions = async () => {
-  const installer = require('electron-devtools-installer')
-  const forceDownload = Boolean(process.env.UPGRADE_EXTENSIONS)
+  const loadDevtool = require('electron-load-devtool')
   const extensions = ['REACT_DEVELOPER_TOOLS', 'REDUX_DEVTOOLS']
 
   return Promise.all(
-    extensions.map(name => installer.default(installer[name], forceDownload))
+    // chromeにreact&redux devtoolを開発者が入れておく必要がある
+    // 個別のアプリごとにインストールするライブラリもあるが、確実に有利な点一つがある。
+    // 管理しなくても常に最新の開発者ツールを使えることだ
+    extensions.map(name => loadDevtool(loadDevtool[name], { enabled: true }))
   ).catch(console.log)
 }
 
@@ -96,28 +105,31 @@ app.on('activate', () => {
 })
 
 app.on('ready', async () => {
-  if (
-    process.env.NODE_ENV === 'development' ||
-    process.env.DEBUG_PROD === 'true'
-  ) {
-    await installExtensions()
-  }
+  // if (
+  // process.env.NODE_ENV === 'development' ||
+  // process.env.DEBUG_PROD === 'true'
+  // ) {
+  await installExtensions()
+  // }
 
   mainWindow = createMainWindow()
   mainWindow.show()
   mainWindow.focus()
 
-  const page = mainWindow.webContents
-
   electron.Menu.setApplicationMenu(appMenu)
+
+  autoUpdater.checkForUpdates()
 
   ipcMain.on('tweet', (ev, url) => {
     openTweet(url)
   })
+})
 
-  app.on('before-quit', () => {
-    page.send('save')
-  })
+autoUpdater.on('update-downloaded', () => {
+  setTimeout(() => {
+    autoUpdater.quitAndInstall()
+    app.quit()
+  }, 2000)
 })
 
 function openTweet(url: string) {

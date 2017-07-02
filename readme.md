@@ -1,4 +1,4 @@
-<h1 align=center><img src="static/Icon.png" width=50/> Pixiv Deck</h1>
+<h1 align=center><img src="res/Icon.png" width=50/> Pixiv Deck</h1>
 
 
 > :two_hearts: :two_hearts: pixiv client for Desktop like TweetDeck :two_hearts: :two_hearts:
@@ -54,7 +54,7 @@ Built with [Electron](http://electron.atom.io/).
 Only MacOS.
 
 ```
-$ yarn dev
+$ npm run dev
 ```
 
 ## Build
@@ -62,31 +62,15 @@ $ yarn dev
 Build renderer process and main process.
 
 ```
-$ yarn run build
+$ npm run build
 ```
 
 ## Package
 Package for your OS.
 
 ```
-$ yarn run pack:macos
-$ yarn run pack:windows
-$ yarn run pack:linux
+$ npm run package
 ```
-
-Package all(MacOS).
-
-```
-$ brew install wine
-$ yarn run pack
-```
-
-remove release directory && Package all && zip all.
-
-```
-$ yarn run release
-```
-
 
 ## Related
 

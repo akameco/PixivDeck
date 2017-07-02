@@ -2,9 +2,9 @@
 import React from 'react'
 import type { User } from 'types/user'
 import type { Illust } from 'types/illust'
+import FollowButton from 'containers/FollowButton'
 import Avater from 'components/Avater'
-import FollowButton from 'components/FollowButton'
-import Profile from 'components/Box/header/Profile'
+import Profile from 'components/Profile'
 import Wrap from './Wrap'
 import ImageWrap from './ImageWrap'
 import Top from './Top'
@@ -17,9 +17,6 @@ export type Props = {
 }
 
 const UserPopover = ({ user, onClick, illusts }: Props) => {
-  const Images = illusts.map(v =>
-    <img key={v.id} src={v.imageUrls.squareMedium} width={150} height={150} />
-  )
   return (
     <Wrap>
       <Top>
@@ -38,7 +35,15 @@ const UserPopover = ({ user, onClick, illusts }: Props) => {
         <FollowButton user={user} />
       </Top>
       <ImageWrap>
-        {Images}
+        {illusts.length > 0 &&
+          illusts.map(v =>
+            <img
+              key={v.id}
+              src={v.imageUrls.squareMedium}
+              width={150}
+              height={150}
+            />
+          )}
       </ImageWrap>
     </Wrap>
   )

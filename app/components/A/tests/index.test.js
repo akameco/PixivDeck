@@ -1,6 +1,11 @@
+/**
+ * @jest-environment node
+*/
+// @flow
 import React from 'react'
 import { shallow } from 'enzyme'
-import { shallowToJson } from 'enzyme-to-json'
+import toJson from 'enzyme-to-json'
+import 'jest-styled-components'
 
 import A from '../'
 
@@ -49,5 +54,5 @@ test('adopt a type attribute', () => {
 
 test('snapshot', () => {
   const c = renderComponent()
-  expect(shallowToJson(c)).toMatchSnapshot()
+  expect(toJson(c)).toMatchStyledComponentsSnapshot()
 })

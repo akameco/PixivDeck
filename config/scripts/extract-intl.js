@@ -2,7 +2,7 @@
 const extractMessages = require('extract-react-intl-messages')
 
 const locales = ['en', 'ja']
-const files = 'app/**/!(*.test).js'
+const files = 'app/**/messages.js'
 const buildDir = 'app/translations'
 const opts = {
   defaultLocale: 'ja',
