@@ -7,9 +7,6 @@ import { takeLatest } from 'redux-saga/effects'
 function* removeCache() {
   try {
     clean()
-    // TODO とりあえずローディング
-    // まあstoreを初期化するのがベストか
-    location.reload()
   } catch (err) {}
 }
 

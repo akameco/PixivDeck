@@ -133,21 +133,15 @@ export default class SettingFilterModal extends Component {
           </SelectField>
         </Card>
         <LimitSetting />
-        <Card>
+        {/* <Card>
           <RedText onClick={this.props.onRemoveCache}>
             <FormattedMessage {...messages.cache} />
           </RedText>
-        </Card>
+        </Card> */}
       </Wrap>
     )
   }
 }
-
-const RedText = styled.p`
-  color: red;
-  cursor: pointer;
-  font-size: 0.8rem;
-`
 
 const ChipWrap = styled.div`
   display: flex;
