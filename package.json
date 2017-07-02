@@ -3,7 +3,10 @@
   "productName": "PixivDeck",
   "version": "0.12.1",
   "description": "pixiv client for desktop",
-  "keywords": ["electron", "pixiv"],
+  "keywords": [
+    "electron",
+    "pixiv"
+  ],
   "author": "akameco <akameco.t@gmail.com>",
   "license": "MIT",
   "main": "main.js",
@@ -32,7 +35,9 @@
     "build-storybook": "build-storybook"
   },
   "stylelint": {
-    "processors": ["stylelint-processor-styled-components"],
+    "processors": [
+      "stylelint-processor-styled-components"
+    ],
     "extends": "stylelint-config-standard",
     "syntax": "scss",
     "rules": {
@@ -50,6 +55,7 @@
     "localforage": "^1.5.0",
     "lodash": "^4.17.4",
     "material-ui": "^0.18.5",
+    "ms": "^2.0.0",
     "normalizr": "^3.2.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",

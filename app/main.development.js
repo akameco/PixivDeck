@@ -5,6 +5,8 @@ import { autoUpdater } from 'electron-updater'
 import log from 'electron-log'
 import appMenu from './menu'
 
+const ms = require('ms')
+
 autoUpdater.logger = log
 autoUpdater.logger.transports.file.level = 'info'
 
@@ -129,7 +131,26 @@ autoUpdater.on('update-downloaded', () => {
   setTimeout(() => {
     autoUpdater.quitAndInstall()
     app.quit()
-  }, 2000)
+  }, ms('5s'))
+})
+
+autoUpdater.on('checking-for-update', () => {
+  log.info('Checking for update...')
+})
+autoUpdater.on('update-available', (ev, info) => {
+  log.info(`Update available.${info}`)
+})
+autoUpdater.on('update-not-available', (ev, info) => {
+  log.info(`Update not available.\n${info}`)
+})
+autoUpdater.on('error', (ev, err) => {
+  log.info(`Error in auto-updater.\n${err}`)
+})
+autoUpdater.on('download-progress', () => {
+  log.info('Download progress...')
+})
+autoUpdater.on('update-downloaded', () => {
+  log.info('Update downloaded; will install in 5 seconds')
 })
 
 function openTweet(url: string) {
