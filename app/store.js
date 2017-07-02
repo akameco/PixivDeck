@@ -3,9 +3,24 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import { persistStore, autoRehydrate } from 'redux-persist'
 import localForage from 'localforage'
-import reducer from 'reducers'
 import type { Store } from 'types'
+import reducer from './reducer'
 import mySaga from './sagas'
+
+const whitelist = [
+  'Table',
+  'ColumnManager',
+  'ColumnRanking',
+  'ColumnRankingR18',
+  'ColumnBookmark',
+  'ColumnFollow',
+  'ColumnUserIllust',
+  'ColumnSearch',
+  'Language',
+  'LoginModal',
+  'ModalManeger',
+  'SettingModal',
+]
 
 export default function configureStore(initialState: ?Object): Store {
   const middleware = []
@@ -23,29 +38,15 @@ export default function configureStore(initialState: ?Object): Store {
 
   persistStore(store, {
     storage: localForage,
-    // TODO 移動
-    whitelist: [
-      'Table',
-      'ColumnManager',
-      'ColumnRanking',
-      'ColumnRankingR18',
-      'ColumnBookmark',
-      'ColumnFollow',
-      'ColumnUserIllust',
-      'ColumnSearch',
-      'Language',
-      'LoginModal',
-      'ModalManeger',
-      'SettingModal',
-    ],
+    whitelist,
   })
 
   sagaMiddleware.run(mySaga)
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
-    module.hot.accept('./reducers', () => {
-      const nextRootReducer = require('./reducers').default
+    module.hot.accept('./reducer', () => {
+      const nextRootReducer = require('./reducer')
 
       store.replaceReducer(nextRootReducer)
     })
