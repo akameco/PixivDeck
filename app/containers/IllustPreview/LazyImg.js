@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from 'react'
+import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import CloseButton from 'components/common/CloseButton'
 import { LazyImgWrapper as Wrapper } from './styles'
@@ -26,9 +26,24 @@ function calcSize(width: number, height: number): Size {
   return { width, height }
 }
 
+function calcMarginTop(node: HTMLElement): number {
+  if (!node) {
+    return 10
+  }
+
+  const height = node && node.clientHeight
+
+  if (window.innerHeight > height) {
+    const top = (window.innerHeight - height) / 2
+    return top
+  }
+
+  return 10
+}
+
 type Props = {
   from: string,
-  to: string,
+  original: string,
   width: number,
   height: number,
   isLoaded: boolean,
@@ -42,7 +57,7 @@ type State = {
   toMarginTop: number,
 }
 
-export default class LazyImg extends Component {
+export default class LazyImg extends React.PureComponent {
   props: Props
   to: HTMLElement
   from: HTMLElement
@@ -52,56 +67,24 @@ export default class LazyImg extends Component {
     toMarginTop: 0,
   }
 
-  componentDidMount() {
-    if (this.to && this.from) {
-      const to = this.calcMarginTop(this.to)
-      const from = this.calcMarginTop(this.from)
-      this.setState({
-        toMarginTop: to,
-        fromMarginTop: from,
-      })
-    }
-  }
-
-  componentWillUpdate(nextProps: Props, nextState: State) {
-    const to = this.calcMarginTop(this.to)
-    const from = this.calcMarginTop(this.from)
-    if (
-      this.props.isLoaded !== nextProps.isLoaded ||
-      nextState.isClicked !== this.state.isClicked ||
-      nextState.fromMarginTop !== from ||
-      nextState.toMarginTop !== to
-    ) {
-      this.setState({
-        toMarginTop: to,
-        fromMarginTop: from,
-      })
-    }
-  }
-
   handleLoad = () => {
+    this.setState({
+      fromMarginTop: calcMarginTop(this.from),
+    })
+
     const img = new Image()
-    const { to, onLoad } = this.props
+
     img.onload = () => {
-      onLoad()
+      this.props.onLoad()
+      this.setState({
+        toMarginTop: calcMarginTop(this.to),
+      })
     }
-    img.src = to
+
+    img.src = this.props.original
   }
 
-  // eslint-disable-next-line
-  calcMarginTop(node: ?Element | Text): number {
-    if (node && node instanceof Element) {
-      const height = node && node.clientHeight
-      if (window.innerHeight > height) {
-        const top = (window.innerHeight - height) / 2
-        return top
-      }
-    }
-    return 0
-  }
-
-  handleClick = (event: SyntheticEvent) => {
-    // eslint-disable-line no-undef
+  handleClick = (event: Event) => {
     event.stopPropagation()
     this.setState({ isClicked: !this.state.isClicked })
   }
@@ -120,7 +103,7 @@ export default class LazyImg extends Component {
             onClick={onClose}
           />
           <Img
-            src={this.props.to}
+            src={this.props.original}
             width={width}
             height={height}
             marginTop={this.state.toMarginTop}

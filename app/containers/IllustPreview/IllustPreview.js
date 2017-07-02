@@ -32,7 +32,7 @@ export default class IllustPreview extends React.PureComponent {
       <StyledPreview onClick={this.handleOnClose}>
         <LazyImg
           from={from}
-          to={to}
+          original={to}
           width={width}
           height={height}
           isLoaded={this.props.isLoaded}
