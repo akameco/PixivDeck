@@ -1,7 +1,12 @@
 /* eslint global-require: 0, flowtype-errors/show-errors: 0, camelcase: 1 */
 import electron from 'electron'
 import referer from 'electron-referer'
+import { autoUpdater } from 'electron-updater'
+import log from 'electron-log'
 import appMenu from './menu'
+
+autoUpdater.logger = log
+autoUpdater.logger.transports.file.level = 'info'
 
 const Config = require('electron-config')
 
@@ -111,17 +116,20 @@ app.on('ready', async () => {
   mainWindow.show()
   mainWindow.focus()
 
-  const page = mainWindow.webContents
-
   electron.Menu.setApplicationMenu(appMenu)
+
+  autoUpdater.checkForUpdates()
 
   ipcMain.on('tweet', (ev, url) => {
     openTweet(url)
   })
+})
 
-  app.on('before-quit', () => {
-    page.send('save')
-  })
+autoUpdater.on('update-downloaded', () => {
+  setTimeout(() => {
+    autoUpdater.quitAndInstall()
+    app.quit()
+  }, 2000)
 })
 
 function openTweet(url: string) {
