@@ -1,5 +1,5 @@
 // @flow
-import { handleRehydrate } from '../../services/reydrate'
+import { handleRehydrate } from 'util/handleReydrate'
 import type { Action } from './actionTypes'
 import * as Actions from './constants'
 import { REHYDRATE } from 'redux-persist/constants'
