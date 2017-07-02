@@ -1,11 +1,7 @@
 components:
-  Column:
+  ColumnHeaderBookmark:
     bookmarkFilter: ブックマークフィルタ
-  FollowButton:
-    follow: フォローする
-    following: フォロー中
-    unFollow: フォロー解除
-  Header:
+  Dropdown:
     logout: ログアウト
     setting: 設定
   LoginModal:
@@ -17,11 +13,6 @@ components:
     addColumn: カラムに追加
     tabIllust: 'イラスト ({count})'
     tabManga: 'マンガ ({count})'
-  ColumnHeaderBookmark:
-    bookmarkFilter: ブックマークフィルタ
-  Dropdown:
-    logout: ログアウト
-    setting: 設定
 containers:
   AddColumnModal:
     header: 追加するカラムを選択
@@ -31,21 +22,6 @@ containers:
     public: 公開
     private: 非公開
     new: 新着
-  SearchField:
-    search: 検索
-    keywordSearch: キーワード検索
-    users: users入り
-  SettingModal:
-    tagFilter: タグフィルター
-    uiSetting: UI 設定
-    showCaption: キャプションを表示
-    showOnlyImg: 画像のみ表示
-    limit: 閲覧制限
-    r18Link: pixiv - R-18設定
-    r18FilterDesc: |-
-      R-18タグをフィルターするのがもっとも簡単です。
-      どうしても閲覧制限を設定はpixivのサイト上にて変更する必要があります。
-    language: 言語
   AddNewColumnButton:
     addColumn: カラムに追加
   ColumnBookmark:
@@ -72,3 +48,19 @@ containers:
     follow: フォローする
     following: フォロー中
     unFollow: フォロー解除
+  SearchField:
+    search: 検索
+    keywordSearch: キーワード検索
+    users: users入り
+  SettingModal:
+    tagFilter: タグフィルター
+    uiSetting: UI 設定
+    showCaption: キャプションを表示
+    showOnlyImg: 画像のみ表示
+    limit: 閲覧制限
+    r18Link: pixiv - R-18設定
+    r18FilterDesc: |-
+      R-18タグをフィルターするのがもっとも簡単です。
+      どうしても閲覧制限を設定はpixivのサイト上にて変更する必要があります。
+    language: 言語
+    cache: キャッシュを削除
