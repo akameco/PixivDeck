@@ -13,11 +13,13 @@ if (process.env.NODE_ENV === 'production') {
   sourceMapSupport.install()
 }
 
+// 常にbeta版なのでいついかなる時でもデバック可能なのだ...!もちろん配布後であっても...!
+require('electron-debug')({ enabled: true })
+
 if (
   process.env.NODE_ENV === 'development' ||
   process.env.DEBUG_PROD === 'true'
 ) {
-  require('electron-debug')()
   const path = require('path')
   const p = path.join(__dirname, '..', 'app', 'node_modules')
   require('module').globalPaths.push(p)
@@ -30,7 +32,10 @@ const installExtensions = async () => {
   const extensions = ['REACT_DEVELOPER_TOOLS', 'REDUX_DEVTOOLS']
 
   return Promise.all(
-    extensions.map(name => loadDevtool(loadDevtool[name]))
+    // chromeにreact&redux devtoolを開発者が入れておく必要がある
+    // 個別のアプリごとにインストールするライブラリもあるが、確実に有利な点一つがある。
+    // 管理しなくても常に最新の開発者ツールを使えることだ
+    extensions.map(name => loadDevtool(loadDevtool[name], { enabled: true }))
   ).catch(console.log)
 }
 
@@ -95,12 +100,12 @@ app.on('activate', () => {
 })
 
 app.on('ready', async () => {
-  if (
-    process.env.NODE_ENV === 'development' ||
-    process.env.DEBUG_PROD === 'true'
-  ) {
-    await installExtensions()
-  }
+  // if (
+  // process.env.NODE_ENV === 'development' ||
+  // process.env.DEBUG_PROD === 'true'
+  // ) {
+  await installExtensions()
+  // }
 
   mainWindow = createMainWindow()
   mainWindow.show()
