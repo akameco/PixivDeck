@@ -15,6 +15,7 @@ import SearchField from 'containers/SearchField/saga'
 import UserPopoverContainer from 'containers/UserPopoverContainer/saga'
 import LoginModal from 'containers/LoginModal/saga'
 import BoxContainer from 'containers/BoxContainer/saga'
+import SettingModal from 'containers/SettingModal/saga'
 
 function* root(): Generator<*, void, void> {
   yield all([
@@ -32,6 +33,7 @@ function* root(): Generator<*, void, void> {
     fork(UserPopoverContainer),
     fork(LoginModal),
     fork(BoxContainer),
+    fork(SettingModal),
   ])
 }
 

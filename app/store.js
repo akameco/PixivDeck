@@ -22,6 +22,8 @@ const whitelist = [
   'SettingModal',
 ]
 
+let persistor
+
 export default function configureStore(initialState: ?Object): Store {
   const middleware = []
 
@@ -36,12 +38,12 @@ export default function configureStore(initialState: ?Object): Store {
 
   const store = createStore(reducer, initialState, enhancer)
 
-  persistStore(store, {
+  sagaMiddleware.run(mySaga)
+
+  persistor = persistStore(store, {
     storage: localForage,
     whitelist,
   })
-
-  sagaMiddleware.run(mySaga)
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
@@ -53,4 +55,10 @@ export default function configureStore(initialState: ?Object): Store {
   }
 
   return store
+}
+
+export function clean() {
+  if (persistor) {
+    persistor.purge()
+  }
 }

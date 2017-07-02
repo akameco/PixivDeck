@@ -19,6 +19,7 @@ export type Props = {
   onCheckShowText: (isShow: boolean) => void,
   onCheckIllustOnly: (isShow: boolean) => void,
   onSelectLanguage: (locale: string) => void,
+  onRemoveCache: Function,
   tags: Array<string>,
   isShowCaption: boolean,
   isIllustOnly: boolean,
@@ -135,10 +136,21 @@ export default class SettingFilterModal extends Component {
           </SelectField>
         </Card>
         <LimitSetting />
+        <Card>
+          <RedText onClick={this.props.onRemoveCache}>
+            <FormattedMessage {...messages.cache} />
+          </RedText>
+        </Card>
       </Wrap>
     )
   }
 }
+
+const RedText = styled.p`
+  color: red;
+  cursor: pointer;
+  font-size: 0.8rem;
+`
 
 const ChipWrap = styled.div`
   display: flex;

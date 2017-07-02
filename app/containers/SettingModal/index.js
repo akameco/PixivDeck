@@ -9,6 +9,7 @@ import {
   setShowOnlyIllust,
   addTagFilter,
   removeTagFilter,
+  removeCache,
 } from './actions'
 import Modal from './SettingModal'
 import type { Props } from './SettingModal'
@@ -31,9 +32,12 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   onSelectLanguage: (locale: string) => dispatch(changeLocale(locale)),
   onCheckShowText: (show: boolean) => dispatch(setShowCaption(show)),
   onCheckIllustOnly: (show: boolean) => dispatch(setShowOnlyIllust(show)),
+  onRemoveCache() {
+    dispatch(removeCache())
+  },
 })
 
-const connector: Connector<*, Props> = connect(
+const connector: Connector<{}, Props> = connect(
   mapStateToProps,
   mapDispatchToProps
 )

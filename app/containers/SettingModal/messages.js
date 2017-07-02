@@ -11,4 +11,5 @@ export default defineMessages({
   r18FilterDesc:
     'R-18タグをフィルターするのがもっとも簡単です。\nどうしても閲覧制限を設定はpixivのサイト上にて変更する必要があります。',
   language: '言語',
+  cache: 'キャッシュを削除',
 })
