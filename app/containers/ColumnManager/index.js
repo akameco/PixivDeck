@@ -3,44 +3,71 @@ import React from 'react'
 import { connect, type Connector } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import { removeTable } from 'containers/Table/actions'
+import scrollToTopBind, { type HandleHeaderClick } from 'util/scrollToTopBind'
 import ColumnRanking from '../ColumnRanking'
 import ColumnRankingR18 from '../ColumnRankingR18'
 import ColumnBookmark from '../ColumnBookmark'
 import ColumnFollow from '../ColumnFollow'
 import ColumnUserIllust from '../ColumnUserIllust'
 import ColumnSearch from '../ColumnSearch'
-import type { ColumnId as RankingId } from '../ColumnRanking/reducer'
-import type { ColumnId as RankingR18Id } from '../ColumnRankingR18/reducer'
-import type { ColumnManagerId, ColumnId, ColumnType } from './reducer'
+import type { ColumnManagerId, ColumnType } from './reducer'
 import { makeSelectColumnId, makeSelectType } from './selectors'
 
 export type Props = {
-  columnId: RankingId | RankingR18Id | ColumnId,
+  id: any, // TODO
   type: ColumnType,
   onClose: () => void,
 }
 
-function ColumnManager({ columnId, type, onClose }: Props) {
-  if (type === 'RANKING') {
-    // TODO 型がうまく扱えない
-    // $FlowFixMe
-    return <ColumnRanking id={columnId} onClose={onClose} />
-  } else if (type === 'RANKING_R18') {
-    // $FlowFixMe
-    return <ColumnRankingR18 id={columnId} onClose={onClose} />
-  } else if (type === 'BOOKMARK') {
-    // $FlowFixMe
-    return <ColumnBookmark id={columnId} onClose={onClose} />
-  } else if (type === 'FOLLOW') {
-    // $FlowFixMe
-    return <ColumnFollow id={columnId} onClose={onClose} />
-  } else if (type === 'USER_ILLUST') {
-    // $FlowFixMe
-    return <ColumnUserIllust id={columnId} onClose={onClose} />
-  } else if (type === 'SEARCH') {
-    return <ColumnSearch id={columnId} onClose={onClose} />
+type State = {
+  onHeaderClick: HandleHeaderClick,
+}
+
+export type ColumnProps = {
+  onHeaderClick: HandleHeaderClick,
+  setNode: () => void,
+  onClose: () => void,
+}
+
+class ColumnManager extends React.PureComponent {
+  props: Props
+  state: State = { onHeaderClick: () => {} }
+
+  setNode = node => {
+    if (node) {
+      this.setState({ onHeaderClick: scrollToTopBind(node) })
+    }
   }
-  return null
+
+  render() {
+    const { type, ...rest } = this.props
+
+    if (type === 'RANKING') {
+      // TODO 型がうまく扱えない
+      // $FlowFixMe
+      return <ColumnRanking {...rest} {...this.state} setNode={this.setNode} />
+    } else if (type === 'RANKING_R18') {
+      return (
+        // $FlowFixMe
+        <ColumnRankingR18 {...rest} {...this.state} setNode={this.setNode} />
+      )
+    } else if (type === 'BOOKMARK') {
+      // $FlowFixMe
+      return <ColumnBookmark {...rest} {...this.state} setNode={this.setNode} />
+    } else if (type === 'FOLLOW') {
+      // $FlowFixMe
+      return <ColumnFollow {...rest} {...this.state} setNode={this.setNode} />
+    } else if (type === 'USER_ILLUST') {
+      return (
+        // $FlowFixMe
+        <ColumnUserIllust {...rest} {...this.state} setNode={this.setNode} />
+      )
+    } else if (type === 'SEARCH') {
+      // $FlowFixMe
+      return <ColumnSearch {...rest} {...this.state} setNode={this.setNode} />
+    }
+    return null
+  }
 }
 
 type OP = {
@@ -48,7 +75,7 @@ type OP = {
 }
 
 const mapStateToProps = createStructuredSelector({
-  columnId: makeSelectColumnId(),
+  id: makeSelectColumnId(),
   type: makeSelectType(),
 })
 

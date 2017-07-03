@@ -9,7 +9,7 @@ import IllustList from 'components/IllustList'
 import ColumnRoot from 'components/ColumnRoot'
 import ColumnBody from 'components/ColumnBody'
 import ColumnHeader from 'components/ColumnHeader'
-import scrollToTopBind, { type HandleHeaderClick } from 'util/scrollToTopBind'
+import type { ColumnProps } from '../ColumnManager'
 import type { ColumnId } from './reducer'
 import { makeSelectIllusts, makeSelectUser } from './selectors'
 import * as actions from './actions'
@@ -23,27 +23,26 @@ type Props = {
   user: User,
   onFetch: () => void,
   onNext: () => void,
-  onClose: () => void,
-} & OP
+} & OP &
+  ColumnProps
 
 class ColumnUserIllust extends React.Component {
   props: Props
-  node: HTMLElement
-  handleHeaderClick: HandleHeaderClick
 
   componentWillMount() {
     this.props.onFetch()
   }
 
-  _setNode = node => {
-    if (node) {
-      this.node = node
-      this.handleHeaderClick = scrollToTopBind(this.node)
-    }
-  }
-
   render() {
-    const { illusts, id, onClose, onNext, user } = this.props
+    const {
+      illusts,
+      id,
+      onClose,
+      onNext,
+      user,
+      onHeaderClick,
+      setNode,
+    } = this.props
 
     const name = user && user.name
 
@@ -59,12 +58,12 @@ class ColumnUserIllust extends React.Component {
         <ColumnHeader
           name={name}
           onClose={onClose}
-          onTopClick={this.handleHeaderClick}
+          onTopClick={onHeaderClick}
         />
         <ColumnBody isLoading={illusts.length <= 0}>
           <IllustList
             id={String(id)}
-            node={this._setNode}
+            node={setNode}
             hasMore={hasMore}
             illusts={illusts}
             onNext={onNext}
