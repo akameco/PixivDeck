@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import styled from 'styled-components'
-import Icon from 'components/common/Icon'
+import MangaIcon from 'components/Icons/MangaIcon'
 
 declare class IntersectionObserver {
   observe: Function,
@@ -108,7 +108,7 @@ export default class LazyLoadImg extends React.PureComponent {
     const { isVisible, isLoaded } = this.state
     return (
       <StyledImg innerRef={this.setNode}>
-        {isManga && <Icon type="manga" color="#fff" />}
+        {isManga && <MangaIcon color="#fff" />}
         {isVisible && isLoaded
           ? <img src={src} onClick={onClick} />
           : <img height={300} />}
