@@ -39,7 +39,9 @@ install:
 
 script:
 - npm run test
-- npm run release
+
+after_success:
+  - npm run release
 
 branches:
   except:
