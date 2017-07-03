@@ -37,7 +37,9 @@ const scrollTop = (node: HTMLElement, callback?: Function) => {
   step()
 }
 
-const scrollToTopFactory = (node: HTMLElement, fn?: Function) => (e: Event) => {
+const scrollToTopFactory = (node: HTMLElement, fn?: Function) => (
+  e: Event
+): void => {
   e.preventDefault()
 
   if (!node) {

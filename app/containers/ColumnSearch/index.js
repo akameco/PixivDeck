@@ -8,8 +8,8 @@ import IllustList from 'components/IllustList'
 import ColumnRoot from 'components/ColumnRoot'
 import ColumnBody from 'components/ColumnBody'
 import ColumnHeader from 'components/ColumnHeader'
-import scrollToTopBind, { type HandleHeaderClick } from 'util/scrollToTopBind'
 import ColumnHeaderBookmark from 'components/ColumnHeaderBookmark'
+import type { ColumnProps } from '../ColumnManager'
 import type { ColumnId } from './reducer'
 import * as selectors from './selectors'
 import * as actions from './actions'
@@ -24,24 +24,16 @@ type Props = {
   hasMore: boolean,
   onFetch: () => void,
   onNext: () => void,
-  onClose: () => void,
   setMinBookmarks: number => void,
-} & OP
+} & OP &
+  ColumnProps
 
 class ColumnSearch extends React.PureComponent {
   props: Props
   node: HTMLElement
-  handleHeaderClick: HandleHeaderClick
 
   componentWillMount() {
     this.props.onFetch()
-  }
-
-  _setNode = node => {
-    if (node) {
-      this.node = node
-      this.handleHeaderClick = scrollToTopBind(this.node)
-    }
   }
 
   render() {
@@ -53,15 +45,13 @@ class ColumnSearch extends React.PureComponent {
       minBookmarks,
       setMinBookmarks,
       hasMore,
+      onHeaderClick,
+      setNode,
     } = this.props
 
     return (
       <ColumnRoot>
-        <ColumnHeader
-          name={id}
-          onClose={onClose}
-          onTopClick={this.handleHeaderClick}
-        >
+        <ColumnHeader name={id} onClose={onClose} onTopClick={onHeaderClick}>
           <ColumnHeaderBookmark
             id={id}
             minBookmarks={minBookmarks}
@@ -71,7 +61,7 @@ class ColumnSearch extends React.PureComponent {
         <ColumnBody isLoading={illusts.length <= 0}>
           <IllustList
             id={String(id)}
-            node={this._setNode}
+            node={setNode}
             hasMore={hasMore}
             illusts={illusts}
             onNext={onNext}

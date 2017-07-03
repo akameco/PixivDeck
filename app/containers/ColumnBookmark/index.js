@@ -7,9 +7,9 @@ import type { Dispatch } from 'types'
 import type { Illust } from 'types/illust'
 import IllustList from 'components/IllustList'
 import ColumnRoot from 'components/ColumnRoot'
-import ColumnBody from 'components/ColumnBody'
 import ColumnHeader from 'components/ColumnHeader'
-import scrollToTopBind, { type HandleHeaderClick } from 'util/scrollToTopBind'
+import ColumnBody from 'components/ColumnBody'
+import type { ColumnProps } from '../ColumnManager'
 import type { ColumnId } from './reducer'
 import { makeSelectIllusts } from './selectors'
 import * as actions from './actions'
@@ -23,31 +23,30 @@ type Props = {
   illusts: Array<Illust>,
   onFetch: () => void,
   onNext: () => void,
-  onClose: () => void,
-} & OP
+} & OP &
+  ColumnProps
 
 type InjectProp = {
   intl: IntlShape,
 }
 
-class ColumnBookMark extends React.Component {
+class ColumnBookMark extends React.PureComponent {
   props: Props & InjectProp
-  node: HTMLElement
-  handleHeaderClick: HandleHeaderClick
 
   componentWillMount() {
     this.props.onFetch()
   }
 
-  _setNode = node => {
-    if (node) {
-      this.node = node
-      this.handleHeaderClick = scrollToTopBind(this.node)
-    }
-  }
-
   render() {
-    const { illusts, id, onClose, onNext, intl } = this.props
+    const {
+      illusts,
+      id,
+      onClose,
+      onNext,
+      intl,
+      onHeaderClick,
+      setNode,
+    } = this.props
 
     // TODO リミットをstoreに保存
     const hasMore = illusts.length < 200
@@ -57,12 +56,12 @@ class ColumnBookMark extends React.Component {
         <ColumnHeader
           name={intl.formatMessage(messages[id])}
           onClose={onClose}
-          onTopClick={this.handleHeaderClick}
+          onTopClick={onHeaderClick}
         />
         <ColumnBody isLoading={illusts.length <= 0}>
           <IllustList
             id={id}
-            node={this._setNode}
+            node={setNode}
             hasMore={hasMore}
             illusts={illusts}
             onNext={onNext}

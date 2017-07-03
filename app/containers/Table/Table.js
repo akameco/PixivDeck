@@ -6,7 +6,7 @@ import ColumnManager, {
 } from 'containers/ColumnManager'
 
 export type Props = {
-  ids: Array<$PropertyType<ManegerProps, 'columnId'>>,
+  ids: Array<$PropertyType<ManegerProps, 'id'>>,
 }
 
 const Table = ({ ids }: Props) => {
