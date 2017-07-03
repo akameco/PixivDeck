@@ -108,7 +108,7 @@ export default class LazyLoadImg extends React.PureComponent {
     const { isVisible, isLoaded } = this.state
     return (
       <StyledImg innerRef={this.setNode}>
-        {isManga && <Icon type="manga" color="#fff" />}
+        {isManga && isLoaded && <Icon type="manga" color="#fff" />}
         {isVisible && isLoaded
           ? <img src={src} onClick={onClick} />
           : <img height={300} />}
