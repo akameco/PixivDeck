@@ -1,14 +1,15 @@
 /* eslint global-require: 0, flowtype-errors/show-errors: 0, camelcase: 1 */
 import electron from 'electron'
 import referer from 'electron-referer'
-import { autoUpdater } from 'electron-updater'
-import log from 'electron-log'
 import appMenu from './menu'
 
-const ms = require('ms')
+const { autoUpdater } = require('electron-updater')
+const log = require('electron-log')
 
 autoUpdater.logger = log
 autoUpdater.logger.transports.file.level = 'info'
+
+const ms = require('ms')
 
 const Config = require('electron-config')
 
@@ -44,6 +45,15 @@ const installExtensions = async () => {
     // 管理しなくても常に最新の開発者ツールを使えることだ
     extensions.map(name => loadDevtool(loadDevtool[name], { enabled: true }))
   ).catch(console.log)
+}
+
+if (process.env.NODE_ENV === 'production') {
+  autoUpdater.on('update-downloaded', () => {
+    setTimeout(() => {
+      autoUpdater.quitAndInstall()
+      app.quit()
+    }, ms('5s'))
+  })
 }
 
 const config = new Config({
@@ -120,21 +130,14 @@ app.on('ready', async () => {
 
   electron.Menu.setApplicationMenu(appMenu)
 
-  autoUpdater.checkForUpdates()
+  if (process.env.production) {
+    autoUpdater.checkForUpdates()
+  }
 
   ipcMain.on('tweet', (ev, url) => {
     openTweet(url)
   })
 })
-
-if (process.env.NODE_ENV === 'production') {
-  autoUpdater.on('update-downloaded', () => {
-    setTimeout(() => {
-      autoUpdater.quitAndInstall()
-      app.quit()
-    }, ms('5s'))
-  })
-}
 
 function openTweet(url: string) {
   const tweetWin = new BrowserWindow({ width: 600, height: 400 })
