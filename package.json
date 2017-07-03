@@ -130,6 +130,7 @@
     "jest": "^20.0.4",
     "jest-cli": "^20.0.4",
     "jest-styled-components": "^3.1.5",
+    "jest-yaml-flat-transfrom": "^0.1.0",
     "json-loader": "^0.5.4",
     "prettier": "^1.5.2",
     "react-addons-test-utils": "^15.6.0",
