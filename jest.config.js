@@ -5,6 +5,7 @@ module.exports = {
   moduleFileExtensions: ['js', 'json'],
   transform: {
     '^.+\\.js$': 'babel-jest',
+    '^.+\\.yml$': 'jest-yaml-flat-transfrom',
   },
   moduleNameMapper: {
     '^styles/(.*)$': '<rootDir>/app/styles/$1.js',
