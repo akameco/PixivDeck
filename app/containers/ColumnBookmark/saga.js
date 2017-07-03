@@ -4,6 +4,7 @@ import { addColumn } from 'containers/ColumnManager/actions'
 import { makeSelectInfo } from 'containers/LoginModal/selectors'
 import { getToken } from 'containers/LoginModal/saga'
 import { getRequest, fetchAuth } from 'services/api'
+import { ADD_BOOKMARK_SUCCESS } from '../BookmarkButton/constants'
 import * as Actions from './constants'
 import * as actions from './actions'
 import type { Action } from './actionTypes'
@@ -69,8 +70,14 @@ function* fetchNextBookmark(action: Action) {
   }
 }
 
+function* reloadBookmakColumns(action: { +restrict: ColumnId }) {
+  // TOOD Tabelにある場合のみ更新する
+  yield put(actions.fetchBookmark(action.restrict))
+}
+
 export default function* root(): Generator<*, void, void> {
   yield takeEvery(Actions.ADD_BOOKMARK_COLUMN, addBookmarkColumn)
   yield takeEvery(Actions.FETCH_BOOKMARK, fetchBookmark)
   yield takeEvery(Actions.FETCH_NEXT_BOOKMARK, fetchNextBookmark)
+  yield takeEvery(ADD_BOOKMARK_SUCCESS, reloadBookmakColumns)
 }

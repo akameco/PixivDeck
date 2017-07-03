@@ -23,8 +23,7 @@ function* bookmark({ id, restrict }: Props) {
       accessToken
     )
 
-    yield put(actions.addBookmarkSuccess(id))
-    // TODO Boxの情報を更新し表示をフォロー状態にする
+    yield put(actions.addBookmarkSuccess(id, restrict))
   } catch (err) {
     yield put(actions.addBookmarkFailer(id, err))
   }

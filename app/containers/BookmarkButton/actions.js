@@ -15,10 +15,11 @@ export function addBookmarkRequest(id: number, restrict: Restrict): Action {
   }
 }
 
-export function addBookmarkSuccess(id: number): Action {
+export function addBookmarkSuccess(id: number, restrict: Restrict): Action {
   return {
     type: ADD_BOOKMARK_SUCCESS,
     id,
+    restrict,
   }
 }
 
