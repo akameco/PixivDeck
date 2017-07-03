@@ -13,7 +13,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production electron ./app/",
     "dev": "cross-env START_HOT=1 npm run hot-updates-server",
-    "test": "npm run format && npm run jest",
+    "test": "npm run jest",
     "test:watch": "cross-env NODE_ENV=test jest --watch",
     "jest": "cross-env NODE_ENV=test jest",
     "format": "node config/scripts/format.js",
