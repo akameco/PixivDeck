@@ -9,6 +9,7 @@ const PASSWORD: ?string = process.env.PASSWORD
 
 describe('API', () => {
   if (!(USERNAME && PASSWORD)) {
+    test.skip('skip api test')
     return
   }
 
