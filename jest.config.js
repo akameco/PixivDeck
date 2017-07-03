@@ -3,7 +3,6 @@
 module.exports = {
   modulePaths: ['/app'],
   moduleFileExtensions: ['js', 'json'],
-  modulesDirectories: ['app'],
   transform: {
     '^.+\\.js$': 'babel-jest',
   },
