@@ -72,4 +72,4 @@ containers:
       It is easiest to filter R-18 tags.
       Inevitably you need to change browsing restrictions on pixiv's site.
     language: language
-    cache: 'delete cache (unsafe)'
+    cache: delete cache (unsafe)
