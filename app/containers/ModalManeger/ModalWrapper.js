@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react'
 import EventListener from 'react-event-listener'
-import handleEscCreater from 'util/handleEscCreater'
+import handleEscCreater from 'utils/handleEscCreater'
 import Overlay from 'components/Overlay'
 import CloseButton from 'components/common/CloseButton'
 import { Content, Wrap } from './sytles'

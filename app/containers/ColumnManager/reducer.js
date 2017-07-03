@@ -1,5 +1,5 @@
 // @flow
-import update from 'util/update'
+import update from 'utils/update'
 import type { Action } from './actionTypes'
 import * as Actions from './constants'
 
