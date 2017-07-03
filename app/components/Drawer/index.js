@@ -21,7 +21,7 @@ class Drawer extends React.PureComponent<DefaultProps, Props, void> {
   props: Props
 
   static defaultProps: DefaultProps = {
-    width: 600,
+    width: 500,
   }
 
   handleKeyUp = handleEscCreater(this.props.onRequestClose)
