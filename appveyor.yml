@@ -21,5 +21,3 @@ test_script:
 
 build_script:
   - npm run release
-
-test: off
