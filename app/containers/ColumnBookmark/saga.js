@@ -6,6 +6,7 @@ import { getToken } from 'containers/LoginModal/saga'
 import { getRequest, fetchAuth } from 'services/api'
 import * as Actions from './constants'
 import * as actions from './actions'
+import type { Action } from './actionTypes'
 import type { ColumnId } from './reducer'
 import { makeSelectColumn, makeSelectIds } from './selectors'
 import { put, select, call, takeEvery } from 'redux-saga/effects'
@@ -19,11 +20,9 @@ function* addBookmarkColumn({ id }: { id: ColumnId }) {
   yield put(addColumn(`bookmark-${id}`, { columnId: id, type: 'BOOKMARK' }))
 }
 
-type Props = { id: ColumnId }
-
-function* fetchBookmark(props: Props) {
-  const { id } = props
-  const { illustIds } = yield select(makeSelectColumn(), props)
+function* fetchBookmark(action: Action) {
+  const { id } = action
+  const { illustIds } = yield select(makeSelectColumn(), action)
 
   try {
     const info = yield select(makeSelectInfo())
@@ -47,9 +46,9 @@ function* fetchBookmark(props: Props) {
   }
 }
 
-function* fetchNextBookmark(props: Props) {
-  const { id } = props
-  const { illustIds, nextUrl } = yield select(makeSelectColumn(), props)
+function* fetchNextBookmark(action: Action) {
+  const { id } = action
+  const { illustIds, nextUrl } = yield select(makeSelectColumn(), action)
 
   try {
     if (!nextUrl) {
