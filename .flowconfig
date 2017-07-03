@@ -44,6 +44,6 @@ module.name_mapper='^types$' -> '<PROJECT_ROOT>/app/types'
 module.name_mapper='^services/\(.*\)$' -> '<PROJECT_ROOT>/app/services/\1'
 module.name_mapper='^services$' -> '<PROJECT_ROOT>/appconstans/services'
 
-module.name_mapper='^util/\(.*\)$' -> '<PROJECT_ROOT>/app/util/\1'
+module.name_mapper='^utils/\(.*\)$' -> '<PROJECT_ROOT>/app/utils/\1'
 
 module.name_mapper='^styles/\(.*\)$' -> '<PROJECT_ROOT>/app/styles/\1'

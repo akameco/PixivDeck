@@ -2,7 +2,7 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 import EventListener from 'react-event-listener'
-import handleEscCreater from 'util/handleEscCreater'
+import handleEscCreater from 'utils/handleEscCreater'
 import Item from './Item'
 import { H, Wrap } from './styles'
 import messages from './messages'

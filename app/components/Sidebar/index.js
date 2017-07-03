@@ -2,7 +2,7 @@
 import React from 'react'
 import EventListener from 'react-event-listener'
 import SearchField from 'containers/SearchField'
-import handleEscCreater from 'util/handleEscCreater'
+import handleEscCreater from 'utils/handleEscCreater'
 import HeaderButton from './HeaderButton'
 import HeaderBottom from './HeaderBottom'
 import { SearchWrap, Wrap } from './styles'
