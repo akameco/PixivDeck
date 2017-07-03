@@ -1,4 +1,5 @@
 // @flow
+import ms from 'ms'
 import { delay } from 'redux-saga'
 import { union } from 'lodash'
 import { addColumn } from 'containers/ColumnManager/actions'
@@ -8,11 +9,10 @@ import * as Actions from './constants'
 import * as actions from './actions'
 import type { ColumnId } from './reducer'
 import * as selectors from './selectors'
+import type { Action } from './actionTypes'
 import { put, select, call, takeEvery } from 'redux-saga/effects'
 
-type Props = { id: ColumnId }
-
-function* addSearchColumn({ id }: Props) {
+function* addSearchColumn({ id }: Action) {
   const ids: Array<?ColumnId> = yield select(selectors.makeSelectIds())
   if (ids.every(v => v !== id)) {
     yield put(actions.addColumnSuccess(id))
@@ -26,14 +26,18 @@ function* addSearchColumn({ id }: Props) {
   )
 }
 
-function* fetchSearch(props: Props): Generator<*, void, *> {
-  const { id } = props
+function createEndpoint(id) {
+  return `/v1/search/illust?word=${id}&search_target=partial_match_for_tags&sort=date_desc`
+}
+
+function* fetchSearch(action: Action): Generator<*, void, *> {
+  const { id } = action
   try {
     const { illustIds, nextUrl } = yield select(
       selectors.makeSelectColumn(),
-      props
+      action
     )
-    const hasMore = yield select(selectors.makeSelectHasMore(), props)
+    const hasMore = yield select(selectors.makeSelectHasMore(), action)
 
     // nullのチェックではない
     if (hasMore === false) {
@@ -42,32 +46,34 @@ function* fetchSearch(props: Props): Generator<*, void, *> {
 
     const accessToken = yield call(getToken)
 
-    const endpoint = nextUrl
-      ? nextUrl
-      : `/v1/search/illust?word=${id}&search_target=partial_match_for_tags&sort=date_desc`
+    const endpoint = nextUrl ? nextUrl : createEndpoint(id)
 
     const response = yield call(getRequest, endpoint, null, accessToken)
     const { result } = response
 
     yield put(actions.setNextUrl(id, result.nextUrl))
-
     const nextIds = union(illustIds, result.illusts)
-    yield put(actions.fetchSuccess(id, response, nextIds))
+
+    if (nextUrl) {
+      yield put(actions.fetchNextSuccess(id, response, nextIds))
+    } else {
+      yield put(actions.fetchSuccess(id, response, nextIds))
+    }
   } catch (err) {
     yield put(actions.fetchFailre(id, err))
   }
 }
 
-function* fetchUntilLimit(props: Props): Generator<*, void, *> {
+function* fetchUntilLimit(action: Action): Generator<*, void, *> {
   try {
-    const initLen: number = yield select(selectors.makeIllustLength(), props)
+    const initLen: number = yield select(selectors.makeIllustLength(), action)
 
     while (true) {
-      yield call(fetchSearch, props)
+      yield call(fetchSearch, action)
 
-      const len = yield select(selectors.makeIllustLength(), props)
+      const len = yield select(selectors.makeIllustLength(), action)
 
-      const nextUrl = yield select(selectors.makeSelectNextUrl(), props)
+      const nextUrl = yield select(selectors.makeSelectNextUrl(), action)
 
       if (!nextUrl) {
         return
@@ -81,12 +87,51 @@ function* fetchUntilLimit(props: Props): Generator<*, void, *> {
       yield call(delay, 200)
     }
   } catch (err) {
-    yield put(actions.fetchFailre(props.id, err))
+    yield put(actions.fetchNewFailre(action.id, err))
+  }
+}
+
+function* fetchNew(action: Action): Generator<*, number, *> {
+  try {
+    const { illustIds, interval } = yield select(
+      selectors.makeSelectColumn(),
+      action
+    )
+
+    const endpoint = createEndpoint(action.id)
+
+    const accessToken = yield call(getToken)
+    const response = yield call(getRequest, endpoint, null, accessToken)
+    const { result } = response
+
+    const nextIds = union(result.illusts, illustIds)
+    yield put(actions.fetchNewSuccess(action.id, response, nextIds))
+    return interval
+  } catch (err) {
+    yield put(actions.fetchNewFailre(action.id, err))
+  }
+  return ms('5m')
+}
+
+// TODO キャンセル
+function* fetchNewWatch(action: Action) {
+  try {
+    while (true) {
+      const interval = yield call(fetchNew, action)
+      yield delay(interval)
+    }
+  } catch (err) {
+    // TODO エラーハンドリング
+    console.log(err)
   }
 }
 
 export default function* root(): Generator<*, void, void> {
   yield takeEvery(Actions.ADD_COLUMN, addSearchColumn)
+
   yield takeEvery(Actions.FETCH, fetchUntilLimit)
   yield takeEvery(Actions.FETCH_NEXT, fetchUntilLimit)
+
+  yield takeEvery(Actions.FETCH_SUCCESS, fetchNewWatch)
+  yield takeEvery(Actions.FETCH_NEW, fetchNewWatch)
 }

@@ -14,7 +14,12 @@ export type FETCH_NEXT_TYPE = 'ColumnSearch/FETCH_NEXT_USER_ILLUST'
 export type FETCH_NEXT_SUCCESS_TYPE = 'ColumnSearch/FETCH_NEXT_SUCCESS'
 export type FETCH_NEXT_FAILRE_TYPE = 'ColumnSearch/FETCH_NEXT_FAILRE'
 
+export type FETCH_NEW_TYPE = 'ColumnSearch/FETCH_USER_NEW_ILLUST'
+export type FETCH_NEW_SUCCESS_TYPE = 'ColumnSearch/FETCH_NEW_SUCCESS'
+export type FETCH_NEW_FAILRE_TYPE = 'ColumnSearch/FETCH_NEW_FAILRE'
+
 export type SET_MIN_BOOKBOOK_TYPE = 'ColumnSearch/SET_MIN_BOOKBOOK'
+export type SET_INTERVAL_TYPE = 'ColumnSearch/SET_INTERVAL'
 
 export type Action =
   | {|
@@ -22,12 +27,16 @@ export type Action =
         | ADD_COLUMN_TYPE
         | ADD_COLUMN_SUCCESS_TYPE
         | FETCH_TYPE
+        | FETCH_NEW_TYPE
         | FETCH_NEXT_TYPE,
       +id: ColumnId,
     |}
   | {| +type: SET_NEXT_URL_TYPE, +id: ColumnId, +nextUrl: string |}
   | {|
-      +type: FETCH_SUCCESS_TYPE | FETCH_NEXT_SUCCESS_TYPE,
+      +type:
+        | FETCH_SUCCESS_TYPE
+        | FETCH_NEXT_SUCCESS_TYPE
+        | FETCH_NEW_SUCCESS_TYPE,
       +id: ColumnId,
       +response: Response,
       +ids: Array<number>,
@@ -38,7 +47,12 @@ export type Action =
       +minBookmarks: number,
     |}
   | {|
-      +type: FETCH_FAILRE_TYPE | FETCH_NEXT_FAILRE_TYPE,
+      +type: SET_INTERVAL_TYPE,
+      +id: ColumnId,
+      +interval: number,
+    |}
+  | {|
+      +type: FETCH_FAILRE_TYPE | FETCH_NEXT_FAILRE_TYPE | FETCH_NEW_FAILRE_TYPE,
       +id: ColumnId,
       +error: string,
     |}
