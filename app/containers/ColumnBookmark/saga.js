@@ -4,8 +4,10 @@ import { addColumn } from 'containers/ColumnManager/actions'
 import { makeSelectInfo } from 'containers/LoginModal/selectors'
 import { getToken } from 'containers/LoginModal/saga'
 import { getRequest, fetchAuth } from 'services/api'
+import { ADD_BOOKMARK_SUCCESS } from '../BookmarkButton/constants'
 import * as Actions from './constants'
 import * as actions from './actions'
+import type { Action } from './actionTypes'
 import type { ColumnId } from './reducer'
 import { makeSelectColumn, makeSelectIds } from './selectors'
 import { put, select, call, takeEvery } from 'redux-saga/effects'
@@ -19,11 +21,9 @@ function* addBookmarkColumn({ id }: { id: ColumnId }) {
   yield put(addColumn(`bookmark-${id}`, { columnId: id, type: 'BOOKMARK' }))
 }
 
-type Props = { id: ColumnId }
-
-function* fetchBookmark(props: Props) {
-  const { id } = props
-  const { illustIds } = yield select(makeSelectColumn(), props)
+function* fetchBookmark(action: Action) {
+  const { id } = action
+  const { illustIds } = yield select(makeSelectColumn(), action)
 
   try {
     const info = yield select(makeSelectInfo())
@@ -47,9 +47,9 @@ function* fetchBookmark(props: Props) {
   }
 }
 
-function* fetchNextBookmark(props: Props) {
-  const { id } = props
-  const { illustIds, nextUrl } = yield select(makeSelectColumn(), props)
+function* fetchNextBookmark(action: Action) {
+  const { id } = action
+  const { illustIds, nextUrl } = yield select(makeSelectColumn(), action)
 
   try {
     if (!nextUrl) {
@@ -70,8 +70,14 @@ function* fetchNextBookmark(props: Props) {
   }
 }
 
+function* reloadBookmakColumns(action: { +restrict: ColumnId }) {
+  // TOOD Tabelにある場合のみ更新する
+  yield put(actions.fetchBookmark(action.restrict))
+}
+
 export default function* root(): Generator<*, void, void> {
   yield takeEvery(Actions.ADD_BOOKMARK_COLUMN, addBookmarkColumn)
   yield takeEvery(Actions.FETCH_BOOKMARK, fetchBookmark)
   yield takeEvery(Actions.FETCH_NEXT_BOOKMARK, fetchNextBookmark)
+  yield takeEvery(ADD_BOOKMARK_SUCCESS, reloadBookmakColumns)
 }
