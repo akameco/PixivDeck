@@ -16,6 +16,9 @@ install:
   - npm install
   - npm install electron-builder@next --dev # force install next version to test electron-builder
 
+test_script:
+  - npm run test
+
 build_script:
   - npm run release
 
