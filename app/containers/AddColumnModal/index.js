@@ -1,6 +1,5 @@
 // @flow
 import { connect, type Connector } from 'react-redux'
-// import type { Connector } from 'react-redux'
 import type { Dispatch } from 'types'
 import { addRankingColumn } from 'containers/ColumnRanking/actions'
 import type { Mode } from 'containers/ColumnRanking/reducer'

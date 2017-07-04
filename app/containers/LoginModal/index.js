@@ -4,18 +4,13 @@ import { createStructuredSelector } from 'reselect'
 import LoginModal, { type Props } from 'components/LoginModal'
 import type { Dispatch } from 'types'
 import { loginRequest } from './actions'
-import {
-  makeSelectIsLoading,
-  makeSelectIsLoginFailure,
-  makeSelectPassword,
-  makeSelectUsername,
-} from './selectors'
+import * as selectors from './selectors'
 
 const mapStateToProps = createStructuredSelector({
-  username: makeSelectUsername(),
-  password: makeSelectPassword(),
-  isLoading: makeSelectIsLoading(),
-  isLoginFailure: makeSelectIsLoginFailure(),
+  username: selectors.makeSelectUsername(),
+  password: selectors.makeSelectPassword(),
+  isLoading: selectors.makeSelectIsLoading(),
+  isLoginFailure: selectors.makeSelectIsLoginFailure(),
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
