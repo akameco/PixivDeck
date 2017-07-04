@@ -22,6 +22,7 @@ containers:
     public: 公開
     private: 非公開
     new: 新着
+    history: 閲覧履歴
   AddNewColumnButton:
     addColumn: カラムに追加
   ColumnBookmark:
@@ -64,3 +65,5 @@ containers:
       どうしても閲覧制限を設定はpixivのサイト上にて変更する必要があります。
     language: 言語
     cache: キャッシュを削除
+  ColumnHistory:
+    title: 閲覧履歴
