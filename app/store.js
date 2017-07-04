@@ -6,6 +6,7 @@ import localForage from 'localforage'
 import type { Store } from 'types'
 import reducer from './reducer'
 import mySaga from './sagas'
+import { version } from './package.json'
 
 let persistor
 
@@ -28,6 +29,7 @@ export default function configureStore(initialState: Object = {}): Store {
   persistor = persistStore(store, {
     storage: localForage,
     blacklist: ['IllustById', 'UserById'],
+    keyPrefix: `PixivDeck-v${version}`,
   })
 
   if (module.hot) {
