@@ -41,8 +41,8 @@ script:
 - npm run test
 
 deploy:
-  - provider: script
-    script: npm run release
-    on:
-      tags: true
-      all_branches: true
+  provider: script
+  script: npm run release
+  on:
+    tags: true
+    all_branches: true
