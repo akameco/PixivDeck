@@ -1,5 +1,7 @@
 // @flow
 import { union } from 'lodash'
+import { handleRehydrate } from 'utils/handleReydrate'
+import { REHYDRATE } from 'redux-persist/constants'
 import type { Action } from './actionTypes'
 import * as Actions from './constants'
 
@@ -20,6 +22,14 @@ export default function(
   switch (action.type) {
     case Actions.ADD_HISTORY:
       return { illustIds: union([action.id], state.illustIds) }
+    case REHYDRATE: {
+      // $FlowFixMe
+      const oldState: State = action.payload.ColumnHistory
+      if (oldState) {
+        return { illustIds: [] }
+      }
+      return state
+    }
     default:
       return state
   }
