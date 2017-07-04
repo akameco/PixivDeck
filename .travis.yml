@@ -41,4 +41,4 @@ script:
 - npm run test
 
 after_success:
-  - [ ! -z "$TRAVIS_TAG" ] && npm run release
+  [ ! -z "$TRAVIS_TAG" ] && npm run release
