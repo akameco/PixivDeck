@@ -1,9 +1,9 @@
 // @flow
 import update from 'utils/update'
+import { REHYDRATE } from 'redux-persist/constants'
 import { handleRehydrate } from 'utils/handleReydrate'
 import type { Action } from './actionTypes'
 import * as Actions from './constants'
-import { REHYDRATE } from 'redux-persist/constants'
 
 export type Restrict = 'public' | 'private'
 
