@@ -16,6 +16,7 @@ import ColumnRanking from 'containers/ColumnRanking/reducer'
 import ColumnRankingR18 from 'containers/ColumnRankingR18/reducer'
 import ColumnBookmark from 'containers/ColumnBookmark/reducer'
 import ColumnFollow from 'containers/ColumnFollow/reducer'
+import ColumnHistory from 'containers/ColumnHistory/reducer'
 import ColumnUserIllust from 'containers/ColumnUserIllust/reducer'
 import ColumnSearch from 'containers/ColumnSearch/reducer'
 import SearchField from 'containers/SearchField/reducer'
@@ -42,6 +43,7 @@ export default combineReducers({
   ColumnBookmark,
   ColumnFollow,
   ColumnUserIllust,
+  ColumnHistory,
   ColumnSearch,
   SearchField,
 })

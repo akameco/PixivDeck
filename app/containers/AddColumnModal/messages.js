@@ -9,4 +9,5 @@ export default defineMessages({
   public: '公開',
   private: '非公開',
   new: '新着',
+  history: '閲覧履歴',
 })

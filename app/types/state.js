@@ -1,6 +1,7 @@
 // @flow
 import type { State as ColumnBookmarkState } from '../containers/ColumnBookmark/reducer'
 import type { State as ColumnFollowState } from '../containers/ColumnFollow/reducer'
+import type { State as ColumnHistoryState } from '../containers/ColumnHistory/reducer'
 import type { State as ColumnManagerState } from '../containers/ColumnManager/reducer'
 import type { State as ColumnRankingState } from '../containers/ColumnRanking/reducer'
 import type { State as ColumnRankingR18State } from '../containers/ColumnRankingR18/reducer'
@@ -24,6 +25,7 @@ import type { State as UserPopoverContainerState } from '../containers/UserPopov
 export type State = {
   ColumnBookmark: ColumnBookmarkState,
   ColumnFollow: ColumnFollowState,
+  ColumnHistory: ColumnHistoryState,
   ColumnManager: ColumnManagerState,
   ColumnRankingR18: ColumnRankingR18State,
   ColumnRanking: ColumnRankingState,

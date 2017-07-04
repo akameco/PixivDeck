@@ -10,6 +10,7 @@ import ColumnBookmark from '../ColumnBookmark'
 import ColumnFollow from '../ColumnFollow'
 import ColumnUserIllust from '../ColumnUserIllust'
 import ColumnSearch from '../ColumnSearch'
+import ColumnHistory from '../ColumnHistory'
 import type { ColumnManagerId, ColumnType } from './reducer'
 import { makeSelectColumnId, makeSelectType } from './selectors'
 
@@ -65,6 +66,9 @@ class ColumnManager extends React.PureComponent {
     } else if (type === 'SEARCH') {
       // $FlowFixMe
       return <ColumnSearch {...rest} {...this.state} setNode={this.setNode} />
+    } else if (type === 'HISTORY') {
+      // $FlowFixMe
+      return <ColumnHistory {...rest} {...this.state} setNode={this.setNode} />
     }
     return null
   }

@@ -16,6 +16,7 @@ import UserPopoverContainer from 'containers/UserPopoverContainer/saga'
 import LoginModal from 'containers/LoginModal/saga'
 import BoxContainer from 'containers/BoxContainer/saga'
 import SettingModal from 'containers/SettingModal/saga'
+import ColumnHistory from 'containers/ColumnHistory/saga'
 
 function* root(): Generator<*, void, void> {
   yield all([
@@ -34,6 +35,7 @@ function* root(): Generator<*, void, void> {
     fork(LoginModal),
     fork(BoxContainer),
     fork(SettingModal),
+    fork(ColumnHistory),
   ])
 }
 

@@ -7,12 +7,16 @@ import type { Mode } from 'containers/ColumnRanking/reducer'
 import { addRankingR18Column } from 'containers/ColumnRankingR18/actions'
 import { addBookmarkColumn } from 'containers/ColumnBookmark/actions'
 import { addFollowColumn } from 'containers/ColumnFollow/actions'
+import { addColumnHistory } from 'containers/ColumnHistory/actions'
 import type { R18Mode } from 'containers/ColumnRankingR18/reducer'
 import Modal from './AddColumnModal'
 import type { Props } from './AddColumnModal'
 
 // TODO bindActionCreaterでいい
 const mapDispatchToProps = (dispatch: Dispatch) => ({
+  addHistory() {
+    dispatch(addColumnHistory())
+  },
   addBookmark() {
     dispatch(addBookmarkColumn('public'))
   },
