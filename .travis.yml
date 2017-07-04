@@ -46,7 +46,3 @@ deploy:
     on:
       tags: true
       all_branches: true
-
-branches:
-  except:
-    - "/^v\\d+\\.\\d+\\.\\d+$/"
