@@ -41,6 +41,7 @@ function Box(props: Props) {
   return (
     <BoxWrapper onContextMenu={onContextMenu} data-id={id}>
       {!isIllustOnly &&
+        isShowCaption &&
         <BoxHeader
           user={user}
           illust={illust}
