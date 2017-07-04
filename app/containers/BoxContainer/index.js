@@ -67,8 +67,8 @@ type OP = {
 const mapStateToProps = createStructuredSelector({
   illust: makeSelectIllust(),
   user: selectors.makeSelectUser(),
-  isIllustOnly: selectors.makeSelectIsIllustOnly(),
-  isShowCaption: selectors.makeSelectIsShowOnlyIllust(),
+  isShowCaption: selectors.makeSelectIsIllustOnly(),
+  isIllustOnly: selectors.makeSelectIsShowOnlyIllust(),
 })
 
 const mapDispatchToProps = (dispatch: Dispatch, { id }) => {
