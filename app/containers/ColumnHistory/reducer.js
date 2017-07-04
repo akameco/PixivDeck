@@ -1,6 +1,5 @@
 // @flow
 import { union } from 'lodash'
-import { handleRehydrate } from 'utils/handleReydrate'
 import { REHYDRATE } from 'redux-persist/constants'
 import type { Action } from './actionTypes'
 import * as Actions from './constants'
