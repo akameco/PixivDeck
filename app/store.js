@@ -7,21 +7,6 @@ import type { Store } from 'types'
 import reducer from './reducer'
 import mySaga from './sagas'
 
-const whitelist = [
-  'Table',
-  'ColumnManager',
-  'ColumnRanking',
-  'ColumnRankingR18',
-  'ColumnBookmark',
-  'ColumnFollow',
-  'ColumnUserIllust',
-  'ColumnSearch',
-  'Language',
-  'LoginModal',
-  'ModalManeger',
-  'SettingModal',
-]
-
 let persistor
 
 export default function configureStore(initialState: Object = {}): Store {
@@ -42,7 +27,7 @@ export default function configureStore(initialState: Object = {}): Store {
 
   persistor = persistStore(store, {
     storage: localForage,
-    whitelist,
+    blacklist: ['IllustById', 'UserById'],
   })
 
   if (module.hot) {
