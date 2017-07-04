@@ -40,8 +40,12 @@ install:
 script:
 - npm run test
 
-after_success:
-  - npm run release
+deploy:
+  - provider: script
+    script: npm run release
+    on:
+      tags: true
+      all_branches: true
 
 branches:
   except:

@@ -21,3 +21,5 @@ test_script:
 
 build_script:
   - npm run release
+
+skip_non_tags: true
