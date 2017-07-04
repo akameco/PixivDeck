@@ -25,10 +25,10 @@ const Table = ({ ids, setTabel }: Props) => {
   const panes = ids.map(id =>
     <Pane
       key={id}
-      width={300}
+      width={280}
       id={id}
       height="100%"
-      isResizable={{ x: false, y: false, xy: false }}
+      isResizable={{ x: true, y: false, xy: false }}
     >
       <ColumnManager id={id} />
     </Pane>

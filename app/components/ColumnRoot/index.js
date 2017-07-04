@@ -7,7 +7,6 @@ const View = styled.div`
   margin: 0;
   width: 100%;
   height: calc(100% - 2px);
-  min-width: 300px;
   max-height: 100vh;
   overflow-x: hidden;
   overflow-y: hidden;
