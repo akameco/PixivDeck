@@ -1,19 +1,25 @@
 // @flow
 import React from 'react'
 import { SortablePane, Pane } from 'react-sortable-pane'
-import ColumnManager, {
-  type Props as ManegerProps,
-} from 'containers/ColumnManager'
+import ColumnManager from '../ColumnManager'
+import type { TableIds } from './reducer'
+import typeof { setTable } from './actions'
 
 export type Props = {
-  ids: Array<$PropertyType<ManegerProps, 'id'>>,
+  ids: TableIds,
+  setTabel: setTable,
 }
 
-const Table = ({ ids }: Props) => {
+const Table = ({ ids, setTabel }: Props) => {
   const handleOnResize = () => null
 
   if (ids.length === 0) {
     return null
+  }
+
+  const handleOrderChange = (_, panes) => {
+    const newState = panes.map(v => v.id)
+    setTabel(newState)
   }
 
   const panes = ids.map(id =>
@@ -29,7 +35,11 @@ const Table = ({ ids }: Props) => {
   )
 
   return (
-    <SortablePane disableEffect onResize={handleOnResize}>
+    <SortablePane
+      disableEffect
+      onResize={handleOnResize}
+      onOrderChange={handleOrderChange}
+    >
       {panes}
     </SortablePane>
   )
