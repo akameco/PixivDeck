@@ -9,11 +9,11 @@ type Props = {
 }
 
 const Name = styled(A)`
-	color: #74787c;
-	line-height: 1;
-	margin-left: 0.5rem;
-	font-size: 0.9rem;
-	margin-right: 5px;
+  color: #74787c;
+  line-height: 1;
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+  margin-right: 5px;
 `
 
 const Line = styled.p`margin: 0;`

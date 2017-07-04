@@ -3,7 +3,7 @@ import React from 'react'
 import { StyledTag } from './styles'
 
 export type Props = {
-  onClick: (tag: string) => void,
+  onClick: string => void,
   name: string,
 }
 
