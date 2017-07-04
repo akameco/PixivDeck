@@ -12,6 +12,7 @@ export type ColumnType =
   | 'FOLLOW'
   | 'USER_ILLUST'
   | 'SEARCH'
+  | 'HISTORY'
 
 export type ColumnManager = {
   columnId: ColumnId,

@@ -43,6 +43,8 @@ import type { Action as ColumnSearchAction } from './containers/ColumnSearch/act
 
 import type { Action as SearchFieldAction } from './containers/SearchField/actionTypes'
 
+import type { Action as ColumnHistoryAction } from './containers/ColumnHistory/actionTypes'
+
 export type Action =
   | UserPopoverContainerAction
   | LanguageAction
@@ -66,3 +68,4 @@ export type Action =
   | ColumnUserIllustAction
   | ColumnSearchAction
   | SearchFieldAction
+  | ColumnHistoryAction

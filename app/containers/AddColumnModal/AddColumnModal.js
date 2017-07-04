@@ -16,6 +16,7 @@ export type Props = {
   addBookmarkPrivate: () => void,
   addFollow: () => void,
   addFollowPrivate: () => void,
+  addHistory: () => void,
   addIllustRanking: (mode: Mode) => void,
   addIllustR18Ranking: (mode: R18Mode) => void,
 }
@@ -61,7 +62,13 @@ function SelectColumnModal(props: Props & { intl: IntlShape }) {
     )
   })
 
-  const { addBookmark, addBookmarkPrivate, addFollow, addFollowPrivate } = props
+  const {
+    addBookmark,
+    addBookmarkPrivate,
+    addFollow,
+    addFollowPrivate,
+    addHistory,
+  } = props
 
   return (
     <Wrap>
@@ -69,8 +76,11 @@ function SelectColumnModal(props: Props & { intl: IntlShape }) {
         <FormattedMessage {...messages.header} />
       </Header>
       <Content>
-        <Card title={<FormattedMessage {...messages.ranking} />}>
-          {IllustRankingLinks}
+        <Card title={<FormattedMessage {...messages.history} />}>
+          <LinkButton
+            text={<FormattedMessage {...messages.history} />}
+            onClick={addHistory}
+          />
         </Card>
         <Card title={<FormattedMessage {...messages.bookmark} />}>
           <LinkButton
@@ -91,6 +101,9 @@ function SelectColumnModal(props: Props & { intl: IntlShape }) {
             text={<FormattedMessage {...messages.private} />}
             onClick={addFollowPrivate}
           />
+        </Card>
+        <Card title={<FormattedMessage {...messages.ranking} />}>
+          {IllustRankingLinks}
         </Card>
         <Card title={<FormattedMessage {...messages.r18ranking} />}>
           {IllustR18RankingLinks}
