@@ -24,7 +24,7 @@ const whitelist = [
 
 let persistor
 
-export default function configureStore(initialState: ?Object): Store {
+export default function configureStore(initialState: Object = {}): Store {
   const middleware = []
 
   const sagaMiddleware = createSagaMiddleware()
@@ -50,6 +50,7 @@ export default function configureStore(initialState: ?Object): Store {
     module.hot.accept('./reducer', () => {
       const nextRootReducer = require('./reducer')
 
+      // $FlowFixMe
       store.replaceReducer(nextRootReducer)
     })
   }
