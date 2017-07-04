@@ -40,5 +40,9 @@ install:
 script:
 - npm run test
 
-after_success:
-  - [ ! -z "$TRAVIS_TAG" ] && npm run release
+deploy:
+  provider: script
+  script: npm run release
+  on:
+    tags: true
+    all_branches: true
