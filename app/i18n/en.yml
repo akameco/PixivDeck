@@ -31,6 +31,7 @@ containers:
     public: Public
     private: Private
     new: new
+    history: History
   AddNewColumnButton:
     addColumn: Add Column
   ColumnBookmark:
@@ -39,6 +40,8 @@ containers:
   ColumnFollow:
     public: Public Following
     private: Private Following
+  ColumnHistory:
+    title: History
   ColumnRanking:
     day: Daily Rankings
     week: Weekly Rankings
