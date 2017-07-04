@@ -43,6 +43,7 @@ script:
 deploy:
   provider: script
   script: npm run release
+  skip_cleanup: true
   on:
     tags: true
     all_branches: true
