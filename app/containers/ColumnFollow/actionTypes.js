@@ -16,6 +16,10 @@ export type FETCH_NEXT_FOLLOW_SUCCESS_TYPE =
 export type FETCH_NEXT_FOLLOW_FAILRE_TYPE =
   'ColumnFollow/FETCH_NEXT_FOLLOW_FAILRE'
 
+export type FETCH_NEW_TYPE = 'ColumnFollow/FETCH_USER_NEW_ILLUST'
+export type FETCH_NEW_SUCCESS_TYPE = 'ColumnFollow/FETCH_NEW_SUCCESS'
+export type FETCH_NEW_FAILRE_TYPE = 'ColumnFollow/FETCH_NEW_FAILRE'
+
 export type Action =
   | {|
       +type:
@@ -23,14 +27,26 @@ export type Action =
         | ADD_FOLLOW_COLUMN_SUCCESS_TYPE
         | FETCH_FOLLOW_TYPE
         | FETCH_FOLLOW_FAILRE_TYPE
+        | FETCH_NEW_TYPE
         | FETCH_NEXT_FOLLOW_TYPE
         | FETCH_NEXT_FOLLOW_FAILRE_TYPE,
       +id: ColumnId,
     |}
   | {| +type: SET_NEXT_URL_TYPE, +id: ColumnId, +nextUrl: string |}
   | {|
-      +type: FETCH_FOLLOW_SUCCESS_TYPE | FETCH_NEXT_FOLLOW_SUCCESS_TYPE,
+      +type:
+        | FETCH_FOLLOW_SUCCESS_TYPE
+        | FETCH_NEXT_FOLLOW_SUCCESS_TYPE
+        | FETCH_NEW_SUCCESS_TYPE,
       +id: ColumnId,
       +response: Response,
       +ids: Array<number>,
+    |}
+  | {|
+      +type:
+        | FETCH_FOLLOW_FAILRE_TYPE
+        | FETCH_NEXT_FOLLOW_FAILRE_TYPE
+        | FETCH_NEW_FAILRE_TYPE,
+      +id: ColumnId,
+      +error: string,
     |}

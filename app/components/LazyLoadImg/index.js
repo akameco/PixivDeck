@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Icon from 'components/common/Icon'
 
 declare class IntersectionObserver {
+  constructor: Function,
   observe: Function,
   unobserve: Function,
 }
