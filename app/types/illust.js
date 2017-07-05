@@ -14,6 +14,10 @@ export type MetaPages = Array<{|
   |},
 |}>
 
+export type Tag = {|
+  name: string,
+|}
+
 export type Illust = {|
   id: number,
   title: string,
@@ -22,7 +26,7 @@ export type Illust = {|
   caption: string,
   restrict: number,
   user: number,
-  tags: Array<{ name: string }>,
+  tags: Array<Tag>,
   tools: Array<string>,
   createDate: string,
   pageCount: number,
@@ -36,6 +40,8 @@ export type Illust = {|
   totalBookmarks: number,
   isBookmarked: boolean,
   visible: boolean,
+  isMuted: boolean,
+  totalComments: number,
 |}
 
 type Key = number | string

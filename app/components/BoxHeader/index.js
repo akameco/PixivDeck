@@ -89,6 +89,35 @@ export default class BoxHeader extends React.PureComponent {
     }, delay)
   }
 
+  shouldComponentUpdate(nextProps: Props, nextState: State) {
+    // state
+    if (
+      nextState.focus !== this.state.focus ||
+      nextState.open !== this.state.open ||
+      nextState.anchorEl !== this.state.anchorEl
+    ) {
+      return true
+    }
+
+    if (nextProps.isShowCaption !== this.props.isShowCaption) {
+      return true
+    }
+
+    const { illust, user } = this.props
+    const nextIllust = nextProps.illust
+    const nextUser = nextProps.user
+
+    const { isBookmarked } = illust
+    if (nextIllust.isBookmarked !== isBookmarked) {
+      return true
+    }
+    if (nextUser.isFollowed !== user.isFollowed) {
+      return true
+    }
+
+    return false
+  }
+
   render() {
     const { illust, user, isShowCaption, onClick } = this.props
 
