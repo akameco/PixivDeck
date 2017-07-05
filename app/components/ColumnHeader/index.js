@@ -33,9 +33,10 @@ class ColumnHeader extends React.PureComponent {
       <Wrap>
         <Header>
           <Item onClick={this.handleClick}>
-            <IconButton>
-              <NavigationMenu color={'#999999'} />
-            </IconButton>
+            {children &&
+              <IconButton>
+                <NavigationMenu color={'#999999'} />
+              </IconButton>}
           </Item>
           <Title onClick={onTopClick}>
             {name}
