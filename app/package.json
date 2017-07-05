@@ -10,9 +10,6 @@
     "url": "akameco.github.io"
   },
   "main": "main.js",
-  "scripts": {
-    "postinstall": "npm rebuild --runtime=electron --target=1.6.1 --disturl=https://atom.io/download/atom-shell --build-from-source"
-  },
   "dependencies": {
     "electron-config": "^1.0.0",
     "electron-context-menu": "^0.9.1",
