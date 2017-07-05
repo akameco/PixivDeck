@@ -6,6 +6,7 @@ import { createStructuredSelector } from 'reselect'
 import type { Dispatch } from 'types'
 import type { Illust } from 'types/illust'
 import type { User } from 'types/user'
+import { injectIntl, type IntlShape } from 'react-intl'
 import { openDrawer } from 'containers/DrawerManager/actions'
 import { openIllustViewer } from 'containers/IllustPreview/actions'
 import { addColumn } from 'containers/ColumnSearch/actions'
@@ -28,7 +29,7 @@ type Props = {
 }
 
 class BoxContainer extends React.PureComponent {
-  props: Props
+  props: Props & { intl: IntlShape }
 
   handleTagClick = (tag: string) => {
     this.props.addColumnSearchIllust(tag)
@@ -37,9 +38,9 @@ class BoxContainer extends React.PureComponent {
   handleContextMenu = (e: Event) => {
     e.preventDefault()
 
-    const { dispatch, illust } = this.props
+    const { dispatch, illust, intl } = this.props
 
-    const menu = createMenu({ dispatch, illust })
+    const menu = createMenu({ dispatch, illust, intl })
     // $FlowFixMe
     menu.popup(remote.getCurrentWindow())
   }
@@ -94,4 +95,4 @@ const connector: Connector<OP, Props> = connect(
   mapStateToProps,
   mapDispatchToProps
 )
-export default connector(BoxContainer)
+export default connector(injectIntl(BoxContainer))

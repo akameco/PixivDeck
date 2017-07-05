@@ -34,6 +34,12 @@ containers:
     history: History
   AddNewColumnButton:
     addColumn: Add Column
+  BoxContainer:
+    save: Save Original Image
+    showUser: Show User Info
+    bookmark: Add Bookmark
+    privateBookmark: Add Private Bookmark
+    openPixiv: Open Pixiv Page
   ColumnBookmark:
     public: Public Bookmarks
     private: Private Bookmarks
