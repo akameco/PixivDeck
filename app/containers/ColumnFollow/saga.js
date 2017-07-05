@@ -1,4 +1,7 @@
 // @flow
+import { delay } from 'redux-saga'
+import { put, select, call, takeEvery } from 'redux-saga/effects'
+import ms from 'ms'
 import { union } from 'lodash'
 import { addColumn } from 'containers/ColumnManager/actions'
 import { makeSelectInfo } from 'containers/LoginModal/selectors'
@@ -8,7 +11,7 @@ import * as Actions from './constants'
 import * as actions from './actions'
 import type { ColumnId } from './reducer'
 import { makeSelectColumn, makeSelectIds } from './selectors'
-import { put, select, call, takeEvery } from 'redux-saga/effects'
+import * as selectors from './selectors'
 
 function* addFollowColumn({ id }: { id: ColumnId }) {
   const ids: Array<?ColumnId> = yield select(makeSelectIds())
@@ -19,12 +22,16 @@ function* addFollowColumn({ id }: { id: ColumnId }) {
   yield put(addColumn(`follow-${id}`, { columnId: id, type: 'FOLLOW' }))
 }
 
-type Props = { id: ColumnId }
+type Action = { id: ColumnId }
 
-function* fetchFollow(props: Props) {
-  const { id } = props
+function createEndpoint(userId, restrict) {
+  return `/v2/illust/follow?user_id=${userId}&restrict=${restrict}`
+}
+
+function* fetchFollow(action: Action) {
+  const { id } = action
   try {
-    const { illustIds } = yield select(makeSelectColumn(), props)
+    const { illustIds } = yield select(makeSelectColumn(), action)
 
     // TODO
     const info = yield select(makeSelectInfo())
@@ -43,14 +50,14 @@ function* fetchFollow(props: Props) {
     const nextIds = union(illustIds, result.illusts)
     yield put(actions.fetchFollowSuccess(id, response, nextIds))
   } catch (err) {
-    yield put(actions.fetchFollowFailre(id))
+    yield put(actions.fetchFollowFailre(id, err))
   }
 }
 
-function* fetchNextFollow(props: Props) {
-  const { id } = props
+function* fetchNextFollow(action: Action) {
+  const { id } = action
   try {
-    const { illustIds, nextUrl } = yield select(makeSelectColumn(), props)
+    const { illustIds, nextUrl } = yield select(makeSelectColumn(), action)
 
     if (!nextUrl) {
       return
@@ -64,9 +71,43 @@ function* fetchNextFollow(props: Props) {
     yield put(actions.setNextUrl(id, result.nextUrl))
 
     const nextIds = union(illustIds, result.illusts)
-    yield put(actions.fetchFollowSuccess(id, response, nextIds))
+    yield put(actions.fetchNextFollowSuccess(id, response, nextIds))
   } catch (err) {
-    yield put(actions.fetchNextFollowFailre(id))
+    yield put(actions.fetchNextFollowFailre(id, err))
+  }
+}
+
+function* fetchNew(action: Action): Generator<*, void, *> {
+  try {
+    const { illustIds } = yield select(selectors.makeSelectColumn(), action)
+
+    const info = yield select(makeSelectInfo())
+    const { accessToken, user: { id: userId } } = yield call(fetchAuth, info)
+
+    const endpoint = createEndpoint(userId, action.id)
+
+    const response = yield call(getRequest, endpoint, null, accessToken)
+    const { result } = response
+
+    const nextIds = union(result.illusts, illustIds)
+    yield put(actions.fetchNewSuccess(action.id, response, nextIds))
+  } catch (err) {
+    yield put(actions.fetchNewFailre(action.id, err))
+  }
+}
+
+// TODO キャンセル
+function* fetchNewWatch(action: Action) {
+  try {
+    while (true) {
+      const { interval } = yield select(selectors.makeSelectColumn(), action)
+      console.log(interval)
+      yield call(fetchNew, action)
+      yield call(delay, interval)
+    }
+  } catch (err) {
+    // TODO エラーハンドリング
+    console.log(err)
   }
 }
 
@@ -74,4 +115,6 @@ export default function* root(): Generator<*, void, void> {
   yield takeEvery(Actions.ADD_FOLLOW_COLUMN, addFollowColumn)
   yield takeEvery(Actions.FETCH_FOLLOW, fetchFollow)
   yield takeEvery(Actions.FETCH_NEXT_FOLLOW, fetchNextFollow)
+
+  yield takeEvery(Actions.FETCH_FOLLOW_SUCCESS, fetchNewWatch)
 }

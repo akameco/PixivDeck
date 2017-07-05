@@ -5,11 +5,14 @@ import {
   ADD_FOLLOW_COLUMN_SUCCESS,
   FETCH_FOLLOW,
   FETCH_FOLLOW_FAILRE,
+  FETCH_NEW,
   FETCH_NEXT_FOLLOW,
   FETCH_NEXT_FOLLOW_FAILRE,
   SET_NEXT_URL,
   FETCH_FOLLOW_SUCCESS,
   FETCH_NEXT_FOLLOW_SUCCESS,
+  FETCH_NEW_SUCCESS,
+  FETCH_NEW_FAILRE,
 } from './constants'
 import type { Response } from 'services/api'
 import type { ColumnId } from './reducer'
@@ -35,9 +38,17 @@ export function fetchFollow(id: ColumnId): Action {
   }
 }
 
-export function fetchFollowFailre(id: ColumnId): Action {
+export function fetchFollowFailre(id: ColumnId, error: string): Action {
   return {
     type: FETCH_FOLLOW_FAILRE,
+    id,
+    error,
+  }
+}
+
+export function fetchNew(id: ColumnId): Action {
+  return {
+    type: FETCH_NEW,
     id,
   }
 }
@@ -49,10 +60,11 @@ export function fetchNextFollow(id: ColumnId): Action {
   }
 }
 
-export function fetchNextFollowFailre(id: ColumnId): Action {
+export function fetchNextFollowFailre(id: ColumnId, error: string): Action {
   return {
     type: FETCH_NEXT_FOLLOW_FAILRE,
     id,
+    error,
   }
 }
 
@@ -87,5 +99,26 @@ export function fetchNextFollowSuccess(
     id,
     response,
     ids,
+  }
+}
+
+export function fetchNewSuccess(
+  id: ColumnId,
+  response: Response,
+  ids: Array<number>
+): Action {
+  return {
+    type: FETCH_NEW_SUCCESS,
+    id,
+    response,
+    ids,
+  }
+}
+
+export function fetchNewFailre(id: ColumnId, error: string): Action {
+  return {
+    type: FETCH_NEW_FAILRE,
+    id,
+    error,
   }
 }
