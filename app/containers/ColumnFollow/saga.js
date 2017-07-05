@@ -101,7 +101,6 @@ function* fetchNewWatch(action: Action) {
   try {
     while (true) {
       const { interval } = yield select(selectors.makeSelectColumn(), action)
-      console.log(interval)
       yield call(fetchNew, action)
       yield call(delay, interval)
     }
