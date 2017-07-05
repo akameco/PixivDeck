@@ -31,6 +31,21 @@ type Props = {
 class BoxContainer extends React.PureComponent {
   props: Props & { intl: IntlShape }
 
+  shouldComponentUpdate(nextProps: Props) {
+    const { illust, isIllustOnly, isShowCaption } = this.props
+    const nextIllust = nextProps.illust
+    if (nextIllust.isBookmarked !== illust.isBookmarked) {
+      return true
+    } else if (nextIllust.totalBookmarks !== illust.totalBookmarks) {
+      return true
+    } else if (nextProps.isShowCaption !== isShowCaption) {
+      return true
+    } else if (nextProps.isIllustOnly !== isIllustOnly) {
+      return true
+    }
+    return false
+  }
+
   handleTagClick = (tag: string) => {
     this.props.addColumnSearchIllust(tag)
   }
