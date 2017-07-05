@@ -28,7 +28,7 @@
     "lint:js": "eslint .",
     "hot-updates-server": "node config/scripts/webpack hot-server",
     "start-hot-renderer": "node config/scripts/hot-renderer",
-    "postinstall": "node config/scripts/post-install",
+    "postinstall": "npm run build:dll && install-app-deps",
     "package": "npm run build && build --publish never",
     "release": "npm run build && build",
     "storybook": "start-storybook -p 6006",
