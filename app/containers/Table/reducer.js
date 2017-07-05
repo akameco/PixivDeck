@@ -24,8 +24,8 @@ export default function(
   switch (action.type) {
     case Actions.ADD_TABLE:
       return {
-        ids: union(state.ids, [action.id]),
-        nextIds: union(state.nextIds, [action.id]),
+        ids: union([...state.ids, action.id]),
+        nextIds: union([...state.nextIds, action.id]),
       }
 
     case Actions.REMOVE_TABLE: {

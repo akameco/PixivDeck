@@ -37,6 +37,7 @@ export default function configureStore(initialState: Object = {}): Store {
     module.hot.accept('./reducer', () => {
       const nextRootReducer = require('./reducer')
 
+      // $FlowFixMe
       store.replaceReducer(nextRootReducer)
     })
   }
