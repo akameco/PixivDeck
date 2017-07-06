@@ -1,15 +1,14 @@
 /* eslint global-require: 0, flowtype-errors/show-errors: 0, camelcase: 1 */
 import electron from 'electron'
 import referer from 'electron-referer'
+import ms from 'ms'
 import appMenu from './menu'
 
-const { autoUpdater } = require('electron-updater')
-const log = require('electron-log')
+import { autoUpdater } from 'electron-updater'
+import log from 'electron-log'
 
 autoUpdater.logger = log
 autoUpdater.logger.transports.file.level = 'info'
-
-const ms = require('ms')
 
 const Config = require('electron-config')
 
@@ -130,7 +129,7 @@ app.on('ready', async () => {
 
   electron.Menu.setApplicationMenu(appMenu)
 
-  if (process.env.production) {
+  if (process.env.NODE_ENV === 'production') {
     autoUpdater.checkForUpdates()
   }
 
