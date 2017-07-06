@@ -20,7 +20,7 @@ function* follow({ id }: Props): Generator<IOEffect, void, *> {
       { userId: id, restrict: 'public' },
       accessToken
     )
-    yield put(actions.followSuccess())
+    yield put(actions.followSuccess('public'))
   } catch (err) {
     yield put(actions.followFailer(err))
   }
@@ -37,7 +37,7 @@ function* unfollow({ id }: Props): Generator<IOEffect, void, *> {
       { userId: id, restrict: 'public' },
       accessToken
     )
-    yield put(actions.followSuccess())
+    yield put(actions.followSuccess('public'))
   } catch (err) {
     yield put(actions.unFollowFailer(err))
   }

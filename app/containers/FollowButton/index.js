@@ -9,9 +9,9 @@ type OwnProps = { user: User }
 const mapDispatchToProps = (dispatch: Dispatch, { user }) => ({
   onClick() {
     if (user.isFollowed) {
-      dispatch(unFollowRequest(user.id))
+      dispatch(unFollowRequest(user.id, 'public'))
     } else {
-      dispatch(followRequest(user.id))
+      dispatch(followRequest(user.id, 'public'))
     }
   },
 })
