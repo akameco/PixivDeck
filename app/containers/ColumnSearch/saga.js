@@ -1,7 +1,8 @@
 // @flow
 import ms from 'ms'
 import { delay } from 'redux-saga'
-import { union } from 'lodash'
+import { put, select, call, takeEvery } from 'redux-saga/effects'
+import { union, difference } from 'lodash'
 import { addColumn } from 'containers/ColumnManager/actions'
 import { getToken } from 'containers/LoginModal/saga'
 import { getRequest } from 'services/api'
@@ -10,7 +11,7 @@ import * as actions from './actions'
 import type { ColumnId } from './reducer'
 import * as selectors from './selectors'
 import type { Action } from './actionTypes'
-import { put, select, call, takeEvery } from 'redux-saga/effects'
+import { notifyWithIllust } from '../Notify/saga'
 
 function* addSearchColumn({ id }: Action) {
   const ids: Array<?ColumnId> = yield select(selectors.makeSelectIds())
@@ -106,6 +107,17 @@ function* fetchNew(action: Action): Generator<*, number, *> {
 
     const nextIds = union(result.illusts, illustIds)
     yield put(actions.fetchNewSuccess(action.id, response, nextIds))
+
+    if (illustIds.length > 0) {
+      const diffIllusts = difference(nextIds, illustIds)
+      for (const illustId of diffIllusts) {
+        yield call(notifyWithIllust, {
+          title: `新着 ${action.id} イラスト`,
+          id: illustId,
+        })
+      }
+    }
+
     return interval
   } catch (err) {
     yield put(actions.fetchNewFailre(action.id, err))

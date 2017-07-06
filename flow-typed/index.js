@@ -16,3 +16,8 @@ declare var module: {
     accept: (s: string, f: () => void) => void,
   },
 }
+
+declare class Notification {
+  constructor(title: string, opts? : {icon?: string, body?: string, url?: string}): void;
+  onclick: Function;
+}

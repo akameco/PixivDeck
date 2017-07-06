@@ -9,29 +9,39 @@ import {
   UN_FOLLOW_FAILER,
 } from './constants'
 
-export function followRequest(id: number): Action {
+export function followRequest(
+  id: number,
+  restrict: 'public' | 'private'
+): Action {
   return {
     type: FOLLOW_REQUEST,
     id,
+    restrict,
   }
 }
 
-export function unFollowRequest(id: number): Action {
+export function unFollowRequest(
+  id: number,
+  restrict: 'public' | 'private'
+): Action {
   return {
     type: UN_FOLLOW_REQUEST,
     id,
+    restrict,
   }
 }
 
-export function followSuccess(): Action {
+export function followSuccess(restrict: 'public' | 'private'): Action {
   return {
     type: FOLLOW_SUCCESS,
+    restrict,
   }
 }
 
-export function unFollowSuccess(): Action {
+export function unFollowSuccess(restrict: 'public' | 'private'): Action {
   return {
     type: UN_FOLLOW_SUCCESS,
+    restrict,
   }
 }
 
