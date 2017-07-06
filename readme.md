@@ -37,7 +37,7 @@
 ## Download
 
 ### MacOS
-[Download](https://github.com/akameco/PixivDeck/releases), unzip and `PixivDeck.app` to the `~/Applications` directory.
+[Download](https://github.com/akameco/PixivDeck/releases).
 
 
 ### Windows
@@ -51,7 +51,6 @@
 ## Dev
 Built with [Electron](http://electron.atom.io/).
 
-Only MacOS.
 
 ```
 $ npm run dev
