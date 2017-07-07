@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ADD_BOOKMARK_COLUMN_SUCCESS 1`] = `
+Object {
+  "public": Object {
+    "illustIds": Array [],
+    "nextUrl": null,
+  },
+}
+`;
+
+exports[`FETCH_BOOKMARK_SUCCESS 1`] = `
+Object {
+  "public": Object {
+    "illustIds": Array [
+      1,
+      2,
+      3,
+    ],
+  },
+}
+`;
+
+exports[`FETCH_BOOKMARK_SUCCESS 2`] = `
+Object {
+  "private": Object {
+    "illustIds": Array [
+      1,
+      2,
+      3,
+    ],
+  },
+}
+`;
+
+exports[`SET_NEXT_URL 1`] = `
+Object {
+  "public": Object {
+    "nextUrl": "https://next.api.url",
+  },
+}
+`;
+
+exports[`SET_NEXT_URL 2`] = `
+Object {
+  "private": Object {
+    "nextUrl": "https://next.api.url",
+  },
+}
+`;
+
+exports[`snapshot initialState 1`] = `Object {}`;

@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CLEAR 1`] = `
+Object {
+  "illusts": Array [],
+}
+`;
+
+exports[`POPOVER_SUCCESS 1`] = `
+Object {
+  "illusts": Array [
+    1,
+    2,
+    3,
+  ],
+}
+`;
+
+exports[`default action 1`] = `
+Object {
+  "illusts": Array [],
+}
+`;

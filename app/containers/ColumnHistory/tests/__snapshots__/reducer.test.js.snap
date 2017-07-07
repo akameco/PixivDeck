@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ADD_HISTORY 1`] = `
+Object {
+  "illustIds": Array [
+    1,
+  ],
+}
+`;
+
+exports[`ADD_HISTORY 2`] = `
+Object {
+  "illustIds": Array [
+    2,
+    1,
+  ],
+}
+`;
+
+exports[`default action 1`] = `
+Object {
+  "illustIds": Array [],
+}
+`;

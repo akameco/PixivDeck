@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ADD_TABLE 1`] = `
+Object {
+  "ids": Array [
+    "history",
+  ],
+  "nextIds": Array [
+    "history",
+  ],
+}
+`;
+
+exports[`ADD_TABLE 2`] = `
+Object {
+  "ids": Array [
+    "history",
+    "search-fate",
+  ],
+  "nextIds": Array [
+    "history",
+    "search-fate",
+  ],
+}
+`;
+
+exports[`REMOVE_TABLE 1`] = `
+Object {
+  "ids": Array [],
+  "nextIds": Array [],
+}
+`;
+
+exports[`SET_TABLE 1`] = `
+Object {
+  "ids": Array [],
+  "nextIds": Array [
+    "history",
+    "search-fate",
+  ],
+}
+`;
+
+exports[`default action 1`] = `
+Object {
+  "ids": Array [],
+  "nextIds": Array [],
+}
+`;
