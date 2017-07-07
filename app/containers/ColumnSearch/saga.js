@@ -112,7 +112,7 @@ function* fetchNew(action: Action): Generator<*, number, *> {
       const diffIllusts = difference(nextIds, illustIds)
       for (const illustId of diffIllusts) {
         yield call(notifyWithIllust, {
-          title: `新着 ${action.id} イラスト`,
+          title: `検索新着 ${action.id} イラスト`,
           id: illustId,
         })
       }
