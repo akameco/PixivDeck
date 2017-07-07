@@ -1,5 +1,5 @@
 // @flow
-import { union, difference } from 'lodash'
+import { union } from 'lodash'
 import { addColumn } from 'containers/ColumnManager/actions'
 import { makeSelectInfo } from 'containers/LoginModal/selectors'
 import { getToken } from 'containers/LoginModal/saga'
@@ -11,7 +11,6 @@ import type { Action } from './actionTypes'
 import type { ColumnId } from './reducer'
 import { makeSelectColumn, makeSelectIds } from './selectors'
 import { put, select, call, takeEvery } from 'redux-saga/effects'
-import { notifyWithIllust } from '../Notify/saga'
 
 function* addBookmarkColumn({ id }: { id: ColumnId }) {
   const ids: Array<?ColumnId> = yield select(makeSelectIds())
@@ -42,12 +41,6 @@ function* fetchBookmark(action: Action) {
     yield put(actions.setNextUrl(id, result.nextUrl))
 
     const nextIds = union(result.illusts, illustIds)
-    if (illustIds.length > 0) {
-      const diffIllusts = difference(nextIds, illustIds)
-      for (const id of diffIllusts) {
-        yield call(notifyWithIllust, { title: '新着ブックマーク', id })
-      }
-    }
     yield put(actions.fetchBookmarkSuccess(id, response, nextIds))
   } catch (err) {
     yield put(actions.fetchBookmarkFailre(id))
