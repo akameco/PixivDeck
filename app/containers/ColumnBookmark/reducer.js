@@ -7,8 +7,6 @@ import { REHYDRATE } from 'redux-persist/constants'
 
 export type Restrict = 'public' | 'private'
 
-export type Endpoint = '/v1/user/bookmarks/illust'
-
 export type ColumnId = Restrict
 
 export type ColumnBookmark = {|

@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ADD_FOLLOW_COLUMN_SUCCESS 1`] = `
+Object {
+  "private": Object {
+    "illustIds": Array [],
+    "interval": 180000,
+    "nextUrl": null,
+  },
+}
+`;
+
+exports[`FETCH_FOLLOW_SUCCESS 1`] = `
+Object {
+  "public": Object {
+    "illustIds": Array [
+      1,
+      2,
+      3,
+    ],
+  },
+}
+`;
+
+exports[`FETCH_FOLLOW_SUCCESS 2`] = `
+Object {
+  "public": Object {
+    "illustIds": Array [
+      4,
+      5,
+    ],
+  },
+}
+`;
+
+exports[`FETCH_NEXT_FOLLOW_SUCCESS, FETCH_NEW_SUCCESS 1`] = `
+Object {
+  "private": Object {
+    "illustIds": Array [
+      1,
+      2,
+      3,
+    ],
+  },
+}
+`;
+
+exports[`FETCH_NEXT_FOLLOW_SUCCESS, FETCH_NEW_SUCCESS 2`] = `
+Object {
+  "private": Object {
+    "illustIds": Array [
+      4,
+      5,
+    ],
+  },
+}
+`;
+
+exports[`FETCH_NEXT_FOLLOW_SUCCESS, FETCH_NEW_SUCCESS 3`] = `
+Object {
+  "private": Object {
+    "illustIds": Array [
+      8,
+    ],
+  },
+}
+`;
+
+exports[`SET_NEXT_URL 1`] = `
+Object {
+  "public": Object {
+    "nextUrl": "https://nextUrl1",
+  },
+}
+`;
+
+exports[`SET_NEXT_URL 2`] = `
+Object {
+  "public": Object {
+    "nextUrl": "https://nextUrl/2",
+  },
+}
+`;
+
+exports[`SET_NEXT_URL 3`] = `
+Object {
+  "private": Object {
+    "nextUrl": "https://nextUrl/3",
+  },
+}
+`;
+
+exports[`default action 1`] = `Object {}`;

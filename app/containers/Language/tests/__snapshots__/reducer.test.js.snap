@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`changeLocale 1`] = `
+Object {
+  "locale": "en",
+}
+`;
+
+exports[`default action 1`] = `Object {}`;

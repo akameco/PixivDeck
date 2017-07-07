@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CLOSE_DRAWER 1`] = `
+Object {
+  "open": false,
+  "userId": 1,
+}
+`;
+
+exports[`OPEN_DRAWER 1`] = `
+Object {
+  "open": true,
+  "userId": 2,
+}
+`;
+
+exports[`default action 1`] = `
+Object {
+  "open": false,
+  "userId": null,
+}
+`;
