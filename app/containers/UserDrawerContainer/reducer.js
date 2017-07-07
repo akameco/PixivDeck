@@ -16,7 +16,7 @@ export type State = {
   isLoading: boolean,
 }
 
-const initialState: State = {
+export const initialState: State = {
   user: null,
   profile: null,
   illustList: [],

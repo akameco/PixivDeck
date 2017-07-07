@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ADD_DRAWER_PROFILE 1`] = `
+Object {
+  "illustList": Array [],
+  "isLoading": false,
+  "mangaList": Array [],
+  "nextIllustUrl": null,
+  "nextMangaUrl": null,
+  "profile": Object {
+    "mock": "mock",
+  },
+  "user": null,
+}
+`;
+
+exports[`ADD_DRAWER_USER 1`] = `
+Object {
+  "illustList": Array [],
+  "isLoading": false,
+  "mangaList": Array [],
+  "nextIllustUrl": null,
+  "nextMangaUrl": null,
+  "profile": null,
+  "user": Object {
+    "id": 123,
+  },
+}
+`;
+
+exports[`Actions 1`] = `
+Object {
+  "ids": Array [
+    1,
+    2,
+    3,
+  ],
+  "response": Object {},
+  "type": "UserDrawer/FETCH_ILLUST_SUCCESS",
+}
+`;
+
+exports[`CLOSE_DRAWER 1`] = `
+Object {
+  "illustList": Array [],
+  "isLoading": false,
+  "mangaList": Array [],
+  "nextIllustUrl": null,
+  "nextMangaUrl": null,
+  "profile": null,
+  "user": null,
+}
+`;
+
+exports[`default action 1`] = `
+Object {
+  "illustList": Array [],
+  "isLoading": false,
+  "mangaList": Array [],
+  "nextIllustUrl": null,
+  "nextMangaUrl": null,
+  "profile": null,
+  "user": null,
+}
+`;
