@@ -9,6 +9,7 @@ import { makeSelectInfo } from './selectors'
 
 export function* getToken(): Generator<*, string, *> {
   const info = yield select(makeSelectInfo())
+  // TODO: username & passwordがなければLogin Pageを開く
   const { accessToken } = yield call(fetchAuth, info)
   return accessToken
 }
