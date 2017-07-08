@@ -83,7 +83,7 @@ watcher.on('add', async (input /* : string */) => {
     }
   }
 
-  if (basename(input).includes('selectors')) {
+  if (basename(input) === 'selectors.js') {
     try {
       await cpFile(
         path.resolve(__dirname, '../templates/selectors.js.tmp'),
