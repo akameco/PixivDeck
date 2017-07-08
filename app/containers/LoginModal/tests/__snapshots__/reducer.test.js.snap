@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CLEAR_ERROR 1`] = `
+Object {
+  "isLoading": false,
+  "isLoginFailure": false,
+  "password": "",
+  "username": "",
+}
+`;
+
+exports[`LOGIN_FAILURE 1`] = `
+Object {
+  "isLoading": false,
+  "isLoginFailure": true,
+  "password": "",
+  "username": "",
+}
+`;
+
+exports[`LOGIN_REQUEST 1`] = `true`;
+
+exports[`SET_AUTH 1`] = `
+Object {
+  "isLoading": false,
+  "isLoginFailure": false,
+  "password": "world",
+  "username": "hello",
+}
+`;
+
+exports[`default action 1`] = `
+Object {
+  "isLoading": false,
+  "isLoginFailure": false,
+  "password": "",
+  "username": "",
+}
+`;
