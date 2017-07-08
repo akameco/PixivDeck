@@ -19,6 +19,5 @@ export function* addHistory({ id }: Action): Generator<*, void, void> {
 export default function* root(): Generator<*, void, void> {
   yield takeEvery(Actions.ADD_COLUMN_HISTORY, addHistoryColumn)
 
-  yield takeEvery(OPEN_ILLUST_VIEWER, addHistory)
-  yield takeEvery(OPEN_MANGA_PREVIEW, addHistory)
+  yield takeEvery([OPEN_ILLUST_VIEWER, OPEN_MANGA_PREVIEW], addHistory)
 }

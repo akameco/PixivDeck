@@ -15,10 +15,9 @@ test('root Saga', () => {
   )
 
   next = gen.next()
-  expect(next.value).toEqual(takeEvery(OPEN_ILLUST_VIEWER, sagas.addHistory))
-
-  next = gen.next()
-  expect(next.value).toEqual(takeEvery(OPEN_MANGA_PREVIEW, sagas.addHistory))
+  expect(next.value).toEqual(
+    takeEvery([OPEN_ILLUST_VIEWER, OPEN_MANGA_PREVIEW], sagas.addHistory)
+  )
 })
 
 test('add history', () => {
