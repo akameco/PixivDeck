@@ -26,7 +26,7 @@ export default function(state: State = initialState, action: Action): State {
         illustIds: [],
         nextUrl: null,
         minBookmarks: 0,
-        interval: ms('3m'),
+        interval: ms('1m'),
       })
 
     case Actions.SET_NEXT_URL:

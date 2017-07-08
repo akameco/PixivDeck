@@ -48,5 +48,8 @@ export const makeLimitedSelectIllusts = () =>
     s.filter(s => s.totalBookmarks > limit)
   )
 
+export const makeLimitedSelectIllustsId = () =>
+  createSelector(makeLimitedSelectIllusts(), s => s.map(v => v.id))
+
 export const makeIllustLength = () =>
   createSelector(makeLimitedSelectIllusts(), s => s.length)

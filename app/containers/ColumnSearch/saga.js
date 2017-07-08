@@ -92,10 +92,11 @@ function* fetchUntilLimit(action: Action): Generator<*, void, *> {
   }
 }
 
-function* fetchNew(action: Action): Generator<*, number, *> {
+function* fetchNew(action: Action): Generator<*, void, *> {
   try {
-    const { illustIds, interval } = yield select(
-      selectors.makeSelectColumn(),
+    const { illustIds } = yield select(selectors.makeSelectColumn(), action)
+    const beforeIds = yield select(
+      selectors.makeLimitedSelectIllustsId(),
       action
     )
 
@@ -108,8 +109,13 @@ function* fetchNew(action: Action): Generator<*, number, *> {
     const nextIds = union(result.illusts, illustIds)
     yield put(actions.fetchNewSuccess(action.id, response, nextIds))
 
-    if (illustIds.length > 0) {
-      const diffIllusts = difference(nextIds, illustIds)
+    const afterIds = yield select(
+      selectors.makeLimitedSelectIllustsId(),
+      action
+    )
+
+    const diffIllusts = difference(afterIds, beforeIds)
+    if (diffIllusts.length > 0) {
       for (const illustId of diffIllusts) {
         yield call(notifyWithIllust, {
           title: `検索新着 ${action.id} イラスト`,
@@ -117,19 +123,17 @@ function* fetchNew(action: Action): Generator<*, number, *> {
         })
       }
     }
-
-    return interval
   } catch (err) {
     yield put(actions.fetchNewFailre(action.id, err))
   }
-  return ms('5m')
 }
 
 // TODO キャンセル
 function* fetchNewWatch(action: Action) {
   try {
     while (true) {
-      const interval = yield call(fetchNew, action)
+      yield call(fetchNew, action)
+      const { interval } = yield select(selectors.makeSelectColumn(), action)
       yield delay(interval)
     }
   } catch (err) {
@@ -143,6 +147,7 @@ export default function* root(): Generator<*, void, void> {
 
   yield takeEvery(Actions.FETCH, fetchUntilLimit)
   yield takeEvery(Actions.FETCH_NEXT, fetchUntilLimit)
+  yield takeEvery(Actions.SET_MIN_BOOKBOOK, fetchUntilLimit)
 
   yield takeEvery(Actions.FETCH_SUCCESS, fetchNewWatch)
   yield takeEvery(Actions.FETCH_NEW, fetchNewWatch)
