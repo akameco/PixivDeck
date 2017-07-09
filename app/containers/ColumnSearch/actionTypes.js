@@ -6,11 +6,11 @@ export type ADD_COLUMN_TYPE = 'ColumnSearch/ADD_COLUMN'
 export type ADD_COLUMN_SUCCESS_TYPE = 'ColumnSearch/ADD_COLUMN_SUCCESS'
 export type SET_NEXT_URL_TYPE = 'ColumnSearch/SET_NEXT_URL'
 
-export type FETCH_TYPE = 'ColumnSearch/FETCH_USER_ILLUST'
+export type FETCH_TYPE = 'ColumnSearch/FETCH'
 export type FETCH_SUCCESS_TYPE = 'ColumnSearch/FETCH_SUCCESS'
 export type FETCH_FAILRE_TYPE = 'ColumnSearch/FETCH_FAILRE'
 
-export type FETCH_NEXT_TYPE = 'ColumnSearch/FETCH_NEXT_USER_ILLUST'
+export type FETCH_NEXT_TYPE = 'ColumnSearch/FETCH_NEXT'
 export type FETCH_NEXT_SUCCESS_TYPE = 'ColumnSearch/FETCH_NEXT_SUCCESS'
 export type FETCH_NEXT_FAILRE_TYPE = 'ColumnSearch/FETCH_NEXT_FAILRE'
 

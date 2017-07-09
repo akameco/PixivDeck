@@ -23,17 +23,17 @@ function* fetchRanking(action: Action) {
   const { id } = action
 
   try {
-    const { illustIds } = yield select(makeSelectColumn(), action)
+    const { ids } = yield select(makeSelectColumn(), action)
 
     const response = yield call(api.get, `/v1/illust/ranking?mode=${id}`)
     const { result } = response
 
     yield put(actions.setNextUrl(id, result.nextUrl))
 
-    const nextIds = union(illustIds, result.illusts)
-    yield put(actions.fetchRankingSuccess(id, response, nextIds))
+    const nextIds = union(ids, result.illusts)
+    yield put(actions.fetchSuccess(id, response, nextIds))
   } catch (err) {
-    yield put(actions.fetchRankingFailre(id))
+    yield put(actions.fetchFailre(id))
   }
 }
 
@@ -41,7 +41,7 @@ function* fetchNextRanking(action: Action) {
   const { id } = action
 
   try {
-    const { illustIds, nextUrl } = yield select(makeSelectColumn(), action)
+    const { ids, nextUrl } = yield select(makeSelectColumn(), action)
     if (!nextUrl) {
       return
     }
@@ -51,15 +51,15 @@ function* fetchNextRanking(action: Action) {
 
     yield put(actions.setNextUrl(id, result.nextUrl))
 
-    const nextIds = union(illustIds, result.illusts)
-    yield put(actions.fetchRankingSuccess(id, response, nextIds))
+    const nextIds = union(ids, result.illusts)
+    yield put(actions.fetchSuccess(id, response, nextIds))
   } catch (err) {
-    yield put(actions.fetchNextRankingFailre(id))
+    yield put(actions.fetchNextFailre(id))
   }
 }
 
 export default function* root(): Generator<*, void, void> {
   yield takeEvery(Actions.ADD_COLUMN, addRankingColumn)
-  yield takeEvery(Actions.FETCH_RANKING, fetchRanking)
-  yield takeEvery(Actions.FETCH_NEXT_RANKING, fetchNextRanking)
+  yield takeEvery(Actions.FETCH, fetchRanking)
+  yield takeEvery(Actions.FETCH_NEXT, fetchNextRanking)
 }

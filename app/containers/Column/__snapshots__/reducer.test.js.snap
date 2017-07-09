@@ -3,12 +3,51 @@
 exports[`ADD_COLUMN_SUCCESS 1`] = `
 Object {
   "a": Object {
-    "illustIds": Array [],
+    "ids": Array [],
     "nextUrl": "before",
   },
   "b": Object {
-    "illustIds": Array [],
+    "ids": Array [],
     "nextUrl": null,
+  },
+}
+`;
+
+exports[`FETCH_NEW_SUCCESS 1`] = `
+Object {
+  "a": Object {
+    "ids": Array [
+      7,
+      8,
+      9,
+    ],
+    "nextUrl": "before",
+  },
+}
+`;
+
+exports[`FETCH_NEXT_SUCCESS 1`] = `
+Object {
+  "a": Object {
+    "ids": Array [
+      4,
+      5,
+      6,
+    ],
+    "nextUrl": "before",
+  },
+}
+`;
+
+exports[`FETCH_SUCCESS 1`] = `
+Object {
+  "a": Object {
+    "ids": Array [
+      1,
+      2,
+      3,
+    ],
+    "nextUrl": "before",
   },
 }
 `;
@@ -16,7 +55,7 @@ Object {
 exports[`SET_NEXT_URL 1`] = `
 Object {
   "a": Object {
-    "illustIds": Array [],
+    "ids": Array [],
     "nextUrl": "next-url",
   },
 }

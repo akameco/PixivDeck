@@ -20,7 +20,7 @@ const getColumn = (state: State, { id }: Props) => state.ColumnUserIllust[id]
 export const makeSelectColumn = () => createSelector(getColumn, s => s)
 
 const makeSelectIllustIds = () =>
-  createSelector(getColumn, s => (s && s.illustIds ? s.illustIds : []))
+  createSelector(getColumn, s => (s && s.ids ? s.ids : []))
 
 export const makeSelectUser = () => createSelector(getSelectUser, s => s)
 

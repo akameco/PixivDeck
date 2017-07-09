@@ -23,7 +23,7 @@ export function* addColumn({ id }: Action): Generator<*, void, *> {
 
 function* fetchBookmark(action: Action) {
   const { id } = action
-  const { illustIds } = yield select(makeSelectColumn(), action)
+  const { ids } = yield select(makeSelectColumn(), action)
 
   try {
     const info = yield select(makeSelectInfo())
@@ -39,16 +39,16 @@ function* fetchBookmark(action: Action) {
 
     yield put(actions.setNextUrl(id, result.nextUrl))
 
-    const nextIds = union(result.illusts, illustIds)
-    yield put(actions.fetchBookmarkSuccess(id, response, nextIds))
+    const nextIds = union(result.illusts, ids)
+    yield put(actions.fetchSuccess(id, response, nextIds))
   } catch (err) {
-    yield put(actions.fetchBookmarkFailre(id))
+    yield put(actions.fetchFailre(id))
   }
 }
 
 function* fetchNextBookmark(action: Action) {
   const { id } = action
-  const { illustIds, nextUrl } = yield select(makeSelectColumn(), action)
+  const { ids, nextUrl } = yield select(makeSelectColumn(), action)
 
   try {
     if (!nextUrl) {
@@ -60,21 +60,21 @@ function* fetchNextBookmark(action: Action) {
 
     yield put(actions.setNextUrl(id, result.nextUrl))
 
-    const nextIds = union(illustIds, result.illusts)
-    yield put(actions.fetchBookmarkSuccess(id, response, nextIds))
+    const nextIds = union(ids, result.illusts)
+    yield put(actions.fetchSuccess(id, response, nextIds))
   } catch (err) {
-    yield put(actions.fetchNextBookmarkFailre(id))
+    yield put(actions.fetchNextFailre(id))
   }
 }
 
 function* reloadBookmakColumns(action: { +restrict: ColumnId }) {
   // TOOD Tabelにある場合のみ更新する
-  yield put(actions.fetchBookmark(action.restrict))
+  yield put(actions.fetch(action.restrict))
 }
 
 export default function* root(): Generator<*, void, void> {
   yield takeEvery(Actions.ADD_COLUMN, addColumn)
-  yield takeEvery(Actions.FETCH_BOOKMARK, fetchBookmark)
-  yield takeEvery(Actions.FETCH_NEXT_BOOKMARK, fetchNextBookmark)
+  yield takeEvery(Actions.FETCH, fetchBookmark)
+  yield takeEvery(Actions.FETCH_NEXT, fetchNextBookmark)
   yield takeEvery(ADD_BOOKMARK_SUCCESS, reloadBookmakColumns)
 }

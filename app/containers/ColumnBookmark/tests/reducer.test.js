@@ -26,17 +26,14 @@ test('SET_NEXT_URL', () => {
   ).toMatchSnapshot()
 })
 
-test('FETCH_BOOKMARK_SUCCESS', () => {
+test('FETCH_SUCCESS', () => {
   expect(
-    reducer(
-      initialState,
-      actions.fetchBookmarkSuccess('public', response, [1, 2, 3])
-    )
+    reducer(initialState, actions.fetchSuccess('public', response, [1, 2, 3]))
   ).toMatchSnapshot()
   expect(
     reducer(
       initialState,
-      actions.fetchNextBookmarkSuccess('private', response, [1, 2, 3])
+      actions.fetchNextSuccess('private', response, [1, 2, 3])
     )
   ).toMatchSnapshot()
 })

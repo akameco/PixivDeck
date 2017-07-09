@@ -79,10 +79,10 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch: Dispatch, { id }: OP) {
   return {
     onFetch() {
-      dispatch(actions.fetchFollow(id))
+      dispatch(actions.fetch(id))
     },
     onNext() {
-      dispatch(actions.fetchNextFollow(id))
+      dispatch(actions.fetchNext(id))
     },
   }
 }

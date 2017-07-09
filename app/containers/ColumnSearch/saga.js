@@ -27,7 +27,7 @@ function createEndpoint(id) {
 function* fetchSearch(action: Action): Generator<*, void, *> {
   const { id } = action
   try {
-    const { illustIds, nextUrl } = yield select(
+    const { ids, nextUrl } = yield select(
       selectors.makeSelectColumn(),
       action
     )
@@ -44,7 +44,7 @@ function* fetchSearch(action: Action): Generator<*, void, *> {
     const { result } = response
 
     yield put(actions.setNextUrl(id, result.nextUrl))
-    const nextIds = union(illustIds, result.illusts)
+    const nextIds = union(ids, result.illusts)
 
     if (nextUrl) {
       yield put(actions.fetchNextSuccess(id, response, nextIds))
@@ -85,7 +85,7 @@ function* fetchUntilLimit(action: Action): Generator<*, void, *> {
 
 function* fetchNew(action: Action): Generator<*, void, *> {
   try {
-    const { illustIds } = yield select(selectors.makeSelectColumn(), action)
+    const { ids } = yield select(selectors.makeSelectColumn(), action)
     const beforeIds = yield select(
       selectors.makeLimitedSelectIllustsId(),
       action
@@ -96,8 +96,8 @@ function* fetchNew(action: Action): Generator<*, void, *> {
     const response = yield call(api.get, endpoint, true)
     const { result } = response
 
-    const nextIds = union(result.illusts, illustIds)
-    yield put(actions.fetchNewSuccess(action.id, response, nextIds))
+    const nextIds = union(result.illusts, ids)
+    yield put(actions.fetchSuccess(action.id, response, nextIds))
 
     const afterIds = yield select(
       selectors.makeLimitedSelectIllustsId(),

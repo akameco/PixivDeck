@@ -10,10 +10,8 @@ test('default action', () => {
 })
 
 test('ADD_FOLLOW_COLUMN_SUCCESS', () => {
-  expect(reducer({}, actions.addFollowColumnSuccess('public')))
-  expect(
-    reducer({}, actions.addFollowColumnSuccess('private'))
-  ).toMatchSnapshot()
+  expect(reducer({}, actions.addColumnSuccess('public')))
+  expect(reducer({}, actions.addColumnSuccess('private'))).toMatchSnapshot()
 })
 
 test('SET_NEXT_URL', () => {
@@ -28,25 +26,22 @@ test('SET_NEXT_URL', () => {
   ).toMatchSnapshot()
 })
 
-test('FETCH_FOLLOW_SUCCESS', () => {
-  const first = reducer(
-    {},
-    actions.fetchFollowSuccess('public', response, [1, 2, 3])
-  )
+test('FETCH_SUCCESS', () => {
+  const first = reducer({}, actions.fetchSuccess('public', response, [1, 2, 3]))
   expect(first).toMatchSnapshot()
   expect(
-    reducer(first, actions.fetchFollowSuccess('public', response, [4, 5]))
+    reducer(first, actions.fetchSuccess('public', response, [4, 5]))
   ).toMatchSnapshot()
 })
 
-test('FETCH_NEXT_FOLLOW_SUCCESS, FETCH_NEW_SUCCESS', () => {
+test('FETCH_NEXT_SUCCESS, FETCH_NEW_SUCCESS', () => {
   const first = reducer(
     {},
-    actions.fetchNextFollowSuccess('private', response, [1, 2, 3])
+    actions.fetchNextSuccess('private', response, [1, 2, 3])
   )
   expect(first).toMatchSnapshot()
   expect(
-    reducer(first, actions.fetchNextFollowSuccess('private', response, [4, 5]))
+    reducer(first, actions.fetchNextSuccess('private', response, [4, 5]))
   ).toMatchSnapshot()
 
   expect(

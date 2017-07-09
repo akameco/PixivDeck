@@ -26,24 +26,24 @@ const endpoint = id => `/v1/user/illusts?type=illust&user_id=${id}`
 export function* fetchUserIllust(props: Props): Generator<*, void, *> {
   const { id } = props
   try {
-    const { illustIds } = yield select(makeSelectColumn(), props)
+    const { ids } = yield select(makeSelectColumn(), props)
 
     const response = yield call(api.get, endpoint(id), true)
     const { result } = response
 
     yield put(actions.setNextUrl(id, result.nextUrl))
 
-    const nextIds = union(illustIds, result.illusts)
-    yield put(actions.fetchUserIllustSuccess(id, response, nextIds))
+    const nextIds = union(ids, result.illusts)
+    yield put(actions.fetchSuccess(id, response, nextIds))
   } catch (err) {
-    yield put(actions.fetchUserIllustFailre(id))
+    yield put(actions.fetchFailre(id))
   }
 }
 
 export function* fetchNextUserIllust(props: Props): Generator<*, void, *> {
   const { id } = props
   try {
-    const { illustIds, nextUrl } = yield select(makeSelectColumn(), props)
+    const { ids, nextUrl } = yield select(makeSelectColumn(), props)
 
     if (!nextUrl) {
       return
@@ -54,15 +54,15 @@ export function* fetchNextUserIllust(props: Props): Generator<*, void, *> {
 
     yield put(actions.setNextUrl(id, result.nextUrl))
 
-    const nextIds = union(illustIds, result.illusts)
-    yield put(actions.fetchUserIllustSuccess(id, response, nextIds))
+    const nextIds = union(ids, result.illusts)
+    yield put(actions.fetchSuccess(id, response, nextIds))
   } catch (err) {
-    yield put(actions.fetchNextUserIllustFailre(id))
+    yield put(actions.fetchNextFailre(id))
   }
 }
 
 export default function* root(): Generator<*, void, void> {
   yield takeEvery(Actions.ADD_COLUMN, addColumn)
-  yield takeEvery(Actions.FETCH_USER_ILLUST, fetchUserIllust)
-  yield takeEvery(Actions.FETCH_NEXT_USER_ILLUST, fetchNextUserIllust)
+  yield takeEvery(Actions.FETCH, fetchUserIllust)
+  yield takeEvery(Actions.FETCH_NEXT, fetchNextUserIllust)
 }

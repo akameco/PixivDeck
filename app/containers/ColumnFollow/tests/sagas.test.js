@@ -8,6 +8,6 @@ test('root', () => {
   const next = gen.next()
 
   expect(next.value).toEqual(
-    takeEvery(constants.ADD_FOLLOW_COLUMN, sagas.addFollowColumn)
+    takeEvery(constants.ADD_COLUMN, sagas.addFollowColumn)
   )
 })

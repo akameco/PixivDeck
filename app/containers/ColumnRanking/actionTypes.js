@@ -6,30 +6,30 @@ export type ADD_COLUMN_TYPE = 'ColumnRanking/ADD_COLUMN'
 export type ADD_COLUMN_SUCCESS_TYPE = 'ColumnRanking/ADD_COLUMN_SUCCESS'
 export type SET_NEXT_URL_TYPE = 'ColumnRanking/SET_NEXT_URL'
 
-export type FETCH_RANKING_TYPE = 'ColumnRanking/FETCH_RANKING'
-export type FETCH_RANKING_SUCCESS_TYPE = 'ColumnRanking/FETCH_RANKING_SUCCESS'
-export type FETCH_RANKING_FAILRE_TYPE = 'ColumnRanking/FETCH_RANKING_FAILRE'
+export type FETCH_TYPE = 'ColumnRanking/FETCH'
+export type FETCH_SUCCESS_TYPE = 'ColumnRanking/FETCH_SUCCESS'
+export type FETCH_FAILRE_TYPE = 'ColumnRanking/FETCH_FAILRE'
 
-export type FETCH_NEXT_RANKING_TYPE = 'ColumnRanking/FETCH_NEXT_RANKING'
-export type FETCH_NEXT_RANKING_SUCCESS_TYPE =
-  'ColumnRanking/FETCH_NEXT_RANKING_SUCCESS'
-export type FETCH_NEXT_RANKING_FAILRE_TYPE =
-  'ColumnRanking/FETCH_NEXT_RANKING_FAILRE'
+export type FETCH_NEXT_TYPE = 'ColumnRanking/FETCH_NEXT'
+export type FETCH_NEXT_SUCCESS_TYPE =
+  'ColumnRanking/FETCH_NEXT_SUCCESS'
+export type FETCH_NEXT_FAILRE_TYPE =
+  'ColumnRanking/FETCH_NEXT_FAILRE'
 
 export type Action =
   | {|
       +type:
         | ADD_COLUMN_TYPE
         | ADD_COLUMN_SUCCESS_TYPE
-        | FETCH_RANKING_TYPE
-        | FETCH_RANKING_FAILRE_TYPE
-        | FETCH_NEXT_RANKING_TYPE
-        | FETCH_NEXT_RANKING_FAILRE_TYPE,
+        | FETCH_TYPE
+        | FETCH_FAILRE_TYPE
+        | FETCH_NEXT_TYPE
+        | FETCH_NEXT_FAILRE_TYPE,
       +id: ColumnId,
     |}
   | {| +type: SET_NEXT_URL_TYPE, +id: ColumnId, +nextUrl: string |}
   | {|
-      +type: FETCH_RANKING_SUCCESS_TYPE | FETCH_NEXT_RANKING_SUCCESS_TYPE,
+      +type: FETCH_SUCCESS_TYPE | FETCH_NEXT_SUCCESS_TYPE,
       +id: ColumnId,
       +response: Response,
       +ids: Array<number>,

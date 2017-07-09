@@ -3,16 +3,16 @@
 exports[`ADD_BOOKMARK_COLUMN_SUCCESS 1`] = `
 Object {
   "public": Object {
-    "illustIds": Array [],
+    "ids": Array [],
     "nextUrl": null,
   },
 }
 `;
 
-exports[`FETCH_BOOKMARK_SUCCESS 1`] = `
+exports[`FETCH_SUCCESS 1`] = `
 Object {
   "public": Object {
-    "illustIds": Array [
+    "ids": Array [
       1,
       2,
       3,
@@ -21,10 +21,10 @@ Object {
 }
 `;
 
-exports[`FETCH_BOOKMARK_SUCCESS 2`] = `
+exports[`FETCH_SUCCESS 2`] = `
 Object {
   "private": Object {
-    "illustIds": Array [
+    "ids": Array [
       1,
       2,
       3,
