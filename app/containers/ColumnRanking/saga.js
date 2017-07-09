@@ -1,12 +1,11 @@
 // @flow
-import { union } from 'lodash'
+import { put, select, call, takeEvery } from 'redux-saga/effects'
 import { addTable } from 'containers/ColumnManager/actions'
-import * as api from '../Api/sagas'
+import * as fetchColumn from '../Column/sagas'
 import * as Actions from './constants'
 import * as actions from './actions'
 import type { Mode } from './reducer'
 import { makeSelectColumn, makeSelectModes } from './selectors'
-import { put, select, call, takeEvery } from 'redux-saga/effects'
 
 type Action = { id: Mode }
 
@@ -20,40 +19,14 @@ export function* addRankingColumn({ id }: Action): Generator<*, void, *> {
 }
 
 function* fetchRanking(action: Action) {
-  const { id } = action
-
-  try {
-    const { ids } = yield select(makeSelectColumn(), action)
-
-    const { result } = yield call(api.get, `/v1/illust/ranking?mode=${id}`)
-
-    yield put(actions.setNextUrl(id, result.nextUrl))
-
-    const nextIds = union(ids, result.illusts)
-    yield put(actions.fetchSuccess(id, nextIds))
-  } catch (err) {
-    yield put(actions.fetchFailre(id))
-  }
+  const { ids } = yield select(makeSelectColumn(), action)
+  const endpoint = `/v1/illust/ranking?mode=${action.id}`
+  yield call(fetchColumn.fetchColumn, endpoint, action.id, actions, ids)
 }
 
 function* fetchNextRanking(action: Action) {
-  const { id } = action
-
-  try {
-    const { ids, nextUrl } = yield select(makeSelectColumn(), action)
-    if (!nextUrl) {
-      return
-    }
-
-    const { result } = yield call(api.get, nextUrl)
-
-    yield put(actions.setNextUrl(id, result.nextUrl))
-
-    const nextIds = union(ids, result.illusts)
-    yield put(actions.fetchSuccess(id, nextIds))
-  } catch (err) {
-    yield put(actions.fetchNextFailre(id))
-  }
+  const { ids, nextUrl } = yield select(makeSelectColumn(), action)
+  yield call(fetchColumn.fetchColumn, nextUrl, action.id, actions, ids)
 }
 
 export default function* root(): Generator<*, void, void> {

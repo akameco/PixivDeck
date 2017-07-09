@@ -30,3 +30,4 @@ export type Action =
       +id: ColumnId,
       +ids: Array<number>,
     |}
+  | {| +type: FETCH_FAILRE_TYPE, +id: ColumnId, +error: string |}

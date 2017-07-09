@@ -1,7 +1,6 @@
 // @flow
-import { union } from 'lodash'
 import { addTable } from 'containers/ColumnManager/actions'
-import * as api from '../Api/sagas'
+import * as fetchColumn from '../Column/sagas'
 import * as Actions from './constants'
 import * as actions from './actions'
 import type { R18Mode } from './reducer'
@@ -25,42 +24,14 @@ export function* addColumn({ id }: Action): Generator<*, void, *> {
 }
 
 function* fetchRanking(action: Action) {
-  const { id } = action
-
-  try {
-    const { ids } = yield select(makeSelectColumn(), action)
-
-    const { result } = yield call(api.get, `/v1/illust/ranking?mode=${id}`, true)
-    
-
-    yield put(actions.setNextUrl(id, result.nextUrl))
-
-    const nextIds = union(result.illusts, ids)
-    yield put(actions.fetchSuccess(id,  nextIds))
-  } catch (err) {
-    yield put(actions.fetchFailre(id))
-  }
+  const { ids } = yield select(makeSelectColumn(), action)
+  const endpoint = `/v1/illust/ranking?mode=${action.id}`
+  yield call(fetchColumn.fetchColumn, endpoint, action.id, actions, ids)
 }
 
 function* fetchNextRanking18(action: Action) {
-  const { id } = action
-  try {
-    const { ids, nextUrl } = yield select(makeSelectColumn(), action)
-
-    if (!nextUrl) {
-      return
-    }
-
-    const { result } = yield call(api.get, nextUrl, true)
-    
-
-    yield put(actions.setNextUrl(id, result.nextUrl))
-
-    const nextIds = union(ids, result.illusts)
-    yield put(actions.fetchNextSuccess(id,  nextIds))
-  } catch (err) {
-    yield put(actions.fetchNextFailre(id))
-  }
+  const { ids, nextUrl } = yield select(makeSelectColumn(), action)
+  yield call(fetchColumn.fetchColumn, nextUrl, action.id, actions, ids)
 }
 
 export default function* root(): Generator<*, void, void> {

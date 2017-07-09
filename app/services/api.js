@@ -19,7 +19,10 @@ const mySchema = {
 }
 
 export type Response = {
-  result: Object,
+  result: {
+    illusts: Array<number>,
+    nextUrl: string,
+  },
   entities: Object,
 }
 
