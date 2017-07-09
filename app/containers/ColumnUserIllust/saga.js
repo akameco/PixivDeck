@@ -1,7 +1,5 @@
 // @flow
-import { union } from 'lodash'
 import { addTable } from 'containers/ColumnManager/actions'
-import * as api from '../Api/sagas'
 import * as fetchColumn from '../Column/sagas'
 import * as Actions from './constants'
 import * as actions from './actions'

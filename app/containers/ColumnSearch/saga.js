@@ -10,6 +10,7 @@ import * as actions from './actions'
 import type { ColumnId } from './reducer'
 import * as selectors from './selectors'
 import type { Action } from './actionTypes'
+import * as fetchSaga from '../Column/sagas'
 
 export function* addColumn({ id }: Action): Generator<*, void, *> {
   const ids: Array<?ColumnId> = yield select(selectors.makeSelectIds())
@@ -20,37 +21,21 @@ export function* addColumn({ id }: Action): Generator<*, void, *> {
   yield put(addTable(`search-${id}`, { columnId: id, type: 'SEARCH' }))
 }
 
-function createEndpoint(id) {
-  return `/v1/search/illust?word=${id}&search_target=partial_match_for_tags&sort=date_desc`
-}
+const createEndpoint = id =>
+  `/v1/search/illust?word=${id}&search_target=partial_match_for_tags&sort=date_desc`
 
 function* fetchSearch(action: Action): Generator<*, void, *> {
   const { id } = action
-  try {
-    const { ids, nextUrl } = yield select(selectors.makeSelectColumn(), action)
-    const hasMore = yield select(selectors.makeSelectHasMore(), action)
+  const { ids, nextUrl } = yield select(selectors.makeSelectColumn(), action)
+  const hasMore = yield select(selectors.makeSelectHasMore(), action)
 
-    // nullのチェックではない
-    if (hasMore === false) {
-      return
-    }
-
-    const endpoint = nextUrl ? nextUrl : createEndpoint(id)
-
-    const { result } = yield call(api.get, endpoint, true)
-    
-
-    yield put(actions.setNextUrl(id, result.nextUrl))
-    const nextIds = union(ids, result.illusts)
-
-    if (nextUrl) {
-      yield put(actions.fetchNextSuccess(id,  nextIds))
-    } else {
-      yield put(actions.fetchSuccess(id,  nextIds))
-    }
-  } catch (err) {
-    yield put(actions.fetchFailre(id, err))
+  // nullのチェックではない
+  if (hasMore === false) {
+    return
   }
+
+  const endpoint = nextUrl ? nextUrl : createEndpoint(id)
+  yield call(fetchSaga.fetchColumn, endpoint, id, actions, ids)
 }
 
 function* fetchUntilLimit(action: Action): Generator<*, void, *> {
@@ -91,10 +76,9 @@ function* fetchNew(action: Action): Generator<*, void, *> {
     const endpoint = createEndpoint(action.id)
 
     const { result } = yield call(api.get, endpoint, true)
-    
 
     const nextIds = union(result.illusts, ids)
-    yield put(actions.fetchNewSuccess(action.id,  nextIds))
+    yield put(actions.fetchNewSuccess(action.id, nextIds))
 
     const afterIds = yield select(
       selectors.makeLimitedSelectIllustsId(),

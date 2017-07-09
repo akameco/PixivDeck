@@ -21,19 +21,18 @@ export function* addColumn({ id }: Action): Generator<*, void, *> {
 }
 
 function* fetchBookmark(action: Action) {
-  const { ids } = yield select(makeSelectColumn(), action)
-
-  // TODO
-  const info = yield select(makeSelectInfo())
-  const { user: { id: userId } } = yield call(fetchAuth, info)
-
-  const endpoint = `/v1/user/bookmarks/illust?user_id=${userId}&restrict=${action.id}`
-  yield call(column.fetchColumn, endpoint, action.id, { ...actions }, ids)
-}
-
-function* fetchNextBookmark(action: Action) {
   const { ids, nextUrl } = yield select(makeSelectColumn(), action)
-  yield call(column.fetchColumn, nextUrl, action.id, { ...actions }, ids)
+
+  if (nextUrl) {
+    yield call(column.fetchColumn, nextUrl, action.id, { ...actions }, ids)
+  } else {
+    // TODO
+    const info = yield select(makeSelectInfo())
+    const { user: { id: userId } } = yield call(fetchAuth, info)
+
+    const endpoint = `/v1/user/bookmarks/illust?user_id=${userId}&restrict=${action.id}`
+    yield call(column.fetchColumn, endpoint, action.id, { ...actions }, ids)
+  }
 }
 
 function* reloadBookmakColumns(action: { +restrict: ColumnId }) {
@@ -42,7 +41,6 @@ function* reloadBookmakColumns(action: { +restrict: ColumnId }) {
 
 export default function* root(): Generator<*, void, void> {
   yield takeEvery(Actions.ADD_COLUMN, addColumn)
-  yield takeEvery(Actions.FETCH, fetchBookmark)
-  yield takeEvery(Actions.FETCH_NEXT, fetchNextBookmark)
+  yield takeEvery([Actions.FETCH, Actions.FETCH_NEXT], fetchBookmark)
   yield takeEvery(ADD_BOOKMARK_SUCCESS, reloadBookmakColumns)
 }

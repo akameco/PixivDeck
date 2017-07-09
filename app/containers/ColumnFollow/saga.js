@@ -13,6 +13,7 @@ import * as api from '../Api/sagas'
 import * as selectors from './selectors'
 import { addNotifyWithIllust } from '../Notify/actions'
 import { FOLLOW_SUCCESS } from '../FollowButton/constants'
+import * as fetchColumn from '../Column/sagas'
 
 type Action = { id: ColumnId }
 
@@ -25,56 +26,24 @@ export function* addFollowColumn({ id }: Action): Generator<*, void, *> {
   yield put(addTable(`follow-${id}`, { columnId: id, type: 'FOLLOW' }))
 }
 
-function createEndpoint(userId, restrict) {
-  return `/v2/illust/follow?user_id=${userId}&restrict=${restrict}`
-}
+const createEndpoint = (userId, restrict) =>
+  `/v2/illust/follow?user_id=${userId}&restrict=${restrict}`
 
 function* fetchFollow(action: Action): Generator<*, void, *> {
   const { id } = action
-  try {
-    const { ids } = yield select(makeSelectColumn(), action)
+  const { ids } = yield select(makeSelectColumn(), action)
 
-    // TODO
-    const info = yield select(makeSelectInfo())
-    const { user: { id: userId } } = yield call(fetchAuth, info)
+  const info = yield select(makeSelectInfo())
+  const { user: { id: userId } } = yield call(fetchAuth, info)
 
-    const { result } = yield call(api.get, createEndpoint(userId, id), true)
-
-    yield put(actions.setNextUrl(id, result.nextUrl))
-
-    const nextIds = union(ids, result.illusts)
-
-    yield put(actions.fetchSuccess(id, nextIds))
-
-    if (ids.length > 0) {
-      const diffIllusts = difference(nextIds, ids)
-      for (const id of diffIllusts) {
-        yield put(addNotifyWithIllust('新着イラスト', id))
-      }
-    }
-  } catch (err) {
-    yield put(actions.fetchFailre(id, err))
-  }
+  const endpoint = createEndpoint(userId, id)
+  yield call(fetchColumn.fetchColumn, endpoint, id, actions, ids)
 }
 
 function* fetchNextFollow(action: Action) {
   const { id } = action
-  try {
-    const { ids, nextUrl } = yield select(makeSelectColumn(), action)
-
-    if (!nextUrl) {
-      return
-    }
-
-    const { result } = yield call(api.get, nextUrl, true)
-
-    yield put(actions.setNextUrl(id, result.nextUrl))
-
-    const nextIds = union(ids, result.illusts)
-    yield put(actions.fetchNextSuccess(id, nextIds))
-  } catch (err) {
-    yield put(actions.fetchNextFailre(id, err))
-  }
+  const { ids, nextUrl } = yield select(makeSelectColumn(), action)
+  yield call(fetchColumn.fetchColumn, nextUrl, id, actions, ids)
 }
 
 function* fetchNew(action: Action): Generator<*, void, *> {
@@ -99,7 +68,18 @@ function* fetchNewWatch(action: Action) {
   try {
     while (true) {
       const { interval } = yield select(selectors.makeSelectColumn(), action)
+      // 増加したイラストをチェック
+      const { ids } = yield select(makeSelectColumn(), action)
       yield call(fetchNew, action)
+      const { ids: nextIds } = yield select(makeSelectColumn(), action)
+
+      if (ids.length > 0) {
+        const diffIllusts = difference(nextIds, ids)
+        for (const id of diffIllusts) {
+          yield put(addNotifyWithIllust('新着イラスト', id))
+        }
+      }
+
       yield call(delay, interval)
     }
   } catch (err) {
@@ -113,7 +93,7 @@ export default function* root(): Generator<*, void, void> {
   yield takeEvery(Actions.FETCH, fetchFollow)
   yield takeEvery(Actions.FETCH_NEXT, fetchNextFollow)
 
-  yield takeEvery(Actions.FETCH_SUCCESS, fetchNewWatch)
+  yield takeEvery(Actions.ADD_COLUMN_SUCCESS, fetchNewWatch)
   yield takeEvery(FOLLOW_SUCCESS, function*({ restrict }) {
     yield call(fetchFollow, { id: restrict })
   })
