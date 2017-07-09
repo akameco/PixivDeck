@@ -27,16 +27,16 @@ export const makeSelectHasMore = () =>
   createSelector(makeSelectColumn(), s => {
     if (s.nextUrl) {
       return true
-    } else if (!s.nextUrl && s.illustIds.length > 0) {
+    } else if (!s.nextUrl && s.ids.length > 0) {
       return false
-    } else if (!s.nextUrl && s.illustIds.length === 0) {
+    } else if (!s.nextUrl && s.ids.length === 0) {
       return true
     }
     return true
   })
 
 const makeSelectIllustIds = () =>
-  createSelector(getColumn, s => (s && s.illustIds ? s.illustIds : []))
+  createSelector(getColumn, s => (s && s.ids ? s.ids : []))
 
 export const makeSelectIllusts = () =>
   createSelector(makeSelectIllustIds(), makeIllustsFilterByTags(), (s, obj) => {

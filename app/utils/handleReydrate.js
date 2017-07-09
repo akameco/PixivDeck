@@ -2,7 +2,7 @@
 import { REHYDRATE } from 'redux-persist/constants'
 
 const defaultState = {
-  illustIds: [],
+  ids: [],
   nextUrl: null,
 }
 

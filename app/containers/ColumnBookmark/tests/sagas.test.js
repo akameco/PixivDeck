@@ -10,11 +10,11 @@ test('root', () => {
 
   // next = gen.next()
   // expect(next.value).toEqual(
-  //   takeEvery(constants.FETCH_USER_ILLUST, sagas.fetchUserIllust)
+  //   takeEvery(constants.FETCH, sagas.fetchUserIllust)
   // )
   //
   // next = gen.next()
   // expect(next.value).toEqual(
-  //   takeEvery(constants.FETCH_NEXT_USER_ILLUST, sagas.fetchNextUserIllust)
+  //   takeEvery(constants.FETCH_NEXT, sagas.fetchNextUserIllust)
   // )
 })

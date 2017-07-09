@@ -46,6 +46,10 @@ export default class IllustList extends React.PureComponent {
 
   render() {
     const { id, illusts, hasMore } = this.props
+    if (illusts.length === 0) {
+      return null
+    }
+
     const List = illusts.map(illust => <Box key={illust.id} id={illust.id} />)
 
     let loadMore: ?React$Element<*> = null

@@ -1,46 +1,46 @@
 // @flow
 import type { Action } from './actionTypes.js'
 import {
-  ADD_FOLLOW_COLUMN,
-  ADD_FOLLOW_COLUMN_SUCCESS,
-  FETCH_FOLLOW,
-  FETCH_FOLLOW_FAILRE,
+  ADD_COLUMN,
+  ADD_COLUMN_SUCCESS,
+  FETCH,
+  FETCH_FAILRE,
   FETCH_NEW,
-  FETCH_NEXT_FOLLOW,
-  FETCH_NEXT_FOLLOW_FAILRE,
+  FETCH_NEXT,
+  FETCH_NEXT_FAILRE,
   SET_NEXT_URL,
-  FETCH_FOLLOW_SUCCESS,
-  FETCH_NEXT_FOLLOW_SUCCESS,
+  FETCH_SUCCESS,
+  FETCH_NEXT_SUCCESS,
   FETCH_NEW_SUCCESS,
   FETCH_NEW_FAILRE,
 } from './constants'
 import type { Response } from 'services/api'
 import type { ColumnId } from './reducer'
 
-export function addFollowColumn(id: ColumnId): Action {
+export function addColumn(id: ColumnId): Action {
   return {
-    type: ADD_FOLLOW_COLUMN,
+    type: ADD_COLUMN,
     id,
   }
 }
 
-export function addFollowColumnSuccess(id: ColumnId): Action {
+export function addColumnSuccess(id: ColumnId): Action {
   return {
-    type: ADD_FOLLOW_COLUMN_SUCCESS,
+    type: ADD_COLUMN_SUCCESS,
     id,
   }
 }
 
-export function fetchFollow(id: ColumnId): Action {
+export function fetch(id: ColumnId): Action {
   return {
-    type: FETCH_FOLLOW,
+    type: FETCH,
     id,
   }
 }
 
-export function fetchFollowFailre(id: ColumnId, error: string): Action {
+export function fetchFailre(id: ColumnId, error: string): Action {
   return {
-    type: FETCH_FOLLOW_FAILRE,
+    type: FETCH_FAILRE,
     id,
     error,
   }
@@ -53,16 +53,16 @@ export function fetchNew(id: ColumnId): Action {
   }
 }
 
-export function fetchNextFollow(id: ColumnId): Action {
+export function fetchNext(id: ColumnId): Action {
   return {
-    type: FETCH_NEXT_FOLLOW,
+    type: FETCH_NEXT,
     id,
   }
 }
 
-export function fetchNextFollowFailre(id: ColumnId, error: string): Action {
+export function fetchNextFailre(id: ColumnId, error: string): Action {
   return {
-    type: FETCH_NEXT_FOLLOW_FAILRE,
+    type: FETCH_NEXT_FAILRE,
     id,
     error,
   }
@@ -76,26 +76,26 @@ export function setNextUrl(id: ColumnId, nextUrl: string): Action {
   }
 }
 
-export function fetchFollowSuccess(
+export function fetchSuccess(
   id: ColumnId,
   response: Response,
   ids: Array<number>
 ): Action {
   return {
-    type: FETCH_FOLLOW_SUCCESS,
+    type: FETCH_SUCCESS,
     id,
     response,
     ids,
   }
 }
 
-export function fetchNextFollowSuccess(
+export function fetchNextSuccess(
   id: ColumnId,
   response: Response,
   ids: Array<number>
 ): Action {
   return {
-    type: FETCH_NEXT_FOLLOW_SUCCESS,
+    type: FETCH_NEXT_SUCCESS,
     id,
     response,
     ids,

@@ -27,10 +27,7 @@ function createEndpoint(id) {
 function* fetchSearch(action: Action): Generator<*, void, *> {
   const { id } = action
   try {
-    const { illustIds, nextUrl } = yield select(
-      selectors.makeSelectColumn(),
-      action
-    )
+    const { ids, nextUrl } = yield select(selectors.makeSelectColumn(), action)
     const hasMore = yield select(selectors.makeSelectHasMore(), action)
 
     // nullのチェックではない
@@ -44,7 +41,7 @@ function* fetchSearch(action: Action): Generator<*, void, *> {
     const { result } = response
 
     yield put(actions.setNextUrl(id, result.nextUrl))
-    const nextIds = union(illustIds, result.illusts)
+    const nextIds = union(ids, result.illusts)
 
     if (nextUrl) {
       yield put(actions.fetchNextSuccess(id, response, nextIds))
@@ -85,7 +82,7 @@ function* fetchUntilLimit(action: Action): Generator<*, void, *> {
 
 function* fetchNew(action: Action): Generator<*, void, *> {
   try {
-    const { illustIds } = yield select(selectors.makeSelectColumn(), action)
+    const { ids } = yield select(selectors.makeSelectColumn(), action)
     const beforeIds = yield select(
       selectors.makeLimitedSelectIllustsId(),
       action
@@ -96,7 +93,7 @@ function* fetchNew(action: Action): Generator<*, void, *> {
     const response = yield call(api.get, endpoint, true)
     const { result } = response
 
-    const nextIds = union(result.illusts, illustIds)
+    const nextIds = union(result.illusts, ids)
     yield put(actions.fetchNewSuccess(action.id, response, nextIds))
 
     const afterIds = yield select(
@@ -132,9 +129,10 @@ function* fetchNewWatch(action: Action) {
 export default function* root(): Generator<*, void, void> {
   yield takeEvery(Actions.ADD_COLUMN, addColumn)
 
-  yield takeEvery(Actions.FETCH, fetchUntilLimit)
-  yield takeEvery(Actions.FETCH_NEXT, fetchUntilLimit)
-  yield takeEvery(Actions.SET_MIN_BOOKBOOK, fetchUntilLimit)
+  yield takeEvery(
+    [Actions.FETCH, Actions.FETCH_NEXT, Actions.SET_MIN_BOOKBOOK],
+    fetchUntilLimit
+  )
 
   yield takeEvery(Actions.FETCH_SUCCESS, fetchNewWatch)
   yield takeEvery(Actions.FETCH_NEW, fetchNewWatch)

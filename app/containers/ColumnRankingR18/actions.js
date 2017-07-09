@@ -3,13 +3,13 @@ import type { Action } from './actionTypes.js'
 import {
   ADD_COLUMN,
   ADD_COLUMN_SUCCESS,
-  FETCH_NEXT_RANKING_R18,
-  FETCH_NEXT_RANKING_R18_FAILRE,
-  FETCH_RANKING_R18,
-  FETCH_RANKING_R18_FAILRE,
+  FETCH_NEXT,
+  FETCH_NEXT_FAILRE,
+  FETCH,
+  FETCH_FAILRE,
   SET_NEXT_URL,
-  FETCH_RANKING_R18_SUCCESS,
-  FETCH_NEXT_RANKING_R18_SUCCESS,
+  FETCH_SUCCESS,
+  FETCH_NEXT_SUCCESS,
 } from './constants'
 import type { Response } from 'services/api'
 import type { ColumnId } from './reducer'
@@ -28,30 +28,30 @@ export function addColumnSuccess(id: ColumnId): Action {
   }
 }
 
-export function fetchNextRankingR18(id: ColumnId): Action {
+export function fetchNext(id: ColumnId): Action {
   return {
-    type: FETCH_NEXT_RANKING_R18,
+    type: FETCH_NEXT,
     id,
   }
 }
 
-export function fetchNextRankingR18Failre(id: ColumnId): Action {
+export function fetchNextFailre(id: ColumnId): Action {
   return {
-    type: FETCH_NEXT_RANKING_R18_FAILRE,
+    type: FETCH_NEXT_FAILRE,
     id,
   }
 }
 
-export function fetchRankingR18(id: ColumnId): Action {
+export function fetch(id: ColumnId): Action {
   return {
-    type: FETCH_RANKING_R18,
+    type: FETCH,
     id,
   }
 }
 
-export function fetchRankingR18Failre(id: ColumnId): Action {
+export function fetchFailre(id: ColumnId): Action {
   return {
-    type: FETCH_RANKING_R18_FAILRE,
+    type: FETCH_FAILRE,
     id,
   }
 }
@@ -64,26 +64,26 @@ export function setNextUrl(id: ColumnId, nextUrl: string): Action {
   }
 }
 
-export function fetchRankingR18Success(
+export function fetchSuccess(
   id: ColumnId,
   response: Response,
   ids: Array<number>
 ): Action {
   return {
-    type: FETCH_RANKING_R18_SUCCESS,
+    type: FETCH_SUCCESS,
     id,
     response,
     ids,
   }
 }
 
-export function fetchNextRankingR18Success(
+export function fetchNextSuccess(
   id: ColumnId,
   response: Response,
   ids: Array<number>
 ): Action {
   return {
-    type: FETCH_NEXT_RANKING_R18_SUCCESS,
+    type: FETCH_NEXT_SUCCESS,
     id,
     response,
     ids,

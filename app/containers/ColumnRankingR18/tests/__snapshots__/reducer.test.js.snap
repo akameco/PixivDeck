@@ -3,7 +3,7 @@
 exports[`ADD_COLUMN_SUCCESS 1`] = `
 Object {
   "day_male_r18": Object {
-    "illustIds": Array [],
+    "ids": Array [],
     "nextUrl": null,
   },
 }
