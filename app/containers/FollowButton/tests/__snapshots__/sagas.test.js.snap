@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`follow failer 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [
+      "/v1/user/follow/add",
+      Object {
+        "restrict": "public",
+        "userId": 1,
+      },
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+}
+`;
+
+exports[`follow success 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [
+      "/v1/user/follow/add",
+      Object {
+        "restrict": "public",
+        "userId": 1,
+      },
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+}
+`;
+
+exports[`unfollow failer 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [
+      "/v1/user/follow/delete",
+      Object {
+        "restrict": "public",
+        "userId": 1,
+      },
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+}
+`;
+
+exports[`unfollow success 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [
+      "/v1/user/follow/delete",
+      Object {
+        "restrict": "public",
+        "userId": 1,
+      },
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+}
+`;
