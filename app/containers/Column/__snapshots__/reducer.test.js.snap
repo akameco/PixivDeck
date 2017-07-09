@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ADD_COLUMN_SUCCESS 1`] = `
+Object {
+  "a": Object {
+    "illustIds": Array [],
+    "nextUrl": "before",
+  },
+  "b": Object {
+    "illustIds": Array [],
+    "nextUrl": null,
+  },
+}
+`;
+
+exports[`SET_NEXT_URL 1`] = `
+Object {
+  "a": Object {
+    "illustIds": Array [],
+    "nextUrl": "next-url",
+  },
+}
+`;
+
+exports[`default action 1`] = `Object {}`;
