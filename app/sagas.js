@@ -18,9 +18,11 @@ import Table from 'containers/Table/saga'
 import UserDrawerContainer from 'containers/UserDrawerContainer/saga'
 import UserPopoverContainer from 'containers/UserPopoverContainer/saga'
 import Notify from 'containers/Notify/saga'
+// import Api from 'containers/Api/saga'
 
 function* root(): Generator<*, void, void> {
   yield all([
+    // fork(Api),
     fork(BookmarkButton),
     fork(BoxContainer),
     fork(ColumnBookmark),

@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`bookmark 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [
+      "/v2/illust/bookmark/add",
+      Object {
+        "illustId": 1,
+        "restrict": "public",
+      },
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+}
+`;
+
+exports[`bookmark failed 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [
+      "/v2/illust/bookmark/add",
+      Object {
+        "illustId": 1,
+        "restrict": "public",
+      },
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+}
+`;
