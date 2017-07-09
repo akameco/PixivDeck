@@ -27,10 +27,7 @@ function createEndpoint(id) {
 function* fetchSearch(action: Action): Generator<*, void, *> {
   const { id } = action
   try {
-    const { ids, nextUrl } = yield select(
-      selectors.makeSelectColumn(),
-      action
-    )
+    const { ids, nextUrl } = yield select(selectors.makeSelectColumn(), action)
     const hasMore = yield select(selectors.makeSelectHasMore(), action)
 
     // nullのチェックではない
@@ -97,7 +94,7 @@ function* fetchNew(action: Action): Generator<*, void, *> {
     const { result } = response
 
     const nextIds = union(result.illusts, ids)
-    yield put(actions.fetchSuccess(action.id, response, nextIds))
+    yield put(actions.fetchNewSuccess(action.id, response, nextIds))
 
     const afterIds = yield select(
       selectors.makeLimitedSelectIllustsId(),
@@ -132,9 +129,10 @@ function* fetchNewWatch(action: Action) {
 export default function* root(): Generator<*, void, void> {
   yield takeEvery(Actions.ADD_COLUMN, addColumn)
 
-  yield takeEvery(Actions.FETCH, fetchUntilLimit)
-  yield takeEvery(Actions.FETCH_NEXT, fetchUntilLimit)
-  yield takeEvery(Actions.SET_MIN_BOOKBOOK, fetchUntilLimit)
+  yield takeEvery(
+    [Actions.FETCH, Actions.FETCH_NEXT, Actions.SET_MIN_BOOKBOOK],
+    fetchUntilLimit
+  )
 
   yield takeEvery(Actions.FETCH_SUCCESS, fetchNewWatch)
   yield takeEvery(Actions.FETCH_NEW, fetchNewWatch)
