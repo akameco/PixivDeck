@@ -1,16 +1,15 @@
 // @flow
-import { union } from 'lodash'
+import { put, select, call, takeEvery } from 'redux-saga/effects'
 import { addTable } from 'containers/ColumnManager/actions'
 import { makeSelectInfo } from 'containers/LoginModal/selectors'
 import { fetchAuth } from 'services/api'
 import { ADD_BOOKMARK_SUCCESS } from '../BookmarkButton/constants'
 import * as Actions from './constants'
 import * as actions from './actions'
-import * as api from '../Api/sagas'
 import type { Action } from './actionTypes'
 import type { ColumnId } from './reducer'
 import { makeSelectColumn, makeSelectIds } from './selectors'
-import { put, select, call, takeEvery } from 'redux-saga/effects'
+import * as column from '../Column/sagas'
 
 export function* addColumn({ id }: Action): Generator<*, void, *> {
   const ids: Array<?ColumnId> = yield select(makeSelectIds())
@@ -22,57 +21,26 @@ export function* addColumn({ id }: Action): Generator<*, void, *> {
 }
 
 function* fetchBookmark(action: Action) {
-  const { id } = action
-  const { ids } = yield select(makeSelectColumn(), action)
-
-  try {
-    const info = yield select(makeSelectInfo())
-    // TODO
-    const { user: { id: userId } } = yield call(fetchAuth, info)
-
-    const { result } = yield call(
-      api.get,
-      `/v1/user/bookmarks/illust?user_id=${userId}&restrict=${id}`,
-      true
-    )
-
-    yield put(actions.setNextUrl(id, result.nextUrl))
-
-    const nextIds = union(result.illusts, ids)
-    yield put(actions.fetchSuccess(id, nextIds))
-  } catch (err) {
-    yield put(actions.fetchFailre(id))
-  }
-}
-
-function* fetchNextBookmark(action: Action) {
-  const { id } = action
   const { ids, nextUrl } = yield select(makeSelectColumn(), action)
 
-  try {
-    if (!nextUrl) {
-      return
-    }
+  if (nextUrl) {
+    yield call(column.fetchColumn, nextUrl, action.id, { ...actions }, ids)
+  } else {
+    // TODO
+    const info = yield select(makeSelectInfo())
+    const { user: { id: userId } } = yield call(fetchAuth, info)
 
-    const { result } = yield call(api.get, nextUrl, true)
-
-    yield put(actions.setNextUrl(id, result.nextUrl))
-
-    const nextIds = union(ids, result.illusts)
-    yield put(actions.fetchSuccess(id, nextIds))
-  } catch (err) {
-    yield put(actions.fetchNextFailre(id))
+    const endpoint = `/v1/user/bookmarks/illust?user_id=${userId}&restrict=${action.id}`
+    yield call(column.fetchColumn, endpoint, action.id, { ...actions }, ids)
   }
 }
 
 function* reloadBookmakColumns(action: { +restrict: ColumnId }) {
-  // TOOD Tabelにある場合のみ更新する
   yield put(actions.fetch(action.restrict))
 }
 
 export default function* root(): Generator<*, void, void> {
   yield takeEvery(Actions.ADD_COLUMN, addColumn)
-  yield takeEvery(Actions.FETCH, fetchBookmark)
-  yield takeEvery(Actions.FETCH_NEXT, fetchNextBookmark)
+  yield takeEvery([Actions.FETCH, Actions.FETCH_NEXT], fetchBookmark)
   yield takeEvery(ADD_BOOKMARK_SUCCESS, reloadBookmakColumns)
 }

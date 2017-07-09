@@ -34,10 +34,11 @@ export function fetch(id: ColumnId): Action {
   }
 }
 
-export function fetchFailre(id: ColumnId): Action {
+export function fetchFailre(id: ColumnId, error: string): Action {
   return {
     type: FETCH_FAILRE,
     id,
+    error,
   }
 }
 

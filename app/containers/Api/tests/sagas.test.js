@@ -30,6 +30,7 @@ test('get', () => {
 
   next = gen.next({ entities: {}, result: {} })
   expect(next.value).toEqual(
+    // $FlowFixMe
     put(actions.apiRequestSuccess({ entities: {}, result: {} }))
   )
 })

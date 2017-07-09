@@ -9,9 +9,9 @@ export type FETCH_TYPE = 'ColumnRankingR18/FETCH'
 export type FETCH_SUCCESS_TYPE = 'ColumnRankingR18/FETCH_SUCCESS'
 export type FETCH_FAILRE_TYPE = 'ColumnRankingR18/FETCH_FAILRE'
 
-export type FETCH_NEXT_TYPE = 'ColumnRanking/FETCH_NEXT'
-export type FETCH_NEXT_SUCCESS_TYPE = 'ColumnRanking/FETCH_NEXT_SUCCESS'
-export type FETCH_NEXT_FAILRE_TYPE = 'ColumnRanking/FETCH_NEXT_FAILRE'
+export type FETCH_NEXT_TYPE = 'ColumnRankingR18/FETCH_NEXT'
+export type FETCH_NEXT_SUCCESS_TYPE = 'ColumnRankingR18/FETCH_NEXT_SUCCESS'
+export type FETCH_NEXT_FAILRE_TYPE = 'ColumnRankingR18/FETCH_NEXT_FAILRE'
 
 export type Action =
   | {|
