@@ -11,7 +11,7 @@ import * as actions from './actions'
 import type { ColumnId } from './reducer'
 import { makeSelectColumn, makeSelectIds } from './selectors'
 import * as selectors from './selectors'
-import { notifyWithIllust } from '../Notify/saga'
+import { addNotifyWithIllust } from '../Notify/actions'
 import { FOLLOW_SUCCESS } from '../FollowButton/constants'
 
 function* addFollowColumn({ id }: { id: ColumnId }) {
@@ -53,7 +53,7 @@ function* fetchFollow(action: Action): Generator<*, void, *> {
     if (illustIds.length > 0) {
       const diffIllusts = difference(nextIds, illustIds)
       for (const id of diffIllusts) {
-        yield call(notifyWithIllust, { title: '新着イラスト', id })
+        yield put(addNotifyWithIllust('新着イラスト', id))
       }
     }
 

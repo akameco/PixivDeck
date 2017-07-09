@@ -23,6 +23,8 @@ import type { Action as TableAction } from './containers/Table/actionTypes'
 import type { Action as UserDrawerContainerAction } from './containers/UserDrawerContainer/actionTypes'
 import type { Action as UserPopoverContainerAction } from './containers/UserPopoverContainer/actionTypes'
 
+import type { Action as NotifyAction } from './containers/Notify/actionTypes'
+
 export type Action =
   | BookmarkButtonAction
   | BoxContainerAction
@@ -47,3 +49,4 @@ export type Action =
   | TableAction
   | UserDrawerContainerAction
   | UserPopoverContainerAction
+  | NotifyAction
