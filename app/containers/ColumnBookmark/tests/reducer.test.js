@@ -4,8 +4,6 @@ import * as actions from '../actions'
 
 const initialState = {}
 
-const response = { result: {}, entities: {} }
-
 test('snapshot initialState', () => {
   // $FlowFixMe
   expect(reducer(initialState, { type: 'default action' })).toMatchSnapshot()
@@ -28,12 +26,9 @@ test('SET_NEXT_URL', () => {
 
 test('FETCH_SUCCESS', () => {
   expect(
-    reducer(initialState, actions.fetchSuccess('public', response, [1, 2, 3]))
+    reducer(initialState, actions.fetchSuccess('public', [1, 2, 3]))
   ).toMatchSnapshot()
   expect(
-    reducer(
-      initialState,
-      actions.fetchNextSuccess('private', response, [1, 2, 3])
-    )
+    reducer(initialState, actions.fetchNextSuccess('private', [1, 2, 3]))
   ).toMatchSnapshot()
 })

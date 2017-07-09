@@ -25,13 +25,12 @@ function* fetchRanking(action: Action) {
   try {
     const { ids } = yield select(makeSelectColumn(), action)
 
-    const response = yield call(api.get, `/v1/illust/ranking?mode=${id}`)
-    const { result } = response
+    const { result } = yield call(api.get, `/v1/illust/ranking?mode=${id}`)
 
     yield put(actions.setNextUrl(id, result.nextUrl))
 
     const nextIds = union(ids, result.illusts)
-    yield put(actions.fetchSuccess(id, response, nextIds))
+    yield put(actions.fetchSuccess(id, nextIds))
   } catch (err) {
     yield put(actions.fetchFailre(id))
   }
@@ -46,13 +45,12 @@ function* fetchNextRanking(action: Action) {
       return
     }
 
-    const response = yield call(api.get, nextUrl)
-    const { result } = response
+    const { result } = yield call(api.get, nextUrl)
 
     yield put(actions.setNextUrl(id, result.nextUrl))
 
     const nextIds = union(ids, result.illusts)
-    yield put(actions.fetchSuccess(id, response, nextIds))
+    yield put(actions.fetchSuccess(id, nextIds))
   } catch (err) {
     yield put(actions.fetchNextFailre(id))
   }

@@ -37,16 +37,16 @@ function* fetchSearch(action: Action): Generator<*, void, *> {
 
     const endpoint = nextUrl ? nextUrl : createEndpoint(id)
 
-    const response = yield call(api.get, endpoint, true)
-    const { result } = response
+    const { result } = yield call(api.get, endpoint, true)
+    
 
     yield put(actions.setNextUrl(id, result.nextUrl))
     const nextIds = union(ids, result.illusts)
 
     if (nextUrl) {
-      yield put(actions.fetchNextSuccess(id, response, nextIds))
+      yield put(actions.fetchNextSuccess(id,  nextIds))
     } else {
-      yield put(actions.fetchSuccess(id, response, nextIds))
+      yield put(actions.fetchSuccess(id,  nextIds))
     }
   } catch (err) {
     yield put(actions.fetchFailre(id, err))
@@ -90,11 +90,11 @@ function* fetchNew(action: Action): Generator<*, void, *> {
 
     const endpoint = createEndpoint(action.id)
 
-    const response = yield call(api.get, endpoint, true)
-    const { result } = response
+    const { result } = yield call(api.get, endpoint, true)
+    
 
     const nextIds = union(result.illusts, ids)
-    yield put(actions.fetchNewSuccess(action.id, response, nextIds))
+    yield put(actions.fetchNewSuccess(action.id,  nextIds))
 
     const afterIds = yield select(
       selectors.makeLimitedSelectIllustsId(),

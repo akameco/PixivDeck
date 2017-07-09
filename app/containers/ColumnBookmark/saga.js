@@ -30,17 +30,16 @@ function* fetchBookmark(action: Action) {
     // TODO
     const { user: { id: userId } } = yield call(fetchAuth, info)
 
-    const response = yield call(
+    const { result } = yield call(
       api.get,
       `/v1/user/bookmarks/illust?user_id=${userId}&restrict=${id}`,
       true
     )
-    const { result } = response
 
     yield put(actions.setNextUrl(id, result.nextUrl))
 
     const nextIds = union(result.illusts, ids)
-    yield put(actions.fetchSuccess(id, response, nextIds))
+    yield put(actions.fetchSuccess(id, nextIds))
   } catch (err) {
     yield put(actions.fetchFailre(id))
   }
@@ -55,13 +54,12 @@ function* fetchNextBookmark(action: Action) {
       return
     }
 
-    const response = yield call(api.get, nextUrl, true)
-    const { result } = response
+    const { result } = yield call(api.get, nextUrl, true)
 
     yield put(actions.setNextUrl(id, result.nextUrl))
 
     const nextIds = union(ids, result.illusts)
-    yield put(actions.fetchSuccess(id, response, nextIds))
+    yield put(actions.fetchSuccess(id, nextIds))
   } catch (err) {
     yield put(actions.fetchNextFailre(id))
   }

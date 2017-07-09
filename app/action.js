@@ -25,6 +25,8 @@ import type { Action as UserPopoverContainerAction } from './containers/UserPopo
 
 import type { Action as NotifyAction } from './containers/Notify/actionTypes'
 
+import type { Action as ApiAction } from './containers/Api/actionTypes'
+
 export type Action =
   | BookmarkButtonAction
   | BoxContainerAction
@@ -50,3 +52,4 @@ export type Action =
   | UserDrawerContainerAction
   | UserPopoverContainerAction
   | NotifyAction
+  | ApiAction

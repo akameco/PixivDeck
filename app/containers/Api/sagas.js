@@ -1,8 +1,9 @@
 // @flow
-import { call } from 'redux-saga/effects'
+import { call, put } from 'redux-saga/effects'
 import { getToken } from 'containers/LoginModal/saga'
 import * as api from 'services/api'
 import type { Response } from 'services/api'
+import * as actions from './actions'
 
 export function* post(endpoint: string, data: Object): Generator<*, void, *> {
   const token = yield call(getToken)
@@ -18,5 +19,6 @@ export function* get(
     token = yield call(getToken)
   }
   const response = yield call(api.getRequest, endpoint, {}, token)
+  yield put(actions.apiRequestSuccess(response))
   return response
 }
