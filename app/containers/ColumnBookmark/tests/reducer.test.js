@@ -13,7 +13,7 @@ test('snapshot initialState', () => {
 
 test('ADD_BOOKMARK_COLUMN_SUCCESS', () => {
   expect(
-    reducer(initialState, actions.addBookmarkColumnSuccess('public'))
+    reducer(initialState, actions.addColumnSuccess('public'))
   ).toMatchSnapshot()
 })
 

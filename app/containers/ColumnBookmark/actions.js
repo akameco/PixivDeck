@@ -1,8 +1,8 @@
 // @flow
 import type { Action } from './actionTypes.js'
 import {
-  ADD_BOOKMARK_COLUMN,
-  ADD_BOOKMARK_COLUMN_SUCCESS,
+  ADD_COLUMN,
+  ADD_COLUMN_SUCCESS,
   FETCH_BOOKMARK,
   FETCH_BOOKMARK_FAILRE,
   FETCH_NEXT_BOOKMARK,
@@ -14,16 +14,16 @@ import {
 import type { Response } from 'services/api'
 import type { ColumnId } from './reducer'
 
-export function addBookmarkColumn(id: ColumnId): Action {
+export function addColumn(id: ColumnId): Action {
   return {
-    type: ADD_BOOKMARK_COLUMN,
+    type: ADD_COLUMN,
     id,
   }
 }
 
-export function addBookmarkColumnSuccess(id: ColumnId): Action {
+export function addColumnSuccess(id: ColumnId): Action {
   return {
-    type: ADD_BOOKMARK_COLUMN_SUCCESS,
+    type: ADD_COLUMN_SUCCESS,
     id,
   }
 }

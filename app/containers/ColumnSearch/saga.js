@@ -2,28 +2,22 @@
 import { delay } from 'redux-saga'
 import { put, select, call, takeEvery } from 'redux-saga/effects'
 import { union, difference } from 'lodash'
-import { addColumn } from 'containers/ColumnManager/actions'
-import { getToken } from 'containers/LoginModal/saga'
-import { getRequest } from 'services/api'
+import { addColumn as add } from 'containers/ColumnManager/actions'
 import { addNotifyWithIllust } from 'containers/Notify/actions'
+import * as api from '../Api/sagas'
 import * as Actions from './constants'
 import * as actions from './actions'
 import type { ColumnId } from './reducer'
 import * as selectors from './selectors'
 import type { Action } from './actionTypes'
 
-function* addSearchColumn({ id }: Action) {
+export function* addColumn({ id }: Action): Generator<*, void, *> {
   const ids: Array<?ColumnId> = yield select(selectors.makeSelectIds())
   if (ids.every(v => v !== id)) {
     yield put(actions.addColumnSuccess(id))
   }
 
-  yield put(
-    addColumn(`search-${id}`, {
-      columnId: id,
-      type: 'SEARCH',
-    })
-  )
+  yield put(add(`search-${id}`, { columnId: id, type: 'SEARCH' }))
 }
 
 function createEndpoint(id) {
@@ -44,11 +38,9 @@ function* fetchSearch(action: Action): Generator<*, void, *> {
       return
     }
 
-    const accessToken = yield call(getToken)
-
     const endpoint = nextUrl ? nextUrl : createEndpoint(id)
 
-    const response = yield call(getRequest, endpoint, null, accessToken)
+    const response = yield call(api.get, endpoint, true)
     const { result } = response
 
     yield put(actions.setNextUrl(id, result.nextUrl))
@@ -101,8 +93,7 @@ function* fetchNew(action: Action): Generator<*, void, *> {
 
     const endpoint = createEndpoint(action.id)
 
-    const accessToken = yield call(getToken)
-    const response = yield call(getRequest, endpoint, null, accessToken)
+    const response = yield call(api.get, endpoint, true)
     const { result } = response
 
     const nextIds = union(result.illusts, illustIds)
@@ -139,7 +130,7 @@ function* fetchNewWatch(action: Action) {
 }
 
 export default function* root(): Generator<*, void, void> {
-  yield takeEvery(Actions.ADD_COLUMN, addSearchColumn)
+  yield takeEvery(Actions.ADD_COLUMN, addColumn)
 
   yield takeEvery(Actions.FETCH, fetchUntilLimit)
   yield takeEvery(Actions.FETCH_NEXT, fetchUntilLimit)

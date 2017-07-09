@@ -81,7 +81,7 @@ function fetchFactory(opts?: Object) {
 export async function getRequest(
   endpoint: string,
   params?: Object,
-  token?: string
+  token?: ?string
 ) {
   const request = fetchFactory(
     token ? { Authorization: `Bearer ${token}` } : {}

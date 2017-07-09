@@ -2,9 +2,8 @@
 import type { Response } from 'services/api'
 import type { ColumnId } from './reducer'
 
-export type ADD_USER_ILLUST_COLUMN_TYPE = 'ColumnUserIllust/ADD_COLUMN'
-export type ADD_USER_ILLUST_COLUMN_SUCCESS_TYPE =
-  'ColumnUserIllust/ADD_COLUMN_SUCCESS'
+export type ADD_COLUMN_TYPE = 'ColumnUserIllust/ADD_COLUMN'
+export type ADD_COLUMN_SUCCESS_TYPE = 'ColumnUserIllust/ADD_COLUMN_SUCCESS'
 export type SET_NEXT_URL_TYPE = 'ColumnUserIllust/SET_NEXT_URL'
 
 export type FETCH_USER_ILLUST_TYPE = 'ColumnUserIllust/FETCH_USER_ILLUST'
@@ -23,8 +22,8 @@ export type FETCH_NEXT_USER_ILLUST_FAILRE_TYPE =
 export type Action =
   | {|
       +type:
-        | ADD_USER_ILLUST_COLUMN_TYPE
-        | ADD_USER_ILLUST_COLUMN_SUCCESS_TYPE
+        | ADD_COLUMN_TYPE
+        | ADD_COLUMN_SUCCESS_TYPE
         | FETCH_USER_ILLUST_TYPE
         | FETCH_USER_ILLUST_FAILRE_TYPE
         | FETCH_NEXT_USER_ILLUST_TYPE

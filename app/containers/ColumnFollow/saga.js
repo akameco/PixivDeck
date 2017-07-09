@@ -4,17 +4,19 @@ import { delay } from 'redux-saga'
 import { put, select, call, takeEvery } from 'redux-saga/effects'
 import { addColumn } from 'containers/ColumnManager/actions'
 import { makeSelectInfo } from 'containers/LoginModal/selectors'
-import { getToken } from 'containers/LoginModal/saga'
-import { getRequest, fetchAuth } from 'services/api'
+import { fetchAuth } from 'services/api'
 import * as Actions from './constants'
 import * as actions from './actions'
 import type { ColumnId } from './reducer'
 import { makeSelectColumn, makeSelectIds } from './selectors'
+import * as api from '../Api/sagas'
 import * as selectors from './selectors'
 import { addNotifyWithIllust } from '../Notify/actions'
 import { FOLLOW_SUCCESS } from '../FollowButton/constants'
 
-function* addFollowColumn({ id }: { id: ColumnId }) {
+type Action = { id: ColumnId }
+
+export function* addFollowColumn({ id }: Action): Generator<*, void, *> {
   const ids: Array<?ColumnId> = yield select(makeSelectIds())
   if (ids.every(v => v !== id)) {
     yield put(actions.addFollowColumnSuccess(id))
@@ -22,8 +24,6 @@ function* addFollowColumn({ id }: { id: ColumnId }) {
 
   yield put(addColumn(`follow-${id}`, { columnId: id, type: 'FOLLOW' }))
 }
-
-type Action = { id: ColumnId }
 
 function createEndpoint(userId, restrict) {
   return `/v2/illust/follow?user_id=${userId}&restrict=${restrict}`
@@ -36,14 +36,14 @@ function* fetchFollow(action: Action): Generator<*, void, *> {
 
     // TODO
     const info = yield select(makeSelectInfo())
-    const { accessToken, user: { id: userId } } = yield call(fetchAuth, info)
+    const { user: { id: userId } } = yield call(fetchAuth, info)
 
     const response = yield call(
-      getRequest,
+      api.get,
       `/v2/illust/follow?user_id=${userId}&restrict=${id}`,
-      null,
-      accessToken
+      true
     )
+
     const { result } = response
 
     yield put(actions.setNextUrl(id, result.nextUrl))
@@ -72,9 +72,7 @@ function* fetchNextFollow(action: Action) {
       return
     }
 
-    const accessToken = yield call(getToken)
-
-    const response = yield call(getRequest, nextUrl, null, accessToken)
+    const response = yield call(api.get, nextUrl, true)
     const { result } = response
 
     yield put(actions.setNextUrl(id, result.nextUrl))
@@ -91,11 +89,10 @@ function* fetchNew(action: Action): Generator<*, void, *> {
     const { illustIds } = yield select(selectors.makeSelectColumn(), action)
 
     const info = yield select(makeSelectInfo())
-    const { accessToken, user: { id: userId } } = yield call(fetchAuth, info)
+    const { user: { id: userId } } = yield call(fetchAuth, info)
 
     const endpoint = createEndpoint(userId, action.id)
-
-    const response = yield call(getRequest, endpoint, null, accessToken)
+    const response = yield call(api.get, endpoint, true)
     const { result } = response
 
     const nextIds = union(result.illusts, illustIds)

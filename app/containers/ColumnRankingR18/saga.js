@@ -1,15 +1,18 @@
 // @flow
 import { union } from 'lodash'
 import { addColumn } from 'containers/ColumnManager/actions'
-import { getToken } from 'containers/LoginModal/saga'
-import { getRequest } from 'services/api'
+import * as api from '../Api/sagas'
 import * as Actions from './constants'
 import * as actions from './actions'
 import type { R18Mode } from './reducer'
 import { makeSelectColumn, makeSelectModes } from './selectors'
 import { put, select, call, takeEvery } from 'redux-saga/effects'
 
-function* addRakingColumn({ mode }: { mode: R18Mode }) {
+export function* addRakingColumn({
+  mode,
+}: {
+  mode: R18Mode,
+}): Generator<*, void, *> {
   const modes: Array<?R18Mode> = yield select(makeSelectModes())
 
   if (modes.every(v => v !== mode)) {
@@ -30,14 +33,8 @@ function* fetchRanking(props: Props) {
 
   try {
     const { illustIds } = yield select(makeSelectColumn(), props)
-    const accessToken = yield call(getToken)
 
-    const response = yield call(
-      getRequest,
-      `/v1/illust/ranking?mode=${id}`,
-      null,
-      accessToken
-    )
+    const response = yield call(api.get, `/v1/illust/ranking?mode=${id}`, true)
     const { result } = response
 
     yield put(actions.setNextUrl(id, result.nextUrl))
@@ -54,13 +51,11 @@ function* fetchNextRanking18(props: Props) {
   try {
     const { illustIds, nextUrl } = yield select(makeSelectColumn(), props)
 
-    const accessToken = yield call(getToken)
-
     if (!nextUrl) {
       return
     }
 
-    const response = yield call(getRequest, nextUrl, null, accessToken)
+    const response = yield call(api.get, nextUrl, true)
     const { result } = response
 
     yield put(actions.setNextUrl(id, result.nextUrl))

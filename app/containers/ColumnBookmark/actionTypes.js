@@ -2,9 +2,8 @@
 import type { Response } from 'services/api'
 import type { ColumnId } from './reducer'
 
-export type ADD_BOOKMARK_COLUMN_TYPE = 'ColumnBookmark/ADD_COLUMN'
-export type ADD_BOOKMARK_COLUMN_SUCCESS_TYPE =
-  'ColumnBookmark/ADD_COLUMN_SUCCESS'
+export type ADD_COLUMN_TYPE = 'ColumnBookmark/ADD_COLUMN'
+export type ADD_COLUMN_SUCCESS_TYPE = 'ColumnBookmark/ADD_COLUMN_SUCCESS'
 export type SET_NEXT_URL_TYPE = 'ColumnBookmark/SET_NEXT_URL'
 
 export type FETCH_BOOKMARK_TYPE = 'ColumnBookmark/FETCH_BOOKMARK'
@@ -21,8 +20,8 @@ export type FETCH_NEXT_BOOKMARK_FAILRE_TYPE =
 export type Action =
   | {|
       +type:
-        | ADD_BOOKMARK_COLUMN_TYPE
-        | ADD_BOOKMARK_COLUMN_SUCCESS_TYPE
+        | ADD_COLUMN_TYPE
+        | ADD_COLUMN_SUCCESS_TYPE
         | FETCH_BOOKMARK_TYPE
         | FETCH_BOOKMARK_FAILRE_TYPE
         | FETCH_NEXT_BOOKMARK_TYPE

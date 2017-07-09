@@ -1,14 +1,18 @@
 // @flow
 import { union } from 'lodash'
 import { addColumn } from 'containers/ColumnManager/actions'
-import { getRequest } from 'services/api'
+import * as api from '../Api/sagas'
 import * as Actions from './constants'
 import * as actions from './actions'
 import type { Mode } from './reducer'
 import { makeSelectColumn, makeSelectModes } from './selectors'
 import { put, select, call, takeEvery } from 'redux-saga/effects'
 
-function* addRankingColumn({ mode }: { mode: Mode }) {
+export function* addRankingColumn({
+  mode,
+}: {
+  mode: Mode,
+}): Generator<*, void, *> {
   const modes: Array<?Mode> = yield select(makeSelectModes())
   if (modes.every(v => v !== mode)) {
     yield put(actions.addRankingColumnSuccess(mode))
@@ -25,7 +29,7 @@ function* fetchRanking(props: Props) {
   try {
     const { illustIds } = yield select(makeSelectColumn(), props)
 
-    const response = yield call(getRequest, `/v1/illust/ranking?mode=${id}`)
+    const response = yield call(api.get, `/v1/illust/ranking?mode=${id}`)
     const { result } = response
 
     yield put(actions.setNextUrl(id, result.nextUrl))
@@ -46,7 +50,7 @@ function* fetchNextRanking(props: Props) {
       return
     }
 
-    const response = yield call(getRequest, nextUrl)
+    const response = yield call(api.get, nextUrl)
     const { result } = response
 
     yield put(actions.setNextUrl(id, result.nextUrl))
