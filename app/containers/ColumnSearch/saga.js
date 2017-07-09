@@ -2,7 +2,7 @@
 import { delay } from 'redux-saga'
 import { put, select, call, takeEvery } from 'redux-saga/effects'
 import { union, difference } from 'lodash'
-import { addColumn as add } from 'containers/ColumnManager/actions'
+import { addTable } from 'containers/ColumnManager/actions'
 import { addNotifyWithIllust } from 'containers/Notify/actions'
 import * as api from '../Api/sagas'
 import * as Actions from './constants'
@@ -17,7 +17,7 @@ export function* addColumn({ id }: Action): Generator<*, void, *> {
     yield put(actions.addColumnSuccess(id))
   }
 
-  yield put(add(`search-${id}`, { columnId: id, type: 'SEARCH' }))
+  yield put(addTable(`search-${id}`, { columnId: id, type: 'SEARCH' }))
 }
 
 function createEndpoint(id) {

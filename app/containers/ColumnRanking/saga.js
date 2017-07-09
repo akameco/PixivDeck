@@ -1,6 +1,6 @@
 // @flow
 import { union } from 'lodash'
-import { addColumn } from 'containers/ColumnManager/actions'
+import { addTable } from 'containers/ColumnManager/actions'
 import * as api from '../Api/sagas'
 import * as Actions from './constants'
 import * as actions from './actions'
@@ -8,26 +8,22 @@ import type { Mode } from './reducer'
 import { makeSelectColumn, makeSelectModes } from './selectors'
 import { put, select, call, takeEvery } from 'redux-saga/effects'
 
-export function* addRankingColumn({
-  mode,
-}: {
-  mode: Mode,
-}): Generator<*, void, *> {
+type Action = { id: Mode }
+
+export function* addRankingColumn({ id }: Action): Generator<*, void, *> {
   const modes: Array<?Mode> = yield select(makeSelectModes())
-  if (modes.every(v => v !== mode)) {
-    yield put(actions.addRankingColumnSuccess(mode))
+  if (modes.every(v => v !== id)) {
+    yield put(actions.addColumnSuccess(id))
   }
 
-  yield put(addColumn(`ranking-${mode}`, { columnId: mode, type: 'RANKING' }))
+  yield put(addTable(`ranking-${id}`, { columnId: id, type: 'RANKING' }))
 }
 
-type Props = { id: Mode }
-
-function* fetchRanking(props: Props) {
-  const { id } = props
+function* fetchRanking(action: Action) {
+  const { id } = action
 
   try {
-    const { illustIds } = yield select(makeSelectColumn(), props)
+    const { illustIds } = yield select(makeSelectColumn(), action)
 
     const response = yield call(api.get, `/v1/illust/ranking?mode=${id}`)
     const { result } = response
@@ -41,11 +37,11 @@ function* fetchRanking(props: Props) {
   }
 }
 
-function* fetchNextRanking(props: Props) {
-  const { id } = props
+function* fetchNextRanking(action: Action) {
+  const { id } = action
 
   try {
-    const { illustIds, nextUrl } = yield select(makeSelectColumn(), props)
+    const { illustIds, nextUrl } = yield select(makeSelectColumn(), action)
     if (!nextUrl) {
       return
     }
@@ -63,7 +59,7 @@ function* fetchNextRanking(props: Props) {
 }
 
 export default function* root(): Generator<*, void, void> {
-  yield takeEvery(Actions.ADD_RANKING_COLUMN, addRankingColumn)
+  yield takeEvery(Actions.ADD_COLUMN, addRankingColumn)
   yield takeEvery(Actions.FETCH_RANKING, fetchRanking)
   yield takeEvery(Actions.FETCH_NEXT_RANKING, fetchNextRanking)
 }

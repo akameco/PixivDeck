@@ -1,6 +1,6 @@
 // @flow
 import { union } from 'lodash'
-import { addColumn as add } from 'containers/ColumnManager/actions'
+import { addTable } from 'containers/ColumnManager/actions'
 import * as api from '../Api/sagas'
 import * as Actions from './constants'
 import * as actions from './actions'
@@ -17,7 +17,7 @@ export function* addColumn({ id }: Props): Generator<*, void, *> {
   }
 
   yield put(
-    add(`user-illust-${id}`, { columnId: String(id), type: 'USER_ILLUST' })
+    addTable(`user-illust-${id}`, { columnId: String(id), type: 'USER_ILLUST' })
   )
 }
 

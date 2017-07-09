@@ -29,7 +29,7 @@ export type State = {
 
 export default function(state: State = {}, action: Action): $Shape<State> {
   switch (action.type) {
-    case Actions.ADD_COLUMN:
+    case Actions.ADD_TABLE:
       return update(state, action, action.maneger)
     default:
       return state

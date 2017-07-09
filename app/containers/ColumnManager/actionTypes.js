@@ -1,10 +1,10 @@
 // @flow
 import type { ColumnManagerId, ColumnManager } from './reducer'
 
-export type ADD_COLUMN_TYPE = 'ColumnManager/addColumn'
+export type ADD_TABLE_TYPE = 'ColumnManager/ADD_TABLE'
 
 export type Action = {
-  +type: ADD_COLUMN_TYPE,
+  +type: ADD_TABLE_TYPE,
   +id: ColumnManagerId,
   +maneger: ColumnManager,
 }

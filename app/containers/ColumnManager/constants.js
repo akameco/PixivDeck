@@ -1,4 +1,4 @@
 // @flow
-import type { ADD_COLUMN_TYPE } from './actionTypes.js'
+import type { ADD_TABLE_TYPE } from './actionTypes.js'
 
-export const ADD_COLUMN: ADD_COLUMN_TYPE = 'ColumnManager/addColumn'
+export const ADD_TABLE: ADD_TABLE_TYPE = 'ColumnManager/ADD_TABLE'

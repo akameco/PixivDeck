@@ -7,6 +7,6 @@ test('root', () => {
   const gen = sagas.default()
   const next = gen.next()
   expect(next.value).toEqual(
-    takeEvery(constants.ADD_RANKING_COLUMN, sagas.addRankingColumn)
+    takeEvery(constants.ADD_COLUMN, sagas.addRankingColumn)
   )
 })

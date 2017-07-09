@@ -1,6 +1,6 @@
 // @flow
 import { union } from 'lodash'
-import { addColumn as add } from 'containers/ColumnManager/actions'
+import { addTable } from 'containers/ColumnManager/actions'
 import { makeSelectInfo } from 'containers/LoginModal/selectors'
 import { fetchAuth } from 'services/api'
 import { ADD_BOOKMARK_SUCCESS } from '../BookmarkButton/constants'
@@ -12,13 +12,13 @@ import type { ColumnId } from './reducer'
 import { makeSelectColumn, makeSelectIds } from './selectors'
 import { put, select, call, takeEvery } from 'redux-saga/effects'
 
-export function* addColumn({ id }: { id: ColumnId }): Generator<*, void, *> {
+export function* addColumn({ id }: Action): Generator<*, void, *> {
   const ids: Array<?ColumnId> = yield select(makeSelectIds())
   if (ids.every(v => v !== id)) {
-    yield put(actions.addColumn(id))
+    yield put(actions.addColumnSuccess(id))
   }
 
-  yield put(add(`bookmark-${id}`, { columnId: id, type: 'BOOKMARK' }))
+  yield put(addTable(`bookmark-${id}`, { columnId: id, type: 'BOOKMARK' }))
 }
 
 function* fetchBookmark(action: Action) {

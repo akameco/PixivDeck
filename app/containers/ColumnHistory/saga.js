@@ -1,5 +1,5 @@
 // @flow
-import { addColumn } from 'containers/ColumnManager/actions'
+import { addTable } from 'containers/ColumnManager/actions'
 import * as Actions from './constants'
 import * as actions from './actions'
 import { put, takeEvery } from 'redux-saga/effects'
@@ -7,7 +7,7 @@ import { OPEN_ILLUST_VIEWER } from '../IllustPreview/constants'
 import { OPEN_MANGA_PREVIEW } from '../MangaPreview/constants'
 
 export function* addHistoryColumn(): Generator<*, void, void> {
-  yield put(addColumn('HISTORY', { columnId: 'history', type: 'HISTORY' }))
+  yield put(addTable('HISTORY', { columnId: 'history', type: 'HISTORY' }))
 }
 
 type Action = { id: number }

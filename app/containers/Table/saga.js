@@ -9,5 +9,5 @@ function* addTable({ id }: Action) {
 }
 
 export default function* root(): Generator<*, void, void> {
-  yield takeEvery(Actions.ADD_COLUMN, addTable)
+  yield takeEvery(Actions.ADD_TABLE, addTable)
 }

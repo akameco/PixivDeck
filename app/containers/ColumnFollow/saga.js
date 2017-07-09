@@ -2,7 +2,7 @@
 import { union, difference } from 'lodash'
 import { delay } from 'redux-saga'
 import { put, select, call, takeEvery } from 'redux-saga/effects'
-import { addColumn } from 'containers/ColumnManager/actions'
+import { addTable } from 'containers/ColumnManager/actions'
 import { makeSelectInfo } from 'containers/LoginModal/selectors'
 import { fetchAuth } from 'services/api'
 import * as Actions from './constants'
@@ -22,7 +22,7 @@ export function* addFollowColumn({ id }: Action): Generator<*, void, *> {
     yield put(actions.addFollowColumnSuccess(id))
   }
 
-  yield put(addColumn(`follow-${id}`, { columnId: id, type: 'FOLLOW' }))
+  yield put(addTable(`follow-${id}`, { columnId: id, type: 'FOLLOW' }))
 }
 
 function createEndpoint(userId, restrict) {
@@ -38,11 +38,7 @@ function* fetchFollow(action: Action): Generator<*, void, *> {
     const info = yield select(makeSelectInfo())
     const { user: { id: userId } } = yield call(fetchAuth, info)
 
-    const response = yield call(
-      api.get,
-      `/v2/illust/follow?user_id=${userId}&restrict=${id}`,
-      true
-    )
+    const response = yield call(api.get, createEndpoint(userId, id), true)
 
     const { result } = response
 

@@ -2,9 +2,8 @@
 import type { Response } from 'services/api'
 import type { ColumnId } from './reducer'
 
-export type ADD_RANKING_R18_COLUMN_TYPE = 'ColumnRankingR18/ADD_COLUMN'
-export type ADD_RANKING_R18_COLUMN_SUCCESS_TYPE =
-  'ColumnRankingR18/ADD_COLUMN_SUCCESS'
+export type ADD_COLUMN_TYPE = 'ColumnRankingR18/ADD_COLUMN'
+export type ADD_COLUMN_SUCCESS_TYPE = 'ColumnRankingR18/ADD_COLUMN_SUCCESS'
 export type SET_NEXT_URL_TYPE = 'ColumnRankingR18/SET_NEXT_URL'
 
 export type FETCH_RANKING_R18_TYPE = 'ColumnRankingR18/FETCH_RANKING_R18'
@@ -22,14 +21,14 @@ export type FETCH_NEXT_RANKING_R18_FAILRE_TYPE =
 export type Action =
   | {|
       +type:
-        | ADD_RANKING_R18_COLUMN_SUCCESS_TYPE
+        | ADD_COLUMN_TYPE
+        | ADD_COLUMN_SUCCESS_TYPE
         | FETCH_NEXT_RANKING_R18_TYPE
         | FETCH_NEXT_RANKING_R18_FAILRE_TYPE
         | FETCH_RANKING_R18_TYPE
         | FETCH_RANKING_R18_FAILRE_TYPE,
       +id: ColumnId,
     |}
-  | {| +type: ADD_RANKING_R18_COLUMN_TYPE, +mode: ColumnId |}
   | {| +type: SET_NEXT_URL_TYPE, +id: ColumnId, +nextUrl: string |}
   | {|
       +type:
