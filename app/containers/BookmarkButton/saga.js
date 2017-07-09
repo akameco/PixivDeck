@@ -1,8 +1,6 @@
 // @flow
-// eslint-disable-next-line import/order
 import { call, put, takeEvery, type IOEffect } from 'redux-saga/effects'
-import { getToken } from 'containers/LoginModal/saga'
-import { postRequest } from 'services/api'
+import * as api from 'containers/Api/sagas'
 import * as Actions from './constants'
 import * as actions from './actions'
 import type { Restrict } from './types'
@@ -12,16 +10,9 @@ type Props = {
   restrict: Restrict,
 }
 
-function* bookmark({ id, restrict }: Props) {
+export function* bookmark({ id, restrict }: Props): Generator<*, void, void> {
   try {
-    const accessToken = yield call(getToken)
-
-    yield call(
-      postRequest,
-      '/v2/illust/bookmark/add',
-      { illustId: id, restrict },
-      accessToken
-    )
+    yield call(api.post, '/v2/illust/bookmark/add', { illustId: id, restrict })
 
     yield put(actions.addBookmarkSuccess(id, restrict))
   } catch (err) {

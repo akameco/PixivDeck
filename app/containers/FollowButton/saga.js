@@ -1,43 +1,28 @@
 // @flow
-import { postRequest, fetchAuth } from 'services/api'
-import { makeSelectInfo } from '../LoginModal/selectors'
+import * as api from '../Api/sagas'
 import * as actions from './actions'
 import * as Actions from './constants'
-import { call, takeEvery, select, put, type IOEffect } from 'redux-saga/effects'
+import { call, takeEvery, put, type IOEffect } from 'redux-saga/effects'
 
 type Props = {
   id: number,
 }
 
-function* follow({ id }: Props): Generator<IOEffect, void, *> {
+export function* follow({ id }: Props): Generator<IOEffect, void, *> {
   try {
-    const info = yield select(makeSelectInfo())
-    const { accessToken } = yield call(fetchAuth, info)
-
-    yield call(
-      postRequest,
-      '/v1/user/follow/add',
-      { userId: id, restrict: 'public' },
-      accessToken
-    )
+    const data = { userId: id, restrict: 'public' }
+    yield call(api.post, '/v1/user/follow/add', data)
     yield put(actions.followSuccess('public'))
   } catch (err) {
     yield put(actions.followFailer(err))
   }
 }
 
-function* unfollow({ id }: Props): Generator<IOEffect, void, *> {
+export function* unfollow({ id }: Props): Generator<IOEffect, void, *> {
   try {
-    const info = yield select(makeSelectInfo())
-    const { accessToken } = yield call(fetchAuth, info)
-
-    yield call(
-      postRequest,
-      '/v1/user/follow/delete',
-      { userId: id, restrict: 'public' },
-      accessToken
-    )
-    yield put(actions.followSuccess('public'))
+    const data = { userId: id, restrict: 'public' }
+    yield call(api.post, '/v1/user/follow/delete', data)
+    yield put(actions.unFollowSuccess('public'))
   } catch (err) {
     yield put(actions.unFollowFailer(err))
   }

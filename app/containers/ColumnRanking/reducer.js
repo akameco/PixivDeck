@@ -27,7 +27,7 @@ const initialState: State = {}
 
 export default function(state: State = initialState, action: Action): State {
   switch (action.type) {
-    case Actions.ADD_RANKING_COLUMN_SUCCESS:
+    case Actions.ADD_COLUMN_SUCCESS:
       return update(state, action, { illustIds: [], nextUrl: null })
 
     case Actions.SET_NEXT_URL:

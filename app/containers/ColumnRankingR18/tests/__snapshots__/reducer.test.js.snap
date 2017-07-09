@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ADD_COLUMN_SUCCESS 1`] = `
+Object {
+  "day_male_r18": Object {
+    "illustIds": Array [],
+    "nextUrl": null,
+  },
+}
+`;
+
+exports[`SET_NEXT_URL 1`] = `
+Object {
+  "day_r18": Object {
+    "nextUrl": "https://nextUrl1",
+  },
+}
+`;
+
+exports[`SET_NEXT_URL 2`] = `
+Object {
+  "day_r18": Object {
+    "nextUrl": "https://nextUrl/2",
+  },
+}
+`;
+
+exports[`default action 1`] = `Object {}`;

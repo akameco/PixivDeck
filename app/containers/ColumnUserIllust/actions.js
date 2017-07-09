@@ -1,8 +1,8 @@
 // @flow
 import type { Action } from './actionTypes.js'
 import {
-  ADD_USER_ILLUST_COLUMN,
-  ADD_USER_ILLUST_COLUMN_SUCCESS,
+  ADD_COLUMN,
+  ADD_COLUMN_SUCCESS,
   FETCH_USER_ILLUST,
   FETCH_USER_ILLUST_FAILRE,
   FETCH_NEXT_USER_ILLUST,
@@ -14,16 +14,16 @@ import {
 import type { Response } from 'services/api'
 import type { ColumnId } from './reducer'
 
-export function addUserIllustColumn(id: ColumnId): Action {
+export function addColumn(id: ColumnId): Action {
   return {
-    type: ADD_USER_ILLUST_COLUMN,
+    type: ADD_COLUMN,
     id,
   }
 }
 
-export function addUserIllustColumnSuccess(id: ColumnId): Action {
+export function addColumnSuccess(id: ColumnId): Action {
   return {
-    type: ADD_USER_ILLUST_COLUMN_SUCCESS,
+    type: ADD_COLUMN_SUCCESS,
     id,
   }
 }

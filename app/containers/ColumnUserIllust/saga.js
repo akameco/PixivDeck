@@ -1,9 +1,7 @@
 // @flow
 import { union } from 'lodash'
-import { addColumn } from 'containers/ColumnManager/actions'
-import { makeSelectInfo } from 'containers/LoginModal/selectors'
-import { getToken } from 'containers/LoginModal/saga'
-import { getRequest, fetchAuth } from 'services/api'
+import { addTable } from 'containers/ColumnManager/actions'
+import * as api from '../Api/sagas'
 import * as Actions from './constants'
 import * as actions from './actions'
 import type { ColumnId } from './reducer'
@@ -12,33 +10,25 @@ import { put, select, call, takeEvery } from 'redux-saga/effects'
 
 type Props = { id: ColumnId }
 
-function* addUserIllustColumn({ id }: Props) {
+export function* addColumn({ id }: Props): Generator<*, void, *> {
   const ids: Array<?ColumnId> = yield select(makeSelectIds())
   if (ids.every(v => v !== id)) {
-    yield put(actions.addUserIllustColumnSuccess(id))
+    yield put(actions.addColumnSuccess(id))
   }
 
   yield put(
-    addColumn(`user-illust-${id}`, {
-      columnId: String(id),
-      type: 'USER_ILLUST',
-    })
+    addTable(`user-illust-${id}`, { columnId: String(id), type: 'USER_ILLUST' })
   )
 }
 
-function* fetchUserIllust(props: Props) {
+const endpoint = id => `/v1/user/illusts?type=illust&user_id=${id}`
+
+export function* fetchUserIllust(props: Props): Generator<*, void, *> {
   const { id } = props
   try {
     const { illustIds } = yield select(makeSelectColumn(), props)
 
-    const accessToken = yield call(getToken)
-
-    const response = yield call(
-      getRequest,
-      `/v1/user/illusts?type=illust&user_id=${id}`,
-      null,
-      accessToken
-    )
+    const response = yield call(api.get, endpoint(id), true)
     const { result } = response
 
     yield put(actions.setNextUrl(id, result.nextUrl))
@@ -50,7 +40,7 @@ function* fetchUserIllust(props: Props) {
   }
 }
 
-function* fetchNextUserIllust(props: Props) {
+export function* fetchNextUserIllust(props: Props): Generator<*, void, *> {
   const { id } = props
   try {
     const { illustIds, nextUrl } = yield select(makeSelectColumn(), props)
@@ -59,10 +49,7 @@ function* fetchNextUserIllust(props: Props) {
       return
     }
 
-    const info = yield select(makeSelectInfo())
-    const { accessToken } = yield call(fetchAuth, info)
-
-    const response = yield call(getRequest, nextUrl, null, accessToken)
+    const response = yield call(api.get, nextUrl, true)
     const { result } = response
 
     yield put(actions.setNextUrl(id, result.nextUrl))
@@ -75,7 +62,7 @@ function* fetchNextUserIllust(props: Props) {
 }
 
 export default function* root(): Generator<*, void, void> {
-  yield takeEvery(Actions.ADD_USER_ILLUST_COLUMN, addUserIllustColumn)
+  yield takeEvery(Actions.ADD_COLUMN, addColumn)
   yield takeEvery(Actions.FETCH_USER_ILLUST, fetchUserIllust)
   yield takeEvery(Actions.FETCH_NEXT_USER_ILLUST, fetchNextUserIllust)
 }

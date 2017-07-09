@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`addBookmarkFailer 1`] = `
+Object {
+  "error": "error",
+  "id": 1,
+  "type": "BookmarkButton/ADD_BOOKMARK_FAILER",
+}
+`;
+
+exports[`addBookmarkRequest 1`] = `
+Object {
+  "id": 1,
+  "restrict": "public",
+  "type": "BookmarkButton/ADD_BOOKMARK_REQUEST",
+}
+`;
+
+exports[`addBookmarkSuccess 1`] = `
+Object {
+  "id": 1,
+  "restrict": "public",
+  "type": "BookmarkButton/ADD_BOOKMARK_SUCCESS",
+}
+`;

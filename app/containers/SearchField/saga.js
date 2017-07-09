@@ -1,24 +1,18 @@
 // @flow
-import { getRequest, fetchAuth } from 'services/api'
-import { makeSelectInfo } from '../LoginModal/selectors'
+import { call, takeLatest, put, type IOEffect } from 'redux-saga/effects'
+import * as api from '../Api/sagas'
 import * as actions from './actions'
 import * as Actions from './constants'
-import {
-  call,
-  takeLatest,
-  select,
-  put,
-  type IOEffect,
-} from 'redux-saga/effects'
 
 const endpoint = word => `/v1/search/autocomplete?word=${word}`
 
-function* autocomplete({ word }) {
-  try {
-    const info = yield select(makeSelectInfo())
-    const { accessToken } = yield call(fetchAuth, info)
+type Aciton = {
+  word: string,
+}
 
-    const { result } = yield call(getRequest, endpoint(word), null, accessToken)
+export function* autocomplete({ word }: Aciton): Generator<*, void, *> {
+  try {
+    const { result } = yield call(api.get, endpoint(word), true)
     const { searchAutoCompleteKeywords } = result
     yield put(actions.fetchSuccess(searchAutoCompleteKeywords))
   } catch (err) {

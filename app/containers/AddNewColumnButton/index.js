@@ -2,7 +2,7 @@
 import { connect, type Connector } from 'react-redux'
 import type { Dispatch } from 'types'
 import type { User } from 'types/user'
-import { addUserIllustColumn } from '../ColumnUserIllust/actions'
+import { addColumn } from '../ColumnUserIllust/actions'
 import AddColumnButton, { type Props } from './Button'
 
 type OP = {
@@ -11,7 +11,7 @@ type OP = {
 
 const mapDispatchToProps = (dispatch: Dispatch, { user }) => ({
   onClick() {
-    dispatch(addUserIllustColumn(user.id))
+    dispatch(addColumn(user.id))
   },
 })
 
