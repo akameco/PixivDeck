@@ -1,5 +1,4 @@
 // @flow
-import type { Response } from 'services/api'
 import type { ColumnId } from './reducer'
 
 export type ADD_COLUMN_TYPE = 'ColumnFollow/ADD_COLUMN'
@@ -11,10 +10,8 @@ export type FETCH_SUCCESS_TYPE = 'ColumnFollow/FETCH_SUCCESS'
 export type FETCH_FAILRE_TYPE = 'ColumnFollow/FETCH_FAILRE'
 
 export type FETCH_NEXT_TYPE = 'ColumnFollow/FETCH_NEXT'
-export type FETCH_NEXT_SUCCESS_TYPE =
-  'ColumnFollow/FETCH_NEXT_SUCCESS'
-export type FETCH_NEXT_FAILRE_TYPE =
-  'ColumnFollow/FETCH_NEXT_FAILRE'
+export type FETCH_NEXT_SUCCESS_TYPE = 'ColumnFollow/FETCH_NEXT_SUCCESS'
+export type FETCH_NEXT_FAILRE_TYPE = 'ColumnFollow/FETCH_NEXT_FAILRE'
 
 export type FETCH_NEW_TYPE = 'ColumnFollow/FETCH_USER_NEW_ILLUST'
 export type FETCH_NEW_SUCCESS_TYPE = 'ColumnFollow/FETCH_NEW_SUCCESS'
@@ -39,14 +36,10 @@ export type Action =
         | FETCH_NEXT_SUCCESS_TYPE
         | FETCH_NEW_SUCCESS_TYPE,
       +id: ColumnId,
-      +response: Response,
       +ids: Array<number>,
     |}
   | {|
-      +type:
-        | FETCH_FAILRE_TYPE
-        | FETCH_NEXT_FAILRE_TYPE
-        | FETCH_NEW_FAILRE_TYPE,
+      +type: FETCH_FAILRE_TYPE | FETCH_NEXT_FAILRE_TYPE | FETCH_NEW_FAILRE_TYPE,
       +id: ColumnId,
       +error: string,
     |}

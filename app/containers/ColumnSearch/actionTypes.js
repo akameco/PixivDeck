@@ -1,5 +1,4 @@
 // @flow
-import type { Response } from 'services/api'
 import type { ColumnId } from './reducer'
 
 export type ADD_COLUMN_TYPE = 'ColumnSearch/ADD_COLUMN'
@@ -38,7 +37,6 @@ export type Action =
         | FETCH_NEXT_SUCCESS_TYPE
         | FETCH_NEW_SUCCESS_TYPE,
       +id: ColumnId,
-      +response: Response,
       +ids: Array<number>,
     |}
   | {|

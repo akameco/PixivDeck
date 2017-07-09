@@ -14,7 +14,6 @@ import {
   FETCH_NEW_SUCCESS,
   FETCH_NEW_FAILRE,
 } from './constants'
-import type { Response } from 'services/api'
 import type { ColumnId } from './reducer'
 
 export function addColumn(id: ColumnId): Action {
@@ -76,41 +75,26 @@ export function setNextUrl(id: ColumnId, nextUrl: string): Action {
   }
 }
 
-export function fetchSuccess(
-  id: ColumnId,
-  response: Response,
-  ids: Array<number>
-): Action {
+export function fetchSuccess(id: ColumnId, ids: Array<number>): Action {
   return {
     type: FETCH_SUCCESS,
     id,
-    response,
     ids,
   }
 }
 
-export function fetchNextSuccess(
-  id: ColumnId,
-  response: Response,
-  ids: Array<number>
-): Action {
+export function fetchNextSuccess(id: ColumnId, ids: Array<number>): Action {
   return {
     type: FETCH_NEXT_SUCCESS,
     id,
-    response,
     ids,
   }
 }
 
-export function fetchNewSuccess(
-  id: ColumnId,
-  response: Response,
-  ids: Array<number>
-): Action {
+export function fetchNewSuccess(id: ColumnId, ids: Array<number>): Action {
   return {
     type: FETCH_NEW_SUCCESS,
     id,
-    response,
     ids,
   }
 }

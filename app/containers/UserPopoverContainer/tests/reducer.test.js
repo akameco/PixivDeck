@@ -12,8 +12,7 @@ test('default action', () => {
 })
 
 test('POPOVER_SUCCESS', () => {
-  // $FlowFixMe
-  expect(reducer(df, actions.popoverSuccess({}, [1, 2, 3]))).toMatchSnapshot()
+  expect(reducer(df, actions.popoverSuccess([1, 2, 3]))).toMatchSnapshot()
 })
 
 test('CLEAR', () => {

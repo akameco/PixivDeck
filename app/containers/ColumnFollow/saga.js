@@ -38,15 +38,13 @@ function* fetchFollow(action: Action): Generator<*, void, *> {
     const info = yield select(makeSelectInfo())
     const { user: { id: userId } } = yield call(fetchAuth, info)
 
-    const response = yield call(api.get, createEndpoint(userId, id), true)
-
-    const { result } = response
+    const { result } = yield call(api.get, createEndpoint(userId, id), true)
 
     yield put(actions.setNextUrl(id, result.nextUrl))
 
     const nextIds = union(ids, result.illusts)
 
-    yield put(actions.fetchSuccess(id, response, nextIds))
+    yield put(actions.fetchSuccess(id, nextIds))
 
     if (ids.length > 0) {
       const diffIllusts = difference(nextIds, ids)
@@ -68,13 +66,12 @@ function* fetchNextFollow(action: Action) {
       return
     }
 
-    const response = yield call(api.get, nextUrl, true)
-    const { result } = response
+    const { result } = yield call(api.get, nextUrl, true)
 
     yield put(actions.setNextUrl(id, result.nextUrl))
 
     const nextIds = union(ids, result.illusts)
-    yield put(actions.fetchNextSuccess(id, response, nextIds))
+    yield put(actions.fetchNextSuccess(id, nextIds))
   } catch (err) {
     yield put(actions.fetchNextFailre(id, err))
   }
@@ -88,11 +85,10 @@ function* fetchNew(action: Action): Generator<*, void, *> {
     const { user: { id: userId } } = yield call(fetchAuth, info)
 
     const endpoint = createEndpoint(userId, action.id)
-    const response = yield call(api.get, endpoint, true)
-    const { result } = response
+    const { result } = yield call(api.get, endpoint, true)
 
     const nextIds = union(ids, result.illusts)
-    yield put(actions.fetchNewSuccess(action.id, response, nextIds))
+    yield put(actions.fetchNewSuccess(action.id, nextIds))
   } catch (err) {
     yield put(actions.fetchNewFailre(action.id, err))
   }

@@ -25,6 +25,5 @@ test('ADD_DRAWER_PROFILE', () => {
 })
 
 test('Actions', () => {
-  // $FlowFixMe
-  expect(actions.fetchIllustSuccess({}, [1, 2, 3])).toMatchSnapshot()
+  expect(actions.fetchIllustSuccess([1, 2, 3])).toMatchSnapshot()
 })

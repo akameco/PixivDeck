@@ -1,8 +1,7 @@
 // @flow
 import { union } from 'lodash'
 import { type User } from 'types/user'
-import { getToken } from 'containers/LoginModal/saga'
-import { getRequest } from 'services/api'
+import * as api from '../Api/sagas'
 import { OPEN_DRAWER } from '../DrawerManager/constants'
 import { makeSelectUserById } from '../UserById/selectors'
 import * as actions from './actions'
@@ -40,19 +39,16 @@ function* fetchIllust(props: P): Generator<*, void, *> {
     const { id } = props
     const oldIds = yield select(makeSelectIllustList())
 
-    const accessToken = yield call(getToken)
-
     const url = yield select(getNextIllustUrl)
 
     const endpoint = url ? url : `/v1/user/illusts?type=illust&user_id=${id}`
 
-    const response = yield call(getRequest, endpoint, null, accessToken)
-    const { result } = response
+    const { result } = yield call(api.get, endpoint, true)
 
     yield put(actions.setNextIllustUrl(result.nextUrl))
 
     const nextIds = union(oldIds, result.illusts)
-    yield put(actions.fetchIllustSuccess(response, nextIds))
+    yield put(actions.fetchIllustSuccess(nextIds))
   } catch (err) {
     yield put(actions.fetchIllustFailure(err))
   }
@@ -62,20 +58,17 @@ function* fetchManga({ id }: P) {
   try {
     const oldIds = yield select(makeSelectMangaList())
 
-    const accessToken = yield call(getToken)
-
     const url = yield select(getNextMangaUrl)
     const endpoint = url ? url : `/v1/user/illusts?type=manga&user_id=${id}`
 
-    const response = yield call(getRequest, endpoint, null, accessToken)
-    const { result } = response
+    const { result } = yield call(api.get, endpoint, true)
 
     if (result.nextUrl) {
       yield put(actions.setNextMangaUrl(result.nextUrl))
     }
 
     const nextIds = union(oldIds, result.illusts)
-    yield put(actions.fetchMangaSuccess(response, nextIds))
+    yield put(actions.fetchMangaSuccess(nextIds))
   } catch (err) {
     yield put(actions.fetchMangaFailure(err))
   }
@@ -83,10 +76,9 @@ function* fetchManga({ id }: P) {
 
 function* fetchUserDetail({ id }: P): Generator<IOEffect, void, *> {
   try {
-    const accessToken = yield call(getToken)
     const endpoint = `/v1/user/detail?user_id=${id}`
 
-    const { result } = yield call(getRequest, endpoint, null, accessToken)
+    const { result } = yield call(api.get, endpoint, true)
 
     yield put(actions.addDrawerUser(result.user))
     yield put(actions.addDrawerProfile(result.profile))

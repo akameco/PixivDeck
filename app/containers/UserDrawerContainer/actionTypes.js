@@ -1,6 +1,5 @@
 // @flow
 import type { User, Profile } from 'types/user'
-import type { Response } from 'services/api'
 
 export type FETCH_ILLUST_TYPE = 'UserDrawer/FETCH_ILLUST'
 export type FETCH_ILLUST_SUCCESS_TYPE = 'UserDrawer/FETCH_ILLUST_SUCCESS'
@@ -41,10 +40,6 @@ export type Action =
       +id: number,
     |}
   | {|
-      +type: ADD_DRAWER_ILLUST_IDS_TYPE | ADD_DRAWER_MANGA_IDS_TYPE,
-      +ids: number[],
-    |}
-  | {|
       +type: SET_NEXT_ILLUST_URL_TYPE | SET_NEXT_MANGA_URL_TYPE,
       +url: string,
     |}
@@ -52,8 +47,11 @@ export type Action =
   | {| +type: ADD_DRAWER_PROFILE_TYPE, +profile: Profile |}
   | {| +type: NEXT_ILLUST_PAGE_TYPE | NEXT_MANGA_PAGE_TYPE |}
   | {|
-      +type: FETCH_ILLUST_SUCCESS_TYPE | FETCH_MANGA_SUCCESS_TYPE,
-      +response: Response,
+      +type:
+        | FETCH_ILLUST_SUCCESS_TYPE
+        | FETCH_MANGA_SUCCESS_TYPE
+        | ADD_DRAWER_ILLUST_IDS_TYPE
+        | ADD_DRAWER_MANGA_IDS_TYPE,
       +ids: Array<number>,
     |}
   | {|

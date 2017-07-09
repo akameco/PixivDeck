@@ -28,13 +28,13 @@ export function* fetchUserIllust(props: Props): Generator<*, void, *> {
   try {
     const { ids } = yield select(makeSelectColumn(), props)
 
-    const response = yield call(api.get, endpoint(id), true)
-    const { result } = response
+    const { result } = yield call(api.get, endpoint(id), true)
+    
 
     yield put(actions.setNextUrl(id, result.nextUrl))
 
     const nextIds = union(ids, result.illusts)
-    yield put(actions.fetchSuccess(id, response, nextIds))
+    yield put(actions.fetchSuccess(id,  nextIds))
   } catch (err) {
     yield put(actions.fetchFailre(id))
   }
@@ -49,13 +49,13 @@ export function* fetchNextUserIllust(props: Props): Generator<*, void, *> {
       return
     }
 
-    const response = yield call(api.get, nextUrl, true)
-    const { result } = response
+    const { result } = yield call(api.get, nextUrl, true)
+    
 
     yield put(actions.setNextUrl(id, result.nextUrl))
 
     const nextIds = union(ids, result.illusts)
-    yield put(actions.fetchSuccess(id, response, nextIds))
+    yield put(actions.fetchSuccess(id,  nextIds))
   } catch (err) {
     yield put(actions.fetchNextFailre(id))
   }

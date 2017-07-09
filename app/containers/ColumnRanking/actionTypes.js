@@ -1,5 +1,4 @@
 // @flow
-import type { Response } from 'services/api'
 import type { ColumnId } from './reducer'
 
 export type ADD_COLUMN_TYPE = 'ColumnRanking/ADD_COLUMN'
@@ -11,10 +10,8 @@ export type FETCH_SUCCESS_TYPE = 'ColumnRanking/FETCH_SUCCESS'
 export type FETCH_FAILRE_TYPE = 'ColumnRanking/FETCH_FAILRE'
 
 export type FETCH_NEXT_TYPE = 'ColumnRanking/FETCH_NEXT'
-export type FETCH_NEXT_SUCCESS_TYPE =
-  'ColumnRanking/FETCH_NEXT_SUCCESS'
-export type FETCH_NEXT_FAILRE_TYPE =
-  'ColumnRanking/FETCH_NEXT_FAILRE'
+export type FETCH_NEXT_SUCCESS_TYPE = 'ColumnRanking/FETCH_NEXT_SUCCESS'
+export type FETCH_NEXT_FAILRE_TYPE = 'ColumnRanking/FETCH_NEXT_FAILRE'
 
 export type Action =
   | {|
@@ -31,6 +28,5 @@ export type Action =
   | {|
       +type: FETCH_SUCCESS_TYPE | FETCH_NEXT_SUCCESS_TYPE,
       +id: ColumnId,
-      +response: Response,
       +ids: Array<number>,
     |}
