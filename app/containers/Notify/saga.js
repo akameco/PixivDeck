@@ -1,5 +1,6 @@
 // @flow
-import { select } from 'redux-saga/effects'
+import { select, takeEvery } from 'redux-saga/effects'
+import * as Actions from './constants'
 
 import type { Illust } from 'types/illust'
 import type { User } from 'types/user'
@@ -59,3 +60,9 @@ export function* notifyWithIllust({
     url: `${baseUrl}${illust.id}`,
   })
 }
+
+function* root(): Generator<void, void, void> {
+  yield takeEvery(Actions.ADD_NOTIFY_WITH_ILLUST, notifyWithIllust)
+}
+
+export default root

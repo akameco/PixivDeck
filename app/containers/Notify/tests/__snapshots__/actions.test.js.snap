@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`addNotify 1`] = `
+Object {
+  "type": "Notify/add",
+}
+`;
+
+exports[`addNotifyWithIllust 1`] = `
+Object {
+  "id": 1,
+  "title": "new illust",
+  "type": "Notify/ADD_NOTIFY_WITH_ILLUST",
+}
+`;

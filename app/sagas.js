@@ -17,6 +17,7 @@ import SettingModal from 'containers/SettingModal/saga'
 import Table from 'containers/Table/saga'
 import UserDrawerContainer from 'containers/UserDrawerContainer/saga'
 import UserPopoverContainer from 'containers/UserPopoverContainer/saga'
+import Notify from 'containers/Notify/saga'
 
 function* root(): Generator<*, void, void> {
   yield all([
@@ -36,6 +37,7 @@ function* root(): Generator<*, void, void> {
     fork(Table),
     fork(UserDrawerContainer),
     fork(UserPopoverContainer),
+    fork(Notify),
   ])
 }
 
