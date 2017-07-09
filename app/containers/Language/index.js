@@ -1,9 +1,8 @@
 // @flow
 import React from 'react'
-import type { Connector } from 'react-redux'
-import { connect } from 'react-redux'
+import { connect, type Connector } from 'react-redux'
 import { IntlProvider } from 'react-intl'
-import { createSelector } from 'reselect'
+import { createStructuredSelector } from 'reselect'
 import { makeSelectLocale } from './selectors'
 import { DEFAULT_LOCALE } from './reducer'
 
@@ -16,7 +15,7 @@ type Props = {
   locale: string,
 } & OP
 
-function Language(props: Props) {
+export function Language(props: Props) {
   const { locale, messages, children } = props
   const localeMessages = (messages && locale && messages[locale]) || {}
   return (
@@ -31,9 +30,9 @@ function Language(props: Props) {
   )
 }
 
-const mapStateToProps = createSelector(makeSelectLocale(), locale => ({
-  locale,
-}))
+const mapStateToProps = createStructuredSelector({
+  locale: makeSelectLocale(),
+})
 
 const connector: Connector<OP, Props> = connect(mapStateToProps)
 export default connector(Language)

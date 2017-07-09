@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`makeSelectInfo 1`] = `
+Object {
+  "password": "fakePassword",
+  "username": "fakeName",
+}
+`;

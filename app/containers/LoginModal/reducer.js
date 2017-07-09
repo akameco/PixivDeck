@@ -9,7 +9,7 @@ export type State = {
   isLoginFailure: boolean,
 }
 
-const initialState: State = {
+export const initialState: State = {
   username: '',
   password: '',
   isLoading: false,
