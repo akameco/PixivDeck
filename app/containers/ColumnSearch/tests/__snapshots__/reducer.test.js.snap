@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`default action 1`] = `Object {}`;
+
+exports[`reset ids 1`] = `
+Object {
+  "fate": Object {
+    "ids": Array [],
+    "interval": 100,
+    "minBookmarks": 100,
+    "nextUrl": "dummy",
+    "usersIn": 0,
+  },
+}
+`;
+
+exports[`setUsersIn 1`] = `
+Object {
+  "fake": Object {
+    "usersIn": 100,
+  },
+}
+`;

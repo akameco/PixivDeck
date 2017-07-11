@@ -17,11 +17,16 @@ const getColumn = (state: State, { id }: Props) => state.ColumnSearch[id]
 
 export const makeSelectColumn = () => createSelector(getColumn, s => s)
 
+export const getInterval = createSelector(makeSelectColumn(), s => s.interval)
+
 export const makeSelectMinBookmark = () =>
-  createSelector(makeSelectColumn(), s => s.minBookmarks)
+  createSelector(makeSelectColumn(), s => s.minBookmarks || 0)
 
 export const makeSelectNextUrl = () =>
   createSelector(makeSelectColumn(), s => s.nextUrl)
+
+export const makeSelectUsesIn = () =>
+  createSelector(makeSelectColumn(), s => s.usersIn)
 
 export const makeSelectHasMore = () =>
   createSelector(makeSelectColumn(), s => {

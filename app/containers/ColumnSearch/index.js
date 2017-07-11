@@ -9,6 +9,7 @@ import ColumnRoot from 'components/ColumnRoot'
 import ColumnBody from 'components/ColumnBody'
 import ColumnHeader from 'components/ColumnHeader'
 import ColumnHeaderBookmark from 'components/ColumnHeaderBookmark'
+import FilterUsersIn from './FilterUsersIn'
 import type { ColumnProps } from '../ColumnManager'
 import type { ColumnId } from './reducer'
 import * as selectors from './selectors'
@@ -22,9 +23,12 @@ type Props = {
   illusts: Array<Illust>,
   minBookmarks: number,
   hasMore: boolean,
+  usersIn: number,
   onFetch: () => void,
   onNext: () => void,
   setMinBookmarks: number => void,
+  onFilterUsersIn: number => void,
+  onStartWatch: Function,
 } & OP &
   ColumnProps
 
@@ -34,6 +38,7 @@ class ColumnSearch extends React.PureComponent {
 
   componentWillMount() {
     this.props.onFetch()
+    this.props.onStartWatch()
   }
 
   render() {
@@ -47,6 +52,7 @@ class ColumnSearch extends React.PureComponent {
       hasMore,
       onHeaderClick,
       setNode,
+      onFilterUsersIn,
     } = this.props
 
     return (
@@ -56,6 +62,10 @@ class ColumnSearch extends React.PureComponent {
             id={id}
             minBookmarks={minBookmarks}
             setMinBookmarks={setMinBookmarks}
+          />
+          <FilterUsersIn
+            onChange={onFilterUsersIn}
+            defaultValue={String(this.props.usersIn)}
           />
         </ColumnHeader>
         <ColumnBody isLoading={illusts.length <= 0}>
@@ -76,10 +86,17 @@ const mapStateToProps = createStructuredSelector({
   illusts: selectors.makeLimitedSelectIllusts(),
   minBookmarks: selectors.makeSelectMinBookmark(),
   hasMore: selectors.makeSelectHasMore(),
+  usersIn: selectors.makeSelectUsesIn(),
 })
 
 function mapDispatchToProps(dispatch: Dispatch, { id }: OP) {
   return {
+    onStartWatch() {
+      dispatch(actions.startWatch(id))
+    },
+    onFilterUsersIn(usersIn) {
+      dispatch(actions.usersIn(id, usersIn))
+    },
     onFetch() {
       dispatch(actions.fetch(id))
     },

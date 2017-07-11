@@ -14,6 +14,11 @@ import type {
   FETCH_NEW_FAILRE_TYPE,
   SET_MIN_BOOKBOOK_TYPE,
   SET_INTERVAL_TYPE,
+  USERS_IN_TYPE,
+  SET_USERS_IN_TYPE,
+  RESET_IDS_TYPE,
+  START_WATCH_TYPE,
+  WATCH_NEW_TYPE,
 } from './actionTypes.js'
 
 export const ADD_COLUMN: ADD_COLUMN_TYPE = 'ColumnSearch/ADD_COLUMN'
@@ -36,3 +41,8 @@ export const FETCH_NEW_FAILRE: FETCH_NEW_FAILRE_TYPE =
 export const SET_MIN_BOOKBOOK: SET_MIN_BOOKBOOK_TYPE =
   'ColumnSearch/SET_MIN_BOOKBOOK'
 export const SET_INTERVAL: SET_INTERVAL_TYPE = 'ColumnSearch/SET_INTERVAL'
+export const USERS_IN: USERS_IN_TYPE = 'ColumnSearch/USERS_IN'
+export const SET_USERS_IN: SET_USERS_IN_TYPE = 'ColumnSearch/SET_USERS_IN'
+export const RESET_IDS: RESET_IDS_TYPE = 'ColumnSearch/RESET_IDS'
+export const START_WATCH: START_WATCH_TYPE = 'ColumnSearch/START_WATCH'
+export const WATCH_NEW: WATCH_NEW_TYPE = 'ColumnSearch/WATCH_NEW'
