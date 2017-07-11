@@ -56,7 +56,7 @@ function* fetchNew(action: Action): Generator<*, void, *> {
     const endpoint = createEndpoint(userId, action.id)
     const { result } = yield call(api.get, endpoint, true)
 
-    const nextIds = union(ids, result.illusts)
+    const nextIds = union(result.illusts, ids)
     yield put(actions.fetchNewSuccess(action.id, nextIds))
   } catch (err) {
     yield put(actions.fetchNewFailre(action.id, err))
