@@ -3,8 +3,7 @@ import { union, difference } from 'lodash'
 import { delay } from 'redux-saga'
 import { put, select, call, takeEvery } from 'redux-saga/effects'
 import { addTable } from 'containers/ColumnManager/actions'
-import { makeSelectInfo } from 'containers/LoginModal/selectors'
-import { fetchAuth } from 'services/api'
+import { getMyId } from 'containers/LoginModal/selectors'
 import * as Actions from './constants'
 import * as actions from './actions'
 import type { ColumnId } from './reducer'
@@ -32,26 +31,23 @@ const createEndpoint = (userId, restrict) =>
 function* fetchFollow(action: Action): Generator<*, void, *> {
   const { id } = action
   const { ids } = yield select(makeSelectColumn(), action)
-
-  const info = yield select(makeSelectInfo())
-  const { user: { id: userId } } = yield call(fetchAuth, info)
+  const userId = yield select(getMyId)
 
   const endpoint = createEndpoint(userId, id)
   yield call(fetchColumn.fetchColumn, endpoint, id, actions, ids)
 }
 
-function* fetchNextFollow(action: Action) {
-  const { id } = action
-  const { ids, nextUrl } = yield select(makeSelectColumn(), action)
-  yield call(fetchColumn.fetchColumn, nextUrl, id, actions, ids)
+function* fetchNextFollow({ id }: Action) {
+  const { ids, nextUrl } = yield select(makeSelectColumn(), { id })
+  const endpoint = nextUrl ? nextUrl : createEndpoint(yield select(getMyId), id)
+  yield call(fetchColumn.fetchColumn, endpoint, id, actions, ids)
 }
 
 function* fetchNew(action: Action): Generator<*, void, *> {
   try {
     const { ids } = yield select(selectors.makeSelectColumn(), action)
 
-    const info = yield select(makeSelectInfo())
-    const { user: { id: userId } } = yield call(fetchAuth, info)
+    const userId = yield select(getMyId)
 
     const endpoint = createEndpoint(userId, action.id)
     const { result } = yield call(api.get, endpoint, true)
