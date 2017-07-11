@@ -20,7 +20,7 @@ export type ColumnRanking = { interval: number } & BaseColumn
 
 export type State = $Shape<{ [Mode]: ColumnRanking }>
 
-const initialState: State = {}
+export const initialState: State = {}
 
 export default function(state: State = initialState, action: Action): State {
   switch (action.type) {
