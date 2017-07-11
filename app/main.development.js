@@ -49,15 +49,6 @@ const installExtensions = async () => {
   ).catch(console.log)
 }
 
-if (process.env.NODE_ENV === 'production') {
-  autoUpdater.on('update-downloaded', () => {
-    setTimeout(() => {
-      autoUpdater.quitAndInstall()
-      app.quit()
-    }, ms('5s'))
-  })
-}
-
 const config = new Config({
   defaults: {
     bounds: {
