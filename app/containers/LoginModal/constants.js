@@ -11,6 +11,7 @@ import type {
   LOGOUT_TYPE,
   SET_AUTH_TYPE,
   CLEAR_ERROR_TYPE,
+  SET_ACCOUNT_TYPE,
 } from './actionTypes.js'
 
 export const LOGIN_REQUEST: LOGIN_REQUEST_TYPE = 'LoginModal/LOGIN_REQUEST'
@@ -27,3 +28,4 @@ export const AUTO_LOGIN_FAILURE: AUTO_LOGIN_FAILURE_TYPE =
 export const LOGOUT: LOGOUT_TYPE = 'LoginModal/LOGOUT'
 export const SET_AUTH: SET_AUTH_TYPE = 'LoginModal/SET_AUTH'
 export const CLEAR_ERROR: CLEAR_ERROR_TYPE = 'LoginModal/CLEAR_ERROR'
+export const SET_ACCOUNT: SET_ACCOUNT_TYPE = 'LoginModal/SET_ACCOUNT'

@@ -33,6 +33,8 @@ export default function(state: State = initialState, action: Action): State {
       return { ...state, isLoginFailure: true }
     case Actions.CLEAR_ERROR:
       return { ...state, isLoginFailure: false }
+    case Actions.SET_ACCOUNT:
+      return { ...state, account: action.account }
     default:
       return state
   }

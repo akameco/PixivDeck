@@ -3,7 +3,13 @@
 import { select, put, call, takeEvery } from 'redux-saga/effects'
 import { fetchAuth } from 'services/api'
 import { openModal, closeModal } from '../ModalManeger/actions'
-import { loginFailure, endLoading, clearError, setAuth } from './actions'
+import {
+  loginFailure,
+  endLoading,
+  clearError,
+  setAuth,
+  setAccount,
+} from './actions'
 import * as Actions from './constants'
 import { makeSelectInfo } from './selectors'
 
@@ -18,8 +24,9 @@ function* authorize({ username, password }): Generator<*, void, *> {
   // エラーを非表示
   yield put(clearError())
   try {
-    yield call(fetchAuth, { username, password })
+    const { user: account } = yield call(fetchAuth, { username, password })
     yield put(setAuth(username, password))
+    yield put(setAccount(account))
     yield put(closeModal())
   } catch (err) {
     yield put(loginFailure())
