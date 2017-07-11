@@ -21,7 +21,7 @@ export function* addColumn({ id }: Action): Generator<*, void, *> {
   yield put(addTable(`search-${id}`, { columnId: id, type: 'SEARCH' }))
 }
 
-const createEndpoint = id =>
+const getEndpoint = id =>
   `/v1/search/illust?word=${id}&search_target=partial_match_for_tags&sort=date_desc`
 
 function* fetchSearch(action: Action): Generator<*, void, *> {
@@ -34,7 +34,7 @@ function* fetchSearch(action: Action): Generator<*, void, *> {
     return
   }
 
-  const endpoint = nextUrl ? nextUrl : createEndpoint(id)
+  const endpoint = nextUrl ? nextUrl : getEndpoint(id)
   yield call(fetchSaga.fetchColumn, endpoint, id, actions, ids)
 }
 
@@ -73,7 +73,7 @@ function* fetchNew(action: Action): Generator<*, void, *> {
       action
     )
 
-    const endpoint = createEndpoint(action.id)
+    const endpoint = getEndpoint(action.id)
 
     const { result } = yield call(api.get, endpoint, true)
 

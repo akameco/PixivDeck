@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fetch first 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "SELECT": Object {
+    "args": Array [
+      Object {
+        "id": "public",
+      },
+    ],
+    "selector": [Function],
+  },
+}
+`;
+
+exports[`fetch first 2`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "SELECT": Object {
+    "args": Array [],
+    "selector": [Function],
+  },
+}
+`;
+
+exports[`fetch first 3`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [
+      "/v1/user/bookmarks/illust?user_id=[object Object]&restrict=public",
+      "public",
+      Object {
+        "addColumn": [Function],
+        "addColumnSuccess": [Function],
+        "fetch": [Function],
+        "fetchFailre": [Function],
+        "fetchNext": [Function],
+        "fetchNextFailre": [Function],
+        "fetchNextSuccess": [Function],
+        "fetchSuccess": [Function],
+        "setNextUrl": [Function],
+      },
+      undefined,
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+}
+`;
+
+exports[`fetch next 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "SELECT": Object {
+    "args": Array [
+      Object {
+        "id": "public",
+      },
+    ],
+    "selector": [Function],
+  },
+}
+`;
+
+exports[`fetch next 2`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [
+      "fake",
+      "public",
+      Object {
+        "addColumn": [Function],
+        "addColumnSuccess": [Function],
+        "fetch": [Function],
+        "fetchFailre": [Function],
+        "fetchNext": [Function],
+        "fetchNextFailre": [Function],
+        "fetchNextSuccess": [Function],
+        "fetchSuccess": [Function],
+        "setNextUrl": [Function],
+      },
+      undefined,
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+}
+`;
