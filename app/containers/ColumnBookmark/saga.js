@@ -1,8 +1,7 @@
 // @flow
 import { put, select, call, takeEvery } from 'redux-saga/effects'
 import { addTable } from 'containers/ColumnManager/actions'
-import { makeSelectInfo } from 'containers/LoginModal/selectors'
-import { fetchAuth } from 'services/api'
+import { getMyId } from 'containers/LoginModal/selectors'
 import { ADD_BOOKMARK_SUCCESS } from '../BookmarkButton/constants'
 import * as Actions from './constants'
 import * as actions from './actions'
@@ -20,19 +19,13 @@ export function* addColumn({ id }: Action): Generator<*, void, *> {
   yield put(addTable(`bookmark-${id}`, { columnId: id, type: 'BOOKMARK' }))
 }
 
-function* fetchBookmark(action: Action) {
-  const { ids, nextUrl } = yield select(makeSelectColumn(), action)
+const getEndpoint = (userId, restrict) =>
+  `/v1/user/bookmarks/illust?user_id=${userId}&restrict=${restrict}`
 
-  if (nextUrl) {
-    yield call(column.fetchColumn, nextUrl, action.id, { ...actions }, ids)
-  } else {
-    // TODO
-    const info = yield select(makeSelectInfo())
-    const { user: { id: userId } } = yield call(fetchAuth, info)
-
-    const endpoint = `/v1/user/bookmarks/illust?user_id=${userId}&restrict=${action.id}`
-    yield call(column.fetchColumn, endpoint, action.id, { ...actions }, ids)
-  }
+function* fetchBookmark({ id }: Action) {
+  const { ids, nextUrl } = yield select(makeSelectColumn(), { id })
+  const endpoint = nextUrl ? nextUrl : getEndpoint(yield select(getMyId), id)
+  yield call(column.fetchColumn, endpoint, id, { ...actions }, ids)
 }
 
 function* reloadBookmakColumns(action: { +restrict: ColumnId }) {
