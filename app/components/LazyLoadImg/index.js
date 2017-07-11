@@ -59,17 +59,22 @@ export default class LazyLoadImg extends React.PureComponent {
   }
   node: HTMLElement
   io: IntersectionObserver
+  img: ?HTMLImageElement
 
   componentDidMount() {
     this.init()
   }
 
   componentWillUnmount() {
+    if (this.img) {
+      this.onLoad = null
+      this.img.onload = null
+    }
     this.io.unobserve(this.node)
   }
 
-  init() {
-    if (!this.node) {
+  init = () => {
+    if (!this.node || this.img) {
       return
     }
 
@@ -87,14 +92,19 @@ export default class LazyLoadImg extends React.PureComponent {
     this.io.observe(this.node)
   }
 
-  update() {
-    this.setState({ isVisible: true })
-    const img = new Image()
+  onLoad = () => {
+    this.setState({ isLoaded: true })
+  }
 
-    img.onload = () => {
-      this.setState({ isLoaded: true })
+  update = () => {
+    this.setState({ isVisible: true })
+    if (this.img) {
+      this.img.onload = null
     }
 
+    const img = new Image()
+    this.img = img
+    img.onload = this.onLoad
     img.src = this.props.src
   }
 
@@ -105,14 +115,24 @@ export default class LazyLoadImg extends React.PureComponent {
   }
 
   render() {
-    const { src, onClick, isManga } = this.props
+    const { onClick, isManga, src } = this.props
     const { isVisible, isLoaded } = this.state
+    let content = null
+
+    if (isLoaded) {
+      content = (
+        <div>
+          {isManga && <Icon type="manga" color="#fff" />}
+          <img src={src} onClick={onClick} height={!isVisible && 300} />
+        </div>
+      )
+    } else {
+      content = <div style={{ height: 300 }} />
+    }
+
     return (
       <StyledImg innerRef={this.setNode}>
-        {isManga && isLoaded && <Icon type="manga" color="#fff" />}
-        {isVisible && isLoaded
-          ? <img src={src} onClick={onClick} />
-          : <img height={300} />}
+        {content}
       </StyledImg>
     )
   }
