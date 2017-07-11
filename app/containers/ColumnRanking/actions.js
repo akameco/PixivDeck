@@ -5,11 +5,10 @@ import {
   ADD_COLUMN_SUCCESS,
   FETCH,
   FETCH_FAILRE,
-  FETCH_NEXT,
-  FETCH_NEXT_FAILRE,
+  WATCH_NEW,
+  START_WATCH,
   SET_NEXT_URL,
   FETCH_SUCCESS,
-  FETCH_NEXT_SUCCESS,
 } from './constants'
 import type { ColumnId } from './reducer'
 
@@ -41,16 +40,16 @@ export function fetchFailre(id: ColumnId): Action {
   }
 }
 
-export function fetchNext(id: ColumnId): Action {
+export function watchNew(id: ColumnId): Action {
   return {
-    type: FETCH_NEXT,
+    type: WATCH_NEW,
     id,
   }
 }
 
-export function fetchNextFailre(id: ColumnId): Action {
+export function startWatch(id: ColumnId): Action {
   return {
-    type: FETCH_NEXT_FAILRE,
+    type: START_WATCH,
     id,
   }
 }
@@ -66,14 +65,6 @@ export function setNextUrl(id: ColumnId, nextUrl: string): Action {
 export function fetchSuccess(id: ColumnId, ids: Array<number>): Action {
   return {
     type: FETCH_SUCCESS,
-    id,
-    ids,
-  }
-}
-
-export function fetchNextSuccess(id: ColumnId, ids: Array<number>): Action {
-  return {
-    type: FETCH_NEXT_SUCCESS,
     id,
     ids,
   }

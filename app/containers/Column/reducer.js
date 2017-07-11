@@ -12,7 +12,7 @@ type ActionTypes = {
   ADD_COLUMN_SUCCESS: $Subtype<string>,
   SET_NEXT_URL: $Subtype<string>,
   FETCH_SUCCESS: $Subtype<string>,
-  FETCH_NEXT_SUCCESS: $Subtype<string>,
+  FETCH_NEXT_SUCCESS?: $Subtype<string>,
   FETCH_NEW_SUCCESS?: $Subtype<string>,
 }
 

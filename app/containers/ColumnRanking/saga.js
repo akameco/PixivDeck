@@ -1,16 +1,17 @@
 // @flow
-import { put, select, call, takeEvery } from 'redux-saga/effects'
+import { delay } from 'redux-saga'
+import { put, select, call, takeEvery, fork, take } from 'redux-saga/effects'
 import { addTable } from 'containers/ColumnManager/actions'
-import * as fetchColumn from '../Column/sagas'
+import * as api from '../Column/sagas'
 import * as Actions from './constants'
 import * as actions from './actions'
 import type { Mode } from './reducer'
-import { makeSelectColumn, makeSelectModes } from './selectors'
+import * as selectors from './selectors'
 
 type Action = { id: Mode }
 
-export function* addRankingColumn({ id }: Action): Generator<*, void, *> {
-  const modes: Array<?Mode> = yield select(makeSelectModes())
+export function* addColumn({ id }: Action): Generator<*, void, *> {
+  const modes: Array<?Mode> = yield select(selectors.makeSelectModes())
   if (modes.every(v => v !== id)) {
     yield put(actions.addColumnSuccess(id))
   }
@@ -18,13 +19,35 @@ export function* addRankingColumn({ id }: Action): Generator<*, void, *> {
   yield put(addTable(`ranking-${id}`, { columnId: id, type: 'RANKING' }))
 }
 
-function* fetchRanking(action: Action) {
-  const { ids, nextUrl } = yield select(makeSelectColumn(), action)
-  const endpoint = nextUrl ? nextUrl : `/v1/illust/ranking?mode=${action.id}`
-  yield call(fetchColumn.fetchColumn, endpoint, action.id, actions, ids)
+const getEndpoint = id => `/v1/illust/ranking?mode=${id}`
+
+export function* fetch(action: Action): Generator<*, void, *> {
+  const { ids, nextUrl } = yield select(selectors.makeSelectColumn(), action)
+  const endpoint = nextUrl ? nextUrl : getEndpoint(action.id)
+  yield call(api.fetchColumn, endpoint, action.id, actions, ids)
+}
+
+export function* fetchNew({ id }: Action): Generator<*, void, *> {
+  const { ids } = yield select(selectors.makeSelectColumn(), { id })
+  yield call(
+    api.fetchNew,
+    { endpoint: getEndpoint(id), id, ids, order: 'overwrite' },
+    actions
+  )
+}
+
+export function* watchNewIllust(): Generator<*, void, *> {
+  while (true) {
+    const { id } = yield take(Actions.START_WATCH)
+    const interval = yield select(selectors.getInterval, { id })
+    yield delay(interval)
+    yield call(fetchNew, { id })
+    yield put(actions.watchNew(id))
+  }
 }
 
 export default function* root(): Generator<*, void, void> {
-  yield takeEvery(Actions.ADD_COLUMN, addRankingColumn)
-  yield takeEvery([Actions.FETCH, Actions.FETCH_NEXT], fetchRanking)
+  yield takeEvery(Actions.ADD_COLUMN, addColumn)
+  yield takeEvery(Actions.FETCH, fetch)
+  yield fork(watchNewIllust)
 }

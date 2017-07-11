@@ -30,3 +30,41 @@ export function* fetchColumn(
     yield put(actions.fetchFailre(id, err))
   }
 }
+
+type NewActions = {
+  fetchSuccess: (id: *, ids: Array<number>) => *,
+  fetchFailre: (id: *, error: string) => *,
+}
+
+type Order = 'overwrite' | boolean
+
+type Config = {|
+  id: *,
+  endpoint: ?string,
+  ids: Array<number>,
+  order: Order,
+|}
+
+export function* fetchNew(
+  { endpoint, id, ids, order }: Config,
+  actions: NewActions
+): Generator<*, void, *> {
+  try {
+    if (!endpoint || endpoint === '') {
+      return
+    }
+
+    const { result }: Response = yield call(api.get, endpoint, true)
+
+    // 新しく取得したイラストを配列の前に追加
+    if (order === 'overwrite') {
+      // TODO diffがある場合更新
+      yield put(actions.fetchSuccess(id, result.illusts))
+    } else {
+      const nextIds = union(result.illusts, ids)
+      yield put(actions.fetchSuccess(id, nextIds))
+    }
+  } catch (err) {
+    yield put(actions.fetchFailre(id, err))
+  }
+}

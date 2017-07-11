@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ADD_COLUMN_SUCCESS 1`] = `
+Object {
+  "day": Object {
+    "ids": Array [],
+    "interval": 10800000,
+    "nextUrl": null,
+  },
+}
+`;
+
+exports[`default action 1`] = `Object {}`;

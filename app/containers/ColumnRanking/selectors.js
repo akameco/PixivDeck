@@ -17,6 +17,8 @@ const getColumn = (state: State, { id }: Props) => state.ColumnRanking[id]
 
 export const makeSelectColumn = () => createSelector(getColumn, s => s)
 
+export const getInterval = createSelector(getColumn, s => s.interval)
+
 const makeSelectIllustIds = () =>
   createSelector(getColumn, s => (s && s.ids ? s.ids : []))
 
