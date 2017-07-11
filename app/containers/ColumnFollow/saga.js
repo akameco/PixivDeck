@@ -1,5 +1,5 @@
 // @flow
-import { union, difference } from 'lodash'
+import { difference } from 'lodash'
 import { delay } from 'redux-saga'
 import { put, select, call, takeEvery } from 'redux-saga/effects'
 import { addTable } from 'containers/ColumnManager/actions'
@@ -8,7 +8,6 @@ import * as Actions from './constants'
 import * as actions from './actions'
 import type { ColumnId } from './reducer'
 import { makeSelectColumn, makeSelectIds } from './selectors'
-import * as api from '../Api/sagas'
 import * as selectors from './selectors'
 import { addNotifyWithIllust } from '../Notify/actions'
 import { FOLLOW_SUCCESS } from '../FollowButton/constants'
@@ -34,20 +33,10 @@ function* fetchFollow({ id }: Action): Generator<*, void, *> {
   yield call(fetchColumn.fetchColumn, endpoint, id, actions, ids)
 }
 
-function* fetchNew(action: Action): Generator<*, void, *> {
-  try {
-    const { ids } = yield select(selectors.makeSelectColumn(), action)
-
-    const userId = yield select(getMyId)
-
-    const endpoint = getEndpoint(userId, action.id)
-    const { result } = yield call(api.get, endpoint, true)
-
-    const nextIds = union(result.illusts, ids)
-    yield put(actions.fetchNewSuccess(action.id, nextIds))
-  } catch (err) {
-    yield put(actions.fetchNewFailre(action.id, err))
-  }
+function* fetchNew({ id }: Action): Generator<*, void, *> {
+  const { ids } = yield select(selectors.makeSelectColumn(), { id })
+  const endpoint = getEndpoint(yield select(getMyId), id)
+  yield call(fetchColumn.fetchNew, { endpoint, id, ids, order: true }, actions)
 }
 
 // TODO キャンセル
