@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`root 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "FORK": Object {
+    "args": Array [],
+    "context": null,
+    "fn": [Function],
+  },
+}
+`;
+
+exports[`watchNewIllust 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "SELECT": Object {
+    "args": Array [
+      Object {
+        "id": 1,
+      },
+    ],
+    "selector": [Function],
+  },
+}
+`;
+
+exports[`watchNewIllust 2`] = `
+Promise {
+  "@@redux-saga/CANCEL_PROMISE": [Function],
+}
+`;

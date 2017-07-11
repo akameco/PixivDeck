@@ -1,5 +1,6 @@
 // @flow
 import React from 'react'
+import { bindActionCreators } from 'redux'
 import { connect, type Connector } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import { injectIntl, type IntlShape } from 'react-intl'
@@ -21,8 +22,8 @@ type OP = {
 
 type Props = {
   illusts: Array<Illust>,
-  onFetch: () => void,
   onNext: () => void,
+  actions: typeof actions,
 } & OP &
   ColumnProps
 
@@ -34,19 +35,13 @@ class ColumnRanking extends React.Component {
   props: Props & InjectProp
 
   componentWillMount() {
-    this.props.onFetch()
+    const { actions, id } = this.props
+    actions.fetch(id)
+    actions.startWatch(id)
   }
 
   render() {
-    const {
-      illusts,
-      id,
-      onClose,
-      onNext,
-      intl,
-      onHeaderClick,
-      setNode,
-    } = this.props
+    const { illusts, id, onClose, intl, onHeaderClick, setNode } = this.props
 
     // TODO リミットをstoreに保存
     const hasMore = illusts.length < 200
@@ -64,7 +59,7 @@ class ColumnRanking extends React.Component {
             node={setNode}
             hasMore={hasMore}
             illusts={illusts}
-            onNext={onNext}
+            onNext={() => this.props.actions.fetch(id)}
           />
         </ColumnBody>
       </ColumnRoot>
@@ -72,24 +67,16 @@ class ColumnRanking extends React.Component {
   }
 }
 
-const mapStateToProps = createStructuredSelector({
+const mapState = createStructuredSelector({
   illusts: makeSelectIllusts(),
 })
 
-function mapDispatchToProps(dispatch: Dispatch, { id }: OP) {
+function mapDispatch(dispatch: Dispatch) {
   return {
-    onFetch() {
-      dispatch(actions.fetch(id))
-    },
-    onNext() {
-      dispatch(actions.fetchNext(id))
-    },
+    actions: bindActionCreators(actions, dispatch),
   }
 }
 
-const connector: Connector<OP, Props> = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)
+const connector: Connector<OP, Props> = connect(mapState, mapDispatch)
 
 export default connector(injectIntl(ColumnRanking))

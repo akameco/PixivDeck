@@ -1,4 +1,6 @@
 // @flow
+import ms from 'ms'
+import update from 'utils/update'
 import type { Action } from './actionTypes'
 import * as Actions from './constants'
 import { baseReducer, type BaseColumn } from '../Column/reducer'
@@ -14,12 +16,21 @@ export type Mode =
 
 export type ColumnId = Mode
 
-export type ColumnRanking = BaseColumn
+export type ColumnRanking = { interval: number } & BaseColumn
 
 export type State = $Shape<{ [Mode]: ColumnRanking }>
 
 const initialState: State = {}
 
 export default function(state: State = initialState, action: Action): State {
-  return baseReducer('ColumnRanking', Actions, state, action)
+  switch (action.type) {
+    case Actions.ADD_COLUMN_SUCCESS:
+      return update(state, action, {
+        ids: [],
+        nextUrl: null,
+        interval: ms('3h'),
+      })
+    default:
+      return baseReducer('ColumnRanking', Actions, state, action)
+  }
 }
