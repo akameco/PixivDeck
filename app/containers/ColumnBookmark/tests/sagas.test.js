@@ -2,21 +2,20 @@
 import { takeEvery } from 'redux-saga/effects'
 import * as sagas from '../saga'
 import * as constants from '../constants'
+import { ADD_BOOKMARK_SUCCESS } from 'containers/BookmarkButton/constants'
 
 test('root', () => {
   const gen = sagas.default()
-  const next = gen.next()
+  let next = gen.next()
   expect(next.value).toEqual(takeEvery(constants.ADD_COLUMN, sagas.addColumn))
 
-  // next = gen.next()
-  // expect(next.value).toEqual(
-  //   takeEvery(constants.FETCH, sagas.fetchUserIllust)
-  // )
-  //
-  // next = gen.next()
-  // expect(next.value).toEqual(
-  //   takeEvery(constants.FETCH_NEXT, sagas.fetchNextUserIllust)
-  // )
+  next = gen.next()
+  expect(next.value).toEqual(
+    takeEvery([constants.FETCH, constants.FETCH_NEXT], sagas.fetchBookmark)
+  )
+
+  next = gen.next()
+  expect(next.value).toEqual(takeEvery(ADD_BOOKMARK_SUCCESS, sagas.fetchNew))
 })
 
 test('fetch next', () => {
@@ -38,6 +37,21 @@ test('fetch first', () => {
   expect(next.value).toMatchSnapshot()
 
   next = gen.next({ ids: [1, 2, 3] })
+  expect(next.value).toHaveProperty('CALL')
+  expect(next.value).toMatchSnapshot()
+})
+
+test('new', () => {
+  const gen = sagas.fetchNew({ restrict: 'public' })
+  let next = gen.next({ id: 'public' })
+  expect(next.value).toHaveProperty('SELECT')
+  expect(next.value).toMatchSnapshot()
+
+  next = gen.next({ ids: [1, 2, 3] })
+  expect(next.value).toHaveProperty('SELECT')
+  expect(next.value).toMatchSnapshot()
+
+  next = gen.next('myid')
   expect(next.value).toHaveProperty('CALL')
   expect(next.value).toMatchSnapshot()
 })
