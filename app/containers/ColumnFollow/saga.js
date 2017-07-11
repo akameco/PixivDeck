@@ -25,21 +25,12 @@ export function* addFollowColumn({ id }: Action): Generator<*, void, *> {
   yield put(addTable(`follow-${id}`, { columnId: id, type: 'FOLLOW' }))
 }
 
-const createEndpoint = (userId, restrict) =>
+const getEndpoint = (userId, restrict) =>
   `/v2/illust/follow?user_id=${userId}&restrict=${restrict}`
 
-function* fetchFollow(action: Action): Generator<*, void, *> {
-  const { id } = action
-  const { ids } = yield select(makeSelectColumn(), action)
-  const userId = yield select(getMyId)
-
-  const endpoint = createEndpoint(userId, id)
-  yield call(fetchColumn.fetchColumn, endpoint, id, actions, ids)
-}
-
-function* fetchNextFollow({ id }: Action) {
+function* fetchFollow({ id }: Action): Generator<*, void, *> {
   const { ids, nextUrl } = yield select(makeSelectColumn(), { id })
-  const endpoint = nextUrl ? nextUrl : createEndpoint(yield select(getMyId), id)
+  const endpoint = nextUrl ? nextUrl : getEndpoint(yield select(getMyId), id)
   yield call(fetchColumn.fetchColumn, endpoint, id, actions, ids)
 }
 
@@ -49,7 +40,7 @@ function* fetchNew(action: Action): Generator<*, void, *> {
 
     const userId = yield select(getMyId)
 
-    const endpoint = createEndpoint(userId, action.id)
+    const endpoint = getEndpoint(userId, action.id)
     const { result } = yield call(api.get, endpoint, true)
 
     const nextIds = union(result.illusts, ids)
@@ -86,8 +77,7 @@ function* fetchNewWatch(action: Action) {
 
 export default function* root(): Generator<*, void, void> {
   yield takeEvery(Actions.ADD_COLUMN, addFollowColumn)
-  yield takeEvery(Actions.FETCH, fetchFollow)
-  yield takeEvery(Actions.FETCH_NEXT, fetchNextFollow)
+  yield takeEvery([Actions.FETCH, Actions.FETCH_NEXT], fetchFollow)
 
   yield takeEvery(Actions.ADD_COLUMN_SUCCESS, fetchNewWatch)
   yield takeEvery(FOLLOW_SUCCESS, function*({ restrict }) {
