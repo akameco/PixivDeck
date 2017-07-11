@@ -28,12 +28,18 @@ export function* fetchBookmark({ id }: Action): Generator<*, void, *> {
   yield call(column.fetchColumn, endpoint, id, { ...actions }, ids)
 }
 
-function* reloadBookmakColumns(action: { +restrict: ColumnId }) {
-  yield put(actions.fetch(action.restrict))
+export function* fetchNew({
+  restrict: id,
+}: {
+  restrict: $PropertyType<Action, 'id'>,
+}): Generator<*, void, *> {
+  const { ids } = yield select(makeSelectColumn(), { id })
+  const endpoint = getEndpoint(yield select(getMyId), id)
+  yield call(column.fetchNew, { endpoint, id, ids, order: true }, actions)
 }
 
 export default function* root(): Generator<*, void, void> {
   yield takeEvery(Actions.ADD_COLUMN, addColumn)
   yield takeEvery([Actions.FETCH, Actions.FETCH_NEXT], fetchBookmark)
-  yield takeEvery(ADD_BOOKMARK_SUCCESS, reloadBookmakColumns)
+  yield takeEvery(ADD_BOOKMARK_SUCCESS, fetchNew)
 }

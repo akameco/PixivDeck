@@ -89,3 +89,60 @@ Object {
   },
 }
 `;
+
+exports[`new 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "SELECT": Object {
+    "args": Array [
+      Object {
+        "id": "public",
+      },
+    ],
+    "selector": [Function],
+  },
+}
+`;
+
+exports[`new 2`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "SELECT": Object {
+    "args": Array [],
+    "selector": [Function],
+  },
+}
+`;
+
+exports[`new 3`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [
+      Object {
+        "endpoint": "/v1/user/bookmarks/illust?user_id=myid&restrict=public",
+        "id": "public",
+        "ids": Array [
+          1,
+          2,
+          3,
+        ],
+        "order": true,
+      },
+      Object {
+        "addColumn": [Function],
+        "addColumnSuccess": [Function],
+        "fetch": [Function],
+        "fetchFailre": [Function],
+        "fetchNext": [Function],
+        "fetchNextFailre": [Function],
+        "fetchNextSuccess": [Function],
+        "fetchSuccess": [Function],
+        "setNextUrl": [Function],
+      },
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+}
+`;
