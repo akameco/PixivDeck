@@ -27,5 +27,10 @@ publish:
 directories:
   buildResources: res
   output: release
-nsis:
-  perMachine: true
+win:
+  target:
+    - nsis
+    - zip
+    - 7z
+# nsis:
+  # perMachine: true
