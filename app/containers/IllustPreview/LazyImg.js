@@ -66,6 +66,15 @@ export default class LazyImg extends React.PureComponent {
     fromMarginTop: 0,
     toMarginTop: 0,
   }
+  mounted: boolean = false
+
+  componentDidMount() {
+    this.mounted = true
+  }
+
+  componentWillUnmount() {
+    this.mounted = false
+  }
 
   handleLoad = () => {
     this.setState({
@@ -75,10 +84,12 @@ export default class LazyImg extends React.PureComponent {
     const img = new Image()
 
     img.onload = () => {
-      this.props.onLoad()
-      this.setState({
-        toMarginTop: calcMarginTop(this.to),
-      })
+      if (this.mounted) {
+        this.props.onLoad()
+        this.setState({
+          toMarginTop: calcMarginTop(this.to),
+        })
+      }
     }
 
     img.src = this.props.original

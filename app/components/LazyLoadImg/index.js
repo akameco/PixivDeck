@@ -59,12 +59,15 @@ export default class LazyLoadImg extends React.PureComponent {
   }
   node: HTMLElement
   io: IntersectionObserver
+  mounted: boolean = false
 
   componentDidMount() {
     this.init()
+    this.mounted = true
   }
 
   componentWillUnmount() {
+    this.mounted = false
     this.io.unobserve(this.node)
   }
 
@@ -78,7 +81,7 @@ export default class LazyLoadImg extends React.PureComponent {
         // eslint-disable-line no-undef
         const intersectionRatio = entries[0].intersectionRatio
         if (intersectionRatio <= 0) {
-          this.setState({ isVisible: false })
+          this.setUnVisible()
         }
         this.update()
       },
@@ -87,7 +90,17 @@ export default class LazyLoadImg extends React.PureComponent {
     this.io.observe(this.node)
   }
 
+  setUnVisible() {
+    if (this.mounted) {
+      this.setState({ isVisible: false })
+    }
+  }
+
   update() {
+    if (!this.mounted) {
+      return
+    }
+
     this.setState({ isVisible: true })
     const img = new Image()
 
