@@ -2,6 +2,7 @@
 
 exports[`CLEAR_ERROR 1`] = `
 Object {
+  "account": null,
   "isLoading": false,
   "isLoginFailure": false,
   "password": "",
@@ -11,6 +12,7 @@ Object {
 
 exports[`LOGIN_FAILURE 1`] = `
 Object {
+  "account": null,
   "isLoading": false,
   "isLoginFailure": true,
   "password": "",
@@ -22,6 +24,7 @@ exports[`LOGIN_REQUEST 1`] = `true`;
 
 exports[`SET_AUTH 1`] = `
 Object {
+  "account": null,
   "isLoading": false,
   "isLoginFailure": false,
   "password": "world",
@@ -31,6 +34,7 @@ Object {
 
 exports[`default action 1`] = `
 Object {
+  "account": null,
   "isLoading": false,
   "isLoginFailure": false,
   "password": "",

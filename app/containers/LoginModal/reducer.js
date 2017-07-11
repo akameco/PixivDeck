@@ -1,4 +1,5 @@
 // @flow
+import type { Account } from 'types/account'
 import type { Action } from './actionTypes'
 import * as Actions from './constants'
 
@@ -7,6 +8,7 @@ export type State = {
   password: string,
   isLoading: boolean,
   isLoginFailure: boolean,
+  account: ?Account,
 }
 
 export const initialState: State = {
@@ -14,6 +16,7 @@ export const initialState: State = {
   password: '',
   isLoading: false,
   isLoginFailure: false,
+  account: null,
 }
 
 export default function(state: State = initialState, action: Action): State {
