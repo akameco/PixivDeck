@@ -22,7 +22,7 @@ export function* addColumn({ id }: Action): Generator<*, void, *> {
 const getEndpoint = (userId, restrict) =>
   `/v1/user/bookmarks/illust?user_id=${userId}&restrict=${restrict}`
 
-function* fetchBookmark({ id }: Action) {
+export function* fetchBookmark({ id }: Action): Generator<*, void, *> {
   const { ids, nextUrl } = yield select(makeSelectColumn(), { id })
   const endpoint = nextUrl ? nextUrl : getEndpoint(yield select(getMyId), id)
   yield call(column.fetchColumn, endpoint, id, { ...actions }, ids)
