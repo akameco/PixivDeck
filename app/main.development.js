@@ -7,6 +7,9 @@ import appMenu from './menu'
 import { autoUpdater } from 'electron-updater'
 import log from 'electron-log'
 
+import ua from 'universal-analytics'
+import uuid from 'uuid'
+
 autoUpdater.logger = log
 autoUpdater.logger.transports.file.level = 'info'
 
@@ -85,6 +88,16 @@ function createMainWindow() {
       config.set('bounds', win.getBounds())
     })
   })
+
+  config.set('uuid', config.get('uuid', uuid.v4()))
+  const user = ua('UA-102337955-1', config.get('uuid'))
+  setInterval(
+    (function sendPageView() {
+      user.pageview('/').send()
+      return sendPageView
+    })(),
+    ms('5m')
+  )
 
   const { webContents } = win
 

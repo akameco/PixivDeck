@@ -69,7 +69,9 @@
     "redux-saga": "^0.15.4",
     "reselect": "^3.0.1",
     "source-map-support": "^0.4.15",
-    "styled-components": "^2.1.1"
+    "styled-components": "^2.1.1",
+    "universal-analytics": "^0.4.13",
+    "uuid": "^3.1.0"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.35.3",
