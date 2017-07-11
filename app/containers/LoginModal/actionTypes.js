@@ -1,4 +1,6 @@
 // @flow
+import type { Account } from 'types/account'
+
 export type LOGIN_REQUEST_TYPE = 'LoginModal/LOGIN_REQUEST'
 export type LOGIN_SUCCESS_TYPE = 'LoginModal/LOGIN_SUCCESS'
 export type LOGIN_FAILURE_TYPE = 'LoginModal/LOGIN_FAILURE'
@@ -15,11 +17,17 @@ export type LOGOUT_TYPE = 'LoginModal/LOGOUT'
 export type SET_AUTH_TYPE = 'LoginModal/SET_AUTH'
 export type CLEAR_ERROR_TYPE = 'LoginModal/CLEAR_ERROR'
 
+export type SET_ACCOUNT_TYPE = 'LoginModal/SET_ACCOUNT'
+
 export type Action =
   | {|
       +type: SET_AUTH_TYPE | LOGIN_REQUEST_TYPE,
       username: string,
       password: string,
+    |}
+  | {|
+      +type: SET_ACCOUNT_TYPE,
+      +account: Account,
     |}
   | {|
       +type:

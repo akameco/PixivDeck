@@ -12,6 +12,15 @@ const mockStore = {
   },
 }
 
+const createMock = s => {
+  return {
+    LoginModal: {
+      ...mockStore,
+      ...s,
+    },
+  }
+}
+
 test('makeSelectInfo', () => {
   const getInfo = selectors.makeSelectInfo()
   expect(getInfo(mockStore)).toMatchSnapshot()
@@ -22,7 +31,12 @@ test('makeSelectIsLoginFailure', () => {
   expect(s(mockStore)).toBeFalsy()
 })
 
-test('', () => {
+test('makeSelectIsLoading', () => {
   const s = selectors.makeSelectIsLoading()
   expect(s(mockStore)).toBeFalsy()
+})
+
+test('getMyId', () => {
+  expect(selectors.getMyId(mockStore)).toBeNull()
+  expect(selectors.getMyId(createMock({ account: { id: '1' } }))).toEqual('1')
 })

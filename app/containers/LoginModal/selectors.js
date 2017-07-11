@@ -21,3 +21,7 @@ export const makeSelectIsLoading = () =>
 
 export const makeSelectIsLoginFailure = () =>
   createSelector(selectAuth, s => s.isLoginFailure)
+
+const getAccount = createSelector(selectAuth, s => s.account)
+
+export const getMyId = createSelector(getAccount, s => (s ? s.id : null))

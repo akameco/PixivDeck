@@ -3,6 +3,7 @@ import type { Action } from './actionTypes.js'
 import {
   SET_AUTH,
   LOGIN_REQUEST,
+  SET_ACCOUNT,
   CLEAR_ERROR,
   LOGIN_FAILURE,
   LOGOUT,
@@ -10,6 +11,7 @@ import {
   END_LOADING,
   AUTO_LOGIN_REQUEST,
 } from './constants'
+import type { Account } from 'types/account'
 
 export function setAuth(username: string, password: string): Action {
   return {
@@ -24,6 +26,13 @@ export function loginRequest(username: string, password: string): Action {
     type: LOGIN_REQUEST,
     username,
     password,
+  }
+}
+
+export function setAccount(account: Account): Action {
+  return {
+    type: SET_ACCOUNT,
+    account,
   }
 }
 
