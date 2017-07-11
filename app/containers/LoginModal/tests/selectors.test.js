@@ -22,7 +22,7 @@ test('makeSelectIsLoginFailure', () => {
   expect(s(mockStore)).toBeFalsy()
 })
 
-test('', () => {
+test('makeSelectIsLoading', () => {
   const s = selectors.makeSelectIsLoading()
   expect(s(mockStore)).toBeFalsy()
 })
