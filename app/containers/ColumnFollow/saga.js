@@ -28,9 +28,13 @@ const getEndpoint = (userId, restrict) =>
   `/v2/illust/follow?user_id=${userId}&restrict=${restrict}`
 
 function* fetchFollow({ id }: Action): Generator<*, void, *> {
-  const { ids, nextUrl } = yield select(makeSelectColumn(), { id })
-  const endpoint = nextUrl ? nextUrl : getEndpoint(yield select(getMyId), id)
-  yield call(fetchColumn.fetchColumn, endpoint, id, actions, ids)
+  try {
+    const { ids, nextUrl } = yield select(makeSelectColumn(), { id })
+    const endpoint = nextUrl ? nextUrl : getEndpoint(yield select(getMyId), id)
+    yield call(fetchColumn.fetchColumn, endpoint, id, actions, ids)
+  } catch (err) {
+    yield put(actions.fetchFailre(id, err))
+  }
 }
 
 function* fetchNew({ id }: Action): Generator<*, void, *> {
@@ -70,6 +74,9 @@ export default function* root(): Generator<*, void, void> {
 
   yield takeEvery(Actions.ADD_COLUMN_SUCCESS, fetchNewWatch)
   yield takeEvery(FOLLOW_SUCCESS, function*({ restrict }) {
-    yield call(fetchFollow, { id: restrict })
+    const ids: Array<?ColumnId> = yield select(makeSelectIds())
+    if (ids.some(v => v === restrict)) {
+      yield call(fetchFollow, { id: restrict })
+    }
   })
 }
