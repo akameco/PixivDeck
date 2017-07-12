@@ -33,9 +33,13 @@ export function* fetchNew({
 }: {
   restrict: $PropertyType<Action, 'id'>,
 }): Generator<*, void, *> {
-  const { ids } = yield select(makeSelectColumn(), { id })
-  const endpoint = getEndpoint(yield select(getMyId), id)
-  yield call(column.fetchNew, { endpoint, id, ids, order: true }, actions)
+  try {
+    const { ids } = yield select(makeSelectColumn(), { id })
+    const endpoint = getEndpoint(yield select(getMyId), id)
+    yield call(column.fetchNew, { endpoint, id, ids, order: true }, actions)
+  } catch (err) {
+    yield put(actions.fetchFailre(id, err))
+  }
 }
 
 export default function* root(): Generator<*, void, void> {
