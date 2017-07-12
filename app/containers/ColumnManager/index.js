@@ -11,6 +11,7 @@ import ColumnFollow from '../ColumnFollow'
 import ColumnUserIllust from '../ColumnUserIllust'
 import ColumnSearch from '../ColumnSearch'
 import ColumnHistory from '../ColumnHistory'
+import ColumnRecommended from '../ColumnRecommended'
 import type { ColumnManagerId, ColumnType } from './reducer'
 import { makeSelectColumnId, makeSelectType } from './selectors'
 
@@ -69,6 +70,10 @@ class ColumnManager extends React.PureComponent {
     } else if (type === 'HISTORY') {
       // $FlowFixMe
       return <ColumnHistory {...rest} {...this.state} setNode={this.setNode} />
+    } else if (type === 'RECOMMENDED') {
+      return (
+        <ColumnRecommended {...rest} {...this.state} setNode={this.setNode} />
+      )
     }
     return null
   }

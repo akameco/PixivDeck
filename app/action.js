@@ -27,6 +27,8 @@ import type { Action as NotifyAction } from './containers/Notify/actionTypes'
 
 import type { Action as ApiAction } from './containers/Api/actionTypes'
 
+import type { Action as ColumnRecommendedAction } from './containers/ColumnRecommended/actionTypes'
+
 export type Action =
   | BookmarkButtonAction
   | BoxContainerAction
@@ -53,3 +55,4 @@ export type Action =
   | UserPopoverContainerAction
   | NotifyAction
   | ApiAction
+  | ColumnRecommendedAction

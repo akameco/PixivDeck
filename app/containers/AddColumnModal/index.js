@@ -5,15 +5,18 @@ import { addColumn as addRankingColumn } from 'containers/ColumnRanking/actions'
 import { addColumn as addRankingR18Column } from 'containers/ColumnRankingR18/actions'
 import { addColumn as addBookmarkColumn } from 'containers/ColumnBookmark/actions'
 import { addColumn as addFollowColumn } from 'containers/ColumnFollow/actions'
+import { addColumn as addRecommendedColumn } from 'containers/ColumnRecommended/actions'
 import { addColumnHistory } from 'containers/ColumnHistory/actions'
 import type { Mode } from 'containers/ColumnRanking/reducer'
 import type { R18Mode } from 'containers/ColumnRankingR18/reducer'
 import Modal from './AddColumnModal'
 import type { Props } from './AddColumnModal'
 
-// TODO bindActionCreaterでいい
 function mapDispatchToProps(dispatch: Dispatch) {
   return {
+    addRecommended() {
+      dispatch(addRecommendedColumn('recommended'))
+    },
     addHistory() {
       dispatch(addColumnHistory())
     },

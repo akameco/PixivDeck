@@ -1,8 +1,17 @@
 components:
+  Column:
+    bookmarkFilter: Filter Bookmarks
   ColumnHeaderBookmark:
     bookmarkFilter: Filter Bookmarks
   Dropdown:
     logout: logout
+    setting: Settings
+  FollowButton:
+    follow: Follow
+    following: Following
+    unFollow: UnFollow
+  Header:
+    logout: Logout
     setting: Settings
   LoginModal:
     error: Login Error
@@ -13,72 +22,66 @@ components:
     addColumn: Add to column
     tabIllust: 'Illustration ({count})'
     tabManga: 'Manga ({count})'
-  Column:
-    bookmarkFilter: Filter Bookmarks
-  FollowButton:
-    follow: Follow
-    following: Following
-    unFollow: UnFollow
-  Header:
-    logout: Logout
-    setting: Settings
 containers:
   AddColumnModal:
-    header: Select Column
-    ranking: Rankings
-    r18ranking: R-18 Rankings
     bookmark: Bookmarks
-    public: Public
-    private: Private
-    new: new
+    header: Select Column
     history: History
+    new: new
+    private: Private
+    public: Public
+    r18ranking: R-18 Rankings
+    ranking: Rankings
+    recommended: Recommend for you
   AddNewColumnButton:
     addColumn: Add Column
   BoxContainer:
+    bookmark: Add Bookmark
+    openPixiv: Open Pixiv Page
+    privateBookmark: Add Private Bookmark
     save: Save Original Image
     showUser: Show User Info
-    bookmark: Add Bookmark
-    privateBookmark: Add Private Bookmark
-    openPixiv: Open Pixiv Page
   ColumnBookmark:
-    public: Public Bookmarks
     private: Private Bookmarks
+    public: Public Bookmarks
   ColumnFollow:
-    public: Public Following
     private: Private Following
+    public: Public Following
   ColumnHistory:
     title: History
   ColumnRanking:
     day: Daily Rankings
-    week: Weekly Rankings
-    month: Monthly Rankings
-    day_male: Popular Male Rankings
     day_female: Popular Female Rankings
+    day_male: Popular Male Rankings
+    month: Monthly Rankings
+    week: Weekly Rankings
     week_original: Original Rankings
     week_rookie: Rookie Rankings
   ColumnRankingR18:
+    day_female_r18: R-18 Female Rankings
+    day_male_r18: R-18 Male Rankings
     day_r18: R-18 Daily Rankings
     week_r18: R-18 Weekly Rankings
-    day_male_r18: R-18 Male Rankings
-    day_female_r18: R-18 Female Rankings
     week_r18g: R-18 G
+  ColumnRecommended:
+    reccomended: Recommend for you
   FollowButton:
     follow: follow
     following: following
     unFollow: unfollow
   SearchField:
-    search: search
     keywordSearch: keyword search
+    search: search
     users: users in
   SettingModal:
-    tagFilter: Tag filter
-    uiSetting: UI setting
-    showCaption: Show Caption
-    showOnlyImg: Only image
+    cache: delete cache (unsafe)
+    language: language
     limit: Restrict access
-    r18Link: pixiv - r18
     r18FilterDesc: |-
       It is easiest to filter R-18 tags.
       Inevitably you need to change browsing restrictions on pixiv's site.
-    language: language
-    cache: delete cache (unsafe)
+    r18Link: pixiv - r18
+    showCaption: Show Caption
+    showOnlyImg: Only image
+    tagFilter: Tag filter
+    uiSetting: UI setting

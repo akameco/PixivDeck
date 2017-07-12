@@ -15,61 +15,64 @@ components:
     tabManga: 'マンガ ({count})'
 containers:
   AddColumnModal:
-    header: 追加するカラムを選択
-    ranking: ランキング
-    r18ranking: R18 ランキング
     bookmark: ブックマーク
-    public: 公開
-    private: 非公開
-    new: 新着
+    header: 追加するカラムを選択
     history: 閲覧履歴
+    new: 新着
+    private: 非公開
+    public: 公開
+    r18ranking: R18 ランキング
+    ranking: ランキング
+    recommended: あなたにおすすめ
   AddNewColumnButton:
     addColumn: カラムに追加
+  BoxContainer:
+    bookmark: ブックマーク
+    openPixiv: pixivで開く
+    privateBookmark: 非公開ブックマーク
+    save: オリジナルサイズの画像を保存
+    showUser: このユーザの情報を見る
   ColumnBookmark:
-    public: 公開ブックマーク
     private: 非公開ブックマーク
+    public: 公開ブックマーク
   ColumnFollow:
-    public: 公開 新着
     private: 非公開 新着
+    public: 公開 新着
+  ColumnHistory:
+    title: 閲覧履歴
   ColumnRanking:
     day: デイリーランキング
-    week: ウィークリーランキング
-    month: マンスリーランキング
-    day_male: 男子に人気
     day_female: 女子に人気
+    day_male: 男子に人気
+    month: マンスリーランキング
+    week: ウィークリーランキング
     week_original: オリジナル
     week_rookie: ルーキー
   ColumnRankingR18:
+    day_female_r18: R18 女子に人気
+    day_male_r18: R18 男子に人気
     day_r18: R18 デイリー
     week_r18: R18 ウィークリー
-    day_male_r18: R18 男子に人気
-    day_female_r18: R18 女子に人気
     week_r18g: R18 G
+  ColumnRecommended:
+    reccomended: あなたにおすすめ
   FollowButton:
     follow: フォローする
     following: フォロー中
     unFollow: フォロー解除
   SearchField:
-    search: 検索
     keywordSearch: キーワード検索
+    search: 検索
     users: users入り
   SettingModal:
-    tagFilter: タグフィルター
-    uiSetting: UI 設定
-    showCaption: キャプションを表示
-    showOnlyImg: 画像のみ表示
+    cache: キャッシュを削除
+    language: 言語
     limit: 閲覧制限
-    r18Link: pixiv - R-18設定
     r18FilterDesc: |-
       R-18タグをフィルターするのがもっとも簡単です。
       どうしても閲覧制限を設定はpixivのサイト上にて変更する必要があります。
-    language: 言語
-    cache: キャッシュを削除
-  ColumnHistory:
-    title: 閲覧履歴
-  BoxContainer:
-    save: オリジナルサイズの画像を保存
-    showUser: このユーザの情報を見る
-    bookmark: ブックマーク
-    privateBookmark: 非公開ブックマーク
-    openPixiv: pixivで開く
+    r18Link: pixiv - R-18設定
+    showCaption: キャプションを表示
+    showOnlyImg: 画像のみ表示
+    tagFilter: タグフィルター
+    uiSetting: UI 設定

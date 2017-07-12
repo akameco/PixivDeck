@@ -6,6 +6,7 @@ import ColumnHistory from 'containers/ColumnHistory/reducer'
 import ColumnManager from 'containers/ColumnManager/reducer'
 import ColumnRanking from 'containers/ColumnRanking/reducer'
 import ColumnRankingR18 from 'containers/ColumnRankingR18/reducer'
+import ColumnRecommended from 'containers/ColumnRecommended/reducer'
 import ColumnSearch from 'containers/ColumnSearch/reducer'
 import ColumnUserIllust from 'containers/ColumnUserIllust/reducer'
 import DrawerManager from 'containers/DrawerManager/reducer'
@@ -30,6 +31,7 @@ export default combineReducers({
   ColumnManager,
   ColumnRanking,
   ColumnRankingR18,
+  ColumnRecommended,
   ColumnSearch,
   ColumnUserIllust,
   DrawerManager,

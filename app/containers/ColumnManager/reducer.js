@@ -13,6 +13,7 @@ export type ColumnType =
   | 'USER_ILLUST'
   | 'SEARCH'
   | 'HISTORY'
+  | 'RECOMMENDED'
 
 export type ColumnManager = {
   columnId: ColumnId,

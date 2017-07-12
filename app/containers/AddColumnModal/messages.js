@@ -10,4 +10,5 @@ export default defineMessages({
   private: '非公開',
   new: '新着',
   history: '閲覧履歴',
+  recommended: 'あなたにおすすめ',
 })
