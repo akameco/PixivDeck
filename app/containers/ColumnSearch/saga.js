@@ -1,6 +1,6 @@
 // @flow
 import { delay } from 'redux-saga'
-import { put, select, call, takeEvery } from 'redux-saga/effects'
+import { put, select, call, takeEvery, fork, take } from 'redux-saga/effects'
 import { union, difference } from 'lodash'
 import { addTable } from 'containers/ColumnManager/actions'
 import { addNotifyWithIllust } from 'containers/Notify/actions'
@@ -14,28 +14,36 @@ import * as fetchSaga from '../Column/sagas'
 
 export function* addColumn({ id }: Action): Generator<*, void, *> {
   const ids: Array<?ColumnId> = yield select(selectors.makeSelectIds())
-  if (ids.every(v => v !== id)) {
-    yield put(actions.addColumnSuccess(id))
+  const word = id.replace(/\d+users入り$/, '')
+
+  if (ids.every(v => v !== word)) {
+    yield put(actions.addColumnSuccess(word))
   }
 
-  yield put(addTable(`search-${id}`, { columnId: id, type: 'SEARCH' }))
+  yield put(addTable(`search-${word}`, { columnId: word, type: 'SEARCH' }))
 }
 
-const getEndpoint = id =>
-  `/v1/search/illust?word=${id}&search_target=partial_match_for_tags&sort=date_desc`
+const getEndpoint = word =>
+  `/v1/search/illust?word=${word}&search_target=partial_match_for_tags&sort=date_desc`
 
 function* fetchSearch(action: Action): Generator<*, void, *> {
   const { id } = action
-  const { ids, nextUrl } = yield select(selectors.makeSelectColumn(), action)
-  const hasMore = yield select(selectors.makeSelectHasMore(), action)
+  const word = id.replace(/\d+users入り$/, '')
+  const { ids, nextUrl, usersIn } = yield select(
+    selectors.makeSelectColumn(),
+    action
+  )
+  const hasMore = yield select(selectors.makeSelectHasMore(), { id: word })
 
   // nullのチェックではない
   if (hasMore === false) {
     return
   }
 
-  const endpoint = nextUrl ? nextUrl : getEndpoint(id)
-  yield call(fetchSaga.fetchColumn, endpoint, id, actions, ids)
+  const fomattedWord = usersIn === 0 ? word : `${word}${usersIn}users入り`
+
+  const endpoint = nextUrl ? nextUrl : getEndpoint(fomattedWord)
+  yield call(fetchSaga.fetchColumn, endpoint, word, actions, ids)
 }
 
 function* fetchUntilLimit(action: Action): Generator<*, void, *> {
@@ -58,7 +66,7 @@ function* fetchUntilLimit(action: Action): Generator<*, void, *> {
         return
       }
 
-      yield call(delay, 200)
+      yield call(delay, 2000)
     }
   } catch (err) {
     yield put(actions.fetchNewFailre(action.id, err))
@@ -100,13 +108,27 @@ function* fetchNew(action: Action): Generator<*, void, *> {
 function* fetchNewWatch(action: Action) {
   try {
     while (true) {
+      const interval = yield select(selectors.getInterval, action)
+      yield delay(interval || 2000)
       yield call(fetchNew, action)
-      const { interval } = yield select(selectors.makeSelectColumn(), action)
-      yield delay(interval)
     }
   } catch (err) {
     // TODO エラーハンドリング
     console.log(err)
+  }
+}
+
+export function* usersIn(): Generator<*, void, *> {
+  while (true) {
+    const { id, usersIn: value } = yield take(Actions.USERS_IN)
+    // 検索ワードにusers入りがあれば消す。
+    const word = id.replace(/\d+users入り$/, '')
+
+    // urlの変更およびリクエストを行う
+    yield put(actions.setUsersIn(word, value))
+    yield put(actions.resetIds(word))
+    yield put(actions.setNextUrl(word, null))
+    yield put(actions.fetch(word))
   }
 }
 
@@ -118,6 +140,6 @@ export default function* root(): Generator<*, void, void> {
     fetchUntilLimit
   )
 
-  yield takeEvery(Actions.FETCH_SUCCESS, fetchNewWatch)
-  yield takeEvery(Actions.FETCH_NEW, fetchNewWatch)
+  yield takeEvery(Actions.START_WATCH, fetchNewWatch)
+  yield fork(usersIn)
 }
