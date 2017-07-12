@@ -64,8 +64,8 @@ Object {
   "containers.SettingModal.cache": "delete cache (unsafe)",
   "containers.SettingModal.language": "language",
   "containers.SettingModal.limit": "Restrict access",
-  "containers.SettingModal.r18FilterDesc": "It is easiest to filter R-18 tags.
-Inevitably you need to change browsing restrictions on pixiv's site.",
+  "containers.SettingModal.r18FilterDesc": "It's very easy to change the R-18 tag.
+You only need to change the restriction on your pixiv account's setting.",
   "containers.SettingModal.r18Link": "pixiv - r18",
   "containers.SettingModal.showCaption": "Show Caption",
   "containers.SettingModal.showOnlyImg": "Only image",
