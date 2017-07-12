@@ -73,34 +73,33 @@ function* fetchUntilLimit(action: Action): Generator<*, void, *> {
   }
 }
 
-function* fetchNew(action: Action): Generator<*, void, *> {
+function* fetchNew({ id }: Action): Generator<*, void, *> {
   try {
-    const { ids } = yield select(selectors.makeSelectColumn(), action)
-    const beforeIds = yield select(
-      selectors.makeLimitedSelectIllustsId(),
-      action
-    )
+    const { ids, usersIn } = yield select(selectors.makeSelectColumn(), { id })
+    const beforeIds = yield select(selectors.makeLimitedSelectIllustsId(), {
+      id,
+    })
 
-    const endpoint = getEndpoint(action.id)
+    const fomattedWord = usersIn === 0 ? id : `${id}${usersIn}users入り`
+    const endpoint = getEndpoint(fomattedWord)
 
     const { result } = yield call(api.get, endpoint, true)
 
     const nextIds = union(result.illusts, ids)
-    yield put(actions.fetchNewSuccess(action.id, nextIds))
+    yield put(actions.fetchNewSuccess(id, nextIds))
 
-    const afterIds = yield select(
-      selectors.makeLimitedSelectIllustsId(),
-      action
-    )
+    const afterIds = yield select(selectors.makeLimitedSelectIllustsId(), {
+      id,
+    })
 
     const diffIllusts = difference(afterIds, beforeIds)
     if (diffIllusts.length > 0) {
       for (const illustId of diffIllusts) {
-        yield put(addNotifyWithIllust(`検索新着 ${action.id} イラスト`, illustId))
+        yield put(addNotifyWithIllust(`検索新着 ${id} イラスト`, illustId))
       }
     }
   } catch (err) {
-    yield put(actions.fetchNewFailre(action.id, err))
+    yield put(actions.fetchNewFailre(id, err))
   }
 }
 
