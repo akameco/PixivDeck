@@ -5,6 +5,7 @@ import type { State as ColumnHistoryState } from '../containers/ColumnHistory/re
 import type { State as ColumnManagerState } from '../containers/ColumnManager/reducer'
 import type { State as ColumnRankingState } from '../containers/ColumnRanking/reducer'
 import type { State as ColumnRankingR18State } from '../containers/ColumnRankingR18/reducer'
+import type { State as ColumnRecommendedState } from '../containers/ColumnRecommended/reducer'
 import type { State as ColumnSearchState } from '../containers/ColumnSearch/reducer'
 import type { State as ColumnUserIllustState } from '../containers/ColumnUserIllust/reducer'
 import type { State as DrawerManagerState } from '../containers/DrawerManager/reducer'
@@ -29,6 +30,7 @@ export type State = {
   ColumnManager: ColumnManagerState,
   ColumnRankingR18: ColumnRankingR18State,
   ColumnRanking: ColumnRankingState,
+  ColumnRecommended: ColumnRecommendedState,
   ColumnSearch: ColumnSearchState,
   ColumnUserIllust: ColumnUserIllustState,
   DrawerManager: DrawerManagerState,

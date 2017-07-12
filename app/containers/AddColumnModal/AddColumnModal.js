@@ -12,6 +12,7 @@ import messages from './messages'
 import { Content, Header, Wrap } from './styles'
 
 export type Props = {
+  addRecommended: () => void,
   addBookmark: () => void,
   addBookmarkPrivate: () => void,
   addFollow: () => void,
@@ -68,6 +69,7 @@ function SelectColumnModal(props: Props & { intl: IntlShape }) {
     addFollow,
     addFollowPrivate,
     addHistory,
+    addRecommended,
   } = props
 
   return (
@@ -80,6 +82,12 @@ function SelectColumnModal(props: Props & { intl: IntlShape }) {
           <LinkButton
             text={<FormattedMessage {...messages.history} />}
             onClick={addHistory}
+          />
+        </Card>
+        <Card title={<FormattedMessage {...messages.recommended} />}>
+          <LinkButton
+            text={<FormattedMessage {...messages.recommended} />}
+            onClick={addRecommended}
           />
         </Card>
         <Card title={<FormattedMessage {...messages.bookmark} />}>
