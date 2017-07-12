@@ -1,4 +1,5 @@
 // @flow
+import { isEmpty } from 'lodash'
 import { createSelector } from 'reselect'
 import type { State } from 'types/state'
 import { getIllustById } from '../IllustById/selectors'
@@ -15,5 +16,5 @@ const makeSelectIllustIds = () => createSelector(getColumn, s => s.ids)
 
 export const makeSelectIllusts = () =>
   createSelector(makeSelectIllustIds(), getIllustById, (s, arr) => {
-    return s.map(v => arr[v])
+    return isEmpty(s) ? [] : s.map(v => arr[v])
   })
