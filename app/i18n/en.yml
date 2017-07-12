@@ -78,8 +78,8 @@ containers:
     language: language
     limit: Restrict access
     r18FilterDesc: |-
-      It is easiest to filter R-18 tags.
-      Inevitably you need to change browsing restrictions on pixiv's site.
+      It's very easy to change the R-18 tag.
+      You only need to change the restriction on your pixiv account's setting.
     r18Link: pixiv - r18
     showCaption: Show Caption
     showOnlyImg: Only image
