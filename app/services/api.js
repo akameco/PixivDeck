@@ -15,6 +15,7 @@ export const illustSchema = new schema.Entity('illusts', {
 })
 
 const mySchema = {
+  illust: illustSchema,
   illusts: [illustSchema],
 }
 
