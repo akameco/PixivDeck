@@ -32,7 +32,7 @@ containers:
     public: Public
     r18ranking: R-18 Rankings
     ranking: Rankings
-    recommended: Recommend for you
+    recommended: Recommended For You
   AddNewColumnButton:
     addColumn: Add Column
   BoxContainer:
@@ -64,7 +64,7 @@ containers:
     week_r18: R-18 Weekly Rankings
     week_r18g: R-18 G
   ColumnRecommended:
-    reccomended: Recommend for you
+    reccomended: Recommended For You
   FollowButton:
     follow: follow
     following: following
