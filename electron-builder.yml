@@ -32,5 +32,5 @@ win:
     - nsis
     - zip
     - 7z
-# nsis:
-  # perMachine: true
+nsis:
+  allowToChangeInstallationDirectory: true
