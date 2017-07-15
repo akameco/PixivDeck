@@ -33,4 +33,5 @@ win:
     - zip
     - 7z
 nsis:
+  oneClick: false
   allowToChangeInstallationDirectory: true
