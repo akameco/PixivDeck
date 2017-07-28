@@ -19,16 +19,26 @@ const styles = {
 const hoverColor = '#b94343'
 
 export type Props = {
-  onClick: () => void,
+  addBookmark: () => void,
+  deleteBookmark: () => void,
   isBookmarked: boolean,
 }
 
-const BookmarkButton = ({ isBookmarked, onClick }: Props) =>
-  <IconButton onClick={onClick} style={styles.button} iconStyle={styles.icon}>
-    <FavoriteIcon
-      color={isBookmarked ? hoverColor : '#777'}
-      hoverColor={hoverColor}
-    />
-  </IconButton>
+const BookmarkButton = ({
+  isBookmarked,
+  addBookmark,
+  deleteBookmark,
+}: Props) => {
+  const onClick = isBookmarked ? deleteBookmark : addBookmark
+
+  return (
+    <IconButton onClick={onClick} style={styles.button} iconStyle={styles.icon}>
+      <FavoriteIcon
+        color={isBookmarked ? hoverColor : '#777'}
+        hoverColor={hoverColor}
+      />
+    </IconButton>
+  )
+}
 
 export default BookmarkButton

@@ -21,6 +21,15 @@ export function* bookmark({ id, restrict }: Props): Generator<*, void, void> {
   }
 }
 
+export function* deleteTask({ id }: Props): Generator<*, void, void> {
+  try {
+    yield call(api.post, '/v1/illust/bookmark/delete', { illustId: id })
+    yield put(actions.deleteBookmarkSuccess(id))
+  } catch (err) {
+    yield put(actions.deleteBookmarkFailer(id, err))
+  }
+}
+
 function* success({ id }: Props) {
   try {
     yield call(get, `/v1/illust/detail?illust_id=${id}`, true)
@@ -29,7 +38,11 @@ function* success({ id }: Props) {
 
 function* root(): Generator<IOEffect, void, *> {
   yield takeEvery(Actions.ADD_BOOKMARK_REQUEST, bookmark)
-  yield takeEvery(Actions.ADD_BOOKMARK_SUCCESS, success)
+  yield takeEvery(Actions.DELETE_BOOKMARK_REQUEST, deleteTask)
+  yield takeEvery(
+    [Actions.ADD_BOOKMARK_SUCCESS, Actions.DELETE_BOOKMARK_SUCCESS],
+    success
+  )
 }
 
 export default root
