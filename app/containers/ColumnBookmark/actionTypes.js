@@ -9,6 +9,8 @@ export type FETCH_TYPE = 'ColumnBookmark/FETCH'
 export type FETCH_SUCCESS_TYPE = 'ColumnBookmark/FETCH_SUCCESS'
 export type FETCH_FAILRE_TYPE = 'ColumnBookmark/FETCH_FAILRE'
 
+export type REMOVE_ITEM_TYPE = 'ColumnBookmark/REMOVE_ITEM'
+
 export type FETCH_NEXT_TYPE = 'ColumnBookmark/FETCH_NEXT'
 export type FETCH_NEXT_SUCCESS_TYPE = 'ColumnBookmark/FETCH_NEXT_SUCCESS'
 export type FETCH_NEXT_FAILRE_TYPE = 'ColumnBookmark/FETCH_NEXT_FAILRE'
@@ -25,6 +27,7 @@ export type Action =
       +id: ColumnId,
     |}
   | {| +type: SET_NEXT_URL_TYPE, +id: ColumnId, +nextUrl: string |}
+  | {| +type: REMOVE_ITEM_TYPE, +id: 'public', +item: number |}
   | {|
       +type: FETCH_SUCCESS_TYPE | FETCH_NEXT_SUCCESS_TYPE,
       +id: ColumnId,

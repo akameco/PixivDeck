@@ -4,6 +4,7 @@ import { get } from '../Api/sagas'
 import * as api from 'containers/Api/sagas'
 import * as Actions from './constants'
 import * as actions from './actions'
+import * as columnActions from '../ColumnBookmark/actions'
 import type { Restrict } from './types'
 
 type Props = {
@@ -25,6 +26,7 @@ export function* deleteTask({ id }: Props): Generator<*, void, void> {
   try {
     yield call(api.post, '/v1/illust/bookmark/delete', { illustId: id })
     yield put(actions.deleteBookmarkSuccess(id))
+    yield put(columnActions.removeItem('public', id))
   } catch (err) {
     yield put(actions.deleteBookmarkFailer(id, err))
   }
