@@ -8,6 +8,7 @@ import {
   FETCH_NEXT,
   FETCH_NEXT_FAILRE,
   SET_NEXT_URL,
+  REMOVE_ITEM,
   FETCH_SUCCESS,
   FETCH_NEXT_SUCCESS,
 } from './constants'
@@ -61,6 +62,14 @@ export function setNextUrl(id: ColumnId, nextUrl: string): Action {
     type: SET_NEXT_URL,
     id,
     nextUrl,
+  }
+}
+
+export function removeItem(id: 'public', item: number): Action {
+  return {
+    type: REMOVE_ITEM,
+    id,
+    item,
   }
 }
 

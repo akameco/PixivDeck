@@ -3,7 +3,7 @@ import { connect, type Connector } from 'react-redux'
 import { createSelector } from 'reselect'
 import type { Dispatch } from 'types'
 import BookmarkButton, { type Props } from './BookmarkButton'
-import { addBookmarkRequest } from './actions'
+import { addBookmarkRequest, deleteBookmarkRequest } from './actions'
 import { makeIsBookmarked } from './selectors'
 
 const mapStateToProps = createSelector(makeIsBookmarked(), isBookmarked => ({
@@ -11,8 +11,11 @@ const mapStateToProps = createSelector(makeIsBookmarked(), isBookmarked => ({
 }))
 
 const mapDispatchToProps = (dispatch: Dispatch, { id }) => ({
-  onClick() {
+  addBookmark() {
     dispatch(addBookmarkRequest(id, 'public'))
+  },
+  deleteBookmark() {
+    dispatch(deleteBookmarkRequest(id))
   },
 })
 

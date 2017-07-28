@@ -1,4 +1,5 @@
 // @flow
+import update from 'utils/update'
 import type { Action } from './actionTypes'
 import * as Actions from './constants'
 import { baseReducer, type BaseColumn } from '../Column/reducer'
@@ -14,5 +15,14 @@ export type State = $Shape<{ [ColumnId]: ColumnBookmark }>
 const initialState: State = {}
 
 export default function(state: State = initialState, action: Action): State {
-  return baseReducer('ColumnBookmark', Actions, state, action)
+  switch (action.type) {
+    case Actions.REMOVE_ITEM: {
+      const item = action.item
+      return update(state, action, {
+        ids: state.public.ids.filter(id => id !== item),
+      })
+    }
+    default:
+      return baseReducer('ColumnBookmark', Actions, state, action)
+  }
 }
