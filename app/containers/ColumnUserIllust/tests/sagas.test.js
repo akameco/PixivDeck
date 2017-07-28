@@ -9,9 +9,7 @@ test('root', () => {
   expect(next.value).toEqual(takeEvery(constants.ADD_COLUMN, sagas.addColumn))
 
   next = gen.next()
-  expect(next.value).toEqual(
-    takeEvery(constants.FETCH, sagas.fetchUserIllust)
-  )
+  expect(next.value).toEqual(takeEvery(constants.FETCH, sagas.fetchUserIllust))
 
   next = gen.next()
   expect(next.value).toEqual(
