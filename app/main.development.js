@@ -108,9 +108,9 @@ function createMainWindow() {
 }
 
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit()
-  }
+  // はっきり言って閉じるボタンが非表示を意味するmacアプリがおかしい
+  // if (process.platform !== 'darwin') { }
+  app.quit()
 })
 
 app.on('activate', () => {
