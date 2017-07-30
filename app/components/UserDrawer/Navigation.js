@@ -5,17 +5,25 @@ import type { User, Profile } from 'types/user'
 import FollowButton from 'containers/FollowButton'
 import AddNewColumnButton from 'containers/AddNewColumnButton'
 import TwitterButton from 'components/TwitterButton'
+import Button from 'components/common/Button'
+
+export const A = styled.a`margin: 0 5px;`
 
 type Props = {
   user: User,
   profile: Profile,
 }
 
+const getPixivUserLink = id => `https://www.pixiv.net/member.php?id=${id}`
+
 const Navigation = ({ user, profile }: Props) => {
   return (
     <NavigationWrap>
       <Wrap>
         {profile.twitterUrl && <TwitterButton url={profile.twitterUrl} />}
+        <A href={getPixivUserLink(user.id)} target="_blank">
+          <Button label="pixiv" />
+        </A>
         <FollowButton user={user} />
         <AddNewColumnButton user={user} />
       </Wrap>
