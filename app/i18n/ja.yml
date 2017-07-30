@@ -9,6 +9,8 @@ components:
     errorInfo: ユーザ名とパスワードを確認してください。
     login: ログイン
     loginLoading: ログイン中..
+    password: パスワード
+    username: ユーザー名
   UserDrawer:
     addColumn: カラムに追加
     tabIllust: 'イラスト ({count})'

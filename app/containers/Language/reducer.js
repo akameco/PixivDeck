@@ -2,10 +2,10 @@
 import type { Action } from './actionTypes'
 import * as Actions from './constants'
 
-export type State = { locale: string }
+export type State = { locale: ?string }
 
 export const DEFAULT_LOCALE = 'ja'
-const initialState: State = { locale: DEFAULT_LOCALE }
+const initialState: State = { locale: null }
 
 export default function(state: State = initialState, action: Action): State {
   switch (action.type) {

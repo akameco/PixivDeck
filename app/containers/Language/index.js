@@ -5,6 +5,7 @@ import { IntlProvider } from 'react-intl'
 import { createStructuredSelector } from 'reselect'
 import { makeSelectLocale } from './selectors'
 import { DEFAULT_LOCALE } from './reducer'
+import * as actions from './actions'
 
 type OP = {
   messages: Object,
@@ -12,27 +13,40 @@ type OP = {
 }
 
 type Props = {
-  locale: string,
-} & OP
+  locale: ?string,
+} & typeof actions &
+  OP
 
-export function Language(props: Props) {
-  const { locale, messages, children } = props
-  const localeMessages = (messages && locale && messages[locale]) || {}
-  return (
-    <IntlProvider
-      defaultLocale={DEFAULT_LOCALE}
-      key={locale}
-      locale={locale}
-      messages={localeMessages}
-    >
-      {children}
-    </IntlProvider>
-  )
+export class Language extends React.Component {
+  props: Props
+
+  componentDidMount() {
+    if (!this.props.locale) {
+      const locale = navigator.language === 'ja' ? 'ja' : 'en'
+      this.props.changeLocale(locale)
+    }
+  }
+
+  render() {
+    const { locale, messages, children } = this.props
+    const localeMessages = (messages && locale && messages[locale]) || {}
+
+    return (
+      <IntlProvider
+        defaultLocale={DEFAULT_LOCALE}
+        key={locale}
+        locale={locale}
+        messages={localeMessages}
+      >
+        {children}
+      </IntlProvider>
+    )
+  }
 }
 
 const mapStateToProps = createStructuredSelector({
   locale: makeSelectLocale(),
 })
 
-const connector: Connector<OP, Props> = connect(mapStateToProps)
+const connector: Connector<OP, Props> = connect(mapStateToProps, actions)
 export default connector(Language)

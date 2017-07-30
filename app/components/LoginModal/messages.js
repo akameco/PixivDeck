@@ -6,4 +6,6 @@ export default defineMessages({
   errorInfo: 'ユーザ名とパスワードを確認してください。',
   login: 'ログイン',
   loginLoading: 'ログイン中..',
+  username: 'ユーザー名',
+  password: 'パスワード',
 })
