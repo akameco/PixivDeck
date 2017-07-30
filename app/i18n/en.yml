@@ -18,6 +18,8 @@ components:
     errorInfo: Check your usernaem and password.
     login: Login
     loginLoading: Logining...
+    password: password
+    username: username
   UserDrawer:
     addColumn: Add to column
     tabIllust: 'Illustration ({count})'

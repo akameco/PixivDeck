@@ -1,11 +1,17 @@
 // @flow
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { injectIntl, type IntlShape } from 'react-intl'
 import LoginButton from './LoginButton'
 import Loading from './Loading'
 import ErrorNotify from './ErrorNotify'
 import Input from './Input'
 import Feild from './Feild'
+import messages from './messages'
+
+type InjectProp = {
+  intl: IntlShape,
+}
 
 export type Props = {
   username: string,
@@ -20,8 +26,16 @@ type State = {
   password: string,
 }
 
-export default class LoginModal extends Component {
-  props: Props
+const Wrap = styled.div`
+  position: relative;
+  max-width: 100%;
+  margin-top: 2rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+`
+
+class LoginModal extends Component {
+  props: Props & InjectProp
   state: State = {
     username: this.props.username,
     password: this.props.password,
@@ -44,7 +58,7 @@ export default class LoginModal extends Component {
   }
 
   render() {
-    const { isLoginFailure, isLoading } = this.props
+    const { isLoginFailure, isLoading, intl } = this.props
 
     if (isLoading) {
       return <Loading />
@@ -57,13 +71,13 @@ export default class LoginModal extends Component {
         {isLoginFailure && <ErrorNotify />}
         <Feild>
           <Input
-            placeholder="ユーザー名"
+            placeholder={intl.formatMessage(messages.username)}
             type="text"
             value={username}
             onChange={this.handleChangeName}
           />
           <Input
-            placeholder="パスワード"
+            placeholder={intl.formatMessage(messages.password)}
             type="password"
             value={password}
             onChange={this.handleChangePassword}
@@ -75,10 +89,4 @@ export default class LoginModal extends Component {
   }
 }
 
-const Wrap = styled.div`
-  position: relative;
-  max-width: 100%;
-  margin-top: 2rem;
-  margin-left: 3rem;
-  margin-right: 3rem;
-`
+export default injectIntl(LoginModal)

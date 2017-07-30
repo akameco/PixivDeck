@@ -1,7 +1,6 @@
 // @flow
 import React, { Component } from 'react'
-import { injectIntl } from 'react-intl'
-import type { IntlShape } from 'react-intl'
+import { injectIntl, type IntlShape } from 'react-intl'
 import { findDOMNode } from 'react-dom'
 import { throttle } from 'lodash'
 import PopoverAuto from './PopoverAuto'
