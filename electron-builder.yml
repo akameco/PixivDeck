@@ -18,6 +18,7 @@ dmg:
       type: link
       path: /Applications
 linux:
+  category: Network
   target:
     - AppImage
     - deb
