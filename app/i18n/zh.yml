@@ -1,0 +1,78 @@
+components:
+  ColumnHeaderBookmark:
+    bookmarkFilter: ''
+  Dropdown:
+    logout: 注销
+    setting: ''
+  LoginModal:
+    error: ''
+    errorInfo: ''
+    login: 注册
+    loginLoading: ''
+    password: ''
+    username: ''
+  UserDrawer:
+    addColumn: ''
+    tabIllust: ''
+    tabManga: ''
+containers:
+  AddColumnModal:
+    bookmark: ''
+    header: ''
+    history: ''
+    new: ''
+    private: ''
+    public: ''
+    r18ranking: ''
+    ranking: ''
+    recommended: ''
+  AddNewColumnButton:
+    addColumn: ''
+  BoxContainer:
+    bookmark: ''
+    openPixiv: ''
+    privateBookmark: ''
+    save: ''
+    showUser: ''
+  ColumnBookmark:
+    private: ''
+    public: ''
+  ColumnFollow:
+    private: ''
+    public: ''
+  ColumnHistory:
+    title: ''
+  ColumnRanking:
+    day: ''
+    day_female: ''
+    day_male: ''
+    month: ''
+    week: ''
+    week_original: ''
+    week_rookie: ''
+  ColumnRankingR18:
+    day_female_r18: ''
+    day_male_r18: ''
+    day_r18: ''
+    week_r18: ''
+    week_r18g: ''
+  ColumnRecommended:
+    reccomended: ''
+  FollowButton:
+    follow: ''
+    following: ''
+    unFollow: ''
+  SearchField:
+    keywordSearch: ''
+    search: ''
+    users: ''
+  SettingModal:
+    cache: ''
+    language: ''
+    limit: ''
+    r18FilterDesc: ''
+    r18Link: ''
+    showCaption: ''
+    showOnlyImg: ''
+    tagFilter: ''
+    uiSetting: ''

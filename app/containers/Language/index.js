@@ -22,7 +22,9 @@ export class Language extends React.Component {
 
   componentDidMount() {
     if (!this.props.locale) {
-      const locale = navigator.language === 'ja' ? 'ja' : 'en'
+      const locale = ['ja', 'zh'].includes(navigator.language)
+        ? navigator.language
+        : 'en'
       this.props.changeLocale(locale)
     }
   }
