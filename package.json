@@ -20,6 +20,7 @@
     "build": "npm run build:main && npm run build:renderer",
     "s2s": "babel-node ./config/scripts/s2s.js",
     "flow": "flow",
+    "i18n": "babel-node ./config/scripts/extract-intl.js",
     "build:dll": "node config/scripts/webpack build-dll",
     "build:main": "node config/scripts/webpack build-main",
     "build:renderer": "node config/scripts/webpack build-renderer",
