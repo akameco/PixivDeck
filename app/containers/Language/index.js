@@ -1,4 +1,5 @@
 // @flow
+import electron from 'electron'
 import React from 'react'
 import { connect, type Connector } from 'react-redux'
 import { IntlProvider } from 'react-intl'
@@ -22,9 +23,10 @@ export class Language extends React.Component {
 
   componentDidMount() {
     if (!this.props.locale) {
-      const locale = ['ja', 'zh'].includes(navigator.language)
-        ? navigator.language
-        : 'en'
+      const app = electron.remote.app || electron.app
+      const sysLocale = app.getLocale().split('-')[0]
+
+      const locale = ['ja', 'zh'].includes(sysLocale) ? sysLocale : 'en'
       this.props.changeLocale(locale)
     }
   }
