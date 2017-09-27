@@ -1,78 +1,80 @@
 components:
   ColumnHeaderBookmark:
-    bookmarkFilter: ''
+    bookmarkFilter: 过滤书签
   Dropdown:
     logout: 注销
-    setting: ''
+    setting: 设置
   LoginModal:
-    error: ''
-    errorInfo: ''
+    error: 登录失败
+    errorInfo: 请检查您的用户名或密码
     login: 注册
-    loginLoading: ''
-    password: ''
-    username: ''
+    loginLoading: 登录中...
+    password: 密码
+    username: 用户名
   UserDrawer:
-    addColumn: ''
-    tabIllust: ''
-    tabManga: ''
+    addColumn: 添加该列
+    tabIllust: '插画 ({count})'
+    tabManga: '漫画 ({count})'
 containers:
   AddColumnModal:
-    bookmark: ''
-    header: ''
-    history: ''
-    new: ''
-    private: ''
-    public: ''
-    r18ranking: ''
-    ranking: ''
-    recommended: ''
+    bookmark: 我的收藏
+    header: 选择列
+    history: 浏览历史
+    new: 最新
+    private: 非公开
+    public: 公开
+    r18ranking: R18排行榜
+    ranking: 排行榜
+    recommended: 为您推荐
   AddNewColumnButton:
-    addColumn: ''
+    addColumn: 添加列
   BoxContainer:
-    bookmark: ''
-    openPixiv: ''
-    privateBookmark: ''
-    save: ''
-    showUser: ''
+    bookmark: 收藏
+    openPixiv: 在Pixiv页面中打开
+    privateBookmark: 私人收藏
+    save: 下载原图
+    showUser: 查看作者信息
   ColumnBookmark:
-    private: ''
-    public: ''
+    private: 私人收藏
+    public: 公开收藏
   ColumnFollow:
-    private: ''
-    public: ''
+    private: 私人关注
+    public: 公开关注
   ColumnHistory:
-    title: ''
+    title: 浏览历史
   ColumnRanking:
-    day: ''
-    day_female: ''
-    day_male: ''
-    month: ''
-    week: ''
-    week_original: ''
-    week_rookie: ''
+    day: 日排行
+    day_female: 女性青睐
+    day_male: 男性青睐
+    month: 月排行
+    week: 周排行
+    week_original: 原画排行
+    week_rookie: 新人排行
   ColumnRankingR18:
-    day_female_r18: ''
-    day_male_r18: ''
-    day_r18: ''
-    week_r18: ''
-    week_r18g: ''
+    day_female_r18: 女性青睐 R-18
+    day_male_r18: 男性青睐 R-18
+    day_r18: 日排行 R-18
+    week_r18: 周排行 R-18
+    week_r18g: R-18 G
   ColumnRecommended:
-    reccomended: ''
+    reccomended: 为您推荐
   FollowButton:
-    follow: ''
-    following: ''
-    unFollow: ''
+    follow: 关注
+    following: 已关注
+    unFollow: 取消关注
   SearchField:
-    keywordSearch: ''
-    search: ''
-    users: ''
+    keywordSearch: 关键字搜索
+    search: 搜索
+    users: 同时搜索用户
   SettingModal:
-    cache: ''
-    language: ''
-    limit: ''
-    r18FilterDesc: ''
-    r18Link: ''
-    showCaption: ''
-    showOnlyImg: ''
-    tagFilter: ''
-    uiSetting: ''
+    cache: 清除缓存(不安全)
+    language: 语言
+    limit: 限制访问
+    r18FilterDesc: |-
+      修改R-18选项很简单，
+      您只需在您的Pixiv账户设置里修改限制级即可。
+    r18Link: Pixiv - R18设置
+    showCaption: 显示简介
+    showOnlyImg: 只显示图像
+    tagFilter: 标签过滤
+    uiSetting: UI设置
