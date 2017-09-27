@@ -1,0 +1,42 @@
+{
+  "projectName": "PixivDeck",
+  "projectOwner": "akameco",
+  "files": [
+    "readme.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "contributors": [
+    {
+      "login": "akameco",
+      "name": "akameco",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/4002137?v=4",
+      "profile": "http://akameco.github.io",
+      "contributions": [
+        "code",
+        "design",
+        "test",
+        "translation"
+      ]
+    },
+    {
+      "login": "trnhoe",
+      "name": "trnhoe",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/15041872?v=4",
+      "profile": "https://github.com/trnhoe",
+      "contributions": [
+        "code",
+        "translation"
+      ]
+    },
+    {
+      "login": "TobiichiAmane",
+      "name": "鳶一雨音",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/14824064?v=4",
+      "profile": "https://github.com/TobiichiAmane",
+      "contributions": [
+        "translation"
+      ]
+    }
+  ]
+}
