@@ -28,13 +28,12 @@ const ProfileWrapper = styled.div`
   cursor: pointer;
 `
 
-const Profile = ({ name, onClick }: Props) =>
+const Profile = ({ name, onClick }: Props) => (
   <ProfileWrapper>
     <Line>
-      <Name onClick={onClick}>
-        {name}
-      </Name>
+      <Name onClick={onClick}>{name}</Name>
     </Line>
   </ProfileWrapper>
+)
 
 export default Profile

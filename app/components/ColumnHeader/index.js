@@ -33,23 +33,20 @@ class ColumnHeader extends React.PureComponent {
       <Wrap>
         <Header>
           <Item onClick={this.handleClick}>
-            {children &&
+            {children && (
               <IconButton>
                 <NavigationMenu color={'#999999'} />
-              </IconButton>}
+              </IconButton>
+            )}
           </Item>
-          <Title onClick={onTopClick}>
-            {name}
-          </Title>
+          <Title onClick={onTopClick}>{name}</Title>
           <Item onClick={onClose}>
             <IconButton>
               <NavigationClose color={'#999999'} />
             </IconButton>
           </Item>
         </Header>
-        <HeaderPopover open={this.state.open}>
-          {children}
-        </HeaderPopover>
+        <HeaderPopover open={this.state.open}>{children}</HeaderPopover>
       </Wrap>
     )
   }

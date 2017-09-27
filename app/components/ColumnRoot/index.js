@@ -19,9 +19,5 @@ type Props = {
 }
 
 export default function ColumnRoot({ children }: Props) {
-  return (
-    <View>
-      {children}
-    </View>
-  )
+  return <View>{children}</View>
 }

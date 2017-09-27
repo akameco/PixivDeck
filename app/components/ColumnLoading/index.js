@@ -10,9 +10,10 @@ const LoadingWrap = styled.div`
   height: 100%;
 `
 
-const ColumnLoading = () =>
+const ColumnLoading = () => (
   <LoadingWrap>
     <Loading wrapStyle={{ background: '#121212' }} />
   </LoadingWrap>
+)
 
 export default ColumnLoading

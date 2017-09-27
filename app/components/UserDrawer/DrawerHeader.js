@@ -6,21 +6,18 @@ import Avater from 'components/Avater'
 import TextAutoLink from 'components/TextAutoLink'
 import Navigation from './Navigation'
 
-const Header = ({ user, profile }: { user: User, profile: Profile }) =>
+const Header = ({ user, profile }: { user: User, profile: Profile }) => (
   <Wrap>
     <Navigation user={user} profile={profile} />
     <ImageWrap>
       <Avater src={user.profileImageUrls.medium} size={140} />
     </ImageWrap>
     <Info>
-      <h1>
-        {user.name}
-      </h1>
+      <h1>{user.name}</h1>
     </Info>
-    <Caption>
-      {user.comment && <TextAutoLink text={user.comment} />}
-    </Caption>
+    <Caption>{user.comment && <TextAutoLink text={user.comment} />}</Caption>
   </Wrap>
+)
 
 const Wrap = styled.div`
   background-color: #eee;

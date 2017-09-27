@@ -109,14 +109,14 @@ export default class SettingFilterModal extends Component {
               />
             </Field>
             <ChipWrap>
-              {tags.map(tag =>
+              {tags.map(tag => (
                 <Chip
                   key={tag}
                   onRequestDelete={() => this.props.onDelete(tag)}
                 >
                   {tag}
                 </Chip>
-              )}
+              ))}
             </ChipWrap>
           </TagFilter>
         </Card>

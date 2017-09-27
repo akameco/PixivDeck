@@ -1,6 +1,3 @@
-/**
- * @jest-environment node
-*/
 // @flow
 import React from 'react'
 import { shallow } from 'enzyme'
@@ -54,5 +51,5 @@ test('adopt a type attribute', () => {
 
 test('snapshot', () => {
   const c = renderComponent()
-  expect(toJson(c)).toMatchStyledComponentsSnapshot()
+  expect(toJson(c)).toMatchSnapshot()
 })

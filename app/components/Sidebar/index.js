@@ -56,20 +56,22 @@ export default function Sidebar(props: Props) {
         />
       </Top>
 
-      {isSearchField &&
+      {isSearchField && (
         <SearchWrap>
           <EventListener target="window" onKeyUp={handleKeyUp} />
           <SearchField />
-        </SearchWrap>}
+        </SearchWrap>
+      )}
 
       <Bottom onBlur={onCloseDropdown}>
         <HeaderButton iconType="setting" onClick={onToggleDropdown} />
-        {isDropdown &&
+        {isDropdown && (
           <Dropdwon
             onClose={onCloseDropdown}
             onLogout={onLogout}
             onOpenFilterModal={onOpenFilterModal}
-          />}
+          />
+        )}
       </Bottom>
     </Wrap>
   )

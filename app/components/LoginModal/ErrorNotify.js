@@ -15,7 +15,7 @@ const Notice = styled.div`
   vertical-align: bottom;
 `
 
-const ErrorNotify = () =>
+const ErrorNotify = () => (
   <Notice>
     <p>
       <FormattedMessage {...messages.error} />
@@ -23,5 +23,6 @@ const ErrorNotify = () =>
       <FormattedMessage {...messages.errorInfo} />
     </p>
   </Notice>
+)
 
 export default ErrorNotify

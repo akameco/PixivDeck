@@ -3,6 +3,7 @@
 exports[`snapshot 1`] = `
 <IntlProvider
   defaultLocale="ja"
+  key="en"
   locale="en"
   messages={Object {}}
 >

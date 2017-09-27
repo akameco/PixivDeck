@@ -10,11 +10,11 @@ type Props = {
 }
 
 export default function MultiPreview({ pages, onClose }: Props) {
-  const imgs = pages.map(page =>
+  const imgs = pages.map(page => (
     <Item key={page.imageUrls.medium}>
       <Img src={page.imageUrls.large} />
     </Item>
-  )
+  ))
 
   return (
     <Wrapper onClick={onClose}>

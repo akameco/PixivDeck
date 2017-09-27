@@ -7,7 +7,7 @@ import ModalManeger from 'containers/ModalManeger'
 import Header from 'containers/HeaderContainer'
 import PreviewFactory from 'containers/PreviewFactory'
 
-const App = () =>
+const App = () => (
   <div>
     <Header />
     <MainView>
@@ -17,5 +17,6 @@ const App = () =>
     <DrawerManager />
     <ModalManeger />
   </div>
+)
 
 export default App

@@ -41,14 +41,15 @@ class ColumnHistory extends React.PureComponent {
           onTopClick={onHeaderClick}
         />
         <ColumnBody isLoading={false}>
-          {illusts.length > 0 &&
+          {illusts.length > 0 && (
             <IllustList
               id={id}
               node={setNode}
               hasMore={false}
               illusts={illusts}
               onNext={() => {}}
-            />}
+            />
+          )}
         </ColumnBody>
       </ColumnRoot>
     )

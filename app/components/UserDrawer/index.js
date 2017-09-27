@@ -40,7 +40,7 @@ const UserDrawer = ({
     <div>
       <Header user={user} profile={profile} />
       <Tabs {...tabProps}>
-        {totalIllusts > 0 &&
+        {totalIllusts > 0 && (
           <Tab
             label={
               <FormattedMessage
@@ -55,8 +55,9 @@ const UserDrawer = ({
               hasMore={illusts.length < totalIllusts}
               onNext={onNextIllust}
             />
-          </Tab>}
-        {totalManga > 0 &&
+          </Tab>
+        )}
+        {totalManga > 0 && (
           <Tab
             label={
               <FormattedMessage
@@ -71,7 +72,8 @@ const UserDrawer = ({
               hasMore={mangas.length < totalManga}
               onNext={onNextManga}
             />
-          </Tab>}
+          </Tab>
+        )}
       </Tabs>
     </div>
   )

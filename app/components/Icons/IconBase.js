@@ -72,9 +72,7 @@ export default class Icon extends React.PureComponent<DP, Props, State> {
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
       >
-        <g>
-          {children}
-        </g>
+        <g>{children}</g>
       </svg>
     )
   }

@@ -22,7 +22,7 @@ const Table = ({ ids, setTabel }: Props) => {
     setTabel(newState)
   }
 
-  const panes = ids.map(id =>
+  const panes = ids.map(id => (
     <Pane
       key={id}
       width={280}
@@ -32,7 +32,7 @@ const Table = ({ ids, setTabel }: Props) => {
     >
       <ColumnManager id={id} />
     </Pane>
-  )
+  ))
 
   return (
     <SortablePane

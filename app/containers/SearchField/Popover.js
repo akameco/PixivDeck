@@ -8,13 +8,12 @@ type ItemProps = {
   onClick: () => void,
 }
 
-export const Item = ({ start, end, onClick }: ItemProps) =>
+export const Item = ({ start, end, onClick }: ItemProps) => (
   <ItemWrap onClick={onClick}>
-    <u>
-      {start}
-    </u>
+    <u>{start}</u>
     {end}
   </ItemWrap>
+)
 
 const ItemWrap = styled.div`
   height: 45px;
@@ -48,16 +47,13 @@ const Title = styled.div`
   border: 0;
 `
 
-const Popover = ({ children, title }: Props) =>
+const Popover = ({ children, title }: Props) => (
   <Wrap>
     <Content>
-      <Title>
-        {title}
-      </Title>
-      <div>
-        {children}
-      </div>
+      <Title>{title}</Title>
+      <div>{children}</div>
     </Content>
   </Wrap>
+)
 
 export default Popover
