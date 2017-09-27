@@ -24,12 +24,22 @@ describe('API', () => {
   })
 
   test('no params', async () => {
-    const { result } = await getRequest('/v1/illust/ranking?mode=day')
+    const { accessToken } = await fetchAuth(info)
+    const { result } = await getRequest(
+      '/v1/illust/ranking?mode=day',
+      {},
+      accessToken
+    )
     expect(result).toHaveProperty('nextUrl')
   })
 
   test('have nextUrl', async () => {
-    const { result } = await getRequest('/v1/illust/ranking', { mode: 'day' })
+    const { accessToken } = await fetchAuth(info)
+    const { result } = await getRequest(
+      '/v1/illust/ranking',
+      { mode: 'day' },
+      accessToken
+    )
     expect(result).toHaveProperty('nextUrl')
   })
 
