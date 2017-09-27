@@ -6,6 +6,7 @@ import { createStructuredSelector } from 'reselect'
 import { makeSelectLocale } from './selectors'
 import { DEFAULT_LOCALE } from './reducer'
 import * as actions from './actions'
+import electron from 'electron'
 
 type OP = {
   messages: Object,
@@ -22,8 +23,11 @@ export class Language extends React.Component {
 
   componentDidMount() {
     if (!this.props.locale) {
-      const locale = ['ja', 'zh'].includes(navigator.language)
-        ? navigator.language
+      const app = electron.remote.app || electron.app
+      const sysLocale = app.getLocale().split('-')[0];
+
+      const locale = ['ja', 'zh'].includes(sysLocale)
+        ? sysLocale
         : 'en'
       this.props.changeLocale(locale)
     }

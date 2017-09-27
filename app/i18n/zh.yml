@@ -48,7 +48,7 @@ containers:
     day_male: 男性青睐
     month: 月排行
     week: 周排行
-    week_original: 原画排行
+    week_original: 原创排行
     week_rookie: 新人排行
   ColumnRankingR18:
     day_female_r18: 女性青睐 R-18
