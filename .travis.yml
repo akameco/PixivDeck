@@ -14,6 +14,7 @@ matrix:
       compiler: clang
 
 cache:
+  yarn: true
   directories:
   - node_modules
   - $HOME/.electron
@@ -29,9 +30,9 @@ addons:
       - xz-utils
       - rpm
 
-# before_install:
-#   - curl -o- -L yarnpkg.com/install.sh | bash
-#   - export PATH="$HOME/.yarn/bin:$PATH"
+before_install:
+  - curl -o- -L yarnpkg.com/install.sh | bash
+  - export PATH="$HOME/.yarn/bin:$PATH"
 
 install:
 - nvm install 8
