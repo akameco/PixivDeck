@@ -11,6 +11,8 @@
   "license": "MIT",
   "main": "main.js",
   "scripts": {
+    "add": "all-contributors add",
+    "generate": "all-contributors generate",
     "start": "cross-env NODE_ENV=production electron ./app/",
     "dev": "cross-env START_HOT=1 npm run hot-updates-server",
     "test": "npm run jest",
@@ -37,7 +39,10 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": ["fmt", "git add"]
+    "*.js": [
+      "fmt",
+      "git add"
+    ]
   },
   "stylelint": {
     "processors": [
@@ -82,6 +87,7 @@
     "@storybook/addon-info": "^3.2.11",
     "@storybook/addon-knobs": "^3.2.10",
     "@storybook/react": "^3.2.11",
+    "all-contributors-cli": "^4.5.0",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
     "babel-eslint": "^8.0.1",

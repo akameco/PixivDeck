@@ -3,6 +3,7 @@
 
 > :two_hearts: :two_hearts: pixiv client for Desktop like TweetDeck :two_hearts: :two_hearts:
 
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
 
 ## Screenshot
 
@@ -76,6 +77,17 @@ $ npm run package
 [pixiv-app-api](https://github.com/akameco/pixiv-app-api) - Promise base pixiv API client <br>
 [pixiv-img](https://github.com/akameco/pixiv-img) - Download pixiv image. <br>
 [pixiv-dl](https://github.com/akameco/pixiv-dl) - CLI base pixiv image downloader. <br>
+
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+| [<img src="https://avatars2.githubusercontent.com/u/4002137?v=4" width="100px;"/><br /><sub>akameco</sub>](http://akameco.github.io)<br />[💻](https://github.com/akameco/PixivDeck/commits?author=akameco "Code") [🎨](#design-akameco "Design") [⚠️](https://github.com/akameco/PixivDeck/commits?author=akameco "Tests") [🌍](#translation-akameco "Translation") | [<img src="https://avatars0.githubusercontent.com/u/15041872?v=4" width="100px;"/><br /><sub>trnhoe</sub>](https://github.com/trnhoe)<br />[💻](https://github.com/akameco/PixivDeck/commits?author=trnhoe "Code") [🌍](#translation-trnhoe "Translation") | [<img src="https://avatars0.githubusercontent.com/u/14824064?v=4" width="100px;"/><br /><sub>鳶一雨音</sub>](https://github.com/TobiichiAmane)<br />[🌍](#translation-TobiichiAmane "Translation") |
+| :---: | :---: | :---: |
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
 
 ## License
 
