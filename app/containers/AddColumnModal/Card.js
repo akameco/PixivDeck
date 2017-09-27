@@ -33,24 +33,20 @@ const ListWrap = styled.div`
   overflow: hidden;
 `
 
-const List = ({ children }: { children?: React$Element<any> }) =>
-  <ListWrap>
-    {children}
-  </ListWrap>
+const List = ({ children }: { children?: React$Element<any> }) => (
+  <ListWrap>{children}</ListWrap>
+)
 
 type Props = {
   title: string | React$Element<*>,
   children?: React$Element<*>,
 }
 
-const Card = ({ title, children }: Props) =>
+const Card = ({ title, children }: Props) => (
   <Wrap>
-    <Title>
-      {title}
-    </Title>
-    <List>
-      {children}
-    </List>
+    <Title>{title}</Title>
+    <List>{children}</List>
   </Wrap>
+)
 
 export default Card

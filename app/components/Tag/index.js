@@ -8,9 +8,5 @@ export type Props = {
 }
 
 export default function Tag({ name, onClick }: Props) {
-  return (
-    <StyledTag onClick={() => onClick(name)}>
-      #{name}
-    </StyledTag>
-  )
+  return <StyledTag onClick={() => onClick(name)}>#{name}</StyledTag>
 }

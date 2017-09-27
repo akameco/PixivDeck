@@ -36,14 +36,14 @@ const UserPopover = ({ user, onClick, illusts }: Props) => {
       </Top>
       <ImageWrap>
         {illusts.length > 0 &&
-          illusts.map(v =>
+          illusts.map(v => (
             <img
               key={v.id}
               src={v.imageUrls.squareMedium}
               width={150}
               height={150}
             />
-          )}
+          ))}
       </ImageWrap>
     </Wrap>
   )

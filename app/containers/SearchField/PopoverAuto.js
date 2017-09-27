@@ -18,9 +18,7 @@ const PopoverAuto = ({ value, keywords, onClick }: Props) => {
     return <Item key={keyword} onClick={handleClick} start={start} end={end} />
   })
   return (
-    <Popover title={<FormattedMessage {...messages.search} />}>
-      {list}
-    </Popover>
+    <Popover title={<FormattedMessage {...messages.search} />}>{list}</Popover>
   )
 }
 

@@ -15,11 +15,7 @@ const UsersOver = ({ value, onClick }: Props) => {
       <Item key={v} onClick={handleClick} start={value} end={`${v}users入り`} />
     )
   })
-  return (
-    <Popover title="users入り">
-      {list}
-    </Popover>
-  )
+  return <Popover title="users入り">{list}</Popover>
 }
 
 export default UsersOver

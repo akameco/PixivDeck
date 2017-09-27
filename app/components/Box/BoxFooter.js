@@ -17,12 +17,8 @@ type Props = {
 }
 
 export default function BoxFooter(props: Props) {
-  const Tags = union(props.tags).map(item =>
+  const Tags = union(props.tags).map(item => (
     <Tag key={item} name={item} onClick={props.onClickTag} />
-  )
-  return (
-    <FooterWrapper>
-      {Tags}
-    </FooterWrapper>
-  )
+  ))
+  return <FooterWrapper>{Tags}</FooterWrapper>
 }

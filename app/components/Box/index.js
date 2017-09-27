@@ -40,13 +40,14 @@ function Box(props: Props) {
 
   return (
     <BoxWrapper onContextMenu={onContextMenu} data-id={id}>
-      {!isIllustOnly &&
+      {!isIllustOnly && (
         <BoxHeader
           user={user}
           illust={illust}
           isShowCaption={isShowCaption}
           onClick={onClickUser.bind(null, user.id)}
-        />}
+        />
+      )}
       <LazyLoadImg
         src={illust.imageUrls.medium}
         isManga={isManga}

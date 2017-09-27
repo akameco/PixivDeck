@@ -95,12 +95,13 @@ class SearchField extends Component {
           />
         </Field>
         <Popup>
-          {keywords.length > 0 &&
+          {keywords.length > 0 && (
             <PopoverAuto
               value={value}
               keywords={keywords}
               onClick={this.handleClick}
-            />}
+            />
+          )}
           {value && <UsersOver value={value} onClick={this.handleClick} />}
         </Popup>
       </Wrap>

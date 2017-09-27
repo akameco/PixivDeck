@@ -13,7 +13,7 @@ type Props = {
   onClose: Function,
 }
 
-const Dropdwon = ({ onOpenFilterModal, onLogout, onClose }: Props) =>
+const Dropdwon = ({ onOpenFilterModal, onLogout, onClose }: Props) => (
   <Wrap>
     <EventListener
       target="window"
@@ -27,5 +27,6 @@ const Dropdwon = ({ onOpenFilterModal, onLogout, onClose }: Props) =>
     <H />
     <Item onClick={onLogout} text={<FormattedMessage {...messages.logout} />} />
   </Wrap>
+)
 
 export default Dropdwon

@@ -57,10 +57,8 @@ class Chip extends React.PureComponent {
 
     return (
       <StyledChip>
-        <InnerChip onClick={onClick}>
-          {children}
-        </InnerChip>
-        {onRequestDelete &&
+        <InnerChip onClick={onClick}>{children}</InnerChip>
+        {onRequestDelete && (
           <div onClick={this.handleRequestDelete}>
             <DeleteIcon
               type="chip"
@@ -68,7 +66,8 @@ class Chip extends React.PureComponent {
               size={24}
               style={icnonStyle}
             />
-          </div>}
+          </div>
+        )}
       </StyledChip>
     )
   }

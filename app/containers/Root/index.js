@@ -8,7 +8,7 @@ import type { Store } from 'types'
 import { translationMessages } from '../../i18n'
 
 type Props = {
-  store: Store
+  store: Store,
 }
 
 function Root({ store }: Props) {
