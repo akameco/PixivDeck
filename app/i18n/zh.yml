@@ -7,7 +7,7 @@ components:
   LoginModal:
     error: 登录失败
     errorInfo: 请检查您的用户名或密码
-    login: 注册
+    login: 登录
     loginLoading: 登录中...
     password: 密码
     username: 用户名
@@ -63,7 +63,7 @@ containers:
     following: 已关注
     unFollow: 取消关注
   SearchField:
-    keywordSearch: 关键字搜索
+    keywordSearch: 关键词搜索
     search: 搜索
     users: 同时搜索用户
   SettingModal:
