@@ -1,6 +1,6 @@
 // @flow
 import { clean } from '../../store'
-import * as Actions from './constants'
+import { Actions } from './actionTypes'
 import { takeLatest } from 'redux-saga/effects'
 
 // eslint-disable-next-line

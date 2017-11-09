@@ -1,14 +1,13 @@
 // @flow
-import type { Action } from './actionTypes.js'
-import { CLOSE_MANGA_PREVIEW, OPEN_MANGA_PREVIEW } from './constants'
+import { CLOSE_MANGA_PREVIEW, OPEN_MANGA_PREVIEW } from './actionTypes'
+import type { CloseMangaPreview, OpenMangaPreview } from './actionTypes'
 
-export function closeMangaPreview(): Action {
+export function closeMangaPreview(): CloseMangaPreview {
   return {
     type: CLOSE_MANGA_PREVIEW,
   }
 }
-
-export function openMangaPreview(id: number): Action {
+export function openMangaPreview(id: number): OpenMangaPreview {
   return {
     type: OPEN_MANGA_PREVIEW,
     id,

@@ -3,7 +3,7 @@
 import { put, call, takeEvery, type IOEffect } from 'redux-saga/effects'
 import * as api from '../Api/sagas'
 import * as actions from './actions'
-import * as Actions from './constants'
+import { Actions } from './actionTypes'
 
 function* popover({ id }) {
   yield put(actions.clear())
@@ -17,7 +17,7 @@ function* popover({ id }) {
 
     yield put(actions.popoverSuccess(limited))
   } catch (err) {
-    yield put(actions.popoverFailre(err))
+    yield put(actions.popoverFailure(err))
   }
 }
 

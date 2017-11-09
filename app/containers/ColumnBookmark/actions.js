@@ -1,90 +1,103 @@
 // @flow
-import type { Action } from './actionTypes.js'
-import {
-  ADD_COLUMN,
-  ADD_COLUMN_SUCCESS,
-  FETCH,
-  FETCH_FAILRE,
-  FETCH_NEXT,
-  FETCH_NEXT_FAILRE,
-  SET_NEXT_URL,
-  REMOVE_ITEM,
-  FETCH_SUCCESS,
-  FETCH_NEXT_SUCCESS,
-} from './constants'
 import type { ColumnId } from './reducer'
 
-export function addColumn(id: ColumnId): Action {
+import {
+  ADD_COLUMN_REQUEST,
+  ADD_COLUMN_SUCCESS,
+  ADD_COLUMN_FAILURE,
+  FETCH_REQUEST,
+  FETCH_SUCCESS,
+  FETCH_FAILURE,
+  FETCH_NEXT_REQUEST,
+  FETCH_NEXT_SUCCESS,
+  FETCH_NEXT_FAILURE,
+  SET_NEXT_URL,
+  REMOVE_ITEM,
+} from './actionTypes'
+import type {
+  AddColumnRequest,
+  AddColumnSuccess,
+  AddColumnFailure,
+  FetchRequest,
+  FetchSuccess,
+  FetchFailure,
+  FetchNextRequest,
+  FetchNextSuccess,
+  FetchNextFailure,
+  SetNextUrl,
+  RemoveItem,
+} from './actionTypes'
+
+export function addColumnRequest(id: ColumnId): AddColumnRequest {
   return {
-    type: ADD_COLUMN,
+    type: ADD_COLUMN_REQUEST,
     id,
   }
 }
-
-export function addColumnSuccess(id: ColumnId): Action {
+export function addColumnSuccess(id: ColumnId): AddColumnSuccess {
   return {
     type: ADD_COLUMN_SUCCESS,
     id,
   }
 }
-
-export function fetch(id: ColumnId): Action {
+export function addColumnFailure(): AddColumnFailure {
   return {
-    type: FETCH,
+    type: ADD_COLUMN_FAILURE,
+  }
+}
+export function fetchRequest(id: ColumnId): FetchRequest {
+  return {
+    type: FETCH_REQUEST,
     id,
   }
 }
-
-export function fetchFailre(id: ColumnId, error: string): Action {
-  return {
-    type: FETCH_FAILRE,
-    id,
-    error,
-  }
-}
-
-export function fetchNext(id: ColumnId): Action {
-  return {
-    type: FETCH_NEXT,
-    id,
-  }
-}
-
-export function fetchNextFailre(id: ColumnId): Action {
-  return {
-    type: FETCH_NEXT_FAILRE,
-    id,
-  }
-}
-
-export function setNextUrl(id: ColumnId, nextUrl: string): Action {
-  return {
-    type: SET_NEXT_URL,
-    id,
-    nextUrl,
-  }
-}
-
-export function removeItem(id: 'public', item: number): Action {
-  return {
-    type: REMOVE_ITEM,
-    id,
-    item,
-  }
-}
-
-export function fetchSuccess(id: ColumnId, ids: Array<number>): Action {
+export function fetchSuccess(id: ColumnId, ids: number[]): FetchSuccess {
   return {
     type: FETCH_SUCCESS,
     id,
     ids,
   }
 }
-
-export function fetchNextSuccess(id: ColumnId, ids: Array<number>): Action {
+export function fetchFailure(id: ColumnId, error: string): FetchFailure {
+  return {
+    type: FETCH_FAILURE,
+    id,
+    error,
+  }
+}
+export function fetchNextRequest(id: ColumnId): FetchNextRequest {
+  return {
+    type: FETCH_NEXT_REQUEST,
+    id,
+  }
+}
+export function fetchNextSuccess(
+  id: ColumnId,
+  ids: number[]
+): FetchNextSuccess {
   return {
     type: FETCH_NEXT_SUCCESS,
     id,
     ids,
+  }
+}
+export function fetchNextFailure(id: ColumnId): FetchNextFailure {
+  return {
+    type: FETCH_NEXT_FAILURE,
+    id,
+  }
+}
+export function setNextUrl(id: ColumnId, nextUrl: string): SetNextUrl {
+  return {
+    type: SET_NEXT_URL,
+    id,
+    nextUrl,
+  }
+}
+export function removeItem(id: 'public', item: number): RemoveItem {
+  return {
+    type: REMOVE_ITEM,
+    id,
+    item,
   }
 }

@@ -1,16 +1,18 @@
 // @flow
-import type { Action } from './actionTypes.js'
-import { ADD_NOTIFY, ADD_NOTIFY_WITH_ILLUST } from './constants'
+import { ADD_NOTIFY, ADD_NOTIFY_W_ITH_ILLUST } from './actionTypes'
+import type { AddNotify, AddNotifyWIthIllust } from './actionTypes'
 
-export function addNotify(): Action {
+export function addNotify(): AddNotify {
   return {
     type: ADD_NOTIFY,
   }
 }
-
-export function addNotifyWithIllust(title: string, id: number): Action {
+export function addNotifyWIthIllust(
+  title: string,
+  id: number
+): AddNotifyWIthIllust {
   return {
-    type: ADD_NOTIFY_WITH_ILLUST,
+    type: ADD_NOTIFY_W_ITH_ILLUST,
     title,
     id,
   }

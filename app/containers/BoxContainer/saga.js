@@ -1,6 +1,6 @@
 // @flow
 import { shell } from 'electron'
-import * as Actions from './constants'
+import { Actions } from './actionTypes'
 import { call, takeEvery, type IOEffect } from 'redux-saga/effects'
 
 function* openPixiv({ id }: { id: number }): Generator<IOEffect, void, *> {

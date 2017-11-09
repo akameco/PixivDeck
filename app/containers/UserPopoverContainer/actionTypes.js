@@ -1,16 +1,43 @@
 // @flow
-export type OPEN_TYPE = 'UserPopoverContainer/OPEN'
-export type CLEAR_TYPE = 'UserPopoverContainer/CLEAR'
+export const OPEN: 'UserPopoverContainer/OPEN' = 'UserPopoverContainer/OPEN'
+export const CLEAR: 'UserPopoverContainer/CLEAR' = 'UserPopoverContainer/CLEAR'
+export const POPOVER_REQUEST: 'UserPopoverContainer/POPOVER_REQUEST' =
+  'UserPopoverContainer/POPOVER_REQUEST'
+export const POPOVER_SUCCESS: 'UserPopoverContainer/POPOVER_SUCCESS' =
+  'UserPopoverContainer/POPOVER_SUCCESS'
+export const POPOVER_FAILURE: 'UserPopoverContainer/POPOVER_FAILURE' =
+  'UserPopoverContainer/POPOVER_FAILURE'
 
-export type POPOVER_TYPE = 'UserPopoverContainer/ADD_POPOVER'
-export type POPOVER_SUCCESS_TYPE = 'UserPopoverContainer/ADD_POPOVER_SUCCESS'
-export type POPOVER_FAILRE_TYPE = 'UserPopoverContainer/ADD_POPOVER_FAILRE'
+export const Actions = {
+  OPEN,
+  CLEAR,
+  POPOVER_REQUEST,
+  POPOVER_SUCCESS,
+  POPOVER_FAILURE,
+}
+
+export type Open = {
+  type: typeof OPEN,
+  id: number,
+}
+export type Clear = {
+  type: typeof CLEAR,
+}
+export type PopoverRequest = {
+  type: typeof POPOVER_REQUEST,
+}
+export type PopoverSuccess = {
+  type: typeof POPOVER_SUCCESS,
+  illusts: number[],
+}
+export type PopoverFailure = {
+  type: typeof POPOVER_FAILURE,
+  error: string,
+}
 
 export type Action =
-  | {| +type: OPEN_TYPE, id: number |}
-  | {|
-      +type: POPOVER_SUCCESS_TYPE,
-      illusts: Array<number>,
-    |}
-  | {| +type: CLEAR_TYPE |}
-  | {| +type: POPOVER_FAILRE_TYPE, +error: string |}
+  | Open
+  | Clear
+  | PopoverRequest
+  | PopoverSuccess
+  | PopoverFailure

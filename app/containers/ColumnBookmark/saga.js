@@ -3,8 +3,8 @@ import { put, select, call, takeEvery } from 'redux-saga/effects'
 import { addTable } from 'containers/ColumnManager/actions'
 import { getMyId } from 'containers/LoginModal/selectors'
 import { ADD_BOOKMARK_SUCCESS } from '../BookmarkButton/constants'
-import * as Actions from './constants'
 import * as actions from './actions'
+import { Actions } from './constants'
 import type { Action } from './actionTypes'
 import type { ColumnId } from './reducer'
 import { makeSelectColumn, makeSelectIds } from './selectors'
@@ -38,7 +38,7 @@ export function* fetchNew({
     const endpoint = getEndpoint(yield select(getMyId), id)
     yield call(column.fetchNew, { endpoint, id, ids, order: true }, actions)
   } catch (err) {
-    yield put(actions.fetchFailre(id, err))
+    yield put(actions.fetchFailure(id, err))
   }
 }
 

@@ -1,56 +1,71 @@
 // @flow
-import type { Action } from './actionTypes.js'
+import type { Restrict } from './types'
+
 import {
   ADD_BOOKMARK_REQUEST,
   ADD_BOOKMARK_SUCCESS,
+  ADD_BOOKMARK_FAILURE,
   DELETE_BOOKMARK_REQUEST,
   DELETE_BOOKMARK_SUCCESS,
-  ADD_BOOKMARK_FAILER,
-  DELETE_BOOKMARK_FAILER,
-} from './constants'
-import type { Restrict } from './types'
+  DELETE_BOOKMARK_FAILURE,
+} from './actionTypes'
+import type {
+  AddBookmarkRequest,
+  AddBookmarkSuccess,
+  AddBookmarkFailure,
+  DeleteBookmarkRequest,
+  DeleteBookmarkSuccess,
+  DeleteBookmarkFailure,
+} from './actionTypes'
 
-export function addBookmarkRequest(id: number, restrict: Restrict): Action {
+export function addBookmarkRequest(
+  id: number,
+  restrict: Restrict
+): AddBookmarkRequest {
   return {
     type: ADD_BOOKMARK_REQUEST,
     id,
     restrict,
   }
 }
-
-export function addBookmarkSuccess(id: number, restrict: Restrict): Action {
+export function addBookmarkSuccess(
+  id: number,
+  restrict: Restrict
+): AddBookmarkSuccess {
   return {
     type: ADD_BOOKMARK_SUCCESS,
     id,
     restrict,
   }
 }
-
-export function deleteBookmarkRequest(id: number): Action {
+export function addBookmarkFailure(
+  id: number,
+  error: string
+): AddBookmarkFailure {
+  return {
+    type: ADD_BOOKMARK_FAILURE,
+    id,
+    error,
+  }
+}
+export function deleteBookmarkRequest(id: number): DeleteBookmarkRequest {
   return {
     type: DELETE_BOOKMARK_REQUEST,
     id,
   }
 }
-
-export function deleteBookmarkSuccess(id: number): Action {
+export function deleteBookmarkSuccess(id: number): DeleteBookmarkSuccess {
   return {
     type: DELETE_BOOKMARK_SUCCESS,
     id,
   }
 }
-
-export function addBookmarkFailer(id: number, error: string): Action {
+export function deleteBookmarkFailure(
+  id: number,
+  error: string
+): DeleteBookmarkFailure {
   return {
-    type: ADD_BOOKMARK_FAILER,
-    id,
-    error,
-  }
-}
-
-export function deleteBookmarkFailer(id: number, error: string): Action {
-  return {
-    type: DELETE_BOOKMARK_FAILER,
+    type: DELETE_BOOKMARK_FAILURE,
     id,
     error,
   }

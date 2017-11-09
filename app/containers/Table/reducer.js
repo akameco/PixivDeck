@@ -2,8 +2,7 @@
 import { union } from 'lodash'
 import { REHYDRATE } from 'redux-persist/constants'
 import type { ColumnManagerId } from '../ColumnManager/reducer'
-import type { Action } from './actionTypes'
-import * as Actions from './constants'
+import { Actions, type Action } from './actionTypes'
 
 export type TableIds = Array<ColumnManagerId>
 

@@ -1,7 +1,6 @@
 // @flow
 import { union } from 'lodash'
-import type { Action } from './actionTypes'
-import * as Actions from './constants'
+import { Actions, type Action } from './actionTypes'
 
 export type State = {
   isShowCaption: boolean,

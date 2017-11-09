@@ -1,16 +1,16 @@
 // @flow
-import type { Action } from './actionTypes.js'
-import { OPEN_MODAL, CLOSE_MODAL } from './constants'
 import type { ModalType } from './reducer'
 
-export function openModal(modal: ModalType): Action {
+import { OPEN_MODAL, CLOSE_MODAL } from './actionTypes'
+import type { OpenModal, CloseModal } from './actionTypes'
+
+export function openModal(modal: ModalType): OpenModal {
   return {
     type: OPEN_MODAL,
     modal,
   }
 }
-
-export function closeModal(): Action {
+export function closeModal(): CloseModal {
   return {
     type: CLOSE_MODAL,
   }

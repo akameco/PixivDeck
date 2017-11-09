@@ -1,15 +1,44 @@
 // @flow
-export type SET_SHOW_ONLY_ILLUST_TYPE = 'SettingModal/SET_SHOW_ONLY_ILLUST'
-export type SET_SHOW_CAPTION_TYPE = 'SettingModal/SET_SHOW_CAPTION'
-export type ADD_TAG_FILTER_TYPE = 'SettingModal/ADD_TAG_FILTER'
-export type REMOVE_TAG_FILTER_TYPE = 'SettingModal/REMOVE_TAG_FILTER'
+export const SET_SHOW_ONLY_ILLUST: 'SettingModal/SET_SHOW_ONLY_ILLUST' =
+  'SettingModal/SET_SHOW_ONLY_ILLUST'
+export const SET_SHOW_CAPTION: 'SettingModal/SET_SHOW_CAPTION' =
+  'SettingModal/SET_SHOW_CAPTION'
+export const ADD_TAG_FILTER: 'SettingModal/ADD_TAG_FILTER' =
+  'SettingModal/ADD_TAG_FILTER'
+export const REMOVE_TAG_FILTER: 'SettingModal/REMOVE_TAG_FILTER' =
+  'SettingModal/REMOVE_TAG_FILTER'
+export const REMOVE_CACHE: 'SettingModal/REMOVE_CACHE' =
+  'SettingModal/REMOVE_CACHE'
 
-export type REMOVE_CACHE_TYPE = 'SettingModal/REMOVE_CACHE'
+export const Actions = {
+  SET_SHOW_ONLY_ILLUST,
+  SET_SHOW_CAPTION,
+  ADD_TAG_FILTER,
+  REMOVE_TAG_FILTER,
+  REMOVE_CACHE,
+}
+
+export type SetShowOnlyIllust = {
+  type: typeof SET_SHOW_ONLY_ILLUST,
+  show: boolean,
+}
+export type SetShowCaption = {
+  type: typeof SET_SHOW_CAPTION,
+  show: boolean,
+}
+export type AddTagFilter = {
+  type: typeof ADD_TAG_FILTER,
+}
+export type RemoveTagFilter = {
+  type: typeof REMOVE_TAG_FILTER,
+}
+export type RemoveCache = {
+  type: typeof REMOVE_CACHE,
+}
 
 export type Action =
-  | {|
-      +type: SET_SHOW_ONLY_ILLUST_TYPE | SET_SHOW_CAPTION_TYPE,
-      +show: boolean,
-    |}
-  | { +type: ADD_TAG_FILTER_TYPE | REMOVE_TAG_FILTER_TYPE, +tag: string }
-  | {| +type: REMOVE_CACHE_TYPE |}
+  | SetShowOnlyIllust
+  | SetShowCaption
+  | AddTagFilter
+  | RemoveTagFilter
+  | RemoveCache

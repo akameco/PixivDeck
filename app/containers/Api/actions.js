@@ -1,9 +1,10 @@
 // @flow
-import type { Action } from './actionTypes.js'
-import { API_REQUEST_SUCCESS } from './constants'
 import type { Response } from 'services/api'
 
-export function apiRequestSuccess(response: Response): Action {
+import { API_REQUEST_SUCCESS } from './actionTypes'
+import type { ApiRequestSuccess } from './actionTypes'
+
+export function apiRequestSuccess(response: Response): ApiRequestSuccess {
   return {
     type: API_REQUEST_SUCCESS,
     response,

@@ -1,6 +1,5 @@
 // @flow
-import type { Action } from './actionTypes'
-import * as Actions from './constants'
+import { Actions, type Action } from './actionTypes'
 
 export type ModalType = 'AddColumn' | 'Setting' | 'Login'
 

@@ -1,7 +1,13 @@
 // @flow
-export type OPEN_PIXIV_TYPE = 'BoxContainer/OPEN_PIXIV'
+export const OPEN_PIXIV: 'BoxContainer/OPEN_PIXIV' = 'BoxContainer/OPEN_PIXIV'
 
-export type Action = {|
-  +type: OPEN_PIXIV_TYPE,
+export const Actions = {
+  OPEN_PIXIV,
+}
+
+export type OpenPixiv = {
+  type: typeof OPEN_PIXIV,
   id: number,
-|}
+}
+
+export type Action = OpenPixiv

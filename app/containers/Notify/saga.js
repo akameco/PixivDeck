@@ -1,10 +1,8 @@
 // @flow
 import { select, takeEvery } from 'redux-saga/effects'
-import * as Actions from './constants'
-
+import { Actions } from './actionTypes'
 import type { Illust } from 'types/illust'
 import type { User } from 'types/user'
-
 import { getSelectIllust } from '../IllustById/selectors'
 import { getSelectUser } from '../UserById/selectors'
 

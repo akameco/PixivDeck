@@ -1,24 +1,22 @@
 // @flow
-import type { Action } from './actionTypes.js'
-import { FETCH_REQUEST, FETCH_SUCCESS, FETCH_FAILRE } from './constants'
+import { FETCH_REQUEST, FETCH_SUCCESS, FETCH_FAILURE } from './actionTypes'
+import type { FetchRequest, FetchSuccess, FetchFailure } from './actionTypes'
 
-export function fetchRequest(word: string): Action {
+export function fetchRequest(word: string): FetchRequest {
   return {
     type: FETCH_REQUEST,
     word,
   }
 }
-
-export function fetchSuccess(keywords: Array<string>): Action {
+export function fetchSuccess(keywords: Array<string>): FetchSuccess {
   return {
     type: FETCH_SUCCESS,
     keywords,
   }
 }
-
-export function fetchFailre(error: string): Action {
+export function fetchFailure(error: string): FetchFailure {
   return {
-    type: FETCH_FAILRE,
+    type: FETCH_FAILURE,
     error,
   }
 }

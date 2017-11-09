@@ -1,18 +1,28 @@
 // @flow
-export type FETCH_REQUEST_TYPE = 'SearchField/FETCH_REQUEST'
-export type FETCH_SUCCESS_TYPE = 'SearchField/FETCH_SUCCESS'
-export type FETCH_FAILRE_TYPE = 'SearchField/FETCH_FAILRE'
+export const FETCH_REQUEST: 'SearchField/FETCH_REQUEST' =
+  'SearchField/FETCH_REQUEST'
+export const FETCH_SUCCESS: 'SearchField/FETCH_SUCCESS' =
+  'SearchField/FETCH_SUCCESS'
+export const FETCH_FAILURE: 'SearchField/FETCH_FAILURE' =
+  'SearchField/FETCH_FAILURE'
 
-export type Action =
-  | {|
-      +type: FETCH_REQUEST_TYPE,
-      +word: string,
-    |}
-  | {|
-      +type: FETCH_SUCCESS_TYPE,
-      +keywords: Array<string>,
-    |}
-  | {|
-      +type: FETCH_FAILRE_TYPE,
-      +error: string,
-    |}
+export const Actions = {
+  FETCH_REQUEST,
+  FETCH_SUCCESS,
+  FETCH_FAILURE,
+}
+
+export type FetchRequest = {
+  type: typeof FETCH_REQUEST,
+  +word: string,
+}
+export type FetchSuccess = {
+  type: typeof FETCH_SUCCESS,
+  +keywords: Array<string>,
+}
+export type FetchFailure = {
+  type: typeof FETCH_FAILURE,
+  +error: string,
+}
+
+export type Action = FetchRequest | FetchSuccess | FetchFailure

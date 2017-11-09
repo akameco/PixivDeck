@@ -2,7 +2,7 @@
 import { call, takeLatest, put, type IOEffect } from 'redux-saga/effects'
 import * as api from '../Api/sagas'
 import * as actions from './actions'
-import * as Actions from './constants'
+import { Actions } from './actionTypes'
 
 const endpoint = word => `/v1/search/autocomplete?word=${word}`
 
@@ -16,7 +16,7 @@ export function* autocomplete({ word }: Aciton): Generator<*, void, *> {
     const { searchAutoCompleteKeywords } = result
     yield put(actions.fetchSuccess(searchAutoCompleteKeywords))
   } catch (err) {
-    yield put(actions.fetchFailre(err))
+    yield put(actions.fetchFailure(err))
   }
 }
 

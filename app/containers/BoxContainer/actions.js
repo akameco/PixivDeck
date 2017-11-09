@@ -1,8 +1,8 @@
 // @flow
-import type { Action } from './actionTypes.js'
-import { OPEN_PIXIV } from './constants'
+import { OPEN_PIXIV } from './actionTypes'
+import type { OpenPixiv } from './actionTypes'
 
-export function openPixiv(id: number): Action {
+export function openPixiv(id: number): OpenPixiv {
   return {
     type: OPEN_PIXIV,
     id,

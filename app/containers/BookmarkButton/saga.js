@@ -2,7 +2,7 @@
 import { call, put, takeEvery, type IOEffect } from 'redux-saga/effects'
 import { get } from '../Api/sagas'
 import * as api from 'containers/Api/sagas'
-import * as Actions from './constants'
+import { Actions } from './actionTypes'
 import * as actions from './actions'
 import * as columnActions from '../ColumnBookmark/actions'
 import type { Restrict } from './types'
@@ -18,7 +18,7 @@ export function* bookmark({ id, restrict }: Props): Generator<*, void, void> {
 
     yield put(actions.addBookmarkSuccess(id, restrict))
   } catch (err) {
-    yield put(actions.addBookmarkFailer(id, err))
+    yield put(actions.addBookmarkFailure(id, err))
   }
 }
 
@@ -28,7 +28,7 @@ export function* deleteTask({ id }: Props): Generator<*, void, void> {
     yield put(actions.deleteBookmarkSuccess(id))
     yield put(columnActions.removeItem('public', id))
   } catch (err) {
-    yield put(actions.deleteBookmarkFailer(id, err))
+    yield put(actions.deleteBookmarkFailure(id, err))
   }
 }
 

@@ -1,6 +1,5 @@
 // @flow
-import * as Actions from 'containers/ColumnManager/constants'
-import type { Action } from 'containers/ColumnManager/actionTypes'
+import { Actions, type Action } from '../ColumnManager/actionTypes'
 import * as actions from './actions'
 import { put, takeEvery } from 'redux-saga/effects'
 
