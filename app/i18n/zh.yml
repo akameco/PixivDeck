@@ -51,11 +51,11 @@ containers:
     week_original: 原创排行
     week_rookie: 新人排行
   ColumnRankingR18:
-    day_female_r18: 女性青睐 R-18
-    day_male_r18: 男性青睐 R-18
-    day_r18: 日排行 R-18
-    week_r18: 周排行 R-18
-    week_r18g: R-18 G
+    day_female_r18: 女性青睐 (R-18)
+    day_male_r18: 男性青睐 (R-18)
+    day_r18: R-18日排行
+    week_r18: R-18周排行
+    week_r18g: R-18G周排行
   ColumnRecommended:
     reccomended: 为您推荐
   FollowButton:
@@ -71,8 +71,9 @@ containers:
     language: 语言
     limit: 限制访问
     r18FilterDesc: |-
-      修改R-18选项很简单，
-      您只需在您的Pixiv账户设置里修改限制级即可。
+      您可以在上方的标签过滤中添加“R-18”和“R-18G”来防止本客户端显示R18作品，
+      或在搜索关键词中添加“-R-18 -R-18G”来防止在该搜索中显示R18作品。
+      您也可在您的Pixiv账户设置里修改限制级来防止您使用的任何客户端显示R18作品。
     r18Link: Pixiv - R18设置
     showCaption: 显示简介
     showOnlyImg: 只显示图像
