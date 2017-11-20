@@ -4,39 +4,39 @@ components:
   ColumnHeaderBookmark:
     bookmarkFilter: Filter Bookmarks
   Dropdown:
-    logout: logout
+    logout: Logout
     setting: Settings
   FollowButton:
     follow: Follow
     following: Following
-    unFollow: UnFollow
+    unFollow: Unfollow
   Header:
     logout: Logout
     setting: Settings
   LoginModal:
     error: Login Error
-    errorInfo: Check your usernaem and password.
+    errorInfo: Check your username and password.
     login: Login
-    loginLoading: Logining...
-    password: password
-    username: username
+    loginLoading: Logging in...
+    password: Password
+    username: Username
   UserDrawer:
-    addColumn: Add to column
+    addColumn: Add to Column
     tabIllust: 'Illustration ({count})'
     tabManga: 'Manga ({count})'
 containers:
   AddColumnModal:
     bookmark: Bookmarks
-    header: Select Column
+    header: Select a Column
     history: History
-    new: new
+    new: New by...
     private: Private
     public: Public
     r18ranking: R-18 Rankings
     ranking: Rankings
-    recommended: Recommended For You
+    recommended: Recommended for You
   AddNewColumnButton:
-    addColumn: Add Column
+    addColumn: Add column
   BoxContainer:
     bookmark: Add Bookmark
     openPixiv: Open Pixiv Page
@@ -47,8 +47,8 @@ containers:
     private: Private Bookmarks
     public: Public Bookmarks
   ColumnFollow:
-    private: Private Following
-    public: Public Following
+    private: Private following
+    public: Public following
   ColumnHistory:
     title: History
   ColumnRanking:
@@ -64,26 +64,27 @@ containers:
     day_male_r18: R-18 Male Rankings
     day_r18: R-18 Daily Rankings
     week_r18: R-18 Weekly Rankings
-    week_r18g: R-18 G
+    week_r18g: R-18 G Rankings
   ColumnRecommended:
-    reccomended: Recommended For You
+    reccomended: Recommended for You
   FollowButton:
-    follow: follow
-    following: following
-    unFollow: unfollow
+    follow: Follow
+    following: Following
+    unFollow: Unfollow
   SearchField:
-    keywordSearch: keyword search
-    search: search
+    keywordSearch: Search by keyword
+    search: Search
     users: users in
   SettingModal:
-    cache: delete cache (unsafe)
-    language: language
+    cache: Delete cache (unsafe)
+    language: Language
     limit: Restrict access
     r18FilterDesc: |-
-      It's very easy to change the R-18 tag.
-      You only need to change the restriction on your pixiv account's setting.
+      You can add "R-18" and "R-18G" into the tag filter to remove R18 contents in this client,
+      or add "-R-18 -R-18G" into the query to remove R18 contents in a specific search.
+      You can also change the restriction on your Pixiv account's setting below, which will take effect globally.
     r18Link: pixiv - r18
     showCaption: Show Caption
-    showOnlyImg: Only image
+    showOnlyImg: Show only image
     tagFilter: Tag filter
     uiSetting: UI setting
