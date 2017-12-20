@@ -3,10 +3,7 @@
   "productName": "PixivDeck",
   "version": "0.12.1",
   "description": "pixiv client for desktop",
-  "keywords": [
-    "electron",
-    "pixiv"
-  ],
+  "keywords": ["electron", "pixiv"],
   "author": "akameco <akameco.t@gmail.com>",
   "license": "MIT",
   "main": "main.js",
@@ -18,7 +15,7 @@
     "test": "npm run jest",
     "test:watch": "cross-env NODE_ENV=test jest --watch",
     "jest": "cross-env NODE_ENV=test jest",
-    "fmt": "prettier --write '{app,config}/**/*.js'",
+    "fmt": "prettier --write '**/*.{js,json,md}'",
     "build": "npm run build:main && npm run build:renderer",
     "s2s": "babel-node ./config/scripts/s2s.js",
     "flow": "flow",
@@ -39,15 +36,10 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": [
-      "fmt",
-      "git add"
-    ]
+    "*.{js,json,md}": ["fmt", "git add"]
   },
   "stylelint": {
-    "processors": [
-      "stylelint-processor-styled-components"
-    ],
+    "processors": ["stylelint-processor-styled-components"],
     "extends": "stylelint-config-standard",
     "syntax": "scss",
     "rules": {

@@ -40,8 +40,16 @@ class FilterUsersIn extends React.Component {
           <RadioButton value={'0'} label="デフォルト" labelStyle={styles} />
           <RadioButton value={'100'} label="100users入り" labelStyle={styles} />
           <RadioButton value={'500'} label="500users入り" labelStyle={styles} />
-          <RadioButton value={'1000'} label="1000users入り" labelStyle={styles} />
-          <RadioButton value={'5000'} label="5000users入り" labelStyle={styles} />
+          <RadioButton
+            value={'1000'}
+            label="1000users入り"
+            labelStyle={styles}
+          />
+          <RadioButton
+            value={'5000'}
+            label="5000users入り"
+            labelStyle={styles}
+          />
           <RadioButton
             value={'10000'}
             label="10000users入り"

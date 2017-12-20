@@ -19,12 +19,11 @@ const Background = styled.div`
   height: 100%;
 `
 
-const ThemeDecorator = storyFn =>
+const ThemeDecorator = storyFn => (
   <ThemeProvider theme={theme}>
-    <Background>
-      {storyFn()}
-    </Background>
+    <Background>{storyFn()}</Background>
   </ThemeProvider>
+)
 
 addDecorator(ThemeDecorator)
 addDecorator(withKnobs)

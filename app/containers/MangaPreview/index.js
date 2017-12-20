@@ -25,14 +25,14 @@ const mapStateToProps = createStructuredSelector({
   illust: makeSelectIllust(),
 })
 
-const connector: Connector<
-  {},
-  Props
-> = connect(mapStateToProps, (dispatch: Dispatch) => {
-  return {
-    close() {
-      dispatch(closeMangaPreview())
-    },
+const connector: Connector<{}, Props> = connect(
+  mapStateToProps,
+  (dispatch: Dispatch) => {
+    return {
+      close() {
+        dispatch(closeMangaPreview())
+      },
+    }
   }
-})
+)
 export default connector(MangaPreviewContainer)

@@ -7,7 +7,9 @@ import AddNewColumnButton from 'containers/AddNewColumnButton'
 import TwitterButton from 'components/TwitterButton'
 import Button from 'components/common/Button'
 
-export const A = styled.a`margin: 0 5px;`
+export const A = styled.a`
+  margin: 0 5px;
+`
 
 type Props = {
   user: User,

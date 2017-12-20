@@ -1,6 +1,6 @@
 /**
  * @jest-environment node
-*/
+ */
 // @flow
 import { fetchAuth, getRequest, postRequest } from './api'
 

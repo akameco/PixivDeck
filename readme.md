@@ -1,5 +1,4 @@
-<h1 align=center><img src="res/icon.png" width=50/> Pixiv Deck</h1>
-
+<h1 align=center><img src="res/icon.png" width=50 /> Pixiv Deck</h1>
 
 > :two_hearts: :two_hearts: pixiv client for Desktop like TweetDeck :two_hearts: :two_hearts:
 
@@ -38,20 +37,20 @@
 ## Download
 
 ### MacOS
+
 [Download](https://github.com/akameco/PixivDeck/releases).
 
-
 ### Windows
-[Download](https://github.com/akameco/PixivDeck/releases) and unzip to some location.
 
+[Download](https://github.com/akameco/PixivDeck/releases) and unzip to some location.
 
 ### Linux
+
 [Download](https://github.com/akameco/PixivDeck/releases) and unzip to some location.
 
-
 ## Dev
-Built with [Electron](http://electron.atom.io/).
 
+Built with [Electron](http://electron.atom.io/).
 
 ```
 $ npm run dev
@@ -66,6 +65,7 @@ $ npm run build
 ```
 
 ## Package
+
 Package for your OS.
 
 ```
@@ -83,8 +83,11 @@ $ npm run package
 Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+
+<!-- prettier-ignore -->
 | [<img src="https://avatars2.githubusercontent.com/u/4002137?v=4" width="100px;"/><br /><sub>akameco</sub>](http://akameco.github.io)<br />[💬](#question-akameco "Answering Questions") [💻](https://github.com/akameco/PixivDeck/commits?author=akameco "Code") [🎨](#design-akameco "Design") [⚠️](https://github.com/akameco/PixivDeck/commits?author=akameco "Tests") | [<img src="https://avatars0.githubusercontent.com/u/15041872?v=4" width="100px;"/><br /><sub>trnhoe</sub>](https://github.com/trnhoe)<br />[💻](https://github.com/akameco/PixivDeck/commits?author=trnhoe "Code") [🌍](#translation-trnhoe "Translation") | [<img src="https://avatars0.githubusercontent.com/u/14824064?v=4" width="100px;"/><br /><sub>鳶一雨音</sub>](https://github.com/TobiichiAmane)<br />[🌍](#translation-TobiichiAmane "Translation") | [<img src="https://avatars1.githubusercontent.com/u/16656689?v=4" width="100px;"/><br /><sub>Austin Huang</sub>](http://austinhuang.me)<br />[🌍](#translation-austinhuang0131 "Translation") |
 | :---: | :---: | :---: | :---: |
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!

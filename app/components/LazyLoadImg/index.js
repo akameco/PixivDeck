@@ -4,9 +4,9 @@ import styled from 'styled-components'
 import Icon from 'components/common/Icon'
 
 declare class IntersectionObserver {
-  constructor: Function,
-  observe: Function,
-  unobserve: Function,
+  constructor: Function;
+  observe: Function;
+  unobserve: Function;
 }
 
 const StyledImg = styled.div`

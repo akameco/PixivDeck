@@ -3,3 +3,7 @@ lib
 dist
 node_modules
 app/main.js
+coverage
+dll
+flow-typed
+release

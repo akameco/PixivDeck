@@ -1,7 +1,9 @@
 // @flow
 import styled from 'styled-components'
 
-export const Item = styled.div`display: block;`
+export const Item = styled.div`
+  display: block;
+`
 
 export const Img = styled.img`
   width: auto;

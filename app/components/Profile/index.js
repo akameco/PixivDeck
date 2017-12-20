@@ -16,7 +16,9 @@ const Name = styled(A)`
   margin-right: 5px;
 `
 
-const Line = styled.p`margin: 0;`
+const Line = styled.p`
+  margin: 0;
+`
 
 const ProfileWrapper = styled.div`
   display: inline-flex;

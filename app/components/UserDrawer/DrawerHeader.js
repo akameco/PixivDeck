@@ -32,7 +32,9 @@ const ImageWrap = styled.div`
   text-align: center;
 `
 
-const Info = styled.div`text-align: center;`
+const Info = styled.div`
+  text-align: center;
+`
 
 const Caption = styled.div`
   background-color: #fff;

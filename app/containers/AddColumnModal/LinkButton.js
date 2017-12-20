@@ -19,7 +19,9 @@ const Wrap = styled.div`
   }
 `
 
-const InnerButton = styled.div`padding: 10px 16px 10px 17px;`
+const InnerButton = styled.div`
+  padding: 10px 16px 10px 17px;
+`
 
 type Props = {
   text: string | React$Element<*>,

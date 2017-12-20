@@ -36,12 +36,12 @@ const mapStateToProps = createStructuredSelector({
   illusts: makeLimitedIllust(),
 })
 
-const connector: Connector<
-  OP,
-  Props
-> = connect(mapStateToProps, (dispatch: Dispatch, { user }) => ({
-  open() {
-    dispatch(open(user.id))
-  },
-}))
+const connector: Connector<OP, Props> = connect(
+  mapStateToProps,
+  (dispatch: Dispatch, { user }) => ({
+    open() {
+      dispatch(open(user.id))
+    },
+  })
+)
 export default connector(UserPopoverContainer)

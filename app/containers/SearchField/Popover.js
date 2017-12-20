@@ -36,7 +36,9 @@ const Wrap = styled.div`
   background: white;
 `
 
-const Content = styled.div`padding-top: 4px;`
+const Content = styled.div`
+  padding-top: 4px;
+`
 
 const Title = styled.div`
   background-color: #e7e7e7;

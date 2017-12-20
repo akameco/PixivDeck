@@ -1,8 +1,8 @@
 // @flow
 declare class IntersectionObserver {
-  constructor: Function,
-  observe: Function,
-  disconnect: Function,
+  constructor: Function;
+  observe: Function;
+  disconnect: Function;
 }
 
 type ID = number | string

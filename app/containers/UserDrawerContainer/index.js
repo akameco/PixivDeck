@@ -28,17 +28,17 @@ const mapStateToProps = createStructuredSelector({
   profile: makeSelectProfile(),
 })
 
-const connector: Connector<
-  {},
-  Props
-> = connect(mapStateToProps, (dispatch: Dispatch) => {
-  return {
-    onNextIllust() {
-      dispatch(actions.nextIllustPage())
-    },
-    onNextManga() {
-      dispatch(actions.nextMangaPage())
-    },
+const connector: Connector<{}, Props> = connect(
+  mapStateToProps,
+  (dispatch: Dispatch) => {
+    return {
+      onNextIllust() {
+        dispatch(actions.nextIllustPage())
+      },
+      onNextManga() {
+        dispatch(actions.nextMangaPage())
+      },
+    }
   }
-})
+)
 export default connector(UserDrawerContainer)
