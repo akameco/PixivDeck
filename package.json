@@ -79,7 +79,7 @@
     "@storybook/addon-info": "^3.2.11",
     "@storybook/addon-knobs": "^3.2.10",
     "@storybook/react": "^3.2.11",
-    "all-contributors-cli": "^4.5.0",
+    "all-contributors-cli": "^4.10.1",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
     "babel-eslint": "^8.0.1",
