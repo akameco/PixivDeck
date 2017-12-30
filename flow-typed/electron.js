@@ -1,3 +1,13 @@
+/**
+ * Copyright (c) 2015-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the license found in the LICENSE file in
+ * the root directory of this source tree.
+ *
+ * @flow
+ */
+
 // The properties on this module depend on whether the importer is the main
 // process or a renderer process.
 declare module 'electron' {
@@ -220,6 +230,7 @@ type electron$BrowserWindowEvents =
   | 'leave-full-screen'
   | 'enter-html-full-screen'
   | 'leave-html-full-screen'
+  | 'context-menu'
   | 'app-command'         // Windows
   | 'scroll-touch-begin'  // macOS
   | 'scroll-touch-end'    // macOS
@@ -319,7 +330,7 @@ declare class electron$BrowserWindow {
     options?: {httpReferrer?: string, userAgent?: string, extraHeaders?: string},
   ): void,
   reload(): void,
-  setMenu(menu: electron$Menu): void, // Linux Windows
+  setMenu(menu: ?electron$Menu): void, // Linux Windows
   setProgressBar(progress: number): void,
   setOverlayIcon(overlay: electron$NativeImage, description: string): void, // Windows
   setHasShadow(hasShadow: boolean): void, // macOS
@@ -355,7 +366,17 @@ declare class electron$BrowserWindow {
  * https://github.com/electron/electron/blob/master/docs/api/content-tracing.md
  */
 
-type electron$contentTracing = {};
+type electron$contentTracing = {
+  startRecording(
+    options: {categoryFilter: string, traceOptions: string},
+    callback: () => mixed,
+  ): boolean,
+
+  stopRecording(
+    resultFilePath: ?string,
+    callback: (resultFilePath: string) => mixed,
+  ): void,
+};
 
 /**
  * https://github.com/electron/electron/blob/master/docs/api/dialog.md
@@ -426,7 +447,12 @@ type electron$dialogMessageBoxOptions = {
  * https://github.com/electron/electron/blob/master/docs/api/global-shortcut.md
  */
 
-type electron$globalShortcut = {};
+type electron$globalShortcut = {
+  register: (string, () => void) => boolean,
+  isRegistered: (string) => boolean,
+  unregister: (string) => void,
+  unregisterAll: () => void,
+};
 
 /**
  * https://github.com/electron/electron/blob/master/docs/api/ipc-main.md
@@ -778,7 +804,9 @@ type electron$remote = {
  * https://github.com/electron/electron/blob/master/docs/api/web-frame.md
  */
 
-type electron$webFrame = {};
+type electron$webFrame = {
+  registerURLSchemeAsBypassingCSP(scheme: string): void,
+};
 
 
 //------------------------------------------------------------------------------
