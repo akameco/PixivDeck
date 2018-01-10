@@ -28,7 +28,7 @@ type Props = {
   dispatch: Dispatch,
 }
 
-class BoxContainer extends React.PureComponent<Props & { intl: IntlShape }> {
+class BoxContainer extends React.Component<Props & { intl: IntlShape }> {
   shouldComponentUpdate(nextProps: Props) {
     const { illust, isIllustOnly, isShowCaption } = this.props
     const nextIllust = nextProps.illust

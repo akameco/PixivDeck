@@ -10,7 +10,7 @@ exports[`snapshot BookmarkButton isBookmarked=false 1`] = `
       "width": 18,
     }
   }
-  onClick={[Function]}
+  onClick={[MockFunction]}
   style={
     Object {
       "height": 32,
@@ -37,7 +37,7 @@ exports[`snapshot BookmarkButton isBookmarked=true 1`] = `
       "width": 18,
     }
   }
-  onClick={[Function]}
+  onClick={[MockFunction]}
   style={
     Object {
       "height": 32,
