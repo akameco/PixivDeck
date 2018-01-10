@@ -36,7 +36,7 @@ type State = {
 }
 
 export default class BoxHeader extends React.PureComponent<Props, State> {
-  delayTimer: ?number
+  delayTimer: ?TimeoutID
   state: State = {
     open: false,
     focus: false,
