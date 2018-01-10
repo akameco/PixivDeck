@@ -52,5 +52,4 @@ deploy:
     all_branches: true
 
 notifications:
-  email:
-    on_failure: change
+  email: false
