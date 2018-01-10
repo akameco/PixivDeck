@@ -1,5 +1,5 @@
 // @flow
-import type { Action } from './actionTypes.js'
+import type { Action } from './actionTypes'
 import { ADD_TABLE, REMOVE_TABLE, SET_TABLE } from './constants'
 
 export function addTable(id: string): Action {

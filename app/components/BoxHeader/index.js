@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import styled from 'styled-components'
 import Popover from 'material-ui/Popover'
 import type { User } from 'types/user'
@@ -35,8 +35,7 @@ type State = {
   anchorEl: ?EventTarget,
 }
 
-export default class BoxHeader extends React.PureComponent {
-  props: Props
+export default class BoxHeader extends React.PureComponent<Props, State> {
   delayTimer: ?number
   state: State = {
     open: false,

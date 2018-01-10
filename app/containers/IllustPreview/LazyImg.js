@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import styled, { keyframes } from 'styled-components'
 import CloseButton from 'components/common/CloseButton'
 import { LazyImgWrapper as Wrapper } from './styles'
@@ -57,8 +57,7 @@ type State = {
   toMarginTop: number,
 }
 
-export default class LazyImg extends React.PureComponent {
-  props: Props
+export default class LazyImg extends React.PureComponent<Props, State> {
   to: HTMLElement
   from: HTMLElement
   state: State = {

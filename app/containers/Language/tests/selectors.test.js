@@ -1,4 +1,3 @@
-// @flow
 import { makeSelectLocale } from '../selectors'
 
 test('makeSelectLocale', () => {

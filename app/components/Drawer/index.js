@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import EventListener from 'react-event-listener'
 import handleEscCreater from 'utils/handleEscCreater'
 import Overlay from 'components/Overlay'
@@ -8,7 +8,7 @@ import DrawerWrapper from './DrawerWrapper'
 
 export type Props = {
   open: boolean,
-  children?: React$Element<*>,
+  children?: React.Element<any>,
   onRequestClose: () => void,
   width?: number,
 }
@@ -17,7 +17,7 @@ type DefaultProps = {
   width: number,
 }
 
-class Drawer extends React.PureComponent<DefaultProps, Props, void> {
+class Drawer extends React.PureComponent<Props, void> {
   props: Props
 
   static defaultProps: DefaultProps = {

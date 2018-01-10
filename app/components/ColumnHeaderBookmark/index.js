@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import styled from 'styled-components'
 import { debounce } from 'lodash'
 import Slider from 'material-ui/Slider'
@@ -15,9 +15,7 @@ type State = {
   minBookmarks: number,
 }
 
-class ColumnHeaderSetting extends React.PureComponent {
-  props: Props
-
+class ColumnHeaderSetting extends React.PureComponent<Props, State> {
   state: State = {
     minBookmarks: 0,
   }

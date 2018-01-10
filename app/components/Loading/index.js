@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import LoadingWrapper from './LoadingWrapper'
 import Spinner from './Spinner'
 import Rect from './Rect'

@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import { injectIntl, type IntlShape } from 'react-intl'
 import { FormattedMessage } from 'react-intl'
 import type { Mode } from 'containers/ColumnRanking/reducer'

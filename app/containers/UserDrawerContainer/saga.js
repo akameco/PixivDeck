@@ -1,5 +1,7 @@
 // @flow
+import type { Saga } from 'redux-saga'
 import { union } from 'lodash'
+import { put, select, call, takeEvery, takeLatest } from 'redux-saga/effects'
 import { type User } from 'types/user'
 import * as api from '../Api/sagas'
 import { OPEN_DRAWER } from '../DrawerManager/constants'
@@ -12,18 +14,10 @@ import {
   getNextMangaUrl,
   getNextIllustUrl,
 } from './selectors'
-import {
-  put,
-  select,
-  call,
-  takeEvery,
-  takeLatest,
-  type IOEffect,
-} from 'redux-saga/effects'
 
 type P = { id: number }
 
-function* open({ id }): Generator<IOEffect, void, *> {
+function* open({ id }): Saga<void> {
   try {
     const user: User = yield select(makeSelectUserById(), { id })
     // todo 非同期
@@ -34,7 +28,7 @@ function* open({ id }): Generator<IOEffect, void, *> {
   } catch (err) {}
 }
 
-function* fetchIllust(props: P): Generator<*, void, *> {
+function* fetchIllust(props: P): Saga<void> {
   try {
     const { id } = props
     const oldIds = yield select(makeSelectIllustList())
@@ -74,7 +68,7 @@ function* fetchManga({ id }: P) {
   }
 }
 
-function* fetchUserDetail({ id }: P): Generator<IOEffect, void, *> {
+function* fetchUserDetail({ id }: P): Saga<void> {
   try {
     const endpoint = `/v1/user/detail?user_id=${id}`
 
@@ -87,7 +81,7 @@ function* fetchUserDetail({ id }: P): Generator<IOEffect, void, *> {
   }
 }
 
-export default function* rootSaga(): Generator<IOEffect, void, void> {
+export default function* rootSaga(): Saga<void> {
   yield takeEvery(OPEN_DRAWER, open)
 
   yield takeLatest(Actions.FETCH_ILLUST, fetchIllust)

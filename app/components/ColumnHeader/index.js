@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import IconButton from 'material-ui/IconButton'
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu'
 import NavigationClose from 'material-ui/svg-icons/navigation/close'
@@ -10,15 +10,14 @@ type Props = {
   name: string,
   onTopClick: (event: Event) => void,
   onClose: () => void,
-  children?: React$Element<*>,
+  children?: React.Node,
 }
 
 type State = {
   open: boolean,
 }
 
-class ColumnHeader extends React.PureComponent {
-  props: Props
+class ColumnHeader extends React.PureComponent<Props, State> {
   state: State = {
     open: false,
   }

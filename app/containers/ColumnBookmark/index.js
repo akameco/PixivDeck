@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import { connect, type Connector } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import { injectIntl, type IntlShape } from 'react-intl'
@@ -30,9 +30,7 @@ type InjectProp = {
   intl: IntlShape,
 }
 
-class ColumnBookMark extends React.PureComponent {
-  props: Props & InjectProp
-
+class ColumnBookMark extends React.PureComponent<Props & InjectProp> {
   componentWillMount() {
     this.props.onFetch()
   }

@@ -17,6 +17,7 @@ const getColumn = (state: State, { id }: Props) => state.ColumnRanking[id]
 
 export const makeSelectColumn = () => createSelector(getColumn, s => s)
 
+// $FlowFixMe
 export const getInterval = createSelector(getColumn, s => s.interval)
 
 const makeSelectIllustIds = () =>

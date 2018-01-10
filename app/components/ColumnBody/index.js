@@ -1,11 +1,11 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import styled from 'styled-components'
 import Loading from 'components/ColumnLoading'
 
 type Props = {
   isLoading: boolean,
-  children?: React$Element<*>,
+  children?: React.Node,
 }
 
 const Body = styled.div`

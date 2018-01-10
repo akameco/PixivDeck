@@ -28,6 +28,7 @@ test('get', () => {
   next = gen.next(token)
   expect(next.value).toEqual(call(api.getRequest, 'endpoint', {}, token))
 
+  // $FlowFixMe
   next = gen.next({ entities: {}, result: {} })
   expect(next.value).toEqual(
     // $FlowFixMe

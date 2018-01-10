@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import styled from 'styled-components'
 import { key } from 'styles/styleTheme'
 
@@ -15,7 +15,7 @@ const View = styled.div`
 `
 
 type Props = {
-  children?: React$Element<*>,
+  children?: React.Node,
 }
 
 export default function ColumnRoot({ children }: Props) {

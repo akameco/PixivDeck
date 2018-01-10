@@ -1,6 +1,6 @@
 // @flow
 import { remote } from 'electron'
-import React from 'react'
+import * as React from 'react'
 import { connect, type Connector } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import type { Dispatch } from 'types'
@@ -28,9 +28,7 @@ type Props = {
   dispatch: Dispatch,
 }
 
-class BoxContainer extends React.PureComponent {
-  props: Props & { intl: IntlShape }
-
+class BoxContainer extends React.PureComponent<Props & { intl: IntlShape }> {
   shouldComponentUpdate(nextProps: Props) {
     const { illust, isIllustOnly, isShowCaption } = this.props
     const nextIllust = nextProps.illust

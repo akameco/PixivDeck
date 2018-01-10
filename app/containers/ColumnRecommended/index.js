@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect, type Connector } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
@@ -26,9 +26,7 @@ type InjectProp = {
   intl: IntlShape,
 }
 
-class ColumnRecommended extends React.Component {
-  props: Props & InjectProp
-
+class ColumnRecommended extends React.Component<Props & InjectProp> {
   componentWillMount() {
     this.props.onFetch()
   }

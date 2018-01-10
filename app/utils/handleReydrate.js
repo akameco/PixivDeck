@@ -1,4 +1,5 @@
 // @flow
+// $FlowFixMe
 import { REHYDRATE } from 'redux-persist/constants'
 
 const defaultState = {

@@ -1,6 +1,6 @@
 // @flow
 import styled from 'styled-components'
-import React from 'react'
+import * as React from 'react'
 
 type Props = {
   size: number,

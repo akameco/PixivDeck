@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import { connect, type Connector } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import { removeTable } from 'containers/Table/actions'
@@ -31,8 +31,7 @@ export type ColumnProps = {
   onClose: () => void,
 }
 
-class ColumnManager extends React.PureComponent {
-  props: Props
+class ColumnManager extends React.PureComponent<Props, State> {
   state: State = { onHeaderClick: () => {} }
 
   setNode = node => {

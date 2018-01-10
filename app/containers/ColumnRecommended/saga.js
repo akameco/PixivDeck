@@ -1,17 +1,18 @@
 // @flow
+import type { Saga } from 'redux-saga'
+import { put, select, call, takeEvery } from 'redux-saga/effects'
 import { addTable } from 'containers/ColumnManager/actions'
 import * as fetchColumn from '../Column/sagas'
 import * as Actions from './constants'
 import * as actions from './actions'
 import type { ColumnId } from './reducer'
 import { makeSelectColumn, makeSelectModes } from './selectors'
-import { put, select, call, takeEvery } from 'redux-saga/effects'
 
 type Action = {
   +id: ColumnId,
 }
 
-export function* addColumn({ id }: Action): Generator<*, void, *> {
+export function* addColumn({ id }: Action): Saga<void> {
   const modes: Array<?ColumnId> = yield select(makeSelectModes())
 
   if (modes.every(v => v !== id)) {
@@ -32,7 +33,7 @@ function* fetch(action: Action) {
   yield call(fetchColumn.fetchColumn, endpoint, action.id, actions, ids)
 }
 
-export default function* root(): Generator<*, void, void> {
+export default function* root(): Saga<void> {
   yield takeEvery(Actions.ADD_COLUMN, addColumn)
   yield takeEvery(Actions.FETCH, fetch)
 }

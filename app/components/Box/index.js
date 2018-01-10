@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import type { User } from 'types/user'
 import type { Illust } from 'types/illust'
 import BoxHeader from 'components/BoxHeader'

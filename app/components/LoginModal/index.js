@@ -34,8 +34,7 @@ const Wrap = styled.div`
   margin-right: 3rem;
 `
 
-class LoginModal extends Component {
-  props: Props & InjectProp
+class LoginModal extends Component<Props & InjectProp, State> {
   state: State = {
     username: this.props.username,
     password: this.props.password,

@@ -1,11 +1,12 @@
 // @flow
 // eslint-disable-next-line import/order
-import { put, call, takeEvery, type IOEffect } from 'redux-saga/effects'
+import type { Saga } from 'redux-saga'
+import { put, call, takeEvery } from 'redux-saga/effects'
 import * as api from '../Api/sagas'
 import * as actions from './actions'
 import * as Actions from './constants'
 
-function* popover({ id }) {
+function* popover({ id }): Saga<*> {
   yield put(actions.clear())
 
   try {
@@ -21,7 +22,7 @@ function* popover({ id }) {
   }
 }
 
-function* root(): Generator<IOEffect, void, *> {
+function* root(): Saga<void> {
   yield takeEvery(Actions.OPEN, popover)
 }
 

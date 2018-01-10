@@ -1,9 +1,9 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import styled from 'styled-components'
 
 type Props = {
-  children?: React$Element<any>,
+  children?: React.Node,
 }
 
 const Card = ({ children }: Props) => <Wrap>{children}</Wrap>

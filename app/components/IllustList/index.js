@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import Box from 'containers/BoxContainer'
 import IntersectionObserverWrapper from 'utils/intersectionObserverWrapper'
 import type { Illust } from 'types/illust'
@@ -14,8 +14,7 @@ export type Props = {
   onNext: Function,
 }
 
-export default class IllustList extends React.PureComponent {
-  props: Props
+export default class IllustList extends React.PureComponent<Props> {
   node: HTMLElement
   intersectionObserverWrapper = new IntersectionObserverWrapper()
 
@@ -52,7 +51,7 @@ export default class IllustList extends React.PureComponent {
 
     const List = illusts.map(illust => <Box key={illust.id} id={illust.id} />)
 
-    let loadMore: ?React$Element<*> = null
+    let loadMore: ?React.Element<any> = null
 
     if (hasMore) {
       loadMore = (

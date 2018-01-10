@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import { connect, type Connector } from 'react-redux'
 import type { Dispatch } from 'types'
 import { createStructuredSelector } from 'reselect'
@@ -19,9 +19,7 @@ type Props = {
   open: Function,
 } & OP
 
-class UserPopoverContainer extends React.PureComponent {
-  props: Props
-
+class UserPopoverContainer extends React.PureComponent<Props> {
   componentWillMount() {
     this.props.open()
   }

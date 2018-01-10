@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import styled from 'styled-components'
 
 const Wrap = styled.div`
@@ -19,7 +19,7 @@ const Wrap = styled.div`
 `
 
 type Props = {
-  text: string | React$Element<*>,
+  text: string | React.Element<any>,
   onClick: () => void,
 }
 

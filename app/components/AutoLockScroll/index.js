@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 
 type Props = {
   lock: boolean,
@@ -12,9 +12,7 @@ function getElementBody() {
   return document.getElementsByTagName('body')[0]
 }
 
-class AutoLockScroll extends React.Component {
-  props: Props
-
+class AutoLockScroll extends React.Component<Props> {
   componentDidMount() {
     if (this.props.lock === true) {
       this.preventScrolling()

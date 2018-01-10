@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import { Tabs, Tab } from 'material-ui/Tabs'
 import { FormattedMessage } from 'react-intl'
 import type { User, Profile } from 'types/user'

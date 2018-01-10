@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import styled from 'styled-components'
 import LazyImg from './LazyImg'
 
@@ -14,9 +14,7 @@ type Props = {
   onClose: () => void,
 }
 
-export default class IllustPreview extends React.PureComponent {
-  props: Props
-
+export default class IllustPreview extends React.PureComponent<Props> {
   componentWillUnmount() {
     this.props.onUnLoad()
   }
