@@ -35,7 +35,7 @@ type State = {
   anchorEl: ?EventTarget,
 }
 
-export default class BoxHeader extends React.PureComponent<Props, State> {
+export default class BoxHeader extends React.Component<Props, State> {
   delayTimer: ?TimeoutID
   state: State = {
     open: false,
