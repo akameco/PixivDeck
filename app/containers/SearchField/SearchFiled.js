@@ -23,8 +23,7 @@ type State = {
   value: string,
 }
 
-class SearchField extends Component {
-  props: Props & InjectProp
+class SearchField extends Component<Props & InjectProp, State> {
   state: State = { value: '', keywords: [] }
 
   componentDidMount() {
@@ -62,7 +61,7 @@ class SearchField extends Component {
     this.props.onFetch(value)
   }, 200)
 
-  handleSubmit = (event: SyntheticKeyboardEvent) => {
+  handleSubmit = (event: SyntheticKeyboardEvent<>) => {
     // eslint-disable-line no-undef
     const text = this.state.value.trim()
     if (event.which === 13 && text !== '') {

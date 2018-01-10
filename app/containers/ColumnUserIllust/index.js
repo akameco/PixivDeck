@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import type { User } from 'types/user'
 import { connect, type Connector } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
@@ -26,9 +26,7 @@ type Props = {
 } & OP &
   ColumnProps
 
-class ColumnUserIllust extends React.Component {
-  props: Props
-
+class ColumnUserIllust extends React.Component<Props> {
   componentWillMount() {
     this.props.onFetch()
   }

@@ -1,18 +1,18 @@
 // @flow
-import { delay } from 'redux-saga'
+import { delay, type Saga } from 'redux-saga'
 import { put, select, call, takeEvery, fork, take } from 'redux-saga/effects'
 import { union, difference } from 'lodash'
 import { addTable } from 'containers/ColumnManager/actions'
 import { addNotifyWithIllust } from 'containers/Notify/actions'
 import * as api from '../Api/sagas'
+import * as fetchSaga from '../Column/sagas'
 import * as Actions from './constants'
 import * as actions from './actions'
 import type { ColumnId } from './reducer'
 import * as selectors from './selectors'
 import type { Action } from './actionTypes'
-import * as fetchSaga from '../Column/sagas'
 
-export function* addColumn({ id }: Action): Generator<*, void, *> {
+export function* addColumn({ id }: Action): Saga<void> {
   const ids: Array<?ColumnId> = yield select(selectors.makeSelectIds())
   const word = id.replace(/\d+users入り$/, '')
 
@@ -26,7 +26,7 @@ export function* addColumn({ id }: Action): Generator<*, void, *> {
 const getEndpoint = word =>
   `/v1/search/illust?word=${word}&search_target=partial_match_for_tags&sort=date_desc`
 
-function* fetchSearch(action: Action): Generator<*, void, *> {
+function* fetchSearch(action: Action): Saga<void> {
   const { id } = action
   const word = id.replace(/\d+users入り$/, '')
   const { ids, nextUrl, usersIn } = yield select(
@@ -46,7 +46,7 @@ function* fetchSearch(action: Action): Generator<*, void, *> {
   yield call(fetchSaga.fetchColumn, endpoint, word, actions, ids)
 }
 
-function* fetchUntilLimit(action: Action): Generator<*, void, *> {
+function* fetchUntilLimit(action: Action): Saga<void> {
   try {
     const initLen: number = yield select(selectors.makeIllustLength(), action)
 
@@ -73,7 +73,7 @@ function* fetchUntilLimit(action: Action): Generator<*, void, *> {
   }
 }
 
-function* fetchNew({ id }: Action): Generator<*, void, *> {
+function* fetchNew({ id }: Action): Saga<void> {
   try {
     const { ids, usersIn } = yield select(selectors.makeSelectColumn(), { id })
     const beforeIds = yield select(selectors.makeLimitedSelectIllustsId(), {
@@ -113,11 +113,10 @@ function* fetchNewWatch(action: Action) {
     }
   } catch (err) {
     // TODO エラーハンドリング
-    console.log(err)
   }
 }
 
-export function* usersIn(): Generator<*, void, *> {
+export function* usersIn(): Saga<void> {
   while (true) {
     const { id, usersIn: value } = yield take(Actions.USERS_IN)
     // 検索ワードにusers入りがあれば消す。
@@ -131,7 +130,7 @@ export function* usersIn(): Generator<*, void, *> {
   }
 }
 
-export default function* root(): Generator<*, void, void> {
+export default function* root(): Saga<void> {
   yield takeEvery(Actions.ADD_COLUMN, addColumn)
 
   yield takeEvery(
@@ -139,6 +138,7 @@ export default function* root(): Generator<*, void, void> {
     fetchUntilLimit
   )
 
+  // $FlowFixMe
   yield takeEvery(Actions.START_WATCH, fetchNewWatch)
   yield fork(usersIn)
 }

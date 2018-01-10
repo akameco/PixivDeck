@@ -1,5 +1,5 @@
 // @flow
-import { delay } from 'redux-saga'
+import { delay, type Saga } from 'redux-saga'
 import { put, select, call, takeEvery, fork, take } from 'redux-saga/effects'
 import { addTable } from 'containers/ColumnManager/actions'
 import * as api from '../Column/sagas'
@@ -10,7 +10,7 @@ import * as selectors from './selectors'
 
 type Action = { id: Mode }
 
-export function* addColumn({ id }: Action): Generator<*, void, *> {
+export function* addColumn({ id }: Action): Saga<void> {
   const modes: Array<?Mode> = yield select(selectors.makeSelectModes())
   if (modes.every(v => v !== id)) {
     yield put(actions.addColumnSuccess(id))
@@ -21,13 +21,13 @@ export function* addColumn({ id }: Action): Generator<*, void, *> {
 
 const getEndpoint = id => `/v1/illust/ranking?mode=${id}`
 
-export function* fetch(action: Action): Generator<*, void, *> {
+export function* fetch(action: Action): Saga<void> {
   const { ids, nextUrl } = yield select(selectors.makeSelectColumn(), action)
   const endpoint = nextUrl ? nextUrl : getEndpoint(action.id)
   yield call(api.fetchColumn, endpoint, action.id, actions, ids)
 }
 
-export function* fetchNew({ id }: Action): Generator<*, void, *> {
+export function* fetchNew({ id }: Action): Saga<void> {
   const { ids } = yield select(selectors.makeSelectColumn(), { id })
   yield call(
     api.fetchNew,
@@ -36,7 +36,8 @@ export function* fetchNew({ id }: Action): Generator<*, void, *> {
   )
 }
 
-export function* watchNewIllust(): Generator<*, void, *> {
+// $FlowFixMe
+export function* watchNewIllust(): Saga<*> {
   while (true) {
     const { id } = yield take(Actions.START_WATCH)
     const interval = yield select(selectors.getInterval, { id })
@@ -46,7 +47,7 @@ export function* watchNewIllust(): Generator<*, void, *> {
   }
 }
 
-export default function* root(): Generator<*, void, void> {
+export default function* root(): Saga<void> {
   yield takeEvery(Actions.ADD_COLUMN, addColumn)
   yield takeEvery(Actions.FETCH, fetch)
   yield fork(watchNewIllust)

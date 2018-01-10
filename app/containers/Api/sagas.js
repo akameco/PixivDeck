@@ -18,7 +18,10 @@ export function* get(
   if (isToken) {
     token = yield call(getToken)
   }
+  // $FlowFixMe
   const response = yield call(api.getRequest, endpoint, {}, token)
+  // $FlowFixMe
   yield put(actions.apiRequestSuccess(response))
+  // $FlowFixMe
   return response
 }

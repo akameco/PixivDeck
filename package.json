@@ -3,7 +3,10 @@
   "productName": "PixivDeck",
   "version": "0.12.1",
   "description": "pixiv client for desktop",
-  "keywords": ["electron", "pixiv"],
+  "keywords": [
+    "electron",
+    "pixiv"
+  ],
   "author": "akameco <akameco.t@gmail.com>",
   "license": "MIT",
   "main": "main.js",
@@ -36,10 +39,15 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,json,md}": ["fmt", "git add"]
+    "*.{js,json,md}": [
+      "fmt",
+      "git add"
+    ]
   },
   "stylelint": {
-    "processors": ["stylelint-processor-styled-components"],
+    "processors": [
+      "stylelint-processor-styled-components"
+    ],
     "extends": "stylelint-config-standard",
     "syntax": "scss",
     "rules": {
@@ -118,20 +126,19 @@
     "enzyme": "^3.0.0",
     "enzyme-adapter-react-16": "^1.0.0",
     "enzyme-to-json": "^3.0.1",
-    "eslint": "^4.7.2",
-    "eslint-config-precure": "^0.8.1",
-    "eslint-config-prettier": "^2.6.0",
-    "eslint-plugin-prettier": "^2.3.1",
-    "eslint-plugin-react": "^7.4.0",
+    "eslint": "^4.14.0",
+    "eslint-config-precure": "^0.11.3",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.4.0",
+    "eslint-plugin-react": "^7.5.1",
     "execa": "^0.8.0",
-    "extract-react-intl": "^0.3.1",
-    "extract-react-intl-messages": "^0.6.0",
+    "extract-react-intl": "^0.5.0",
+    "extract-react-intl-messages": "^0.7.1",
     "extract-zip": "^1.6.5",
     "fbjs-scripts": "^0.8.0",
     "file-loader": "^0.11.2",
-    "flow-bin": "^0.55.0",
+    "flow-bin": "^0.63.1",
     "flow-runtime": "^0.14.0",
-    "flow-typed": "^2.1.2",
     "husky": "^0.14.3",
     "jest": "^21.2.0",
     "jest-cli": "^21.2.0",

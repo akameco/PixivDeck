@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 
 type IconType =
   | 'setting'
@@ -55,9 +55,10 @@ const SelectIcon = ({ type }: { type: IconType }) => {
   }
 }
 
-export default class Icon extends React.PureComponent {
-  props: Props
-
+export default class Icon extends React.PureComponent<
+  Props,
+  { hoverd: boolean }
+> {
   static defaultProps = {
     onMouseEnter: () => {},
     onMouseLeave: () => {},

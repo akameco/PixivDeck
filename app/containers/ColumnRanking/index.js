@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect, type Connector } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
@@ -31,9 +31,7 @@ type InjectProp = {
   intl: IntlShape,
 }
 
-class ColumnRanking extends React.Component {
-  props: Props & InjectProp
-
+class ColumnRanking extends React.Component<Props & InjectProp> {
   componentWillMount() {
     const { actions, id } = this.props
     actions.fetch(id)

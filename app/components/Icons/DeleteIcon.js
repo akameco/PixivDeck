@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import IconBase, { type Props } from './IconBase'
 
 export default function DeleteIcon(props: Props) {

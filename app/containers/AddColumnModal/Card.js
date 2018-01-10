@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import styled from 'styled-components'
 
 const Wrap = styled.div`
@@ -33,13 +33,13 @@ const ListWrap = styled.div`
   overflow: hidden;
 `
 
-const List = ({ children }: { children?: React$Element<any> }) => (
+const List = ({ children }: { children?: React.Node }) => (
   <ListWrap>{children}</ListWrap>
 )
 
 type Props = {
-  title: string | React$Element<*>,
-  children?: React$Element<*>,
+  title: string | React.Element<any>,
+  children?: React.Node,
 }
 
 const Card = ({ title, children }: Props) => (

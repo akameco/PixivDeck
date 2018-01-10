@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import styled from 'styled-components'
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
 
@@ -18,9 +18,7 @@ type Props = {
   onChange: Function,
 }
 
-class FilterUsersIn extends React.Component {
-  props: Props
-
+class FilterUsersIn extends React.Component<Props> {
   handleChange = (e: Event, value: ?string) => {
     if (!value) {
       return

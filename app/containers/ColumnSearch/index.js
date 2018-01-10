@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import { connect, type Connector } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import type { Dispatch } from 'types'
@@ -32,8 +32,7 @@ type Props = {
 } & OP &
   ColumnProps
 
-class ColumnSearch extends React.PureComponent {
-  props: Props
+class ColumnSearch extends React.PureComponent<Props> {
   node: HTMLElement
 
   componentWillMount() {

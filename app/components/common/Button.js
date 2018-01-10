@@ -1,9 +1,9 @@
 // @flow
-import React, { Component } from 'react'
+import * as React from 'react'
 
 type Props = {
-  children?: React$Component<*, *, *>,
-  label?: string | React$Element<*>,
+  children?: React.Element<*>,
+  label?: string | React.Element<*>,
   style?: Object,
   color?: string,
   hoverdColor?: string,
@@ -17,16 +17,13 @@ type State = {
   hoverd: boolean,
 }
 
-export default class Button extends Component {
-  props: Props
+export default class Button extends React.Component<Props, State> {
   static defaultProps = {
     onMouseEnter: () => {},
     onMouseLeave: () => {},
   }
 
-  state: State = {
-    hoverd: false,
-  }
+  state = { hoverd: false }
 
   handleMouseEnter = (event: Event) => {
     this.setState({ hoverd: true })

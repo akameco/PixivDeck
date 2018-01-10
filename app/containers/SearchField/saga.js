@@ -1,5 +1,6 @@
 // @flow
-import { call, takeLatest, put, type IOEffect } from 'redux-saga/effects'
+import type { Saga } from 'redux-saga'
+import { call, takeLatest, put } from 'redux-saga/effects'
 import * as api from '../Api/sagas'
 import * as actions from './actions'
 import * as Actions from './constants'
@@ -10,7 +11,7 @@ type Aciton = {
   word: string,
 }
 
-export function* autocomplete({ word }: Aciton): Generator<*, void, *> {
+export function* autocomplete({ word }: Aciton): Saga<void> {
   try {
     const { result } = yield call(api.get, endpoint(word), true)
     const { searchAutoCompleteKeywords } = result
@@ -20,7 +21,7 @@ export function* autocomplete({ word }: Aciton): Generator<*, void, *> {
   }
 }
 
-function* root(): Generator<IOEffect, void, void> {
+function* root(): Saga<void> {
   yield takeLatest(Actions.FETCH_REQUEST, autocomplete)
 }
 

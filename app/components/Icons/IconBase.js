@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 
 type DP = {
   size: number,
@@ -12,7 +12,7 @@ export type Props = {
   hoverColor?: string,
   onMouseEnter?: Function,
   onMouseLeave?: Function,
-  children?: ?React$Element<*>,
+  children?: ?React.Element<any>,
   size?: number,
   viewBox?: string,
 }
@@ -21,7 +21,7 @@ type State = {
   hoverd: boolean,
 }
 
-export default class Icon extends React.PureComponent<DP, Props, State> {
+export default class Icon extends React.PureComponent<Props, State> {
   props: Props
   state: State = {
     hoverd: false,

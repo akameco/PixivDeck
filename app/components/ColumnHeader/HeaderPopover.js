@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import styled from 'styled-components'
 
 const StyledPopover = styled.div`
@@ -19,7 +19,7 @@ const StyledPopover = styled.div`
 `
 
 type Props = {
-  children?: React$Element<*>,
+  children?: React.Node,
   open: boolean,
 }
 

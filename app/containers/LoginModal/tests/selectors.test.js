@@ -1,4 +1,3 @@
-// @flow
 import * as selectors from '../selectors'
 import { initialState } from '../reducer'
 

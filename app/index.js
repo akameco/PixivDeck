@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import configureStore from './store'
@@ -11,19 +11,22 @@ const store = configureStore()
 
 const rootEl = document.getElementById('root')
 
-render(
-  <AppContainer>
-    <Root store={store} />
-  </AppContainer>,
-  rootEl
-)
+if (rootEl) {
+  render(
+    <AppContainer>
+      <Root store={store} />
+    </AppContainer>,
+    rootEl
+  )
+}
 
-if (module.hot) {
+if (rootEl && module.hot) {
   module.hot.accept('./containers/Root', () => {
     // $FlowFixMe
     const NextRoot = require('./containers/Root')
     render(
       <AppContainer>
+        {/* // $FlowFixMe */}
         <NextRoot store={store} />
       </AppContainer>,
       rootEl

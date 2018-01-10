@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 // $FlowFixMe
 import { configure, setAddon, addDecorator } from '@storybook/react'
 // import infoAddon, { setDefaults } from '@storybook/addon-info'

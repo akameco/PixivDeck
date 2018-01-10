@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import type { MetaPages } from 'types/illust'
 import CloseButton from 'components/common/CloseButton'
 import { Wrapper, Item, Img } from './styles'

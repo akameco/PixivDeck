@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import { connect, type Connector } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import { injectIntl, type IntlShape } from 'react-intl'
@@ -27,9 +27,7 @@ type InjectProp = {
 }
 
 // eslint-disable-next-line
-class ColumnHistory extends React.PureComponent {
-  props: Props & InjectProp
-
+class ColumnHistory extends React.PureComponent<Props & InjectProp> {
   render() {
     const { illusts, id, onClose, intl, onHeaderClick, setNode } = this.props
 

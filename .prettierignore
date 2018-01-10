@@ -7,3 +7,4 @@ coverage
 dll
 flow-typed
 release
+package.json

@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import styled from 'styled-components'
 import ClearIcon from 'material-ui/svg-icons/content/clear'
 

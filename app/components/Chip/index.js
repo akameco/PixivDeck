@@ -1,10 +1,10 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import styled from 'styled-components'
 import DeleteIcon from '../Icons/DeleteIcon'
 
 export type Props = {
-  children?: ?React$Element<*>,
+  children?: ?React.Node,
   onClick?: Function,
   onRequestDelete?: Function,
 }
@@ -42,9 +42,7 @@ const icnonStyle = {
   margin: '4px 4px 0px -8px',
 }
 
-class Chip extends React.PureComponent {
-  props: Props
-
+class Chip extends React.PureComponent<Props> {
   handleRequestDelete = (e: Event) => {
     e.stopPropagation()
     if (this.props.onRequestDelete) {

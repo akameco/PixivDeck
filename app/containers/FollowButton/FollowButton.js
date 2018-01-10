@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import type { User } from 'types/user'
 import Button from 'components/common/Button'
 import { FormattedMessage } from 'react-intl'
@@ -27,8 +27,7 @@ function selectLabel(
   return <FormattedMessage {...messages.follow} />
 }
 
-class FollowButton extends React.PureComponent {
-  props: Props
+class FollowButton extends React.PureComponent<Props, State> {
   state: State = {
     isFollowing: false,
     isFollowed: false,

@@ -1,10 +1,11 @@
 // @flow
-import { call, put, takeEvery, type IOEffect } from 'redux-saga/effects'
-import { get } from '../Api/sagas'
+import type { Saga } from 'redux-saga'
+import { call, put, takeEvery } from 'redux-saga/effects'
 import * as api from 'containers/Api/sagas'
+import { get } from '../Api/sagas'
+import * as columnActions from '../ColumnBookmark/actions'
 import * as Actions from './constants'
 import * as actions from './actions'
-import * as columnActions from '../ColumnBookmark/actions'
 import type { Restrict } from './types'
 
 type Props = {
@@ -12,7 +13,7 @@ type Props = {
   restrict: Restrict,
 }
 
-export function* bookmark({ id, restrict }: Props): Generator<*, void, void> {
+export function* bookmark({ id, restrict }: Props): Saga<void> {
   try {
     yield call(api.post, '/v2/illust/bookmark/add', { illustId: id, restrict })
 
@@ -22,7 +23,7 @@ export function* bookmark({ id, restrict }: Props): Generator<*, void, void> {
   }
 }
 
-export function* deleteTask({ id }: Props): Generator<*, void, void> {
+export function* deleteTask({ id }: Props): Saga<void> {
   try {
     yield call(api.post, '/v1/illust/bookmark/delete', { illustId: id })
     yield put(actions.deleteBookmarkSuccess(id))
@@ -38,7 +39,7 @@ function* success({ id }: Props) {
   } catch (err) {}
 }
 
-function* root(): Generator<IOEffect, void, *> {
+function* root(): Saga<void> {
   yield takeEvery(Actions.ADD_BOOKMARK_REQUEST, bookmark)
   yield takeEvery(Actions.DELETE_BOOKMARK_REQUEST, deleteTask)
   yield takeEvery(

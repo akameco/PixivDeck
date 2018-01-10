@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from 'react'
+import * as React from 'react'
 import EventListener from 'react-event-listener'
 import handleEscCreater from 'utils/handleEscCreater'
 import Overlay from 'components/Overlay'
@@ -9,12 +9,11 @@ import { Content, Wrap } from './sytles'
 type Props = {
   open: boolean,
   onRequestClose?: Function,
-  children?: React$Element<*>,
+  children?: React.Node,
   onClose: Function,
 }
 
-export default class ModalWrapper extends Component {
-  props: Props
+export default class ModalWrapper extends React.Component<Props> {
   node: HTMLElement
 
   requestClose = () => {

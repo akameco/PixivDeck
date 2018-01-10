@@ -30,8 +30,7 @@ type State = {
   value: string,
 }
 
-export default class SettingFilterModal extends Component {
-  props: Props
+export default class SettingFilterModal extends Component<Props, State> {
   state: State = { value: '' }
 
   handleCangeInput = (event: any) => {

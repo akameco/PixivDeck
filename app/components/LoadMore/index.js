@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import Loading from 'components/Loading'
 import IntersectionObserverWrapper from 'utils/intersectionObserverWrapper'
 
@@ -10,8 +10,7 @@ export type Props = {
   intersectionObserverWrapper: IntersectionObserverWrapper,
 }
 
-export default class LoadMore extends React.PureComponent {
-  props: Props
+export default class LoadMore extends React.PureComponent<Props> {
   componentMounted: boolean = false
   node: HTMLElement
 
@@ -40,7 +39,7 @@ export default class LoadMore extends React.PureComponent {
     }
   }
 
-  _setNode = (node: HTMLElement) => {
+  _setNode = (node: ?HTMLElement) => {
     if (node) {
       this.node = node
     }

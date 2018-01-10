@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import { SortablePane, Pane } from 'react-sortable-pane'
 import ColumnManager from '../ColumnManager'
 import type { TableIds } from './reducer'

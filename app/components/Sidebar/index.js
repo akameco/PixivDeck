@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import styled from 'styled-components'
 import EventListener from 'react-event-listener'
 import SearchField from 'containers/SearchField'

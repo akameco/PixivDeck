@@ -1,6 +1,6 @@
 // @flow
 import electron from 'electron'
-import React from 'react'
+import * as React from 'react'
 import { connect, type Connector } from 'react-redux'
 import { IntlProvider } from 'react-intl'
 import { createStructuredSelector } from 'reselect'
@@ -10,7 +10,7 @@ import * as actions from './actions'
 
 type OP = {
   messages: Object,
-  children?: React$Element<*>,
+  children?: React.Element<*>,
 }
 
 type Props = {
@@ -18,9 +18,7 @@ type Props = {
 } & typeof actions &
   OP
 
-export class Language extends React.Component {
-  props: Props
-
+export class Language extends React.Component<Props> {
   componentDidMount() {
     if (!this.props.locale) {
       const app = electron.remote.app || electron.app

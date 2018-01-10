@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import styled from 'styled-components'
 
 type ItemProps = {
@@ -27,8 +27,8 @@ const ItemWrap = styled.div`
 `
 
 type Props = {
-  title: string | React$Element<*>,
-  children?: React$Element<any>,
+  title: string | React.Element<any>,
+  children?: React.Node,
 }
 
 const Wrap = styled.div`

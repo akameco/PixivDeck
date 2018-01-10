@@ -19,9 +19,7 @@ type Props = {
   dispatch: Dispatch,
 }
 
-class IllustPreviewContainer extends Component {
-  props: Props
-
+class IllustPreviewContainer extends Component<Props> {
   componentWillMount() {
     if (!this.props.illust) {
       this.props.dispatch(coloseIllustViewer())
@@ -42,13 +40,14 @@ class IllustPreviewContainer extends Component {
 
   render() {
     const { illust, show, isImgLoading } = this.props
+    const original = illust.metaSinglePage.originalImageUrl || ''
     return (
       <Preview
         show={show}
         from={illust.imageUrls.large}
         width={illust.width}
         height={illust.height}
-        original={illust.metaSinglePage.originalImageUrl}
+        original={original}
         isLoaded={!isImgLoading}
         onLoad={this.handleLoad}
         onUnLoad={this.handleUnLoad}

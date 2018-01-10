@@ -1,14 +1,15 @@
 // @flow
+import type { Saga } from 'redux-saga'
+import { call, takeEvery, put } from 'redux-saga/effects'
 import * as api from '../Api/sagas'
 import * as actions from './actions'
 import * as Actions from './constants'
-import { call, takeEvery, put, type IOEffect } from 'redux-saga/effects'
 
 type Props = {
   id: number,
 }
 
-export function* follow({ id }: Props): Generator<IOEffect, void, *> {
+export function* follow({ id }: Props): Saga<void> {
   try {
     const data = { userId: id, restrict: 'public' }
     yield call(api.post, '/v1/user/follow/add', data)
@@ -18,7 +19,7 @@ export function* follow({ id }: Props): Generator<IOEffect, void, *> {
   }
 }
 
-export function* unfollow({ id }: Props): Generator<IOEffect, void, *> {
+export function* unfollow({ id }: Props): Saga<void> {
   try {
     const data = { userId: id, restrict: 'public' }
     yield call(api.post, '/v1/user/follow/delete', data)
@@ -28,7 +29,7 @@ export function* unfollow({ id }: Props): Generator<IOEffect, void, *> {
   }
 }
 
-function* root(): Generator<IOEffect, void, void> {
+function* root(): Saga<void> {
   yield takeEvery(Actions.FOLLOW_REQUEST, follow)
   yield takeEvery(Actions.UN_FOLLOW_REQUEST, unfollow)
 }

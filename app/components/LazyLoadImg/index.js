@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import * as React from 'react'
 import styled from 'styled-components'
 import Icon from 'components/common/Icon'
 
@@ -51,8 +51,7 @@ type State = {
   isLoaded: boolean,
 }
 
-export default class LazyLoadImg extends React.PureComponent {
-  props: Props
+export default class LazyLoadImg extends React.PureComponent<Props, State> {
   state: State = {
     isVisible: false,
     isLoaded: false,
