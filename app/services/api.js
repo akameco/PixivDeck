@@ -37,6 +37,8 @@ type UserInfo = {
 }
 
 const AUTH_URL = 'https://oauth.secure.pixiv.net/auth/token'
+const CLIENT_ID = 'KzEZED7aC0vird8jWyHM38mXjNTY'
+const CLIENT_SECRET = 'W9JZoJe00qPvJsiyCGT3CCtC6ZUtdpKpzMbNlUGP'
 
 type AuthResponse = {
   accessToken: string,
@@ -48,8 +50,8 @@ export async function fetchAuth({
   password,
 }: UserInfo): Promise<AuthResponse> {
   const data = {
-    client_id: 'bYGKuGVw91e0NMfPGp44euvGt59s',
-    client_secret: 'HP3RmkgAmEGro0gn1x9ioawQE8WMfvLXDz3ZqxpK',
+    client_id: CLIENT_ID,
+    client_secret: CLIENT_SECRET,
     get_secure_url: 1,
     grant_type: 'password',
     username,
