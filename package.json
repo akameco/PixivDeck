@@ -40,7 +40,7 @@
   },
   "lint-staged": {
     "*.{js,json,md}": [
-      "fmt",
+      "prettier --write",
       "git add"
     ]
   },
