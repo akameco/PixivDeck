@@ -6,6 +6,8 @@
 
 ## Screenshot
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/akameco/PixivDeck.svg)](https://greenkeeper.io/)
+
 ### Scroll
 
 <img src="https://i.gyazo.com/b9b519f35505d032da8bebf55085a790.gif"/>
