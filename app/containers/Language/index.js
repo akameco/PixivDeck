@@ -50,5 +50,8 @@ const mapStateToProps = createStructuredSelector({
   locale: makeSelectLocale(),
 })
 
-const connector: Connector<OP, Props> = connect(mapStateToProps, actions)
+const connector: Connector<OP, Props> = connect(
+  mapStateToProps,
+  actions
+)
 export default connector(Language)

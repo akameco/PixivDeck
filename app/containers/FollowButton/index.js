@@ -16,5 +16,8 @@ const mapDispatchToProps = (dispatch: Dispatch, { user }) => ({
   },
 })
 
-const connector: Connector<OwnProps, Props> = connect(null, mapDispatchToProps)
+const connector: Connector<OwnProps, Props> = connect(
+  null,
+  mapDispatchToProps
+)
 export default connector(FollowButton)

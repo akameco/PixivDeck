@@ -34,7 +34,9 @@ class FollowButton extends React.PureComponent<Props, State> {
   }
 
   componentWillMount() {
-    const { user: { isFollowed } } = this.props
+    const {
+      user: { isFollowed },
+    } = this.props
     this.setState({ isFollowed })
   }
 
