@@ -56,7 +56,9 @@ export async function fetchAuth({
     password,
   }
 
-  const { data: { response } } = await axios.post(AUTH_URL, stringify(data), {
+  const {
+    data: { response },
+  } = await axios.post(AUTH_URL, stringify(data), {
     transformResponse: [
       function(data) {
         try {

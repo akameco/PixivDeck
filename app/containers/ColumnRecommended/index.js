@@ -80,6 +80,9 @@ function mapDispatch(dispatch: Dispatch) {
   }
 }
 
-const connector: Connector<{}, Props> = connect(mapState, mapDispatch)
+const connector: Connector<{}, Props> = connect(
+  mapState,
+  mapDispatch
+)
 
 export default connector(injectIntl(ColumnRecommended))

@@ -41,6 +41,9 @@ function mapDispatchToProps(dispatch: Dispatch) {
   }
 }
 
-const connector: Connector<{}, Props> = connect(undefined, mapDispatchToProps)
+const connector: Connector<{}, Props> = connect(
+  undefined,
+  mapDispatchToProps
+)
 
 export default connector(Modal)

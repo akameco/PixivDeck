@@ -75,6 +75,9 @@ function mapDispatch(dispatch: Dispatch) {
   }
 }
 
-const connector: Connector<OP, Props> = connect(mapState, mapDispatch)
+const connector: Connector<OP, Props> = connect(
+  mapState,
+  mapDispatch
+)
 
 export default connector(injectIntl(ColumnRanking))

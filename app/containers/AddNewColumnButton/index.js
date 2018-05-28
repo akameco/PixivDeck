@@ -15,5 +15,8 @@ const mapDispatchToProps = (dispatch: Dispatch, { user }) => ({
   },
 })
 
-const connector: Connector<OP, Props> = connect(undefined, mapDispatchToProps)
+const connector: Connector<OP, Props> = connect(
+  undefined,
+  mapDispatchToProps
+)
 export default connector(AddColumnButton)
