@@ -9,6 +9,11 @@ const FooterWrapper = styled.div`
   margin-bottom: 0.5rem;
   padding: 0 0.5rem;
   font-size: 0.8rem;
+  overflow-x: hidden;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `
 
 type Props = {

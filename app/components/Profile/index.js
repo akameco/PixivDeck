@@ -18,6 +18,12 @@ const Name = styled(A)`
 
 const Line = styled.p`
   margin: 0;
+  overflow-x: scroll;
+  width: 99%;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `
 
 const ProfileWrapper = styled.div`
