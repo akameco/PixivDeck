@@ -2,7 +2,7 @@
 
 > :two_hearts: :two_hearts: pixiv client for Desktop like TweetDeck :two_hearts: :two_hearts:
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors)
 
 ## Screenshot
 
@@ -83,10 +83,9 @@ $ npm run package
 Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-
 <!-- prettier-ignore -->
-| [<img src="https://avatars2.githubusercontent.com/u/4002137?v=4" width="100px;"/><br /><sub><b>akameco</b></sub>](http://akameco.github.io)<br />[💬](#question-akameco "Answering Questions") [💻](https://github.com/akameco/PixivDeck/commits?author=akameco "Code") [🎨](#design-akameco "Design") [⚠️](https://github.com/akameco/PixivDeck/commits?author=akameco "Tests") | [<img src="https://avatars0.githubusercontent.com/u/15041872?v=4" width="100px;"/><br /><sub><b>trnhoe</b></sub>](https://github.com/trnhoe)<br />[💻](https://github.com/akameco/PixivDeck/commits?author=trnhoe "Code") [🌍](#translation-trnhoe "Translation") | [<img src="https://avatars0.githubusercontent.com/u/14824064?v=4" width="100px;"/><br /><sub><b>鳶一雨音</b></sub>](https://github.com/TobiichiAmane)<br />[🌍](#translation-TobiichiAmane "Translation") | [<img src="https://avatars1.githubusercontent.com/u/16656689?v=4" width="100px;"/><br /><sub><b>Austin Huang</b></sub>](http://austinhuang.me)<br />[🌍](#translation-austinhuang0131 "Translation") |
-| :---: | :---: | :---: | :---: |
+| [<img src="https://avatars2.githubusercontent.com/u/4002137?v=4" width="100px;"/><br /><sub><b>akameco</b></sub>](http://akameco.github.io)<br />[💬](#question-akameco "Answering Questions") [💻](https://github.com/akameco/PixivDeck/commits?author=akameco "Code") [🎨](#design-akameco "Design") [⚠️](https://github.com/akameco/PixivDeck/commits?author=akameco "Tests") | [<img src="https://avatars0.githubusercontent.com/u/15041872?v=4" width="100px;"/><br /><sub><b>trnhoe</b></sub>](https://github.com/trnhoe)<br />[💻](https://github.com/akameco/PixivDeck/commits?author=trnhoe "Code") [🌍](#translation-trnhoe "Translation") | [<img src="https://avatars0.githubusercontent.com/u/14824064?v=4" width="100px;"/><br /><sub><b>鳶一雨音</b></sub>](https://github.com/TobiichiAmane)<br />[🌍](#translation-TobiichiAmane "Translation") | [<img src="https://avatars1.githubusercontent.com/u/16656689?v=4" width="100px;"/><br /><sub><b>Austin Huang</b></sub>](http://austinhuang.me)<br />[🌍](#translation-austinhuang0131 "Translation") | [<img src="https://avatars3.githubusercontent.com/u/3052342?v=4" width="100px;"/><br /><sub><b>Satoshi Ohmori</b></sub>](http://profile.sachin21.jp)<br />[💻](https://github.com/akameco/PixivDeck/commits?author=sachin21 "Code") |
+| :---: | :---: | :---: | :---: | :---: |
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 

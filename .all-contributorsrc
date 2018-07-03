@@ -46,6 +46,16 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "sachin21",
+      "name": "Satoshi Ohmori",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/3052342?v=4",
+      "profile": "http://profile.sachin21.jp",
+      "contributions": [
+        "code"
+      ]
     }
-  ]
+  ],
+  "repoType": "github"
 }
