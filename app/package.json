@@ -3,6 +3,8 @@
   "version": "0.16.5",
   "productName": "PixivDeck",
   "description": "pixiv client for desktop",
+  "homepage": "https://github.com/akameco/PixivDeck",
+  "repository": "github:akameco/PixivDeck",
   "license": "MIT",
   "author": {
     "name": "akameco",

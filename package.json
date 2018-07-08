@@ -7,6 +7,8 @@
     "electron",
     "pixiv"
   ],
+  "homepage": "https://github.com/akameco/PixivDeck",
+  "repository": "github:akameco/PixivDeck",
   "author": "akameco <akameco.t@gmail.com>",
   "license": "MIT",
   "main": "main.js",
