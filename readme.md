@@ -2,6 +2,11 @@
 
 > :two_hearts: :two_hearts: pixiv client for Desktop like TweetDeck :two_hearts: :two_hearts:
 
+[![Build Status](https://travis-ci.org/akameco/PixivDeck.svg?branch=master)](https://travis-ci.org/akameco/PixivDeck)
+[![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
+[![MIT License](https://img.shields.io/npm/l/nps.svg?style=flat-square)](./license)
+[![Donate](https://img.shields.io/badge/%EF%BC%84-support-green.svg?style=flat-square)](http://amzn.asia/bO78HzR)
+[![Code of Conduct](https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square)](./CODE_OF_CONDUCT.md)
 [![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors)
 
 ## Screenshot
