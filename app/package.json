@@ -13,9 +13,9 @@
   "dependencies": {
     "electron-config": "^1.0.0",
     "electron-context-menu": "^0.9.1",
-    "electron-dl": "^1.9.0",
-    "electron-log": "^2.2.6",
+    "electron-dl": "^1.12.0",
+    "electron-log": "^2.2.16",
     "electron-referer": "^0.3.0",
-    "electron-updater": "^2.4.4"
+    "electron-updater": "^2.23.3"
   }
 }
