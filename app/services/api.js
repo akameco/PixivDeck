@@ -48,8 +48,8 @@ export async function fetchAuth({
   password,
 }: UserInfo): Promise<AuthResponse> {
   const data = {
-    client_id: 'bYGKuGVw91e0NMfPGp44euvGt59s',
-    client_secret: 'HP3RmkgAmEGro0gn1x9ioawQE8WMfvLXDz3ZqxpK',
+    client_id: 'MOBrBDS8blbauoSck0ZfDbtuzpyT',
+    client_secret: 'lsACyCD94FhDUtGTXi3QzcFE2uU1hqtDaKeqrdwj',
     get_secure_url: 1,
     grant_type: 'password',
     username,
@@ -77,8 +77,9 @@ function fetchFactory(opts?: Object) {
     baseURL: 'https://app-api.pixiv.net',
     headers: {
       'App-OS': 'ios',
-      'App-OS-Version': '9.3.3',
-      'App-Version': '6.0.9',
+      'App-OS-Version': '10.3.1',
+      'App-Version': '6.7.1',
+      'User-Agent': 'PixivIOSApp/6.7.1 (iOS 10.3.1; iPhone8,1)',
       ...opts,
     },
   })
