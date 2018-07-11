@@ -19,7 +19,7 @@ const { app, BrowserWindow, ipcMain, shell } = electron
 let mainWindow
 
 // 常にbeta版なのでいついかなる時でもデバック可能なのだ...!もちろん配布後であっても...!
-require('electron-debug')({ enabled: true })
+require('electron-debug')()
 
 if (
   process.env.NODE_ENV === 'development' ||

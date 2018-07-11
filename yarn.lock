@@ -4069,9 +4069,9 @@ electron-builder@^20.19.2:
     update-notifier "^2.5.0"
     yargs "^12.0.1"
 
-electron-debug@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/electron-debug/-/electron-debug-1.5.0.tgz#d88c02146efb7fc5ae1b21eac56fbe4987eae50c"
+electron-debug@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/electron-debug/-/electron-debug-2.0.0.tgz#3059a6557acbfb091f138d83875f57bac80cea6d"
   dependencies:
     electron-is-dev "^0.3.0"
     electron-localshortcut "^3.0.0"
