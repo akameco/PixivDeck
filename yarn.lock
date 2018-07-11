@@ -4821,25 +4821,24 @@ extglob@^2.0.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
-extract-react-intl-messages@^0.8.2:
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/extract-react-intl-messages/-/extract-react-intl-messages-0.8.2.tgz#abb71550c9386183bb38494469ae0def141f70a8"
+extract-react-intl-messages@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/extract-react-intl-messages/-/extract-react-intl-messages-0.10.0.tgz#42f8779f5af291be59649d0963dfe22bf6542974"
   dependencies:
-    extract-react-intl "^0.5.2"
+    extract-react-intl "^0.6.0"
     flat "^4.0.0"
-    js-yaml "^3.10.0"
-    load-json-file "^4.0.0"
-    lodash.merge "^4.6.1"
-    meow "^4.0.0"
+    js-yaml "^3.12.0"
+    load-json-file "^5.0.0"
+    lodash.pick "^4.4.0"
+    meow "^5.0.0"
     mkdirp "^0.5.1"
     sort-keys "^2.0.0"
     write-json-file "^2.3.0"
 
-extract-react-intl@^0.5.0, extract-react-intl@^0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/extract-react-intl/-/extract-react-intl-0.5.2.tgz#a5b5ef0301b65bf1b3782b482428fc2d2d859f50"
+extract-react-intl@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/extract-react-intl/-/extract-react-intl-0.6.0.tgz#1696c2ce05513d936272af4b6663700df8414b55"
   dependencies:
-    babel-core "^6.24.1"
     babel-plugin-react-intl "^2.3.1"
     glob "^7.1.1"
     lodash.merge "^4.6.1"
@@ -6833,13 +6832,6 @@ js-tokens@^3.0.0, js-tokens@^3.0.2:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
 
-js-yaml@^3.10.0:
-  version "3.10.0"
-  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.10.0.tgz#2e78441646bd4682e963f22b6e92823c309c62dc"
-  dependencies:
-    argparse "^1.0.7"
-    esprima "^4.0.0"
-
 js-yaml@^3.12.0, js-yaml@^3.7.0, js-yaml@^3.9.0:
   version "3.12.0"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.12.0.tgz#eaed656ec8344f10f527c6bfa1b6e2244de167d1"
@@ -7179,6 +7171,15 @@ load-json-file@^2.0.0:
 load-json-file@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/load-json-file/-/load-json-file-4.0.0.tgz#2f5f45ab91e33216234fd53adab668eb4ec0993b"
+  dependencies:
+    graceful-fs "^4.1.2"
+    parse-json "^4.0.0"
+    pify "^3.0.0"
+    strip-bom "^3.0.0"
+
+load-json-file@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/load-json-file/-/load-json-file-5.0.0.tgz#5b5ef7cb6e1e337408e02fe01fe679ccc0cd18d5"
   dependencies:
     graceful-fs "^4.1.2"
     parse-json "^4.0.0"
@@ -7541,6 +7542,20 @@ meow@^4.0.0:
     read-pkg-up "^3.0.0"
     redent "^2.0.0"
     trim-newlines "^2.0.0"
+
+meow@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/meow/-/meow-5.0.0.tgz#dfc73d63a9afc714a5e371760eb5c88b91078aa4"
+  dependencies:
+    camelcase-keys "^4.0.0"
+    decamelize-keys "^1.0.0"
+    loud-rejection "^1.0.0"
+    minimist-options "^3.0.1"
+    normalize-package-data "^2.3.4"
+    read-pkg-up "^3.0.0"
+    redent "^2.0.0"
+    trim-newlines "^2.0.0"
+    yargs-parser "^10.0.0"
 
 merge-descriptors@1.0.1:
   version "1.0.1"
@@ -11997,7 +12012,7 @@ yaml-flat-loader@^0.1.0:
     flat "^2.0.1"
     js-yaml "^3.8.4"
 
-yargs-parser@^10.1.0:
+yargs-parser@^10.0.0, yargs-parser@^10.1.0:
   version "10.1.0"
   resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-10.1.0.tgz#7202265b89f7e9e9f2e5765e0fe735a905edbaa8"
   dependencies:
