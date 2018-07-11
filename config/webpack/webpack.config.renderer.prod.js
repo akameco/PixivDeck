@@ -6,7 +6,7 @@ import BabiliPlugin from 'babili-webpack-plugin'
 import baseConfig from './webpack.config.base'
 
 export default merge.smart(baseConfig, {
-  devtool: 'source-map',
+  devtool: false,
 
   target: 'electron-renderer',
 
