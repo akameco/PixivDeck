@@ -1,90 +1,86 @@
 components:
-  Column:
-    bookmarkFilter: Filter Bookmarks
-  ColumnHeaderBookmark:
-    bookmarkFilter: Filter Bookmarks
   Dropdown:
     logout: Logout
     setting: Settings
-  FollowButton:
-    follow: Follow
-    following: Following
-    unFollow: Unfollow
-  Header:
-    logout: Logout
-    setting: Settings
   LoginModal:
-    error: Login Error
-    errorInfo: Check your username and password.
     login: Login
-    loginLoading: Logging in...
+    error: Login Error
     password: Password
     username: Username
+    errorInfo: Check your username and password.
+    loginLoading: Logging in...
   UserDrawer:
-    addColumn: Add to Column
-    tabIllust: 'Illustration ({count})'
     tabManga: 'Manga ({count})'
+    tabIllust: 'Illustration ({count})'
+    addColumn: Add to Column
+  ColumnHeaderBookmark:
+    bookmarkFilter: Filter Bookmarks
 containers:
-  AddColumnModal:
-    bookmark: Bookmarks
-    header: Select a Column
-    history: History
-    new: New by...
-    private: Private
-    public: Public
-    r18ranking: R-18 Rankings
-    ranking: Rankings
-    recommended: Recommended for You
-  AddNewColumnButton:
-    addColumn: Add column
+  SearchField:
+    users: users in
+    search: Search
+    keywordSearch: Search by keyword
+  ColumnRanking:
+    day: Daily Rankings
+    week: Weekly Rankings
+    month: Monthly Rankings
+    day_male: Popular Male Rankings
+    day_female: Popular Female Rankings
+    week_rookie: Rookie Rankings
+    week_original: Original Rankings
   BoxContainer:
+    save: Save Original Image
+    showUser: Show User Info
     bookmark: Add Bookmark
     openPixiv: Open Pixiv Page
     privateBookmark: Add Private Bookmark
-    save: Save Original Image
-    showUser: Show User Info
-  ColumnBookmark:
-    private: Private Bookmarks
-    public: Public Bookmarks
+  SettingModal:
+    limit: Restrict access
+    cache: Delete cache (unsafe)
+    r18Link: pixiv - r18
+    language: Language
+    tagFilter: Tag filter
+    uiSetting: UI setting
+    showOnlyImg: Show only image
+    showCaption: Show Caption
+    r18FilterDesc: >-
+      You can add "R-18" and "R-18G" into the tag filter to remove R18 contents
+      in this client,
+
+      or add "-R-18 -R-18G" into the query to remove R18 contents in a specific
+      search.
+
+      You can also change the restriction on your Pixiv account's setting below,
+      which will take effect globally.
+  AddColumnModal:
+    new: New by...
+    header: Select a Column
+    public: Public
+    history: History
+    ranking: Rankings
+    private: Private
+    bookmark: Bookmarks
+    r18ranking: R-18 Rankings
+    recommended: Recommended for You
   ColumnFollow:
-    private: Private following
     public: Public following
+    private: Private following
+  FollowButton:
+    follow: Follow
+    unFollow: Unfollow
+    following: Following
   ColumnHistory:
     title: History
-  ColumnRanking:
-    day: Daily Rankings
-    day_female: Popular Female Rankings
-    day_male: Popular Male Rankings
-    month: Monthly Rankings
-    week: Weekly Rankings
-    week_original: Original Rankings
-    week_rookie: Rookie Rankings
+  ColumnBookmark:
+    public: Public Bookmarks
+    private: Private Bookmarks
   ColumnRankingR18:
-    day_female_r18: R-18 Female Rankings
-    day_male_r18: R-18 Male Rankings
     day_r18: R-18 Daily Rankings
     week_r18: R-18 Weekly Rankings
     week_r18g: R-18 G Rankings
+    day_male_r18: R-18 Male Rankings
+    day_female_r18: R-18 Female Rankings
+  AddNewColumnButton:
+    addColumn: Add column
   ColumnRecommended:
     reccomended: Recommended for You
-  FollowButton:
-    follow: Follow
-    following: Following
-    unFollow: Unfollow
-  SearchField:
-    keywordSearch: Search by keyword
-    search: Search
-    users: users in
-  SettingModal:
-    cache: Delete cache (unsafe)
-    language: Language
-    limit: Restrict access
-    r18FilterDesc: |-
-      You can add "R-18" and "R-18G" into the tag filter to remove R18 contents in this client,
-      or add "-R-18 -R-18G" into the query to remove R18 contents in a specific search.
-      You can also change the restriction on your Pixiv account's setting below, which will take effect globally.
-    r18Link: pixiv - r18
-    showCaption: Show Caption
-    showOnlyImg: Show only image
-    tagFilter: Tag filter
-    uiSetting: UI setting

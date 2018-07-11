@@ -6,15 +6,9 @@ exports[`check whitelist [ja] 1`] = `Array []`;
 
 exports[`snapshot [en] 1`] = `
 Object {
-  "components.Column.bookmarkFilter": "Filter Bookmarks",
   "components.ColumnHeaderBookmark.bookmarkFilter": "Filter Bookmarks",
   "components.Dropdown.logout": "Logout",
   "components.Dropdown.setting": "Settings",
-  "components.FollowButton.follow": "Follow",
-  "components.FollowButton.following": "Following",
-  "components.FollowButton.unFollow": "Unfollow",
-  "components.Header.logout": "Logout",
-  "components.Header.setting": "Settings",
   "components.LoginModal.error": "Login Error",
   "components.LoginModal.errorInfo": "Check your username and password.",
   "components.LoginModal.login": "Login",
