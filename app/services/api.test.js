@@ -18,12 +18,12 @@ describe('API', () => {
     password: PASSWORD,
   }
 
-  test('login success', async () => {
+  test.skip('login success', async () => {
     const res = await fetchAuth(info)
     expect(res.user.account).toEqual(USERNAME)
   })
 
-  test('no params', async () => {
+  test.skip('no params', async () => {
     const { accessToken } = await fetchAuth(info)
     const { result } = await getRequest(
       '/v1/illust/ranking?mode=day',
@@ -33,7 +33,7 @@ describe('API', () => {
     expect(result).toHaveProperty('nextUrl')
   })
 
-  test('have nextUrl', async () => {
+  test.skip('have nextUrl', async () => {
     const { accessToken } = await fetchAuth(info)
     const { result } = await getRequest(
       '/v1/illust/ranking',
@@ -43,7 +43,7 @@ describe('API', () => {
     expect(result).toHaveProperty('nextUrl')
   })
 
-  test('get success', async () => {
+  test.skip('get success', async () => {
     const { accessToken } = await fetchAuth(info)
 
     const { result } = await getRequest(
@@ -54,7 +54,7 @@ describe('API', () => {
     expect(result).toHaveProperty('profile')
   })
 
-  test('post success', async () => {
+  test.skip('post success', async () => {
     const { accessToken } = await fetchAuth(info)
 
     const postData = await postRequest(
