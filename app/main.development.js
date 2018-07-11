@@ -18,11 +18,6 @@ const Config = require('electron-config')
 const { app, BrowserWindow, ipcMain, shell } = electron
 let mainWindow
 
-if (process.env.NODE_ENV === 'production') {
-  const sourceMapSupport = require('source-map-support')
-  sourceMapSupport.install()
-}
-
 // 常にbeta版なのでいついかなる時でもデバック可能なのだ...!もちろん配布後であっても...!
 require('electron-debug')({ enabled: true })
 
