@@ -19,12 +19,15 @@ export type CLEAR_ERROR_TYPE = 'LoginModal/CLEAR_ERROR'
 
 export type SET_ACCOUNT_TYPE = 'LoginModal/SET_ACCOUNT'
 
+export type SET_REFRESH_TOKEN_TYPE = 'LoginModal/SET_REFRESH_TOKEN'
+
 export type Action =
   | {|
       +type: SET_AUTH_TYPE | LOGIN_REQUEST_TYPE,
       username: string,
       password: string,
     |}
+  | {| +type: SET_REFRESH_TOKEN_TYPE, refreshToken: string |}
   | {|
       +type: SET_ACCOUNT_TYPE,
       +account: Account,

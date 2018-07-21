@@ -34,6 +34,7 @@ function normalizeData(response: Object): Response {
 type UserInfo = {
   username: string,
   password: string,
+  refreshToken?: string,
 }
 
 const AUTH_URL = 'https://oauth.secure.pixiv.net/auth/token'
@@ -43,28 +44,39 @@ type AuthResponse = {
   user: Object,
 }
 
+const defaultReqConfig = {
+  client_id: 'MOBrBDS8blbauoSck0ZfDbtuzpyT',
+  client_secret: 'lsACyCD94FhDUtGTXi3QzcFE2uU1hqtDaKeqrdwj',
+  get_secure_url: 1,
+}
+
 export async function fetchAuth({
   username,
   password,
+  refreshToken,
 }: UserInfo): Promise<AuthResponse> {
-  const data = {
-    client_id: 'MOBrBDS8blbauoSck0ZfDbtuzpyT',
-    client_secret: 'lsACyCD94FhDUtGTXi3QzcFE2uU1hqtDaKeqrdwj',
-    get_secure_url: 1,
-    grant_type: 'password',
-    username,
-    password,
-  }
+  const data = refreshToken
+    ? {
+        ...defaultReqConfig,
+        grant_type: 'refresh_token',
+        refresh_token: refreshToken,
+      }
+    : {
+        ...defaultReqConfig,
+        grant_type: 'password',
+        username,
+        password,
+      }
 
   const {
     data: { response },
   } = await axios.post(AUTH_URL, stringify(data), {
     transformResponse: [
-      function(data) {
+      rowData => {
         try {
-          return JSON.parse(data)
+          return JSON.parse(rowData)
         } catch (err) {
-          return data
+          return rowData
         }
       },
     ],

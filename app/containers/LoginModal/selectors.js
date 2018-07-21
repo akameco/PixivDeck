@@ -10,10 +10,14 @@ export const makeSelectUsername = () =>
 export const makeSelectPassword = () =>
   createSelector(selectAuth, s => s.password)
 
+export const makeSelectRefreshToken = () =>
+  createSelector(selectAuth, s => s.refreshToken)
+
 export const makeSelectInfo = () =>
   createStructuredSelector({
     username: makeSelectUsername(),
     password: makeSelectPassword(),
+    refreshToken: makeSelectRefreshToken(),
   })
 
 export const makeSelectIsLoading = () =>

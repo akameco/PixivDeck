@@ -3,6 +3,7 @@
 exports[`makeSelectInfo 1`] = `
 Object {
   "password": "fakePassword",
+  "refreshToken": null,
   "username": "fakeName",
 }
 `;

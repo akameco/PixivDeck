@@ -3,6 +3,7 @@ import type { Action } from './actionTypes.js'
 import {
   SET_AUTH,
   LOGIN_REQUEST,
+  SET_REFRESH_TOKEN,
   SET_ACCOUNT,
   CLEAR_ERROR,
   LOGIN_FAILURE,
@@ -26,6 +27,13 @@ export function loginRequest(username: string, password: string): Action {
     type: LOGIN_REQUEST,
     username,
     password,
+  }
+}
+
+export function setRefreshToken(refreshToken: string): Action {
+  return {
+    type: SET_REFRESH_TOKEN,
+    refreshToken,
   }
 }
 
