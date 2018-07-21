@@ -6,6 +6,7 @@ import * as Actions from './constants'
 export type State = {
   username: string,
   password: string,
+  refreshToken: ?string,
   isLoading: boolean,
   isLoginFailure: boolean,
   account: ?Account,
@@ -14,6 +15,7 @@ export type State = {
 export const initialState: State = {
   username: '',
   password: '',
+  refreshToken: null,
   isLoading: false,
   isLoginFailure: false,
   account: null,
@@ -35,6 +37,8 @@ export default function(state: State = initialState, action: Action): State {
       return { ...state, isLoginFailure: false }
     case Actions.SET_ACCOUNT:
       return { ...state, account: action.account }
+    case Actions.SET_REFRESH_TOKEN:
+      return { ...state, refreshToken: action.refreshToken }
     default:
       return state
   }

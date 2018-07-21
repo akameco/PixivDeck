@@ -6,6 +6,7 @@ Object {
   "isLoading": false,
   "isLoginFailure": false,
   "password": "",
+  "refreshToken": null,
   "username": "",
 }
 `;
@@ -16,6 +17,7 @@ Object {
   "isLoading": false,
   "isLoginFailure": true,
   "password": "",
+  "refreshToken": null,
   "username": "",
 }
 `;
@@ -41,6 +43,7 @@ Object {
   "isLoading": false,
   "isLoginFailure": false,
   "password": "",
+  "refreshToken": null,
   "username": "",
 }
 `;
@@ -51,6 +54,7 @@ Object {
   "isLoading": false,
   "isLoginFailure": false,
   "password": "world",
+  "refreshToken": null,
   "username": "hello",
 }
 `;
@@ -61,6 +65,7 @@ Object {
   "isLoading": false,
   "isLoginFailure": false,
   "password": "",
+  "refreshToken": null,
   "username": "",
 }
 `;

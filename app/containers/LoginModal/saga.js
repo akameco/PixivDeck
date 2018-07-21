@@ -10,6 +10,7 @@ import {
   clearError,
   setAuth,
   setAccount,
+  setRefreshToken,
 } from './actions'
 import * as Actions from './constants'
 import { makeSelectInfo } from './selectors'
@@ -25,10 +26,14 @@ function* authorize({ username, password }): Saga<void> {
   // エラーを非表示
   yield put(clearError())
   try {
-    const { user: account } = yield call(fetchAuth, { username, password })
+    const { user: account, refreshToken } = yield call(fetchAuth, {
+      username,
+      password,
+    })
     yield put(setAuth(username, password))
     yield put(setAccount(account))
     yield put(closeModal())
+    yield put(setRefreshToken(refreshToken))
   } catch (err) {
     yield put(loginFailure())
   } finally {

@@ -12,6 +12,7 @@ import type {
   SET_AUTH_TYPE,
   CLEAR_ERROR_TYPE,
   SET_ACCOUNT_TYPE,
+  SET_REFRESH_TOKEN_TYPE,
 } from './actionTypes.js'
 
 export const LOGIN_REQUEST: LOGIN_REQUEST_TYPE = 'LoginModal/LOGIN_REQUEST'
@@ -29,3 +30,5 @@ export const LOGOUT: LOGOUT_TYPE = 'LoginModal/LOGOUT'
 export const SET_AUTH: SET_AUTH_TYPE = 'LoginModal/SET_AUTH'
 export const CLEAR_ERROR: CLEAR_ERROR_TYPE = 'LoginModal/CLEAR_ERROR'
 export const SET_ACCOUNT: SET_ACCOUNT_TYPE = 'LoginModal/SET_ACCOUNT'
+export const SET_REFRESH_TOKEN: SET_REFRESH_TOKEN_TYPE =
+  'LoginModal/SET_REFRESH_TOKEN'
