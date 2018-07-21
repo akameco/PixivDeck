@@ -29,7 +29,7 @@ export default function configureStore(initialState: Object = {}): Store {
   persistor = persistStore(store, {
     storage: localForage,
     blacklist: ['IllustById', 'UserById'],
-    keyPrefix: `PixivDeck-v${version}`,
+    keyPrefix: `PixivDeck-v${version.split('.')[0]}`,
   })
 
   if (module.hot) {
