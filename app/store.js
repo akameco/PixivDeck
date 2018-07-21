@@ -28,7 +28,7 @@ export default function configureStore(initialState: Object = {}): Store {
 
   persistor = persistStore(store, {
     storage: localForage,
-    blacklist: ['IllustById', 'UserById'],
+    blacklist: ['IllustById', 'UserById', 'IllustPreview', 'MangaPreview'],
     keyPrefix: `PixivDeck-v${version.split('.')[0]}`,
   })
 
