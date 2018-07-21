@@ -1,14 +1,15 @@
+// @flow
 /* eslint global-require: 0, flowtype-errors/show-errors: 0, camelcase: 1 */
 import electron from 'electron'
 import referer from 'electron-referer'
 import ms from 'ms'
-import appMenu from './menu'
 
 import { autoUpdater } from 'electron-updater'
 import log from 'electron-log'
 
 import ua from 'universal-analytics'
 import uuid from 'uuid'
+import appMenu from './menu'
 
 autoUpdater.logger = log
 autoUpdater.logger.transports.file.level = 'info'
@@ -19,7 +20,7 @@ const { app, BrowserWindow, ipcMain, shell } = electron
 let mainWindow
 
 // 常にbeta版なのでいついかなる時でもデバック可能なのだ...!もちろん配布後であっても...!
-require('electron-debug')()
+require('electron-debug')({ enabled: true, showDevTools: false })
 
 if (
   process.env.NODE_ENV === 'development' ||
@@ -27,12 +28,13 @@ if (
 ) {
   const path = require('path')
   const p = path.join(__dirname, '..', 'app', 'node_modules')
+  // $FlowFixMe
   require('module').globalPaths.push(p)
 }
 
 require('electron-context-menu')()
 
-const installExtensions = async () => {
+const installExtensions = () => {
   const loadDevtool = require('electron-load-devtool')
   const extensions = ['REACT_DEVELOPER_TOOLS', 'REDUX_DEVTOOLS']
 
