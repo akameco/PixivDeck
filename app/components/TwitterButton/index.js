@@ -6,7 +6,7 @@ import { A } from './styles'
 const TwitterButton = ({ url }: { url: string }) => {
   return (
     <A href={url} target="_blank">
-      <Button label="twitter" />
+      <Button label="Twitter" />
     </A>
   )
 }
