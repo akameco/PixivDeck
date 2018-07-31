@@ -42,8 +42,12 @@ const installExtensions = () => {
     // chromeにreact&redux devtoolを開発者が入れておく必要がある
     // 個別のアプリごとにインストールするライブラリもあるが、確実に有利な点一つがある。
     // 管理しなくても常に最新の開発者ツールを使えることだ
-    extensions.map(name => loadDevtool(loadDevtool[name], { enabled: true }))
-  ).catch(console.log)
+    extensions.map(name =>
+      loadDevtool(loadDevtool[name], {
+        enabled: true,
+      })
+    )
+  )
 }
 
 const config = new Config({
@@ -117,12 +121,16 @@ app.on('activate', () => {
 })
 
 app.on('ready', async () => {
-  // if (
-  // process.env.NODE_ENV === 'development' ||
-  // process.env.DEBUG_PROD === 'true'
-  // ) {
-  await installExtensions()
-  // }
+  if (
+    process.env.NODE_ENV === 'development' ||
+    process.env.DEBUG_PROD === 'true'
+  ) {
+    try {
+      await installExtensions()
+    } catch (err) {
+      console.error(err) // eslint-disable-line no-console
+    }
+  }
 
   mainWindow = createMainWindow()
   mainWindow.show()
