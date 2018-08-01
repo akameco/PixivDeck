@@ -7,7 +7,6 @@ exports[`snapshot 1`] = `
 }
 
 .c0:hover {
-  -webkit-text-decoration: underline;
   text-decoration: underline;
 }
 

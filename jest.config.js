@@ -1,6 +1,7 @@
 'use strict'
 
 module.exports = {
+  testURL: 'http://localhost',
   modulePaths: ['/app'],
   moduleFileExtensions: ['js', 'json'],
   setupFiles: ['raf/polyfill', '<rootDir>/jest.setup.js'],
