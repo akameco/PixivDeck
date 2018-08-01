@@ -4,6 +4,7 @@ exports[`ADD_COLUMN_SUCCESS 1`] = `
 Object {
   "day_male_r18": Object {
     "ids": Array [],
+    "interval": 10800000,
     "nextUrl": null,
   },
 }
