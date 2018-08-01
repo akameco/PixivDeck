@@ -11,17 +11,13 @@ import ColumnRoot from 'components/ColumnRoot'
 import ColumnBody from 'components/ColumnBody'
 import ColumnHeader from 'components/ColumnHeader'
 import type { ColumnProps } from '../ColumnManager'
-import type { ColumnId } from './reducer'
 import { makeSelectIllusts } from './selectors'
 import * as actions from './actions'
 import messages from './messages'
 
-type OP = {
-  id: ColumnId,
-}
-
 type Props = {
   illusts: Array<Illust>,
+  onFetch: () => void,
   onNext: () => void,
   actions: typeof actions,
 } & OP &
@@ -38,6 +34,12 @@ class ColumnRanking extends React.Component<Props & InjectProp> {
     actions.startWatch(id)
   }
 
+  handleTop = e => {
+    this.props.onHeaderClick(e)
+    this.props.actions.clere(this.props.id)
+    this.props.onFetch(this.props.id)
+  }
+
   render() {
     const { illusts, id, onClose, intl, onHeaderClick, setNode } = this.props
 
@@ -49,7 +51,7 @@ class ColumnRanking extends React.Component<Props & InjectProp> {
         <ColumnHeader
           name={intl.formatMessage(messages[id])}
           onClose={onClose}
-          onTopClick={onHeaderClick}
+          onTopClick={this.handleTop}
         />
         <ColumnBody isLoading={illusts.length <= 0}>
           <IllustList
@@ -69,8 +71,11 @@ const mapState = createStructuredSelector({
   illusts: makeSelectIllusts(),
 })
 
-function mapDispatch(dispatch: Dispatch) {
+function mapDispatch(dispatch: Dispatch, { id }: OP) {
   return {
+    onFetch() {
+      dispatch(actions.fetch(id))
+    },
     actions: bindActionCreators(actions, dispatch),
   }
 }

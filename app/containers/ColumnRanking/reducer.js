@@ -30,6 +30,12 @@ export default function(state: State = initialState, action: Action): State {
         nextUrl: null,
         interval: ms('3h'),
       })
+    case Actions.CLERE:
+      return update(state, action, {
+        ids: [],
+        nextUrl: null,
+        interval: ms('3h'),
+      })
     default:
       return baseReducer('ColumnRanking', Actions, state, action)
   }
