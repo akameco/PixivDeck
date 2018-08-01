@@ -15,7 +15,7 @@ init:
 install:
   - ps: Install-Product node 8 x64
   - npm install
-  - npm install electron-builder@next --dev # force install next version to test electron-builder
+  - npm install electron-builder@next # force install next version to test electron-builder
 
 test_script:
   - npm run test
