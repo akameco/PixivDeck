@@ -38,6 +38,12 @@ class ColumnRanking extends React.Component<Props & InjectProp> {
     actions.startWatch(id)
   }
 
+  handleTop = e => {
+    this.props.onHeaderClick(e)
+    this.props.actions.clere(this.props.id)
+    this.props.actions.fetch(this.props.id)
+  }
+
   render() {
     const { illusts, id, onClose, intl, onHeaderClick, setNode } = this.props
 
@@ -49,7 +55,7 @@ class ColumnRanking extends React.Component<Props & InjectProp> {
         <ColumnHeader
           name={intl.formatMessage(messages[id])}
           onClose={onClose}
-          onTopClick={onHeaderClick}
+          onTopClick={this.handleTop}
         />
         <ColumnBody isLoading={illusts.length <= 0}>
           <IllustList
