@@ -18,6 +18,7 @@
     "start": "cross-env NODE_ENV=production electron ./app/",
     "dev": "cross-env START_HOT=1 npm run hot-updates-server",
     "test": "npm run jest",
+    "test:ci": "cross-env NODE_ENV=test npm run flow && npm run jest --ci",
     "test:watch": "cross-env NODE_ENV=test jest --watch",
     "jest": "cross-env NODE_ENV=test jest",
     "fmt": "prettier --write '**/*.{js,json,md}'",
@@ -38,7 +39,7 @@
     "release": "npm run build && build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "precommit": "lint-staged"
+    "precommit": "npm run flow && lint-staged"
   },
   "lint-staged": {
     "*.{js,json,md}": [
