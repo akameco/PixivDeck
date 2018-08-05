@@ -41,7 +41,7 @@ install:
 # - yarn add electron-builder@next --dev # force install next version to test electron-builder
 
 script:
-- npm run test
+- npm run test:ci
 
 deploy:
   provider: script
