@@ -9,7 +9,7 @@ import type { Mode } from './reducer'
 import * as selectors from './selectors'
 
 type Action = {
-  id: R18Mode,
+  +id: R18Mode,
 }
 
 export function* addColumn({ id }: Action): Saga<void> {
