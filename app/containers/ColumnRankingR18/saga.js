@@ -5,7 +5,7 @@ import { addTable } from 'containers/ColumnManager/actions'
 import * as api from '../Column/sagas'
 import * as Actions from './constants'
 import * as actions from './actions'
-import type { Mode } from './reducer'
+import type { R18Mode } from './reducer'
 import * as selectors from './selectors'
 
 type Action = {
@@ -27,6 +27,7 @@ export function* addColumn({ id }: Action): Saga<void> {
 const getEndpoint = id => `/v1/illust/ranking?mode=${id}`
 
 export function* fetch(action: Action): Saga<void> {
+  const { id } = action
   const { ids, nextUrl } = yield select(selectors.makeSelectColumn(), action)
   const endpoint = nextUrl ? nextUrl : getEndpoint(action.id)
   yield call(api.fetchColumn, endpoint, action.id, actions, ids)
@@ -54,6 +55,6 @@ export function* watchNewIllust(): Saga<*> {
 
 export default function* root(): Saga<void> {
   yield takeEvery(Actions.ADD_COLUMN, addColumn)
-  yield takeEvery([Actions.FETCH, Actions.FETCH_NEXT], fetch)
+  yield takeEvery(Actions.FETCH, fetch)
   yield fork(watchNewIllust)
 }

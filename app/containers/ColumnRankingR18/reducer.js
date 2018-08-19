@@ -16,7 +16,7 @@ export type ColumnId = R18Mode
 
 export type ColumnRankingR18 = { interval: number } & BaseColumn
 
-export type State = $Shape<{ [Mode]: ColumnRankingR18 }>
+export type State = $Shape<{ [R18Mode]: ColumnRankingR18 }>
 
 export const initialState: State = {}
 

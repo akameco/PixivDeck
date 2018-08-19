@@ -2,7 +2,7 @@
 import { createSelector } from 'reselect'
 import type { State } from 'types/state'
 import { getIllustById } from '../IllustById/selectors'
-import type { Mode } from './reducer'
+import type { R18Mode } from './reducer'
 
 type Props = {
   id: R18Mode,
@@ -15,7 +15,7 @@ export const makeSelectModes = () =>
 
 const getColumn = (state: State, { id }: Props) => state.ColumnRankingR18[id]
 
-export const makeSelectColumn = () => createSelector(getColumn, s => s)
+export const makeSelectColumn = id => createSelector(getColumn(id), s => s)
 
 // $FlowFixMe
 export const getInterval = createSelector(getColumn, s => s.interval)

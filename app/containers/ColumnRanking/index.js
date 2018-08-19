@@ -10,10 +10,15 @@ import IllustList from 'components/IllustList'
 import ColumnRoot from 'components/ColumnRoot'
 import ColumnBody from 'components/ColumnBody'
 import ColumnHeader from 'components/ColumnHeader'
+import type { ColumnId } from './reducer'
 import type { ColumnProps } from '../ColumnManager'
 import { makeSelectIllusts } from './selectors'
 import * as actions from './actions'
 import messages from './messages'
+
+type OP = {
+  id: ColumnId,
+}
 
 type Props = {
   illusts: Array<Illust>,
@@ -37,7 +42,7 @@ class ColumnRanking extends React.Component<Props & InjectProp> {
   handleTop = e => {
     this.props.onHeaderClick(e)
     this.props.actions.clere(this.props.id)
-    this.props.onFetch(this.props.id)
+    this.props.onFetch()
   }
 
   render() {
