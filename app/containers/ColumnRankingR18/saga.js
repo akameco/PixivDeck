@@ -1,19 +1,19 @@
 // @flow
-import type { Saga } from 'redux-saga'
-import { put, select, call, takeEvery } from 'redux-saga/effects'
+import { delay, type Saga } from 'redux-saga'
+import { put, select, call, takeEvery, fork, take } from 'redux-saga/effects'
 import { addTable } from 'containers/ColumnManager/actions'
-import * as fetchColumn from '../Column/sagas'
+import * as api from '../Column/sagas'
 import * as Actions from './constants'
 import * as actions from './actions'
 import type { R18Mode } from './reducer'
-import { makeSelectColumn, makeSelectModes } from './selectors'
+import * as selectors from './selectors'
 
 type Action = {
   +id: R18Mode,
 }
 
 export function* addColumn({ id }: Action): Saga<void> {
-  const modes: Array<?R18Mode> = yield select(makeSelectModes())
+  const modes: Array<?R18Mode> = yield select(selectors.makeSelectModes())
 
   if (modes.every(v => v !== id)) {
     yield put(actions.addColumnSuccess(id))
@@ -24,14 +24,37 @@ export function* addColumn({ id }: Action): Saga<void> {
   )
 }
 
-function* fetchRanking(action: Action): Saga<*> {
-  // $FlowFixMe
-  const { ids, nextUrl } = yield select(makeSelectColumn(), action)
-  const endpoint = nextUrl ? nextUrl : `/v1/illust/ranking?mode=${action.id}`
-  yield call(fetchColumn.fetchColumn, endpoint, action.id, actions, ids)
+const getEndpoint = id => `/v1/illust/ranking?mode=${id}`
+
+export function* fetch(action: Action): Saga<void> {
+  const { id } = action
+  const { ids, nextUrl } = yield select(selectors.makeSelectColumn(), action)
+  const endpoint = nextUrl ? nextUrl : getEndpoint(action.id)
+  yield call(api.fetchColumn, endpoint, action.id, actions, ids)
+}
+
+export function* fetchNew({ id }: Action): Saga<void> {
+  const { ids } = yield select(selectors.makeSelectColumn(), { id })
+  yield call(
+    api.fetchNew,
+    { endpoint: getEndpoint(id), id, ids, order: 'overwrite' },
+    actions
+  )
+}
+
+// $FlowFixMe
+export function* watchNewIllust(): Saga<*> {
+  while (true) {
+    const { id } = yield take(Actions.START_WATCH)
+    const interval = yield select(selectors.getInterval, { id })
+    yield delay(interval)
+    yield call(fetchNew, { id })
+    yield put(actions.watchNew(id))
+  }
 }
 
 export default function* root(): Saga<void> {
   yield takeEvery(Actions.ADD_COLUMN, addColumn)
-  yield takeEvery([Actions.FETCH, Actions.FETCH_NEXT], fetchRanking)
+  yield takeEvery(Actions.FETCH, fetch)
+  yield fork(watchNewIllust)
 }

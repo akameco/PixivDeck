@@ -3,6 +3,7 @@ import type { Action } from './actionTypes.js'
 import {
   ADD_COLUMN,
   ADD_COLUMN_SUCCESS,
+  CLERE,
   FETCH,
   FETCH_FAILRE,
   WATCH_NEW,
@@ -22,6 +23,13 @@ export function addColumn(id: ColumnId): Action {
 export function addColumnSuccess(id: ColumnId): Action {
   return {
     type: ADD_COLUMN_SUCCESS,
+    id,
+  }
+}
+
+export function clere(id: ColumnId): Action {
+  return {
+    type: CLERE,
     id,
   }
 }

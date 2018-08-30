@@ -3,13 +3,13 @@ import type { Action } from './actionTypes.js'
 import {
   ADD_COLUMN,
   ADD_COLUMN_SUCCESS,
-  FETCH_NEXT,
-  FETCH_NEXT_FAILRE,
+  CLERE,
   FETCH,
   FETCH_FAILRE,
+  WATCH_NEW,
+  START_WATCH,
   SET_NEXT_URL,
   FETCH_SUCCESS,
-  FETCH_NEXT_SUCCESS,
 } from './constants'
 import type { ColumnId } from './reducer'
 
@@ -27,16 +27,9 @@ export function addColumnSuccess(id: ColumnId): Action {
   }
 }
 
-export function fetchNext(id: ColumnId): Action {
+export function clere(id: ColumnId): Action {
   return {
-    type: FETCH_NEXT,
-    id,
-  }
-}
-
-export function fetchNextFailre(id: ColumnId): Action {
-  return {
-    type: FETCH_NEXT_FAILRE,
+    type: CLERE,
     id,
   }
 }
@@ -55,6 +48,20 @@ export function fetchFailre(id: ColumnId): Action {
   }
 }
 
+export function watchNew(id: ColumnId): Action {
+  return {
+    type: WATCH_NEW,
+    id,
+  }
+}
+
+export function startWatch(id: ColumnId): Action {
+  return {
+    type: START_WATCH,
+    id,
+  }
+}
+
 export function setNextUrl(id: ColumnId, nextUrl: string): Action {
   return {
     type: SET_NEXT_URL,
@@ -66,14 +73,6 @@ export function setNextUrl(id: ColumnId, nextUrl: string): Action {
 export function fetchSuccess(id: ColumnId, ids: Array<number>): Action {
   return {
     type: FETCH_SUCCESS,
-    id,
-    ids,
-  }
-}
-
-export function fetchNextSuccess(id: ColumnId, ids: Array<number>): Action {
-  return {
-    type: FETCH_NEXT_SUCCESS,
     id,
     ids,
   }
