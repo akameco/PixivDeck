@@ -17,10 +17,21 @@ type Props = {
 export default class IllustPreview extends React.PureComponent<Props> {
   componentWillUnmount() {
     this.props.onUnLoad()
+    window.removeEventListener('keydown', this.escToClose, false)
+  }
+
+  componentDidMount() {
+    window.addEventListener('keydown', this.escToClose.bind(this), false)
   }
 
   handleOnClose = () => {
     this.props.onClose()
+  }
+
+  escToClose = (event: Event) => {
+    if (event.keyCode === 27) {
+      this.handleOnClose()
+    }
   }
 
   render() {
