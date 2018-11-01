@@ -9,7 +9,7 @@ const PASSWORD: ?string = process.env.PASSWORD
 
 describe('API', () => {
   if (!(USERNAME && PASSWORD)) {
-    test.skip('skip api test', () => {})
+    it.skip('skip api test', () => {})
     return
   }
 
@@ -18,12 +18,12 @@ describe('API', () => {
     password: PASSWORD,
   }
 
-  test.skip('login success', async () => {
+  it.skip('login success', async () => {
     const res = await fetchAuth(info)
-    expect(res.user.account).toEqual(USERNAME)
+    expect(res.user.account).toStrictEqual(USERNAME)
   })
 
-  test.skip('no params', async () => {
+  it.skip('no params', async () => {
     const { accessToken } = await fetchAuth(info)
     const { result } = await getRequest(
       '/v1/illust/ranking?mode=day',
@@ -33,7 +33,7 @@ describe('API', () => {
     expect(result).toHaveProperty('nextUrl')
   })
 
-  test.skip('have nextUrl', async () => {
+  it.skip('have nextUrl', async () => {
     const { accessToken } = await fetchAuth(info)
     const { result } = await getRequest(
       '/v1/illust/ranking',
@@ -43,7 +43,7 @@ describe('API', () => {
     expect(result).toHaveProperty('nextUrl')
   })
 
-  test.skip('get success', async () => {
+  it.skip('get success', async () => {
     const { accessToken } = await fetchAuth(info)
 
     const { result } = await getRequest(
@@ -54,7 +54,7 @@ describe('API', () => {
     expect(result).toHaveProperty('profile')
   })
 
-  test.skip('post success', async () => {
+  it.skip('post success', async () => {
     const { accessToken } = await fetchAuth(info)
 
     const postData = await postRequest(
@@ -62,6 +62,6 @@ describe('API', () => {
       { illustId: 63576594, restrict: 'public' },
       accessToken
     )
-    expect(postData).toEqual({})
+    expect(postData).toStrictEqual({})
   })
 })

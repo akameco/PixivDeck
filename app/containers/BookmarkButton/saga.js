@@ -18,8 +18,8 @@ export function* bookmark({ id, restrict }: Props): Saga<void> {
     yield call(api.post, '/v2/illust/bookmark/add', { illustId: id, restrict })
 
     yield put(actions.addBookmarkSuccess(id, restrict))
-  } catch (err) {
-    yield put(actions.addBookmarkFailer(id, err))
+  } catch (error) {
+    yield put(actions.addBookmarkFailer(id, error))
   }
 }
 
@@ -28,15 +28,15 @@ export function* deleteTask({ id }: Props): Saga<void> {
     yield call(api.post, '/v1/illust/bookmark/delete', { illustId: id })
     yield put(actions.deleteBookmarkSuccess(id))
     yield put(columnActions.removeItem('public', id))
-  } catch (err) {
-    yield put(actions.deleteBookmarkFailer(id, err))
+  } catch (error) {
+    yield put(actions.deleteBookmarkFailer(id, error))
   }
 }
 
 function* success({ id }: Props) {
   try {
     yield call(get, `/v1/illust/detail?illust_id=${id}`, true)
-  } catch (err) {}
+  } catch (error) {}
 }
 
 function* root(): Saga<void> {

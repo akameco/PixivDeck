@@ -1,5 +1,5 @@
 // @flow
-import type { Store as ReduxStore, Dispatch as ReduxDispatch } from 'redux' // eslint-disable-line
+import type { Store as ReduxStore, Dispatch as ReduxDispatch } from 'redux'
 import type { Action as NextAction } from '../action'
 import type { State as BaseState } from './state'
 

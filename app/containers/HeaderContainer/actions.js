@@ -1,5 +1,5 @@
 // @flow
-import type { Action } from './actionTypes.js'
+import type { Action } from './actionTypes'
 import {
   TOGGLE_SEARCH_FIELD,
   CLOSE_SEARCH_FIELD,

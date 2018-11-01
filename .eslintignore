@@ -8,3 +8,5 @@ bundle.js
 app/main.js
 app/main.js.map
 dll/vendor.dll.js
+coverage
+config

@@ -6,7 +6,7 @@ import messages from './messages'
 
 type Props = {
   value: string,
-  keywords: string[],
+  keywords: Array<string>,
   onClick: (word: string) => void,
 }
 

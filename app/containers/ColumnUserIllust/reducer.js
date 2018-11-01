@@ -1,7 +1,7 @@
 // @flow
+import { baseReducer, type BaseColumn } from '../Column/reducer'
 import type { Action } from './actionTypes'
 import * as Actions from './constants'
-import { baseReducer, type BaseColumn } from '../Column/reducer'
 
 export type ColumnId = number
 

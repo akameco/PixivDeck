@@ -22,5 +22,13 @@
     "flowtype/no-weak-types": 0,
     "no-duplicate-imports": 0,
     "no-invalid-this": 0,
+    "no-warning-comments": 0,
+    "jest/no-disabled-tests": 0,
+    "require-unicode-regexp": 0,
+    "import/max-dependencies": 0,
+    "max-lines-per-function": 0,
+    "no-shadow": 0,
+    "react/no-deprecated": 0,
+    "react/no-find-dom-node": 0,
   }
 }

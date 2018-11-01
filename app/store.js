@@ -6,7 +6,8 @@ import localForage from 'localforage'
 import type { Store } from 'types'
 import reducer from './reducer'
 import mySaga from './sagas'
-import { version } from './package.json'
+
+import { version } from './package.json' // eslint-disable-line import/extensions
 
 let persistor
 
@@ -35,7 +36,7 @@ export default function configureStore(initialState: Object = {}): Store {
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
     module.hot.accept('./reducer', () => {
-      const nextRootReducer = require('./reducer')
+      const nextRootReducer = require('./reducer') // eslint-disable-line global-require
 
       // $FlowFixMe
       store.replaceReducer(nextRootReducer)

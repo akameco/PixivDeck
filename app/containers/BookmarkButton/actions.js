@@ -1,5 +1,5 @@
 // @flow
-import type { Action } from './actionTypes.js'
+import type { Action } from './actionTypes'
 import {
   ADD_BOOKMARK_REQUEST,
   ADD_BOOKMARK_SUCCESS,

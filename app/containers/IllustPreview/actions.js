@@ -1,5 +1,5 @@
 // @flow
-import type { Action } from './actionTypes.js'
+import type { Action } from './actionTypes'
 import {
   COLOSE_ILLUST_VIEWER,
   START_IMG_LOADING,

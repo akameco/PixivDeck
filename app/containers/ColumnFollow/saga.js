@@ -32,8 +32,8 @@ function* fetchFollow({ id }: Action): Saga<void> {
     const { ids, nextUrl } = yield select(selectors.makeSelectColumn(), { id })
     const endpoint = nextUrl ? nextUrl : getEndpoint(yield select(getMyId), id)
     yield call(fetchColumn.fetchColumn, endpoint, id, actions, ids)
-  } catch (err) {
-    yield put(actions.fetchFailre(id, err))
+  } catch (error) {
+    yield put(actions.fetchFailre(id, error))
   }
 }
 
@@ -65,7 +65,7 @@ function* fetchNewWatch(action: Action) {
 
       yield call(delay, interval)
     }
-  } catch (err) {
+  } catch (error) {
     // TODO エラーハンドリング
   }
 }

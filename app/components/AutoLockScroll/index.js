@@ -66,7 +66,7 @@ class AutoLockScroll extends React.Component<Props> {
     }
   }
 
-  // eslint-disable-next-line
+  // eslint-disable-next-line class-methods-use-this
   render() {
     return null
   }

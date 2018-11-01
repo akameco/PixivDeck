@@ -1,21 +1,25 @@
 // @flow
 import { takeEvery } from 'redux-saga/effects'
+import { ADD_BOOKMARK_SUCCESS } from 'containers/BookmarkButton/constants'
 import * as sagas from '../saga'
 import * as constants from '../constants'
-import { ADD_BOOKMARK_SUCCESS } from 'containers/BookmarkButton/constants'
 
 test('root', () => {
   const gen = sagas.default()
   let next = gen.next()
-  expect(next.value).toEqual(takeEvery(constants.ADD_COLUMN, sagas.addColumn))
+  expect(next.value).toStrictEqual(
+    takeEvery(constants.ADD_COLUMN, sagas.addColumn)
+  )
 
   next = gen.next()
-  expect(next.value).toEqual(
+  expect(next.value).toStrictEqual(
     takeEvery([constants.FETCH, constants.FETCH_NEXT], sagas.fetchBookmark)
   )
 
   next = gen.next()
-  expect(next.value).toEqual(takeEvery(ADD_BOOKMARK_SUCCESS, sagas.fetchNew))
+  expect(next.value).toStrictEqual(
+    takeEvery(ADD_BOOKMARK_SUCCESS, sagas.fetchNew)
+  )
 })
 
 test('fetch next', () => {

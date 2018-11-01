@@ -1,5 +1,5 @@
 // @flow
-import type { Action } from './actionTypes.js'
+import type { Action } from './actionTypes'
 import { FETCH_REQUEST, FETCH_SUCCESS, FETCH_FAILRE } from './constants'
 
 export function fetchRequest(word: string): Action {

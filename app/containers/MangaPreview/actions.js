@@ -1,5 +1,5 @@
 // @flow
-import type { Action } from './actionTypes.js'
+import type { Action } from './actionTypes'
 import { CLOSE_MANGA_PREVIEW, OPEN_MANGA_PREVIEW } from './constants'
 
 export function closeMangaPreview(): Action {

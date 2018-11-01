@@ -54,16 +54,14 @@ export default class Icon extends React.PureComponent<Props, State> {
     const offColor = color ? color : 'currentColor'
     const onColor = hoverColor ? hoverColor : offColor
 
-    const mergedStyles = Object.assign(
-      {
-        fill: this.state.hoverd ? onColor : offColor,
-        display: 'inline-block',
-        height: size,
-        width: size,
-        userSelect: 'none',
-      },
-      style
-    )
+    const mergedStyles = {
+      fill: this.state.hoverd ? onColor : offColor,
+      display: 'inline-block',
+      height: size,
+      width: size,
+      userSelect: 'none',
+      ...style,
+    }
 
     return (
       <svg

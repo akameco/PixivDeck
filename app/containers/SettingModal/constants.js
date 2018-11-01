@@ -5,7 +5,7 @@ import type {
   ADD_TAG_FILTER_TYPE,
   REMOVE_TAG_FILTER_TYPE,
   REMOVE_CACHE_TYPE,
-} from './actionTypes.js'
+} from './actionTypes'
 
 export const SET_SHOW_ONLY_ILLUST: SET_SHOW_ONLY_ILLUST_TYPE =
   'SettingModal/SET_SHOW_ONLY_ILLUST'

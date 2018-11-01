@@ -8,7 +8,7 @@ test('default action', () => {
 })
 
 test('ADD_FOLLOW_COLUMN_SUCCESS', () => {
-  expect(reducer({}, actions.addColumnSuccess('public')))
+  // expect(reducer({}, actions.addColumnSuccess('public')))
   expect(reducer({}, actions.addColumnSuccess('private'))).toMatchSnapshot()
 })
 

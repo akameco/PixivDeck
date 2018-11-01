@@ -1,3 +1,4 @@
+// @noflow
 import * as selectors from '../selectors'
 import { initialState } from '../reducer'
 
@@ -37,5 +38,7 @@ test('makeSelectIsLoading', () => {
 
 test('getMyId', () => {
   expect(selectors.getMyId(mockStore)).toBeNull()
-  expect(selectors.getMyId(createMock({ account: { id: '1' } }))).toEqual('1')
+  expect(selectors.getMyId(createMock({ account: { id: '1' } }))).toStrictEqual(
+    '1'
+  )
 })

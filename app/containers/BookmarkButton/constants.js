@@ -6,7 +6,7 @@ import type {
   DELETE_BOOKMARK_REQUEST_TYPE,
   DELETE_BOOKMARK_SUCCESS_TYPE,
   DELETE_BOOKMARK_FAILER_TYPE,
-} from './actionTypes.js'
+} from './actionTypes'
 
 export const ADD_BOOKMARK_REQUEST: ADD_BOOKMARK_REQUEST_TYPE =
   'BookmarkButton/ADD_BOOKMARK_REQUEST'

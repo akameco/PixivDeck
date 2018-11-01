@@ -1,3 +1,4 @@
+// @noflow
 import os from 'os'
 import electron from 'electron'
 

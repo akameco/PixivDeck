@@ -2,7 +2,7 @@
 import * as React from 'react'
 import { shallow } from 'enzyme'
 import toJSON from 'enzyme-to-json'
-import Comp from './'
+import Comp from '.'
 
 test('snapshot', () => {
   expect(

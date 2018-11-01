@@ -17,8 +17,8 @@ function* popover({ id }): Saga<*> {
     const limited = illusts.length > 3 ? illusts.slice(0, 3) : illusts
 
     yield put(actions.popoverSuccess(limited))
-  } catch (err) {
-    yield put(actions.popoverFailre(err))
+  } catch (error) {
+    yield put(actions.popoverFailre(error))
   }
 }
 

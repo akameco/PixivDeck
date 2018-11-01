@@ -19,7 +19,7 @@ import type {
   RESET_IDS_TYPE,
   START_WATCH_TYPE,
   WATCH_NEW_TYPE,
-} from './actionTypes.js'
+} from './actionTypes'
 
 export const ADD_COLUMN: ADD_COLUMN_TYPE = 'ColumnSearch/ADD_COLUMN'
 export const ADD_COLUMN_SUCCESS: ADD_COLUMN_SUCCESS_TYPE =

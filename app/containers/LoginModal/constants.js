@@ -13,7 +13,7 @@ import type {
   CLEAR_ERROR_TYPE,
   SET_ACCOUNT_TYPE,
   SET_REFRESH_TOKEN_TYPE,
-} from './actionTypes.js'
+} from './actionTypes'
 
 export const LOGIN_REQUEST: LOGIN_REQUEST_TYPE = 'LoginModal/LOGIN_REQUEST'
 export const LOGIN_SUCCESS: LOGIN_SUCCESS_TYPE = 'LoginModal/LOGIN_SUCCESS'

@@ -127,8 +127,8 @@ app.on('ready', async () => {
   ) {
     try {
       await installExtensions()
-    } catch (err) {
-      console.error(err) // eslint-disable-line no-console
+    } catch (error) {
+      console.error(error) // eslint-disable-line no-console
     }
   }
 

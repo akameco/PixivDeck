@@ -1,5 +1,5 @@
 // @flow
-import type { Action } from './actionTypes.js'
+import type { Action } from './actionTypes'
 import {
   ADD_COLUMN,
   ADD_COLUMN_SUCCESS,
