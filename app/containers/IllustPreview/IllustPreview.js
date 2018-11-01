@@ -21,7 +21,7 @@ export default class IllustPreview extends React.PureComponent<Props> {
   }
 
   componentDidMount() {
-    window.addEventListener('keydown', this.escToClose.bind(this), false)
+    window.addEventListener('keydown', this.escToClose, false)
   }
 
   handleOnClose = () => {
