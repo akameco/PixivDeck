@@ -6,5 +6,7 @@ import * as constants from '../constants'
 test('root', () => {
   const gen = sagas.default()
   const next = gen.next()
-  expect(next.value).toEqual(takeEvery(constants.ADD_COLUMN, sagas.addColumn))
+  expect(next.value).toStrictEqual(
+    takeEvery(constants.ADD_COLUMN, sagas.addColumn)
+  )
 })

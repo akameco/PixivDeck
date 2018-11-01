@@ -9,10 +9,6 @@ type Props = {
   style: Object,
 }
 
-type DefaultProps = {
-  autoLockScrolling: boolean,
-}
-
 class Overlay extends React.Component<Props, void> {
   props: Props
   static defaultProps = { autoLockScrolling: true }

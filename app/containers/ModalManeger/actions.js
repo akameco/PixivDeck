@@ -1,5 +1,5 @@
 // @flow
-import type { Action } from './actionTypes.js'
+import type { Action } from './actionTypes'
 import { OPEN_MODAL, CLOSE_MODAL } from './constants'
 import type { ModalType } from './reducer'
 

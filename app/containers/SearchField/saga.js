@@ -16,8 +16,8 @@ export function* autocomplete({ word }: Aciton): Saga<void> {
     const { result } = yield call(api.get, endpoint(word), true)
     const { searchAutoCompleteKeywords } = result
     yield put(actions.fetchSuccess(searchAutoCompleteKeywords))
-  } catch (err) {
-    yield put(actions.fetchFailre(err))
+  } catch (error) {
+    yield put(actions.fetchFailre(error))
   }
 }
 

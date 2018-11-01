@@ -1,5 +1,6 @@
 // @flow
-import type { Action } from './actionTypes.js'
+import type { Account } from 'types/account'
+import type { Action } from './actionTypes'
 import {
   SET_AUTH,
   LOGIN_REQUEST,
@@ -12,7 +13,6 @@ import {
   END_LOADING,
   AUTO_LOGIN_REQUEST,
 } from './constants'
-import type { Account } from 'types/account'
 
 export function setAuth(username: string, password: string): Action {
   return {

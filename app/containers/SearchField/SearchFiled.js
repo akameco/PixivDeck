@@ -13,7 +13,7 @@ type InjectProp = {
 }
 
 export type Props = {
-  keywords: string[],
+  keywords: Array<string>,
   onClose: () => void,
   onFetch: (word: string) => void,
   onSubmit: (tag: string) => void,
@@ -53,7 +53,7 @@ class SearchField extends Component<Props & InjectProp, State> {
     this.props.onClose()
   }
 
-  _autoComplte = throttle(async () => {
+  _autoComplte = throttle(() => {
     const { value } = this.state
     if (value === '') {
       return

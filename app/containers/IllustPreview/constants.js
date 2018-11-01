@@ -4,7 +4,7 @@ import type {
   COLOSE_ILLUST_VIEWER_TYPE,
   START_IMG_LOADING_TYPE,
   FINISH_IMG_LOADING_TYPE,
-} from './actionTypes.js'
+} from './actionTypes'
 
 export const OPEN_ILLUST_VIEWER: OPEN_ILLUST_VIEWER_TYPE = 'IllustPreview/open'
 export const COLOSE_ILLUST_VIEWER: COLOSE_ILLUST_VIEWER_TYPE =

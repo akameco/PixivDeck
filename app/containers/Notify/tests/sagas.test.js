@@ -7,7 +7,7 @@ test('root', () => {
   const gen = sagas.default()
 
   const next = gen.next()
-  expect(next.value).toEqual(
+  expect(next.value).toStrictEqual(
     takeEvery(constants.ADD_NOTIFY_WITH_ILLUST, sagas.notifyWithIllust)
   )
 })

@@ -25,7 +25,7 @@ function* open({ id }): Saga<void> {
     yield put(actions.fetchIllust(user.id))
     yield put(actions.fetchManga(user.id))
     // todo 失敗の通知
-  } catch (err) {}
+  } catch (error) {}
 }
 
 function* fetchIllust(props: P): Saga<void> {
@@ -43,8 +43,8 @@ function* fetchIllust(props: P): Saga<void> {
 
     const nextIds = union(oldIds, result.illusts)
     yield put(actions.fetchIllustSuccess(nextIds))
-  } catch (err) {
-    yield put(actions.fetchIllustFailure(err))
+  } catch (error) {
+    yield put(actions.fetchIllustFailure(error))
   }
 }
 
@@ -63,8 +63,8 @@ function* fetchManga({ id }: P) {
 
     const nextIds = union(oldIds, result.illusts)
     yield put(actions.fetchMangaSuccess(nextIds))
-  } catch (err) {
-    yield put(actions.fetchMangaFailure(err))
+  } catch (error) {
+    yield put(actions.fetchMangaFailure(error))
   }
 }
 
@@ -76,7 +76,7 @@ function* fetchUserDetail({ id }: P): Saga<void> {
 
     yield put(actions.addDrawerUser(result.user))
     yield put(actions.addDrawerProfile(result.profile))
-  } catch (err) {
+  } catch (error) {
     // TODO
   }
 }

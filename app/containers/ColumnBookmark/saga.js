@@ -38,8 +38,8 @@ export function* fetchNew({
     const { ids } = yield select(makeSelectColumn(), { id })
     const endpoint = getEndpoint(yield select(getMyId), id)
     yield call(column.fetchNew, { endpoint, id, ids, order: true }, actions)
-  } catch (err) {
-    yield put(actions.fetchFailre(id, err))
+  } catch (error) {
+    yield put(actions.fetchFailre(id, error))
   }
 }
 

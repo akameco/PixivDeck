@@ -5,7 +5,7 @@ import type {
   POPOVER_TYPE,
   POPOVER_SUCCESS_TYPE,
   POPOVER_FAILRE_TYPE,
-} from './actionTypes.js'
+} from './actionTypes'
 
 export const OPEN: OPEN_TYPE = 'UserPopoverContainer/OPEN'
 export const CLEAR: CLEAR_TYPE = 'UserPopoverContainer/CLEAR'

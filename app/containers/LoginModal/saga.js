@@ -34,7 +34,7 @@ function* authorize({ username, password }): Saga<void> {
     yield put(setAccount(account))
     yield put(closeModal())
     yield put(setRefreshToken(refreshToken))
-  } catch (err) {
+  } catch (error) {
     yield put(loginFailure())
   } finally {
     yield put(endLoading())

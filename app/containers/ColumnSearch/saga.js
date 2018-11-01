@@ -68,8 +68,8 @@ function* fetchUntilLimit(action: Action): Saga<void> {
 
       yield call(delay, 2000)
     }
-  } catch (err) {
-    yield put(actions.fetchNewFailre(action.id, err))
+  } catch (error) {
+    yield put(actions.fetchNewFailre(action.id, error))
   }
 }
 
@@ -98,8 +98,8 @@ function* fetchNew({ id }: Action): Saga<void> {
         yield put(addNotifyWithIllust(`検索新着 ${id} イラスト`, illustId))
       }
     }
-  } catch (err) {
-    yield put(actions.fetchNewFailre(id, err))
+  } catch (error) {
+    yield put(actions.fetchNewFailre(id, error))
   }
 }
 
@@ -111,7 +111,7 @@ function* fetchNewWatch(action: Action) {
       yield delay(interval || 2000)
       yield call(fetchNew, action)
     }
-  } catch (err) {
+  } catch (error) {
     // TODO エラーハンドリング
   }
 }

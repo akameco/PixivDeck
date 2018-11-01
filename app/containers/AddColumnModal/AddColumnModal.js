@@ -1,7 +1,6 @@
 // @flow
 import * as React from 'react'
-import { injectIntl, type IntlShape } from 'react-intl'
-import { FormattedMessage } from 'react-intl'
+import { injectIntl, FormattedMessage, type IntlShape } from 'react-intl'
 import type { Mode } from 'containers/ColumnRanking/reducer'
 import rankingMessages from 'containers/ColumnRanking/messages'
 import type { R18Mode } from 'containers/ColumnRankingR18/reducer'

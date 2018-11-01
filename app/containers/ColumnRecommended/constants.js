@@ -7,7 +7,7 @@ import type {
   FETCH_TYPE,
   FETCH_SUCCESS_TYPE,
   FETCH_FAILRE_TYPE,
-} from './actionTypes.js'
+} from './actionTypes'
 
 export const ADD_COLUMN: ADD_COLUMN_TYPE = 'ColumnRecommended/ADD_COLUMN'
 export const ADD_COLUMN_SUCCESS: ADD_COLUMN_SUCCESS_TYPE =

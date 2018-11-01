@@ -2,7 +2,7 @@
 import * as React from 'react'
 import { shallow } from 'enzyme'
 import toJSON from 'enzyme-to-json'
-import { Language } from '../'
+import { Language } from '..'
 
 test('snapshot', () => {
   const children = <h1>Test</h1>

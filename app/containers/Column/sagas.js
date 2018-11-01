@@ -26,8 +26,8 @@ export function* fetchColumn(
 
     yield put(actions.fetchSuccess(id, nextIds))
     yield put(actions.setNextUrl(id, result.nextUrl))
-  } catch (err) {
-    yield put(actions.fetchFailre(id, err))
+  } catch (error) {
+    yield put(actions.fetchFailre(id, error))
   }
 }
 
@@ -64,7 +64,7 @@ export function* fetchNew(
       const nextIds = union(result.illusts, ids)
       yield put(actions.fetchSuccess(id, nextIds))
     }
-  } catch (err) {
-    yield put(actions.fetchFailre(id, err))
+  } catch (error) {
+    yield put(actions.fetchFailre(id, error))
   }
 }

@@ -4,7 +4,7 @@ import type {
   CLOSE_SEARCH_FIELD_TYPE,
   TOGGLE_DROPDOWN_TYPE,
   CLOSE_DROPDOWN_TYPE,
-} from './actionTypes.js'
+} from './actionTypes'
 
 export const TOGGLE_SEARCH_FIELD: TOGGLE_SEARCH_FIELD_TYPE =
   'HeaderContainer/toggleSearchField'

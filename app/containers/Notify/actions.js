@@ -1,5 +1,5 @@
 // @flow
-import type { Action } from './actionTypes.js'
+import type { Action } from './actionTypes'
 import { ADD_NOTIFY, ADD_NOTIFY_WITH_ILLUST } from './constants'
 
 export function addNotify(): Action {

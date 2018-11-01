@@ -1,6 +1,6 @@
 // @flow
 // $FlowFixMe
-import { fork, all } from 'redux-saga/effects' // eslint-disable-line
+import { fork, all } from 'redux-saga/effects'
 import BookmarkButton from 'containers/BookmarkButton/saga'
 import BoxContainer from 'containers/BoxContainer/saga'
 import ColumnBookmark from 'containers/ColumnBookmark/saga'

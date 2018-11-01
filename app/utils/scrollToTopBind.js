@@ -1,5 +1,5 @@
 // @flow
-const easeOutExpo = x => (x === 1 ? 1 : 1 - Math.pow(2, -10 * x))
+const easeOutExpo = x => (x === 1 ? 1 : 1 - 2 ** -10 * x)
 
 const position = (start, end, elapsed, duration) => {
   if (elapsed > duration) {

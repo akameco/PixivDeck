@@ -1,4 +1,4 @@
-// @flow
+// @noflow
 import type { Saga } from 'redux-saga'
 import { select, takeEvery } from 'redux-saga/effects'
 import type { Illust } from 'types/illust'
@@ -22,11 +22,11 @@ export function notify({ title, url, body, icon }: Notify) {
     body,
   })
 
-  notify.onclick = () => {
+  notify.addEventListener('click', () => {
     if (url) {
       shell.openExternal(url)
     }
-  }
+  })
 }
 
 type NotifyWithIllust = {

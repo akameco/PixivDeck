@@ -21,7 +21,7 @@ import type {
   NEXT_MANGA_PAGE_TYPE,
   NEXT_MANGA_PAGE_SUCCESS_TYPE,
   NEXT_MANGA_PAGE_FAILURE_TYPE,
-} from './actionTypes.js'
+} from './actionTypes'
 
 export const FETCH_ILLUST: FETCH_ILLUST_TYPE = 'UserDrawer/FETCH_ILLUST'
 export const FETCH_ILLUST_SUCCESS: FETCH_ILLUST_SUCCESS_TYPE =

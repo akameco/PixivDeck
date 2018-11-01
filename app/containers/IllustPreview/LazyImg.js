@@ -73,12 +73,12 @@ export default class LazyImg extends React.PureComponent<Props, State> {
 
     const img = new Image()
 
-    img.onload = () => {
+    img.addEventListener('load', () => {
       this.props.onLoad()
       this.setState({
         toMarginTop: calcMarginTop(this.to),
       })
-    }
+    })
 
     img.src = this.props.original
   }

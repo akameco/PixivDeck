@@ -75,7 +75,7 @@ export async function fetchAuth({
       rowData => {
         try {
           return JSON.parse(rowData)
-        } catch (err) {
+        } catch (error) {
           return rowData
         }
       },

@@ -8,7 +8,7 @@ import * as actions from '../actions'
 test('root', () => {
   const gen = sagas.default()
   const next = gen.next()
-  expect(next.value).toEqual(
+  expect(next.value).toStrictEqual(
     takeLatest(constants.FETCH_REQUEST, sagas.autocomplete)
   )
 })
@@ -16,19 +16,19 @@ test('root', () => {
 test('autocomplete', () => {
   const gen = sagas.autocomplete({ word: 'fate' })
   let next = gen.next()
-  expect(next.value).toEqual(
+  expect(next.value).toStrictEqual(
     call(api.get, '/v1/search/autocomplete?word=fate', true)
   )
   next = gen.next({ result: { searchAutoCompleteKeywords: ['fate', 'fgo'] } })
-  expect(next.value).toEqual(put(actions.fetchSuccess(['fate', 'fgo'])))
+  expect(next.value).toStrictEqual(put(actions.fetchSuccess(['fate', 'fgo'])))
 })
 
 test('autocomplete failre', () => {
   const gen = sagas.autocomplete({ word: 'fate' })
   let next = gen.next()
-  expect(next.value).toEqual(
+  expect(next.value).toStrictEqual(
     call(api.get, '/v1/search/autocomplete?word=fate', true)
   )
   next = gen.throw('error')
-  expect(next.value).toEqual(put(actions.fetchFailre('error')))
+  expect(next.value).toStrictEqual(put(actions.fetchFailre('error')))
 })

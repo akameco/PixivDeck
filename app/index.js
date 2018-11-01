@@ -4,8 +4,7 @@ import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import configureStore from './store'
 import Root from './containers/Root'
-
-import './styles/global-styles' // eslint-disable-line
+import './styles/global-styles' // eslint-disable-line import/no-unassigned-import
 
 const store = configureStore()
 
@@ -23,7 +22,7 @@ if (rootEl) {
 if (rootEl && module.hot) {
   module.hot.accept('./containers/Root', () => {
     // $FlowFixMe
-    const NextRoot = require('./containers/Root')
+    const NextRoot = require('./containers/Root') // eslint-disable-line global-require
     render(
       <AppContainer>
         {/* // $FlowFixMe */}

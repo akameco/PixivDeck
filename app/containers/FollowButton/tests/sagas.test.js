@@ -8,10 +8,12 @@ test('root', () => {
   const gen = sagas.default()
 
   let next = gen.next()
-  expect(next.value).toEqual(takeEvery(constants.FOLLOW_REQUEST, sagas.follow))
+  expect(next.value).toStrictEqual(
+    takeEvery(constants.FOLLOW_REQUEST, sagas.follow)
+  )
 
   next = gen.next()
-  expect(next.value).toEqual(
+  expect(next.value).toStrictEqual(
     takeEvery(constants.UN_FOLLOW_REQUEST, sagas.unfollow)
   )
 })
@@ -23,7 +25,7 @@ test('follow success', () => {
   expect(next.value).toMatchSnapshot()
 
   next = gen.next()
-  expect(next.value).toEqual(put(actions.followSuccess('public')))
+  expect(next.value).toStrictEqual(put(actions.followSuccess('public')))
 })
 
 test('follow failer', () => {
@@ -33,7 +35,7 @@ test('follow failer', () => {
   expect(next.value).toMatchSnapshot()
 
   next = gen.throw('err')
-  expect(next.value).toEqual(put(actions.followFailer('err')))
+  expect(next.value).toStrictEqual(put(actions.followFailer('err')))
 })
 
 test('unfollow success', () => {
@@ -43,7 +45,7 @@ test('unfollow success', () => {
   expect(next.value).toMatchSnapshot()
 
   next = gen.next()
-  expect(next.value).toEqual(put(actions.unFollowSuccess('public')))
+  expect(next.value).toStrictEqual(put(actions.unFollowSuccess('public')))
 })
 
 test('unfollow failer', () => {
@@ -53,5 +55,5 @@ test('unfollow failer', () => {
   expect(next.value).toMatchSnapshot()
 
   next = gen.throw('err')
-  expect(next.value).toEqual(put(actions.unFollowFailer('err')))
+  expect(next.value).toStrictEqual(put(actions.unFollowFailer('err')))
 })

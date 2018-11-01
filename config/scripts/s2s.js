@@ -1,4 +1,3 @@
-// @flow
 import path from 'path'
 import { transformFileSync } from 'babel-core'
 import funcPlugin from 'babel-plugin-create-redux-action-func'

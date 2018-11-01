@@ -26,7 +26,6 @@ type InjectProp = {
   intl: IntlShape,
 }
 
-// eslint-disable-next-line
 class ColumnHistory extends React.PureComponent<Props & InjectProp> {
   render() {
     const { illusts, id, onClose, intl, onHeaderClick, setNode } = this.props

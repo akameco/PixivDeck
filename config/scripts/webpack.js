@@ -15,7 +15,7 @@ const webpackServerPath = path.join(
 
 const node = 'node --trace-warnings -r babel-register'
 
-const getEnv = x => 'cross-env NODE_ENV=' + x
+const getEnv = x => `cross-env NODE_ENV=${x}`
 const devEnv = getEnv('development')
 const prodEnv = getEnv('production')
 

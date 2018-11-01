@@ -1,5 +1,5 @@
 // @flow
-import type { Action } from './actionTypes.js'
+import type { Action } from './actionTypes'
 import { ADD_HISTORY, ADD_COLUMN_HISTORY } from './constants'
 
 export function addHistory(id: number): Action {

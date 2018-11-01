@@ -6,7 +6,7 @@ import type {
   UN_FOLLOW_REQUEST_TYPE,
   UN_FOLLOW_SUCCESS_TYPE,
   UN_FOLLOW_FAILER_TYPE,
-} from './actionTypes.js'
+} from './actionTypes'
 
 export const FOLLOW_REQUEST: FOLLOW_REQUEST_TYPE = 'FollowButton/FOLLOW_REQUEST'
 export const FOLLOW_SUCCESS: FOLLOW_SUCCESS_TYPE = 'FollowButton/FOLLOW_SUCCESS'

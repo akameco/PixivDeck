@@ -90,9 +90,9 @@ export default class LazyLoadImg extends React.PureComponent<Props, State> {
     this.setState({ isVisible: true })
     const img = new Image()
 
-    img.onload = () => {
+    img.addEventListener('load', () => {
       this.setState({ isLoaded: true })
-    }
+    })
 
     img.src = this.props.src
   }

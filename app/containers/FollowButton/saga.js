@@ -14,8 +14,8 @@ export function* follow({ id }: Props): Saga<void> {
     const data = { userId: id, restrict: 'public' }
     yield call(api.post, '/v1/user/follow/add', data)
     yield put(actions.followSuccess('public'))
-  } catch (err) {
-    yield put(actions.followFailer(err))
+  } catch (error) {
+    yield put(actions.followFailer(error))
   }
 }
 
@@ -24,8 +24,8 @@ export function* unfollow({ id }: Props): Saga<void> {
     const data = { userId: id, restrict: 'public' }
     yield call(api.post, '/v1/user/follow/delete', data)
     yield put(actions.unFollowSuccess('public'))
-  } catch (err) {
-    yield put(actions.unFollowFailer(err))
+  } catch (error) {
+    yield put(actions.unFollowFailer(error))
   }
 }
 

@@ -1,5 +1,6 @@
 // @flow
-import type { Action } from './actionTypes.js'
+import type { User, Profile } from 'types/user'
+import type { Action } from './actionTypes'
 import {
   FETCH_ILLUST,
   FETCH_MANGA,
@@ -17,7 +18,6 @@ import {
   FETCH_ILLUST_FAILURE,
   FETCH_MANGA_FAILURE,
 } from './constants'
-import type { User, Profile } from 'types/user'
 
 export function fetchIllust(id: number): Action {
   return {

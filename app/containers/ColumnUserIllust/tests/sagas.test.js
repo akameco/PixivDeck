@@ -6,13 +6,17 @@ import * as constants from '../constants'
 test('root', () => {
   const gen = sagas.default()
   let next = gen.next()
-  expect(next.value).toEqual(takeEvery(constants.ADD_COLUMN, sagas.addColumn))
+  expect(next.value).toStrictEqual(
+    takeEvery(constants.ADD_COLUMN, sagas.addColumn)
+  )
 
   next = gen.next()
-  expect(next.value).toEqual(takeEvery(constants.FETCH, sagas.fetchUserIllust))
+  expect(next.value).toStrictEqual(
+    takeEvery(constants.FETCH, sagas.fetchUserIllust)
+  )
 
   next = gen.next()
-  expect(next.value).toEqual(
+  expect(next.value).toStrictEqual(
     takeEvery(constants.FETCH_NEXT, sagas.fetchNextUserIllust)
   )
 })

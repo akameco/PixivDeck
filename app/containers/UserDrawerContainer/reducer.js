@@ -9,8 +9,8 @@ export type DrawerType = 'illust' | 'manga'
 export type State = {
   user: ?User,
   profile: ?Profile,
-  illustList: number[],
-  mangaList: number[],
+  illustList: Array<number>,
+  mangaList: Array<number>,
   nextIllustUrl: ?string,
   nextMangaUrl: ?string,
   isLoading: boolean,

@@ -12,7 +12,7 @@ import type {
   FETCH_NEW_TYPE,
   FETCH_NEW_SUCCESS_TYPE,
   FETCH_NEW_FAILRE_TYPE,
-} from './actionTypes.js'
+} from './actionTypes'
 
 export const ADD_COLUMN: ADD_COLUMN_TYPE = 'ColumnFollow/ADD_COLUMN'
 export const ADD_COLUMN_SUCCESS: ADD_COLUMN_SUCCESS_TYPE =

@@ -9,7 +9,7 @@ import type {
   FETCH_NEXT_TYPE,
   FETCH_NEXT_SUCCESS_TYPE,
   FETCH_NEXT_FAILRE_TYPE,
-} from './actionTypes.js'
+} from './actionTypes'
 
 export const ADD_COLUMN: ADD_COLUMN_TYPE = 'ColumnRankingR18/ADD_COLUMN'
 export const ADD_COLUMN_SUCCESS: ADD_COLUMN_SUCCESS_TYPE =

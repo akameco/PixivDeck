@@ -1,5 +1,5 @@
 // @flow
-import type { Action } from './actionTypes.js'
+import type { Action } from './actionTypes'
 import {
   SET_SHOW_ONLY_ILLUST,
   SET_SHOW_CAPTION,
