@@ -1,12 +1,15 @@
 // @flow
-import type { Action } from './actionTypes'
+import type { Action } from './actionTypes.js'
 import {
   ADD_COLUMN,
   ADD_COLUMN_SUCCESS,
+  CLERE,
   FETCH_NEXT,
   FETCH_NEXT_FAILRE,
   FETCH,
   FETCH_FAILRE,
+  WATCH_NEW,
+  START_WATCH,
   SET_NEXT_URL,
   FETCH_SUCCESS,
   FETCH_NEXT_SUCCESS,
@@ -23,6 +26,13 @@ export function addColumn(id: ColumnId): Action {
 export function addColumnSuccess(id: ColumnId): Action {
   return {
     type: ADD_COLUMN_SUCCESS,
+    id,
+  }
+}
+
+export function clere(id: ColumnId): Action {
+  return {
+    type: CLERE,
     id,
   }
 }
@@ -51,6 +61,20 @@ export function fetch(id: ColumnId): Action {
 export function fetchFailre(id: ColumnId): Action {
   return {
     type: FETCH_FAILRE,
+    id,
+  }
+}
+
+export function watchNew(id: ColumnId): Action {
+  return {
+    type: WATCH_NEW,
+    id,
+  }
+}
+
+export function startWatch(id: ColumnId): Action {
+  return {
+    type: START_WATCH,
     id,
   }
 }
