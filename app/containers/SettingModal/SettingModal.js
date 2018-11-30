@@ -130,6 +130,7 @@ export default class SettingFilterModal extends Component<Props, State> {
             <MenuItem value={'ja'} primaryText="日本語" />
             <MenuItem value={'en'} primaryText="English" />
             <MenuItem value={'zh'} primaryText="中文" />
+            <MenuItem value={'zh-tw'} primaryText="正體中文" />
           </SelectField>
         </Card>
         <LimitSetting />

@@ -22,9 +22,11 @@ export class Language extends React.Component<Props> {
   componentDidMount() {
     if (!this.props.locale) {
       const app = electron.remote.app || electron.app
-      const sysLocale = app.getLocale().split('-')[0]
+      const sysLocale = app.getLocale().toLowerCase()
 
-      const locale = ['ja', 'zh'].includes(sysLocale) ? sysLocale : 'en'
+      const locale = ['ja', 'zh', 'zh-tw'].includes(sysLocale)
+        ? sysLocale
+        : 'en'
       this.props.changeLocale(locale)
     }
   }

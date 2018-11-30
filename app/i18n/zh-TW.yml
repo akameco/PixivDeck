@@ -1,0 +1,81 @@
+components:
+  Dropdown:
+    logout: 登出
+    setting: 設定
+  LoginModal:
+    login: 登入
+    error: 登入錯誤
+    password: 密碼
+    username: 使用者名稱
+    errorInfo: 請檢查您的使用者名稱與密碼
+    loginLoading: 登入中...
+  UserDrawer:
+    tabManga: '漫畫 ({count})'
+    tabIllust: '插畫 ({count})'
+    addColumn: 加入此欄
+  ColumnHeaderBookmark:
+    bookmarkFilter: 書籤篩選
+containers:
+  SearchField:
+    users: 最低收藏數
+    search: 搜尋
+    keywordSearch: 根據關鍵字搜尋
+  ColumnRanking:
+    day: 每日排行
+    week: 每周排行
+    month: 每月排行
+    day_male: 每日男性排行
+    day_female: 每日女性排行
+    week_rookie: 新人排行
+    week_original: 原創排行
+  BoxContainer:
+    save: 保存原始圖片
+    showUser: 顯示使用者資訊
+    bookmark: 加入書籤
+    openPixiv: 打開 Pixiv 網頁
+    privateBookmark: 加入私人收藏
+  SettingModal:
+    limit: 存取限制
+    cache: 刪除快取 (不安全)
+    r18Link: Pixiv R18 設定
+    language: 語言
+    tagFilter: 標籤過濾器
+    uiSetting: UI 設定
+    showOnlyImg: 只顯示圖片
+    showCaption: 顯示簡介
+    r18FilterDesc: >-
+      您可以透過加入 "R-18" 和 "R-18G" 到標籤過濾器中以從此程式中移除 R-18 內容
+      也能在搜尋中加入 "-R-18 -R-18G" 以從搜尋中移除 R-18 內容
+      您還可以在下面修改您 Pixiv 帳號的設定，它會在應用在所有的 Pixiv 程式與網站上。
+  AddColumnModal:
+    new: 最新
+    header: 選擇一欄
+    public: 公開
+    history: 歷史紀錄
+    ranking: 排行
+    private: 私人
+    bookmark: 書籤
+    r18ranking: R-18 排行
+    recommended: 為您推薦
+  ColumnFollow:
+    public: 公開關注
+    private: 私人關注
+  FollowButton:
+    follow: 關注
+    unFollow: 取消關注
+    following: 關注中
+  ColumnHistory:
+    title: 歷史紀錄
+  ColumnBookmark:
+    public: 公開書籤
+    private: 私人書籤
+  ColumnRankingR18:
+    day_r18: R-18 每日排行
+    week_r18: R-18 每周排行
+    week_r18g: R-18G 排行
+    day_male_r18: R-18 男性排行
+    day_female_r18: R-18 女性排行
+  AddNewColumnButton:
+    addColumn: 添加一欄
+  ColumnRecommended:
+    reccomended: 為您推薦
