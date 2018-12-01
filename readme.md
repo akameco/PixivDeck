@@ -7,7 +7,7 @@
 [![MIT License](https://img.shields.io/npm/l/nps.svg?style=flat-square)](./license)
 [![Donate](https://img.shields.io/badge/%EF%BC%84-support-green.svg?style=flat-square)](http://amzn.asia/bO78HzR)
 [![Code of Conduct](https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square)](./CODE_OF_CONDUCT.md)
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors)
 
 ## Screenshot
 
@@ -89,8 +89,8 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-| [<img src="https://avatars2.githubusercontent.com/u/4002137?v=4" width="100px;"/><br /><sub><b>akameco</b></sub>](http://akameco.github.io)<br />[💬](#question-akameco "Answering Questions") [💻](https://github.com/akameco/PixivDeck/commits?author=akameco "Code") [🎨](#design-akameco "Design") [⚠️](https://github.com/akameco/PixivDeck/commits?author=akameco "Tests") | [<img src="https://avatars0.githubusercontent.com/u/15041872?v=4" width="100px;"/><br /><sub><b>trnhoe</b></sub>](https://github.com/trnhoe)<br />[💻](https://github.com/akameco/PixivDeck/commits?author=trnhoe "Code") [🌍](#translation-trnhoe "Translation") | [<img src="https://avatars0.githubusercontent.com/u/14824064?v=4" width="100px;"/><br /><sub><b>鳶一雨音</b></sub>](https://github.com/TobiichiAmane)<br />[🌍](#translation-TobiichiAmane "Translation") | [<img src="https://avatars1.githubusercontent.com/u/16656689?v=4" width="100px;"/><br /><sub><b>Austin Huang</b></sub>](http://austinhuang.me)<br />[🌍](#translation-austinhuang0131 "Translation") | [<img src="https://avatars3.githubusercontent.com/u/3052342?v=4" width="100px;"/><br /><sub><b>Satoshi Ohmori</b></sub>](http://profile.sachin21.jp)<br />[💻](https://github.com/akameco/PixivDeck/commits?author=sachin21 "Code") |
-| :---: | :---: | :---: | :---: | :---: |
+| [<img src="https://avatars2.githubusercontent.com/u/4002137?v=4" width="100px;"/><br /><sub><b>akameco</b></sub>](http://akameco.github.io)<br />[💬](#question-akameco "Answering Questions") [💻](https://github.com/akameco/PixivDeck/commits?author=akameco "Code") [🎨](#design-akameco "Design") [⚠️](https://github.com/akameco/PixivDeck/commits?author=akameco "Tests") | [<img src="https://avatars0.githubusercontent.com/u/15041872?v=4" width="100px;"/><br /><sub><b>trnhoe</b></sub>](https://github.com/trnhoe)<br />[💻](https://github.com/akameco/PixivDeck/commits?author=trnhoe "Code") [🌍](#translation-trnhoe "Translation") | [<img src="https://avatars0.githubusercontent.com/u/14824064?v=4" width="100px;"/><br /><sub><b>鳶一雨音</b></sub>](https://github.com/TobiichiAmane)<br />[🌍](#translation-TobiichiAmane "Translation") | [<img src="https://avatars1.githubusercontent.com/u/16656689?v=4" width="100px;"/><br /><sub><b>Austin Huang</b></sub>](http://austinhuang.me)<br />[🌍](#translation-austinhuang0131 "Translation") | [<img src="https://avatars3.githubusercontent.com/u/3052342?v=4" width="100px;"/><br /><sub><b>sachin21</b></sub>](https://profile.sachin21.jp)<br />[💻](https://github.com/akameco/PixivDeck/commits?author=sachin21 "Code") | [<img src="https://avatars1.githubusercontent.com/u/9370547?v=4" width="100px;"/><br /><sub><b>maple</b></sub>](https://blog.maple3142.net/)<br />[🌍](#translation-maple3142 "Translation") |
+| :---: | :---: | :---: | :---: | :---: | :---: |
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
