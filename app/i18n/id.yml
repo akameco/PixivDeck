@@ -1,0 +1,86 @@
+components:
+  Dropdown:
+    logout: Keluar
+    setting: Settings
+  LoginModal:
+    login: Masuk
+    error: Gagal Masuk
+    password: Password
+    username: Username
+    errorInfo: Periksa Usename dan Password Anda.
+    loginLoading: Masuk...
+  UserDrawer:
+    tabManga: 'Manga ({count})'
+    tabIllust: 'Ilustrasi ({count})'
+    addColumn: Tambahkan ke Kolom
+  ColumnHeaderBookmark:
+    bookmarkFilter: Filter Bookmarks
+containers:
+  SearchField:
+    users: pengguna di
+    search: Pencarian
+    keywordSearch: Cari menggunakan kata kunci
+  ColumnRanking:
+    day: Peringkat Harian
+    week: Peringkat Mingguan
+    month: Peringkat Bulanan
+    day_male: Peringkat Pria Populer
+    day_female: Peringkat Wanita Populer
+    week_rookie: Peringkat Pemula
+    week_original: Peringkat Asli
+  BoxContainer:
+    save: Simpan Gambar Asli
+    showUser: Tampilkan Info Pengguna
+    bookmark: Tambah bookmark
+    openPixiv: Buka Halaman Pixiv
+    privateBookmark: Tambahkan Bookmark Pribadi
+  SettingModal:
+    limit: Batasi akses
+    cache: Hapus cache (tidak aman)
+    r18Link: pixiv - r18
+    language: Bahasa
+    tagFilter: Tag filter
+    uiSetting: UI setting
+    showOnlyImg: Hanya tampilkan gambar
+    showCaption: Tampilkan Keterangan
+    r18FilterDesc: >-
+      Anda dapat menambahkan "R-18" dan "R-18G" ke dalam filter tag untuk menghapus konten R18
+       di klien ini,
+
+       atau tambahkan "-R-18 -R-18G" ke dalam kueri untuk menghapus konten R18 secara spesifik
+       pencarian.
+
+       Anda juga dapat mengubah batasan pada pengaturan akun Pixiv Anda di bawah,
+       yang akan berlaku secara global.
+  AddColumnModal:
+    new: Baru oleh ...
+    header: Pilih Kolom
+    public: Publik
+    history: Histori
+    ranking: Peringkat
+    private: Pribadi
+    bookmark: Bookmarks
+    r18ranking: Peringkat R-18
+    recommended: Rekomendasi untuk anda
+  ColumnFollow:
+    public: Mengikuti publik
+    private: Mengikuti pribadi
+  FollowButton:
+    follow: Mengikuti
+    unFollow: Berhenti mengikuti
+    following: Pengikut
+  ColumnHistory:
+    title: Histori
+  ColumnBookmark:
+    public: Bookmarks Publik
+    private: Bookmarks Pribadi
+  ColumnRankingR18:
+    day_r18: Peringkat Harian R-18
+    week_r18: Peringkat Mingguan R-18
+    week_r18g: Peringkat R-18 G
+    day_male_r18: Peringkat R-18 Pria
+    day_female_r18: Peringkat R-18 Wanita
+  AddNewColumnButton:
+    addColumn: Tambah Kolom
+  ColumnRecommended:
+    reccomended: Rekomendasi untuk anda
