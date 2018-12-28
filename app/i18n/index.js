@@ -13,7 +13,7 @@ import zhTranslationMessages from './zh.yml'
 import zhtwTranslationMessages from './zh-TW.yml'
 
 addLocaleData(enLocaleData)
-addlocaleData(idLocaleData)
+addLocaleData(idLocaleData)
 addLocaleData(jaLocaleData)
 addLocaleData(zhLocaleData)
 addLocaleData(zhtwLocaleData)
