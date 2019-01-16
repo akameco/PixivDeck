@@ -128,6 +128,7 @@ export default class SettingFilterModal extends Component<Props, State> {
             onChange={(ev, i, value) => onSelectLanguage(value)}
           >
             <MenuItem value={'ja'} primaryText="日本語" />
+            <MenuItem value={'id'} primaryText="Bahasa Indonesia" />
             <MenuItem value={'en'} primaryText="English" />
             <MenuItem value={'zh'} primaryText="中文" />
             <MenuItem value={'zh-tw'} primaryText="正體中文" />
