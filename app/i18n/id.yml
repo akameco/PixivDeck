@@ -45,13 +45,13 @@ containers:
     showCaption: Tampilkan Keterangan
     r18FilterDesc: >-
       Anda dapat menambahkan "R-18" dan "R-18G" ke dalam filter tag untuk menghapus konten R18
-       di klien ini,
+      di klien ini,
 
-       atau tambahkan "-R-18 -R-18G" ke dalam kueri untuk menghapus konten R18 secara spesifik
-       pencarian.
+      atau tambahkan "-R-18 -R-18G" ke dalam kueri untuk menghapus konten R18 secara spesifik
+      pencarian.
 
-       Anda juga dapat mengubah batasan pada pengaturan akun Pixiv Anda di bawah,
-       yang akan berlaku secara global.
+      Anda juga dapat mengubah batasan pada pengaturan akun Pixiv Anda di bawah,
+      yang akan berlaku secara global.
   AddColumnModal:
     new: Baru oleh ...
     header: Pilih Kolom
