@@ -5,9 +5,15 @@ import type { State } from 'types/state'
 const selectHeader = (state: State) => state.HeaderContainer
 
 const makeSelectisOpenDropdown = () =>
-  createSelector(selectHeader, s => s.isOpenDropdown)
+  createSelector(
+    selectHeader,
+    s => s.isOpenDropdown
+  )
 
 const makeSelectisOpenSearchField = () =>
-  createSelector(selectHeader, s => s.isOpenSearchField)
+  createSelector(
+    selectHeader,
+    s => s.isOpenSearchField
+  )
 
 export { selectHeader, makeSelectisOpenDropdown, makeSelectisOpenSearchField }

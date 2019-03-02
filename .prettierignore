@@ -9,3 +9,4 @@ flow-typed
 release
 package.json
 .github
+app/i18n/localedata-zhtw.js

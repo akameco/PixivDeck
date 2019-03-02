@@ -4,4 +4,8 @@ import type { State } from 'types/state'
 
 const selectRoot = (state: State) => state.DrawerManager
 
-export const makeSelectOpen = () => createSelector(selectRoot, s => s.open)
+export const makeSelectOpen = () =>
+  createSelector(
+    selectRoot,
+    s => s.open
+  )

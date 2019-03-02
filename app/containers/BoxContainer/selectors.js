@@ -5,7 +5,10 @@ import { makeSelectIllust } from '../IllustById/selectors'
 import { getUserById } from '../UserById/selectors'
 
 const makeSelectIllustUserId = () =>
-  createSelector(makeSelectIllust(), s => s.user)
+  createSelector(
+    makeSelectIllust(),
+    s => s.user
+  )
 
 export const makeSelectUser = () =>
   createSelector(
@@ -17,7 +20,13 @@ export const makeSelectUser = () =>
 const getSettingModal = (s: State) => s.SettingModal
 
 export const makeSelectIsIllustOnly = () =>
-  createSelector(getSettingModal, s => s.isShowCaption)
+  createSelector(
+    getSettingModal,
+    s => s.isShowCaption
+  )
 
 export const makeSelectIsShowOnlyIllust = () =>
-  createSelector(getSettingModal, s => s.isShowOnlyIllust)
+  createSelector(
+    getSettingModal,
+    s => s.isShowOnlyIllust
+  )

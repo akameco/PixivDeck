@@ -6,9 +6,12 @@ import BookmarkButton, { type Props } from './BookmarkButton'
 import { addBookmarkRequest, deleteBookmarkRequest } from './actions'
 import { makeIsBookmarked } from './selectors'
 
-const mapStateToProps = createSelector(makeIsBookmarked(), isBookmarked => ({
-  isBookmarked,
-}))
+const mapStateToProps = createSelector(
+  makeIsBookmarked(),
+  isBookmarked => ({
+    isBookmarked,
+  })
+)
 
 const mapDispatchToProps = (dispatch: Dispatch, { id }) => ({
   addBookmark() {
