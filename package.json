@@ -86,7 +86,6 @@
     "babel-cli": "^6.24.1",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.5",
-    "babel-jest": "^23.4.0",
     "babel-loader": "^7.1.5",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-create-redux-action-func": "^0.1.4",
