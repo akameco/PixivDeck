@@ -13,7 +13,7 @@ const webpackServerPath = path.join(
   'webpack-dev-server'
 )
 
-const node = 'node --trace-warnings -r babel-register'
+const node = 'node --trace-warnings -r @babel/register'
 
 const getEnv = x => `cross-env NODE_ENV=${x}`
 const devEnv = getEnv('development')
@@ -21,7 +21,7 @@ const prodEnv = getEnv('production')
 
 const webpackOpts = '--progress --profile --colors'
 const config = x =>
-  `--config ${path.join(configPath, `webpack.config.${x}.js`)}`
+  `--config ${path.join(configPath, `webpack.config.${x}.babel.js`)}`
 
 const exec = (file, env, p = webpackPath) => {
   const opts = p === webpackPath ? webpackOpts : ''

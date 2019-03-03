@@ -2,13 +2,14 @@ import path from 'path'
 import webpack from 'webpack'
 import merge from 'webpack-merge'
 import readPkgUp from 'read-pkg-up'
-import baseConfig from './webpack.config.base'
+import baseConfig from './webpack.config.base.babel'
 
 const { pkg: dependencies = {} } = readPkgUp.sync()
 
 const dist = path.resolve(process.cwd(), 'dll')
 
 export default merge.smart(baseConfig, {
+  mode: 'development',
   context: process.cwd(),
 
   devtool: 'eval',
@@ -72,7 +73,7 @@ export default merge.smart(baseConfig, {
   },
 
   entry: {
-    vendor: ['babel-polyfill', ...Object.keys(dependencies)].filter(
+    vendor: [...Object.keys(dependencies)].filter(
       dependency => dependency !== 'font-awesome'
     ),
   },

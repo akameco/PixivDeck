@@ -1,14 +1,15 @@
 import webpack from 'webpack'
 import merge from 'webpack-merge'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
-import baseConfig from './webpack.config.base'
+import baseConfig from './webpack.config.base.babel'
 
 export default merge.smart(baseConfig, {
   devtool: false,
+  mode: 'production',
 
   target: 'electron-main',
 
-  entry: ['babel-polyfill', './app/main.development'],
+  entry: ['./app/main.dev'],
 
   // 'main.js' in root
   output: {
@@ -32,13 +33,10 @@ export default merge.smart(baseConfig, {
      * NODE_ENV should be production so that modules do not perform certain
      * development checks
      */
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(
-        process.env.NODE_ENV || 'production'
-      ),
-      'process.env.DEBUG_PROD': JSON.stringify(
-        process.env.DEBUG_PROD || 'false'
-      ),
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'production',
+      DEBUG_PROD: false,
+      START_MINIMIZED: false,
     }),
   ],
 

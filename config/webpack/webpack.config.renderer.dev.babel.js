@@ -4,7 +4,7 @@ import { spawn, execSync } from 'child_process'
 import webpack from 'webpack'
 import chalk from 'chalk'
 import merge from 'webpack-merge'
-import baseConfig from './webpack.config.base'
+import baseConfig from './webpack.config.base.babel'
 
 const port = process.env.PORT || 1212
 const publicPath = `http://localhost:${port}/dist`
@@ -24,6 +24,7 @@ if (!(fs.existsSync(dll) && fs.existsSync(manifest))) {
 }
 
 export default merge.smart(baseConfig, {
+  mode: 'development',
   devtool: 'inline-source-map',
 
   target: 'electron-renderer',

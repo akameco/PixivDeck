@@ -2,14 +2,15 @@ import path from 'path'
 import webpack from 'webpack'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import merge from 'webpack-merge'
-import baseConfig from './webpack.config.base'
+import baseConfig from './webpack.config.base.babel'
 
 export default merge.smart(baseConfig, {
   devtool: false,
+  mode: 'production',
 
   target: 'electron-renderer',
 
-  entry: ['babel-polyfill', './app/index'],
+  entry: ['./app/index'],
 
   output: {
     path: path.resolve(process.cwd(), 'app/dist'),
