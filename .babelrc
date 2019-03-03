@@ -12,7 +12,6 @@
   ],
   "plugins": [
     "add-module-exports",
-    "dynamic-import-webpack",
     [
       "react-intl-auto",
       {
