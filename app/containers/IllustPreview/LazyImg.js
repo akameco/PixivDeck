@@ -26,7 +26,7 @@ function calcSize(width: number, height: number): Size {
   return { width, height }
 }
 
-function calcMarginTop(node: HTMLElement): number {
+function calcMarginTop(node: HTMLElement | null): number {
   if (!node) {
     return 10
   }
@@ -58,8 +58,8 @@ type State = {
 }
 
 export default class LazyImg extends React.PureComponent<Props, State> {
-  to: HTMLElement
-  from: HTMLElement
+  to: HTMLElement | null
+  from: HTMLElement | null
   state: State = {
     isClicked: false,
     fromMarginTop: 0,
@@ -67,6 +67,9 @@ export default class LazyImg extends React.PureComponent<Props, State> {
   }
 
   handleLoad = () => {
+    if (!this.from) {
+      return
+    }
     this.setState({
       fromMarginTop: calcMarginTop(this.from),
     })
@@ -74,10 +77,12 @@ export default class LazyImg extends React.PureComponent<Props, State> {
     const img = new Image()
 
     img.addEventListener('load', () => {
-      this.props.onLoad()
-      this.setState({
-        toMarginTop: calcMarginTop(this.to),
-      })
+      if (this.to) {
+        this.props.onLoad()
+        this.setState({
+          toMarginTop: calcMarginTop(this.to),
+        })
+      }
     })
 
     img.src = this.props.original
@@ -108,7 +113,7 @@ export default class LazyImg extends React.PureComponent<Props, State> {
             marginTop={this.state.toMarginTop}
             isClicked={isClicked}
             onClick={this.handleClick}
-            innerRef={c => {
+            ref={c => {
               // eslint-disable-line react/jsx-no-bind
               this.to = c
             }}
@@ -125,7 +130,7 @@ export default class LazyImg extends React.PureComponent<Props, State> {
           marginTop={this.state.fromMarginTop}
           style={fromStyle}
           onLoad={this.handleLoad}
-          innerRef={c => {
+          ref={c => {
             // eslint-disable-line react/jsx-no-bind
             this.from = c
           }}

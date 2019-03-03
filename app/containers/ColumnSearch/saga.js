@@ -108,7 +108,7 @@ function* fetchNewWatch(action: Action) {
   try {
     while (true) {
       const interval = yield select(selectors.getInterval, action)
-      yield delay(interval || 2000)
+      yield call(delay, interval || 2000)
       yield call(fetchNew, action)
     }
   } catch (error) {

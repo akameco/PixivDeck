@@ -26,8 +26,10 @@ export default class ModalWrapper extends React.Component<Props> {
 
   handleKeyUp = handleEscCreater(this.requestClose)
 
-  setNode = (node: HTMLElement) => {
-    this.node = node
+  setNode = (node: HTMLElement | null) => {
+    if (node) {
+      this.node = node
+    }
   }
 
   render() {
@@ -40,7 +42,7 @@ export default class ModalWrapper extends React.Component<Props> {
     return (
       <Wrap>
         {open && <EventListener target="window" onKeyUp={this.handleKeyUp} />}
-        <Content innerRef={this.setNode}>
+        <Content ref={this.setNode}>
           <CloseButton onClick={onClose} />
           {open && children}
         </Content>

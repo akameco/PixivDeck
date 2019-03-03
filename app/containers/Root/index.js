@@ -5,6 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import App from 'containers/App'
 import Language from 'containers/Language'
 import type { Store } from 'types'
+import { GlobalStyle } from '../../styles/global-styles'
 import { translationMessages } from '../../i18n'
 
 type Props = {
@@ -16,7 +17,10 @@ function Root({ store }: Props) {
     <Provider store={store}>
       <Language messages={translationMessages}>
         <MuiThemeProvider>
-          <App />
+          <React.Fragment>
+            <App />
+            <GlobalStyle />
+          </React.Fragment>
         </MuiThemeProvider>
       </Language>
     </Provider>

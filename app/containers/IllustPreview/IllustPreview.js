@@ -29,6 +29,7 @@ export default class IllustPreview extends React.PureComponent<Props> {
   }
 
   escToClose = (event: Event) => {
+    // $FlowFixMe
     if (event.keyCode === 27) {
       this.handleOnClose()
     }
