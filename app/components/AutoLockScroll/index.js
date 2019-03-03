@@ -9,7 +9,7 @@ let lockingCounter: number = 1
 let originalBodyOverflow = null
 
 function getElementBody() {
-  return document.getElementsByTagName('body')[0]
+  return document.querySelectorAll('body')[0]
 }
 
 class AutoLockScroll extends React.Component<Props> {

@@ -7,7 +7,7 @@ import Root from './containers/Root'
 
 const store = configureStore()
 
-const rootEl = document.getElementById('root')
+const rootEl = document.querySelector('#root')
 
 if (rootEl) {
   render(
