@@ -1,7 +1,6 @@
 // @flow
 import * as React from 'react'
-import { shallow } from 'enzyme'
-import toJson from 'enzyme-to-json'
+import { mount } from 'enzyme'
 // eslint-disable-next-line import/no-unassigned-import
 import 'jest-styled-components'
 
@@ -11,16 +10,11 @@ const href = 'https://akameco.github.io'
 const children = <h1>Test</h1>
 
 const renderComponent = (props = {}) =>
-  shallow(
+  mount(
     <A href={href} {...props}>
       {children}
     </A>
   )
-
-test('render an <a> tag', () => {
-  const c = renderComponent()
-  expect(c.type()).toStrictEqual('a')
-})
 
 test('have an href attribute', () => {
   const c = renderComponent()
@@ -48,9 +42,4 @@ test('adopt a type attribute', () => {
   const type = 'text/html'
   const c = renderComponent({ type })
   expect(c.prop('type')).toStrictEqual(type)
-})
-
-test('snapshot', () => {
-  const c = renderComponent()
-  expect(toJson(c)).toMatchSnapshot()
 })
