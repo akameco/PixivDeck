@@ -2,15 +2,15 @@ import path from 'path'
 import webpack from 'webpack'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import merge from 'webpack-merge'
-import BabiliPlugin from 'babili-webpack-plugin'
-import baseConfig from './webpack.config.base'
+import baseConfig from './webpack.config.base.babel'
 
 export default merge.smart(baseConfig, {
   devtool: false,
+  mode: 'production',
 
   target: 'electron-renderer',
 
-  entry: ['babel-polyfill', './app/index'],
+  entry: ['./app/index'],
 
   output: {
     path: path.resolve(process.cwd(), 'app/dist'),
@@ -81,25 +81,9 @@ export default merge.smart(baseConfig, {
   },
 
   plugins: [
-    /**
-     * Create global constants which can be configured at compile time.
-     *
-     * Useful for allowing different behaviour between development builds and
-     * release builds
-     *
-     * NODE_ENV should be production so that modules do not perform certain
-     * development checks
-     */
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(
-        process.env.NODE_ENV || 'production'
-      ),
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'production',
     }),
-
-    /**
-     * Babli is an ES6+ aware minifier based on the Babel toolchain (beta)
-     */
-    new BabiliPlugin(),
 
     new BundleAnalyzerPlugin({
       analyzerMode:

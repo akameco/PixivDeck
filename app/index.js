@@ -4,11 +4,10 @@ import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import configureStore from './store'
 import Root from './containers/Root'
-import './styles/global-styles' // eslint-disable-line import/no-unassigned-import
 
 const store = configureStore()
 
-const rootEl = document.getElementById('root')
+const rootEl = document.querySelector('#root')
 
 if (rootEl) {
   render(

@@ -97,7 +97,7 @@ export default class LazyLoadImg extends React.PureComponent<Props, State> {
     img.src = this.props.src
   }
 
-  setNode = (node: HTMLElement) => {
+  setNode = (node: HTMLElement | null) => {
     if (node) {
       this.node = node
     }
@@ -107,7 +107,7 @@ export default class LazyLoadImg extends React.PureComponent<Props, State> {
     const { src, onClick, isManga } = this.props
     const { isVisible, isLoaded } = this.state
     return (
-      <StyledImg innerRef={this.setNode}>
+      <StyledImg ref={this.setNode}>
         {isManga && isLoaded && <Icon type="manga" color="#fff" />}
         {isVisible && isLoaded ? (
           <img src={src} onClick={onClick} />

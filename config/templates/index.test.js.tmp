@@ -1,9 +1,9 @@
 // @flow
 import React from 'react'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import toJSON from 'enzyme-to-json'
 import Comp from '../index'
 
 test('snapshot', () => {
-  expect(toJSON(shallow(<Comp />))).toMatchSnapshot()
+  expect(toJSON(mount(<Comp />))).toMatchSnapshot()
 })

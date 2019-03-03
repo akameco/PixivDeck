@@ -1,7 +1,7 @@
 // @flow
-import { baseReducer, type BaseColumn } from '../Column/reducer'
 import ms from 'ms'
 import update from 'utils/update'
+import { baseReducer, type BaseColumn } from '../Column/reducer'
 import type { Action } from './actionTypes'
 import * as Actions from './constants'
 

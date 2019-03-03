@@ -4,7 +4,7 @@ import { spawn, execSync } from 'child_process'
 import webpack from 'webpack'
 import chalk from 'chalk'
 import merge from 'webpack-merge'
-import baseConfig from './webpack.config.base'
+import baseConfig from './webpack.config.base.babel'
 
 const port = process.env.PORT || 1212
 const publicPath = `http://localhost:${port}/dist`
@@ -24,6 +24,7 @@ if (!(fs.existsSync(dll) && fs.existsSync(manifest))) {
 }
 
 export default merge.smart(baseConfig, {
+  mode: 'development',
   devtool: 'inline-source-map',
 
   target: 'electron-renderer',
@@ -109,32 +110,14 @@ export default merge.smart(baseConfig, {
       sourceType: 'var',
     }),
 
-    /**
-     * https://webpack.js.org/concepts/hot-module-replacement/
-     */
     new webpack.HotModuleReplacementPlugin({
-      // @TODO: Waiting on https://github.com/jantimon/html-webpack-plugin/issues/533
-      // multiStep: true
+      multiStep: true,
     }),
 
     new webpack.NoEmitOnErrorsPlugin(),
 
-    /**
-     * Create global constants which can be configured at compile time.
-     *
-     * Useful for allowing different behaviour between development builds and
-     * release builds
-     *
-     * NODE_ENV should be production so that modules do not perform certain
-     * development checks
-     *
-     * By default, use 'development' as NODE_ENV. This can be overriden with
-     * 'staging', for example, by changing the ENV variables in the npm scripts
-     */
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(
-        process.env.NODE_ENV || 'development'
-      ),
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'development',
     }),
 
     new webpack.LoaderOptionsPlugin({
@@ -155,6 +138,7 @@ export default merge.smart(baseConfig, {
     contentBase: path.resolve(process.cwd(), 'dist'),
     watchOptions: {
       aggregateTimeout: 300,
+      ignored: /node_modules/,
       poll: 100,
     },
     historyApiFallback: {

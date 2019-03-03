@@ -30,5 +30,6 @@
     "no-shadow": 0,
     "react/no-deprecated": 0,
     "react/no-find-dom-node": 0,
+    "flowtype/require-compound-type-alias": 0
   }
 }

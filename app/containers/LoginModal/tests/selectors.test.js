@@ -28,12 +28,12 @@ test('makeSelectInfo', () => {
 
 test('makeSelectIsLoginFailure', () => {
   const s = selectors.makeSelectIsLoginFailure()
-  expect(s(mockStore)).toBeFalsy()
+  expect(s(mockStore)).toBe(false)
 })
 
 test('makeSelectIsLoading', () => {
   const s = selectors.makeSelectIsLoading()
-  expect(s(mockStore)).toBeFalsy()
+  expect(s(mockStore)).toBe(false)
 })
 
 test('getMyId', () => {

@@ -9,7 +9,7 @@ import DrawerWrapper from './DrawerWrapper'
 export type Props = {
   open: boolean,
   children?: React.Element<any>,
-  onRequestClose: () => void,
+  onRequestClose?: () => void,
   width?: number,
 }
 
@@ -22,9 +22,13 @@ class Drawer extends React.PureComponent<Props, void> {
 
   static defaultProps: DefaultProps = {
     width: 500,
+    onRequestClose: () => {},
   }
 
-  handleKeyUp = handleEscCreater(this.props.onRequestClose)
+  handleKeyUp =
+    this.props &&
+    this.props.onRequestClose &&
+    handleEscCreater(this.props.onRequestClose)
 
   render() {
     const { open, width, children, onRequestClose } = this.props

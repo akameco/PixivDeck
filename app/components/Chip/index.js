@@ -30,7 +30,6 @@ const InnerChip = styled.span`
   font-size: 14px;
   line-height: 32px;
   font-weight: 400;
-  line-height: 32px;
   padding-right: 12px;
   padding-left: 12px;
   user-select: none;

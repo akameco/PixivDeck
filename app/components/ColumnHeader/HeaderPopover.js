@@ -7,8 +7,8 @@ const StyledPopover = styled.div`
   flex-direction: column;
   overflow: hidden;
   margin: 0;
-  ${p => p.open && 'padding: 5px 5%;'} max-height: ${p =>
-  p.open ? '400px' : 0};
+  ${p => p.open && 'padding: 5px 5%;'}
+  max-height: ${p => (p.open ? '400px' : 0)};
   transition: ${p =>
     p.open
       ? 'max-height, 0.6s, 0ms, ease-out'

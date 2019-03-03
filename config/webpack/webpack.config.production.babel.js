@@ -1,12 +1,13 @@
 'use strict'
 const webpack = require('webpack')
 const merge = require('webpack-merge')
-const baseConfig = require('./webpack.config.base')
+const baseConfig = require('./webpack.config.base.babel')
 
 module.exports = merge(baseConfig, {
   devtool: false,
+  mode: 'production',
 
-  entry: ['babel-polyfill', './app/index'],
+  entry: ['./app/index'],
 
   output: {
     publicPath: '../dist/',
@@ -14,8 +15,8 @@ module.exports = merge(baseConfig, {
 
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production'),
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'production',
     }),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {

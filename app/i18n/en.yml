@@ -3,23 +3,25 @@ components:
     logout: Logout
     setting: Settings
   LoginModal:
-    login: Login
     error: Login Error
+    login: Login
     password: Password
     username: Username
     errorInfo: Check your username and password.
     loginLoading: Logging in...
   UserDrawer:
     tabManga: 'Manga ({count})'
-    tabIllust: 'Illustration ({count})'
     addColumn: Add to Column
+    tabIllust: 'Illustration ({count})'
   ColumnHeaderBookmark:
     bookmarkFilter: Filter Bookmarks
 containers:
-  SearchField:
-    users: users in
-    search: Search
-    keywordSearch: Search by keyword
+  BoxContainer:
+    save: Save Original Image
+    bookmark: Add Bookmark
+    showUser: Show User Info
+    openPixiv: Open Pixiv Page
+    privateBookmark: Add Private Bookmark
   ColumnRanking:
     day: Daily Rankings
     week: Weekly Rankings
@@ -28,21 +30,29 @@ containers:
     day_female: Popular Female Rankings
     week_rookie: Rookie Rankings
     week_original: Original Rankings
-  BoxContainer:
-    save: Save Original Image
-    showUser: Show User Info
-    bookmark: Add Bookmark
-    openPixiv: Open Pixiv Page
-    privateBookmark: Add Private Bookmark
+  SearchField:
+    users: users in
+    search: Search
+    keywordSearch: Search by keyword
+  AddColumnModal:
+    new: New by...
+    header: Select a Column
+    public: Public
+    history: History
+    private: Private
+    ranking: Rankings
+    bookmark: Bookmarks
+    r18ranking: R-18 Rankings
+    recommended: Recommended for You
   SettingModal:
-    limit: Restrict access
     cache: Delete cache (unsafe)
+    limit: Restrict access
     r18Link: pixiv - r18
     language: Language
     tagFilter: Tag filter
     uiSetting: UI setting
-    showOnlyImg: Show only image
     showCaption: Show Caption
+    showOnlyImg: Show only image
     r18FilterDesc: >-
       You can add "R-18" and "R-18G" into the tag filter to remove R18 contents
       in this client,
@@ -52,25 +62,15 @@ containers:
 
       You can also change the restriction on your Pixiv account's setting below,
       which will take effect globally.
-  AddColumnModal:
-    new: New by...
-    header: Select a Column
-    public: Public
-    history: History
-    ranking: Rankings
-    private: Private
-    bookmark: Bookmarks
-    r18ranking: R-18 Rankings
-    recommended: Recommended for You
   ColumnFollow:
     public: Public following
     private: Private following
+  ColumnHistory:
+    title: History
   FollowButton:
     follow: Follow
     unFollow: Unfollow
     following: Following
-  ColumnHistory:
-    title: History
   ColumnBookmark:
     public: Public Bookmarks
     private: Private Bookmarks

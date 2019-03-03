@@ -10,12 +10,12 @@ export type Props = {
   id: string,
   hasMore: boolean,
   illusts: Array<Illust>,
-  node?: HTMLElement => void,
+  node?: (HTMLElement | null) => void,
   onNext: Function,
 }
 
 export default class IllustList extends React.PureComponent<Props> {
-  node: HTMLElement
+  node: HTMLElement | null
   intersectionObserverWrapper = new IntersectionObserverWrapper()
 
   attachIntersectionObserver = () => {
@@ -37,7 +37,7 @@ export default class IllustList extends React.PureComponent<Props> {
     this.attachIntersectionObserver()
   }
 
-  _setNode = (node: HTMLElement) => {
+  _setNode = (node: HTMLElement | null) => {
     if (node) {
       this.node = node
     }
@@ -65,7 +65,7 @@ export default class IllustList extends React.PureComponent<Props> {
     }
 
     return (
-      <ScrollableY innerRef={this.props.node}>
+      <ScrollableY ref={this.props.node}>
         {List}
         {loadMore}
       </ScrollableY>
