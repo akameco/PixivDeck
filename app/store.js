@@ -20,7 +20,7 @@ export default function configureStore(initialState: Object = {}): Store {
   const enhancer = compose(
     applyMiddleware(...middleware),
     autoRehydrate(),
-    window.devToolsExtension ? window.devToolsExtension() : f => f
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 
   const store = createStore(reducer, initialState, enhancer)
