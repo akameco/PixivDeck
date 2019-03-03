@@ -3,23 +3,25 @@ components:
     logout: ログアウト
     setting: 設定
   LoginModal:
-    login: ログイン
     error: ログインに失敗しました。
+    login: ログイン
     password: パスワード
     username: ユーザー名
     errorInfo: ユーザ名とパスワードを確認してください。
     loginLoading: ログイン中..
   UserDrawer:
     tabManga: 'マンガ ({count})'
-    tabIllust: 'イラスト ({count})'
     addColumn: カラムに追加
+    tabIllust: 'イラスト ({count})'
   ColumnHeaderBookmark:
     bookmarkFilter: ブックマークフィルタ
 containers:
-  SearchField:
-    users: users入り
-    search: 検索
-    keywordSearch: キーワード検索
+  BoxContainer:
+    save: オリジナルサイズの画像を保存
+    bookmark: ブックマーク
+    showUser: このユーザの情報を見る
+    openPixiv: pixivで開く
+    privateBookmark: 非公開ブックマーク
   ColumnRanking:
     day: デイリーランキング
     week: ウィークリーランキング
@@ -28,43 +30,41 @@ containers:
     day_female: 女子に人気
     week_rookie: ルーキー
     week_original: オリジナル
-  BoxContainer:
-    save: オリジナルサイズの画像を保存
-    showUser: このユーザの情報を見る
-    bookmark: ブックマーク
-    openPixiv: pixivで開く
-    privateBookmark: 非公開ブックマーク
-  SettingModal:
-    limit: 閲覧制限
-    cache: キャッシュを削除
-    r18Link: pixiv - R-18設定
-    language: 言語
-    tagFilter: タグフィルター
-    uiSetting: UI 設定
-    showOnlyImg: 画像のみ表示
-    showCaption: キャプションを表示
-    r18FilterDesc: |-
-      R-18タグをフィルターするのがもっとも簡単です。
-      どうしても閲覧制限を設定はpixivのサイト上にて変更する必要があります。
+  SearchField:
+    users: users入り
+    search: 検索
+    keywordSearch: キーワード検索
   AddColumnModal:
     new: 新着
     header: 追加するカラムを選択
     public: 公開
     history: 閲覧履歴
-    ranking: ランキング
     private: 非公開
+    ranking: ランキング
     bookmark: ブックマーク
     r18ranking: R18 ランキング
     recommended: あなたにおすすめ
+  SettingModal:
+    cache: キャッシュを削除
+    limit: 閲覧制限
+    r18Link: pixiv - R-18設定
+    language: 言語
+    tagFilter: タグフィルター
+    uiSetting: UI 設定
+    showCaption: キャプションを表示
+    showOnlyImg: 画像のみ表示
+    r18FilterDesc: |-
+      R-18タグをフィルターするのがもっとも簡単です。
+      どうしても閲覧制限を設定はpixivのサイト上にて変更する必要があります。
   ColumnFollow:
     public: 公開 新着
     private: 非公開 新着
+  ColumnHistory:
+    title: 閲覧履歴
   FollowButton:
     follow: フォローする
     unFollow: フォロー解除
     following: フォロー中
-  ColumnHistory:
-    title: 閲覧履歴
   ColumnBookmark:
     public: 公開ブックマーク
     private: 非公開ブックマーク

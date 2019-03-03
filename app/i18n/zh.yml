@@ -3,23 +3,25 @@ components:
     logout: 注销
     setting: 设置
   LoginModal:
-    login: 登录
     error: 登录失败
+    login: 登录
     password: 密码
     username: 用户名
     errorInfo: 请检查您的用户名或密码
     loginLoading: 登录中...
   UserDrawer:
     tabManga: '漫画 ({count})'
-    tabIllust: '插画 ({count})'
     addColumn: 添加该列
+    tabIllust: '插画 ({count})'
   ColumnHeaderBookmark:
     bookmarkFilter: 过滤书签
 containers:
-  SearchField:
-    users: 同时搜索用户
-    search: 搜索
-    keywordSearch: 关键词搜索
+  BoxContainer:
+    save: 下载原图
+    bookmark: 收藏
+    showUser: 查看作者信息
+    openPixiv: 在Pixiv页面中打开
+    privateBookmark: 私人收藏
   ColumnRanking:
     day: 日排行
     week: 周排行
@@ -28,44 +30,42 @@ containers:
     day_female: 女性青睐
     week_rookie: 新人排行
     week_original: 原创排行
-  BoxContainer:
-    save: 下载原图
-    showUser: 查看作者信息
-    bookmark: 收藏
-    openPixiv: 在Pixiv页面中打开
-    privateBookmark: 私人收藏
-  SettingModal:
-    limit: 限制访问
-    cache: 清除缓存(不安全)
-    r18Link: Pixiv - R18设置
-    language: 语言
-    tagFilter: 标签过滤
-    uiSetting: UI设置
-    showOnlyImg: 只显示图像
-    showCaption: 显示简介
-    r18FilterDesc: |-
-      您可以在上方的标签过滤中添加“R-18”和“R-18G”来防止本客户端显示R18作品，
-      或在搜索关键词中添加“-R-18 -R-18G”来防止在该搜索中显示R18作品。
-      您也可在您的Pixiv账户设置里修改限制级来防止您使用的任何客户端显示R18作品。
+  SearchField:
+    users: 同时搜索用户
+    search: 搜索
+    keywordSearch: 关键词搜索
   AddColumnModal:
     new: 最新
     header: 选择列
     public: 公开
     history: 浏览历史
-    ranking: 排行榜
     private: 非公开
+    ranking: 排行榜
     bookmark: 我的收藏
     r18ranking: R18排行榜
     recommended: 为您推荐
+  SettingModal:
+    cache: 清除缓存(不安全)
+    limit: 限制访问
+    r18Link: Pixiv - R18设置
+    language: 语言
+    tagFilter: 标签过滤
+    uiSetting: UI设置
+    showCaption: 显示简介
+    showOnlyImg: 只显示图像
+    r18FilterDesc: |-
+      您可以在上方的标签过滤中添加“R-18”和“R-18G”来防止本客户端显示R18作品，
+      或在搜索关键词中添加“-R-18 -R-18G”来防止在该搜索中显示R18作品。
+      您也可在您的Pixiv账户设置里修改限制级来防止您使用的任何客户端显示R18作品。
   ColumnFollow:
     public: 公开关注
     private: 私人关注
+  ColumnHistory:
+    title: 浏览历史
   FollowButton:
     follow: 关注
     unFollow: 取消关注
     following: 已关注
-  ColumnHistory:
-    title: 浏览历史
   ColumnBookmark:
     public: 公开收藏
     private: 私人收藏
