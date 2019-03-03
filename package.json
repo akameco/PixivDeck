@@ -37,8 +37,6 @@
     "postinstall": "npm run build:dll && electron-builder install-app-deps",
     "package": "npm run build && build --publish never",
     "release": "npm run build && build",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
     "precommit": "npm run flow && lint-staged"
   },
   "lint-staged": {
@@ -85,10 +83,6 @@
     "uuid": "^3.1.0"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^3.4.0-alpha.1",
-    "@storybook/addon-info": "^3.4.0-alpha.1",
-    "@storybook/addon-knobs": "^3.4.0-alpha.1",
-    "@storybook/react": "^3.4.0-alpha.1",
     "all-contributors-cli": "^5.2.1",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.26.3",
