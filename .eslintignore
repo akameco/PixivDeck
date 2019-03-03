@@ -10,3 +10,4 @@ app/main.js.map
 dll/vendor.dll.js
 coverage
 config
+app/i18n/localedata-zhtw.js

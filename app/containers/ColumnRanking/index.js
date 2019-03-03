@@ -45,7 +45,7 @@ class ColumnRanking extends React.Component<Props & InjectProp> {
   }
 
   render() {
-    const { illusts, id, onClose, intl, onHeaderClick, setNode } = this.props
+    const { illusts, id, onClose, intl, setNode } = this.props
 
     // TODO リミットをstoreに保存
     const hasMore = illusts.length < 200
