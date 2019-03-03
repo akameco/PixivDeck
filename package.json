@@ -120,7 +120,7 @@
     "enzyme-to-json": "^3.3.5",
     "eslint": "^5.15.0",
     "eslint-config-precure": "^3.3.0",
-    "execa": "^0.8.0",
+    "execa": "^1.0.0",
     "extract-react-intl": "^0.6.0",
     "extract-react-intl-messages": "^0.10.0",
     "extract-zip": "^1.6.7",
