@@ -74,7 +74,7 @@
     "react-event-listener": "^0.6.6",
     "react-intl": "^2.8.0",
     "react-redux": "^5.0.7",
-    "react-sortable-pane": "^0.6.8",
+    "react-sortable-pane": "^1.0.4",
     "redux": "^3.7.1",
     "redux-persist": "^4.10.1",
     "redux-saga": "^0.16.0",

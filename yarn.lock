@@ -9018,6 +9018,11 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+re-resizable@4.7.1:
+  version "4.7.1"
+  resolved "https://registry.yarnpkg.com/re-resizable/-/re-resizable-4.7.1.tgz#3eca5bb94a6059d14311786cfd2d430bc9f7fba0"
+  integrity sha512-pLJkPbZCe+3ml+9Q15z+R69qYZDsluj0KwrdFb8kSNaqDzYAveDUblf7voHH9hNTdKIiIvP8iIdGFFKSgffVaQ==
+
 react-addons-test-utils@^15.6.2:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/react-addons-test-utils/-/react-addons-test-utils-15.6.2.tgz#c12b6efdc2247c10da7b8770d185080a7b047156"
@@ -9078,10 +9083,10 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
-react-motion@^0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/react-motion/-/react-motion-0.5.1.tgz#b90631408175ab1668e173caccd66d41a44f4592"
-  integrity sha512-umiUg2XTjJHK8z16VLLWVRC9Mr0GZhMrZTlGszXis8b9bc8rghtKfbvusxj65IAlGkO4R2l5pRXbvYlbCuGsmA==
+react-motion@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/react-motion/-/react-motion-0.5.2.tgz#0dd3a69e411316567927917c6626551ba0607316"
+  integrity sha512-9q3YAvHoUiWlP3cK0v+w1N5Z23HXMj4IF4YuvjvWegWqNPfLXsOBE/V7UvQGpXxHFKRQQcNcVQE31g9SB/6qgQ==
   dependencies:
     performance-now "^0.2.0"
     prop-types "^15.5.8"
@@ -9099,19 +9104,17 @@ react-redux@^5.0.7:
     loose-envify "^1.1.0"
     prop-types "^15.6.0"
 
-react-resizable-box@^2.0.6:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/react-resizable-box/-/react-resizable-box-2.1.0.tgz#8bba081b5adbe2af0be4768c4f1de6a84a423aad"
-  integrity sha1-i7oIG1rb4q8L5HaMTx3mqEpCOq0=
-
-react-sortable-pane@^0.6.8:
-  version "0.6.8"
-  resolved "https://registry.yarnpkg.com/react-sortable-pane/-/react-sortable-pane-0.6.8.tgz#9944dbaeac76095054ee457dd1fe12c908f6941c"
-  integrity sha512-HldTB5nGOE/J/t0Uny1YFs32L/mnGXQK0ivtxAEMgvrIfbAuOeo8MuptP1Zs+gFTa28Xf8gRXdecH25Ivna7OA==
+react-sortable-pane@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-sortable-pane/-/react-sortable-pane-1.0.4.tgz#535d3d04006b746cbe4d0509e53728c16b14508f"
+  integrity sha512-WwlYEcv5mm61F1Y1UGkExko8EE5QlOgczRdXehvoQba8PAYREqrfdAKSRoivSmbBdji7T2WJk0Bsw97wt6MNQQ==
   dependencies:
+    lodash.debounce "^4.0.8"
     lodash.isequal "^4.1.1"
-    react-motion "^0.5.1"
-    react-resizable-box "^2.0.6"
+    re-resizable "4.7.1"
+    react-motion "^0.5.2"
+    resize-observer-polyfill "^1.5.0"
+    tslib "^1.9.2"
 
 react-test-renderer@^16.0.0-0:
   version "16.2.0"
@@ -9680,6 +9683,11 @@ reselect@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/reselect/-/reselect-3.0.1.tgz#efdaa98ea7451324d092b2b2163a6a1d7a9a2147"
   integrity sha1-79qpjqdFEyTQkrKyFjpqHXqaIUc=
+
+resize-observer-polyfill@^1.5.0:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
+  integrity sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==
 
 resolve-async@^1.0.1:
   version "1.0.1"
@@ -10990,7 +10998,7 @@ tryer@^1.0.0:
   resolved "https://registry.yarnpkg.com/tryer/-/tryer-1.0.0.tgz#027b69fa823225e551cace3ef03b11f6ab37c1d7"
   integrity sha1-Antp+oIyJeVRys4+8DsR9qs3wdc=
 
-tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
+tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.2, tslib@^1.9.3:
   version "1.9.3"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
   integrity sha512-4krF8scpejhaOgqzBEcGM7yDIEfi0/8+8zDRZhNZZ2kjmHJ4hv3zCbQWxoJGz1iw5U0Jl0nma13xzHXcncMavQ==

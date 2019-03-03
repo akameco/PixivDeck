@@ -17,28 +17,25 @@ const Table = ({ ids, setTabel }: Props) => {
     return null
   }
 
-  const handleOrderChange = (_, panes) => {
-    const newState = panes.map(v => v.id)
-    setTabel(newState)
-  }
-
-  const panes = ids.map(id => (
+  const panes = ids.map(key => (
     <Pane
-      key={id}
-      width={280}
-      id={id}
-      height="100%"
-      isResizable={{ x: true, y: false, xy: false }}
+      key={key}
+      size={{ width: 280, height: '100%' }}
+      style={{ zIndex: 1 }}
+      resizable={{ x: true, y: false, xy: false }}
     >
-      <ColumnManager id={id} />
+      <ColumnManager id={key} />
     </Pane>
   ))
 
   return (
     <SortablePane
+      order={ids}
       disableEffect
       onResize={handleOnResize}
-      onOrderChange={handleOrderChange}
+      onOrderChange={order => {
+        setTabel(order)
+      }}
     >
       {panes}
     </SortablePane>
