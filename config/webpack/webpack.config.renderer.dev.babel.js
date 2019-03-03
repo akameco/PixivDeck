@@ -110,12 +110,8 @@ export default merge.smart(baseConfig, {
       sourceType: 'var',
     }),
 
-    /**
-     * https://webpack.js.org/concepts/hot-module-replacement/
-     */
     new webpack.HotModuleReplacementPlugin({
-      // @TODO: Waiting on https://github.com/jantimon/html-webpack-plugin/issues/533
-      // multiStep: true
+      multiStep: true,
     }),
 
     new webpack.NoEmitOnErrorsPlugin(),
@@ -142,6 +138,7 @@ export default merge.smart(baseConfig, {
     contentBase: path.resolve(process.cwd(), 'dist'),
     watchOptions: {
       aggregateTimeout: 300,
+      ignored: /node_modules/,
       poll: 100,
     },
     historyApiFallback: {
