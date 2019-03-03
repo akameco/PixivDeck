@@ -16,17 +16,17 @@ export const Wrap = styled.div`
 `
 
 const fadeIn = keyframes`
-	0% {
-		opacity: 0;
-		margin-top: -1000px;
-	}
+  0% {
+    opacity: 0;
+    margin-top: -1000px;
+  }
 
-	20% {
-		opacity: 100;
-	}
-	100% {
-		margin-top: 0;
-	}
+  20% {
+    opacity: 100;
+  }
+  100% {
+    margin-top: 0;
+  }
 `
 
 export const Content = styled.div`

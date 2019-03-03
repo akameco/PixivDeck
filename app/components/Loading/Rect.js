@@ -3,15 +3,15 @@ import styled, { keyframes } from 'styled-components'
 import { key } from 'styles/styleTheme'
 
 const loading = keyframes`
-	0%,
-	40%,
-	100% {
-		transform: scaleY(0.4);
-	}
+  0%,
+  40%,
+  100% {
+    transform: scaleY(0.4);
+  }
 
-	20% {
-		transform: scaleY(1);
-	}
+  20% {
+    transform: scaleY(1);
+  }
 `
 
 const Rect = styled.div`

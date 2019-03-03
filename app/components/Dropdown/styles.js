@@ -2,13 +2,13 @@
 import styled, { keyframes } from 'styled-components'
 
 const fadeIn = keyframes`
-	0% {
-		bottom: -150px;
-	}
+  0% {
+    bottom: -150px;
+  }
 
-	100% {
-		bottom: 10px;
-	}
+  100% {
+    bottom: 10px;
+  }
 `
 
 export const Wrap = styled.div`

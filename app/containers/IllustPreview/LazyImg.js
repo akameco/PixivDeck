@@ -147,9 +147,9 @@ const FromImg = styled.img`
 `
 
 const fadeIn = keyframes`
-	0% { filter: blur(1px); }
+  0% { filter: blur(1px); }
 
-	100% { filter: none; }
+  100% { filter: none; }
 `
 
 const Img = styled.img`

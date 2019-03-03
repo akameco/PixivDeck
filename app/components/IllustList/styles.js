@@ -12,8 +12,6 @@ export const ScrollableY = styled.div`
   }
   &::-webkit-scrollbar-thumb {
     min-height: 50px;
-  }
-  &::-webkit-scrollbar-thumb {
     border-radius: 5px;
     background-color: #444448;
   }

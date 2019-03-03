@@ -10,8 +10,8 @@ export const Wrap = styled.header`
   right: 0;
   bottom: 0;
   text-align: center;
-  flex-direction: column;
   flex-flow: nowrap;
+  flex-direction: column;
   width: 50px;
   height: 100%;
   background-color: #292f33;
