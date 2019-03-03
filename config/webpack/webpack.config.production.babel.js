@@ -15,8 +15,8 @@ module.exports = merge(baseConfig, {
 
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production'),
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'production',
     }),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
