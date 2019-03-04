@@ -1,3 +1,4 @@
 {
-  "extends": ["@akameco"]
+  "extends": ["@akameco"],
+  "ignoreDeps": ["flow-bin"]
 }
