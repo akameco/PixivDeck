@@ -2,9 +2,10 @@
 
 declare module "redux-persist" {
   declare export function autoRehydrate(): any
-  declare export function persistStore(any, Object): any
+  declare export function persistStore(any): any
+  declare export function persistReducer(any, any): any
 }
 
-declare module "redux-persist/constants" {
-  declare export var REHYDRATE: string
+declare module "redux-persist/integration/react" {
+  declare export var PersistGate: any
 }

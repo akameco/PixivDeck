@@ -5,14 +5,14 @@ import { AppContainer } from 'react-hot-loader'
 import configureStore from './store'
 import Root from './containers/Root'
 
-const store = configureStore()
+const { store, persistor } = configureStore()
 
 const rootEl = document.querySelector('#root')
 
 if (rootEl) {
   render(
     <AppContainer>
-      <Root store={store} />
+      <Root store={store} persistor={persistor} />
     </AppContainer>,
     rootEl
   )
@@ -25,7 +25,7 @@ if (rootEl && module.hot) {
     render(
       <AppContainer>
         {/* // $FlowFixMe */}
-        <NextRoot store={store} />
+        <NextRoot store={store} persistor={persistor} />
       </AppContainer>,
       rootEl
     )

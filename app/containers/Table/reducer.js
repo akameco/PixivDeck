@@ -1,6 +1,5 @@
 // @flow
 import { union } from 'lodash'
-import { REHYDRATE } from 'redux-persist/constants'
 import type { ColumnManagerId } from '../ColumnManager/reducer'
 import type { Action } from './actionTypes'
 import * as Actions from './constants'
@@ -38,15 +37,6 @@ export default function(
 
     case Actions.SET_TABLE:
       return { ...state, nextIds: action.ids }
-
-    case REHYDRATE: {
-      // $FlowFixMe
-      const oldState: State = action.payload.Table
-      if (oldState) {
-        return { ids: oldState.nextIds, nextIds: [] }
-      }
-      return state
-    }
 
     default:
       return state
