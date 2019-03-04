@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react'
 import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import App from 'containers/App'
 import Language from 'containers/Language'
@@ -10,19 +11,22 @@ import { translationMessages } from '../../i18n'
 
 type Props = {
   store: Store,
+  persistor: any,
 }
 
-function Root({ store }: Props) {
+function Root({ store, persistor }: Props) {
   return (
     <Provider store={store}>
-      <Language messages={translationMessages}>
-        <MuiThemeProvider>
-          <React.Fragment>
-            <App />
-            <GlobalStyle />
-          </React.Fragment>
-        </MuiThemeProvider>
-      </Language>
+      <PersistGate persistor={persistor}>
+        <Language messages={translationMessages}>
+          <MuiThemeProvider>
+            <React.Fragment>
+              <App />
+              <GlobalStyle />
+            </React.Fragment>
+          </MuiThemeProvider>
+        </Language>
+      </PersistGate>
     </Provider>
   )
 }

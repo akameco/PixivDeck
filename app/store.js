@@ -1,7 +1,7 @@
 // @flow
 import { createStore, applyMiddleware, compose } from 'redux'
 import createSagaMiddleware from 'redux-saga'
-import { persistStore, autoRehydrate } from 'redux-persist'
+import { persistStore, persistReducer } from 'redux-persist'
 import localForage from 'localforage'
 import type { Store } from 'types'
 import reducer from './reducer'
@@ -11,7 +11,26 @@ import { version } from './package.json' // eslint-disable-line import/extension
 
 let persistor
 
-export default function configureStore(initialState: Object = {}): Store {
+const persistConfig = {
+  key: `root`,
+  version: version.split('.')[0],
+  storage: localForage,
+  debug: process.env.NODE_ENV === 'develop',
+  whitelist: [
+    'ColumnManager',
+    'Language',
+    'LoginModal',
+    'ModalManeger',
+    'SettingModal',
+    'Table',
+  ],
+}
+
+const persistedReducer = persistReducer(persistConfig, reducer)
+
+export default function configureStore(
+  initialState: Object = {}
+): { store: Store, persistor: any } {
   const middleware = []
 
   const sagaMiddleware = createSagaMiddleware()
@@ -19,19 +38,14 @@ export default function configureStore(initialState: Object = {}): Store {
 
   const enhancer = compose(
     applyMiddleware(...middleware),
-    autoRehydrate(),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 
-  const store = createStore(reducer, initialState, enhancer)
+  const store = createStore(persistedReducer, initialState, enhancer)
 
   sagaMiddleware.run(mySaga)
 
-  persistor = persistStore(store, {
-    storage: localForage,
-    blacklist: ['IllustById', 'UserById', 'IllustPreview', 'MangaPreview'],
-    keyPrefix: `PixivDeck-v${version.split('.')[0]}`,
-  })
+  persistor = persistStore(store)
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
@@ -43,7 +57,7 @@ export default function configureStore(initialState: Object = {}): Store {
     })
   }
 
-  return store
+  return { store, persistor }
 }
 
 export function clean() {

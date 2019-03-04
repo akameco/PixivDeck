@@ -1,7 +1,5 @@
 // @flow
 import update from 'utils/update'
-import { REHYDRATE } from 'redux-persist/constants'
-import { handleRehydrate } from 'utils/handleReydrate'
 
 export type BaseColumn = {
   ids: Array<number>,
@@ -31,8 +29,6 @@ export function baseReducer<
     case types.FETCH_NEXT_SUCCESS:
     case types.FETCH_NEW_SUCCESS:
       return update(state, action, { ids: action.ids })
-    case REHYDRATE:
-      return handleRehydrate(state, action, name)
     default:
       return state
   }
