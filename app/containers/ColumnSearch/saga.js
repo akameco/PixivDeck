@@ -1,6 +1,14 @@
 // @flow
-import { delay, type Saga } from 'redux-saga'
-import { put, select, call, takeEvery, fork, take } from 'redux-saga/effects'
+import { type Saga } from 'redux-saga'
+import {
+  delay,
+  put,
+  select,
+  call,
+  takeEvery,
+  fork,
+  take,
+} from 'redux-saga/effects'
 import { union, difference } from 'lodash'
 import { addTable } from 'containers/ColumnManager/actions'
 import { addNotifyWithIllust } from 'containers/Notify/actions'
@@ -66,7 +74,7 @@ function* fetchUntilLimit(action: Action): Saga<void> {
         return
       }
 
-      yield call(delay, 2000)
+      yield delay(2000)
     }
   } catch (error) {
     yield put(actions.fetchNewFailre(action.id, error))
@@ -108,7 +116,7 @@ function* fetchNewWatch(action: Action) {
   try {
     while (true) {
       const interval = yield select(selectors.getInterval, action)
-      yield call(delay, interval || 2000)
+      yield delay(interval || 2000)
       yield call(fetchNew, action)
     }
   } catch (error) {
