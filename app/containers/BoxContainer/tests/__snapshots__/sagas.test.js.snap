@@ -3,7 +3,8 @@
 exports[`root 1`] = `
 Object {
   "@@redux-saga/IO": true,
-  "FORK": Object {
+  "combinator": false,
+  "payload": Object {
     "args": Array [
       "BoxContainer/OPEN_PIXIV",
       [Function],
@@ -11,5 +12,6 @@ Object {
     "context": null,
     "fn": [Function],
   },
+  "type": "FORK",
 }
 `;

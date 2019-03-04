@@ -3,7 +3,8 @@
 exports[`bookmark 1`] = `
 Object {
   "@@redux-saga/IO": true,
-  "CALL": Object {
+  "combinator": false,
+  "payload": Object {
     "args": Array [
       "/v2/illust/bookmark/add",
       Object {
@@ -14,13 +15,15 @@ Object {
     "context": null,
     "fn": [Function],
   },
+  "type": "CALL",
 }
 `;
 
 exports[`bookmark failed 1`] = `
 Object {
   "@@redux-saga/IO": true,
-  "CALL": Object {
+  "combinator": false,
+  "payload": Object {
     "args": Array [
       "/v2/illust/bookmark/add",
       Object {
@@ -31,5 +34,6 @@ Object {
     "context": null,
     "fn": [Function],
   },
+  "type": "CALL",
 }
 `;

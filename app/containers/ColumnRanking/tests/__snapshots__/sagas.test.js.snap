@@ -3,18 +3,21 @@
 exports[`root 1`] = `
 Object {
   "@@redux-saga/IO": true,
-  "FORK": Object {
+  "combinator": false,
+  "payload": Object {
     "args": Array [],
     "context": null,
     "fn": [Function],
   },
+  "type": "FORK",
 }
 `;
 
 exports[`watchNewIllust 1`] = `
 Object {
   "@@redux-saga/IO": true,
-  "SELECT": Object {
+  "combinator": false,
+  "payload": Object {
     "args": Array [
       Object {
         "id": 1,
@@ -22,11 +25,21 @@ Object {
     ],
     "selector": [Function],
   },
+  "type": "SELECT",
 }
 `;
 
 exports[`watchNewIllust 2`] = `
-Promise {
-  "@@redux-saga/CANCEL_PROMISE": [Function],
+Object {
+  "@@redux-saga/IO": true,
+  "combinator": false,
+  "payload": Object {
+    "args": Array [
+      undefined,
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+  "type": "CALL",
 }
 `;

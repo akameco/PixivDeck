@@ -3,7 +3,8 @@
 exports[`fetch first 1`] = `
 Object {
   "@@redux-saga/IO": true,
-  "SELECT": Object {
+  "combinator": false,
+  "payload": Object {
     "args": Array [
       Object {
         "id": "public",
@@ -11,23 +12,27 @@ Object {
     ],
     "selector": [Function],
   },
+  "type": "SELECT",
 }
 `;
 
 exports[`fetch first 2`] = `
 Object {
   "@@redux-saga/IO": true,
-  "SELECT": Object {
+  "combinator": false,
+  "payload": Object {
     "args": Array [],
     "selector": [Function],
   },
+  "type": "SELECT",
 }
 `;
 
 exports[`fetch first 3`] = `
 Object {
   "@@redux-saga/IO": true,
-  "CALL": Object {
+  "combinator": false,
+  "payload": Object {
     "args": Array [
       "/v1/user/bookmarks/illust?user_id=[object Object]&restrict=public",
       "public",
@@ -48,13 +53,15 @@ Object {
     "context": null,
     "fn": [Function],
   },
+  "type": "CALL",
 }
 `;
 
 exports[`fetch next 1`] = `
 Object {
   "@@redux-saga/IO": true,
-  "SELECT": Object {
+  "combinator": false,
+  "payload": Object {
     "args": Array [
       Object {
         "id": "public",
@@ -62,13 +69,15 @@ Object {
     ],
     "selector": [Function],
   },
+  "type": "SELECT",
 }
 `;
 
 exports[`fetch next 2`] = `
 Object {
   "@@redux-saga/IO": true,
-  "CALL": Object {
+  "combinator": false,
+  "payload": Object {
     "args": Array [
       "fake",
       "public",
@@ -89,13 +98,15 @@ Object {
     "context": null,
     "fn": [Function],
   },
+  "type": "CALL",
 }
 `;
 
 exports[`new 1`] = `
 Object {
   "@@redux-saga/IO": true,
-  "SELECT": Object {
+  "combinator": false,
+  "payload": Object {
     "args": Array [
       Object {
         "id": "public",
@@ -103,23 +114,27 @@ Object {
     ],
     "selector": [Function],
   },
+  "type": "SELECT",
 }
 `;
 
 exports[`new 2`] = `
 Object {
   "@@redux-saga/IO": true,
-  "SELECT": Object {
+  "combinator": false,
+  "payload": Object {
     "args": Array [],
     "selector": [Function],
   },
+  "type": "SELECT",
 }
 `;
 
 exports[`new 3`] = `
 Object {
   "@@redux-saga/IO": true,
-  "CALL": Object {
+  "combinator": false,
+  "payload": Object {
     "args": Array [
       Object {
         "endpoint": "/v1/user/bookmarks/illust?user_id=myid&restrict=public",
@@ -147,5 +162,6 @@ Object {
     "context": null,
     "fn": [Function],
   },
+  "type": "CALL",
 }
 `;
