@@ -3,10 +3,12 @@
 exports[`getToken 1`] = `
 Object {
   "@@redux-saga/IO": true,
-  "SELECT": Object {
+  "combinator": false,
+  "payload": Object {
     "args": Array [],
     "selector": [Function],
   },
+  "type": "SELECT",
 }
 `;
 

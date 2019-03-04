@@ -1,6 +1,14 @@
 // @flow
-import { delay, type Saga } from 'redux-saga'
-import { put, select, call, takeEvery, fork, take } from 'redux-saga/effects'
+import { type Saga } from 'redux-saga'
+import {
+  delay,
+  put,
+  select,
+  call,
+  takeEvery,
+  fork,
+  take,
+} from 'redux-saga/effects'
 import { addTable } from 'containers/ColumnManager/actions'
 import * as api from '../Column/sagas'
 import * as Actions from './constants'

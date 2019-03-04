@@ -1,8 +1,7 @@
 // @flow
 import type { Saga } from 'redux-saga'
 import { difference } from 'lodash'
-import { delay } from 'redux-saga'
-import { put, select, call, takeEvery } from 'redux-saga/effects'
+import { put, select, call, takeEvery, delay } from 'redux-saga/effects'
 import { addTable } from 'containers/ColumnManager/actions'
 import { getMyId } from 'containers/LoginModal/selectors'
 import { addNotifyWithIllust } from '../Notify/actions'
@@ -63,7 +62,7 @@ function* fetchNewWatch(action: Action) {
         }
       }
 
-      yield call(delay, interval)
+      yield delay(interval)
     }
   } catch (error) {
     // TODO エラーハンドリング

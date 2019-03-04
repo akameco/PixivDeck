@@ -33,29 +33,23 @@ test('fetch first', () => {
   const gen = sagas.fetchBookmark({ id: 'public', type: constants.FETCH })
   let next = gen.next()
 
-  expect(next.value).toHaveProperty('SELECT')
   expect(next.value).toMatchSnapshot()
 
   next = gen.next({ id: '1' })
-  expect(next.value).toHaveProperty('SELECT')
   expect(next.value).toMatchSnapshot()
 
   next = gen.next({ ids: [1, 2, 3] })
-  expect(next.value).toHaveProperty('CALL')
   expect(next.value).toMatchSnapshot()
 })
 
 test('new', () => {
   const gen = sagas.fetchNew({ restrict: 'public' })
   let next = gen.next({ id: 'public' })
-  expect(next.value).toHaveProperty('SELECT')
   expect(next.value).toMatchSnapshot()
 
   next = gen.next({ ids: [1, 2, 3] })
-  expect(next.value).toHaveProperty('SELECT')
   expect(next.value).toMatchSnapshot()
 
   next = gen.next('myid')
-  expect(next.value).toHaveProperty('CALL')
   expect(next.value).toMatchSnapshot()
 })
