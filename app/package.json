@@ -16,7 +16,7 @@
     "electron-config": "^1.0.0",
     "electron-context-menu": "^0.11.0",
     "electron-dl": "^1.12.0",
-    "electron-log": "^2.2.16",
+    "electron-log": "^3.0.0",
     "electron-referer": "^0.3.0",
     "electron-updater": "^3.0.3"
   }
