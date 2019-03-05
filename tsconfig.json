@@ -1,0 +1,6 @@
+{
+  "extends": "@akameco/tsconfig",
+  "compilerOptions": {
+    "rootDirs": ["types", "styles", "components", "containers"]
+  }
+}

@@ -1,7 +1,6 @@
 {
   "extends": [
-    "precure/oss",
-    "precure/react"
+    "precure/auto"
   ],
   "env": {
     "node": true,
