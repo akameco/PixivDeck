@@ -16,6 +16,7 @@
   "rules": {
     "@typescript-eslint/no-explicit-any": 0,
     "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/promise-function-async": 0,
     "import/named": 0,
     "no-constant-condition": 0,
     "import/no-extraneous-dependencies": 0,

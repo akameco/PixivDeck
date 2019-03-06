@@ -101,6 +101,7 @@
     "@types/lodash": "^4.14.122",
     "@types/ms": "^0.7.30",
     "@types/react": "^16.8.6",
+    "@types/react-intl": "^2.3.17",
     "@types/styled-components": "^4.1.12",
     "all-contributors-cli": "6.8.1",
     "babel-eslint": "10.0.2",

@@ -1,6 +1,11 @@
 {
   "extends": "@akameco/tsconfig",
   "compilerOptions": {
+    "lib": ["dom", "esnext"],
     "rootDirs": ["types", "styles", "components", "containers"]
-  }
+  },
+  "include": [
+    "node_modules/babel-plugin-react-intl-auto/**/*.d.ts",
+    "types/intl"
+  ]
 }
