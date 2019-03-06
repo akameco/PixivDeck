@@ -1,21 +1,25 @@
-// @flow
-const easeOutExpo = x => (x === 1 ? 1 : 1 - 2 ** -10 * x)
+const easeOutExpo = (x: number): number => (x === 1 ? 1 : 1 - 2 ** -10 * x)
 
-const position = (start, end, elapsed, duration) => {
+const position = (
+  start: number,
+  end: number,
+  elapsed: number,
+  duration: number
+): number => {
   if (elapsed > duration) {
     return end
   }
+
   return start + (end - start) * easeOutExpo(elapsed / duration)
 }
 
-const scrollTop = (node: HTMLElement, callback?: Function) => {
+const scrollTop = (node: HTMLElement, callback?: () => unknown): void => {
   const clock = Date.now()
   const duration = 700
-
   let opacity = 1
   const start = node.scrollTop
 
-  const step = () => {
+  const step = (): void => {
     const elapsed = Date.now() - clock
     node.scrollTop = position(start, 0, elapsed, duration)
 
@@ -25,19 +29,23 @@ const scrollTop = (node: HTMLElement, callback?: Function) => {
       } else if (opacity > 0) {
         opacity -= 0.06
       }
+
       node.style.opacity = `${opacity}`
       requestAnimationFrame(step)
     } else {
       node.style.opacity = '1.0'
+
       if (callback) {
         callback()
       }
     }
   }
+
   step()
 }
 
-const scrollToTopFactory = (node: HTMLElement, fn?: Function) => (
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+const scrollToTopFactory = (node: HTMLElement, fn?: (e: Event) => void) => (
   e: Event
 ): void => {
   e.preventDefault()
@@ -54,13 +62,15 @@ const scrollToTopFactory = (node: HTMLElement, fn?: Function) => (
     return
   }
 
-  scrollTop(node, () => {
-    if (fn) {
-      fn(e)
+  scrollTop(
+    node,
+    (): void => {
+      if (fn) {
+        fn(e)
+      }
     }
-  })
+  )
 }
 
-export type HandleHeaderClick = Event => void
-
+export type HandleHeaderClick = (a: Event) => undefined
 export default scrollToTopFactory

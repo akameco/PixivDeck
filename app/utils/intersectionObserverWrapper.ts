@@ -1,22 +1,13 @@
-// @flow
-declare class IntersectionObserver {
-  constructor: Function;
-  observe: Function;
-  disconnect: Function;
-}
-
-type ID = number | string
-
 export default class IntersectionObserverWrapper {
-  callbacks: { [key: ID]: Function } = {}
-  observerBacklog: Array<*> = []
-  observer: IntersectionObserver
+  callbacks: { [key: string]: any } = {}
+  observerBacklog: any[] = []
+  observer: IntersectionObserver | null = null
 
-  connect(options: Object) {
-    const onIntersection = entries => {
+  connect(options: IntersectionObserverInit) {
+    const onIntersection: IntersectionObserverCallback = entries => {
       entries.forEach(entry => {
         const id = entry.target.getAttribute('data-id')
-        if (this.callbacks[id]) {
+        if (id && this.callbacks[id]) {
           this.callbacks[id](entry)
         }
       })
@@ -29,7 +20,7 @@ export default class IntersectionObserverWrapper {
     this.observerBacklog = []
   }
 
-  observe(id: ID, node: HTMLElement, callback: Function) {
+  observe(id: string, node: HTMLElement, callback: any) {
     if (this.observer) {
       this.callbacks[id] = callback
       this.observer.observe(node)
