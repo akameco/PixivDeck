@@ -23,9 +23,9 @@ const InnerButton = styled.div`
   padding: 10px 16px 10px 17px;
 `
 
-type Props = {
-  text: string | React.Element<any>,
-  onClick: () => void,
+interface Props {
+  text: string | React.Element<any>;
+  onClick: () => void;
 }
 
 const LinkButton = ({ text, onClick }: Props) => (

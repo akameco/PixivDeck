@@ -3,15 +3,15 @@ import * as React from 'react'
 import styled from 'styled-components'
 import LazyImg from './LazyImg'
 
-type Props = {
-  from: string,
-  original: string,
-  width: number,
-  height: number,
-  isLoaded: boolean,
-  onLoad: () => void,
-  onUnLoad: () => void,
-  onClose: () => void,
+interface Props {
+  from: string;
+  original: string;
+  width: number;
+  height: number;
+  isLoaded: boolean;
+  onLoad: () => void;
+  onUnLoad: () => void;
+  onClose: () => void;
 }
 
 export default class IllustPreview extends React.PureComponent<Props> {

@@ -4,9 +4,9 @@ import styled, { keyframes } from 'styled-components'
 import CloseButton from 'components/common/CloseButton'
 import { LazyImgWrapper as Wrapper } from './styles'
 
-type Size = {
-  width: number | 'auto',
-  height: number | 'auto',
+interface Size {
+  width: number | 'auto';
+  height: number | 'auto';
 }
 
 function calcSize(width: number, height: number): Size {
@@ -41,20 +41,20 @@ function calcMarginTop(node: HTMLElement | null): number {
   return 10
 }
 
-type Props = {
-  from: string,
-  original: string,
-  width: number,
-  height: number,
-  isLoaded: boolean,
-  onLoad: () => void,
-  onClose: () => void,
+interface Props {
+  from: string;
+  original: string;
+  width: number;
+  height: number;
+  isLoaded: boolean;
+  onLoad: () => void;
+  onClose: () => void;
 }
 
-type State = {
-  isClicked: boolean,
-  fromMarginTop: number,
-  toMarginTop: number,
+interface State {
+  isClicked: boolean;
+  fromMarginTop: number;
+  toMarginTop: number;
 }
 
 export default class LazyImg extends React.PureComponent<Props, State> {

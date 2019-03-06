@@ -2,8 +2,8 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-type Props = {
-  children?: React.Node,
+interface Props {
+  children?: React.Node;
 }
 
 const Card = ({ children }: Props) => <Wrap>{children}</Wrap>

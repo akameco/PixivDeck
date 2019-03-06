@@ -3,9 +3,9 @@ import * as React from 'react'
 import IllustPreview from '../IllustPreview'
 import MangaPreview from '../MangaPreview'
 
-export type Props = {
-  isOpenImage: boolean,
-  isOpenManga: boolean,
+export interface Props {
+  isOpenImage: boolean;
+  isOpenManga: boolean;
 }
 
 const Preview = ({ isOpenImage, isOpenManga }: Props) => {

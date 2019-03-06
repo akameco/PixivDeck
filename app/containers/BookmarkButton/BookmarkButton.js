@@ -18,10 +18,10 @@ const styles = {
 
 const hoverColor = '#b94343'
 
-export type Props = {
-  addBookmark: () => void,
-  deleteBookmark: () => void,
-  isBookmarked: boolean,
+export interface Props {
+  addBookmark: () => void;
+  deleteBookmark: () => void;
+  isBookmarked: boolean;
 }
 
 const BookmarkButton = ({

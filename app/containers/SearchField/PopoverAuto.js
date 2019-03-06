@@ -4,10 +4,10 @@ import { FormattedMessage } from 'react-intl'
 import Popover, { Item } from './Popover'
 import messages from './messages'
 
-type Props = {
-  value: string,
-  keywords: Array<string>,
-  onClick: (word: string) => void,
+interface Props {
+  value: string;
+  keywords: string[];
+  onClick: (word: string) => void;
 }
 
 const PopoverAuto = ({ value, keywords, onClick }: Props) => {

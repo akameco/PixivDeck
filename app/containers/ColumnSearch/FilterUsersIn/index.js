@@ -13,9 +13,9 @@ const styles = {
   color: '#eee',
 }
 
-type Props = {
-  defaultValue: string,
-  onChange: Function,
+interface Props {
+  defaultValue: string;
+  onChange: Function;
 }
 
 class FilterUsersIn extends React.Component<Props> {

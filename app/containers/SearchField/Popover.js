@@ -2,10 +2,10 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-type ItemProps = {
-  start: string,
-  end: string,
-  onClick: () => void,
+interface ItemProps {
+  start: string;
+  end: string;
+  onClick: () => void;
 }
 
 export const Item = ({ start, end, onClick }: ItemProps) => (
@@ -26,9 +26,9 @@ const ItemWrap = styled.div`
   }
 `
 
-type Props = {
-  title: string | React.Element<any>,
-  children?: React.Node,
+interface Props {
+  title: string | React.Element<any>;
+  children?: React.Node;
 }
 
 const Wrap = styled.div`

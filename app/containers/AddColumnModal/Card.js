@@ -37,9 +37,9 @@ const List = ({ children }: { children?: React.Node }) => (
   <ListWrap>{children}</ListWrap>
 )
 
-type Props = {
-  title: string | React.Element<any>,
-  children?: React.Node,
+interface Props {
+  title: string | React.Element<any>;
+  children?: React.Node;
 }
 
 const Card = ({ title, children }: Props) => (

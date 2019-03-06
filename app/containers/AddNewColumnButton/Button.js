@@ -4,8 +4,8 @@ import { FormattedMessage } from 'react-intl'
 import Button from 'components/common/Button'
 import messages from './messages'
 
-export type Props = {
-  onClick: () => void,
+export interface Props {
+  onClick: () => void;
 }
 
 const AddColumnButton = ({ onClick }: Props) => (

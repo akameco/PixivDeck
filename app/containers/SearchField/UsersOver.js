@@ -2,9 +2,9 @@
 import * as React from 'react'
 import Popover, { Item } from './Popover'
 
-type Props = {
-  value: string,
-  onClick: (word: string) => void,
+interface Props {
+  value: string;
+  onClick: (word: string) => void;
 }
 
 const UsersOver = ({ value, onClick }: Props) => {

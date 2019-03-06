@@ -13,21 +13,21 @@ import LimitSetting from './LimitSetting'
 import messages from './messages'
 import { ChipWrap, Field, Icon, Input, TagFilter, Wrap } from './styles'
 
-export type Props = {
-  onDelete: (tag: string) => void,
-  onSubmit: (tag: string) => void,
-  onCheckShowText: (isShow: boolean) => void,
-  onCheckIllustOnly: (isShow: boolean) => void,
-  onSelectLanguage: (locale: string) => void,
-  onRemoveCache: Function,
-  tags: Array<string>,
-  isShowCaption: boolean,
-  isIllustOnly: boolean,
-  locale: string,
+export interface Props {
+  onDelete: (tag: string) => void;
+  onSubmit: (tag: string) => void;
+  onCheckShowText: (isShow: boolean) => void;
+  onCheckIllustOnly: (isShow: boolean) => void;
+  onSelectLanguage: (locale: string) => void;
+  onRemoveCache: Function;
+  tags: string[];
+  isShowCaption: boolean;
+  isIllustOnly: boolean;
+  locale: string;
 }
 
-type State = {
-  value: string,
+interface State {
+  value: string;
 }
 
 export default class SettingFilterModal extends Component<Props, State> {

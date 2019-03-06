@@ -6,11 +6,11 @@ import Overlay from 'components/Overlay'
 import CloseButton from 'components/common/CloseButton'
 import { Content, Wrap } from './sytles'
 
-type Props = {
-  open: boolean,
-  onRequestClose?: Function,
-  children?: React.Node,
-  onClose: Function,
+interface Props {
+  open: boolean;
+  onRequestClose?: Function;
+  children?: React.Node;
+  onClose: Function;
 }
 
 export default class ModalWrapper extends React.Component<Props> {
