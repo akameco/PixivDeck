@@ -3,12 +3,6 @@ import * as React from 'react'
 import styled from 'styled-components'
 import Icon from 'components/common/Icon'
 
-declare class IntersectionObserver {
-  constructor: Function;
-  observe: Function;
-  unobserve: Function;
-}
-
 const StyledImg = styled.div`
   position: relative;
   width: 100%;
@@ -40,15 +34,15 @@ const StyledImg = styled.div`
   }
 `
 
-type Props = {
-  src: string,
-  isManga?: boolean,
-  onClick: Function,
+interface Props {
+  src: string
+  isManga?: boolean
+  onClick: () => any
 }
 
-type State = {
-  isVisible: boolean,
-  isLoaded: boolean,
+interface State {
+  isVisible: boolean
+  isLoaded: boolean
 }
 
 export default class LazyLoadImg extends React.PureComponent<Props, State> {
@@ -56,15 +50,17 @@ export default class LazyLoadImg extends React.PureComponent<Props, State> {
     isVisible: false,
     isLoaded: false,
   }
-  node: HTMLElement
-  io: IntersectionObserver
+  node: HTMLElement | null = null
+  io: IntersectionObserver | null = null
 
   componentDidMount() {
     this.init()
   }
 
   componentWillUnmount() {
-    this.io.unobserve(this.node)
+    if (this.io && this.node) {
+      this.io.unobserve(this.node)
+    }
   }
 
   init() {
@@ -73,7 +69,7 @@ export default class LazyLoadImg extends React.PureComponent<Props, State> {
     }
 
     this.io = new IntersectionObserver(
-      (entries: Array<{ intersectionRatio: number }>) => {
+      (entries: { intersectionRatio: number }[]) => {
         // eslint-disable-line no-undef
         const intersectionRatio = entries[0].intersectionRatio
         if (intersectionRatio <= 0) {
