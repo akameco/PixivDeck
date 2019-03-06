@@ -1,11 +1,9 @@
-// @flow
-/* eslint-disable camelcase */
+/* eslint-disable @typescript-eslint/camelcase */
 import { stringify } from 'querystring'
-// $FlowFixMe
 import { schema, normalize } from 'normalizr'
 import camelcaseKeys from 'camelcase-keys'
 import decamelizeKeys from 'decamelize-keys'
-import axios from 'axios'
+import axios, { AxiosInstance } from 'axios'
 
 const userSchema = new schema.Entity('users', { idAttribute: 'id' })
 
@@ -19,37 +17,33 @@ const mySchema = {
   illusts: [illustSchema],
 }
 
-export type Response = {
+export interface Response {
   result: {
-    illusts: Array<number>,
-    nextUrl: string,
-  },
-  entities: Object,
+    illusts: number[]
+    nextUrl: string
+  }
+  entities: object
 }
 
-function normalizeData(response: Object): Response {
+function normalizeData(response: object): Response {
   return normalize(response, mySchema)
 }
 
-type UserInfo = {
-  username: string,
-  password: string,
-  refreshToken?: string,
+interface UserInfo {
+  username: string
+  password: string
+  refreshToken?: string
 }
-
 const AUTH_URL = 'https://oauth.secure.pixiv.net/auth/token'
-
-type AuthResponse = {
-  accessToken: string,
-  user: Object,
+interface AuthResponse {
+  accessToken: string
+  user: object
 }
-
 const defaultReqConfig = {
   client_id: 'MOBrBDS8blbauoSck0ZfDbtuzpyT',
   client_secret: 'lsACyCD94FhDUtGTXi3QzcFE2uU1hqtDaKeqrdwj',
   get_secure_url: 1,
 }
-
 export async function fetchAuth({
   username,
   password,
@@ -58,33 +52,31 @@ export async function fetchAuth({
   const data = refreshToken
     ? {
         ...defaultReqConfig,
+        // eslint-disable-next-line @typescript-eslint/camelcase
         grant_type: 'refresh_token',
+        // eslint-disable-next-line @typescript-eslint/camelcase
         refresh_token: refreshToken,
       }
-    : {
-        ...defaultReqConfig,
-        grant_type: 'password',
-        username,
-        password,
-      }
-
+    : { ...defaultReqConfig, grant_type: 'password', username, password }
+  // eslint-disable-next-line @typescript-eslint/promise-function-async
+  const transform = (rowData: string): unknown => {
+    try {
+      return JSON.parse(rowData)
+    } catch (error) {
+      return rowData
+    }
+  }
   const {
     data: { response },
   } = await axios.post(AUTH_URL, stringify(data), {
-    transformResponse: [
-      rowData => {
-        try {
-          return JSON.parse(rowData)
-        } catch (error) {
-          return rowData
-        }
-      },
-    ],
+    transformResponse: [transform],
   })
-  return camelcaseKeys(response, { deep: true })
+  return camelcaseKeys(response, {
+    deep: true,
+  })
 }
 
-function fetchFactory(opts?: Object) {
+function fetchFactory(opts?: object): AxiosInstance {
   return axios.create({
     baseURL: 'https://app-api.pixiv.net',
     headers: {
@@ -97,26 +89,37 @@ function fetchFactory(opts?: Object) {
   })
 }
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export async function getRequest(
   endpoint: string,
-  params?: Object,
-  token?: ?string
+  params?: object,
+  token?: string | null | undefined
 ) {
   const request = fetchFactory(
-    token ? { Authorization: `Bearer ${token}` } : {}
+    token
+      ? {
+          Authorization: `Bearer ${token}`,
+        }
+      : {}
   )
   const { data: result } = await request.get(
     endpoint,
-    params ? { params: decamelizeKeys(params) } : null
+    params
+      ? {
+          params: decamelizeKeys(params),
+        }
+      : undefined
   )
-
-  const camelcasedJSON = camelcaseKeys(result, { deep: true })
+  const camelcasedJSON = camelcaseKeys(result, {
+    deep: true,
+  })
   return normalizeData(camelcasedJSON)
 }
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export async function postRequest(
   endpoint: string,
-  data: Object,
+  data: object,
   token: string
 ) {
   const request = fetchFactory({
@@ -127,5 +130,7 @@ export async function postRequest(
     endpoint,
     stringify(decamelizeKeys(data))
   )
-  return camelcaseKeys(result, { deep: true })
+  return camelcaseKeys(result, {
+    deep: true,
+  })
 }

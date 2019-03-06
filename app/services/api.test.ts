@@ -1,11 +1,10 @@
 /**
  * @jest-environment node
  */
-// @flow
 import { fetchAuth, getRequest, postRequest } from './api'
 
-const USERNAME: ?string = process.env.USERNAME
-const PASSWORD: ?string = process.env.PASSWORD
+const USERNAME: string | null | undefined = process.env.USERNAME
+const PASSWORD: string | null | undefined = process.env.PASSWORD
 
 describe('API', () => {
   if (!(USERNAME && PASSWORD)) {
@@ -45,7 +44,6 @@ describe('API', () => {
 
   it.skip('get success', async () => {
     const { accessToken } = await fetchAuth(info)
-
     const { result } = await getRequest(
       '/v1/user/detail',
       { userId: 471355 },
@@ -56,7 +54,6 @@ describe('API', () => {
 
   it.skip('post success', async () => {
     const { accessToken } = await fetchAuth(info)
-
     const postData = await postRequest(
       '/v2/illust/bookmark/add',
       { illustId: 63576594, restrict: 'public' },
