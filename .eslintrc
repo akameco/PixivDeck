@@ -14,11 +14,11 @@
     ]
   },
   "rules": {
+    "@typescript-eslint/no-explicit-any": 0,
     "no-constant-condition": 0,
     "import/no-extraneous-dependencies": 0,
     "import/exports-last": 0,
     "import/no-unresolved": 0,
-    "flowtype/no-weak-types": 0,
     "no-duplicate-imports": 0,
     "no-invalid-this": 0,
     "no-warning-comments": 0,
