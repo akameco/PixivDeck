@@ -113,7 +113,7 @@
     "cross-env": "5.2.0",
     "cross-spawn": "6.0.5",
     "devtron": "1.4.0",
-    "electron": "4.0.7",
+    "electron": "4.0.8",
     "electron-builder": "20.38.5",
     "electron-load-devtool": "1.2.0",
     "enzyme": "3.9.0",
