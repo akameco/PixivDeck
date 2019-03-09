@@ -1,12 +1,15 @@
-// @flow
 import reducer from '../reducer'
 import * as actions from '../actions'
 
 const initialState = {}
 
 test('snapshot initialState', () => {
-  // $FlowFixMe
-  expect(reducer(initialState, { type: 'default action' })).toMatchSnapshot()
+  expect(
+    reducer(initialState, {
+      // @ts-ignore
+      type: 'default action',
+    })
+  ).toMatchSnapshot()
 })
 
 test('ADD_BOOKMARK_COLUMN_SUCCESS', () => {

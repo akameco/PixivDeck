@@ -1,4 +1,3 @@
-// @flow
 import { baseReducer as reducer } from './reducer'
 
 const baseActions = {
@@ -18,7 +17,14 @@ const state = {
 
 test('default action', () => {
   expect(
-    reducer('base', baseActions, {}, { type: 'default action' })
+    reducer(
+      'base',
+      baseActions,
+      {},
+      {
+        type: 'default action',
+      }
+    )
   ).toMatchSnapshot()
 })
 

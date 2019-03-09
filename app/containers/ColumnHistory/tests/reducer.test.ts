@@ -1,4 +1,3 @@
-// @flow
 import reducer from '../reducer'
 import * as actions from '../actions'
 
@@ -7,7 +6,7 @@ const ds = {
 }
 
 test('default action', () => {
-  // $FlowFixMe
+  // @ts-ignore
   expect(reducer(ds, 'default action')).toMatchSnapshot()
 })
 

@@ -1,10 +1,16 @@
-// @flow
 import reducer from '../reducer'
 import * as actions from '../actions'
 
 test('default action', () => {
-  // $FlowFixMe
-  expect(reducer({}, { type: 'default action' })).toMatchSnapshot()
+  expect(
+    reducer(
+      {},
+      {
+        // @ts-ignore
+        type: 'default action',
+      }
+    )
+  ).toMatchSnapshot()
 })
 
 test('ADD_FOLLOW_COLUMN_SUCCESS', () => {
@@ -38,7 +44,6 @@ test('FETCH_NEXT_SUCCESS, FETCH_NEW_SUCCESS', () => {
   expect(
     reducer(first, actions.fetchNextSuccess('private', [4, 5]))
   ).toMatchSnapshot()
-
   expect(
     reducer(first, actions.fetchNewSuccess('private', [8]))
   ).toMatchSnapshot()

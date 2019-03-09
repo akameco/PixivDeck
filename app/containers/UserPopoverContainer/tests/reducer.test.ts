@@ -1,4 +1,3 @@
-// @flow
 import reducer from '../reducer'
 import * as actions from '../actions'
 
@@ -7,8 +6,12 @@ const df = {
 }
 
 test('default action', () => {
-  // $FlowFixMe
-  expect(reducer(df, { type: 'default action' })).toMatchSnapshot()
+  expect(
+    reducer(df, {
+      // @ts-ignore
+      type: 'default action',
+    })
+  ).toMatchSnapshot()
 })
 
 test('POPOVER_SUCCESS', () => {
@@ -16,6 +19,8 @@ test('POPOVER_SUCCESS', () => {
 })
 
 test('CLEAR', () => {
-  const s = { illusts: [1, 2, 3] }
+  const s = {
+    illusts: [1, 2, 3],
+  }
   expect(reducer(s, actions.clear())).toMatchSnapshot()
 })

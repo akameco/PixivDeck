@@ -1,4 +1,3 @@
-// @flow
 import reducer, { initialState } from '../reducer'
 import * as actions from '../actions'
 
@@ -11,8 +10,12 @@ const defaultState = {
 }
 
 test('default action', () => {
-  // $FlowFixMe
-  expect(reducer(initialState, { type: 'default action' })).toMatchSnapshot()
+  expect(
+    reducer(initialState, {
+      // @ts-ignore
+      type: 'default action',
+    })
+  ).toMatchSnapshot()
 })
 
 test('setUsersIn', () => {
@@ -23,6 +26,11 @@ test('setUsersIn', () => {
 
 test('reset ids', () => {
   expect(
-    reducer({ fate: defaultState }, actions.resetIds('fate'))
+    reducer(
+      {
+        fate: defaultState,
+      },
+      actions.resetIds('fate')
+    )
   ).toMatchSnapshot()
 })
