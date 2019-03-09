@@ -1,5 +1,3 @@
-// @flow
-// $FlowFixMe
 import { fork, all } from 'redux-saga/effects'
 import BookmarkButton from 'containers/BookmarkButton/saga'
 import BoxContainer from 'containers/BoxContainer/saga'
@@ -21,7 +19,7 @@ import UserPopoverContainer from 'containers/UserPopoverContainer/saga'
 import Notify from 'containers/Notify/saga'
 // import Api from 'containers/Api/saga'
 
-function* root(): Generator<*, void, void> {
+function* root() {
   yield all([
     // fork(Api),
     fork(BookmarkButton),

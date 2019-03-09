@@ -1,4 +1,3 @@
-// @flow
 import { combineReducers } from 'redux'
 import ColumnBookmark from 'containers/ColumnBookmark/reducer'
 import ColumnFollow from 'containers/ColumnFollow/reducer'

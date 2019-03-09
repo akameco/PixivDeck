@@ -1,20 +1,20 @@
-// @noflow
 import os from 'os'
 import electron from 'electron'
 
 const { app, shell } = electron
-
 const appName = app.getName()
 
-const helpSubmenu = [
+const helpSubmenu: electron.MenuItemConstructorOptions[] = [
   {
     label: `${appName} Website`,
+
     click() {
       shell.openExternal('https://github.com/akameco/PixivDeck')
     },
   },
   {
     label: 'Report an Issue...',
+
     click() {
       const body = `
 			<!-- Please succinctly describe your issue and steps to reproduce it. -->
@@ -40,6 +40,7 @@ if (process.platform !== 'darwin') {
     },
     {
       role: 'about',
+
       click() {
         electron.dialog.showMessageBox({
           title: `About ${appName}`,
@@ -52,7 +53,7 @@ if (process.platform !== 'darwin') {
   )
 }
 
-const darwinTpl = [
+const darwinTpl: electron.MenuItemConstructorOptions[] = [
   {
     label: appName,
     submenu: [
@@ -127,6 +128,7 @@ const darwinTpl = [
       {
         label: 'Reload',
         accelerator: 'CmdOrCtrl+R',
+
         click(item, focusedWindow) {
           if (focusedWindow) {
             focusedWindow.reload()
@@ -164,7 +166,7 @@ const darwinTpl = [
   },
 ]
 
-const otherTpl = [
+const otherTpl: electron.MenuItemConstructorOptions[] = [
   {
     label: 'File',
     submenu: [
@@ -216,8 +218,6 @@ const otherTpl = [
     submenu: helpSubmenu,
   },
 ]
-
 const tpl = process.platform === 'darwin' ? darwinTpl : otherTpl
 const appMenu = electron.Menu.buildFromTemplate(tpl)
-
 export default appMenu
