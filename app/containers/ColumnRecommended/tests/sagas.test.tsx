@@ -1,4 +1,3 @@
-// @flow
 import { takeEvery } from 'redux-saga/effects'
 import * as sagas from '../saga'
 import * as constants from '../constants'

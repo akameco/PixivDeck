@@ -1,4 +1,3 @@
-// @flow
 import * as sagas from '../saga'
 
 test('root', () => {

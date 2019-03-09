@@ -1,4 +1,3 @@
-// @flow
 import { takeEvery } from 'redux-saga/effects'
 import * as sagas from '../saga'
 import * as constants from '../constants'
@@ -9,12 +8,10 @@ test('root', () => {
   expect(next.value).toStrictEqual(
     takeEvery(constants.ADD_COLUMN, sagas.addColumn)
   )
-
   next = gen.next()
   expect(next.value).toStrictEqual(
     takeEvery(constants.FETCH, sagas.fetchUserIllust)
   )
-
   next = gen.next()
   expect(next.value).toStrictEqual(
     takeEvery(constants.FETCH_NEXT, sagas.fetchNextUserIllust)

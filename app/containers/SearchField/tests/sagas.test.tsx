@@ -1,4 +1,3 @@
-// @flow
 import { takeLatest, call, put } from 'redux-saga/effects'
 import * as api from 'containers/Api/sagas'
 import * as sagas from '../saga'
@@ -14,17 +13,25 @@ test('root', () => {
 })
 
 test('autocomplete', () => {
-  const gen = sagas.autocomplete({ word: 'fate' })
+  const gen = sagas.autocomplete({
+    word: 'fate',
+  })
   let next = gen.next()
   expect(next.value).toStrictEqual(
     call(api.get, '/v1/search/autocomplete?word=fate', true)
   )
-  next = gen.next({ result: { searchAutoCompleteKeywords: ['fate', 'fgo'] } })
+  next = gen.next({
+    result: {
+      searchAutoCompleteKeywords: ['fate', 'fgo'],
+    },
+  })
   expect(next.value).toStrictEqual(put(actions.fetchSuccess(['fate', 'fgo'])))
 })
 
 test('autocomplete failre', () => {
-  const gen = sagas.autocomplete({ word: 'fate' })
+  const gen = sagas.autocomplete({
+    word: 'fate',
+  })
   let next = gen.next()
   expect(next.value).toStrictEqual(
     call(api.get, '/v1/search/autocomplete?word=fate', true)

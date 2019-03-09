@@ -1,4 +1,3 @@
-// @flow
 import { takeEvery, put } from 'redux-saga/effects'
 import * as sagas from '../saga'
 import * as constants from '../constants'
@@ -13,23 +12,25 @@ test('root', () => {
 })
 
 test('bookmark', () => {
-  const action = { id: 1, restrict: 'public' }
+  const action = {
+    id: 1,
+    restrict: 'public',
+  }
   const gen = sagas.bookmark(action)
-
   let next = gen.next()
   expect(next.value).toMatchSnapshot()
-
   next = gen.next()
   expect(next.value).toStrictEqual(put(actions.addBookmarkSuccess(1, 'public')))
 })
 
 test('bookmark failed', () => {
-  const action = { id: 1, restrict: 'public' }
+  const action = {
+    id: 1,
+    restrict: 'public',
+  }
   const gen = sagas.bookmark(action)
-
   let next = gen.next()
   expect(next.value).toMatchSnapshot()
-
   next = gen.throw('error')
   expect(next.value).toStrictEqual(put(actions.addBookmarkFailer(1, 'error')))
 })
