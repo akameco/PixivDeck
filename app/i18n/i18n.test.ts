@@ -1,8 +1,7 @@
-// @flow
 import en from './en.yml'
 import ja from './ja.yml'
 
-const getBlank = (obj: Object) => Object.keys(obj).filter(v => obj[v] === '')
+const getBlank = (obj: object) => Object.keys(obj).filter(v => obj[v] === '')
 
 test('snapshot [en]', () => {
   expect(en).toMatchSnapshot()

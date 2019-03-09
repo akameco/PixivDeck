@@ -1,15 +1,13 @@
-// @flow
 import { remote } from 'electron'
 import { download } from 'electron-dl'
-import type { IntlShape } from 'react-intl'
-import type { Dispatch } from 'types/'
-import type { Illust } from 'types/illust'
+import { IntlShape } from 'react-intl'
+import { Dispatch } from 'types/'
+import { Illust } from 'types/illust'
 import { openDrawer } from 'containers/DrawerManager/actions'
 import { addBookmarkRequest as addBookmark } from 'containers/BookmarkButton/actions'
 import { openPixiv } from './actions'
 import messages from './messages'
 
-// $FlowFixMe
 const { Menu, MenuItem } = remote
 
 export default function createMenu({
@@ -17,9 +15,9 @@ export default function createMenu({
   illust,
   intl,
 }: {
-  dispatch: Dispatch,
-  illust: Illust,
-  intl: IntlShape,
+  dispatch: Dispatch
+  illust: Illust
+  intl: IntlShape
 }) {
   const menu = new Menu()
 
