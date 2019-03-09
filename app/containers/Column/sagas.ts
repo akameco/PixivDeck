@@ -1,54 +1,50 @@
-// @flow
 import { union } from 'lodash'
 import { put, call } from 'redux-saga/effects'
-import type { Response } from 'services/api'
+import { Response } from 'services/api'
 import * as api from '../Api/sagas'
 
-type Actions = {
-  fetchSuccess: (id: *, ids: Array<number>) => *,
-  fetchFailre: (id: *, error: string) => *,
-  setNextUrl: (id: *, nextUrl: string) => *,
+interface Actions {
+  fetchSuccess: (id: any, ids: number[]) => any
+  fetchFailre: (id: any, error: string) => any
+  setNextUrl: (id: any, nextUrl: string) => any
 }
 
 export function* fetchColumn(
-  endpoint: ?string,
-  id: *,
+  endpoint: string | null | undefined,
+  id: any,
   actions: Actions,
-  ids: Array<number>
-): Generator<*, void, *> {
+  ids: number[]
+) {
   try {
     if (!endpoint || endpoint === '') {
       return
     }
+
     const { result }: Response = yield call(api.get, endpoint, true)
-
     const nextIds = union(ids, result.illusts)
-
     yield put(actions.fetchSuccess(id, nextIds))
     yield put(actions.setNextUrl(id, result.nextUrl))
   } catch (error) {
     yield put(actions.fetchFailre(id, error))
   }
 }
-
-type NewActions = {
-  fetchSuccess: (id: *, ids: Array<number>) => *,
-  fetchFailre: (id: *, error: string) => *,
+interface NewActions {
+  fetchSuccess: (id: any, ids: number[]) => any
+  fetchFailre: (id: any, error: string) => any
 }
 
 type Order = 'overwrite' | boolean
-
-type Config = {|
-  id: *,
-  endpoint: ?string,
-  ids: Array<number>,
-  order: Order,
-|}
+interface Config {
+  id: any
+  endpoint: string | null | undefined
+  ids: number[]
+  order: Order
+}
 
 export function* fetchNew(
   { endpoint, id, ids, order }: Config,
   actions: NewActions
-): Generator<*, void, *> {
+) {
   try {
     if (!endpoint || endpoint === '') {
       return

@@ -1,17 +1,14 @@
-// @flow
-import type { Saga } from 'redux-saga'
 import { takeLatest } from 'redux-saga/effects'
 import { clean } from '../../store'
 import * as Actions from './constants'
 
-// eslint-disable-next-line require-yield
-function* removeCache(): Saga<void> {
+function removeCache() {
   try {
     clean()
   } catch (error) {}
 }
 
-function* root(): Saga<void> {
+function* root() {
   yield takeLatest(Actions.REMOVE_CACHE, removeCache)
 }
 

@@ -1,31 +1,31 @@
-// @flow
-import type { Saga } from 'redux-saga'
 import { call, put, takeEvery } from 'redux-saga/effects'
 import * as api from 'containers/Api/sagas'
 import { get } from '../Api/sagas'
 import * as columnActions from '../ColumnBookmark/actions'
 import * as Actions from './constants'
 import * as actions from './actions'
-import type { Restrict } from './types'
+import { Restrict } from './types'
 
-type Props = {
-  id: number,
-  restrict: Restrict,
+interface Props {
+  id: number
+  restrict: Restrict
 }
-
-export function* bookmark({ id, restrict }: Props): Saga<void> {
+export function* bookmark({ id, restrict }: Props) {
   try {
-    yield call(api.post, '/v2/illust/bookmark/add', { illustId: id, restrict })
-
+    yield call(api.post, '/v2/illust/bookmark/add', {
+      illustId: id,
+      restrict,
+    })
     yield put(actions.addBookmarkSuccess(id, restrict))
   } catch (error) {
     yield put(actions.addBookmarkFailer(id, error))
   }
 }
-
-export function* deleteTask({ id }: Props): Saga<void> {
+export function* deleteTask({ id }: Props) {
   try {
-    yield call(api.post, '/v1/illust/bookmark/delete', { illustId: id })
+    yield call(api.post, '/v1/illust/bookmark/delete', {
+      illustId: id,
+    })
     yield put(actions.deleteBookmarkSuccess(id))
     yield put(columnActions.removeItem('public', id))
   } catch (error) {
@@ -39,7 +39,7 @@ function* success({ id }: Props) {
   } catch (error) {}
 }
 
-function* root(): Saga<void> {
+function* root() {
   yield takeEvery(Actions.ADD_BOOKMARK_REQUEST, bookmark)
   yield takeEvery(Actions.DELETE_BOOKMARK_REQUEST, deleteTask)
   yield takeEvery(

@@ -9,10 +9,12 @@ export type ColumnSearch = {
   usersIn: number
   interval: number
 } & BaseColumn
+
 export type State = Partial<{
   [a: string]: ColumnSearch
 }>
 export const initialState: State = {}
+
 export default function(state: State = initialState, action: Action): State {
   switch (action.type) {
     case Actions.ADD_COLUMN_SUCCESS:

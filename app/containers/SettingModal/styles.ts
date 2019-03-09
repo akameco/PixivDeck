@@ -1,11 +1,9 @@
-// @flow
 import styled from 'styled-components'
 
 export const ChipWrap = styled.div`
   display: flex;
   flex-wrap: wrap;
 `
-
 export const Input = styled.input`
   font-size: 1.1rem;
   height: 30px;
@@ -19,13 +17,11 @@ export const Input = styled.input`
     border: 1px solid rgba(82, 158, 204, 0.7);
   }
 `
-
 export const Field = styled.div`
   position: relative;
   width: 100%;
   margin-bottom: 2rem;
 `
-
 export const Wrap = styled.div`
   max-width: 100%;
   margin-top: 2rem;
@@ -36,12 +32,10 @@ export const Wrap = styled.div`
   flex-direction: column;
   align-items: center;
 `
-
 export const TagFilter = styled.div`
   padding-left: 10px;
   padding-right: 10px;
 `
-
 export const Icon = styled.div`
   position: absolute;
   top: 1rem;

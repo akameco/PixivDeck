@@ -1,19 +1,16 @@
-// @noflow
-import type { Saga } from 'redux-saga'
 import { select, takeEvery } from 'redux-saga/effects'
-import type { Illust } from 'types/illust'
-import type { User } from 'types/user'
+import { shell } from 'electron'
+import { Illust } from 'types/illust'
+import { User } from 'types/user'
 import { getSelectIllust } from '../IllustById/selectors'
 import { getSelectUser } from '../UserById/selectors'
 import * as Actions from './constants'
 
-const { shell } = require('electron')
-
-type Notify = {
-  title: string,
-  icon: string,
-  body: string,
-  url?: string,
+interface Notify {
+  title: string
+  icon: string
+  body: string
+  url?: string
 }
 
 export function notify({ title, url, body, icon }: Notify) {
@@ -21,7 +18,6 @@ export function notify({ title, url, body, icon }: Notify) {
     icon,
     body,
   })
-
   notify.addEventListener('click', () => {
     if (url) {
       shell.openExternal(url)
@@ -29,26 +25,31 @@ export function notify({ title, url, body, icon }: Notify) {
   })
 }
 
-type NotifyWithIllust = {
-  title: string,
-  id: number,
+interface NotifyWithIllust {
+  title: string
+  id: number
 }
 
 const baseUrl = 'https://www.pixiv.net/member_illust.php?mode=medium&illust_id='
 
-export function* notifyWithIllust({ title, id }: NotifyWithIllust): Saga<void> {
-  const illust: Illust = yield select(getSelectIllust, { id })
+export function* notifyWithIllust({ title, id }: NotifyWithIllust) {
+  const illust: Illust = yield select(getSelectIllust, {
+    id,
+  })
+
   if (!illust) {
     return
   }
 
-  const user: User = yield select(getSelectUser, { id: illust.user })
+  const user: User = yield select(getSelectUser, {
+    id: illust.user,
+  })
+
   if (!user) {
     return
   }
 
   const icon = illust.imageUrls.squareMedium
-
   notify({
     title,
     icon,
@@ -57,7 +58,7 @@ export function* notifyWithIllust({ title, id }: NotifyWithIllust): Saga<void> {
   })
 }
 
-function* root(): Saga<void> {
+function* root() {
   yield takeEvery(Actions.ADD_NOTIFY_WITH_ILLUST, notifyWithIllust)
 }
 

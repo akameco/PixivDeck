@@ -1,26 +1,26 @@
-// @flow
-import type { Saga } from 'redux-saga'
 import { put, select, call, takeEvery } from 'redux-saga/effects'
 import { addTable } from 'containers/ColumnManager/actions'
 import * as fetchColumn from '../Column/sagas'
 import * as Actions from './constants'
 import * as actions from './actions'
-import type { ColumnId } from './reducer'
+import { ColumnId } from './reducer'
 import { makeSelectColumn, makeSelectModes } from './selectors'
 
-type Action = {
-  +id: ColumnId,
+interface Action {
+  id: ColumnId
 }
-
-export function* addColumn({ id }: Action): Saga<void> {
-  const modes: Array<?ColumnId> = yield select(makeSelectModes())
+export function* addColumn({ id }: Action) {
+  const modes: (ColumnId | null | undefined)[] = yield select(makeSelectModes())
 
   if (modes.every(v => v !== id)) {
     yield put(actions.addColumnSuccess(id))
   }
 
   yield put(
-    addTable(`recommended`, { type: 'RECOMMENDED', columnId: 'recommended' })
+    addTable(`recommended`, {
+      type: 'RECOMMENDED',
+      columnId: 'recommended',
+    })
   )
 }
 
@@ -33,7 +33,7 @@ function* fetch(action: Action) {
   yield call(fetchColumn.fetchColumn, endpoint, action.id, actions, ids)
 }
 
-export default function* root(): Saga<void> {
+export default function* root() {
   yield takeEvery(Actions.ADD_COLUMN, addColumn)
   yield takeEvery(Actions.FETCH, fetch)
 }

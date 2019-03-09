@@ -1,17 +1,14 @@
-// @flow
 import styled from 'styled-components'
 
 export const Wrap = styled.div`
   position: relative;
   height: auto;
 `
-
 export const Field = styled.div`
   position: relative;
   max-width: 400px;
   margin-bottom: 5px;
 `
-
 export const Input = styled.input`
   font-size: 1.1rem;
   height: 40px;
@@ -22,7 +19,6 @@ export const Input = styled.input`
   padding-left: 1rem;
   box-sizing: border-box;
 `
-
 export const Popup = styled.div`
   height: calc(100% - 50px);
   padding: 1px;
