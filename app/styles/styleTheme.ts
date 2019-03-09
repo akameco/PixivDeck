@@ -1,4 +1,3 @@
-// @flow
 const theme = {
   base: '#222426',
   black: '#222426',
@@ -9,8 +8,7 @@ const theme = {
   accent: '',
 }
 
-export function key(path: $Keys<typeof theme>) {
+export function key(path: keyof typeof theme) {
   return () => theme[path]
 }
-
 export default theme

@@ -1,7 +1,5 @@
-// @flow
 import { createGlobalStyle } from 'styled-components'
 
-/* eslint no-unused-expressions: 0 */
 export const GlobalStyle = createGlobalStyle`
   * {
     -webkit-font-smoothing: antialiased;
