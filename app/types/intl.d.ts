@@ -1,6 +1,6 @@
-import { FormattedMessage } from 'react-intl'
+/// <reference types="react-intl"/>
 
-declare module 'react-intl' {
+declare namespace ReactIntl {
   interface ExtractableMessage {
     [key: string]: string
   }
