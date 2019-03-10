@@ -120,7 +120,7 @@
     "enzyme-adapter-react-16": "1.10.0",
     "enzyme-to-json": "3.3.5",
     "eslint": "5.15.1",
-    "eslint-config-precure": "4.9.1",
+    "eslint-config-precure": "4.10.1",
     "execa": "1.0.0",
     "extract-react-intl-messages": "1.0.1",
     "extract-zip": "1.6.7",
