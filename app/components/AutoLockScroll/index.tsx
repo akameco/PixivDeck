@@ -11,6 +11,8 @@ function getElementBody() {
 }
 
 class AutoLockScroll extends React.Component<Props> {
+  locked: boolean = false
+
   componentDidMount() {
     if (this.props.lock === true) {
       this.preventScrolling()
@@ -32,8 +34,6 @@ class AutoLockScroll extends React.Component<Props> {
   componentWillUnmount() {
     this.allowScrolling()
   }
-
-  locked: boolean = false
 
   preventScrolling() {
     if (this.locked) {
@@ -61,8 +61,9 @@ class AutoLockScroll extends React.Component<Props> {
       body.style.overflow = originalBodyOverflow || ''
       originalBodyOverflow = null
     }
-  } // eslint-disable-next-line class-methods-use-this
+  }
 
+  // eslint-disable-next-line class-methods-use-this
   render() {
     return null
   }

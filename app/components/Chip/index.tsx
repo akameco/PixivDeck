@@ -3,10 +3,11 @@ import styled from 'styled-components'
 import DeleteIcon from '../Icons/DeleteIcon'
 
 export interface Props {
-  children?: React.Node | null | undefined
-  onClick?: Function
-  onRequestDelete?: Function
+  children?: React.ReactNode
+  onClick?: any
+  onRequestDelete?: any
 }
+
 const StyledChip = styled.div`
   display: flex;
   box-sizing: border-box;
@@ -22,6 +23,7 @@ const StyledChip = styled.div`
   vertical-align: baseline;
   border-radius: 16px;
 `
+
 const InnerChip = styled.span`
   color: rgba(0, 0, 0, 0.87);
   font-size: 14px;
@@ -32,13 +34,14 @@ const InnerChip = styled.span`
   user-select: none;
   white-space: nowrap;
 `
+
 const icnonStyle = {
   cursor: 'pointer',
   margin: '4px 4px 0px -8px',
 }
 
 class Chip extends React.PureComponent<Props> {
-  handleRequestDelete = (e: Event) => {
+  handleRequestDelete = (e: any) => {
     e.stopPropagation()
 
     if (this.props.onRequestDelete) {

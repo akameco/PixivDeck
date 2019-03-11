@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { mount } from 'enzyme' // eslint-disable-next-line import/no-unassigned-import
 
+// eslint-disable-next-line import/no-unassigned-import
 import 'jest-styled-components'
 import A from '..'
 

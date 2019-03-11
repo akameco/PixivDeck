@@ -1,5 +1,5 @@
-import { select, takeEvery } from 'redux-saga/effects'
 import { shell } from 'electron'
+import { select, takeEvery } from 'redux-saga/effects'
 import { Illust } from 'types/illust'
 import { User } from 'types/user'
 import { getSelectIllust } from '../IllustById/selectors'

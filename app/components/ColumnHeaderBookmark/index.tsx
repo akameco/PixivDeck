@@ -18,22 +18,23 @@ class ColumnHeaderSetting extends React.PureComponent<Props, State> {
     minBookmarks: 0,
   }
 
+  _sendBookmark = debounce(() => {
+    this.props.setMinBookmarks(this.state.minBookmarks)
+  }, 400)
+
   componentWillMount() {
     this.setState({
       minBookmarks: this.props.minBookmarks,
     })
   }
 
-  handleSlider = (event: Event, value: number) => {
+  handleSlider = (event: any, value: number) => {
     this.setState({
       minBookmarks: value,
     })
 
     this._sendBookmark()
   }
-  _sendBookmark = debounce(() => {
-    this.props.setMinBookmarks(this.state.minBookmarks)
-  }, 400)
 
   render() {
     const { minBookmarks } = this.state
@@ -59,4 +60,5 @@ const Wrap = styled.div`
   flex-direction: column;
   color: #eee;
 `
+
 export default ColumnHeaderSetting
