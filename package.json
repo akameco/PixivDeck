@@ -119,7 +119,7 @@
     "enzyme": "3.9.0",
     "enzyme-adapter-react-16": "1.11.2",
     "enzyme-to-json": "3.3.5",
-    "eslint": "5.15.2",
+    "eslint": "5.15.3",
     "eslint-config-precure": "4.10.1",
     "execa": "1.0.0",
     "extract-react-intl-messages": "1.0.1",
