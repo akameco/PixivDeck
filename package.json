@@ -109,7 +109,7 @@
     "babel-plugin-redux-action-compose": "0.3.0",
     "babel-plugin-redux-state-compose": "0.4.0",
     "chalk": "2.4.2",
-    "cp-file": "6.1.0",
+    "cp-file": "6.2.0",
     "cross-env": "5.2.0",
     "cross-spawn": "6.0.5",
     "devtron": "1.4.0",
