@@ -99,7 +99,7 @@
     "babel-eslint": "10.0.1",
     "babel-jest": "24.7.1",
     "babel-loader": "8.0.5",
-    "babel-plugin-add-module-exports": "1.0.0",
+    "babel-plugin-add-module-exports": "1.0.2",
     "babel-plugin-create-redux-action-func": "0.1.4",
     "babel-plugin-create-redux-action-type": "0.1.2",
     "babel-plugin-dev-expression": "0.2.1",
