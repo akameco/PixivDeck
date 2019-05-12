@@ -117,7 +117,7 @@
     "electron-builder": "20.40.2",
     "electron-load-devtool": "1.2.0",
     "enzyme": "3.9.0",
-    "enzyme-adapter-react-16": "1.12.1",
+    "enzyme-adapter-react-16": "1.13.0",
     "enzyme-to-json": "3.3.5",
     "eslint": "5.16.0",
     "eslint-config-precure": "4.15.0",
