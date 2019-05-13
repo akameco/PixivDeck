@@ -1,6 +1,6 @@
 // @flow
-import reducer from '../reducer'
-import * as actions from '../actions'
+import reducer from './reducer'
+import * as actions from './actions'
 
 test('default action', () => {
   // $FlowFixMe

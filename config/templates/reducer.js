@@ -6,7 +6,10 @@ export type State = {}
 
 const initialState: State = {}
 
-export default function(state: State = initialState, action: Action): $Shape<State> {
+export default function(
+  state: State = initialState,
+  action: Action
+): $Shape<State> {
   switch (action.type) {
     default:
       return state
