@@ -68,6 +68,9 @@ function createMainWindow() {
     x,
     y,
     show: false,
+    webPreferences: {
+      nodeIntegration: true,
+    },
   })
 
   win.loadURL(`file://${__dirname}/app.html`)
