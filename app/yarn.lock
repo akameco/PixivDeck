@@ -10,13 +10,13 @@ argparse@^1.0.7:
     sprintf-js "~1.0.2"
 
 bluebird-lst@^1.0.6, bluebird-lst@^1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/bluebird-lst/-/bluebird-lst-1.0.7.tgz#f0babade9ef1dce3989b603f3796ff3b16b90d50"
-  integrity sha512-5ix04IbXVIZ6nSRM4aZnwQfk40Td0D57WAl8LfhnICF6XwT4efCZYh0veOHvfDmgpbqE4ju5L5XEAMIcAe13Kw==
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/bluebird-lst/-/bluebird-lst-1.0.8.tgz#61b572e8b3eb57e0fff676a0e54566d93597e6a4"
+  integrity sha512-InUDOaBaIjIobOa3O4YRAbFgff907uTJZXW0m0rhk3zhVZ4GvsmdCLEAKC1CTWTtUWCM8iWTTfFX9N/xQR/etw==
   dependencies:
-    bluebird "^3.5.3"
+    bluebird "^3.5.4"
 
-bluebird@^3.5.3:
+bluebird@^3.5.4:
   version "3.5.4"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.4.tgz#d6cc661595de30d5b3af5fcedd3c0b3ef6ec5714"
   integrity sha512-FG+nFEZChJrbQ9tIccIfZJBz3J7mLrAhxakAbnrJWn8d7aKOC+LWifa0G+p4ZqKp4y13T7juYvdhq9NzKdsrjw==
@@ -69,9 +69,9 @@ electron-config@^1.0.0:
     conf "^1.0.0"
 
 electron-context-menu@^0.12.0:
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/electron-context-menu/-/electron-context-menu-0.12.0.tgz#ee882a3e9bf219df0e0b9473ca041ef40940fccd"
-  integrity sha512-kZEPG3a864UQOZDJnfsVUiWjhonIpfPPtH8Z7luvPUf7sra/Sz1x2n3aRnyzGN8jQhgRvQomJg/QKXHNbZZ/+g==
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/electron-context-menu/-/electron-context-menu-0.12.1.tgz#ad39be2a91cdb4f5d0ff61679782dae59ab04e46"
+  integrity sha512-VZ7fKWhrfKGl2KsC3jBuZBs4hXrP7akH1F1gnjtmi9JCHMwzbuBS2fzQIHAL4vimtP1X3OT+h7xuWLopVy1G+A==
   dependencies:
     electron-dl "^1.2.0"
     electron-is-dev "^1.0.1"
