@@ -59,7 +59,7 @@
   },
   "dependencies": {
     "autolinker": "^3.0.3",
-    "axios": "^0.18.0",
+    "axios": "^0.19.0",
     "camelcase-keys": "^5.0.0",
     "core-js": "3",
     "decamelize-keys": "^1.1.0",
