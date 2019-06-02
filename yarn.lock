@@ -2028,7 +2028,15 @@ babel-plugin-react-intl-auto@1.7.0:
     "@babel/types" "^7.3.4"
     murmurhash3js "^3.0.1"
 
-babel-plugin-react-intl@3.0.1, babel-plugin-react-intl@^3.0.1:
+babel-plugin-react-intl@3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/babel-plugin-react-intl/-/babel-plugin-react-intl-3.0.2.tgz#5fbc50a331c712b36ec574a96709c0002537d1b9"
+  integrity sha512-bUvtvCEmxKEwH5TIzlX96bdlOQWajGHa4BZ3pIwGLsckrLrQjbxCLnxboKEsptm0CEN33nbcTKhM4en5Lqp1qA==
+  dependencies:
+    fs-extra "^8.0.1"
+    intl-messageformat-parser "^1.4.0"
+
+babel-plugin-react-intl@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/babel-plugin-react-intl/-/babel-plugin-react-intl-3.0.1.tgz#4abc7fff04a7bbbb7034aec0a675713f2e52181c"
   integrity sha512-FqnEO+Tq7kJVUPKsSG3s5jaHi3pAC4RUR11IrscvjsfkOApLP2DtzNo6dtQ+tX+OzEzJx7cUms8aCw5BFyW5xg==
@@ -4756,6 +4764,15 @@ fs-extra@^7.0.1:
     jsonfile "^4.0.0"
     universalify "^0.1.0"
 
+fs-extra@^8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-8.0.1.tgz#90294081f978b1f182f347a440a209154344285b"
+  integrity sha512-W+XLrggcDzlle47X/XnS7FXrXu9sDo+Ze9zpndeBxdgv88FHLm1HtmkhEwavruS6koanBjp098rUpHs65EmG7A==
+  dependencies:
+    graceful-fs "^4.1.2"
+    jsonfile "^4.0.0"
+    universalify "^0.1.0"
+
 fs-minipass@^1.2.5:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/fs-minipass/-/fs-minipass-1.2.5.tgz#06c277218454ec288df77ada54a03b8702aacb9d"
@@ -5515,6 +5532,11 @@ intl-messageformat-parser@^1.2.0:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/intl-messageformat-parser/-/intl-messageformat-parser-1.5.1.tgz#b15a93dc8d4ba77ff60fd0443ed4794403b1e132"
   integrity sha512-G9/w2k2MRG2OvzVc/zOfBQbZJT590TiUI6/4wUshvzV1Q9rA5DDC2mWFz5UtiWT4Z7U3nunaba3FWri77KXCnA==
+
+intl-messageformat-parser@^1.4.0:
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/intl-messageformat-parser/-/intl-messageformat-parser-1.6.3.tgz#26e5363f013f2d54e900de0d180f8b04db0e635b"
+  integrity sha512-QslP7jJxG0VCCA2Dy8GfUECzEGEN+duCO5/N6LdOPTf/EOs5B3C6apkznzQ57dUKqtVt4TYJyIS/5Gern/y04A==
 
 intl-messageformat@^2.0.0, intl-messageformat@^2.1.0:
   version "2.2.0"
