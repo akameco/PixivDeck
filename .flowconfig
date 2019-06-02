@@ -9,6 +9,7 @@
 .*/react-event-listener/.*
 */node_modules/babel-plugin-flow-runtime/.*
 .*/node_modules/react-sortable-pane/lib/react-sortable-pane.es5.js.flow
+.*/node_modules/react-sortable-pane/lib/react-sortable-pane.js.flow
 .*/node_modules/redux-persist/.*
 .*/git/.*
 
