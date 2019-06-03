@@ -142,7 +142,7 @@
     "read-pkg-up": "5.0.0",
     "stylelint": "10.0.1",
     "stylelint-config-standard": "18.3.0",
-    "stylelint-processor-styled-components": "1.7.0",
+    "stylelint-processor-styled-components": "1.8.0",
     "url-loader": "1.1.2",
     "webpack": "4.31.0",
     "webpack-bundle-analyzer": "3.3.2",
