@@ -17,9 +17,9 @@ bluebird-lst@^1.0.6, bluebird-lst@^1.0.7:
     bluebird "^3.5.4"
 
 bluebird@^3.5.4:
-  version "3.5.4"
-  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.4.tgz#d6cc661595de30d5b3af5fcedd3c0b3ef6ec5714"
-  integrity sha512-FG+nFEZChJrbQ9tIccIfZJBz3J7mLrAhxakAbnrJWn8d7aKOC+LWifa0G+p4ZqKp4y13T7juYvdhq9NzKdsrjw==
+  version "3.5.5"
+  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.5.tgz#a8d0afd73251effbbd5fe384a77d73003c17a71f"
+  integrity sha512-5am6HnnfN+urzt4yfg7IgTbotDjIT/u8AJpEt0sIU9FtXfVeezXAPKswrG+xKUCOYAINpSdgZVDU6QFh+cuH3w==
 
 buffer-from@^1.0.0:
   version "1.1.1"
@@ -91,9 +91,9 @@ electron-is-dev@^1.0.1:
   integrity sha512-Z1qA/1oHNowGtSBIcWk0pcLEqYT/j+13xUw/MYOrBUOL4X7VN0i0KCTf5SqyvMPmW5pSPKbo28wkxMxzZ20YnQ==
 
 electron-log@^3.0.0:
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/electron-log/-/electron-log-3.0.5.tgz#9bdd307f1f1aec85c0873babd6bdfffb1a661436"
-  integrity sha512-wWOPNBVGh7NJx/OLXdgtuYrqxoG9ZWO+kZYloIHi66B5W9EgXZw71jdZ1ddeWNg4CkABypa8tkrRGqCKF+9tYg==
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/electron-log/-/electron-log-3.0.6.tgz#2291375572f6be5889f06fb32a35eab2930a1728"
+  integrity sha512-osPLk8m9+Ylo0k/okevdHUGsKpCNGxg206TxG2Ch8slGvlTZLI0955Ig4e+nJ6fHVDxFMv5dWkn2y8hwi0aENg==
 
 electron-referer@^0.3.0:
   version "0.3.0"
@@ -346,9 +346,9 @@ unused-filename@^1.0.0:
     path-exists "^3.0.0"
 
 write-file-atomic@^2.3.0:
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/write-file-atomic/-/write-file-atomic-2.4.2.tgz#a7181706dfba17855d221140a9c06e15fcdd87b9"
-  integrity sha512-s0b6vB3xIVRLWywa6X9TOMA7k9zio0TMOsl9ZnDkliA/cfJlpHXAscj0gbHVJiTdIuAYpIyqS5GW91fqm6gG5g==
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/write-file-atomic/-/write-file-atomic-2.4.3.tgz#1fd2e9ae1df3e75b8d8c367443c692d4ca81f481"
+  integrity sha512-GaETH5wwsX+GcnzhPgKcKjJ6M2Cq3/iZp1WyY/X1CSqrW+jVNM9Y7D8EC2sM4ZG/V8wZlSniJnCKWPmBYAucRQ==
   dependencies:
     graceful-fs "^4.1.11"
     imurmurhash "^0.1.4"
