@@ -134,7 +134,7 @@
     "jest-yaml-flat-transfrom": "0.1.0",
     "json-loader": "0.5.7",
     "lint-staged": "8.1.7",
-    "prettier": "1.17.1",
+    "prettier": "1.18.2",
     "raf": "3.4.1",
     "react-addons-test-utils": "15.6.2",
     "react-hot-loader": "4.9.0",
