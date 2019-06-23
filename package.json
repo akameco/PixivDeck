@@ -97,7 +97,7 @@
     "@babel/preset-react": "7.0.0",
     "@babel/register": "7.4.4",
     "all-contributors-cli": "6.6.1",
-    "babel-eslint": "10.0.1",
+    "babel-eslint": "10.0.2",
     "babel-jest": "24.8.0",
     "babel-loader": "8.0.6",
     "babel-plugin-add-module-exports": "1.0.2",
