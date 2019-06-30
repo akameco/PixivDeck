@@ -8888,10 +8888,10 @@ react-event-listener@^0.6.2, react-event-listener@^0.6.6:
     prop-types "^15.6.0"
     warning "^4.0.1"
 
-react-hot-loader@4.11.1:
-  version "4.11.1"
-  resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-4.11.1.tgz#2cabbd0f1c8a44c28837b86d6ce28521e6d9a8ac"
-  integrity sha512-HAC0UedYzM3mD+ZaQHesntFO0yi2ftOV4ZMMRTj43E4GvW5sQqYTPvur+6J7EaH3MDr/RqjDKXyCqKepV8+y7w==
+react-hot-loader@4.11.2:
+  version "4.11.2"
+  resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-4.11.2.tgz#64669357dee2aa8e55de71b18b777d95e59084da"
+  integrity sha512-Hu/D3riA6rkHAvHAt/ctusQkh8/BDRBMf4uKqv7G6CbZmT4qXLr4JynQ0WINrVb9dpyGRZ+GDeDVk3lWdJDrmA==
   dependencies:
     fast-levenshtein "^2.0.6"
     global "^4.3.0"
