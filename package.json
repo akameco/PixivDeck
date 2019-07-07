@@ -103,7 +103,7 @@
     "babel-plugin-add-module-exports": "1.0.2",
     "babel-plugin-create-redux-action-func": "0.1.4",
     "babel-plugin-create-redux-action-type": "0.1.2",
-    "babel-plugin-dev-expression": "0.2.1",
+    "babel-plugin-dev-expression": "0.2.2",
     "babel-plugin-object-rest-spread": "0.0.0",
     "babel-plugin-react-intl": "3.3.3",
     "babel-plugin-react-intl-auto": "1.7.0",
