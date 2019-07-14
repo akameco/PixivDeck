@@ -123,7 +123,7 @@
     "eslint": "5.16.0",
     "eslint-config-precure": "4.17.0",
     "execa": "1.0.0",
-    "extract-react-intl-messages": "1.0.1",
+    "extract-react-intl-messages": "1.0.2",
     "extract-zip": "1.6.7",
     "file-loader": "3.0.1",
     "flow-bin": "0.76.0",
