@@ -820,7 +820,7 @@
     globals "^11.1.0"
     lodash "^4.17.11"
 
-"@babel/types@^7.0.0", "@babel/types@^7.2.0", "@babel/types@^7.3.0", "@babel/types@^7.3.4", "@babel/types@^7.4.0", "@babel/types@^7.4.4", "@babel/types@^7.5.0":
+"@babel/types@^7.0.0", "@babel/types@^7.2.0", "@babel/types@^7.3.0", "@babel/types@^7.4.0", "@babel/types@^7.4.4", "@babel/types@^7.5.0":
   version "7.5.0"
   resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.5.0.tgz#e47d43840c2e7f9105bc4d3a2c371b4d0c7832ab"
   integrity sha512-UFpDVqRABKsW01bvw7/wSUe56uy6RXM5+VJibVVAybDGxEW25jdwiFJEf7ASvSaC7sN7rbE/l3cLp2izav+CtQ==
@@ -2070,12 +2070,12 @@ babel-plugin-object-rest-spread@0.0.0:
   resolved "https://registry.yarnpkg.com/babel-plugin-object-rest-spread/-/babel-plugin-object-rest-spread-0.0.0.tgz#5a998ae19eb74065418399ac08ec4a01a9bf8d87"
   integrity sha1-WpmK4Z63QGVBg5msCOxKAam/jYc=
 
-babel-plugin-react-intl-auto@1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-react-intl-auto/-/babel-plugin-react-intl-auto-1.7.0.tgz#90094aa89fc9882c3cdaa63123fb8752d6e40708"
-  integrity sha512-Sue8v4Hb5cMdE8AZQ+AgYfQ9SKgybrDMlNgwkkHCFPGimh8Q7zzEJuSlcAe3RDKFARbSFQ2i1fx0RdtKk6G/dA==
+babel-plugin-react-intl-auto@1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-react-intl-auto/-/babel-plugin-react-intl-auto-1.7.1.tgz#17e74c32be45a9567b5770e5f1abd796e3f4abce"
+  integrity sha512-8DdLfAyfFvgTSmI9HYiu+dIRx6m+D0RtKODYowBpsbZ+YvobOvUyyGgLpnGyXdEbNIcoTGFUyhcye+utmvpDgw==
   dependencies:
-    "@babel/types" "^7.3.4"
+    "@babel/types" "^7.4.4"
     murmurhash3js "^3.0.1"
 
 babel-plugin-react-intl@3.5.1, babel-plugin-react-intl@^3.0.1:
