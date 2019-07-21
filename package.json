@@ -106,7 +106,7 @@
     "babel-plugin-dev-expression": "0.2.2",
     "babel-plugin-object-rest-spread": "0.0.0",
     "babel-plugin-react-intl": "3.5.1",
-    "babel-plugin-react-intl-auto": "1.7.1",
+    "babel-plugin-react-intl-auto": "1.7.2",
     "babel-plugin-redux-action-compose": "0.3.0",
     "babel-plugin-redux-state-compose": "0.4.0",
     "chalk": "2.4.2",

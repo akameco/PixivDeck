@@ -2124,10 +2124,10 @@ babel-plugin-object-rest-spread@0.0.0:
   resolved "https://registry.yarnpkg.com/babel-plugin-object-rest-spread/-/babel-plugin-object-rest-spread-0.0.0.tgz#5a998ae19eb74065418399ac08ec4a01a9bf8d87"
   integrity sha1-WpmK4Z63QGVBg5msCOxKAam/jYc=
 
-babel-plugin-react-intl-auto@1.7.1:
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/babel-plugin-react-intl-auto/-/babel-plugin-react-intl-auto-1.7.1.tgz#17e74c32be45a9567b5770e5f1abd796e3f4abce"
-  integrity sha512-8DdLfAyfFvgTSmI9HYiu+dIRx6m+D0RtKODYowBpsbZ+YvobOvUyyGgLpnGyXdEbNIcoTGFUyhcye+utmvpDgw==
+babel-plugin-react-intl-auto@1.7.2:
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/babel-plugin-react-intl-auto/-/babel-plugin-react-intl-auto-1.7.2.tgz#2b913a828adbcdffb21c871b333d5b9d75b5a404"
+  integrity sha512-fhirzWigbJBO5v0GdQ1CO8mkhmaSLPbbJNg16fGyEqr+AEos/pMGLbB5zqFMeSvYzg7JI+cA7mWMGfFbBIxaMA==
   dependencies:
     "@babel/types" "^7.4.4"
     murmurhash3js "^3.0.1"
