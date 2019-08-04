@@ -119,7 +119,7 @@
     "electron-load-devtool": "1.2.0",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.14.0",
-    "enzyme-to-json": "3.3.5",
+    "enzyme-to-json": "3.4.0",
     "eslint": "5.16.0",
     "eslint-config-precure": "4.18.0",
     "execa": "1.0.0",
