@@ -105,7 +105,7 @@
     "babel-plugin-create-redux-action-type": "0.1.2",
     "babel-plugin-dev-expression": "0.2.2",
     "babel-plugin-object-rest-spread": "0.0.0",
-    "babel-plugin-react-intl": "4.1.3",
+    "babel-plugin-react-intl": "4.1.5",
     "babel-plugin-react-intl-auto": "1.7.2",
     "babel-plugin-redux-action-compose": "0.3.0",
     "babel-plugin-redux-state-compose": "0.4.0",
