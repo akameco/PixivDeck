@@ -1,4 +1,4 @@
 {
-  "extends": ["@akameco", "schedule:weekly"],
+  "extends": ["@akameco", "schedule:monthly"],
   "ignoreDeps": ["flow-bin"]
 }
