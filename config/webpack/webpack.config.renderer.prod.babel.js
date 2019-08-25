@@ -10,7 +10,7 @@ export default merge.smart(baseConfig, {
 
   target: 'electron-renderer',
 
-  entry: ['./app/index'],
+  entry: ['./app/index.tsx'],
 
   output: {
     path: path.resolve(process.cwd(), 'app/dist'),

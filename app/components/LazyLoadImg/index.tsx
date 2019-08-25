@@ -1,0 +1,116 @@
+// @flow
+import * as React from 'react'
+import styled from 'styled-components'
+import Icon from 'components/common/Icon'
+
+const StyledImg = styled.div`
+  position: relative;
+  width: 100%;
+  min-height: 20px;
+  text-align: center;
+  cursor: zoom-in;
+  overflow: hidden;
+  border-radius: 3px;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    min-height: 100px;
+    margin: -10px;
+    overflow: hidden;
+  }
+
+  svg {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    padding: 2px;
+    fill: white;
+    background-color: rgba(180, 180, 180, 0.5);
+    border-radius: 4px;
+    margin-top: 5px;
+    margin-left: 5px;
+    z-index: 100;
+  }
+`
+
+interface Props {
+  src: string
+  isManga?: boolean
+  onClick: () => any
+}
+
+interface State {
+  isVisible: boolean
+  isLoaded: boolean
+}
+
+export default class LazyLoadImg extends React.PureComponent<Props, State> {
+  state: State = {
+    isVisible: false,
+    isLoaded: false,
+  }
+  node: HTMLElement | null = null
+  io: IntersectionObserver | null = null
+
+  componentDidMount() {
+    this.init()
+  }
+
+  componentWillUnmount() {
+    if (this.io && this.node) {
+      this.io.unobserve(this.node)
+    }
+  }
+
+  init() {
+    if (!this.node) {
+      return
+    }
+
+    this.io = new IntersectionObserver(
+      (entries: { intersectionRatio: number }[]) => {
+        // eslint-disable-line no-undef
+        const intersectionRatio = entries[0].intersectionRatio
+        if (intersectionRatio <= 0) {
+          this.setState({ isVisible: false })
+        }
+        this.update()
+      },
+      { rootMargin: '300% 0px' }
+    )
+    this.io.observe(this.node)
+  }
+
+  update() {
+    this.setState({ isVisible: true })
+    const img = new Image()
+
+    img.addEventListener('load', () => {
+      this.setState({ isLoaded: true })
+    })
+
+    img.src = this.props.src
+  }
+
+  setNode = (node: HTMLElement | null) => {
+    if (node) {
+      this.node = node
+    }
+  }
+
+  render() {
+    const { src, onClick, isManga } = this.props
+    const { isVisible, isLoaded } = this.state
+    return (
+      <StyledImg ref={this.setNode}>
+        {isManga && isLoaded && <Icon type="manga" color="#fff" />}
+        {isVisible && isLoaded ? (
+          <img src={src} onClick={onClick} />
+        ) : (
+          <img height={300} />
+        )}
+      </StyledImg>
+    )
+  }
+}

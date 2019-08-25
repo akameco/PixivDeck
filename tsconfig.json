@@ -1,0 +1,11 @@
+{
+  "extends": "@akameco/tsconfig",
+  "compilerOptions": {
+    "lib": ["dom", "esnext"],
+    "baseUrl": "./",
+    "paths": {
+      "*": ["./app/*"]
+    }
+  },
+  "include": ["./app/types/intl.d.ts"]
+}

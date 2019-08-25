@@ -1,7 +1,6 @@
 {
   "extends": [
-    "precure/oss",
-    "precure/react"
+    "precure/auto"
   ],
   "env": {
     "node": true,
@@ -15,11 +14,14 @@
     ]
   },
   "rules": {
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/promise-function-async": 0,
+    "import/named": 0,
     "no-constant-condition": 0,
     "import/no-extraneous-dependencies": 0,
     "import/exports-last": 0,
     "import/no-unresolved": 0,
-    "flowtype/no-weak-types": 0,
     "no-duplicate-imports": 0,
     "no-invalid-this": 0,
     "no-warning-comments": 0,
@@ -29,7 +31,6 @@
     "max-lines-per-function": 0,
     "no-shadow": 0,
     "react/no-deprecated": 0,
-    "react/no-find-dom-node": 0,
-    "flowtype/require-compound-type-alias": 0
+    "react/no-find-dom-node": 0
   }
 }

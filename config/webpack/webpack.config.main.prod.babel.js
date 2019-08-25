@@ -9,7 +9,7 @@ export default merge.smart(baseConfig, {
 
   target: 'electron-main',
 
-  entry: ['./app/main.dev'],
+  entry: ['./app/main.dev.ts'],
 
   // 'main.js' in root
   output: {

@@ -1,0 +1,15 @@
+import styled from 'styled-components'
+
+export const LazyImgWrapper = styled.div`
+  width: 100%;
+  height: auto;
+  margin: 10px;
+  padding: 0;
+  overflow: auto;
+  text-align: center;
+
+  a {
+    border-radius: 2px;
+    background: rgba(24, 24, 24, 0.3);
+  }
+`

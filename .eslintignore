@@ -1,6 +1,5 @@
 release/*
 dist/*
-flow-typed/*
 main.js
 app/node_modules/*
 node_modules/*
