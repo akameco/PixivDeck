@@ -3,7 +3,7 @@ import webpack from 'webpack'
 import readPkgUp from 'read-pkg-up'
 
 const appPath = path.resolve(process.cwd(), 'app')
-const { pkg: dependencies = {} } = readPkgUp.sync()
+const { package: dependencies = {} } = readPkgUp.sync()
 
 export default {
   externals: Object.keys(dependencies),

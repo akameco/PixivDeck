@@ -4,7 +4,7 @@ import merge from 'webpack-merge'
 import readPkgUp from 'read-pkg-up'
 import baseConfig from './webpack.config.base.babel'
 
-const { pkg: dependencies = {} } = readPkgUp.sync()
+const { package: dependencies = {} } = readPkgUp.sync()
 
 const dist = path.resolve(process.cwd(), 'dll')
 
