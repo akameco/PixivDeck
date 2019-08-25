@@ -7,7 +7,7 @@ module.exports = merge(baseConfig, {
   devtool: false,
   mode: 'production',
 
-  entry: ['./app/index'],
+  entry: ['./app/index.tsx'],
 
   output: {
     publicPath: '../dist/',

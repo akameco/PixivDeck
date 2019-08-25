@@ -1,4 +1,3 @@
-// @flow
 import type { Action } from './actionTypes'
 import * as Actions from './constants'
 

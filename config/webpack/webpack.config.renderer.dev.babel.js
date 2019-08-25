@@ -33,7 +33,7 @@ export default merge.smart(baseConfig, {
     'react-hot-loader/patch',
     `webpack-dev-server/client?http://localhost:${port}/`,
     'webpack/hot/only-dev-server',
-    path.resolve(process.cwd(), 'app/index.js'),
+    path.resolve(process.cwd(), 'app/index.tsx'),
   ],
 
   output: {
