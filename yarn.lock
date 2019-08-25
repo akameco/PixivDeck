@@ -4883,11 +4883,6 @@ flatted@^2.0.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-2.0.1.tgz#69e57caa8f0eacbc281d2e2cb458d46fdb449e08"
   integrity sha512-a1hQMktqW9Nmqr5aktAux3JMNqaucxGcjtjWnZLHX7yyPCmlSV3M54nGYbqT8K+0GhF3NBgmJCc3ma+WOgX8Jg==
 
-flow-to-typescript@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/flow-to-typescript/-/flow-to-typescript-1.0.0.tgz#c12f973a557314f253a8e6a30315ea02acc33d56"
-  integrity sha512-R7sM1Y/W/F3A9RaGeZTm1pouDZQYB8MDPgIqigNdNYbMJzF3yMrMfE09yRqByFyVuv7qxkPI0eZMhBvb6ATDpw==
-
 flush-write-stream@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/flush-write-stream/-/flush-write-stream-1.1.1.tgz#8dd7d873a1babc207d94ead0c2e0e44276ebf2e8"

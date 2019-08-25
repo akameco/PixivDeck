@@ -135,7 +135,6 @@
     "extract-react-intl-messages": "1.0.2",
     "extract-zip": "1.6.7",
     "file-loader": "3.0.1",
-    "flow-to-typescript": "^1.0.0",
     "husky": "2.7.0",
     "jest": "24.8.0",
     "jest-styled-components": "6.3.3",
