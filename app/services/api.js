@@ -6,6 +6,8 @@ import { schema, normalize } from 'normalizr'
 import camelcaseKeys from 'camelcase-keys'
 import decamelizeKeys from 'decamelize-keys'
 import axios from 'axios'
+import md5 from 'js-md5'
+import moment from 'moment'
 
 const userSchema = new schema.Entity('users', { idAttribute: 'id' })
 
@@ -38,6 +40,7 @@ type UserInfo = {
 }
 
 const AUTH_URL = 'https://oauth.secure.pixiv.net/auth/token'
+const HASH_SECRET = '28c1fdd170a5204386cb1313c7077b34f83e4aaf4aa829ce78c231e05b0bae2c'
 
 type AuthResponse = {
   accessToken: string,
@@ -57,20 +60,24 @@ export async function fetchAuth({
 }: UserInfo): Promise<AuthResponse> {
   const data = refreshToken
     ? {
-        ...defaultReqConfig,
-        grant_type: 'refresh_token',
-        refresh_token: refreshToken,
-      }
+      ...defaultReqConfig,
+      grant_type: 'refresh_token',
+      refresh_token: refreshToken,
+    }
     : {
-        ...defaultReqConfig,
-        grant_type: 'password',
-        username,
-        password,
-      }
+      ...defaultReqConfig,
+      grant_type: 'password',
+      username,
+      password,
+    }
 
   const {
     data: { response },
   } = await axios.post(AUTH_URL, stringify(data), {
+    headers: {
+      'X-Client-Hash': md5(moment().format() + HASH_SECRET),
+      'X-Client-Time': moment().format(),
+    },
     transformResponse: [
       rowData => {
         try {
