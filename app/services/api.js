@@ -40,7 +40,8 @@ type UserInfo = {
 }
 
 const AUTH_URL = 'https://oauth.secure.pixiv.net/auth/token'
-const HASH_SECRET = '28c1fdd170a5204386cb1313c7077b34f83e4aaf4aa829ce78c231e05b0bae2c'
+const HASH_SECRET =
+  '28c1fdd170a5204386cb1313c7077b34f83e4aaf4aa829ce78c231e05b0bae2c'
 
 type AuthResponse = {
   accessToken: string,
@@ -60,16 +61,16 @@ export async function fetchAuth({
 }: UserInfo): Promise<AuthResponse> {
   const data = refreshToken
     ? {
-      ...defaultReqConfig,
-      grant_type: 'refresh_token',
-      refresh_token: refreshToken,
-    }
+        ...defaultReqConfig,
+        grant_type: 'refresh_token',
+        refresh_token: refreshToken,
+      }
     : {
-      ...defaultReqConfig,
-      grant_type: 'password',
-      username,
-      password,
-    }
+        ...defaultReqConfig,
+        grant_type: 'password',
+        username,
+        password,
+      }
 
   const {
     data: { response },
