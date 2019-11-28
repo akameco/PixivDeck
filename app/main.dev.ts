@@ -1,4 +1,4 @@
-/* eslint global-require: 0, flowtype-errors/show-errors: 0, camelcase: 1 */
+/* eslint global-require: 0, camelcase: 1 */
 import electron from 'electron'
 import referer from 'electron-referer'
 import ms from 'ms'
@@ -96,7 +96,7 @@ function createMainWindow() {
     referer('http://www.pixiv.net', win)
   })
   webContents.on('new-window', (event: Event, url: string) => {
-    if (/intent\/twitter/.test(url)) {
+    if (url.includes("intent/twitter")) {
       return
     }
 
@@ -113,7 +113,7 @@ function openTweet(url: string) {
   })
   const page = tweetWin.webContents
   page.on('will-navigate', (event, url) => {
-    if (/twitter\.com\/intent\/tweet\/complete/.test(url)) {
+    if (url.includes("twitter.com/intent/tweet/complete")) {
       tweetWin.close()
     }
 

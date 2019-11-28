@@ -1,20 +1,3 @@
-components:
-  Dropdown:
-    logout: Logout
-    setting: Settings
-  LoginModal:
-    error: Login Error
-    login: Login
-    password: Password
-    username: Username
-    errorInfo: Check your username and password.
-    loginLoading: Logging in...
-  UserDrawer:
-    tabManga: 'Manga ({count})'
-    addColumn: Add to Column
-    tabIllust: 'Illustration ({count})'
-  ColumnHeaderBookmark:
-    bookmarkFilter: Filter Bookmarks
 containers:
   BoxContainer:
     save: Save Original Image

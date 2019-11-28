@@ -1,20 +1,3 @@
-components:
-  Dropdown:
-    logout: 注销
-    setting: 设置
-  LoginModal:
-    error: 登录失败
-    login: 登录
-    password: 密码
-    username: 用户名
-    errorInfo: 请检查您的用户名或密码
-    loginLoading: 登录中...
-  UserDrawer:
-    tabManga: '漫画 ({count})'
-    addColumn: 添加该列
-    tabIllust: '插画 ({count})'
-  ColumnHeaderBookmark:
-    bookmarkFilter: 过滤书签
 containers:
   BoxContainer:
     save: 下载原图

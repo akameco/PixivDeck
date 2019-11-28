@@ -1,20 +1,3 @@
-components:
-  Dropdown:
-    logout: ログアウト
-    setting: 設定
-  LoginModal:
-    error: ログインに失敗しました。
-    login: ログイン
-    password: パスワード
-    username: ユーザー名
-    errorInfo: ユーザ名とパスワードを確認してください。
-    loginLoading: ログイン中..
-  UserDrawer:
-    tabManga: 'マンガ ({count})'
-    addColumn: カラムに追加
-    tabIllust: 'イラスト ({count})'
-  ColumnHeaderBookmark:
-    bookmarkFilter: ブックマークフィルタ
 containers:
   BoxContainer:
     save: オリジナルサイズの画像を保存
