@@ -74,7 +74,17 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "noriokun4649",
+      "name": "noriokun4649",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/17977166?v=4",
+      "profile": "https://twitter.com/noriokun_blog",
+      "contributions": [
+        "code"
+      ]
     }
   ],
-  "repoType": "github"
+  "repoType": "github",
+  "commitConvention": "none"
 }
