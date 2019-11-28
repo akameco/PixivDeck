@@ -7,7 +7,7 @@
 [![MIT License](https://img.shields.io/npm/l/nps.svg?style=flat-square)](./license)
 [![Donate](https://img.shields.io/badge/%EF%BC%84-support-green.svg?style=flat-square)](http://amzn.asia/bO78HzR)
 [![Code of Conduct](https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square)](./CODE_OF_CONDUCT.md)
-[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 
 ## Screenshot
 
@@ -88,8 +88,25 @@ $ npm run package
 Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
-<table><tr><td align="center"><a href="http://akameco.github.io"><img src="https://avatars2.githubusercontent.com/u/4002137?v=4" width="100px;" alt="akameco"/><br /><sub><b>akameco</b></sub></a><br /><a href="#question-akameco" title="Answering Questions">💬</a> <a href="https://github.com/akameco/PixivDeck/commits?author=akameco" title="Code">💻</a> <a href="#design-akameco" title="Design">🎨</a> <a href="https://github.com/akameco/PixivDeck/commits?author=akameco" title="Tests">⚠️</a></td><td align="center"><a href="https://github.com/trnhoe"><img src="https://avatars0.githubusercontent.com/u/15041872?v=4" width="100px;" alt="trnhoe"/><br /><sub><b>trnhoe</b></sub></a><br /><a href="https://github.com/akameco/PixivDeck/commits?author=trnhoe" title="Code">💻</a> <a href="#translation-trnhoe" title="Translation">🌍</a></td><td align="center"><a href="https://github.com/TobiichiAmane"><img src="https://avatars0.githubusercontent.com/u/14824064?v=4" width="100px;" alt="鳶一雨音"/><br /><sub><b>鳶一雨音</b></sub></a><br /><a href="#translation-TobiichiAmane" title="Translation">🌍</a></td><td align="center"><a href="http://austinhuang.me"><img src="https://avatars1.githubusercontent.com/u/16656689?v=4" width="100px;" alt="Austin Huang"/><br /><sub><b>Austin Huang</b></sub></a><br /><a href="#translation-austinhuang0131" title="Translation">🌍</a></td><td align="center"><a href="https://profile.sachin21.jp"><img src="https://avatars3.githubusercontent.com/u/3052342?v=4" width="100px;" alt="sachin21"/><br /><sub><b>sachin21</b></sub></a><br /><a href="https://github.com/akameco/PixivDeck/commits?author=sachin21" title="Code">💻</a></td><td align="center"><a href="https://blog.maple3142.net/"><img src="https://avatars1.githubusercontent.com/u/9370547?v=4" width="100px;" alt="maple"/><br /><sub><b>maple</b></sub></a><br /><a href="https://github.com/akameco/PixivDeck/commits?author=maple3142" title="Code">💻</a> <a href="#translation-maple3142" title="Translation">🌍</a></td><td align="center"><a href="https://natsuzora.dob.jp"><img src="https://avatars0.githubusercontent.com/u/29944979?v=4" width="100px;" alt="iqbal rifai"/><br /><sub><b>iqbal rifai</b></sub></a><br /><a href="#translation-py7hon" title="Translation">🌍</a></td></tr></table>
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="http://akameco.github.io"><img src="https://avatars2.githubusercontent.com/u/4002137?v=4" width="100px;" alt="akameco"/><br /><sub><b>akameco</b></sub></a><br /><a href="#question-akameco" title="Answering Questions">💬</a> <a href="https://github.com/akameco/PixivDeck/commits?author=akameco" title="Code">💻</a> <a href="#design-akameco" title="Design">🎨</a> <a href="https://github.com/akameco/PixivDeck/commits?author=akameco" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/trnhoe"><img src="https://avatars0.githubusercontent.com/u/15041872?v=4" width="100px;" alt="trnhoe"/><br /><sub><b>trnhoe</b></sub></a><br /><a href="https://github.com/akameco/PixivDeck/commits?author=trnhoe" title="Code">💻</a> <a href="#translation-trnhoe" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://github.com/TobiichiAmane"><img src="https://avatars0.githubusercontent.com/u/14824064?v=4" width="100px;" alt="鳶一雨音"/><br /><sub><b>鳶一雨音</b></sub></a><br /><a href="#translation-TobiichiAmane" title="Translation">🌍</a></td>
+    <td align="center"><a href="http://austinhuang.me"><img src="https://avatars1.githubusercontent.com/u/16656689?v=4" width="100px;" alt="Austin Huang"/><br /><sub><b>Austin Huang</b></sub></a><br /><a href="#translation-austinhuang0131" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://profile.sachin21.jp"><img src="https://avatars3.githubusercontent.com/u/3052342?v=4" width="100px;" alt="sachin21"/><br /><sub><b>sachin21</b></sub></a><br /><a href="https://github.com/akameco/PixivDeck/commits?author=sachin21" title="Code">💻</a></td>
+    <td align="center"><a href="https://blog.maple3142.net/"><img src="https://avatars1.githubusercontent.com/u/9370547?v=4" width="100px;" alt="maple"/><br /><sub><b>maple</b></sub></a><br /><a href="https://github.com/akameco/PixivDeck/commits?author=maple3142" title="Code">💻</a> <a href="#translation-maple3142" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://natsuzora.dob.jp"><img src="https://avatars0.githubusercontent.com/u/29944979?v=4" width="100px;" alt="iqbal rifai"/><br /><sub><b>iqbal rifai</b></sub></a><br /><a href="#translation-py7hon" title="Translation">🌍</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://twitter.com/noriokun_blog"><img src="https://avatars3.githubusercontent.com/u/17977166?v=4" width="100px;" alt="noriokun4649"/><br /><sub><b>noriokun4649</b></sub></a><br /><a href="https://github.com/akameco/PixivDeck/commits?author=noriokun4649" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
