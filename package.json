@@ -35,7 +35,7 @@
     "hot-updates-server": "node config/scripts/webpack hot-server",
     "start-hot-renderer": "node config/scripts/hot-renderer",
     "postinstall": "npm run build:dll && electron-builder install-app-deps",
-    "package": "npm run build && build --publish never",
+    "package": "npm run build && electron-builder --publish never",
     "release": "npm run build && build"
   },
   "lint-staged": {
@@ -79,6 +79,7 @@
     "react-redux": "^7.0.0",
     "react-sortable-pane": "^1.0.4",
     "redux": "^4.0.1",
+    "redux-devtools": "^3.5.0",
     "redux-persist": "^5.10.0",
     "redux-saga": "^1.0.2",
     "reselect": "^4.0.0",
